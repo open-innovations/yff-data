@@ -4,7 +4,7 @@ export function transpose(matrix) {
 
 export function range(array) {
   return {
-    min: Math.min(...array),
-    max: Math.max(...array),
+    min: Math.min(...array.filter(x => x)),
+    max: Math.max(...array.filter(x => x)),
   };
 }

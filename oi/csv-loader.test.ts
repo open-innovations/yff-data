@@ -91,3 +91,22 @@ Deno.test('clip to width of first line', async () => {
   assertEquals(result.header, [['a', 'b']]);
   assertEquals(result.data, [[1, 2], [2, 2], [3, 2]]);
 })
+
+Deno.test('rejects empty strings', async () => {
+  const fakeReadTextFile = stub(
+    Deno,
+    'readTextFile',
+    resolvesNext(['a,b\n1,2\n2,'])
+  );
+  let result;
+  try {
+    result = await csvLoader('FAKE_PATH');
+  } finally {
+    fakeReadTextFile.restore();
+  }
+
+  assertEquals(result.header, [['a', 'b']]);
+  assertEquals(result.data, [
+    [1, 2],
+    [2, NaN]]);
+})

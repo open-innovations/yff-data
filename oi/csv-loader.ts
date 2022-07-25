@@ -16,7 +16,7 @@ const urlMatcher =
 const timeMatcher = /^[0-2]?[0-9]\:[0-5][0-9]$/;
 
 function guessType(value: string) {
-  if (typeof value === 'undefined') return undefined;
+  if ([''].includes(value)) return null;
 
   // Remove any quotes around the column value
   const cleaned = value.trim().replace(/(^\"|\"$)/, '');
@@ -59,6 +59,7 @@ export default async function csvLoader(path: string) {
   if (separatorRow > 0) raw.splice(separatorRow, 1);
 
   const headerRowCount = separatorRow > 1 ? separatorRow : 1;
+
   // Grab the header
   const header = raw.slice(0, headerRowCount);
   // Construct the column names by concatenating columns
