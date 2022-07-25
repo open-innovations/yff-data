@@ -1,0 +1,20 @@
+---
+title: Sample Visualisations
+table:
+  data: example.table
+  columns:            # The ability to merge rows (in a specific column) that have the same value
+    - name: "Overall category"
+      mergeRows: true
+    - name: "Intervention"
+      mergeRows: true
+---
+
+
+<h2>Simple Table</h2>
+{{ comp.viz.table({ config: table }) | safe }}
+
+<p>Built using config: </p>
+
+<pre><code>
+  {{- table | yaml -}}
+</code></pre>
