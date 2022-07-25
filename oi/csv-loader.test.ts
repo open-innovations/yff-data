@@ -43,7 +43,7 @@ Deno.test('handle multi-line headers', async () => {
   const fakeReadTextFile = stub(
     Deno,
     'readTextFile',
-    resolvesNext(['a,b\nc,d\n1,2\n3,4'])
+    resolvesNext(['a,b\nc,d\n---\n1,2\n3,4'])
   );
   let result;
   try {
@@ -54,6 +54,7 @@ Deno.test('handle multi-line headers', async () => {
 
   assertEquals(result.header, [['a', 'b'], ['c', 'd']])
   assertEquals(result.names, ['a.c', 'b.d']);
+  assertEquals(result.data, [['1', '2'], ['3', '4']])
 })
 
 Deno.test('default header length to 1', async () => {

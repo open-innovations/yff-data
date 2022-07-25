@@ -9,6 +9,7 @@ const URL = 'url';
 const DATETIME = 'datetime';
 const STRING = 'string';
 const TIME = 'time';
+const HEADER_SEPARATOR = '---';
 
 const urlMatcher =
   /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
@@ -18,20 +19,20 @@ function guessType(value: string) {
   if (typeof value === 'undefined') return undefined;
 
   // Remove any quotes around the column value
-  const cleaned = value.trim().replace(/^\"/, '');
+  const cleaned = value.trim().replace(/(^\"|\"$)/, '');
 
   if (isFinite(parseFloat(value))) {
-    if (parseInt(value).toString() === value) {
-      const intValue = parseInt(value);
-      if (intValue > 1700 && intValue < 2100) return YEAR;
-      return INTEGER;
-    }
+    // if (parseInt(value).toString() === value) {
+    //   const intValue = parseInt(value);
+    //   if (intValue > 1700 && intValue < 2100) return YEAR;
+    //   return INTEGER;
+    // }
     return FLOAT;
   }
-  if (value.match(/^(true|false)$/i)) return BOOLEAN;
-  if (value.match(urlMatcher)) return URL;
-  if (!isNaN(Date.parse(value))) return DATETIME;
-  if (value.match(timeMatcher)) return TIME;
+  // if (value.match(/^(true|false)$/i)) return BOOLEAN;
+  // if (value.match(urlMatcher)) return URL;
+  // if (!isNaN(Date.parse(value))) return DATETIME;
+  // if (value.match(timeMatcher)) return TIME;
   // Default to a string
   return STRING;
 }
@@ -40,21 +41,13 @@ export default async function csvLoader(path: string) {
   const text = await Deno.readTextFile(path);
   const raw = await (<Promise<[string[]]>>parse(text));
 
+  const separatorRow = raw.findIndex(x => x[0] === HEADER_SEPARATOR);
+  if (separatorRow > 0) raw.splice(separatorRow, 1);
+  
   // Calculate types for all cells
   const types = raw.map((rows) => rows.map(guessType));
 
-  // Guess where sections are by detecting where the types change
-  const sections = types
-    .map((row) => row.join(''))
-    .reduce((acc: number[], curr: string, index: number, types) => {
-      if (index === 0) acc.push(index);
-      if (index > 0 && curr !== types[index - 1]) acc.push(index);
-      return acc;
-    }, []);
-
-  // Assume that the header is the first section
-  const headerRowCount = sections[1] || 1;
-
+  const headerRowCount = separatorRow > 1 ? separatorRow : 1;
   // Grab the header
   const header = raw.slice(0, headerRowCount);
   // Construct the column names by concatenating columns
