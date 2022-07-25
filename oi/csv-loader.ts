@@ -1,5 +1,5 @@
 import { parse } from 'std/encoding/csv.ts';
-import { transpose } from '/oi/util.js';
+import { transpose, range } from '/oi/util.js';
 
 const FLOAT = 'float';
 const INTEGER = 'integer';
@@ -37,19 +37,26 @@ function guessType(value: string) {
   return STRING;
 }
 
+function typePrecedence(types: string[]) {
+  if (types.includes(STRING)) return STRING;
+  if (types.includes(FLOAT)) return FLOAT;
+}
+
+function typeConvert(value: string, type: string): string | number {
+  if (type === FLOAT) return parseFloat(value);
+  return value;
+}
+
 export default async function csvLoader(path: string) {
   const text = await Deno.readTextFile(path);
   let raw = await (<Promise<string[][]>>parse(text));
 
   const width = raw[0].length;
 
-  raw = raw.map(x => x.slice(0, width));
+  raw = raw.map((x) => x.slice(0, width));
 
-  const separatorRow = raw.findIndex(x => x[0] === HEADER_SEPARATOR);
+  const separatorRow = raw.findIndex((x) => x[0] === HEADER_SEPARATOR);
   if (separatorRow > 0) raw.splice(separatorRow, 1);
-  
-  // Calculate types for all cells
-  const types = raw.map((rows) => rows.map(guessType));
 
   const headerRowCount = separatorRow > 1 ? separatorRow : 1;
   // Grab the header
@@ -57,7 +64,17 @@ export default async function csvLoader(path: string) {
   // Construct the column names by concatenating columns
   const names: string[] = transpose(header).map((r: string[]) => r.join('.'));
   // Grab the data
-  const data = raw.slice(headerRowCount);
+  const stringData = raw.slice(headerRowCount);
+
+  // Calculate types for all cells
+  const types = transpose(stringData.map((rows) => rows.map(guessType))).map(
+    typePrecedence
+  );
+
+  // Convert the data
+  const data = stringData.map((row) =>
+    row.map((column, i) => typeConvert(column, types[i]))
+  );
 
   // Construct a list of objects as key / value pairs
   const rows = data.map((row) =>
@@ -76,5 +93,15 @@ export default async function csvLoader(path: string) {
     {}
   );
 
-  return { header, names, data, rows, columns, types, raw };
+  const ranges = Object.entries<[]>(columns).reduce(
+    (acc, [key, values], index) => {
+      return {
+        ...acc,
+        [key]: types[index] === FLOAT ? range(values) : undefined,
+      };
+    },
+    {}
+  );
+
+  return { header, names, data, rows, columns, types, raw, range: ranges };
 }

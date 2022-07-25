@@ -26,16 +26,16 @@ Deno.test('url test', async (t) => {
   assertEquals(result.header, [['a', 'b']]);
   assertEquals(result.names, ['a', 'b']);
   assertEquals(result.data, [
-    ['1', '2'],
-    ['3', '4'],
+    [1, 2],
+    [3, 4],
   ]);
   assertEquals(result.rows, [
-    { a: '1', b: '2' },
-    { a: '3', b: '4' },
+    { a: 1, b: 2 },
+    { a: 3, b: 4 },
   ]);
   assertEquals(result.columns, {
-    a: ['1', '3'],
-    b: ['2', '4'],
+    a: [1, 3],
+    b: [2, 4],
   });
 });
 
@@ -54,7 +54,7 @@ Deno.test('handle multi-line headers', async () => {
 
   assertEquals(result.header, [['a', 'b'], ['c', 'd']])
   assertEquals(result.names, ['a.c', 'b.d']);
-  assertEquals(result.data, [['1', '2'], ['3', '4']])
+  assertEquals(result.data, [[1, 2], [3, 4]])
 })
 
 Deno.test('default header length to 1', async () => {
@@ -89,5 +89,5 @@ Deno.test('clip to width of first line', async () => {
   }
 
   assertEquals(result.header, [['a', 'b']]);
-  assertEquals(result.data, [['1', '2'], ['2', '2'], ['3', '2']]);
+  assertEquals(result.data, [[1, 2], [2, 2], [3, 2]]);
 })
