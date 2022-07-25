@@ -1,14 +1,14 @@
 ---
 title: Sample Visualisations
 table:
-  data: example.table
+  file: /data/example/table.csv
   columns:            # The ability to merge rows (in a specific column) that have the same value
     - name: "Overall category"
       mergeRows: true
     - name: "Intervention"
       mergeRows: true
 heatmap:
-  data: example.heatmap
+  file: /data/example/heatmap.csv
   columns:
     - name: Ranks.2018
       align: center
@@ -57,6 +57,8 @@ heatmap:
   {{- table | yaml -}}
 </code></pre>
 
+<a href="{{ table.file }}">Data file</a>
+
 <h2>Heatmap Table</h2>
 
 {{ comp.viz.table({ config: heatmap }) | safe }}
@@ -66,3 +68,5 @@ heatmap:
 <pre><code>
   {{- heatmap | yaml -}}
 </code></pre>
+
+<a href="{{ heatmap.file }}">Data file</a>

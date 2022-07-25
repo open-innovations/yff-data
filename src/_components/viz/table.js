@@ -17,6 +17,11 @@ const colourScales = new Colours({
   'YFF': 'rgb(99,190,123) 0%, rgb(250,233,131) 50%, rgb(248,105,107) 100%'
 });
 
+function loadDataFile(path, sources) {
+  const name = path.replace(/\//g, '.').replace(/^.*data/, 'sources').replace(/\.[^\.]*$/, '');
+  return eval(name);
+}
+
 export default ({ config, sources }) => {
   // Get loaded data from sources object
   // Data structure will include the following:
@@ -25,7 +30,7 @@ export default ({ config, sources }) => {
   //   data = 2d array of data
   //   rows = array of objects with data referenced by name
   //   columns = object with column data as array
-  const table = eval(`sources.${config.data}`);
+  const table = loadDataFile(config.file, sources);
 
   // Create array to store html text
   const html = [];
