@@ -9,8 +9,44 @@ table:
       mergeRows: true
 heatmap:
   data: example.heatmap
+  columns:
+    - name: Ranks.2018
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 1
+      max: 38
+    - name: Ranks.2019
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 1
+      max: 38
+    - name: Ranks.2020
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 1
+      max: 38
+    - name: Index.2018
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 71
+      max: 23
+    - name: Index.2019
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 71
+      max: 23
+    - name: Index.2020
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 71
+      max: 23
 ---
-
 
 <h2>Simple Table</h2>
 {{ comp.viz.table({ config: table }) | safe }}
