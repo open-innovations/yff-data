@@ -76,7 +76,6 @@ export default ({ config, sources }) => {
       const cellText = (isNaN(cell) && ['float'].includes(table.types[colNumber])) ? '' : cell;
       const { align, heatmap, scale = 'Viridis', min, max } = config.columns?.find(x => x.name === colName) || {};
       let heatMapStyle = '';
-      console.log(typeof cell === 'number')
       if (heatmap && !isNaN(cell)) {
         const background = colourScales.getColourFromScale(scale, cell, min, max);
         const textCol = (new Colour(background)).text;
