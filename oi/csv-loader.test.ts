@@ -25,7 +25,6 @@ Deno.test('url test', async (t) => {
 
   assertEquals(result.header, [['a', 'b']]);
   assertEquals(result.names, ['a', 'b']);
-  console.dir({ data: result.data });
   assertEquals(result.data, [
     ['1', '2'],
     ['3', '4'],
@@ -39,3 +38,38 @@ Deno.test('url test', async (t) => {
     b: ['2', '4'],
   });
 });
+
+Deno.test('handle multi-line headers', async () => {
+  const fakeReadTextFile = stub(
+    Deno,
+    'readTextFile',
+    resolvesNext(['a,b\nc,d\n1,2\n3,4'])
+  );
+  let result;
+  try {
+    result = await csvLoader('FAKE_PATH');
+  } finally {
+    fakeReadTextFile.restore();
+  }
+
+  assertEquals(result.header, [['a', 'b'], ['c', 'd']])
+  assertEquals(result.names, ['a.c', 'b.d']);
+})
+
+Deno.test('default header length to 1', async () => {
+  const fakeReadTextFile = stub(
+    Deno,
+    'readTextFile',
+    resolvesNext(['a,b\nc,d\ne,f\ng,h'])
+  );
+  let result;
+  try {
+    result = await csvLoader('FAKE_PATH');
+  } finally {
+    fakeReadTextFile.restore();
+  }
+
+  assertEquals(result.header, [['a', 'b']]);
+  assertEquals(result.names, ['a', 'b']);
+  assertEquals(result.data, [['c', 'd'], ['e', 'f'], ['g', 'h']]);
+})
