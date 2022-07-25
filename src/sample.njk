@@ -7,6 +7,8 @@ table:
       mergeRows: true
     - name: "Intervention"
       mergeRows: true
+heatmap:
+  data: example.heatmap
 ---
 
 
@@ -17,4 +19,14 @@ table:
 
 <pre><code>
   {{- table | yaml -}}
+</code></pre>
+
+<h2>Heatmap Table</h2>
+
+{{ comp.viz.table({ config: heatmap }) | safe }}
+
+<p>Built using config: </p>
+
+<pre><code>
+  {{- heatmap | yaml -}}
 </code></pre>
