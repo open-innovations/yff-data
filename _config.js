@@ -5,6 +5,7 @@ import netlifyCMS from "lume/plugins/netlify_cms.ts";
 import postcss from "lume/plugins/postcss.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
+import { stringify as yamlStringify } from "std/encoding/yaml.ts";
 import { copy } from "std/fs/copy.ts";
 import csvLoader from '/oi/csv-loader.ts';
 
@@ -42,5 +43,8 @@ site.script("copy-data-files", async () => {
 site.addEventListener("beforeBuild", "copy-data-files");
 
 site.copy('data', 'data');
+
+// Add filters
+site.filter("yaml", (value, options = {}) => yamlStringify(value, options));
 
 export default site;
