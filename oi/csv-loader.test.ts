@@ -23,7 +23,8 @@ Deno.test('url test', async (t) => {
     args: ['FAKE_PATH'],
   });
 
-  assertEquals(result.header, ['a', 'b']);
+  assertEquals(result.header, [['a', 'b']]);
+  assertEquals(result.names, ['a', 'b']);
   console.dir({ data: result.data });
   assertEquals(result.data, [
     ['1', '2'],
