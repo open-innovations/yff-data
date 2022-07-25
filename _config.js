@@ -32,8 +32,8 @@ site.use(postcss({
 site.loadData([".csv"], csvLoader);
 
 // Copy source data files to live site
-site.script("copy-data-files", () => {
-  copy("src/data/", "src/_data/sources", {
+site.script("copy-data-files", async () => {
+  await copy("src/_data/sources", "src/data/", {
     overwrite: true,
   });
 });
