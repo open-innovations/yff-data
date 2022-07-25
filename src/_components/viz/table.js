@@ -26,15 +26,21 @@ export default ({ config, sources }) => {
   html.push('<thead>');
   for (const row of table.header) {
     html.push('<tr>');
-    for (const [colNumber, cell] of row.entries()) {
-      // TODO Deal with multi-line headers / merged cells
-      html.push(`<th>${cell}</th>`)
+    const spans = row.reduce((acc, curr) => {
+      if (acc.prev != curr) acc.header.push({ name: curr, count: 0 })
+      acc.header[acc.header.length - 1].count++;
+      acc.prev = curr;
+      return acc;
+    }, { header: [] });
+    for (const cell of spans.header) {
+      const { name, count } = cell;
+      html.push(`<th${(count > 1) ? ' colspan=' + count : ''}>${name}</th>`)
     }
     html.push('</tr>');
   }
   html.push('</thead>');
 
-  const mergeRows = table.names.reduce((acc, key) => ({ ...acc, [key]: config.columns.find(x => x.name === key)?.mergeRows || false }), {});
+  const mergeRows = table.names.reduce((acc, key) => ({ ...acc, [key]: config.column?.find(x => x.name === key)?.mergeRows || false }), {});
 
   // Build data part
   html.push('<tbody>')
