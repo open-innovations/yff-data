@@ -74,3 +74,20 @@ Deno.test('default header length to 1', async () => {
   assertEquals(result.names, ['a', 'b']);
   assertEquals(result.data, [['c', 'd'], ['e', 'f'], ['g', 'h']]);
 })
+
+Deno.test('clip to width of first line', async () => {
+  const fakeReadTextFile = stub(
+    Deno,
+    'readTextFile',
+    resolvesNext(['a,b\n1,2,3\n2,2\n3,2,3,4'])
+  );
+  let result;
+  try {
+    result = await csvLoader('FAKE_PATH');
+  } finally {
+    fakeReadTextFile.restore();
+  }
+
+  assertEquals(result.header, [['a', 'b']]);
+  assertEquals(result.data, [['1', '2'], ['2', '2'], ['3', '2']]);
+})

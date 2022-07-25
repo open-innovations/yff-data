@@ -39,7 +39,11 @@ function guessType(value: string) {
 
 export default async function csvLoader(path: string) {
   const text = await Deno.readTextFile(path);
-  const raw = await (<Promise<[string[]]>>parse(text));
+  let raw = await (<Promise<string[][]>>parse(text));
+
+  const width = raw[0].length;
+
+  raw = raw.map(x => x.slice(0, width));
 
   const separatorRow = raw.findIndex(x => x[0] === HEADER_SEPARATOR);
   if (separatorRow > 0) raw.splice(separatorRow, 1);
