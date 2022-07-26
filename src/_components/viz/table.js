@@ -1,7 +1,7 @@
 import { Colours, Colour } from '/oi/colour.js';
 
 export const css = `
-  table { border-collapse: collapse; width: 100%; }
+  table { border-collapse: collapse; width: 100%; overflow-x: scroll; }
   th { border: 0; font-weight: bold; }
   td { border: 1px solid black; }
   td:first-child { border-left: 0; }
