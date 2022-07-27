@@ -1,5 +1,6 @@
 import lume from "lume/mod.ts";
 
+import jsonLoader from "lume/core/loaders/json.ts";
 import basePath from "lume/plugins/base_path.ts";
 import netlifyCMS from "lume/plugins/netlify_cms.ts";
 import postcss from "lume/plugins/postcss.ts";
@@ -31,6 +32,7 @@ site.use(postcss({
 
 // Add csv loader
 site.loadData([".csv"], csvLoader);
+site.loadData([".geojson", ".hexjson"], jsonLoader);
 
 // Copy source data files to live site
 site.script("copy-data-files", async () => {
