@@ -49,28 +49,24 @@ export function HexMap(attr) {
   if (typeof attr.label.clip !== "boolean") attr.label.clip = false;
   if (typeof attr.grid.show !== "boolean") attr.grid.show = false;
 
-  const wide = attr.width || el.offsetWidth || 300;
-  const tall = attr.height || el.offsetHeight || 150;
+  const wide = attr.width || 300;
+  const tall = attr.height || 150;
   this.maxw = wide;
   this.maxh = tall;
   const aspectratio = wide / tall;
   const constructed = false;
   let svg;
   const range = {};
-  const fs = parseFloat(getComputedStyle(el)['font-size']) || 16;
+  const fs = attr['font-size'] || 16;
   this.areas = {};
   this.padding = (typeof attr.padding === "number" ? attr.padding : 0);
   this.properties = { 'size': attr.size };
   this.callback = {};
   this.mapping = {};
 
-
   // Add an inner element
-  if (!el.querySelector('.hexmap-inner')) {
-    this.el = document.createElement('div');
-    this.el.classList.add('hexmap-inner');
-    el.appendChild(this.el);
-  }
+  this.el = document.createElement('div');
+  this.el.classList.add('hexmap-inner');
 
   this.options = {
     'clip': attr.label.clip,
@@ -247,9 +243,8 @@ export function HexMap(attr) {
   this.size = function (w, h) {
     this.el.style.height = '';
     this.el.style.width = '';
-    setAttr(el, { 'style': '' });
     if (svg) setAttr(svg, { 'width': 0, 'height': 0 });
-    w = Math.min(this.maxw, el.offsetWidth);
+    w = Math.min(this.maxw, wide);
     this.el.style.height = (w / aspectratio) + 'px';
     this.el.style.width = w + 'px';
     h = Math.min(this.maxh, this.el.offsetHeight);
@@ -274,8 +269,6 @@ export function HexMap(attr) {
 
   this.initialized = function () {
     this.create().draw();
-    const spin = el.querySelector('.spinner');
-    if (spin) spin.parentNode.removeChild(spin);
     return this;
   };
 
@@ -460,7 +453,7 @@ export function HexMap(attr) {
     _obj = this;
     defs = svgEl('defs');
     add(defs, svg);
-    id = (el.getAttribute('id') || 'hex');
+    id = (attr.id || 'hex');
 
     for (r in this.mapping.hexes) {
       if (this.mapping.hexes[r]) {
@@ -486,7 +479,7 @@ export function HexMap(attr) {
             if (this.style['default']['font-size'] >= this.options.minFontSize) {
               if (this.options.clip) {
                 // Make all the clipping areas
-                this.areas[r].clipid = (el.getAttribute('id') || 'hex') + '-clip-' + r;
+                this.areas[r].clipid = (attr.id || 'hex') + '-clip-' + r;
                 this.areas[r].clip = svgEl('clipPath');
                 this.areas[r].clip.setAttribute('id', this.areas[r].clipid);
                 hexclip = svgEl('path');
