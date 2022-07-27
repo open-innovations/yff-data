@@ -3,4 +3,10 @@ hex:
   a: 1
 ---
 
-{# {{ comp.viz.hexmap({ config: hex }) }} #}
+{{ comp.viz.hexmap({ config: hex }) | safe }}
+
+<p>Code is</p>
+
+<div>
+{{- comp.viz.hexmap({ config: hex }) -}}
+</div>

@@ -1,3 +1,5 @@
+import { document } from '/oi/document.ts';
+
 /**
   Originally adapted from oi.hexmap.js 0.6.1
  */
@@ -18,7 +20,6 @@ export function HexMap(attr) {
   if (!attr) attr = {};
   this._attr = attr;
   this.title = "OI HexMap";
-  this.logging = (location.search.indexOf('debug=true') >= 0);
   this.log = function () {
     // Version 1.1
     if (this.logging || arguments[0] == "ERROR" || arguments[0] == "WARNING") {
@@ -43,8 +44,8 @@ export function HexMap(attr) {
   if (typeof attr.label.clip !== "boolean") attr.label.clip = false;
   if (typeof attr.grid.show !== "boolean") attr.grid.show = false;
 
-  const wide = attr.width || 300;
-  const tall = attr.height || 150;
+  let wide = attr.width || 300;
+  let tall = attr.height || 150;
   this.maxw = wide;
   this.maxh = tall;
   const aspectratio = wide / tall;
@@ -66,7 +67,7 @@ export function HexMap(attr) {
     'clip': attr.label.clip,
     'showgrid': attr.grid.show,
     'showlabel': attr.label.show,
-    'formatLabel': (typeof attr.label.format === "function" ? attr.label.format : function (txt, attr) { return txt.substr(0, 3); }),
+    'formatLabel': (typeof attr.label.format === "function" ? attr.label.format : function (txt, _attr) { return txt.substr(0, 3); }),
     'minFontSize': (typeof attr.minFontSize === "number" ? attr.minFontSize : 4)
   };
 
@@ -109,9 +110,9 @@ export function HexMap(attr) {
   };
 
   this.setHexStyle = function (r) {
-    let h, style, cls, p;
-    h = this.areas[r];
-    style = clone(this.style['default']);
+    let cls, p;
+    const h = this.areas[r];
+    const style = clone(this.style['default']);
     cls = "";
     if (h.active) style.fill = h.fillcolour;
     if (h.hover) cls += ' hover';
@@ -138,13 +139,14 @@ export function HexMap(attr) {
   }
 
   this.size = function (w, h) {
+    if (!this.el.style) this.el.style = {}
     this.el.style.height = '';
     this.el.style.width = '';
     if (svg) setAttr(svg, { 'width': 0, 'height': 0 });
     w = Math.min(this.maxw, wide);
     this.el.style.height = (w / aspectratio) + 'px';
     this.el.style.width = w + 'px';
-    h = Math.min(this.maxh, this.el.offsetHeight);
+    h = this.maxh;
 
     // Create SVG container
     if (!svg) {
@@ -224,11 +226,11 @@ export function HexMap(attr) {
 
   this.drawHex = function (q, r) {
     if (this.properties) {
-      let x, y, cs, ss, path, p;
-      cs = this.properties.s.cos;
-      ss = this.properties.s.sin;
+      let x, y;
+      const cs = this.properties.s.cos;
+      const ss = this.properties.s.sin;
 
-      p = updatePos(q, r, this.mapping.layout);
+      const p = updatePos(q, r, this.mapping.layout);
 
       if (this.properties.orientation == "r") {
         // Pointy topped
@@ -240,7 +242,7 @@ export function HexMap(attr) {
         y = (tall / 2) - ((p.r - this.range.r.mid) * cs * 2);
       }
       x = parseFloat(x.toFixed(1));
-      path = [['M', [x, y]]];
+      const path = [['M', [x, y]]];
       if (this.properties.orientation == "r") {
         // Pointy topped
         path.push(['m', [cs, -ss]]);
@@ -258,7 +260,7 @@ export function HexMap(attr) {
   };
 
   this.updateColours = function (fn) {
-    let r, fill;
+    let r;
     if (typeof fn !== "function") {
       fn = function () {
         const fill = this.style['default'].fill;
@@ -323,12 +325,12 @@ export function HexMap(attr) {
       add(this.grid, svg);
     }
 
-    let min, max, defs, path, label, hexclip, id, g;
-    min = 50000;
-    max = 80000;
-    defs = svgEl('defs');
+    let path, label, hexclip, g;
+    const min = 50000;
+    const max = 80000;
+    const defs = svgEl('defs');
     add(defs, svg);
-    id = (attr.id || 'hex');
+    const id = (attr.id || 'hex');
 
     for (r in this.mapping.hexes) {
       if (this.mapping.hexes[r]) {
@@ -398,7 +400,7 @@ function setAttr(el, prop) {
   }
   return el;
 }
-function svgEl(t) { return document.createElementNS(ns, t); }
+function svgEl(t) { return document.createElement(t); }
 function toPath(p) {
   const str = '';
   for (const i = 0; i < p.length; i++) str += ((p[i][0]) ? p[i][0] : ' ') + (p[i][1].length > 0 ? p[i][1].join(',') : ' ');

@@ -1,7 +1,7 @@
-// import { HexMap } from '/oi/oi.hexmap.js';
+import { HexMap } from '/oi/oi.hexmap.js';
 
 export default function ({ config }) {
-  // const hexmap = new HexMap({});
+  const hexmap = new HexMap({});
 
-  return '<div>HEXMAP HERE</div>'
+  return hexmap.getSVG();
 }
