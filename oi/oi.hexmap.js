@@ -1,16 +1,10 @@
 /**
-  OI hex map in SVG
-  0.6.1:
-    - bug fixes
-  0.6.0:
-    - change namespace
-    - set padding
-    - can provide function to updateColours()
+  Originally adapted from oi.hexmap.js 0.6.1
  */
 
 // Input structure:
-//    el: the element to attach to
 //    attr: an object defining various parameters:
+//      id: an ID to use for clipping (it matters if there are multiple hexmaps on a page)
 //      width: the width of the SVG element created
 //      height: the height of the SVG element created
 //      padding: an integer number of hexes to leave as padding around the displayed map
@@ -143,99 +137,6 @@ export function HexMap(attr) {
     setAttr(h.clip, s);
   }
 
-  this.toFront = function (region) {
-    if (this.areas[region]) {
-      // Simulate a change of z-index by moving elements to the end of the SVG
-      // Keep selected items on top
-      for (const r in this.areas) {
-        if (this.areas[r]) {
-          if (this.areas[r].selected) add(this.areas[r].g, svg);
-          if (this.options.clip) setClip(this.areas[r]);
-        }
-      }
-      // Simulate a change of z-index by moving this element (hex and label) to the end of the SVG
-      add(this.areas[region].g, svg);
-    }
-    return this;
-  };
-
-  this.regionToggleSelected = function (r, others) {
-    this.selected = (this.selected == r) ? "" : r;
-    let region, h;
-    h = this.areas[r];
-    h.selected = !h.selected;
-    this.setHexStyle(r);
-
-    // If we've deselected a region, deselect any other regions selected
-    if (!h.selected) {
-      if (others) {
-        for (region in this.areas) {
-          if (this.areas[region].selected) {
-            this.areas[region].selected = false;
-            this.setHexStyle(region);
-          }
-        }
-      }
-    }
-    return this;
-  };
-
-  this.regionFocus = function (r) {
-    this.areas[r].hover = true;
-    this.el.querySelectorAll('.hover').forEach(function (el) { el.classList.remove('hover'); });
-    this.setHexStyle(r);
-    this.toFront(r);
-    return this;
-  };
-
-  this.regionBlur = function (r) {
-    this.areas[r].hover = false;
-    this.setHexStyle(r);
-    return this;
-  };
-
-  this.regionActivate = function (r) {
-    this.areas[r].active = true;
-    this.setHexStyle(r);
-  };
-
-  this.regionDeactivate = function (r) {
-    this.areas[r].active = false;
-    this.setHexStyle(r);
-  };
-
-  this.regionToggleActive = function (r) {
-    this.areas[r].active = !this.areas[r].active;
-    this.setHexStyle(r);
-  };
-
-  this.selectRegion = function (r) {
-    this.selected = r;
-    for (const region in this.areas) {
-      if (this.areas[region]) {
-        if (r.length > 0 && region.indexOf(r) == 0) {
-          this.areas[region].selected = true;
-          this.setHexStyle(region);
-        } else {
-          this.areas[region].selected = false;
-          this.setHexStyle(region);
-        }
-      }
-    }
-    return this;
-  };
-
-  // Add events (mouseover, mouseout, click)	
-  this.on = function (type, prop, fn) {
-    if (typeof prop === "function" && !fn) {
-      fn = prop;
-      prop = "";
-    }
-    if (typeof fn !== "function") return this;
-    if (!this.callback) this.callback = {};
-    this.callback[type] = { 'fn': fn, 'attr': prop };
-    return this;
-  };
   this.size = function (w, h) {
     this.el.style.height = '';
     this.el.style.width = '';
@@ -406,19 +307,6 @@ export function HexMap(attr) {
     // Store this for use elsewhere
     this.range = clone(range);
 
-    function ev(e, t) {
-      if (e.data.hexmap.callback[t]) {
-        for (const a in e.data.hexmap.callback[t].attr) {
-          if (e.data.hexmap.callback[t].attr[a]) e.data[a] = e.data.hexmap.callback[t].attr[a];
-        }
-        if (typeof e.data.hexmap.callback[t].fn === "function") return e.data.hexmap.callback[t].fn.call(e.data['this'] || this, e);
-      }
-    }
-    const events = {
-      'mouseover': function (e) { if (e.data.region) { e.data.hexmap.regionFocus(e.data.region); } ev(e, 'mouseover'); },
-      'mouseout': function (e) { ev(e, 'mouseout'); },
-      'click': function (e) { if (e.data.region) { e.data.hexmap.regionFocus(e.data.region); } ev(e, 'click'); }
-    };
     if ((this.options.showgrid || this.options.clip) && !this.grid) {
       this.grid = svgEl('g');
       setAttr(this.grid, { 'class': 'hex-grid-holder' });
@@ -429,9 +317,6 @@ export function HexMap(attr) {
             hex = svgEl('path');
             setAttr(hex, { 'd': h.path, 'class': 'hex-grid', 'data-q': q, 'data-r': r, 'fill': (this.style.grid.fill || ''), 'fill-opacity': (this.style.grid['fill-opacity'] || 0.1), 'stroke': (this.style.grid.stroke || '#aaa'), 'stroke-opacity': (this.style.grid['stroke-opacity'] || 0.2) });
             add(hex, this.grid);
-            addEvent('mouseover', hex, { type: 'grid', hexmap: this, data: { 'r': r, 'q': q } }, events.mouseover);
-            addEvent('mouseout', hex, { type: 'grid', hexmap: this, me: this, data: { 'r': r, 'q': q } }, events.mouseout);
-            addEvent('click', hex, { type: 'grid', hexmap: this, me: this, data: { 'r': r, 'q': q } }, events.click);
           }
         }
       }
@@ -460,16 +345,11 @@ export function HexMap(attr) {
           g.appendChild(path);
           this.areas[r] = { 'g': g, 'hex': path, 'selected': false, 'active': true, 'data': this.mapping.hexes[r], 'orig': h };
 
-          // Attach events to our SVG group nodes
-          addEvent('mouseover', g, { type: 'hex', hexmap: this, region: r, data: this.mapping.hexes[r], pop: this.mapping.hexes[r].p }, events.mouseover);
-          addEvent('mouseout', g, { type: 'hex', hexmap: this, region: r, me: this.areas[r] }, events.mouseout);
-          addEvent('click', g, { type: 'hex', hexmap: this, region: r, me: this.areas[r], data: this.mapping.hexes[r] }, events.click);
-
           if (this.options.showlabel) {
             if (this.style['default']['font-size'] >= this.options.minFontSize) {
               if (this.options.clip) {
                 // Make all the clipping areas
-                this.areas[r].clipid = (attr.id || 'hex') + '-clip-' + r;
+                this.areas[r].clipid = (id) + '-clip-' + r;
                 this.areas[r].clip = svgEl('clipPath');
                 this.areas[r].clip.setAttribute('id', this.areas[r].clipid);
                 hexclip = svgEl('path');
@@ -497,6 +377,9 @@ export function HexMap(attr) {
 
     return this;
   };
+  
+  // Return the SVG string for the hexmap
+  this.getSVG = function(){ return svg.outerHTML; };
 
   this.size();
   if (attr.hexjson) this.load(attr.hexjson, attr.ready);
@@ -516,19 +399,6 @@ function setAttr(el, prop) {
   return el;
 }
 function svgEl(t) { return document.createElementNS(ns, t); }
-function addEvent(ev, el, attr, fn) {
-  if (el) {
-    if (!el.length) el = [el];
-    if (typeof fn === "function") {
-      el.forEach(function (elem) {
-        elem.addEventListener(ev, function (e) {
-          e.data = attr;
-          fn.call(attr['this'] || this, e);
-        });
-      });
-    }
-  }
-}
 function toPath(p) {
   const str = '';
   for (const i = 0; i < p.length; i++) str += ((p[i][0]) ? p[i][0] : ' ') + (p[i][1].length > 0 ? p[i][1].join(',') : ' ');
