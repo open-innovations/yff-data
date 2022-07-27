@@ -224,7 +224,7 @@ export function HexMap(attr) {
 
   this.drawHex = function (q, r) {
     if (this.properties) {
-      const x, y, cs, ss, path, p;
+      let x, y, cs, ss, path, p;
       cs = this.properties.s.cos;
       ss = this.properties.s.sin;
 
@@ -258,7 +258,7 @@ export function HexMap(attr) {
   };
 
   this.updateColours = function (fn) {
-    const r, fill;
+    let r, fill;
     if (typeof fn !== "function") {
       fn = function () {
         const fill = this.style['default'].fill;
@@ -277,7 +277,7 @@ export function HexMap(attr) {
   };
 
   this.draw = function () {
-    const r, q, h, hex, region;
+    let r, q, h, hex, region;
 
     const range = this.range;
     for (region in this.mapping.hexes) {
