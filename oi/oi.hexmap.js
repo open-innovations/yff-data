@@ -114,10 +114,6 @@ export function HexMap(attr) {
     return this;
   };
 
-  const _obj = this;
-  // We'll need to change the sizes when the window changes size
-  window.addEventListener('resize', function (event) { _obj.size(); });
-
   this.setHexStyle = function (r) {
     let h, style, cls, p;
     h = this.areas[r];
@@ -267,11 +263,6 @@ export function HexMap(attr) {
     return this;
   };
 
-  this.initialized = function () {
-    this.create().draw();
-    return this;
-  };
-
   this.create = function () {
     // Clear the canvas
     svg.innerHTML = "";
@@ -319,7 +310,7 @@ export function HexMap(attr) {
     if (typeof attr.size !== "number") this.setHexSize(s);
     this.setSize();
 
-    return this.initialized();
+    return this.create().draw();
   };
 
   this.setSize = function (size) {
@@ -370,7 +361,7 @@ export function HexMap(attr) {
     if (typeof fn !== "function") {
       fn = function () {
         const fill = this.style['default'].fill;
-        if (_obj.mapping.hexes[r].colour) fill = _obj.mapping.hexes[r].colour;
+        if (this.mapping.hexes[r].colour) fill = this.mapping.hexes[r].colour;
         if (typeof attr.colours === "string") fill = attr.colours;
         return fill;
       };
@@ -439,18 +430,17 @@ export function HexMap(attr) {
             setAttr(hex, { 'd': h.path, 'class': 'hex-grid', 'data-q': q, 'data-r': r, 'fill': (this.style.grid.fill || ''), 'fill-opacity': (this.style.grid['fill-opacity'] || 0.1), 'stroke': (this.style.grid.stroke || '#aaa'), 'stroke-opacity': (this.style.grid['stroke-opacity'] || 0.2) });
             add(hex, this.grid);
             addEvent('mouseover', hex, { type: 'grid', hexmap: this, data: { 'r': r, 'q': q } }, events.mouseover);
-            addEvent('mouseout', hex, { type: 'grid', hexmap: this, me: _obj, data: { 'r': r, 'q': q } }, events.mouseout);
-            addEvent('click', hex, { type: 'grid', hexmap: this, me: _obj, data: { 'r': r, 'q': q } }, events.click);
+            addEvent('mouseout', hex, { type: 'grid', hexmap: this, me: this, data: { 'r': r, 'q': q } }, events.mouseout);
+            addEvent('click', hex, { type: 'grid', hexmap: this, me: this, data: { 'r': r, 'q': q } }, events.click);
           }
         }
       }
       add(this.grid, svg);
     }
 
-    let min, max, _obj, defs, path, label, hexclip, id, g;
+    let min, max, defs, path, label, hexclip, id, g;
     min = 50000;
     max = 80000;
-    _obj = this;
     defs = svgEl('defs');
     add(defs, svg);
     id = (attr.id || 'hex');
