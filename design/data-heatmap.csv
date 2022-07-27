@@ -1,5 +1,6 @@
 Ranks,Ranks,Ranks,Country,Index,Index,Index
 2018,2019,2020,,2018,2019,2020
+---,---,---,---,---,---,---
 1,1,1,Switzerland,71,71,71
 2,2,2,Iceland,68,71,71
 4,4,3,Germany,66,67,65
@@ -36,6 +37,6 @@ Ranks,Ranks,Ranks,Country,Index,Index,Index
 37,37,34,Greece,30,28,26
 34,35,35,Turkey,29,31,36
 35,36,36,Costa Rica,28,31,34
-33,34,37,Colombia,28,35,36,
+33,34,37,Colombia,28,35,36
 38,38,38,Italy,25,26,23
 ,,,OECD Average,49.0,51.8,52.1
