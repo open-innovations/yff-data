@@ -38,6 +38,7 @@ function guessType(value: string) {
 }
 
 function typePrecedence(types: string[]) {
+  // TODO Put in heuristic
   if (types.includes(STRING)) return STRING;
   if (types.includes(FLOAT)) return FLOAT;
 }

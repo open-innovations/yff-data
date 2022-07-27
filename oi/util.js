@@ -8,3 +8,8 @@ export function range(array) {
     max: Math.max(...array.filter(x => x)),
   };
 }
+
+export function loadDataFile(path, sources) {
+  const name = path.replace(/\//g, '.').replace(/^.*data/, 'sources').replace(/\.[^\.]*$/, '');
+  return eval(name);
+}

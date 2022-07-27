@@ -1,4 +1,5 @@
-import { Colours, Colour } from '/oi/colour.js';
+import { colourScales, Colour } from '/oi/colour.js';
+import { loadDataFile } from '/oi/util.js';
 
 export const css = `
   table { border-collapse: collapse; width: 100%; overflow-x: scroll; display: block; }
@@ -8,19 +9,6 @@ export const css = `
   td:last-child { border-right: 0; }
   td, th { padding: 1rem; }
 `;
-
-const colourScales = new Colours({
-  'Viridis': 'rgb(122,76,139) 0%, rgb(124,109,168) 12.5%, rgb(115,138,177) 25%, rgb(107,164,178) 37.5%, rgb(104,188,170) 50%, rgb(133,211,146) 62.5%, rgb(189,229,97) 75%, rgb(254,240,65) 87.5%, rgb(254,240,65) 100%',
-  'Heat': 'rgb(0,0,0) 0%, rgb(128,0,0) 25%, rgb(255,128,0) 50%, rgb(255,255,128) 75%, rgb(255,255,255) 100%',
-  'Planck': 'rgb(0,0,255) 0%, rgb(0,112,255) 16.666%, rgb(0,221,255) 33.3333%, rgb(255,237,217) 50%, rgb(255,180,0) 66.666%, rgb(255,75,0) 100%',
-  'Plasma': 'rgb(12,7,134) 0%, rgb(82,1,163) 12.5%, rgb(137,8,165) 25%, rgb(184,50,137) 37.5%, rgb(218,90,104) 50%, rgb(243,135,72) 62.5%, rgb(253,187,43) 75%, rgb(239,248,33) 87.5%',
-  'YFF': 'rgb(99,190,123) 0%, rgb(250,233,131) 50%, rgb(248,105,107) 100%'
-});
-
-function loadDataFile(path, sources) {
-  const name = path.replace(/\//g, '.').replace(/^.*data/, 'sources').replace(/\.[^\.]*$/, '');
-  return eval(name);
-}
 
 export default ({ config, sources }) => {
   // Get loaded data from sources object
