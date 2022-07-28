@@ -15,30 +15,142 @@ function CategoryChart(config,csv){
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0,'font-family':'sans-serif'}
 		},
 		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#aaa'},'labels':{}},'y':{'padding':10,'labels':{}}},
-		'duration': '0.3s'
+		'duration': '0.3s',
+		'buildSeries': function(){
+			console.log('buildSeries');
+			// Series
+			var data,datum,label;
+			for(var s = 0; s < config.series.length; s++){
+				mergeDeep(config.series[s],{
+					'line':{'show':false},
+					'points':{'size':4, 'color': (config.series[s].colour||'black')},
+					'errors':{'stroke':(config.series[s].colour||'black'),'stroke-width':2}
+				});
+				data = [];
+				for(i = 0; i < csv.rows.length; i++){
+					categoryoffset = csv.rows.length-i-1;
+					seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
+					label = config.series[s].title+"\n"+csv.columns[config.category][i].replace(/\\n/g,"")+': '+csv.columns[config.series[s].value][i];
+					label += (csv.columns[config.series[s].errors[0]][i]==csv.columns[config.series[s].errors[1]][i] ? ' ±'+csv.columns[config.series[s].errors[0]][i] : ' (+'+csv.columns[config.series[s].errors[1]][i]+' / -'+csv.columns[config.series[s].errors[0]][i]+')');
+					if(config.series[s].label && csv.columns[config.series[s].label]) label = csv.columns[config.series[s].label][i];
+					datum = {'x':csv.columns[config.series[s].value][i],'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[config.series[s].errors[0]][i],csv.columns[config.series[s].errors[1]][i]]},'title':label};
+					datum.data = {'category':csv.columns[config.category][i],'series':config.series[s].title};
+					data.push(datum);
+				}
+				this.series.push(new Series(s,config.series[s],data));
+			}
+			return this;
+		},
+		'buildAxes': function(){
+			// Axes
+			// Build x-axis labels
+			for(i = 0; i < this.opt.axis.x.ticks.length; i++) this.opt.axis.x.labels[this.opt.axis.x.ticks[i].value] = this.opt.axis.x.ticks[i];
+			// Set y-axis range for categories
+			this.opt.axis.y.min = -0.5;
+			this.opt.axis.y.max = csv.rows.length-0.5;
+			// Build y-axis labels
+			for(i = 0 ; i < csv.rows.length; i++){
+				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':csv.rows[i][config.category].replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][config.category]}};
+				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
+			}
+			return this;
+		},
+		'updatePadding': function(){
+			var l,pad,len,ax,lines,align;
+			// Work out padding
+			pad = {'l':0,'t':0,'b':0,'r':0};
+			for(ax in this.opt.axis){
+				// Work out x-axis padding
+				for(l in this.opt.axis[ax].labels){
+					len = 0;
+					// Split the label by any new line characters
+					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					if(ax=="x"){
+						// Length is based on the 
+						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+					}else{
+						// Work out the longest line
+						for(i = 0; i < lines.length; i++){
+							// Roughly calculate the length in pixels
+							len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + this.opt['font-size']*lines[i].length*0.5 + this.opt.tick + this.opt.axis[ax].padding);
+						}
+					}
+					align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
+					if(ax=="x"){
+						if(align=="bottom") pad.b = Math.max(pad.b,len);
+						else pad.t = Math.max(pad.t,len);
+					}else{
+						if(align=="left") pad.l = Math.max(pad.l,len);
+						else pad.r = Math.max(pad.r,len);
+					}
+				}
+			}
+			this.opt.left = this.opt.padding.left + pad.l;
+			this.opt.right = this.opt.padding.right + pad.r;
+			this.opt.top = this.opt.padding.top + pad.t;
+			this.opt.bottom = this.opt.padding.bottom + pad.b;
+			return this;
+		}
 	};
 	mergeDeep(opt,config);
 	
 	this.chart = new Chart(opt,csv);
-	
-	this.chart.buildAxes = function(){
-		// Axes
-		// Build x-axis labels
-		for(i = 0; i < opt.axis.x.ticks.length; i++) opt.axis.x.labels[opt.axis.x.ticks[i].value] = opt.axis.x.ticks[i];
-		// Set y-axis range for categories
-		opt.axis.y.min = -0.5;
-		opt.axis.y.max = csv.rows.length-0.5;
-		// Build y-axis labels
-		for(i = 0 ; i < csv.rows.length; i++){
-			opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-			opt.axis.y.labels[csv.rows.length-i-1] = {'label':csv.rows[i][config.category].replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][config.category]}};
-			opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
+	this.getSVG = function(){ return this.chart.getSVG(); }
+	return this;
+}
+
+function LineChart(config,csv){
+	var opt = {
+		'padding':{'left':0,'top':0,'right':0,'bottom':0},
+		'left':0,
+		'right':0,
+		'top':0,
+		'bottom':0,
+		'tick':5,
+		'font-size': 16,
+		'key':{
+			'show':false,
+			'border':{'stroke':'black','stroke-width':1,'fill':'none'},
+			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0,'font-family':'sans-serif'}
+		},
+		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#aaa'},'labels':{}},'y':{'padding':10,'labels':{}}},
+		'duration': '0.3s',
+		'updatePadding': function(){
+			var l,pad,len,ax,lines,align;
+			// Work out padding
+			pad = {'l':0,'t':0,'b':0,'r':0};
+			for(ax in this.opt.axis){
+				// Work out axis padding
+				for(l in this.opt.axis[ax].labels){
+					len = 0;
+					// Split the label by any new line characters
+					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+
+					// Length is based on the label length
+					len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+
+					align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
+					if(ax=="x"){
+						if(align=="bottom") pad.b = Math.max(pad.b,len);
+						else pad.t = Math.max(pad.t,len);
+					}else{
+						if(align=="left") pad.l = Math.max(pad.l,len);
+						else pad.r = Math.max(pad.r,len);
+					}
+				}
+			}
+			this.opt.left = this.opt.padding.left + pad.l;
+			this.opt.right = this.opt.padding.right + pad.r;
+			this.opt.top = this.opt.padding.top + pad.t;
+			this.opt.bottom = this.opt.padding.bottom + pad.b;
+			return this;
 		}
-		this.updatePadding();
-		this.axes = {x:new Axis("x",opt.left,this.w-opt.right-opt.left),y:new Axis("y",opt.bottom,this.h-opt.top-opt.bottom)};
-		
-		return this;
 	};
+	mergeDeep(opt,config);
+
+	this.chart = new Chart(opt,csv);
+	
 	this.getSVG = function(){ return this.chart.getSVG(); }
 	return this;
 }
@@ -80,63 +192,74 @@ function Chart(config,csv){
 	this.series = [];
 	this.axes = {};
 	id = Math.round(Math.random()*1e8);
+	
+	var defs,clip,rect;
 
 	this.updatePadding = function(){
-		var l,pad,len,ax,lines,align;
-		// Work out padding
-		pad = {'l':0,'t':0,'b':0,'r':0};
-		for(ax in this.opt.axis){
-			// Work out x-axis padding
-			for(l in this.opt.axis[ax].labels){
-				len = 0;
-				// Split the label by any new line characters
-				lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
-				if(ax=="x"){
-					// Length is based on the 
-					len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
-				}else{
-					// Work out the longest line
-					for(i = 0; i < lines.length; i++){
-						// Roughly calculate the length in pixels
-						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + this.opt['font-size']*lines[i].length*0.5 + this.opt.tick + this.opt.axis[ax].padding);
-					}
-				}
-				align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
-				if(ax=="x"){
-					if(align=="bottom") pad.b = Math.max(pad.b,len);
-					else pad.t = Math.max(pad.t,len);
-				}else{
-					if(align=="left") pad.l = Math.max(pad.l,len);
-					else pad.r = Math.max(pad.r,len);
-				}
-			}
-		}
-		this.opt.left = this.opt.padding.left + pad.l;
-		this.opt.right = this.opt.padding.right + pad.r;
-		this.opt.top = this.opt.padding.top + pad.t;
-		this.opt.bottom = this.opt.padding.bottom + pad.b;
+		if(typeof this.opt.updatePadding==="function") this.opt.updatePadding.call(this);
 		return this;
 	};
 	this.init = function(){
-		this.buildAxes();
-		this.addAxes().buildSeries().addSeries();
+
+		var svgopt;
+
+		// Create SVG container
+		if(!svg){
+			svg = svgEl('svg');
+			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;','preserveAspectRatio':'none'};
+			if(this.opt.width) svgopt.width = this.opt.width;
+			if(this.opt.height) svgopt.height = this.opt.height;
+			setAttr(svg,svgopt);
+			defs = svgEl('defs');
+			add(defs,svg);
+			clip = svgEl("clipPath");
+			setAttr(clip,{'id':'clip-'+id});
+			add(clip,svg);
+			rect = svgEl("rect");
+			setAttr(rect,{'x':0,'y':0,'width':this.w,'height':this.h});
+			add(rect,clip);
+		}
+
+		if(typeof this.opt.buildAxes==="function"){
+			this.opt.buildAxes.call(this);
+		}else{
+			this.buildAxes();
+		}
+		this.updatePadding();
+		setAttr(rect,{'x':this.opt.left,'y':this.opt.top,'width':this.w,'height':this.h});
+
+		this.addAxes();
+		
+		// Add the id for this chart to the series
+		for(var s = 0; s < config.series.length; s++){
+			config.series[s].id = id;
+			config.series[s].lbl = lbl;
+		}
+		if(typeof this.opt.buildSeries==="function"){
+			this.opt.buildSeries.call(this);
+		}else{
+			// Series
+			var data,datum,label;
+			for(var s = 0; s < config.series.length; s++){
+				mergeDeep(config.series[s],{
+					'line':{'show':true,'color': (config.series[s].colour||'black')},
+					'points':{'size':0, 'color': (config.series[s].colour||'black')}
+				});
+				data = [];
+				for(i = 0; i < csv.rows.length; i++){
+					categoryoffset = csv.rows.length-i-1;
+					seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
+					label = config.series[s].title+"\n"+csv.columns[config.series[s].x][i]+': '+csv.columns[config.series[s].y][i];
+					if(config.series[s].label && csv.columns[config.series[s].label]) label = csv.columns[config.series[s].label][i];
+					datum = {'x':csv.columns[config.series[s].x][i],'y':csv.columns[config.series[s].y][i],'title':label};
+					datum.data = {'series':config.series[s].title};
+					data.push(datum);
+				}
+				this.series.push(new Series(s,config.series[s],data));
+			}
+		}
+		this.addSeries();
 		return this;
-	}
-	// Create SVG container
-	if(!svg){
-		svg = svgEl('svg');
-		var svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;','preserveAspectRatio':'none'};
-		if(this.opt.width) svgopt.width = this.opt.width;
-		if(this.opt.height) svgopt.height = this.opt.height;
-		setAttr(svg,svgopt);
-		var defs = svgEl('defs');
-		add(defs,svg);
-		var clip = svgEl("clipPath");
-		setAttr(clip,{'id':'clip-'+id});
-		add(clip,svg);
-		var rect = svgEl("rect");
-		setAttr(rect,{'x':0,'y':0,'width':this.w,'height':this.h});
-		add(rect,clip);
 	}
 
 	this.getXY = function(x,y){
@@ -158,7 +281,6 @@ function Chart(config,csv){
 		this.axes.y.updateRange(this.xmin,this.xmax,this.ymin,this.ymax);
 	};
 	this.addAxes = function(){
-		this.updatePadding();
 		this.axes = {x:new Axis("x",this.opt.left,this.w-this.opt.right-this.opt.left),y:new Axis("y",this.opt.bottom,this.h-this.opt.top-this.opt.bottom)};
 		this.opt.axis.x.width = this.w;
 		this.opt.axis.y.width = this.w;
@@ -171,50 +293,18 @@ function Chart(config,csv){
 		// Axes
 		// Build x-axis labels
 		for(i = 0; i < this.opt.axis.x.ticks.length; i++) this.opt.axis.x.labels[this.opt.axis.x.ticks[i].value] = this.opt.axis.x.ticks[i];
-		// Set y-axis range for categories
-		this.opt.axis.y.min = -0.5;
-		this.opt.axis.y.max = csv.rows.length-0.5;
 		// Build y-axis labels
-		for(i = 0 ; i < csv.rows.length; i++){
-			this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-			this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':csv.rows[i][config.category].replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][config.category]}};
-			this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
+		if(this.opt.axis.y && this.opt.axis.y.ticks){
+			for(i = 0; i < this.opt.axis.y.ticks.length; i++) this.opt.axis.y.labels[this.opt.axis.y.ticks[i].value] = this.opt.axis.y.ticks[i];
 		}
 		return this;
 	};
 	this.addSeries = function(){
 		// Add getXY function for each series
-		for(var s = 0; s < config.series.length; s++){
-			this.series[s].setProperties({'getXY':function(x,y){ return _obj.getXY(x,y); }});
+		for(var s = 0; s < this.series.length; s++){
+			this.series[s].setProperties({'getXY':function(x,y){ return _obj.getXY(x,y); },'id':id,'lbl':lbl});
 			this.series[s].addTo(svg);
 		}
-		return this;
-	};
-	this.buildSeries = function(){
-		// Series
-		var data,datum,label;
-		for(var s = 0; s < config.series.length; s++){
-			mergeDeep(config.series[s],{
-				'line':{'show':false},
-				'points':{'size':4, 'color': (config.series[s].colour||'black')},
-				'errors':{'stroke':(config.series[s].colour||'black'),'stroke-width':2},
-				'id':id,
-				'lbl':lbl
-			});
-			data = [];
-			for(i = 0; i < csv.rows.length; i++){
-				categoryoffset = csv.rows.length-i-1;
-				seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
-				label = config.series[s].title+"\n"+csv.columns[config.category][i].replace(/\\n/g,"")+': '+csv.columns[config.series[s].value][i];
-				label += (csv.columns[config.series[s].errors[0]][i]==csv.columns[config.series[s].errors[1]][i] ? ' ±'+csv.columns[config.series[s].errors[0]][i] : ' (+'+csv.columns[config.series[s].errors[1]][i]+' / -'+csv.columns[config.series[s].errors[0]][i]+')');
-				if(config.series[s].label && csv.columns[config.series[s].label]) label = csv.columns[config.series[s].label][i];
-				datum = {'x':csv.columns[config.series[s].value][i],'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[config.series[s].errors[0]][i],csv.columns[config.series[s].errors[1]][i]]},'title':label};
-				datum.data = {'category':csv.columns[config.category][i],'series':config.series[s].title};
-				data.push(datum);
-			}
-			this.series.push(new Series(s,config.series[s],data));
-		}
-		console.log('buildSeries',this.series);
 		return this;
 	};
 
@@ -271,7 +361,7 @@ function Chart(config,csv){
 
 					add(key.g[s],key.el);
 				}
-				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+(series[s].getProperty('title')||"Series "+(s+1))+'</tspan></text><path d="M0 0 L 1 0" class="line" class="" stroke-width="3" stroke-linecap="round"></path><circle cx="0" cy="0" r="5" fill="silver"></circle>';
+				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+(this.series[s].getProperty('title')||"Series "+(s+1))+'</tspan></text><path d="M0 0 L 1 0" class="line" class="" stroke-width="3" stroke-linecap="round"></path><circle cx="0" cy="0" r="5" fill="silver"></circle>';
 				setAttr(key.g[s].querySelector('tspan'),this.series[s].getProperty('attr'));
 				wkey = Math.max(wkey,key.g[s].getBoundingClientRect().width);
 			}
@@ -407,6 +497,7 @@ function Axis(ax,from,to,attr){
 				align = opt.labels[t].align||(ax=="x" ? "bottom" : "left");
 				talign = opt.labels[t]['text-anchor']||(ax=="y" ? (align=="left" ? "end":"start") : "middle");
 				baseline = (ax=="x" ? ((align=="bottom") ? "hanging" : "text-bottom") : "middle");
+				if(opt['dominant-baseline']) baseline = opt['dominant-baseline'];
 				len = (typeof opt.labels[t].ticksize==="number" ? opt.labels[t].ticksize:5);
 				pd = (typeof opt.labels[t].offset==="number" ? opt.labels[t].offset : opt.padding);
 				x = (ax=="x" ? parseFloat(t) : (align=="left" ? xmin:xmax));
@@ -477,11 +568,9 @@ function Axis(ax,from,to,attr){
 }
 function Series(s,props,data){
 	if(!props) return this;
-	
-	console.log('function Series',s,props,data);
+
 	var id = props.id||Math.round(Math.random()*1e8);
 	var lbl = props.lbl||"chart-series";
-	console.log('series',s,props)
 
 	var opt,line,path,pts,o,label;
 	opt = {points:{show:true,color:'black','stroke-linecap':'round','stroke':'black','stroke-width':0,'fill-opacity':1},line:{show:true,color:'#000000','stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'','fill':'none'},'opt':props.opt||{}};

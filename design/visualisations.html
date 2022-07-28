@@ -255,9 +255,23 @@
 			</pre>
 		</section>
 
-		<section class="example">
+		<section class="example" id="line-chart">
 			<h2>Visualisation: line-chart</h2>
-			<pre class="yaml">
+			<script>
+			function loadLineChart(config){
+				return fetch(config.data).then(response => {
+					if(!response.ok) throw new Error('Network response was not OK');
+					return response.text();
+				}).then(txt => {
+					var csv = CSV2JSON(txt);
+					var chart = new LineChart(config,csv);
+					return chart.getSVG();
+				}).catch(error => {
+					console.error('Unable to load the data "'+config.data+'"',error);
+				});
+			}
+			</script>
+			<pre class="yaml" id="line-chart-yaml">
             type: linechart
             config:
               data: data-line-chart.csv   # A basic CSV file with each series in a column
@@ -265,13 +279,15 @@
               key:
                 show: true     # Default to false
                 position: "top right"
-              axes:
+              axis:
                 x:  # Horizontal axis
                   min: 2001    # A minimum value
                   max: 2022    # A maximum value
                   # Explicitly define the ticks.
                   # Each tick has a numeric value and a displayed label
                   ticks:
+                    - value: 2005
+                      label: ""
                     - value: 2010
                       label: "2010"
                     - value: 2015
@@ -280,33 +296,66 @@
                       label: "2020"
                 y:    # The vertical axes
                   min: 0       # A minimum value
-                  max: 100     # A maximum value
+                  max: 50      # A maximum value
+                  dominant-baseline: text-bottom
                   # Explicitly define the ticks.
                   # Each tick has a numeric value and a displayed label
                   ticks:
                     - value: 0
-                      label: "0%"
-                    - value: 100
-                      label: "100%"
+                      grid: true
+                      label: "0"
+                      stroke-width: 1
+                    - value: 5
+                      grid: true
+                      label: "5"
+                      stroke-width: 1
+                    - value: 10
+                      grid: true
+                      label: "10"
+                      stroke-width: 1
+                    - value: 15
+                      grid: true
+                      label: "15"
+                      stroke-width: 1
+                    - value: 20
+                      grid: true
+                      label: "20"
+                      stroke-width: 1
+                    - value: 25
+                      grid: true
+                      label: "25"
+                      stroke-width: 1
+                    - value: 30
+                      grid: true
+                      label: "30"
+                      stroke-width: 1
+                    - value: 35
+                      grid: true
+                      label: "35"
+                      stroke-width: 1
+                    - value: 40
+                      grid: true
+                      label: "40"
+                      stroke-width: 1
+                    - value: 45
+                      grid: true
+                      label: "45"
+                      stroke-width: 1
               series:
                 - title: "16-17"
-                  x: "Date"                       # Column heading to use for x-value
+                  x: "Year"                       # Column heading to use for x-value
                   y: "16-17.rate (%)1"            # Column heading to use fro y-value
                   colour: "#e52e36"               # The hex colour code to use for this series (we can have defaults)
                 - title: "18-24"                  # Displayed in the key and tooltip
-                  x: "Date"
+                  x: "Year"
                   y: "18-24.rate (%)1"
                   colour: "#f8ab3e"               # The hex colour code to use for this series (we can have defaults)
-                - title: "25-34"                  # Displayed in the key and tooltip
-                  x: "Date"
-                  y: "25-34.rate (%)1"
+                - title: "25-49"                  # Displayed in the key and tooltip
+                  x: "Year"
+                  y: "25-49.rate (%)1"
                   colour: "#bfb800"               # The hex colour code to use for this series (we can have defaults)
-                - title: "35-49"                  # Displayed in the key and tooltip
-                  x: "Date"
-                  y: "35-49.rate (%)1"
-                  colour: "#69c2c9"               # The hex colour code to use for this series (we can have defaults)
                 - title: "50-64"                  # Displayed in the key and tooltip
-                  x: "Date"
+                  x: "Year"
                   y: "50 and over.rate (%)1"
                   colour: "#005776"               # The hex colour code to use for this series (we can have defaults)
 			</pre>
