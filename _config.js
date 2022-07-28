@@ -10,6 +10,10 @@ import { stringify as yamlStringify } from "std/encoding/yaml.ts";
 import { copy } from "std/fs/copy.ts";
 import csvLoader from '/oi/csv-loader.ts';
 
+// Update version of postcss-nesting
+import { default as postcssNesting } from "https://cdn.jsdelivr.net/npm/postcss-nesting@10.1.10/mod.js";
+import { default as autoprefixer } from "https://deno.land/x/postcss_autoprefixer@0.2.4/mod.js";
+
 const site = lume({
   src: './src',
   location: new URL("https://open-innovations.github.io/yff-wireframe/"),
@@ -28,6 +32,10 @@ site.use(netlifyCMS());
 // Process all css files
 site.use(postcss({
   sourceMap: true,
+  plugins: [
+    postcssNesting(),
+    autoprefixer(),
+  ],
 }));
 
 // Add csv loader
