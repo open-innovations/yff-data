@@ -8,6 +8,8 @@ hex:
   scale: Viridis # a named colour scale (we can have a default)
   min: 0	# optional explicit minimum for scale
   max: 100 # optional explicit maximum for scale
+  height: 300
+  width: 300
 ---
 
 {{ comp.viz.hexmap({ config: hex }) | safe }}

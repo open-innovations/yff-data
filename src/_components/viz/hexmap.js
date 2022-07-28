@@ -17,6 +17,8 @@ export default function ({ config, sources }) {
   console.log(layout);
   const hexmap = new HexMap({
     hexjson: layout,
+    width: config?.width,
+    height: config?.height,
   });
 
   return ['<div class="hexmap">',
