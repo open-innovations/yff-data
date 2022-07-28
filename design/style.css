@@ -93,7 +93,7 @@ section h2, section h3 { padding-top: 0; }
 section pre { margin-bottom: 1em; }
 code, pre { font-family: monospace; color: #555555; background-color: #dfdfdf; }
 pre { padding: 1em; overflow-x: auto; }
-.output { background: #efefef; border: 1px solid #999; padding: 1em; line-height: 0; }
+.output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; }
 .output > * { min-height: 1.5em; line-height: 1.5em; }
 
 /* Highlight */

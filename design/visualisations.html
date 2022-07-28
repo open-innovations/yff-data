@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8" />
 	<title>Tests of visualisations</title>
 	<script src="highlight.min.js"></script>
 	<link rel="StyleSheet" href="highlight.css" type="text/css" />
@@ -105,10 +107,9 @@
 			}
 			</script>
 			<pre class="yaml">
-            type: table
+            type: category-chart
             config:
-              data: data-heatmap.csv  # A simple table in a CSV file with one header row
-              headrows: 2
+              data: data-heatmap.csv
               columns:
                 - name: Ranks.2018
                   align: center
@@ -149,6 +150,61 @@
               mergerows:            # The ability to merge rows (in a specific column) that have the same value
                 - column: "Overall category"
                 - column: "Intervention"
+			</pre>
+		</section>
+
+		<section class="example" id="category-chart">
+			<h2>Visualisation: category-chart</h2>
+			<script>
+			function loadCategoryChart(config){
+				return fetch(config.data).then(response => {
+					if(!response.ok) throw new Error('Network response was not OK');
+					return response.text();
+				}).then(txt => {
+					var csv = CSV2JSON(txt);
+					var chart = new CategoryChart(config,csv);
+					return chart.draw().getSVG();
+				}).catch(error => {
+					console.error('Unable to load the data "'+config.data+'"',error);
+				});
+			}
+			</script>
+			<pre class="yaml" id="category-chart-yaml">
+            type: categorychart
+            config:
+              data: data-category-chart.csv
+              # Define the axis
+              axis:
+                x:
+                  min: 15
+                  max: 58
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 20
+                      label: "20%"
+                    - value: 30
+                      label: "30%"
+                    - value: 40
+                      label: "40%"
+                    - value: 50
+                      label: "50%"
+                y:
+                  grid:
+                    stroke-width: 0.5					
+              # Category names come from 
+              category: "Ethnic group"
+              series:
+                - title: "Female"
+                  value: "Female.Value (%)"
+                  errors: ["Female.Uncertainty minus (%)","Female.Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+                  label: "Female.Label"
+                  colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+                - title: "Male"
+                  value: "Male.Value (%)"
+                  errors: ["Male.Uncertainty minus (%)","Male.Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
+                  colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
 			</pre>
 		</section>
 
@@ -245,45 +301,19 @@
 			</pre>
 		</section>
 
-		<section class="example">
-			<h2>Visualisation: category-chart</h2>
-			<pre class="yaml">
-            type: categorychart
-            config:
-              data: file.csv
-              # Define the axis
-              axes:
-                horizontal:
-                  min: 30
-                  max: 68
-                  ticks:
-                    - value: 30
-                      label: "30%"
-                    - value: 40
-                      label: "40%"
-                    - value: 50
-                      label: "50%"
-                    - value: 60
-                      label: "60%"
-              # Category names come from 
-              category: "Ethnic group"
-              series:
-                - title: "Male"
-                  value: column-heading-for-category-male
-                  errors: [col-1,col-2]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-                  colour: "#fab123"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
-                - title: Female
-                  value: column-heading-for-category-female
-                  errors: [col-1,col-2]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-                  colour: "#fab123"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
-			</pre>
-		</section>
 	</div>
 
+	<script src="charts.js"></script>
 	<script src="js-yaml.js"></script>
-	<script src="oi.categorychart.js"></script>
+
 	<script>
 	var blocks = [];
+	var OI = {};
+	OI.ready = function(fn){
+		// Version 1.1
+		if(document.readyState != 'loading') fn();
+		else document.addEventListener('DOMContentLoaded', fn);
+	};
 	OI.ready(function(){
 		function tidy(t){ return t.replace(/===NEWLINE===/g,"\n").replace(/\n*$/,"").replace(/^\n*/,"").replace(/[\n\t]*$/,""); }
 		function sanitise(t){ return t.replace(/\</g,"&lt;").replace(/\>/g,"&gt;"); }
@@ -437,6 +467,14 @@
 		if(typeof data==="string") data = CSVToArray(data);
 		// The last row to parse
 		if(typeof end!=="number") end = data.length;
+		for(var i = start; i < data.length; i++){
+			if(data[i][0]=="---"){
+				start = i;
+				// Remove header spacer row
+				data.splice(i,1);
+				continue;
+			}
+		}
 
 		if(end > data.length){
 			// Cut down to the maximum length
@@ -445,20 +483,35 @@
 
 		var line,datum,header,types;
 		var newdata = [];
+		var rowdata = [];
+		var coldata = {};
 		var headers = [];
 		var formats = [];
 		var req = [];
+		
 		var j,i,k,rows;
 
-		for(i = 0, rows = 0 ; i < end; i++){
+		// Build the header names by concatenating header rows with a "."
+		for(i = 0, rows = 0 ; i < start; i++) headers[i] = clone(data[i]);
+		names = new Array(headers[0].length);
+		for(j = 0; j < names.length; j++){
+			names[j] = "";
+			for(i = 0; i < headers.length; i++) names[j] += (names[j] && headers[i][j] ? '.':'')+headers[i][j];
+			coldata[names[j]] = new Array(end-start);
+		}
+
+		for(i = start, rows = 0 ; i < end; i++, rows++){
 
 			// If there is no content on this line we skip it
 			if(data[i] == "") continue;
 
 			line = data[i];
 
+			dat = {};
 			datum = new Array(line.length);
 			types = new Array(line.length);
+			
+			rowdata[rows] = {};
 
 			// Loop over each column in the line
 			for(j=0; j < line.length; j++){
@@ -494,28 +547,18 @@
 					// If the string value looks like a time we set it as that
 					if(datum[j].search(/^[0-2]?[0-9]\:[0-5][0-9]$/) >= 0) types[j] = "time";
 				}
+				if(names[j]){
+					rowdata[rows][names[j]] = datum[j];
+					coldata[names[j]][rows] = datum[j];
+				}
 			}
-
-			if(i == 0 && start > 0) header = datum;
-			if(i >= start){
-				newdata[rows] = datum;
-				formats[rows] = types;
-				rows++;
-			}else{
-				headers[i] = datum;
-			}
-		}
-
-		// Build the header names by concatenating header rows with a "."
-		names = new Array(header.length);
-		for(j = 0; j < names.length; j++){
-			names[j] = "";
-			for(i = 0; i < headers.length; i++) names[j] += (names[j] && headers[i][j] ? '.':'')+headers[i][j];
+			newdata[rows] = datum;
+			formats[rows] = types;
 		}
 
 		// Now, for each column, we sum the different formats we've found
-		var format = new Array(header.length);
-		for(j = 0; j < header.length; j++){
+		var format = new Array(names.length);
+		for(j = 0; j < names.length; j++){
 			var count = {};
 			var empty = 0;
 			for(i = 0; i < newdata.length; i++){
@@ -542,12 +585,16 @@
 			// If we have a few floats in with our integers, we change the format to float
 			if(format[j] == "integer" && count.float > 0.1*newdata.length) format[j] = "float";
 
-			req.push(header[j] ? true : false);
-
+			req.push(names[j] ? true : false);
 		}
 
-		// Return the structured data
-		return { 'columns': names, 'format': format, 'rows': newdata, 'head':headers };
+		// Data structure will include the following:
+		//   headers = 2d array of headers
+		//   names = column names (rows concatenated)
+		//   data = 2d array of data
+		//   rows = array of objects with data referenced by name
+		//   columns = object with column data as array
+		return { 'names': names, 'format': format, 'data': newdata, 'headers':headers, 'rows':rowdata,'columns':coldata };
 	}
 	// Function to clone a hash otherwise we end up using the same one
 	function clone(hash) {
@@ -558,40 +605,40 @@
 	function buildTable(txt,config){
 		var r,r2,c,c2,i,j,html,csv,done = {'data':[],'head':[]},align = {},columns = [];
 
-		csv = CSV2JSON(txt,config.headrows||1);
+		csv = CSV2JSON(txt);
 
 		if(!config.columns) config.columns = [];
-		for(c = 0; c < csv.columns.length; c++){
+		for(c = 0; c < csv.names.length; c++){
 			j = -1;
 			for(i = 0; i < config.columns.length; i++){
-				if(csv.columns[c]==config.columns[i].name) j = i;
+				if(csv.names[c]==config.columns[i].name) j = i;
 			}
 			columns[c] = (j >= 0) ? config.columns[j] : {};
 		}
 		html = '<table>';
-		
+
 		// Create 2D array of cells
-		for(r = 0; r < csv.rows.length; r++){
+		for(r = 0; r < csv.data.length; r++){
 			done.data[r] = [];
-			for(c = 0; c < csv.rows[r].length; c++) done.data[r][c] = false;
+			for(c = 0; c < csv.data[r].length; c++) done.data[r][c] = false;
 		}
-		for(r = 0; r < csv.head.length; r++){
+		for(r = 0; r < csv.headers.length; r++){
 			done.head[r] = [];
-			for(c = 0; c < csv.head[r].length; c++) done.head[r][c] = false;
+			for(c = 0; c < csv.headers[r].length; c++) done.head[r][c] = false;
 		}
 
 		// Build header cells
-		for(r = 0; r < csv.head.length; r++){
+		for(r = 0; r < csv.headers.length; r++){
 			html += '<tr>';
-			for(c = 0; c < csv.head[r].length; c++){
+			for(c = 0; c < csv.headers[r].length; c++){
 				// Work out how many columns to merge
 				m = 1;
-				for(c2 = c+1; c2 < csv.head[r].length; c2++){
-					if(csv.head[r][c]!=csv.head[r][c2]) break;
+				for(c2 = c+1; c2 < csv.headers[r].length; c2++){
+					if(csv.headers[r][c]!=csv.headers[r][c2]) break;
 					done.head[r][c2] = true;
 					m++;
 				}
-				if(!done.head[r][c]) html += '<th'+(m > 1 ? ' colspan="'+m+'"':'')+'>'+csv.head[r][c]+'</th>';
+				if(!done.head[r][c]) html += '<th'+(m > 1 ? ' colspan="'+m+'"':'')+'>'+csv.headers[r][c]+'</th>';
 			}
 			html += '</tr>';
 		}
@@ -600,10 +647,10 @@
 			if(csv.format[c]==="integer" || csv.format[c]==="float"){
 				min = 1e100;
 				max = -1e100;
-				for(r = 0; r < csv.rows.length; r++){
-					if(typeof csv.rows[r][c]==="number"){
-						min = Math.min(min,csv.rows[r][c]);
-						max = Math.max(max,csv.rows[r][c]);
+				for(r = 0; r < csv.data.length; r++){
+					if(typeof csv.data[r][c]==="number"){
+						min = Math.min(min,csv.data[r][c]);
+						max = Math.max(max,csv.data[r][c]);
 					}
 				}
 				if(typeof columns[c].min!=="number") columns[c].min = min;
@@ -611,15 +658,15 @@
 			}
 		}
 		// Loop over rows
-		for(r = 0; r < csv.rows.length; r++){
+		for(r = 0; r < csv.data.length; r++){
 			html += '<tr>';
 			for(c = 0; c < columns.length; c++){
 				m = 0;
 				// If this is a merging column we work out how many rows to merge
 				if(columns[c].mergerows){
 					m = 1;
-					for(r2 = r+1; r2 < csv.rows.length; r2++){
-						if(csv.rows[r][c]!=csv.rows[r2][c]) break;
+					for(r2 = r+1; r2 < csv.data.length; r2++){
+						if(csv.data[r][c]!=csv.data[r2][c]) break;
 						done.data[r2][c] = true;
 						m++;
 					}
@@ -627,13 +674,13 @@
 				if(!done.data[r][c]){
 					html += '<td'+(m > 1 ? ' rowspan="'+m+'"':'')+' style="';
 					html += (columns[c].align ? 'text-align:'+columns[c].align+';':'');
-					if(columns[c].heatmap && typeof csv.rows[r][c]==="number"){
-						bg = colours.getColourFromScale(columns[c].scale||'Viridis',csv.rows[r][c],columns[c].min,columns[c].max);
+					if(columns[c].heatmap && typeof csv.data[r][c]==="number"){
+						bg = colours.getColourFromScale(columns[c].scale||'Viridis',csv.data[r][c],columns[c].min,columns[c].max);
 						html += 'background:'+bg+';';
 						col = new Colour(bg);
 						html += 'color:'+col.text+';';
 					}
-					html += '">'+csv.rows[r][c]+'</td>';
+					html += '">'+csv.data[r][c]+'</td>';
 				}
 			}
 			html += '</tr>';

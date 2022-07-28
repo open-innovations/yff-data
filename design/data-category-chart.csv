@@ -1,8 +1,8 @@
 Ethnic group,Female,Female,Female,Male,Male,Male
 ,Value (%),Uncertainty minus (%),Uncertainty plus (%),Value (%),Uncertainty minus (%),Uncertainty plus (%)
 ---,---,---,---,---,---,---
-Other,28,2,2,31,2,2
-Black/African/Caribbean/Black British,35,1.5,1.5,31,1.5,1.5
+Other,28,2.2,2.1,31,2.2,2.1
+Black/African/\nCaribbean/Black British,35,1.5,1.5,31,1.5,1.5
 Other Asian,31.5,2,2,33,2,2
 Chinese,21,2.5,2.5,18,2.5,2.5
 Bangladeshi,33,2.5,2.5,38.5,2.5,2.5
