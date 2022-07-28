@@ -26,13 +26,7 @@ site.use(slugifyUrls());
 site.use(netlifyCMS());
 
 // Process all css files
-// site.use(postcss({
-//   sourceMap: true,
-//   plugins: [
-//     postcssNesting(),
-//     autoprefixer(),
-//   ],
-// }));
+// site.use(postcss({ sourceMap: true }));
 site.copy(['.css']);
 
 // Add csv loader
