@@ -49,9 +49,9 @@ export function HexMap(attr) {
   this.maxw = wide;
   this.maxh = tall;
   const aspectratio = wide / tall;
-  const constructed = false;
+  let constructed = false;
   let svg;
-  const range = {};
+  let range = {};
   const fs = attr['font-size'] || 16;
   this.areas = {};
   this.padding = (typeof attr.padding === "number" ? attr.padding : 0);
@@ -263,7 +263,7 @@ export function HexMap(attr) {
     let r;
     if (typeof fn !== "function") {
       fn = function () {
-        const fill = this.style['default'].fill;
+        let fill = this.style['default'].fill;
         if (this.mapping.hexes[r].colour) fill = this.mapping.hexes[r].colour;
         if (typeof attr.colours === "string") fill = attr.colours;
         return fill;
@@ -402,7 +402,7 @@ function setAttr(el, prop) {
 }
 function svgEl(t) { return document.createElement(t); }
 function toPath(p) {
-  const str = '';
-  for (const i = 0; i < p.length; i++) str += ((p[i][0]) ? p[i][0] : ' ') + (p[i][1].length > 0 ? p[i][1].join(',') : ' ');
+  let str = '';
+  for (let i = 0; i < p.length; i++) str += ((p[i][0]) ? p[i][0] : ' ') + (p[i][1].length > 0 ? p[i][1].join(',') : ' ');
   return str;
 }
