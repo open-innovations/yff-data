@@ -190,7 +190,7 @@ export function HexMap(attr) {
     this.properties.shift = p[0];
     this.properties.orientation = p[1];
 
-    range = { 'r': { 'min': 1e100, 'max': -1e100 }, 'q': { 'min': 1e100, 'max': -1e100 } };
+    range = { 'r': { 'min': Infinity, 'max': -Infinity }, 'q': { 'min': Infinity, 'max': -Infinity } };
     for (region in this.mapping.hexes) {
       if (this.mapping.hexes[region]) {
         p = updatePos(this.mapping.hexes[region].q, this.mapping.hexes[region].r, this.mapping.layout);
@@ -225,6 +225,7 @@ export function HexMap(attr) {
   };
 
   this.drawHex = function (q, r) {
+    console.log(range);
     if (this.properties) {
       let x, y;
       const cs = this.properties.s.cos;

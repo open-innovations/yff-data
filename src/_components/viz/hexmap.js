@@ -1,6 +1,16 @@
 import { HexMap } from '/oi/oi.hexmap.js';
 import { loadDataFile } from '/oi/util.js'
 
+export const css = `
+.hexmap {
+  border: 1px solid black;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+.hexmap svg {
+}
+`;
+
 export default function ({ config, sources }) {
   const layout = loadDataFile(config.layout, sources);
 
@@ -9,5 +19,8 @@ export default function ({ config, sources }) {
     hexjson: layout,
   });
 
-  return hexmap.getSVG();
+  return ['<div class="hexmap">',
+    hexmap.getSVG(),
+    '</div>'
+  ].join('');
 }
