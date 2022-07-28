@@ -1,4 +1,4 @@
-import { HexMap } from './oi.hexmap.js';
+import { HexMap } from './hexmap.js';
 
 Deno.test('it should load', () => {
   const hexmap = new HexMap();

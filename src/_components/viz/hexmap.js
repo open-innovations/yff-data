@@ -1,4 +1,4 @@
-import { HexMap } from '/oi/oi.hexmap.js';
+import { HexMap } from '/oi/hexmap.js';
 import { loadDataFile } from '/oi/util.js'
 
 export const css = `
