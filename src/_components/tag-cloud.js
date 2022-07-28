@@ -6,10 +6,10 @@ export const css = `
     flex-wrap: wrap;
     gap: 0.3rem;
     font-size: 0.8em;
-    & li {
-      padding: 0.3rem 0.7rem;
-      border-radius: 0.3rem;
-    }
+  }
+  .tag-cloud li {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.3rem;
   }
 `;
 

@@ -2,12 +2,12 @@ export const css = `
   .chart {
     width: 100%;
     stroke-linecap: round;
-    & * {
-      vector-effect: non-scaling-stroke;
-    }
-    & text {
-      stroke: none;
-    }
+  }
+  .chart * {
+    vector-effect: non-scaling-stroke;
+  }
+  .chart text {
+    stroke: none;
   }
 `
 export default function ({ content, width, height, margin, id }) {

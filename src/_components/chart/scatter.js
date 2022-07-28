@@ -1,9 +1,7 @@
 export const css = `
-.chart {
-  & .line {
-    fill: none;
-    stroke-width: 2px;
-  }
+.chart .line {
+  fill: none;
+  stroke-width: 2px;
 }
 `;
 

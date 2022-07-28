@@ -2,21 +2,17 @@ export const css = `
 .axis {
   stroke: black;
   stroke-width: 2px;
-  & text {
-    font-size: 8px;
-  }
 }
-.x-axis {
-  & text {
-    text-anchor: middle;
-    dominant-baseline: hanging;
-  }
+.axis text {
+  font-size: 8px;
 }
-.y-axis {
-  & text {
-    text-anchor: end;
-    dominant-baseline: central;
-  }
+.x-axis  text {
+  text-anchor: middle;
+  dominant-baseline: hanging;
+}
+.y-axis text {
+  text-anchor: end;
+  dominant-baseline: central;
 }
 `
 export default function ({

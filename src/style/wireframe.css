@@ -19,7 +19,10 @@ img {
   width: 100%;
 }
 
-.pane, section, main header, aside {
+.pane,
+section,
+main header,
+aside {
   border: 1px dashed black;
   margin: 1em 0;
   padding: 1em;
@@ -37,75 +40,68 @@ img {
 .site-header-content {
   display: flex;
   padding: 0.5rem 1rem;
-  & > *:first-child {
-    flex-grow: 1;
-  }  
-  & h1 {
-    font-size: 1.2rem;
-  }
 }
-
+.site-header-content > *:first-child {
+  flex-grow: 1;
+}
+.site-header-content h1 {
+  font-size: 1.2rem;
+}
 
 #main {
   margin-top: 3rem;
   padding: 1rem;
 }
 
-.tag-cloud {
-  & li {
-    color: white;
-    background: black;
-  }
+.tag-cloud li {
+  color: white;
+  background: black;
 }
 
 .download-link {
   background: black;
   color: white;
-  & li {
-    margin: 0.2rem;
-    padding: 0.1rem 0.5rem;
-    &:hover {
-      color: black;
-      background: white;
-    }
-  }
-  & a {
-    color: inherit;
-  }
+}
+.download-link li {
+  margin: 0.2rem;
+  padding: 0.1rem 0.5rem;
+}
+.download-link li:hover {
+  color: black;
+  background: white;
+}
+.download-link li a {
+  color: inherit;
 }
 
 code {
   background-color: #ddd;
 }
-pre {
-  & code {
-    display: block;
-    padding: 1rem;
-  }
+pre code {
+  display: block;
+  padding: 1rem;
 }
 
-.chart {
-  & .axis {
-    stroke: #888;
-    & text {
-      fill: #888;
-    }
-  }
+.chart .axis {
+  stroke: #888;
+}
+.chart .axis text {
+  fill: #888;
 }
 
 #navigation {
   position: relative;
   background: white;
-  & ul {
-    list-style: none;
-    position: absolute;
-    right: 0;
-    padding: 1em;
-    margin: 1em 0;
-    background: inherit;
-    border: 1px solid black;
-  }
-  & li {
-    width: 10em;
-  }
+}
+#navigation ul {
+  list-style: none;
+  position: absolute;
+  right: 0;
+  padding: 1em;
+  margin: 1em 0;
+  background: inherit;
+  border: 1px solid black;
+}
+#navigation li {
+  width: 10em;
 }

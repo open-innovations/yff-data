@@ -3,16 +3,12 @@ import lume from "lume/mod.ts";
 import jsonLoader from "lume/core/loaders/json.ts";
 import basePath from "lume/plugins/base_path.ts";
 import netlifyCMS from "lume/plugins/netlify_cms.ts";
-import postcss from "lume/plugins/postcss.ts";
+// import postcss from "lume/plugins/postcss.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import { stringify as yamlStringify } from "std/encoding/yaml.ts";
 import { copy } from "std/fs/copy.ts";
 import csvLoader from '/oi/csv-loader.ts';
-
-// Update version of postcss-nesting
-import { default as postcssNesting } from "https://cdn.jsdelivr.net/npm/postcss-nesting@10.1.10/mod.js";
-import { default as autoprefixer } from "https://deno.land/x/postcss_autoprefixer@0.2.4/mod.js";
 
 const site = lume({
   src: './src',
@@ -30,13 +26,14 @@ site.use(slugifyUrls());
 site.use(netlifyCMS());
 
 // Process all css files
-site.use(postcss({
-  sourceMap: true,
-  plugins: [
-    postcssNesting(),
-    autoprefixer(),
-  ],
-}));
+// site.use(postcss({
+//   sourceMap: true,
+//   plugins: [
+//     postcssNesting(),
+//     autoprefixer(),
+//   ],
+// }));
+site.copy(['.css']);
 
 // Add csv loader
 site.loadData([".csv"], csvLoader);
