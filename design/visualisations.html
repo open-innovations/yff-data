@@ -8,12 +8,6 @@
 	<link rel="StyleSheet" href="highlight.css" type="text/css" />
 	<link rel="StyleSheet" href="style.css" type="text/css" />
 	<style>
-	ul.menu {
-		list-style: disc;
-		margin: 1em 0 2em 2em;
-		line-height: 1.5em;
-	}
-	ul.menu li { margin-bottom: 0.5em; }
 	</style>
 </head>
 <body class="b1-bg">
@@ -22,14 +16,20 @@
 	
 		<h1>Tests of visualisations</h1>
 		<ul class="menu">
-			<li><a href="#iframe">type = iframe</a> <code><span>Status:</span><span class="ok">OK</span></code></li>
-			<li><a href="#static-image">type = static-image</a> <code><span>Status:</span><span class="ok">OK</span></code></li>
-			<li><a href="#table">type = table</a> <code><span>Status:</span><span class="ok">OK</span></code></li>
-			<li><a href="#category-chart">type = category-chart</a> <code><span>Status:</span><span class="warn">Tidying up</span></code></li>
-			<li><a href="#line-chart">type = line-chart</a> <code><span>Status:</span><span class="warn">Tidying up</span></code></li>
-			<li><a href="#hexmap">type = hexmap</a> <code><span>Status:</span><span class="error">Not done</span></code></li>
-			<li><a href="#map">type = map</a> <code><span>Status:</span><span class="error">Not done</span></code></li>
-			<li><a href="#dashboard">type = dashboard</a> <code><span>Status:</span><span class="error">Not done</span></code></li>
+			<li><a href="#iframe">type = iframe</a> <code class="status"><span class="ok">OK</span></code></li>
+			<li><a href="#static-image">type = static-image</a> <code class="status"><span class="ok">OK</span></code></li>
+			<li><a href="#table">type = table</a> <code class="status"><span class="ok">OK</span></code>
+				<ul class="menu">
+					<li><a href="#table-merge">simple merge cells</a></li>
+					<li><a href="#table-heatmap">heatmap</a></li>
+					<li><a href="#table-heatmap-rename">heatmap with renamed columns</a></li>
+				</ul>
+			</li>
+			<li><a href="#line-chart">type = line-chart</a> <code class="status"><span class="warn">Tidying up</span></code></li>
+			<li><a href="#category-chart">type = category-chart</a> <code class="status"><span class="warn">Tidying up</span></code></li>
+			<li><a href="#hexmap">type = hexmap</a> <code class="status"><span class="error">Not done</span></code></li>
+			<li><a href="#map">type = map</a> <code class="status"><span class="error">Not done</span></code></li>
+			<li><a href="#dashboard">type = dashboard</a> <code class="status"><span class="error">Not done</span></code></li>
 		</ul>
 	</div>
 
@@ -47,9 +47,9 @@
 				}
 				</script>
 				<pre class="yaml">
-				type: iframe
-				config:
-				  url: https://youthfuturesfoundation.org/wp-content/uploads/2022/03/Youth-Futures-Foundation-EGM-2022.html
+type: iframe
+config:
+  url: https://youthfuturesfoundation.org/wp-content/uploads/2022/03/Youth-Futures-Foundation-EGM-2022.html
 				</pre>
 			</div>
 		</div>
@@ -66,10 +66,10 @@
 				}
 				</script>
 				<pre class="yaml">
-				type: static-image
-				config:
-				  file: https://dummyimage.com/982x400/777/fff.png&text=Main+Image
-				  alt: "Main image"   # Alt text for screen readers
+type: static-image
+config:
+  file: https://dummyimage.com/982x400/777/fff.png&text=Main+Image
+  alt: "Main image"   # Alt text for screen readers
 				</pre>
 			</div>
 		</div>
@@ -78,8 +78,8 @@
 	<section id="table">
 		<div class="holder padded">
 			<h2>type = table</h2>
-			<div class="example">
-				<p>An example to specifically merge cells across rows in a column if they have the same value. Two of the columns have <code>mergerows</code> set.</p>
+			<div class="example" id="table-merge">
+				<p>An example of a table where some columns merge cells across rows using the <code>mergerows</code> value set to <code>true</code>. Note that we explicitly define each column we will show in the table. This allows us to ignore some columns in the source data file if we need to. We've explicitly centre-aligned text in the "Intervention" column by setting <code>align</code> to <code>center</code> (it could also be <code>left</code>, <code>right</code>, or <code>justify</code>)</p>
 				<style>
 				table { border-collapse: collapse; width: 100%; }
 				table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; }
@@ -92,16 +92,18 @@
 type: table
 config:
   data: data-table.csv  # A simple table in a CSV file with one header row
-  columns:            # The ability to merge rows (in a specific column) that have the same value
-  - name: "Overall category"
-    mergerows: true
-  - name: "Intervention"
-    mergerows: true
-  - name: "Sub-category"
+  columns:              # The ability to merge rows (in a specific column) that have the same value
+    - name: "Overall category"
+      mergerows: true   # In this column we merge rows that have the same value
+    - name: "Intervention"
+      mergerows: true   # In this column we merge rows that have the same value
+      align: center     # Align the text in the cell
+    - name: "Sub-category"
 				</pre>
 			</div>
 			
-			<div class="example">
+			<div class="example" id="table-heatmap">
+				<p>This example creates a table but turns certain columns into <code>heatmap</code> types. A heatmap column can have optional <code>scale</code>, <code>min</code>, and <code>max</code> values. If not given, the <code>scale</code> will default to <code>YFF</code>. If the <code>min</code> and <code>max</code> aren't given they default to the lowest and highest values in the column. If you want the colour scale values to match across columns you should make sure to explicitly set the <code>min</code> and <code>max</code>.</p>
 				<style>
 				table { border-collapse: collapse; width: 100%; }
 				table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; }
@@ -154,7 +156,8 @@ config:
       max: 23
 				</pre>
 			</div>
-			<div class="example">
+			<div class="example" id="table-heatmap-rename">
+				<p>This example makes a heatmap table. It renames specific columns using <code>rename</code>. A renamed column will have a single header label.</p>
 				<style>
 				table { border-collapse: collapse; width: 100%; }
 				table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
@@ -203,71 +206,27 @@ config:
 		</div>
 	</section>
 
-	
-	<section id="category-chart">
-		<div class="holder padded">
-			<h2>type = category-chart</h2>
-			<div class="example">
-				<pre class="yaml" id="category-chart-yaml">
-type: category-chart
-config:
-  data: data-category-chart.csv
-  # Define the axis
-  axis:
-    x:
-      min: 15
-      max: 58
-      grid:
-        stroke-dasharray: "6 2"
-        stroke-width: 1
-      ticks:
-        - value: 20
-          label: "20%"
-        - value: 30
-          label: "30%"
-        - value: 40
-          label: "40%"
-        - value: 50
-          label: "50%"
-    y:
-      grid:
-        stroke-width: 0.5
-  # Category names come from 
-  category: "Ethnic group"
-  series:
-    - title: "Female"
-      value: "Female→Value (%)"
-      errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      label: "Female→Label"
-      colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
-    - title: "Male"
-      value: "Male→Value (%)"
-      errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
-      colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
-				</pre>
-			</div>
-		</div>
-
-	</section>
 
 	<section id="line-chart">
 		<div class="holder padded">
 			<h2>type = line-chart</h2>
-			<div class="example"><!--
-				<script>
-				function loadLineChart(config){
-					return fetch(config.data).then(response => {
-						if(!response.ok) throw new Error('Network response was not OK');
-						return response.text();
-					}).then(txt => {
-						var csv = CSV2JSON(txt);
-						var chart = new LineChart(config,csv);
-						return chart.getSVG();
-					}).catch(error => {
-						console.error('Unable to load the data "'+config.data+'"',error);
-					});
-				}
-				</script>-->
+			<div class="example">
+				<p>This example makes a line-chart. Rather than <code>columns</code> we define <code>series</code>. Each <code>series</code> can have:</p>
+				<ul>
+					<li><code>title</code> - the displayed title (in the key and tooltip)</li>
+					<li><code>value</code> - the name of the CSV column to use from the CSV. As in tables, multi-line column headings get concatenated with a "→".</li>
+					<li><code>tooltip</code> - the name of the CSV column to use as a tooltip. If not set one will be created.</li>
+					<li><code>colour</code> - the hex colour to use for this series.</li>
+				</ul>
+				<p>Each axis can be defined in <code>axis</code> with the following properties:</p>
+				<ul>
+					<li><code>min</code> - the minimum value for the axis</li>
+					<li><code>max</code> - the maximum value for the axis</li>
+					<li><code>grid</code> - define some properties (<code>stroke</code>, <code>stroke-dasharray</code>, and <code>stroke-width</code>) of the grid lines for this axis. By default the grid is turned off. In this example we have made grid lines for each year but only labelled every 5 years.</li>
+					<li><code>ticks</code> - explicitly define each tick with <code>value</code> and <code>label</code>.</li>
+				</ul>
+				<p>The vertical axis (<code>y</code>) values for <code>min</code>, <code>max</code>, and <code>ticks</code> will be set automatically.</p>
+
 				<pre class="yaml" id="line-chart-yaml">
 type: line-chart
 config:
@@ -283,15 +242,49 @@ config:
       # Explicitly define the ticks.
       # Each tick has a numeric value and a displayed label
       ticks:
+        - value: 2001
+          label: ""
+        - value: 2002
+          label: ""
+        - value: 2003
+          label: ""
+        - value: 2004
+          label: ""
         - value: 2005
+          label: "2005"
+        - value: 2006
+          label: ""
+        - value: 2007
+          label: ""
+        - value: 2008
+          label: ""
+        - value: 2009
           label: ""
         - value: 2010
           label: "2010"
+        - value: 2011
+          label: ""
+        - value: 2012
+          label: ""
+        - value: 2013
+          label: ""
+        - value: 2014
+          label: ""
         - value: 2015
+          label: "2015"
+        - value: 2016
+          label: ""
+        - value: 2017
+          label: ""
+        - value: 2018
+          label: ""
+        - value: 2019
           label: ""
         - value: 2020
           label: "2020"
-    y:    # The vertical axes
+        - value: 2021
+          label: ""
+    y:             # The vertical axes
       min: 0       # A minimum value
       max: 50      # A maximum value
       dominant-baseline: text-bottom
@@ -359,6 +352,71 @@ config:
 			</div>
 		</div>
 	</section>
+
+
+	<section id="category-chart">
+		<div class="holder padded">
+			<h2>type = category-chart</h2>
+			<div class="example">
+				<p>This example makes a basic category chart (which is a specially-formatted version of a line-chart). Rather than <code>columns</code> we define <code>series</code>. Each <code>series</code> can have:</p>
+				<ul>
+					<li><code>title</code> - the displayed title (in the key and tooltip)</li>
+					<li><code>value</code> - the name of the CSV column to use from the CSV. As in tables, multi-line column headings get concatenated with a "→".</li>
+					<li><code>errors</code> - an array that defines the left and right error bar sizes. The first error bar is subtracted from the value and the second is added.</li>
+					<li><code>tooltip</code> - the name of the CSV column to use as a tooltip. If not set one will be created.</li>
+					<li><code>colour</code> - the hex colour to use for this series.</li>
+				</ul>
+				<p>Each axis can be defined in <code>axis</code> with the following properties:</p>
+				<ul>
+					<li><code>min</code> - the minimum value for the axis</li>
+					<li><code>max</code> - the maximum value for the axis</li>
+					<li><code>grid</code> - define some properties (<code>stroke</code>, <code>stroke-dasharray</code>, and <code>stroke-width</code>) of the grid lines for this axis. By default the grid is turned off.</li>
+					<li><code>ticks</code> - explicitly define each tick with <code>value</code> and <code>label</code>.</li>
+				</ul>
+				<p>The vertical axis (<code>y</code>) values for <code>min</code>, <code>max</code>, and <code>ticks</code> will be set automatically.</p>
+				<pre class="yaml" id="category-chart-yaml">
+type: category-chart
+config:
+  data: data-category-chart.csv
+  # Define the axis
+  key:
+    show: true     # Default to false
+    position: "top right"
+  axis:
+    x:
+      min: 15
+      max: 58
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+      ticks:
+        - value: 20
+          label: "20%"
+        - value: 30
+          label: "30%"
+        - value: 40
+          label: "40%"
+        - value: 50
+          label: "50%"
+    y:
+      grid:
+        stroke-width: 0.5
+  # Category names come from 
+  category: "Ethnic group"
+  series:
+    - title: "Female"
+      value: "Female→Value (%)"
+      errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Male"
+      value: "Male→Value (%)"
+      errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
+      colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+				</pre>
+			</div>
+		</div>
+	</section>
+
 
 	<section id="hexmap">
 		<div class="holder padded">
@@ -539,7 +597,10 @@ config:
 					chart = new CategoryChart(config,csv);
 					html = chart.getSVG();
 				}
+
+				// Update the DOM with the generated HTML
 				makeOutput(el,yaml,html);
+
 			}).catch(error => {
 				console.error('Unable to load the data "'+config.data+'"',error);
 			});
@@ -557,8 +618,41 @@ config:
 		t.insertAdjacentElement('afterend', out);
 		out.innerHTML = html;
 
+
+		// Add interactivity
+		if(yaml.type=="line-chart" || yaml.type=="category-chart"){
+			interactiveChart(out);
+		}
 	}
 
+	function interactiveChart(el){
+		var key = el.querySelector('.key');
+		var series = el.querySelectorAll('.series');
+		var s,d;
+		
+		if(key){
+			var keyseries = key.querySelectorAll('.data-series');
+			for(var s = 0; s < keyseries.length; s++){
+				keyseries[s].addEventListener('mouseover',function(e){
+					var d = e.target.closest('g').getAttribute('data-series');
+					var selected = el.querySelector('.series-'+d);
+					for(var s = 0; s < series.length; s++){
+						if(series[s]==selected){
+							series[s].style.opacity = 1;
+							// Simulate z-index by moving to the end
+							series[s].parentNode.appendChild(series[s]);
+						}else{
+							series[s].style.opacity = 0.3;
+						}
+					}
+				});
+			}
+			el.addEventListener('mouseout',function(e){
+				for(var s = 0; s < series.length; s++) series[s].style.opacity = 1;
+			});
+		}
+
+	}
 	</script>
 	
 </body>

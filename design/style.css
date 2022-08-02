@@ -94,12 +94,18 @@ section .example:before { content: "Example " counter(ex-counter) ""; font-weigh
 section .example:first-child { margin-bottom: 0; }
 section h2, section h3 { padding-top: 0; }
 section pre { margin-bottom: 1em; }
+section p { line-height: 1.5em; }
 code, pre { font-family: monospace; color: #555555; background-color: #dfdfdf; }
-code { display: inline-block; padding: 0; background: transparent; }
-code > span { padding: 0.125em 0.25em; line-height: 1em; background-color: #666; color: #fff; }
+code { display: inline-block; padding: 0.1em 0.25em;; background: #666; color: #fff; line-height: 1.2em; }
+code.status { background: transparent; padding: 0; line-height: 1.5em; }
+code.status:before { content: "Status"; background: #666; padding: 0 0.25em; display: inline-block; }
+code.status > span { padding: 0 0.25em; color: #fff; display: inline-block; }
 pre { padding: 1em; overflow-x: auto; }
 .output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; margin-bottom: 1em; }
 .output > * { min-height: 1.5em; line-height: 1.5em; }
+
+ul { list-style: disc; margin: 1em 0 1em 2em; line-height: 1.5em; }
+ul li { margin-bottom: 0.5em; }
 
 .ok { background: #0DBC37; }
 .warn { background: #F9BC26; }

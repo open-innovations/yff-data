@@ -26,13 +26,15 @@ function CategoryChart(config,csv){
 					'points':{'size':4, 'color': (config.series[s].colour||'black')},
 					'errors':{'stroke':(config.series[s].colour||'black'),'stroke-width':2}
 				});
+				// Duplicate errors if only one error value given
+				if(config.series[s].errors.length==1) config.series[s].errors.push(config.series[s].errors[0]);
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){
 					categoryoffset = csv.rows.length-i-1;
 					seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
 					label = config.series[s].title+"\n"+csv.columns[config.category][i].replace(/\\n/g,"")+': '+csv.columns[config.series[s].value][i];
 					label += (csv.columns[config.series[s].errors[0]][i]==csv.columns[config.series[s].errors[1]][i] ? ' ±'+csv.columns[config.series[s].errors[0]][i] : ' (+'+csv.columns[config.series[s].errors[1]][i]+' / -'+csv.columns[config.series[s].errors[0]][i]+')');
-					if(config.series[s].label && csv.columns[config.series[s].label]) label = csv.columns[config.series[s].label][i];
+					if(config.series[s].label && csv.columns[config.series[s].tooltip]) label = csv.columns[config.series[s].tooltip][i];
 					datum = {'x':csv.columns[config.series[s].value][i],'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[config.series[s].errors[0]][i],csv.columns[config.series[s].errors[1]][i]]},'title':label};
 					datum.data = {'category':csv.columns[config.category][i],'series':config.series[s].title};
 					data.push(datum);
@@ -111,7 +113,7 @@ function LineChart(config,csv){
 		'font-size': 16,
 		'key':{
 			'show':false,
-			'border':{'stroke':'black','stroke-width':1,'fill':'none'},
+			'border':{'stroke':'black','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0,'font-family':'sans-serif'}
 		},
 		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#aaa'},'labels':{}},'y':{'padding':10,'labels':{}}},
@@ -214,7 +216,7 @@ function Chart(config,csv){
 			add(defs,svg);
 			clip = svgEl("clipPath");
 			setAttr(clip,{'id':'clip-'+id});
-			add(clip,svg);
+			//add(clip,svg); // Clip to graph area
 			rect = svgEl("rect");
 			setAttr(rect,{'x':0,'y':0,'width':this.w,'height':this.h});
 			add(rect,clip);
@@ -226,7 +228,7 @@ function Chart(config,csv){
 			this.buildAxes();
 		}
 		this.updatePadding();
-		setAttr(rect,{'x':this.opt.left,'y':this.opt.top,'width':this.w,'height':this.h});
+		setAttr(rect,{'x':this.opt.left,'y':this.opt.top,'width':this.w-this.opt.left,'height':this.h-this.opt.top});
 
 		this.addAxes();
 		
@@ -247,13 +249,15 @@ function Chart(config,csv){
 				});
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){
-					categoryoffset = csv.rows.length-i-1;
-					seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
-					label = config.series[s].title+"\n"+csv.columns[config.series[s].x][i]+': '+csv.columns[config.series[s].y][i];
-					if(config.series[s].label && csv.columns[config.series[s].label]) label = csv.columns[config.series[s].label][i];
-					datum = {'x':csv.columns[config.series[s].x][i],'y':csv.columns[config.series[s].y][i],'title':label};
-					datum.data = {'series':config.series[s].title};
-					data.push(datum);
+					if(csv.columns[config.series[s].x][i] >= config.axis.x.min && csv.columns[config.series[s].x][i] <= config.axis.x.max){
+						categoryoffset = csv.rows.length-i-1;
+						seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
+						label = config.series[s].title+"\n"+csv.columns[config.series[s].x][i]+': '+(csv.columns[config.series[s].y][i]||"");
+						if(config.series[s].tooltip && csv.columns[config.series[s].tooltip]) label = csv.columns[config.series[s].tooltip][i];
+						datum = {'x':csv.columns[config.series[s].x][i],'y':csv.columns[config.series[s].y][i],'title':label};
+						datum.data = {'series':config.series[s].title};
+						data.push(datum);
+					}
 				}
 				this.series.push(new Series(s,config.series[s],data));
 			}
@@ -322,11 +326,12 @@ function Chart(config,csv){
 		// Update axes
 		for(ax in this.axes) this.axes[ax].update();
 
+/*
 		t = '<style>';
 		t += '\t.'+lbl+'-series circle { transition: transform '+this.opt.duration+' linear, r '+this.opt.duration+' linear; }\n';
 		t += '\t.'+lbl+'-series circle:focus { stroke-width: 4; }\n';
 		t += '\t.'+lbl+'-series:hover path.line, .'+lbl+'-series.on path.line { cursor:pointer; }\n';
-/*
+
 		for(i = 0; i < series.length; i++){
 			series[i].draw().addTo(svg);
 			t += '\t.'+lbl+'-series-'+(i+1)+':hover path.line, .'+lbl+'-series-'+(i+1)+'.on path.line { stroke-width: '+(series[i].getProperty('stroke-width-hover')||4)+'; }\n';
@@ -353,18 +358,23 @@ function Chart(config,csv){
 			for(s = 0; s < this.series.length; s++){
 				if(!key.g[s]){
 					key.g[s] = svgEl("g");
-					key.g[s].setAttribute(lbl+'-series',s);
+					key.g[s].setAttribute('data-series',s+1);
 					// Update class of line
-					cl = [lbl+'-series',lbl+'-series-'+(s+1)];
+					cl = ['data-series','data-series-'+(s+1)];
 					if(this.series[s].getProperty('class')) cl.concat(this.series[s].getProperty('class').split(/ /));
 					addClasses(key.g[s],cl);
 
 					add(key.g[s],key.el);
 				}
-				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+(this.series[s].getProperty('title')||"Series "+(s+1))+'</tspan></text><path d="M0 0 L 1 0" class="line" class="" stroke-width="3" stroke-linecap="round"></path><circle cx="0" cy="0" r="5" fill="silver"></circle>';
+				tspan = (this.series[s].getProperty('title')||"Series "+(s+1));
+				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+tspan+'</tspan></text><path d="M0 0 L 1 0" class="line" class="" stroke-width="3" stroke-linecap="round"></path><circle cx="0" cy="0" r="5" fill="silver"></circle>';
 				setAttr(key.g[s].querySelector('tspan'),this.series[s].getProperty('attr'));
-				wkey = Math.max(wkey,key.g[s].getBoundingClientRect().width);
+				// If we had a browser we could use getBoundingClientRect().width, but we don't so we'll approximate the length
+				wkey = Math.max(wkey,tspan.length);
 			}
+			if(typeof this.opt.key.width==="number") wkey = this.opt.key.width;
+			else wkey = wkey*fs*0.5 + fs*2 + pd;	// The width is approximately half the font-size plus twice the font size (for the icon) and some padding
+
 
 			if(!this.opt.key.position) this.opt.key.position = 'top right';
 			po = this.opt.key.position.split(/ /);
@@ -394,13 +404,14 @@ function Chart(config,csv){
 				if(p.line.color) line.setAttribute('stroke',p.line.color);
 			}
 		}
+		/*
 		t += '\t.'+lbl+'-grid.'+lbl+'-grid-x .'+lbl+'-grid-title,.'+lbl+'-grid.'+lbl+'-grid-y .'+lbl+'-grid-title { text-anchor: middle; dominant-baseline: central; }\n';
 		t += '\t.'+lbl+'-grid.'+lbl+'-grid-y text { dominant-baseline: '+((this.opt.axis.y.labels ? this.opt.axis.y.labels.baseline : '')||"middle")+'; }\n';
 		t += '\t.'+lbl+'-tooltip { background: black; color: white; padding: 0.25em 0.5em; margin-top: -1em; transition: left 0.1s linear, top 0.1s linear; border-radius: 4px; white-space: nowrap; }\n';
 		t += '\t.'+lbl+'-tooltip::after { content: ""; position: absolute; bottom: auto; width: 0; height: 0; border: 0.5em solid transparent; left: 50%; top: 100%; transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: black; }\n';
 		t += '\t</style>\n';
 		if(defs) defs.innerHTML = t;
-
+*/
 		// Update series
 		for(i = 0; i < this.series.length; i++) this.series[i].update().addTo(svg);
 
@@ -589,9 +600,9 @@ function Series(s,props,data){
 	// Build group
 	this.el = svgEl("g");
 	o = {'clip-path':'url(#clip-'+id+')'};
-	o[lbl+'-series'] = (s+1);
+	o['data-series'] = (s+1);
 	setAttr(this.el,o);
-	addClasses(this.el,[lbl+'-series',lbl+'-series-'+(s+1)]);
+	addClasses(this.el,['series','series-'+(s+1)]);
 
 	this.getStyle = function(t,p){
 		if(opt.hasOwnProperty(t)){
@@ -636,7 +647,7 @@ function Series(s,props,data){
 			pts[i] = {'el':pt,'point':svgEl('circle'),'title':svgEl("title"),'old':{}};
 
 			o = {'cx':0,'cy':0,'tabindex':0};
-			o[lbl+'-series'] = s+1;
+			o['data-series'] = s+1;
 			setAttr(pts[i].point,o);
 
 			if(data[i].error) pts[i].errorbar = {};
