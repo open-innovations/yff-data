@@ -78,16 +78,17 @@ function CSV2JSON(data,start,end){
 	var coldata = {};
 	var headers = [];
 	var formats = [];
+	var colnum = {};
 	var req = [];
 	
 	var j,i,k,rows;
 
-	// Build the header names by concatenating header rows with a "."
+	// Build the header names by concatenating header rows with a "→"
 	for(i = 0, rows = 0 ; i < start; i++) headers[i] = clone(data[i]);
 	names = new Array(headers[0].length);
 	for(j = 0; j < names.length; j++){
 		names[j] = "";
-		for(i = 0; i < headers.length; i++) names[j] += (names[j] && headers[i][j] ? '.':'')+headers[i][j];
+		for(i = 0; i < headers.length; i++) names[j] += (names[j] && headers[i][j] ? '→':'')+headers[i][j];
 		coldata[names[j]] = new Array(end-start);
 	}
 
@@ -176,6 +177,8 @@ function CSV2JSON(data,start,end){
 		// If we have a few floats in with our integers, we change the format to float
 		if(format[j] == "integer" && count.float > 0.1*newdata.length) format[j] = "float";
 
+		colnum[names[j]] = j;
+
 		req.push(names[j] ? true : false);
 	}
 
@@ -185,7 +188,7 @@ function CSV2JSON(data,start,end){
 	//   data = 2d array of data
 	//   rows = array of objects with data referenced by name
 	//   columns = object with column data as array
-	return { 'names': names, 'format': format, 'data': newdata, 'headers':headers, 'rows':rowdata,'columns':coldata };
+	return { 'names': names, 'format': format, 'data': newdata, 'headers':headers, 'rows':rowdata, 'columns':coldata, 'colnum':colnum };
 }
 // Function to clone a hash otherwise we end up using the same one
 function clone(hash) {
@@ -194,47 +197,84 @@ function clone(hash) {
 	return object;
 }
 function buildTable(txt,config){
-	var r,r2,c,c2,i,j,html,csv,done = {'data':[],'head':[]},align = {},columns = [];
+	var r,r2,c,c2,i,j,html,csv,done = {'data':[],'head':[]};
 
 	csv = CSV2JSON(txt);
 
 	if(!config.columns) config.columns = [];
-	for(c = 0; c < csv.names.length; c++){
-		j = -1;
-		for(i = 0; i < config.columns.length; i++){
-			if(csv.names[c]==config.columns[i].name) j = i;
-		}
-		columns[c] = (j >= 0) ? config.columns[j] : {};
-	}
+
 	html = '<table>';
 
-	// Create 2D array of cells
+	// Create 2D array of cells to mimic body cells
 	for(r = 0; r < csv.data.length; r++){
 		done.data[r] = [];
-		for(c = 0; c < csv.data[r].length; c++) done.data[r][c] = false;
-	}
-	for(r = 0; r < csv.headers.length; r++){
-		done.head[r] = [];
-		for(c = 0; c < csv.headers[r].length; c++) done.head[r][c] = false;
+		for(c = 0; c < config.columns.length; c++) done.data[r][c] = false;
 	}
 
 	// Build header cells
+	// For each row of the headers we will work out if we need to merge
+	html += '<thead>';
+
+	// Create 2D array of cells to mimic header cells
+	for(r = 0; r < csv.headers.length; r++){
+		done.head[r] = [];
+		for(c = 0; c < config.columns.length; c++) done.head[r][c] = false;
+	}
+	// Build header cells
+	// For each row of the headers we will work out if we need to merge
 	for(r = 0; r < csv.headers.length; r++){
 		html += '<tr>';
-		for(c = 0; c < csv.headers[r].length; c++){
-			// Work out how many columns to merge
+		for(c = 0; c < config.columns.length; c++){
+			c1 = csv.colnum[config.columns[c].name];
 			m = 1;
-			for(c2 = c+1; c2 < csv.headers[r].length; c2++){
-				if(csv.headers[r][c]!=csv.headers[r][c2]) break;
-				done.head[r][c2] = true;
-				m++;
+			label = csv.headers[r][c1]||"";
+			// If the column hasn't been processed we see how many of the subsequent columns need merging
+			if(!done.head[r][c]){
+				done.head[r][c] = true;
+				cspan = 1;
+				rspan = 1;
+				if(config.columns[c].rename){
+					label = config.columns[c].rename;
+					// Set the rest of rows in this column to done
+					for(r2 = r+1; r2 < csv.headers.length; r2++){
+						done.head[r2][c] = true;
+						rspan++;
+					}
+					for(n = c+1; n < config.columns.length; n++){
+						c2 = csv.colnum[config.columns[n].name];
+						if(csv.names[c1]==csv.names[c2]){
+							done.head[r][n] = true;
+							cspan++;
+						}else{
+							break;
+						}
+					}
+					
+				}else{
+				
+					if(typeof c1==="number"){
+						for(n = c+1; n < config.columns.length; n++){
+							c2 = csv.colnum[config.columns[n].name];
+							if(csv.headers[r][c1]==csv.headers[r][c2]){
+								done.head[r][n] = true;
+								cspan++;
+							}else{
+								break;
+							}
+						}
+					}
+				}
+//				console.log(r,c,cspan,rspan);
+				html += '<th'+(cspan > 1 ? ' colspan="'+cspan+'"':'')+(rspan > 1 ? ' rowspan="'+rspan+'"':'')+'>'+label.replace(/\n/g,"<br />")+'</th>';
 			}
-			if(!done.head[r][c]) html += '<th'+(m > 1 ? ' colspan="'+m+'"':'')+'>'+csv.headers[r][c]+'</th>';
 		}
 		html += '</tr>';
 	}
+	html += '</thead>';
+
+	// Find the min/max values of a column (as a fallback if none provided)
 	var min,max;
-	for(c = 0; c < columns.length; c++){
+	for(c = 0; c < config.columns.length; c++){
 		if(csv.format[c]==="integer" || csv.format[c]==="float"){
 			min = 1e100;
 			max = -1e100;
@@ -244,34 +284,36 @@ function buildTable(txt,config){
 					max = Math.max(max,csv.data[r][c]);
 				}
 			}
-			if(typeof columns[c].min!=="number") columns[c].min = min;
-			if(typeof columns[c].max!=="number") columns[c].max = max;
+			if(typeof config.columns[c].min!=="number") config.columns[c].min = min;
+			if(typeof config.columns[c].max!=="number") config.columns[c].max = max;
 		}
 	}
 	// Loop over rows
 	for(r = 0; r < csv.data.length; r++){
 		html += '<tr>';
-		for(c = 0; c < columns.length; c++){
+		for(c = 0; c < config.columns.length; c++){
+			// Get index of column in the data structure
+			n = csv.colnum[config.columns[c].name];
 			m = 0;
 			// If this is a merging column we work out how many rows to merge
-			if(columns[c].mergerows){
+			if(config.columns[c].mergerows){
 				m = 1;
 				for(r2 = r+1; r2 < csv.data.length; r2++){
-					if(csv.data[r][c]!=csv.data[r2][c]) break;
-					done.data[r2][c] = true;
+					if(csv.data[r][n]!=csv.data[r2][n]) break;
+					done.data[r2][n] = true;
 					m++;
 				}
 			}
-			if(!done.data[r][c]){
+			if(!done.data[r][n]){
 				html += '<td'+(m > 1 ? ' rowspan="'+m+'"':'')+' style="';
-				html += (columns[c].align ? 'text-align:'+columns[c].align+';':'');
-				if(columns[c].heatmap && typeof csv.data[r][c]==="number"){
-					bg = colours.getColourFromScale(columns[c].scale||'Viridis',csv.data[r][c],columns[c].min,columns[c].max);
+				html += (config.columns[c].align ? 'text-align:'+config.columns[c].align+';':'');
+				if(config.columns[c].heatmap && typeof csv.data[r][n]==="number"){
+					bg = colours.getColourFromScale(config.columns[c].scale||'Viridis',csv.data[r][n],config.columns[c].min,config.columns[c].max);
 					html += 'background:'+bg+';';
 					col = new Colour(bg);
 					html += 'color:'+col.text+';';
 				}
-				html += '">'+csv.data[r][c]+'</td>';
+				html += '">'+(csv.data[r][n]||"")+'</td>';
 			}
 		}
 		html += '</tr>';

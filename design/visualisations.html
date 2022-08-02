@@ -80,6 +80,7 @@
                   mergerows: true
                 - name: "Intervention"
                   mergerows: true
+                - name: "Sub-category"
 			</pre>
 		</section>
 
@@ -107,49 +108,108 @@
 			}
 			</script>
 			<pre class="yaml">
-            type: category-chart
+            type: table
             config:
               data: data-heatmap.csv
               columns:
-                - name: Ranks.2018
+                - name: "Ranks→2018"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 1
                   max: 38
-                - name: Ranks.2019
+                - name: "Ranks→2019"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 1
                   max: 38
-                - name: Ranks.2020
+                - name: "Ranks→2020"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 1
                   max: 38
-                - name: Index.2018
+                - name: "Country"
+                - name: "Index→2018"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 71
                   max: 23
-                - name: Index.2019
+                - name: "Index→2019"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 71
                   max: 23
-                - name: Index.2020
+                - name: "Index→2020"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 71
                   max: 23
-              mergerows:            # The ability to merge rows (in a specific column) that have the same value
-                - column: "Overall category"
-                - column: "Intervention"
+			</pre>
+		</section>
+
+		<section class="example">
+			<h2>Visualisation: table - gap map (heatmap)</h2>
+			<style>
+			table { border-collapse: collapse; width: 100%; }
+			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
+			table td { border: 1px solid black; }
+			table td:first-child { border-left: 0; }
+			table td:last-child { border-right: 0; }
+			table td, table th { line-height: 1.5em; padding: 0.25em; }
+			</style>
+			<script>
+
+			function loadGapMapTable(config){
+				return fetch(config.data).then(response => {
+					if(!response.ok) throw new Error('Network response was not OK');
+					return response.text();
+				}).then(txt => {
+					return buildTable(txt,config);
+				}).catch(error => {
+					console.error('Unable to load the data "'+config.data+'"',error);
+				});
+			}
+			</script>
+			<pre class="yaml">
+            type: table
+            config:
+              data: data-gapmap.csv
+              columns:
+                - name: "Source→Name"
+                  rename: "Source"
+                - name: "Ethnic groups availability→Broad groupings (e.g. White, Black, Asian, mixed, other)→Rating"
+                  rename: "Broad groupings\ne.g. White, Black, Asian, mixed, other"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                - name: "Ethnic groups availability→Ethnic groups (e.g. African, Carribean, other black background)→Rating"
+                  rename: "Ethnic groups\ne.g. African, Carribean, other black background"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                - name: "Ethnic groups availability→Ethnic subgroups (e.g. Somali)→Rating"
+                  rename: "Ethnic subgroups\ne.g. Somali"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                - name: "Ethnic groups availability→Other relevant subgroups (e.g. migration status)→Rating"
+                  rename: "Other relevant subgroups\ne.g. migration status"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
 			</pre>
 		</section>
 
@@ -197,13 +257,13 @@
               category: "Ethnic group"
               series:
                 - title: "Female"
-                  value: "Female.Value (%)"
-                  errors: ["Female.Uncertainty minus (%)","Female.Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-                  label: "Female.Label"
+                  value: "Female→Value (%)"
+                  errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+                  label: "Female→Label"
                   colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
                 - title: "Male"
-                  value: "Male.Value (%)"
-                  errors: ["Male.Uncertainty minus (%)","Male.Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
+                  value: "Male→Value (%)"
+                  errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
                   colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
 			</pre>
 		</section>
@@ -344,19 +404,19 @@
               series:
                 - title: "16-17"
                   x: "Year"                       # Column heading to use for x-value
-                  y: "16-17.rate (%)1"            # Column heading to use fro y-value
+                  y: "16-17→rate (%)1"            # Column heading to use fro y-value
                   colour: "#e52e36"               # The hex colour code to use for this series (we can have defaults)
                 - title: "18-24"                  # Displayed in the key and tooltip
                   x: "Year"
-                  y: "18-24.rate (%)1"
+                  y: "18-24→rate (%)1"
                   colour: "#f8ab3e"               # The hex colour code to use for this series (we can have defaults)
                 - title: "25-49"                  # Displayed in the key and tooltip
                   x: "Year"
-                  y: "25-49.rate (%)1"
+                  y: "25-49→rate (%)1"
                   colour: "#bfb800"               # The hex colour code to use for this series (we can have defaults)
                 - title: "50-64"                  # Displayed in the key and tooltip
                   x: "Year"
-                  y: "50 and over.rate (%)1"
+                  y: "50 and over→rate (%)1"
                   colour: "#005776"               # The hex colour code to use for this series (we can have defaults)
 			</pre>
 		</section>
