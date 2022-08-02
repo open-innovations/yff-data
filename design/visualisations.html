@@ -7,382 +7,419 @@
 	<script src="highlight.min.js"></script>
 	<link rel="StyleSheet" href="highlight.css" type="text/css" />
 	<link rel="StyleSheet" href="style.css" type="text/css" />
+	<style>
+	ul.menu {
+		list-style: disc;
+		margin: 1em 0 2em 2em;
+		line-height: 1.5em;
+	}
+	ul.menu li { margin-bottom: 0.5em; }
+	</style>
 </head>
 <body class="b1-bg">
 
 	<div class="holder padded">
 	
 		<h1>Tests of visualisations</h1>
-
-		<section class="example">
-			<h2>Visualisation: iframe</h2>
-			<style>
-			iframe { width: 100%; aspect-ratio: 16 / 9; }
-			cite { font-size: 0.8em; }
-			</style>
-			<script>
-			function iframeBuilder(config){
-				return '<iframe src="'+config.url+'"></iframe><br /><cite>Source: <a href="'+config.url+'" target="_opener">'+config.url+'</a></cite>';
-			}
-			</script>
-			<pre class="yaml">
-            type: iframe
-            config:
-              url: https://youthfuturesfoundation.org/wp-content/uploads/2022/03/Youth-Futures-Foundation-EGM-2022.html
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: static-image</h2>
-			<style>img { width: 100%; display: block; }</style>
-			<script>
-			function imageBuilder(config){
-				return '<img src="'+config.file+'" alt="'+config.alt+'" />';
-			}
-			</script>
-			<pre class="yaml">
-            type: static-image
-            config:
-              file: https://dummyimage.com/982x400/777/fff.png&text=Main+Image
-              alt: "Main image"   # Alt text for screen readers
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: table</h2>
-			<style>
-			table { border-collapse: collapse; width: 100%; }
-			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; }
-			table td { border: 1px solid black; }
-			table td:first-child { border-left: 0; }
-			table td:last-child { border-right: 0; }
-			table td, table th { line-height: 1.5em; padding: 0.25em; }
-			</style>
-			<pre class="yaml">
-            type: table
-            config:
-              data: data-table.csv  # A simple table in a CSV file with one header row
-              columns:            # The ability to merge rows (in a specific column) that have the same value
-                - name: "Overall category"
-                  mergerows: true
-                - name: "Intervention"
-                  mergerows: true
-                - name: "Sub-category"
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: table (heatmap)</h2>
-			<style>
-			table { border-collapse: collapse; width: 100%; }
-			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; }
-			table td { border: 1px solid black; }
-			table td:first-child { border-left: 0; }
-			table td:last-child { border-right: 0; }
-			table td, table th { line-height: 1.5em; padding: 0.25em; }
-			</style>
-			<pre class="yaml">
-            type: table
-            config:
-              data: data-heatmap.csv
-              columns:
-                - name: "Ranks→2018"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 1
-                  max: 38
-                - name: "Ranks→2019"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 1
-                  max: 38
-                - name: "Ranks→2020"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 1
-                  max: 38
-                - name: "Country"
-                - name: "Index→2018"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 71
-                  max: 23
-                - name: "Index→2019"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 71
-                  max: 23
-                - name: "Index→2020"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 71
-                  max: 23
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: table - gap map (heatmap)</h2>
-			<style>
-			table { border-collapse: collapse; width: 100%; }
-			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
-			table td { border: 1px solid black; }
-			table td:first-child { border-left: 0; }
-			table td:last-child { border-right: 0; }
-			table td, table th { line-height: 1.5em; padding: 0.25em; }
-			</style>
-			<pre class="yaml">
-            type: table
-            config:
-              data: data-gapmap.csv
-              columns:
-                - name: "Source→Name"
-                  rename: "Source"
-                - name: "Ethnic groups availability→Broad groupings (e.g. White, Black, Asian, mixed, other)→Rating"
-                  rename: "Broad groupings\ne.g. White, Black, Asian, mixed, other"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                - name: "Ethnic groups availability→Ethnic groups (e.g. African, Carribean, other black background)→Rating"
-                  rename: "Ethnic groups\ne.g. African, Carribean, other black background"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                - name: "Ethnic groups availability→Ethnic subgroups (e.g. Somali)→Rating"
-                  rename: "Ethnic subgroups\ne.g. Somali"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                - name: "Ethnic groups availability→Other relevant subgroups (e.g. migration status)→Rating"
-                  rename: "Other relevant subgroups\ne.g. migration status"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-			</pre>
-		</section>
-
-		<section class="example" id="category-chart">
-			<h2>Visualisation: category-chart</h2>
-			<script>
-			function loadCategoryChart(config){
-				return fetch(config.data).then(response => {
-					if(!response.ok) throw new Error('Network response was not OK');
-					return response.text();
-				}).then(txt => {
-					var csv = CSV2JSON(txt);
-					var chart = new CategoryChart(config,csv);
-					return chart.getSVG();
-				}).catch(error => {
-					console.error('Unable to load the data "'+config.data+'"',error);
-				});
-			}
-			</script>
-			<pre class="yaml" id="category-chart-yaml">
-            type: categorychart
-            config:
-              data: data-category-chart.csv
-              # Define the axis
-              axis:
-                x:
-                  min: 15
-                  max: 58
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 20
-                      label: "20%"
-                    - value: 30
-                      label: "30%"
-                    - value: 40
-                      label: "40%"
-                    - value: 50
-                      label: "50%"
-                y:
-                  grid:
-                    stroke-width: 0.5					
-              # Category names come from 
-              category: "Ethnic group"
-              series:
-                - title: "Female"
-                  value: "Female→Value (%)"
-                  errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-                  label: "Female→Label"
-                  colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
-                - title: "Male"
-                  value: "Male→Value (%)"
-                  errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
-                  colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: hexmap</h2>
-			<pre class="yaml">
-            type: hexmap
-            config:
-              data: file.csv
-              layout: layout.hexjson  # A HexJSON file
-              column-id: column-heading-for-id
-              column-value: column-heading-for-value
-              column-label: column-heading-for-label  # If not given we can build a label of the form "column-heading-for-id: column-heading-for-value"
-              scale: Viridis # a named colour scale (we can have a default)
-              min: 0	# optional explicit minimum for scale
-              max: 100 # optional explicit maximum for scale
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: map</h2>
-			<pre class="yaml">
-			type: map
-			config:
-              data: file.csv
-              layout: polygons.geojson    # A GeoJSON file
-              column-id: column-heading-for-id
-              column-value: column-heading-for-value
-              column-label: column-heading-for-label  # If not given we can build a label of the form "column-heading-for-id: column-heading-for-value"
-              scale: Viridis # a named colour scale (we can have a default)
-              min: 0	# optional explicit minimum for scale
-              max: 100 # optional explicit maximum for scale
-			</pre>
-		</section>
-
-		<section class="example">
-			<h2>Visualisation: dashboard</h2>
-			<pre class="yaml">
-			type: dashboard
-			config:
-              data: file.csv # A basic CSV file
-              column-title: column-heading-for-title  # Appears above the number
-              column-value: column-heading-for-value  # The number to show
-              column-units-pre: column-heading-for-units  # optional column that defines a unit that goes before a number e.g. £
-              column-units-post: column-heading-for-units # optional column that defines a unit that goes after the number e.g. %
-              column-footnote: column-heading-for-footnote    # optional column that appears below the number
-              # Question: do we need to set colours per panel or can we be consistent like https://open-innovations.github.io/leeds-digital-festival-data/ ?
-			</pre>
-		</section>
-
-		<section class="example" id="line-chart">
-			<h2>Visualisation: line-chart</h2>
-			<script>
-			function loadLineChart(config){
-				return fetch(config.data).then(response => {
-					if(!response.ok) throw new Error('Network response was not OK');
-					return response.text();
-				}).then(txt => {
-					var csv = CSV2JSON(txt);
-					var chart = new LineChart(config,csv);
-					return chart.getSVG();
-				}).catch(error => {
-					console.error('Unable to load the data "'+config.data+'"',error);
-				});
-			}
-			</script>
-			<pre class="yaml" id="line-chart-yaml">
-            type: linechart
-            config:
-              data: data-line-chart.csv   # A basic CSV file with each series in a column
-              source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
-              key:
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:  # Horizontal axis
-                  min: 2001    # A minimum value
-                  max: 2022    # A maximum value
-                  # Explicitly define the ticks.
-                  # Each tick has a numeric value and a displayed label
-                  ticks:
-                    - value: 2005
-                      label: ""
-                    - value: 2010
-                      label: "2010"
-                    - value: 2015
-                      label: ""
-                    - value: 2020
-                      label: "2020"
-                y:    # The vertical axes
-                  min: 0       # A minimum value
-                  max: 50      # A maximum value
-                  dominant-baseline: text-bottom
-                  # Explicitly define the ticks.
-                  # Each tick has a numeric value and a displayed label
-                  ticks:
-                    - value: 0
-                      grid: true
-                      label: "0"
-                      stroke-width: 1
-                    - value: 5
-                      grid: true
-                      label: "5"
-                      stroke-width: 1
-                    - value: 10
-                      grid: true
-                      label: "10"
-                      stroke-width: 1
-                    - value: 15
-                      grid: true
-                      label: "15"
-                      stroke-width: 1
-                    - value: 20
-                      grid: true
-                      label: "20"
-                      stroke-width: 1
-                    - value: 25
-                      grid: true
-                      label: "25"
-                      stroke-width: 1
-                    - value: 30
-                      grid: true
-                      label: "30"
-                      stroke-width: 1
-                    - value: 35
-                      grid: true
-                      label: "35"
-                      stroke-width: 1
-                    - value: 40
-                      grid: true
-                      label: "40"
-                      stroke-width: 1
-                    - value: 45
-                      grid: true
-                      label: "45"
-                      stroke-width: 1
-              series:
-                - title: "16-17"
-                  x: "Year"                       # Column heading to use for x-value
-                  y: "16-17→rate (%)1"            # Column heading to use fro y-value
-                  colour: "#e52e36"               # The hex colour code to use for this series (we can have defaults)
-                - title: "18-24"                  # Displayed in the key and tooltip
-                  x: "Year"
-                  y: "18-24→rate (%)1"
-                  colour: "#f8ab3e"               # The hex colour code to use for this series (we can have defaults)
-                - title: "25-49"                  # Displayed in the key and tooltip
-                  x: "Year"
-                  y: "25-49→rate (%)1"
-                  colour: "#bfb800"               # The hex colour code to use for this series (we can have defaults)
-                - title: "50-64"                  # Displayed in the key and tooltip
-                  x: "Year"
-                  y: "50 and over→rate (%)1"
-                  colour: "#005776"               # The hex colour code to use for this series (we can have defaults)
-			</pre>
-		</section>
-
+		<ul class="menu">
+			<li><a href="#iframe">type = iframe</a> <code><span>Status:</span><span class="ok">OK</span></code></li>
+			<li><a href="#static-image">type = static-image</a> <code><span>Status:</span><span class="ok">OK</span></code></li>
+			<li><a href="#table">type = table</a> <code><span>Status:</span><span class="ok">OK</span></code></li>
+			<li><a href="#category-chart">type = category-chart</a> <code><span>Status:</span><span class="warn">Tidying up</span></code></li>
+			<li><a href="#line-chart">type = line-chart</a> <code><span>Status:</span><span class="warn">Tidying up</span></code></li>
+			<li><a href="#hexmap">type = hexmap</a> <code><span>Status:</span><span class="error">Not done</span></code></li>
+			<li><a href="#map">type = map</a> <code><span>Status:</span><span class="error">Not done</span></code></li>
+			<li><a href="#dashboard">type = dashboard</a> <code><span>Status:</span><span class="error">Not done</span></code></li>
+		</ul>
 	</div>
+
+	<section id="iframe">
+		<div class="holder padded">
+			<h2>type = iframe</h2>
+			<div class="example">
+				<style>
+				iframe { width: 100%; aspect-ratio: 16 / 9; }
+				cite { font-size: 0.8em; }
+				</style>
+				<script>
+				function iframeBuilder(config){
+					return '<iframe src="'+config.url+'"></iframe><br /><cite>Source: <a href="'+config.url+'" target="_opener">'+config.url+'</a></cite>';
+				}
+				</script>
+				<pre class="yaml">
+				type: iframe
+				config:
+				  url: https://youthfuturesfoundation.org/wp-content/uploads/2022/03/Youth-Futures-Foundation-EGM-2022.html
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	<section id="static-image">
+		<div class="holder padded">
+			<h2>type = static-image</h2>
+			<div class="example">
+				<style>img { width: 100%; display: block; }</style>
+				<script>
+				function imageBuilder(config){
+					return '<img src="'+config.file+'" alt="'+config.alt+'" />';
+				}
+				</script>
+				<pre class="yaml">
+				type: static-image
+				config:
+				  file: https://dummyimage.com/982x400/777/fff.png&text=Main+Image
+				  alt: "Main image"   # Alt text for screen readers
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	<section id="table">
+		<div class="holder padded">
+			<h2>type = table</h2>
+			<div class="example">
+				<p>An example to specifically merge cells across rows in a column if they have the same value. Two of the columns have <code>mergerows</code> set.</p>
+				<style>
+				table { border-collapse: collapse; width: 100%; }
+				table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; }
+				table td { border: 1px solid black; }
+				table td:first-child { border-left: 0; }
+				table td:last-child { border-right: 0; }
+				table td, table th { line-height: 1.5em; padding: 0.25em; }
+				</style>
+				<pre class="yaml">
+type: table
+config:
+  data: data-table.csv  # A simple table in a CSV file with one header row
+  columns:            # The ability to merge rows (in a specific column) that have the same value
+  - name: "Overall category"
+    mergerows: true
+  - name: "Intervention"
+    mergerows: true
+  - name: "Sub-category"
+				</pre>
+			</div>
+			
+			<div class="example">
+				<style>
+				table { border-collapse: collapse; width: 100%; }
+				table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; }
+				table td { border: 1px solid black; }
+				table td:first-child { border-left: 0; }
+				table td:last-child { border-right: 0; }
+				table td, table th { line-height: 1.5em; padding: 0.25em; }
+				</style>
+				<pre class="yaml">
+type: table
+config:
+  data: data-heatmap.csv
+  columns:
+    - name: "Ranks→2018"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 1
+      max: 38
+    - name: "Ranks→2019"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 1
+      max: 38
+    - name: "Ranks→2020"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 1
+      max: 38
+    - name: "Country"
+    - name: "Index→2018"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 71
+      max: 23
+    - name: "Index→2019"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 71
+      max: 23
+    - name: "Index→2020"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 71
+      max: 23
+				</pre>
+			</div>
+			<div class="example">
+				<style>
+				table { border-collapse: collapse; width: 100%; }
+				table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
+				table td { border: 1px solid black; }
+				table td:first-child { border-left: 0; }
+				table td:last-child { border-right: 0; }
+				table td, table th { line-height: 1.5em; padding: 0.25em; }
+				</style>
+				<pre class="yaml">
+type: table
+config:
+  data: data-gapmap.csv
+  columns:
+    - name: "Source→Name"
+      rename: "Source"
+    - name: "Ethnic groups availability→Broad groupings (e.g. White, Black, Asian, mixed, other)→Rating"
+      rename: "Broad groupings\ne.g. White, Black, Asian, mixed, other"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Ethnic groups availability→Ethnic groups (e.g. African, Carribean, other black background)→Rating"
+      rename: "Ethnic groups\ne.g. African, Carribean, other black background"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Ethnic groups availability→Ethnic subgroups (e.g. Somali)→Rating"
+      rename: "Ethnic subgroups\ne.g. Somali"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Ethnic groups availability→Other relevant subgroups (e.g. migration status)→Rating"
+      rename: "Other relevant subgroups\ne.g. migration status"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	
+	<section id="category-chart">
+		<div class="holder padded">
+			<h2>type = category-chart</h2>
+			<div class="example">
+				<pre class="yaml" id="category-chart-yaml">
+type: category-chart
+config:
+  data: data-category-chart.csv
+  # Define the axis
+  axis:
+    x:
+      min: 15
+      max: 58
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+      ticks:
+        - value: 20
+          label: "20%"
+        - value: 30
+          label: "30%"
+        - value: 40
+          label: "40%"
+        - value: 50
+          label: "50%"
+    y:
+      grid:
+        stroke-width: 0.5
+  # Category names come from 
+  category: "Ethnic group"
+  series:
+    - title: "Female"
+      value: "Female→Value (%)"
+      errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      label: "Female→Label"
+      colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Male"
+      value: "Male→Value (%)"
+      errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
+      colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+				</pre>
+			</div>
+		</div>
+
+	</section>
+
+	<section id="line-chart">
+		<div class="holder padded">
+			<h2>type = line-chart</h2>
+			<div class="example"><!--
+				<script>
+				function loadLineChart(config){
+					return fetch(config.data).then(response => {
+						if(!response.ok) throw new Error('Network response was not OK');
+						return response.text();
+					}).then(txt => {
+						var csv = CSV2JSON(txt);
+						var chart = new LineChart(config,csv);
+						return chart.getSVG();
+					}).catch(error => {
+						console.error('Unable to load the data "'+config.data+'"',error);
+					});
+				}
+				</script>-->
+				<pre class="yaml" id="line-chart-yaml">
+type: line-chart
+config:
+  data: data-line-chart.csv   # A basic CSV file with each series in a column
+  source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
+  key:
+    show: true     # Default to false
+    position: "top right"
+  axis:
+    x:  # Horizontal axis
+      min: 2001    # A minimum value
+      max: 2022    # A maximum value
+      # Explicitly define the ticks.
+      # Each tick has a numeric value and a displayed label
+      ticks:
+        - value: 2005
+          label: ""
+        - value: 2010
+          label: "2010"
+        - value: 2015
+          label: ""
+        - value: 2020
+          label: "2020"
+    y:    # The vertical axes
+      min: 0       # A minimum value
+      max: 50      # A maximum value
+      dominant-baseline: text-bottom
+      # Explicitly define the ticks.
+      # Each tick has a numeric value and a displayed label
+      ticks:
+        - value: 0
+          grid: true
+          label: "0"
+          stroke-width: 1
+        - value: 5
+          grid: true
+          label: "5"
+          stroke-width: 1
+        - value: 10
+          grid: true
+          label: "10"
+          stroke-width: 1
+        - value: 15
+          grid: true
+          label: "15"
+          stroke-width: 1
+        - value: 20
+          grid: true
+          label: "20"
+          stroke-width: 1
+        - value: 25
+          grid: true
+          label: "25"
+          stroke-width: 1
+        - value: 30
+          grid: true
+          label: "30"
+          stroke-width: 1
+        - value: 35
+          grid: true
+          label: "35"
+          stroke-width: 1
+        - value: 40
+          grid: true
+          label: "40"
+          stroke-width: 1
+        - value: 45
+          grid: true
+          label: "45"
+          stroke-width: 1
+  series:
+    - title: "16-17"
+      x: "Year"                       # Column heading to use for x-value
+      y: "16-17→rate (%)1"            # Column heading to use fro y-value
+      colour: "#e52e36"               # The hex colour code to use for this series (we can have defaults)
+    - title: "18-24"                  # Displayed in the key and tooltip
+      x: "Year"
+      y: "18-24→rate (%)1"
+      colour: "#f8ab3e"               # The hex colour code to use for this series (we can have defaults)
+    - title: "25-49"                  # Displayed in the key and tooltip
+      x: "Year"
+      y: "25-49→rate (%)1"
+      colour: "#bfb800"               # The hex colour code to use for this series (we can have defaults)
+    - title: "50-64"                  # Displayed in the key and tooltip
+      x: "Year"
+      y: "50 and over→rate (%)1"
+      colour: "#005776"               # The hex colour code to use for this series (we can have defaults)
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	<section id="hexmap">
+		<div class="holder padded">
+			<h2>type = hexmap</h2>
+			<div class="example">
+				<pre class="yaml">
+type: hexmap
+config:
+  data: file.csv
+  layout: layout.hexjson  # A HexJSON file
+  column-id: column-heading-for-id
+  column-value: column-heading-for-value
+  column-label: column-heading-for-label  # If not given we can build a label of the form "column-heading-for-id: column-heading-for-value"
+  scale: Viridis # a named colour scale (we can have a default)
+  min: 0    # optional explicit minimum for scale
+  max: 100 # optional explicit maximum for scale
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	<section id="map">
+		<div class="holder padded">
+			<h2>type = map</h2>
+			<div class="example">
+				<pre class="yaml">
+type: map
+config:
+  data: file.csv
+  layout: polygons.geojson    # A GeoJSON file
+  column-id: column-heading-for-id
+  column-value: column-heading-for-value
+  column-label: column-heading-for-label  # If not given we can build a label of the form "column-heading-for-id: column-heading-for-value"
+  scale: Viridis # a named colour scale (we can have a default)
+  min: 0    # optional explicit minimum for scale
+  max: 100 # optional explicit maximum for scale
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	<section id="dashboard">
+		<div class="holder padded">
+			<h2>type = dashboard</h2>
+			<div class="example">
+				<pre class="yaml">
+type: dashboard
+config:
+  data: file.csv # A basic CSV file
+  column-title: column-heading-for-title  # Appears above the number
+  column-value: column-heading-for-value  # The number to show
+  column-units-pre: column-heading-for-units  # optional column that defines a unit that goes before a number e.g. £
+  column-units-post: column-heading-for-units # optional column that defines a unit that goes after the number e.g. %
+  column-footnote: column-heading-for-footnote    # optional column that appears below the number
+  # Question: do we need to set colours per panel or can we be consistent like https://open-innovations.github.io/leeds-digital-festival-data/ ?
+				</pre>
+			</div>
+		</div>
+	</section>
+
+
 
 	<script src="charts.js"></script>
 	<script src="util.js"></script>
@@ -485,14 +522,23 @@
 	});
 	function processType(yaml,el){
 		var config = yaml.config;
-		if(yaml.type=="table" || yaml.type=="linechart"){
+		console.log(yaml,el);
+		if(yaml.type=="table" || yaml.type=="line-chart" || yaml.type=="category-chart"){
 			fetch(config.data).then(response => {
 				if(!response.ok) throw new Error('Network response was not OK');
 				return response.text();
 			}).then(txt => {
 				var csv = CSV2JSON(txt);
 				var html = "";
-				if(yaml.type=="table") html = buildTable(config,csv);
+				if(yaml.type=="table"){
+					html = buildTable(config,csv);
+				}else if(yaml.type=="line-chart"){
+					chart = new LineChart(config,csv);
+					html = chart.getSVG();
+				}else if(yaml.type=="category-chart"){
+					chart = new CategoryChart(config,csv);
+					html = chart.getSVG();
+				}
 				makeOutput(el,yaml,html);
 			}).catch(error => {
 				console.error('Unable to load the data "'+config.data+'"',error);
@@ -503,11 +549,12 @@
 	function makeOutput(el,yaml,html){
 		var t = document.createElement('h3');
 		t.innerHTML = "Output";
-		el.appendChild(t);
+		el.insertBefore(t, el.firstChild);
+//		el.appendChild(t);
 		var out = document.createElement('div');
 		out.classList.add('output');
 		out.innerHTML = "Type: "+yaml.type;
-		el.appendChild(out);
+		t.insertAdjacentElement('afterend', out);
 		out.innerHTML = html;
 
 	}

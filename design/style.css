@@ -88,13 +88,22 @@ h3 { font-size: 1.4em; padding-top: 1.428571em; }
 h1:first-child, h2:first-child, h3:first-child { margin-top: 0; }
 footer { width: 100%; padding: 1em; padding-bottom: 3em; }
 footer a, footer a:visited { color: inherit; }
-section {  background-color: #efefef; padding: 1em; margin: 1em 0 2em 0; }
+section {  padding: 3em 0; margin: 0; border-bottom: 1px solid #999; counter-reset: ex-counter 0; }
+section .example { background-color: #efefef; padding: 1em; margin-top: 2em; counter-increment: ex-counter 1; }
+section .example:before { content: "Example " counter(ex-counter) ""; font-weight: bold; font-size: 1.5em; font-family: Poppins,sans-serif; margin-bottom: 1em; display: block; }
+section .example:first-child { margin-bottom: 0; }
 section h2, section h3 { padding-top: 0; }
 section pre { margin-bottom: 1em; }
 code, pre { font-family: monospace; color: #555555; background-color: #dfdfdf; }
+code { display: inline-block; padding: 0; background: transparent; }
+code > span { padding: 0.125em 0.25em; line-height: 1em; background-color: #666; color: #fff; }
 pre { padding: 1em; overflow-x: auto; }
-.output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; }
+.output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; margin-bottom: 1em; }
 .output > * { min-height: 1.5em; line-height: 1.5em; }
+
+.ok { background: #0DBC37; }
+.warn { background: #F9BC26; }
+.error { background: #D60303; }
 
 /* Highlight */
 .hljs-attr { color: #2f529f; }
