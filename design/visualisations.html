@@ -58,19 +58,6 @@
 			table td:last-child { border-right: 0; }
 			table td, table th { line-height: 1.5em; padding: 0.25em; }
 			</style>
-			<script>
-
-			function loadTable(config){
-				return fetch(config.data).then(response => {
-					if(!response.ok) throw new Error('Network response was not OK');
-					return response.text();
-				}).then(txt => {
-					return buildTable(txt,config);
-				}).catch(error => {
-					console.error('Unable to load the data "'+config.data+'"',error);
-				});
-			}
-			</script>
 			<pre class="yaml">
             type: table
             config:
@@ -94,19 +81,6 @@
 			table td:last-child { border-right: 0; }
 			table td, table th { line-height: 1.5em; padding: 0.25em; }
 			</style>
-			<script>
-
-			function loadHeatTable(config){
-				return fetch(config.data).then(response => {
-					if(!response.ok) throw new Error('Network response was not OK');
-					return response.text();
-				}).then(txt => {
-					return buildTable(txt,config);
-				}).catch(error => {
-					console.error('Unable to load the data "'+config.data+'"',error);
-				});
-			}
-			</script>
 			<pre class="yaml">
             type: table
             config:
@@ -162,19 +136,6 @@
 			table td:last-child { border-right: 0; }
 			table td, table th { line-height: 1.5em; padding: 0.25em; }
 			</style>
-			<script>
-
-			function loadGapMapTable(config){
-				return fetch(config.data).then(response => {
-					if(!response.ok) throw new Error('Network response was not OK');
-					return response.text();
-				}).then(txt => {
-					return buildTable(txt,config);
-				}).catch(error => {
-					console.error('Unable to load the data "'+config.data+'"',error);
-				});
-			}
-			</script>
 			<pre class="yaml">
             type: table
             config:
@@ -503,21 +464,42 @@
 				t.insertAdjacentElement('afterend',d);
 				hljs.highlightElement(d);
 				if(typeof window[fn]==="function") html = window[fn].call(this,yaml.config)||"";
-			}
-			if(typeof html==="string"){
-				makeOutput(el,yaml,html);
+				
+				if(typeof html==="string"){
+					makeOutput(el,yaml,html);
+				}else{
+					let result = html.then(function(response){
+						makeOutput(el,yaml,response);
+						return response;
+					})
+				}
 			}else{
-				let result = html.then(function(response){
-					makeOutput(el,yaml,response);
-					return response;
-				})
+				processType(yaml,el);
 			}
 			block.yaml = yaml;
+
 			blocks.push(block);
 			return;
 		});
 
 	});
+	function processType(yaml,el){
+		var config = yaml.config;
+		if(yaml.type=="table" || yaml.type=="linechart"){
+			fetch(config.data).then(response => {
+				if(!response.ok) throw new Error('Network response was not OK');
+				return response.text();
+			}).then(txt => {
+				var csv = CSV2JSON(txt);
+				var html = "";
+				if(yaml.type=="table") html = buildTable(config,csv);
+				makeOutput(el,yaml,html);
+			}).catch(error => {
+				console.error('Unable to load the data "'+config.data+'"',error);
+			});
+		}
+	}
+
 	function makeOutput(el,yaml,html){
 		var t = document.createElement('h3');
 		t.innerHTML = "Output";

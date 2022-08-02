@@ -196,10 +196,10 @@ function clone(hash) {
 	var object = JSON.parse(json);
 	return object;
 }
-function buildTable(txt,config){
-	var r,r2,c,c2,i,j,html,csv,done = {'data':[],'head':[]};
+function buildTable(config,csv){
+	var r,r2,c,c2,i,j,html,done = {'data':[],'head':[]};
 
-	csv = CSV2JSON(txt);
+	
 
 	if(!config.columns) config.columns = [];
 
@@ -313,7 +313,7 @@ function buildTable(txt,config){
 					col = new Colour(bg);
 					html += 'color:'+col.text+';';
 				}
-				html += '">'+(csv.data[r][n]||"")+'</td>';
+				html += '">'+(typeof csv.data[r][n]=="undefined" ? "" : csv.data[r][n])+'</td>';
 			}
 		}
 		html += '</tr>';
