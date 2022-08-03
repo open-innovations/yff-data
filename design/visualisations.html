@@ -287,6 +287,8 @@ config:
     y:             # The vertical axes
       min: 0       # A minimum value
       max: 50      # A maximum value
+      title:
+        label: "Unemployment Rate %"
       dominant-baseline: text-bottom
       # Explicitly define the ticks.
       # Each tick has a numeric value and a displayed label
@@ -294,56 +296,47 @@ config:
         - value: 0
           grid: true
           label: "0"
-          font-weight: bold
         - value: 5
           grid: true
           label: "5"
-          font-weight: bold
         - value: 10
           grid: true
           label: "10"
-          font-weight: bold
         - value: 15
           grid: true
           label: "15"
-          font-weight: bold
         - value: 20
           grid: true
           label: "20"
-          font-weight: bold
         - value: 25
           grid: true
           label: "25"
-          font-weight: bold
         - value: 30
           grid: true
           label: "30"
-          font-weight: bold
         - value: 35
           grid: true
           label: "35"
-          font-weight: bold
         - value: 40
           grid: true
           label: "40"
-          font-weight: bold
         - value: 45
           grid: true
           label: "45"
-          font-weight: bold
   series:
     - title: "16-17"
       x: "Year"                       # Column heading to use for x-value
       y: "16-17→rate (%)1"            # Column heading to use fro y-value
-      colour: "#e52e36"               # The hex colour code to use for this series (we can have defaults)
+      colour: "#E52E36"               # The hex colour code to use for this series (we can have defaults)
+      size: 10
     - title: "18-24"                  # Displayed in the key and tooltip
       x: "Year"
       y: "18-24→rate (%)1"
-      colour: "#f8ab3e"               # The hex colour code to use for this series (we can have defaults)
+      colour: "#F7AB3D"               # The hex colour code to use for this series (we can have defaults)
     - title: "25-49"                  # Displayed in the key and tooltip
       x: "Year"
       y: "25-49→rate (%)1"
-      colour: "#bfb800"               # The hex colour code to use for this series (we can have defaults)
+      colour: "#C7B200"               # The hex colour code to use for this series (we can have defaults)
     - title: "50-64"                  # Displayed in the key and tooltip
       x: "Year"
       y: "50 and over→rate (%)1"
@@ -414,6 +407,81 @@ config:
       colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
 				</pre>
 			</div>
+
+
+
+
+			<div class="example">
+				<p>Dummy data to show lots of values.</p>
+				<pre class="yaml" id="category-chart-yaml">
+type: category-chart
+config:
+  data: data-employment-by-region.csv
+  # Define the axis
+  key:
+    show: true     # Default to false
+    position: "top right"
+  axis:
+    x:
+      min: 0
+      max: 100
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+      ticks:
+        - value: 25
+          label: "25%"
+        - value: 50
+          label: "50%"
+        - value: 75
+          label: "75%"
+    y:
+      grid:
+        stroke-width: 0.5
+  category: "Region"  # Category names come from
+  series:
+    - title: "Bangladeshi"
+      value: "Bangladeshi→Value (%)"
+      errors: ["Bangladeshi→- (%)","Bangladeshi→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#7D2248"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Black/African/Caribbean/Black British"
+      value: "Black/African/Caribbean/Black British→Value (%)"
+      errors: ["Black/African/Caribbean/Black British→- (%)","Black/African/Caribbean/Black British→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#75b8d3"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Chinese"
+      value: "Chinese→Value (%)"
+      errors: ["Chinese→- (%)","Chinese→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#fe9400"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Indian"
+      value: "Indian→Value (%)"
+      errors: ["Indian→- (%)","Indian→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#274b57"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Mixed/Multiple"
+      value: "Mixed/Multiple→Value (%)"
+      errors: ["Mixed/Multiple→- (%)","Mixed/Multiple→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#E55912"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Other"
+      value: "Other→Value (%)"
+      errors: ["Other→- (%)","Other→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#0685cc"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Pakistani"
+      value: "Pakistani→Value (%)"
+      errors: ["Pakistani→- (%)","Pakistani→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#874245"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "Other Asian"
+      value: "Other Asian→Value (%)"
+      errors: ["Other Asian→- (%)","Other Asian→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#39c2b0"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+    - title: "White"
+      value: "White→Value (%)"
+      errors: ["White→- (%)","White→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+      colour: "#fdc358"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
+				</pre>
+			</div>
+
+
+
+
 		</div>
 	</section>
 
@@ -580,7 +648,6 @@ config:
 	});
 	function processType(yaml,el){
 		var config = yaml.config;
-		console.log(yaml,el);
 		if(yaml.type=="table" || yaml.type=="line-chart" || yaml.type=="category-chart"){
 			fetch(config.data).then(response => {
 				if(!response.ok) throw new Error('Network response was not OK');
@@ -611,47 +678,148 @@ config:
 		var t = document.createElement('h3');
 		t.innerHTML = "Output";
 		el.insertBefore(t, el.firstChild);
-//		el.appendChild(t);
 		var out = document.createElement('div');
 		out.classList.add('output');
 		out.innerHTML = "Type: "+yaml.type;
 		t.insertAdjacentElement('afterend', out);
 		out.innerHTML = html;
 
-
 		// Add interactivity
-		if(yaml.type=="line-chart" || yaml.type=="category-chart"){
-			interactiveChart(out);
-		}
+		if(yaml.type=="line-chart" || yaml.type=="category-chart") new InteractiveChart(out);
 	}
-
-	function interactiveChart(el){
+	var ns = 'http://www.w3.org/2000/svg';
+	function svgEl(t){ return document.createElementNS(ns,t); }
+	function add(el,to){ return to.appendChild(el); }
+	function setAttr(el,prop){
+		for(var p in prop) el.setAttribute(p,prop[p]);
+		return el;
+	}
+	function addEv(ev,el,data,fn){
+		el.addEventListener(ev,function(e){
+			e.data = data;
+			fn.call(data.this||this,e);
+		});
+	}
+	function InteractiveChart(el){
+		var svg = el.querySelector('svg');
 		var key = el.querySelector('.key');
+		var seriesgroup = el.querySelectorAll('.data');
 		var series = el.querySelectorAll('.series');
 		var s,d;
+		var pts = el.querySelectorAll('.data .series g');
+		this.enabled = true;
+		this.selected = null;
 		
-		if(key){
-			var keyseries = key.querySelectorAll('.data-series');
-			for(var s = 0; s < keyseries.length; s++){
-				keyseries[s].addEventListener('mouseover',function(e){
-					var d = e.target.closest('g').getAttribute('data-series');
-					var selected = el.querySelector('.series-'+d);
-					for(var s = 0; s < series.length; s++){
+		this.setSeries = function(e){
+			this.enabled = !this.enabled;
+			if(this.enabled) e.data.s = null;
+			this.highlightSeries(e);
+		};
+		this.clearSeries = function(e){
+			if(this.enabled){
+				e.data.s = null;
+				this.enabled = true;
+				this.highlightSeries(e);
+			}
+		};
+		this.highlightSeries = function(e){
+			if(this.enabled){
+				var d = e.data.s;
+				this.selected = d;
+				var selected = el.querySelector('.series-'+d);
+				for(var s = 0; s < series.length; s++){
+					if(d){
 						if(series[s]==selected){
 							series[s].style.opacity = 1;
 							// Simulate z-index by moving to the end
 							series[s].parentNode.appendChild(series[s]);
 						}else{
-							series[s].style.opacity = 0.3;
+							series[s].style.opacity = 0.15;
 						}
+					}else{
+						series[s].style.opacity = 1;
 					}
-				});
+				}
 			}
-			el.addEventListener('mouseout',function(e){
-				for(var s = 0; s < series.length; s++) series[s].style.opacity = 1;
-			});
-		}
+		};
+		this.tooltip = function(e){
+			console.log('tooltip',e);
+		};
+		if(key){
+			// We build an HTML version of the key
+			var newkey = document.createElement('div');
+			newkey.classList.add('key');
+			el.insertBefore(newkey, el.firstChild);
 
+
+			var keyseries = key.querySelectorAll('.data-series');
+			for(var s = 0; s < keyseries.length; s++){
+				// Create a key item <div>
+				keyitem = document.createElement('div');
+				keyitem.classList.add('keyitem');
+				add(keyitem,newkey);
+
+				// Make the new SVG just for the icon
+				icon = svgEl('svg');
+				add(icon,keyitem);
+
+				// Get the text for the series
+				txt = document.createElement('span');
+				txt.classList.add('label');
+				txt.innerHTML = keyseries[s].querySelector('text tspan').innerHTML;
+				add(txt,keyitem);
+
+				// Now remove the text label (we'll recreate it with HTML)
+				keyseries[s].querySelector('text').parentNode.removeChild(keyseries[s].querySelector('text'));
+				// Get the existing viewBox
+				viewBox = svg.getAttribute('viewBox').split(/ /);
+				xscale = parseFloat(viewBox[2])/svg.getBoundingClientRect().width;
+				yscale = parseFloat(viewBox[3])/svg.getBoundingClientRect().height;
+				viewBox[0] = 0;
+				viewBox[1] = 0;
+				viewBox[2] = parseFloat(viewBox[2])*keyseries[s].getBoundingClientRect().width/svg.getBoundingClientRect().width;
+				viewBox[3] = parseFloat(viewBox[3])*keyseries[s].getBoundingClientRect().height/svg.getBoundingClientRect().height;
+				// Get the offsets
+				dx = (keyseries[s].getBoundingClientRect().x-svg.getBoundingClientRect().x)*xscale;
+				dy = (keyseries[s].getBoundingClientRect().y-svg.getBoundingClientRect().y)*yscale;
+
+				setAttr(keyseries[s],{'transform':'translate(-'+dx+' -'+dy+')'});
+				add(keyseries[s],icon);
+				setAttr(icon,{'width':keyseries[s].getBoundingClientRect().width,'height':keyseries[s].getBoundingClientRect().height,'viewBox':viewBox.join(" ")});
+				setAttr(keyitem,{'data-series':keyseries[s].getAttribute('data-series'),'tabindex':0,'title':'Highlight series: '+txt.innerHTML});
+
+				addEv('mouseover',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
+				addEv('focus',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
+				addEv('click',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.setSeries);
+				addEv('mouseout',keyitem,{'this':this,'s':null},this.highlightSeries);
+			}
+			// Hide the original key
+			key.style.display = 'none';
+			addEv('mouseleave',el,{'this':this,'s':''},this.clearSeries);
+		}
+		if(pts){
+			for(var p = 0; p < pts.length; p++){
+				//if(p < 5) console.log(pts[p]);
+				addEv('mouseenter',pts[p],{'this':this},this.tooltip);
+			}
+		}
+		//addEv('mouseenter',svg,{'this':this},this.tooltip);
+		return this;
+	}
+	function highlightSeries(e){
+		var d = e.data.s;
+		var series = e.data.series;
+		var el = e.data.el;
+		var selected = el.querySelector('.series-'+d);
+		for(var s = 0; s < series.length; s++){
+			if(series[s]==selected){
+				series[s].style.opacity = 1;
+				// Simulate z-index by moving to the end
+				series[s].parentNode.appendChild(series[s]);
+			}else{
+				series[s].style.opacity = 0.15;
+			}
+		}
 	}
 	</script>
 	

@@ -11,10 +11,10 @@ function CategoryChart(config,csv){
 		'font-size': 16,
 		'key':{
 			'show':false,
-			'border':{'stroke':'black','stroke-width':1,'fill':'none'},
+			'border':{'stroke':'black','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0}
 		},
-		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#aaa'},'labels':{}},'y':{'padding':10,'labels':{}}},
+		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
 		'duration': '0.3s',
 		'buildSeries': function(){
 			console.log('buildSeries');
@@ -31,7 +31,7 @@ function CategoryChart(config,csv){
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){
 					categoryoffset = csv.rows.length-i-1;
-					seriesoffset = (config.series.length-s-1.5)*(0.8/config.series.length);
+					seriesoffset = ((config.series.length/2)-s-0.5)*(0.8/config.series.length);
 					label = config.series[s].title+"\n"+csv.columns[config.category][i].replace(/\\n/g,"")+': '+csv.columns[config.series[s].value][i];
 					label += (csv.columns[config.series[s].errors[0]][i]==csv.columns[config.series[s].errors[1]][i] ? ' ±'+csv.columns[config.series[s].errors[0]][i] : ' (+'+csv.columns[config.series[s].errors[1]][i]+' / -'+csv.columns[config.series[s].errors[0]][i]+')');
 					if(config.series[s].label && csv.columns[config.series[s].tooltip]) label = csv.columns[config.series[s].tooltip][i];
@@ -53,7 +53,7 @@ function CategoryChart(config,csv){
 			// Build y-axis labels
 			for(i = 0 ; i < csv.rows.length; i++){
 				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':csv.rows[i][config.category].replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][config.category]}};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':csv.rows[i][config.category].replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][config.category]},'font-weight':'bold'};
 				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
 			}
 			return this;
@@ -117,7 +117,7 @@ function LineChart(config,csv){
 			'border':{'stroke':'black','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0}
 		},
-		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#aaa'},'labels':{}},'y':{'padding':10,'labels':{}}},
+		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
 		'duration': '0.3s',
 		'updatePadding': function(){
 			var l,pad,len,ax,lines,align;
@@ -160,7 +160,7 @@ function LineChart(config,csv){
 
 function Chart(config,csv){
 	if(!config) config = {};
-	var lbl,opt,id,svg,xmin,ymin,xmax,ymax,w,h,i,ax,key;
+	var lbl,opt,id,svg,xmin,ymin,xmax,ymax,w,h,i,ax,key,seriesgroup;
 	lbl = 'categorychart';
 
 	var _obj = this;
@@ -180,7 +180,7 @@ function Chart(config,csv){
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0}
 		},
 		'axis':{
-			'x':{'padding':10,'grid':{'show':true,'stroke':'#aaa'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'},
+			'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'},
 			'y':{'padding':10,'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'}
 		},
 		'duration': '0.3s'
@@ -222,6 +222,8 @@ function Chart(config,csv){
 			rect = svgEl("rect");
 			setAttr(rect,{'x':0,'y':0,'width':this.w,'height':this.h});
 			add(rect,clip);
+			seriesgroup = svgEl('g');
+			seriesgroup.classList.add('data');
 		}
 
 		if(typeof this.opt.buildAxes==="function"){
@@ -247,7 +249,7 @@ function Chart(config,csv){
 			for(var s = 0; s < config.series.length; s++){
 				mergeDeep(config.series[s],{
 					'line':{'show':true,'color': (config.series[s].colour||'black')},
-					'points':{'size':0, 'color': (config.series[s].colour||'black')}
+					'points':{'size':2, 'color': (config.series[s].colour||'black')}
 				});
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){
@@ -264,6 +266,9 @@ function Chart(config,csv){
 				this.series.push(new Series(s,config.series[s],data));
 			}
 		}
+
+		if(seriesgroup) add(seriesgroup,svg);
+
 		this.addSeries();
 		return this;
 	}
@@ -309,7 +314,7 @@ function Chart(config,csv){
 		// Add getXY function for each series
 		for(var s = 0; s < this.series.length; s++){
 			this.series[s].setProperties({'getXY':function(x,y){ return _obj.getXY(x,y); },'id':id,'lbl':lbl});
-			this.series[s].addTo(svg);
+			this.series[s].addTo(seriesgroup);
 		}
 		return this;
 	};
@@ -328,17 +333,6 @@ function Chart(config,csv){
 		// Update axes
 		for(ax in this.axes) this.axes[ax].update();
 
-/*
-		t = '<style>';
-		t += '\t.'+lbl+'-series circle { transition: transform '+this.opt.duration+' linear, r '+this.opt.duration+' linear; }\n';
-		t += '\t.'+lbl+'-series circle:focus { stroke-width: 4; }\n';
-		t += '\t.'+lbl+'-series:hover path.line, .'+lbl+'-series.on path.line { cursor:pointer; }\n';
-
-		for(i = 0; i < series.length; i++){
-			series[i].draw().addTo(svg);
-			t += '\t.'+lbl+'-series-'+(i+1)+':hover path.line, .'+lbl+'-series-'+(i+1)+'.on path.line { stroke-width: '+(series[i].getProperty('stroke-width-hover')||4)+'; }\n';
-		}
-*/
 		if(this.opt.key.show){
 			fs = this.opt['font-size']||16;
 			pd = this.opt.key.padding||fs*0.5;
@@ -405,16 +399,9 @@ function Chart(config,csv){
 				if(p.line.color) line.setAttribute('stroke',p.line.color||"");
 			}
 		}
-		/*
-		t += '\t.'+lbl+'-grid.'+lbl+'-grid-x .'+lbl+'-grid-title,.'+lbl+'-grid.'+lbl+'-grid-y .'+lbl+'-grid-title { text-anchor: middle; dominant-baseline: central; }\n';
-		t += '\t.'+lbl+'-grid.'+lbl+'-grid-y text { dominant-baseline: '+((this.opt.axis.y.labels ? this.opt.axis.y.labels.baseline : '')||"middle")+'; }\n';
-		t += '\t.'+lbl+'-tooltip { background: black; color: white; padding: 0.25em 0.5em; margin-top: -1em; transition: left 0.1s linear, top 0.1s linear; border-radius: 4px; white-space: nowrap; }\n';
-		t += '\t.'+lbl+'-tooltip::after { content: ""; position: absolute; bottom: auto; width: 0; height: 0; border: 0.5em solid transparent; left: 50%; top: 100%; transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: black; }\n';
-		t += '\t</style>\n';
-		if(defs) defs.innerHTML = t;
-*/
+
 		// Update series
-		for(i = 0; i < this.series.length; i++) this.series[i].update().addTo(svg);
+		for(i = 0; i < this.series.length; i++) this.series[i].update().addTo(seriesgroup);
 
 		return this;
 	};
@@ -449,8 +436,10 @@ function Axis(ax,from,to,attr){
 		'right': 0,
 		'top': 0,
 		'bottom': 0,
+		'font-family': '"Century Gothic",sans-serif',
+		'font-weight': 'bold',
 		'line':{'show':true,stroke:'black','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
-		'grid':{'show':false,'stroke':'black','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
+		'grid':{'show':false,'stroke':'#B2B2B2','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
 		title:{},
 		ticks:{'show':true},
 		labels:{},
@@ -493,7 +482,7 @@ function Axis(ax,from,to,attr){
 		this.title.innerHTML = opt.title.label||"";
 		x = (ax=="x" ? (opt.left + (opt.width-opt.right-opt.left)/2):fs/2);
 		y = (ax=="y" ? (opt.top + (opt.height-opt.top-opt.bottom)/2):(opt.height-fs/2));
-		setAttr(this.title,{'x':x,'y':y,'transform':(ax=="y"?'rotate(-90,'+x+','+y+')':'')});
+		setAttr(this.title,{'x':x,'y':y,'dx':-10,'text-anchor':'middle','transform':(ax=="y"?'rotate(-90,'+x+','+y+')':''),'font-family':opt['font-family']||'sans-serif','font-weight':opt['font-weight']});
 		this.el.removeAttribute('style');
 		// Check if we need to add a line
 		if(!this.line.el){
@@ -524,6 +513,7 @@ function Axis(ax,from,to,attr){
 			if(typeof t!=="undefined"){
 
 				if(typeof opt.labels[t]==="undefined") opt.labels[t] = {'label':''};
+				if(!opt.labels[t]['font-weight']) opt.labels[t]['font-weight'] = "bold";
 				align = opt.labels[t].align||(ax=="x" ? "bottom" : "left");
 				talign = opt.labels[t]['text-anchor']||(ax=="y" ? (align=="left" ? "end":"start") : "middle");
 				baseline = (ax=="x" ? ((align=="bottom") ? "hanging" : "text-bottom") : "middle");
@@ -612,8 +602,8 @@ function Series(s,props,data){
 
 
 	// Add the output to the SVG
-	this.addTo = function(svg){
-		add(this.el,svg);
+	this.addTo = function(el){
+		add(this.el,el);
 		return this;
 	};
 
