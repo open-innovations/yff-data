@@ -62,7 +62,7 @@ pre { padding: 1em; overflow-x: auto; }
 ul { list-style: disc; margin: 1em 0 1em 2em; line-height: 1.5em; }
 ul li { margin-bottom: 0.5em; }
 
-.tooltip { color: black; margin-top: -0.75em; transition: left 0.05s linear, top 0.05s linear; white-space: nowrap; font-family: 'Century Gothic', sans-serif; }
+.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: 'Century Gothic', sans-serif; }
 .tooltip .inner { padding: 1em; }
 circle.selected { r: 5px; }
 
