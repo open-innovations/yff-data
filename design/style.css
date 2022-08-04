@@ -55,12 +55,16 @@ pre { padding: 1em; overflow-x: auto; }
 .output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; margin-bottom: 1em; }
 .output > * { min-height: 1.5em; line-height: 1.5em; }
 
-.key:before { content: "Key:"; font-family: 'Century Gothic'; font-weight: bold; }
+.key:before { content: "Key:"; font-family: 'Century Gothic', sans-serif; font-weight: bold; }
 .key { display: inline-block; text-align: center; background: #efefef; padding: 0.5em; margin-bottom: 1em; }
-.keyitem { display: inline-block; padding-right: 0.5em; font-family: 'Century Gothic'; font-weight: bold; cursor: pointer; }
+.keyitem { display: inline-block; padding-right: 0.5em; font-family: 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; }
 .keyitem:hover { background: white; }
 ul { list-style: disc; margin: 1em 0 1em 2em; line-height: 1.5em; }
 ul li { margin-bottom: 0.5em; }
+
+.tooltip { color: black; margin-top: -0.75em; transition: left 0.05s linear, top 0.05s linear; white-space: nowrap; font-family: 'Century Gothic', sans-serif; }
+.tooltip .inner { padding: 1em; }
+circle.selected { r: 5px; }
 
 .ok { background: #0DBC37; }
 .warn { background: #F9BC26; }

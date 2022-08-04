@@ -239,6 +239,8 @@ config:
     x:  # Horizontal axis
       min: 2001    # A minimum value
       max: 2022    # A maximum value
+      grid:
+        stroke: "#efefef"
       # Explicitly define the ticks.
       # Each tick has a numeric value and a displayed label
       ticks:
@@ -551,6 +553,7 @@ config:
 	<script src="util.js"></script>
 	<script src="colour.js"></script>
 	<script src="js-yaml.js"></script>
+	<script src="interactive.js"></script>
 
 	<script>
 	var blocks = [];
@@ -646,6 +649,7 @@ config:
 		});
 
 	});
+
 	function processType(yaml,el){
 		var config = yaml.config;
 		if(yaml.type=="table" || yaml.type=="line-chart" || yaml.type=="category-chart"){
@@ -687,140 +691,8 @@ config:
 		// Add interactivity
 		if(yaml.type=="line-chart" || yaml.type=="category-chart") new InteractiveChart(out);
 	}
-	var ns = 'http://www.w3.org/2000/svg';
-	function svgEl(t){ return document.createElementNS(ns,t); }
-	function add(el,to){ return to.appendChild(el); }
-	function setAttr(el,prop){
-		for(var p in prop) el.setAttribute(p,prop[p]);
-		return el;
-	}
-	function addEv(ev,el,data,fn){
-		el.addEventListener(ev,function(e){
-			e.data = data;
-			fn.call(data.this||this,e);
-		});
-	}
-	function InteractiveChart(el){
-		var svg = el.querySelector('svg');
-		var key = el.querySelector('.key');
-		var seriesgroup = el.querySelectorAll('.data');
-		var series = el.querySelectorAll('.series');
-		var s,d;
-		var pts = el.querySelectorAll('.data .series g');
-		this.enabled = true;
-		this.selected = null;
-		
-		this.setSeries = function(e){
-			this.enabled = !this.enabled;
-			if(this.enabled) e.data.s = null;
-			this.highlightSeries(e);
-		};
-		this.clearSeries = function(e){
-			if(this.enabled){
-				e.data.s = null;
-				this.enabled = true;
-				this.highlightSeries(e);
-			}
-		};
-		this.highlightSeries = function(e){
-			if(this.enabled){
-				var d = e.data.s;
-				this.selected = d;
-				var selected = el.querySelector('.series-'+d);
-				for(var s = 0; s < series.length; s++){
-					if(d){
-						if(series[s]==selected){
-							series[s].style.opacity = 1;
-							// Simulate z-index by moving to the end
-							series[s].parentNode.appendChild(series[s]);
-						}else{
-							series[s].style.opacity = 0.15;
-						}
-					}else{
-						series[s].style.opacity = 1;
-					}
-				}
-			}
-		};
-		this.tooltip = function(e){
-			console.log('tooltip',e);
-		};
-		if(key){
-			// We build an HTML version of the key
-			var newkey = document.createElement('div');
-			newkey.classList.add('key');
-			el.insertBefore(newkey, el.firstChild);
 
 
-			var keyseries = key.querySelectorAll('.data-series');
-			for(var s = 0; s < keyseries.length; s++){
-				// Create a key item <div>
-				keyitem = document.createElement('div');
-				keyitem.classList.add('keyitem');
-				add(keyitem,newkey);
-
-				// Make the new SVG just for the icon
-				icon = svgEl('svg');
-				add(icon,keyitem);
-
-				// Get the text for the series
-				txt = document.createElement('span');
-				txt.classList.add('label');
-				txt.innerHTML = keyseries[s].querySelector('text tspan').innerHTML;
-				add(txt,keyitem);
-
-				// Now remove the text label (we'll recreate it with HTML)
-				keyseries[s].querySelector('text').parentNode.removeChild(keyseries[s].querySelector('text'));
-				// Get the existing viewBox
-				viewBox = svg.getAttribute('viewBox').split(/ /);
-				xscale = parseFloat(viewBox[2])/svg.getBoundingClientRect().width;
-				yscale = parseFloat(viewBox[3])/svg.getBoundingClientRect().height;
-				viewBox[0] = 0;
-				viewBox[1] = 0;
-				viewBox[2] = parseFloat(viewBox[2])*keyseries[s].getBoundingClientRect().width/svg.getBoundingClientRect().width;
-				viewBox[3] = parseFloat(viewBox[3])*keyseries[s].getBoundingClientRect().height/svg.getBoundingClientRect().height;
-				// Get the offsets
-				dx = (keyseries[s].getBoundingClientRect().x-svg.getBoundingClientRect().x)*xscale;
-				dy = (keyseries[s].getBoundingClientRect().y-svg.getBoundingClientRect().y)*yscale;
-
-				setAttr(keyseries[s],{'transform':'translate(-'+dx+' -'+dy+')'});
-				add(keyseries[s],icon);
-				setAttr(icon,{'width':keyseries[s].getBoundingClientRect().width,'height':keyseries[s].getBoundingClientRect().height,'viewBox':viewBox.join(" ")});
-				setAttr(keyitem,{'data-series':keyseries[s].getAttribute('data-series'),'tabindex':0,'title':'Highlight series: '+txt.innerHTML});
-
-				addEv('mouseover',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
-				addEv('focus',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
-				addEv('click',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.setSeries);
-				addEv('mouseout',keyitem,{'this':this,'s':null},this.highlightSeries);
-			}
-			// Hide the original key
-			key.style.display = 'none';
-			addEv('mouseleave',el,{'this':this,'s':''},this.clearSeries);
-		}
-		if(pts){
-			for(var p = 0; p < pts.length; p++){
-				//if(p < 5) console.log(pts[p]);
-				addEv('mouseenter',pts[p],{'this':this},this.tooltip);
-			}
-		}
-		//addEv('mouseenter',svg,{'this':this},this.tooltip);
-		return this;
-	}
-	function highlightSeries(e){
-		var d = e.data.s;
-		var series = e.data.series;
-		var el = e.data.el;
-		var selected = el.querySelector('.series-'+d);
-		for(var s = 0; s < series.length; s++){
-			if(series[s]==selected){
-				series[s].style.opacity = 1;
-				// Simulate z-index by moving to the end
-				series[s].parentNode.appendChild(series[s]);
-			}else{
-				series[s].style.opacity = 0.15;
-			}
-		}
-	}
 	</script>
 	
 </body>

@@ -2,6 +2,7 @@ var ns = 'http://www.w3.org/2000/svg';
 
 function CategoryChart(config,csv){
 	var opt = {
+		'type': 'category-chart',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
 		'left':0,
 		'right':0,
@@ -17,7 +18,6 @@ function CategoryChart(config,csv){
 		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
 		'duration': '0.3s',
 		'buildSeries': function(){
-			console.log('buildSeries');
 			// Series
 			var data,datum,label;
 			for(var s = 0; s < config.series.length; s++){
@@ -105,6 +105,7 @@ function CategoryChart(config,csv){
 
 function LineChart(config,csv){
 	var opt = {
+		'type': 'line-chart',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
 		'left':0,
 		'right':0,
@@ -166,6 +167,7 @@ function Chart(config,csv){
 	var _obj = this;
 
 	this.opt = {
+		'type': 'chart',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
 		'left':0,
 		'right':0,
@@ -210,7 +212,7 @@ function Chart(config,csv){
 		// Create SVG container
 		if(!svg){
 			svg = svgEl('svg');
-			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;','preserveAspectRatio':'none'};
+			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;','preserveAspectRatio':'none','data-type':config.type};
 			if(this.opt.width) svgopt.width = this.opt.width;
 			if(this.opt.height) svgopt.height = this.opt.height;
 			setAttr(svg,svgopt);
@@ -249,7 +251,7 @@ function Chart(config,csv){
 			for(var s = 0; s < config.series.length; s++){
 				mergeDeep(config.series[s],{
 					'line':{'show':true,'color': (config.series[s].colour||'black')},
-					'points':{'size':2, 'color': (config.series[s].colour||'black')}
+					'points':{'size':1, 'color': (config.series[s].colour||'black')}
 				});
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){
@@ -577,7 +579,7 @@ function Axis(ax,from,to,attr){
 						if(ax=="x") setAttr(this.ticks[t].line.el,{'x1':0,'x2':0,'y1':-xsign*len,'y2':-(b.y-a.y)});
 						else if(ax=="y") setAttr(this.ticks[t].line.el,{'x1':-ysign*len,'x2':(a.x-b.x),'y1':0,'y2':0});
 						// Set generic properties for the line
-						setAttr(this.ticks[t].line.el,{'stroke':opt.grid.stroke,'stroke-width':opt.grid['stroke-width']||1,'stroke-dasharray':opt.grid['stroke-dasharray']||''});
+						setAttr(this.ticks[t].line.el,{'stroke':(opt.labels[t]['stroke']||opt.grid.stroke),'stroke-width':(opt.labels[t]['stroke-width']||opt.grid['stroke-width']||1),'stroke-dasharray':(opt.labels[t]['stroke-dasharray']||opt.grid['stroke-dasharray']||'')});
 					}
 					this.ticks[t].g.animate.set({'transform':{'to':'translate('+b.x+','+b.y+')'}});
 				}
@@ -649,12 +651,12 @@ function Series(s,props,data){
 		setAttr(line.el,{'style':(opt.line.show ? 'display:block':'display:none'),'stroke':(opt.line.color||'black'),'stroke-width':this.getStyle('line','stroke-width'),'stroke-linecap':this.getStyle('line','stroke-linecap'),'stroke-linejoin':this.getStyle('line','stroke-linejoin'),'stroke-dasharray':this.getStyle('line','stroke-dasharray'),'fill':this.getStyle('line','fill'),'vector-effect':'non-scaling-stroke'});
 
 		for(i = pts.length; i < data.length; i++){
-			pt = svgEl("g");
 			datum = {'data-i':i};
+			pts[i] = {'point':svgEl('circle'),'title':svgEl("title"),'old':{}};
+
 			// Add any data attributes
 			for(d in data[i].data) datum['data-'+d] = data[i].data[d];
-			setAttr(pt,datum);
-			pts[i] = {'el':pt,'point':svgEl('circle'),'title':svgEl("title"),'old':{}};
+			setAttr(pts[i].point,datum);
 
 			o = {'cx':0,'cy':0,'tabindex':0};
 			o['data-series'] = s+1;
@@ -670,14 +672,13 @@ function Series(s,props,data){
 			if(pts[i].errorbar){
 				for(ax in data[i].error){
 					pts[i].errorbar[ax] = svgEl("line");
-					add(pts[i].errorbar[ax],pt);
+					add(pts[i].errorbar[ax],this.el);
 				}
 			}
 			if(pts[i].point){
-				add(pts[i].point,pt);
+				add(pts[i].point,this.el);
 			}
 
-			add(pt,this.el);
 			// Add animations
 			pts[i].c = new Animate(pts[i].point,{'duration':opt.duration});
 		}
