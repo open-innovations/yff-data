@@ -130,7 +130,7 @@
 			bb = series[s][i].el.getBoundingClientRect();	// Bounding box of the element
 			bbo = el.getBoundingClientRect(); // Bounding box of SVG holder
 
-			this.tip.setAttribute('style','position:absolute;left:'+Math.round(bb.left + bb.width/2 - bbo.left)+'px;top:'+Math.round(bb.top + bb.height/2 - bbo.top)+'px;transform:translate3d(-50%,calc(-100% - 4px),0);display:'+(txt ? 'block':'none')+';');
+			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - 4px),0);display:'+(txt ? 'block':'none')+';');
 			this.tip.querySelector('.inner').style.background = 'hsl('+hsl.h+','+(hsl.s*100)+'%,'+(hsl.l*100)+'%)';
 			this.tip.querySelector('.arrow').style['border-top-color'] = 'hsl('+hsl.h+','+(hsl.s*100)+'%,'+(hsl.l*100)+'%)';
 			this.tip.style.color = fill.text;
