@@ -199,8 +199,6 @@ function clone(hash) {
 function buildTable(config,csv){
 	var r,r2,c,c2,i,j,html,done = {'data':[],'head':[]};
 
-	
-
 	if(!config.columns) config.columns = [];
 
 	html = '<table>';
@@ -264,8 +262,7 @@ function buildTable(config,csv){
 						}
 					}
 				}
-//				console.log(r,c,cspan,rspan);
-				html += '<th'+(cspan > 1 ? ' colspan="'+cspan+'"':'')+(rspan > 1 ? ' rowspan="'+rspan+'"':'')+'>'+label.replace(/\n/g,"<br />")+'</th>';
+				html += '<th'+(cspan > 1 ? ' colspan="'+cspan+'"':'')+(rspan > 1 ? ' rowspan="'+rspan+'"':'')+(config.columns[c].width ? ' width="'+config.columns[c].width+'"':'')+'>'+label.replace(/\n/g,"<br />")+'</th>';
 			}
 		}
 		html += '</tr>';
