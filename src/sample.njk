@@ -4,69 +4,114 @@ table:
   file: /data/example/table.csv
   columns:            # The ability to merge rows (in a specific column) that have the same value
     - name: "Overall category"
-      mergeRows: true
+      mergerows: true
     - name: "Intervention"
-      mergeRows: true
+      mergerows: true
+    - name: "Sub-category"
+      mergerows: true
 heatmap:
   file: /data/example/heatmap.csv
   columns:
-    - name: Ranks.2018
+    - name: "Ranks→2018"
       align: center
       heatmap: true
       scale: YFF
       min: 1
       max: 38
-    - name: Ranks.2019
+    - name: "Ranks→2019"
       align: center
       heatmap: true
       scale: YFF
       min: 1
       max: 38
-    - name: Ranks.2020
+    - name: "Ranks→2020"
       align: center
       heatmap: true
       scale: YFF
       min: 1
       max: 38
-    - name: Index.2018
+    - name: "Country"
+    - name: "Index→2018"
       align: center
       heatmap: true
       scale: YFF
       min: 71
       max: 23
-    - name: Index.2019
+    - name: "Index→2019"
       align: center
       heatmap: true
       scale: YFF
       min: 71
       max: 23
-    - name: Index.2020
+    - name: "Index→2020"
       align: center
       heatmap: true
       scale: YFF
       min: 71
       max: 23
+gapmap:
+  file: /data/example/gapmap.csv
+  columns:
+    - name: "Source→Name"
+      rename: "Source"
+    - name: "Ethnic groups availability→Broad groupings (e.g. White, Black, Asian, mixed, other)→Rating"
+      rename: "Broad groupings e.g. White, Black, Asian, mixed, other"
+      width: "15%"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Ethnic groups availability→Ethnic groups (e.g. African, Carribean, other black background)→Rating"
+      rename: "Ethnic groups e.g. African, Carribean, other black background"
+      width: "15%"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Ethnic groups availability→Ethnic subgroups (e.g. Somali)→Rating"
+      rename: "Ethnic subgroups e.g. Somali"
+      width: "15%"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Ethnic groups availability→Other relevant subgroups (e.g. migration status)→Rating"
+      rename: "Other relevant subgroups e.g. migration status"
+      width: "15%"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
 ---
 
 <h2>Simple Table</h2>
 {{ comp.viz.table({ config: table }) | safe }}
-
 <p>Built using config: </p>
-
 <pre><code>
   {{- table | yaml -}}
 </code></pre>
-
 <a href="{{ table.file }}">Data file</a>
 
+
+
 <h2>Heatmap Table</h2>
-
 {{ comp.viz.table({ config: heatmap }) | safe }}
-
 <p>Built using config: </p>
-
 <pre><code>
   {{- heatmap | yaml -}}
 </code></pre>
-
 <a href="{{ heatmap.file }}">Data file</a>
+
+
+
+<h2>Gap Map Table</h2>
+{{ comp.viz.table({ config: gapmap }) | safe }}
+<p>Built using config: </p>
+<pre><code>
+  {{- gapmap | yaml -}}
+</code></pre>
+<a href="{{ gapmap.file }}">Data file</a>
