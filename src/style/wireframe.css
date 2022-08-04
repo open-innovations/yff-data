@@ -74,9 +74,8 @@ aside {
   color: inherit;
 }
 
-code {
-  background-color: #ddd;
-}
+pre { overflow-x: auto; background-color: #ddd; }
+code { background-color: #ddd; }
 pre code {
   display: block;
   padding: 1rem;

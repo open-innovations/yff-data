@@ -2,7 +2,8 @@ import { colourScales, Colour } from '/oi/colour.js';
 import { loadDataFile } from '/oi/util.js';
 
 export const css = `
-  table { border-collapse: collapse; width: 100%; overflow-x: auto; }
+  .table-holder { display: block; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; }
   th { border: 0; font-weight: bold; }
   td { border: 1px solid black; }
   td:first-child { border-left: 0; }
@@ -23,7 +24,7 @@ export default ({ config, sources }) => {
   // Create array to store html text
   const html = [];
   // Start table
-  html.push('<table>');
+  html.push('<div class="table-holder"><table>');
 
   // Build header cells
   html.push('<thead>');
@@ -211,7 +212,7 @@ export default ({ config, sources }) => {
 		html.push('</tr>');
 	}
   html.push('</tbody>')
-  html.push('</table>')
+  html.push('</table></div>')
 
   // Join the array
   return html.join('\n');
