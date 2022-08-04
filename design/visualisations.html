@@ -402,11 +402,9 @@ config:
     - title: "Female"
       value: "Female→Value (%)"
       errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#ee7e3b"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Male"
       value: "Male→Value (%)"
       errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
-      colour: "#264c59"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
 				</pre>
 			</div>
 
@@ -445,39 +443,30 @@ config:
     - title: "Bangladeshi"
       value: "Bangladeshi→Value (%)"
       errors: ["Bangladeshi→- (%)","Bangladeshi→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#7D2248"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Black/African/Caribbean/Black British"
       value: "Black/African/Caribbean/Black British→Value (%)"
       errors: ["Black/African/Caribbean/Black British→- (%)","Black/African/Caribbean/Black British→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#75b8d3"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Chinese"
       value: "Chinese→Value (%)"
       errors: ["Chinese→- (%)","Chinese→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#fe9400"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Indian"
       value: "Indian→Value (%)"
       errors: ["Indian→- (%)","Indian→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#274b57"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Mixed/Multiple"
       value: "Mixed/Multiple→Value (%)"
       errors: ["Mixed/Multiple→- (%)","Mixed/Multiple→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#E55912"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Other"
       value: "Other→Value (%)"
       errors: ["Other→- (%)","Other→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#0685cc"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Pakistani"
       value: "Pakistani→Value (%)"
       errors: ["Pakistani→- (%)","Pakistani→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#874245"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "Other Asian"
       value: "Other Asian→Value (%)"
       errors: ["Other Asian→- (%)","Other Asian→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#39c2b0"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
     - title: "White"
       value: "White→Value (%)"
       errors: ["White→- (%)","White→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-      colour: "#fdc358"       # The hex colour code to use for this series - if no colour given we could use a lookup table based on title
 				</pre>
 			</div>
 
@@ -659,6 +648,7 @@ config:
 			}).then(txt => {
 				var csv = CSV2JSON(txt);
 				var html = "";
+				config.colours = {"Female":"#ee7e3b","Male":"#264c59","Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358"}; 
 				if(yaml.type=="table"){
 					html = buildTable(config,csv);
 				}else if(yaml.type=="line-chart"){

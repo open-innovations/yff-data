@@ -4,6 +4,7 @@ function CategoryChart(config,csv){
 	var opt = {
 		'type': 'category-chart',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
+		'colours':{},
 		'left':0,
 		'right':0,
 		'top':0,
@@ -22,9 +23,9 @@ function CategoryChart(config,csv){
 			var data,datum,label;
 			for(var s = 0; s < config.series.length; s++){
 				mergeDeep(config.series[s],{
-					'line':{'show':false,'color':(config.series[s].colour||'black')},
-					'points':{'size':4, 'color': (config.series[s].colour||'black')},
-					'errors':{'stroke':(config.series[s].colour||'black'),'stroke-width':2}
+					'line':{'show':false,'color':(config.series[s].colour||config.colours[config.series[s].title]||'black')},
+					'points':{'size':4, 'color': (config.series[s].colour||config.colours[config.series[s].title]||'black')},
+					'errors':{'stroke':(config.series[s].colour||config.colours[config.series[s].title]||'black'),'stroke-width':2}
 				});
 				// Duplicate errors if only one error value given
 				if(config.series[s].errors.length==1) config.series[s].errors.push(config.series[s].errors[0]);
@@ -391,13 +392,13 @@ function Chart(config,csv){
 				text = qs(key.g[s],'text');
 				line = qs(key.g[s],'path');
 				circ = qs(key.g[s],'circle');
-				setAttr(text,{'x':x,'y':(y + s*fs + fs*0.2),'font-family':this.opt['font-family']||"sans-serif"});
+				setAttr(text,{'x':roundTo(x,3),'y':roundTo(y + s*fs + fs*0.2, 3),'font-family':this.opt['font-family']||"sans-serif"});
 				if(typeof this.opt.key.text==="object"){
 					for(p in this.opt.key.text) text.setAttribute(p,this.opt.key.text[p]);
 				}
-				line.setAttribute('d','M'+(x)+','+(y+(0.5+s)*fs)+' l '+(fs*1.5)+' 0');
+				line.setAttribute('d','M'+roundTo(x, 3)+','+roundTo(y+(0.5+s)*fs, 3)+' l '+(fs*1.5)+' 0');
 				p = this.series[s].getProperties();
-				setAttr(circ,{'cx':(x+fs*0.75),'cy':(y+(0.5+s)*fs),'fill':(p.points.color||""),'stroke-width':p.points['stroke-width']||0,'stroke':p.points.stroke||""});
+				setAttr(circ,{'cx':roundTo(x+fs*0.75, 3),'cy':roundTo(y+(0.5+s)*fs, 3),'fill':(p.points.color||""),'stroke-width':p.points['stroke-width']||0,'stroke':p.points.stroke||""});
 				if(p.line.color) line.setAttribute('stroke',p.line.color||"");
 			}
 		}
@@ -576,8 +577,8 @@ function Axis(ax,from,to,attr){
 
 					if(this.ticks[t].line){
 						// Set the position/size of the line
-						if(ax=="x") setAttr(this.ticks[t].line.el,{'x1':0,'x2':0,'y1':-xsign*len,'y2':-(b.y-a.y)});
-						else if(ax=="y") setAttr(this.ticks[t].line.el,{'x1':-ysign*len,'x2':(a.x-b.x),'y1':0,'y2':0});
+						if(ax=="x") setAttr(this.ticks[t].line.el,{'x1':0,'x2':0,'y1':roundTo(-xsign*len,3),'y2':roundTo(-(b.y-a.y), 3)});
+						else if(ax=="y") setAttr(this.ticks[t].line.el,{'x1':roundTo(-ysign*len, 3),'x2':roundTo(a.x-b.x, 3),'y1':0,'y2':0});
 						// Set generic properties for the line
 						setAttr(this.ticks[t].line.el,{'stroke':(opt.labels[t]['stroke']||opt.grid.stroke),'stroke-width':(opt.labels[t]['stroke-width']||opt.grid['stroke-width']||1),'stroke-dasharray':(opt.labels[t]['stroke-dasharray']||opt.grid['stroke-dasharray']||'')});
 					}
@@ -710,7 +711,7 @@ function Series(s,props,data){
 			for(ax in data[i].error){
 				a = opt.getXY(data[i].x-data[i].error[ax][0],data[i].y);
 				b = opt.getXY(data[i].x+data[i].error[ax][1],data[i].y);
-				setAttr(pts[i].errorbar[ax],{'x1':a.x,'y1':a.y,'x2':b.x,'y2':b.y,'stroke':opt.errors.stroke||opt.points.color,'stroke-width':opt.errors['stroke-width']||1,'class':'errorbar'});
+				setAttr(pts[i].errorbar[ax],{'x1':roundTo(a.x, 3),'y1':roundTo(a.y, 3),'x2':roundTo(b.x, 3),'y2':roundTo(b.y, 3),'stroke':opt.errors.stroke||opt.points.color,'stroke-width':opt.errors['stroke-width']||1,'class':'errorbar'});
 			}
 
 			// Keep a copy 
@@ -761,13 +762,13 @@ function Animate(e,attr){
 				if(tag=="path"){
 					a2 = "";
 					b2 = "";
-					for(i = 0; i < a.length; i++) a2 += (i>0 ? 'L':'M')+a[i].x.toFixed(2)+','+a[i].y.toFixed(2);
-					for(i = 0; i < b.length; i++) b2 += (i>0 ? 'L':'M')+b[i].x.toFixed(2)+','+b[i].y.toFixed(2);
+					for(i = 0; i < a.length; i++) a2 += (i>0 ? 'L':'M')+roundTo(a[i].x, 2)+','+roundTo(a[i].y, 2);
+					for(i = 0; i < b.length; i++) b2 += (i>0 ? 'L':'M')+roundTo(b[i].x, 2)+','+roundTo(b[i].y, 2);
 					if(a.length > 0 && a.length < b.length){
-						for(i = 0; i < b.length-a.length; i++) a2 += 'L'+a[a.length-1].x.toFixed(2)+','+a[a.length-1].y.toFixed(2);
+						for(i = 0; i < b.length-a.length; i++) a2 += 'L'+roundTo(a[a.length-1].x, 2)+','+roundTo(a[a.length-1].y, 2);
 					}
 					if(b.length > 0 && b.length < a.length){
-						for(i = 0; i < a.length-b.length; i++) b2 += 'L'+b[b.length-1].x.toFixed(2)+','+b[b.length-1].y.toFixed(2);
+						for(i = 0; i < a.length-b.length; i++) b2 += 'L'+roundTo(b[b.length-1].x, 2)+','+roundTo(b[b.length-1].y, 2);
 					}
 					if(!a2) a2 = null;
 				}else{
@@ -815,4 +816,9 @@ function setAttr(el,prop){
 function addClasses(el,cl){
 	for(var i = 0; i < cl.length; i++) el.classList.add(cl[i]);
 	return el;
+}
+function roundTo(x,n){
+	var f = Math.pow(10,n);
+	var str = (Math.round(x*f)/f).toFixed(n);
+	return str.replace(/(\.\d*?[1-9])0+$/g, "$1").replace(/\.0+$/,"");
 }

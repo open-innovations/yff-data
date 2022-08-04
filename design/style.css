@@ -52,10 +52,10 @@ code.status { background: transparent; padding: 0; line-height: 1.5em; }
 code.status:before { content: "Status"; background: #666; padding: 0 0.25em; display: inline-block; }
 code.status > span { padding: 0 0.25em; color: #fff; display: inline-block; }
 pre { padding: 1em; overflow-x: auto; }
-.output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; margin-bottom: 1em; }
+.output { background: #fdfdfd; border: 1px solid #999; padding: 1em; line-height: 0; margin-bottom: 1em; text-align:center; }
 .output > * { min-height: 1.5em; line-height: 1.5em; }
 
-.key:before { content: "Key:"; font-family: 'Century Gothic', sans-serif; font-weight: bold; }
+.key:before { content: "Key: "; font-family: 'Century Gothic', sans-serif; font-weight: bold; }
 .key { display: inline-block; text-align: center; background: #efefef; padding: 0.5em; margin-bottom: 1em; }
 .keyitem { display: inline-block; padding-right: 0.5em; font-family: 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; }
 .keyitem:hover { background: white; }
