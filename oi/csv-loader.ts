@@ -64,7 +64,7 @@ export default async function csvLoader(path: string) {
   // Grab the header
   const header = raw.slice(0, headerRowCount);
   // Construct the column names by concatenating columns
-  const names: string[] = transpose(header).map((r: string[]) => r.join('.'));
+  const names: string[] = transpose(header).map((r: string[]) => r.join('→'));
   // Grab the data
   const stringData = raw.slice(headerRowCount);
 
