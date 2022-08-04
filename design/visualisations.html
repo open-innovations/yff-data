@@ -25,8 +25,8 @@
 					<li><a href="#table-heatmap-rename">heatmap with renamed columns</a></li>
 				</ul>
 			</li>
-			<li><a href="#line-chart">type = line-chart</a> <code class="status"><span class="warn">Tidying up</span></code></li>
-			<li><a href="#category-chart">type = category-chart</a> <code class="status"><span class="warn">Tidying up</span></code></li>
+			<li><a href="#line-chart">type = line-chart</a> <code class="status"><span class="ok">OK</span></code></li>
+			<li><a href="#category-chart">type = category-chart</a> <code class="status"><span class="ok">OK</span></code></li>
 			<li><a href="#hexmap">type = hexmap</a> <code class="status"><span class="error">Not done</span></code></li>
 			<li><a href="#map">type = map</a> <code class="status"><span class="error">Not done</span></code></li>
 			<li><a href="#dashboard">type = dashboard</a> <code class="status"><span class="error">Not done</span></code></li>
@@ -333,21 +333,17 @@ config:
     - title: "16-17"
       x: "Year"                       # Column heading to use for x-value
       y: "16-17→rate (%)1"            # Column heading to use fro y-value
-      colour: "#E52E36"               # The hex colour code to use for this series (we can have defaults)
       size: 10
     - title: "18-24"                  # Displayed in the key and tooltip
       x: "Year"
       y: "18-24→rate (%)1"
-      colour: "#F7AB3D"               # The hex colour code to use for this series (we can have defaults)
     - title: "25-49"                  # Displayed in the key and tooltip
       x: "Year"
       y: "25-49→rate (%)1"
-      colour: "#C7B200"               # The hex colour code to use for this series (we can have defaults)
     - title: "50-64"                  # Displayed in the key and tooltip
       x: "Year"
       y: "50 and over→rate (%)1"
-      colour: "#005776"               # The hex colour code to use for this series (we can have defaults)
-				</pre>
+ 				</pre>
 			</div>
 		</div>
 	</section>
@@ -652,7 +648,12 @@ config:
 			}).then(txt => {
 				var csv = CSV2JSON(txt);
 				var html = "";
-				config.colours = {"Female":"#ee7e3b","Male":"#264c59","Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358"}; 
+				config.colours = {
+					"Female":"#ee7e3b","Male":"#264c59",
+					"Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358",
+					"Any other religion":"#69C2C9","Buddhist":"#C7B200","Christian":"#E55912","Hindu":"#874245","Jewish":"#7D2248","Muslim":"#005776","None":"#fdc358","Sikh":"#69C2C9",
+					"16-17":"#E52E36","18-24":"#F7AB3D","25-49":"#C7B200","50-64":"#005776"
+				};
 				if(yaml.type=="table"){
 					html = buildTable(config,csv);
 				}else if(yaml.type=="line-chart"){

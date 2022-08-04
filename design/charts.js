@@ -4,7 +4,6 @@ function CategoryChart(config,csv){
 	var opt = {
 		'type': 'category-chart',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
-		'colours':{},
 		'left':0,
 		'right':0,
 		'top':0,
@@ -13,8 +12,8 @@ function CategoryChart(config,csv){
 		'font-size': 16,
 		'key':{
 			'show':false,
-			'border':{'stroke':'black','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
-			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0}
+			'border':{'stroke':'#000000','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
+			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
 		},
 		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
 		'duration': '0.3s',
@@ -23,9 +22,9 @@ function CategoryChart(config,csv){
 			var data,datum,label;
 			for(var s = 0; s < config.series.length; s++){
 				mergeDeep(config.series[s],{
-					'line':{'show':false,'color':(config.series[s].colour||config.colours[config.series[s].title]||'black')},
-					'points':{'size':4, 'color': (config.series[s].colour||config.colours[config.series[s].title]||'black')},
-					'errors':{'stroke':(config.series[s].colour||config.colours[config.series[s].title]||'black'),'stroke-width':2}
+					'line':{'show':false,'color':(config.series[s].colour||config.colours[config.series[s].title]||null)},
+					'points':{'size':4, 'color': (config.series[s].colour||config.colours[config.series[s].title]||null)},
+					'errors':{'stroke':(config.series[s].colour||config.colours[config.series[s].title]||null),'stroke-width':2}
 				});
 				// Duplicate errors if only one error value given
 				if(config.series[s].errors.length==1) config.series[s].errors.push(config.series[s].errors[0]);
@@ -116,8 +115,8 @@ function LineChart(config,csv){
 		'font-size': 16,
 		'key':{
 			'show':false,
-			'border':{'stroke':'black','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
-			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0}
+			'border':{'stroke':'#000000','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
+			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
 		},
 		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
 		'duration': '0.3s',
@@ -170,6 +169,7 @@ function Chart(config,csv){
 	this.opt = {
 		'type': 'chart',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
+		'colours':{},
 		'left':0,
 		'right':0,
 		'top':0,
@@ -179,8 +179,8 @@ function Chart(config,csv){
 		'font-family':'"Century Gothic",sans-serif',
 		'key':{
 			'show':false,
-			'border':{'stroke':'black','stroke-width':1,'fill':'none'},
-			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'black','stroke-width':0}
+			'border':{'stroke':'#000000','stroke-width':1,'fill':'none'},
+			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
 		},
 		'axis':{
 			'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'},
@@ -251,8 +251,8 @@ function Chart(config,csv){
 			var data,datum,label;
 			for(var s = 0; s < config.series.length; s++){
 				mergeDeep(config.series[s],{
-					'line':{'show':true,'color': (config.series[s].colour||'black')},
-					'points':{'size':1, 'color': (config.series[s].colour||'black')}
+					'line':{'show':true,'color': (config.series[s].colour||config.colours[config.series[s].title]||'')},
+					'points':{'size':1, 'color': (config.series[s].colour||config.colours[config.series[s].title]||'')}
 				});
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){
@@ -441,7 +441,7 @@ function Axis(ax,from,to,attr){
 		'bottom': 0,
 		'font-family': '"Century Gothic",sans-serif',
 		'font-weight': 'bold',
-		'line':{'show':true,stroke:'black','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
+		'line':{'show':true,stroke:'#000000','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
 		'grid':{'show':false,'stroke':'#B2B2B2','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
 		title:{},
 		ticks:{'show':true},
@@ -573,7 +573,7 @@ function Axis(ax,from,to,attr){
 					}
 
 					// Set some text properties
-					setAttr(this.ticks[t].text.el,{'stroke':opt.labels[t].stroke||"black",'stroke-width':opt.labels[t]['stroke-width']||0,'fill':opt.labels[t].fill||"black",'dominant-baseline':baseline,'font-weight':opt.labels[t]['font-weight']||""});
+					setAttr(this.ticks[t].text.el,{'stroke':opt.labels[t].stroke||"#000000",'stroke-width':opt.labels[t]['stroke-width']||0,'fill':opt.labels[t].fill||"#000000",'dominant-baseline':baseline,'font-weight':opt.labels[t]['font-weight']||""});
 
 					if(this.ticks[t].line){
 						// Set the position/size of the line
@@ -597,12 +597,16 @@ function Series(s,props,data){
 	var lbl = props.lbl||"chart-series";
 
 	var opt,line,path,pts,o,label;
-	opt = {points:{show:true,color:'black','stroke-linecap':'round','stroke':'black','stroke-width':0,'fill-opacity':1},line:{show:true,color:'#000000','stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'','fill':'none'},'opt':props.opt||{}};
+	var defaultcolor = '#000000';
+	if(s==0) defaultcolor = "#E55912";
+	else if(s==1) defaultcolor = "#005776";
+	else if(s==2) defaultcolor = "#F7AB3D";
+	else if(s==3) defaultcolor = "#4A783C";
+	opt = {points:{show:true,color:defaultcolor,'stroke-linecap':'round','stroke':defaultcolor,'stroke-width':0,'fill-opacity':1},line:{show:true,color:defaultcolor,'stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'','fill':'none'},'opt':props.opt||{}};
 	line = {};
 	path = "";
 	pts = [];
 	label = "";
-
 
 	// Add the output to the SVG
 	this.addTo = function(el){
@@ -631,6 +635,9 @@ function Series(s,props,data){
 	this.setProperties = function(a){
 		if(!a) a = {};
 		mergeDeep(opt, a);
+		if(!opt.points.color) opt.points.color = defaultcolor;
+		if(!opt.points.stroke) opt.points.stroke = defaultcolor;
+		if(!opt.line.color) opt.line.color = defaultcolor;
 		if(opt.class){
 			var c = opt.class.split(/ /);
 			addClasses(this.el,c);
@@ -644,12 +651,12 @@ function Series(s,props,data){
 		if(!line.el){
 			line.el = svgEl("path");
 			line.el.classList.add('line');
-			setAttr(line.el,{'d':'M0 0 L 100,100','stroke':(opt.line.color||'black')});
+			setAttr(line.el,{'d':'M0 0 L 100,100'});
 			add(line.el,this.el); // Add it to the element
 			// Create an animation for the line
 			line.animate = new Animate(line.el,{'duration':opt.duration});
 		}
-		setAttr(line.el,{'style':(opt.line.show ? 'display:block':'display:none'),'stroke':(opt.line.color||'black'),'stroke-width':this.getStyle('line','stroke-width'),'stroke-linecap':this.getStyle('line','stroke-linecap'),'stroke-linejoin':this.getStyle('line','stroke-linejoin'),'stroke-dasharray':this.getStyle('line','stroke-dasharray'),'fill':this.getStyle('line','fill'),'vector-effect':'non-scaling-stroke'});
+		setAttr(line.el,{'style':(opt.line.show ? 'display:block':'display:none'),'stroke':opt.line.color,'stroke-width':this.getStyle('line','stroke-width'),'stroke-linecap':this.getStyle('line','stroke-linecap'),'stroke-linejoin':this.getStyle('line','stroke-linejoin'),'stroke-dasharray':this.getStyle('line','stroke-dasharray'),'fill':this.getStyle('line','fill'),'vector-effect':'non-scaling-stroke'});
 
 		for(i = pts.length; i < data.length; i++){
 			datum = {'data-i':i};
@@ -688,7 +695,7 @@ function Series(s,props,data){
 			label.innerHTML = opt.title;
 			var nprops = opt.getXY(data[pts.length-1].x,data[pts.length-1].y);
 			nprops['dominant-baseline'] = "middle";
-			nprops.fill = (opt.line.color||'black');
+			nprops.fill = opt.line.color;
 			if(opt.line.label.padding) nprops.x += opt.line.label.padding;
 			setAttr(label,nprops);
 			add(label,this.el);
