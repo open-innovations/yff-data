@@ -33,7 +33,7 @@ function CategoryChart(config,csv){
 					categoryoffset = csv.rows.length-i-1;
 					seriesoffset = ((config.series.length/2)-s-0.5)*(0.8/config.series.length);
 					label = config.series[s].title+"\n"+csv.columns[config.category][i].replace(/\\n/g,"")+': '+csv.columns[config.series[s].value][i];
-					label += (csv.columns[config.series[s].errors[0]][i]==csv.columns[config.series[s].errors[1]][i] ? ' ±'+csv.columns[config.series[s].errors[0]][i] : ' (+'+csv.columns[config.series[s].errors[1]][i]+' / -'+csv.columns[config.series[s].errors[0]][i]+')');
+					label += (csv.columns[config.series[s].errors[0]][i]==csv.columns[config.series[s].errors[1]][i] ? ' ± '+csv.columns[config.series[s].errors[0]][i] : ' (+'+csv.columns[config.series[s].errors[1]][i]+' / -'+csv.columns[config.series[s].errors[0]][i]+')');
 					if(config.series[s].label && csv.columns[config.series[s].tooltip]) label = csv.columns[config.series[s].tooltip][i];
 					datum = {'x':csv.columns[config.series[s].value][i],'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[config.series[s].errors[0]][i],csv.columns[config.series[s].errors[1]][i]]},'title':label};
 					datum.data = {'category':csv.columns[config.category][i],'series':config.series[s].title};

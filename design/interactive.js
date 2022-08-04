@@ -63,7 +63,7 @@
 							// Simulate z-index by moving to the end
 							serieskey[s].parentNode.appendChild(serieskey[s]);
 						}else{
-							serieskey[s].style.opacity = 0.15;
+							serieskey[s].style.opacity = 0.1;
 						}
 					}else{
 						serieskey[s].style.opacity = 1;
@@ -79,7 +79,7 @@
 			return this;
 		};
 		this.clearTooltip = function(e){
-			//if(this.tip && this.tip.parentNode) this.tip.parentNode.removeChild(this.tip);
+			if(this.tip && this.tip.parentNode) this.tip.parentNode.removeChild(this.tip);
 			return this;
 		};
 		function hsv_to_hsl(h, s, v) {
