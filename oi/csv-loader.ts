@@ -64,7 +64,13 @@ export default async function csvLoader(path: string) {
   // Grab the header
   const header = raw.slice(0, headerRowCount);
   // Construct the column names by concatenating columns
-  const names: string[] = transpose(header).map((r: string[]) => r.join('→'));
+  // Error: this will also join empty column headers
+  //const names: string[] = transpose(header).map((r: string[]) => r.join('→'));
+  const names: string[] = new Array(header[0].length);
+  for(let j = 0; j < names.length; j++){
+    names[j] = "";
+    for(let i = 0; i < header.length; i++) names[j] += (names[j] && header[i][j] ? '→':'')+header[i][j];
+  }
   // Grab the data
   const stringData = raw.slice(headerRowCount);
 
@@ -94,6 +100,9 @@ export default async function csvLoader(path: string) {
     (a, k, i) => ({ ...a, [k]: data.map((r) => r[i]) }),
     {}
   );
+  
+  const colnum = {};
+  for(let j = 0; j < names.length; j++) colnum[names[j]] = j;
 
   const ranges = Object.entries<[]>(columns).reduce(
     (acc, [key, values], index) => {
@@ -105,5 +114,5 @@ export default async function csvLoader(path: string) {
     {}
   );
 
-  return { header, names, data, rows, columns, types, raw, range: ranges };
+  return { header, names, data, rows, columns, types, raw, range: ranges, colnum };
 }
