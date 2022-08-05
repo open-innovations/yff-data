@@ -489,12 +489,19 @@ export const css = `
 circle.selected { r: 5px; }
 `;
 
+function clone(a){ return JSON.parse(JSON.stringify(a)); }
+
 export default function ({ config, sources }) {
   const csv = loadDataFile(config.file, sources);
 
-console.log(config.type)
   var chart,html;
   html = "?";
+  config.colours = {
+    "Female":"#ee7e3b","Male":"#264c59",
+    "Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358",
+    "Any other religion":"#69C2C9","Buddhist":"#C7B200","Christian":"#E55912","Hindu":"#874245","Jewish":"#7D2248","Muslim":"#005776","None":"#fdc358","Sikh":"#69C2C9",
+    "16-17":"#E52E36","18-24":"#F7AB3D","25-49":"#C7B200","50-64":"#005776"
+  };
   if(config.type=="line-chart"){
     chart = new LineChart(config,csv);
 	html = chart.getSVG();

@@ -57,7 +57,7 @@ export function CategoryChart(config,csv){
 			// Build y-axis labels
 			for(i = 0 ; i < csv.rows.length; i++){
 				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(csv.rows[i][config.category]||"").replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][config.category]},'font-weight':'bold'};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(csv.rows[i][this.opt.category]||"").replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
 				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
 			}
 			return this;

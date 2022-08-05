@@ -87,7 +87,7 @@ gapmap:
       min: 3
       max: 0
 linechart:
-  file: /data/example/linechart.csv
+  file: /data/example/dummy_linechart.csv
   type: line-chart
   source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
   key:
@@ -198,7 +198,7 @@ linechart:
       x: "Year"
       y: "50 and over→rate (%)1"
 categorychartgender:
-  file: /data/example/categorychart_gender.csv
+  file: /data/example/dummy_categorychart_gender.csv
   type: category-chart
   key:
     show: true     # Default to false
@@ -230,6 +230,59 @@ categorychartgender:
     - title: "Male"
       value: "Male→Value (%)"
       errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
+categorychartemployment:
+  file: /data/example/dummy_employment_by_region.csv
+  type: category-chart
+  key:
+    show: true     # Default to false
+    position: "top right"
+  axis:
+    x:
+      min: 0
+      max: 100
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+      ticks:
+        - value: 25
+          label: "25%"
+        - value: 50
+          label: "50%"
+        - value: 75
+          label: "75%"
+    y:
+      grid:
+        stroke-width: 0.5
+  category: "Region"  # Category names come from
+  series:
+    - title: "Bangladeshi"
+      value: "Bangladeshi→Value (%)"
+      errors: ["Bangladeshi→- (%)","Bangladeshi→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Black/African/Caribbean/Black British"
+      value: "Black/African/Caribbean/Black British→Value (%)"
+      errors: ["Black/African/Caribbean/Black British→- (%)","Black/African/Caribbean/Black British→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Chinese"
+      value: "Chinese→Value (%)"
+      errors: ["Chinese→- (%)","Chinese→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Indian"
+      value: "Indian→Value (%)"
+      errors: ["Indian→- (%)","Indian→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Mixed/Multiple"
+      value: "Mixed/Multiple→Value (%)"
+      errors: ["Mixed/Multiple→- (%)","Mixed/Multiple→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Other"
+      value: "Other→Value (%)"
+      errors: ["Other→- (%)","Other→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Pakistani"
+      value: "Pakistani→Value (%)"
+      errors: ["Pakistani→- (%)","Pakistani→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "Other Asian"
+      value: "Other Asian→Value (%)"
+      errors: ["Other Asian→- (%)","Other Asian→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+    - title: "White"
+      value: "White→Value (%)"
+      errors: ["White→- (%)","White→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+
 ---
 
 <h2>Simple Table</h2>
@@ -278,4 +331,13 @@ categorychartgender:
   {{- categorychartgender | yaml -}}
 </code></pre>
 <a href="{{ categorychartgender.file }}">Data file</a>
+
+
+<h2>Category Chart with more series</h2>
+{{ comp.viz.chart({ config: categorychartemployment }) | safe }}
+<p>Built using config: </p>
+<pre><code>
+  {{- categorychartemployment | yaml -}}
+</code></pre>
+<a href="{{ categorychartemployment.file }}">Data file</a>
 
