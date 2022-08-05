@@ -207,10 +207,156 @@ config:
       max: 0
 				</pre>
 			</div>
+
+		<div class="example" id="table-heatmap-rename">
+			<p>This is an example chart to support Narrative Point 1: Systemic Erasure, demonstrating a lack of data available to perform intersectional analysis.</p>
+			<style>
+			table { border-collapse: collapse; width: 100%; }
+			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
+			table td { border: 1px solid black; }
+			table td:first-child { border-left: 0; }
+			table td:last-child { border-right: 0; }
+			table td, table th { line-height: 1.5em; padding: 0.25em; }
+			</style>
+			<pre class="yaml">
+type: table
+config:
+  data: data-gapmap.csv
+  columns:
+    - name: "Source→Name"
+      rename: "Source"
+    - name: "Intersectional analysis→Two-way intersectional analysis (e.g. ethnic group by demographic characteristic)→Rating"
+      rename: "Two-way intersectional analysis (e.g. ethnicity by demographic)"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Intersectional analysis→Three-way intersectional analysis possible (e.g. ethnic group by demographic characteristic by region)→Rating"
+      rename: "Three-way intersectional analysis (e.g. ethnicity by demographic by region)"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+			</pre>
 		</div>
-	</section>
 
 
+		<div class="example" id="table-heatmap-rename">
+			<p>This is an example chart to support Narrative Point 3: Lack of Culturally Relevant Data.</p>
+			<style>
+			table { border-collapse: collapse; width: 100%; }
+			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
+			table td { border: 1px solid black; }
+			table td:first-child { border-left: 0; }
+			table td:last-child { border-right: 0; }
+			table td, table th { line-height: 1.5em; padding: 0.25em; }
+			</style>
+			<pre class="yaml">
+type: table
+config:
+  data: data-gapmap.csv
+  columns:
+    - name: "Source→Name"
+      rename: "Source"
+    - name: "Relevance of data→Culturally relevant data available→Rating"
+      rename: "Culturally Relevant Data Available"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Relevance of data→Timeliness of data (e.g. covers a suitable time period, sufficiently up to date)→Rating"
+      rename: "Timeliness of data"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+			</pre>
+		</div>
+
+
+		<div class="example" id="table-heatmap-rename">
+			<p>This is an example chart to demonstrate the lack of data available on employment, and particularly on discrimination in employment.</p>
+			<style>
+			table { border-collapse: collapse; width: 100%; }
+			table th { border: 0; font-weight: bold; font-family: Poppins, sans-serif; vertical-align: top; }
+			table td { border: 1px solid black; }
+			table td:first-child { border-left: 0; }
+			table td:last-child { border-right: 0; }
+			table td, table th { line-height: 1.5em; padding: 0.25em; }
+			</style>
+			<pre class="yaml">
+type: table
+config:
+  data: data-gapmap.csv
+  columns:
+    - name: "Source→Name"
+      rename: "Source"
+    - name: "Employment data→Employment status→Rating"
+      rename: "Employment Status"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Sector→Rating"
+      rename: "Sector"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Occupation→Rating"
+      rename: "Occupation"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Contract type→Rating"
+      rename: "Contract Type"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Apprenticeships→Rating"
+      rename: "Apprenticeship"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Pay→Rating"
+      rename: "Pay"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Progression→Rating"
+      rename: "Progression"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+    - name: "Employment data→Discrimination in employment→Rating"
+      rename: "Discrimination in Employment"
+      align: center
+      heatmap: true
+      scale: YFF
+      min: 3
+      max: 0
+			</pre>
+		</div>
+	</div>
+</section>
+
+	
 	<section id="line-chart">
 		<div class="holder padded">
 			<h2>type = line-chart</h2>
