@@ -136,8 +136,7 @@ export function LineChart(config,csv){
 					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
 
 					// Length is based on the label length
-					len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
-
+					len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
 					align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
 					if(ax=="x"){
 						if(align=="bottom") pad.b = Math.max(pad.b,len);
@@ -487,9 +486,9 @@ function Axis(ax,from,to,attr){
 		var t,x,y,pos,len,align,talign,baseline,xsign,ysign,lines,l,d;
 		if(!opt.labels) opt.labels = {};
 		this.title.innerHTML = opt.title.label||"";
-		x = (ax=="x" ? (opt.left + (opt.width-opt.right-opt.left)/2):fs/2);
+		x = (ax=="x" ? (opt.left + (opt.width-opt.right-opt.left)/2) : fs);
 		y = (ax=="y" ? (opt.top + (opt.height-opt.top-opt.bottom)/2):(opt.height-fs/2));
-		setAttr(this.title,{'x':x,'y':y,'dx':-10,'text-anchor':'middle','transform':(ax=="y"?'rotate(-90,'+x+','+y+')':''),'font-family':opt['font-family']||'sans-serif','font-weight':opt['font-weight']});
+		setAttr(this.title,{'x':x,'y':y,'dx':0,'text-anchor':'middle','transform':(ax=="y"?'rotate(-90,'+x+','+y+')':''),'font-family':opt['font-family']||'sans-serif','font-weight':opt['font-weight']});
 		this.el.removeAttribute('style');
 		// Check if we need to add a line
 		if(!this.line.el){
