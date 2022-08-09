@@ -29,6 +29,7 @@ site.use(netlifyCMS());
 // site.use(postcss({ sourceMap: true }));
 site.copy(['.css']);
 site.copy(['.svg']);
+site.copy(['.png']);
 
 // Add csv loader
 site.loadData([".csv"], csvLoader);
