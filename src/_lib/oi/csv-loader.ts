@@ -1,5 +1,5 @@
 import { parse } from 'std/encoding/csv.ts';
-import { transpose, range } from '/oi/util.js';
+import { transpose, range } from '/src/_lib/oi/util.js';
 
 const FLOAT = 'float';
 const INTEGER = 'integer';

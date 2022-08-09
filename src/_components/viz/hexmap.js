@@ -1,5 +1,5 @@
-import { HexMap } from '/oi/hexmap.js';
-import { loadDataFile } from '/oi/util.js'
+import { HexMap } from '/src/_lib/oi/hexmap.js';
+import { loadDataFile } from '/src/_lib/oi/util.js'
 
 export const css = `
 .hexmap {

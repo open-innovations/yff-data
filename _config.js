@@ -8,7 +8,7 @@ import resolveUrls from "lume/plugins/resolve_urls.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import { stringify as yamlStringify } from "std/encoding/yaml.ts";
 import { copy } from "std/fs/copy.ts";
-import csvLoader from '/oi/csv-loader.ts';
+import csvLoader from '/src/_lib/oi/csv-loader.ts';
 
 const site = lume({
   src: './src',

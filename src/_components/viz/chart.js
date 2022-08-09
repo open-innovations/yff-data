@@ -1,6 +1,6 @@
-import { CategoryChart, LineChart } from '/oi/charts.js';
-import { colourScales, Colour } from '/oi/colour.js';
-import { loadDataFile } from '/oi/util.js'
+import { CategoryChart, LineChart } from '/src/_lib/oi/charts.js';
+import { colourScales, Colour } from '/src/_lib/oi/colour.js';
+import { loadDataFile } from '/src/_lib/oi/util.js'
 
 export const js = `
 (function(root){

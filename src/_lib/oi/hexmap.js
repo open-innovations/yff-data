@@ -1,4 +1,4 @@
-import { document } from '/oi/document.ts';
+import { document } from '/src/_lib/oi/document.ts';
 
 /**
   Originally adapted from oi.hexmap.js 0.6.1

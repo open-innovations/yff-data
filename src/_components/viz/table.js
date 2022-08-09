@@ -1,5 +1,5 @@
-import { colourScales, Colour } from '/oi/colour.js';
-import { loadDataFile } from '/oi/util.js';
+import { colourScales, Colour } from '/src/_lib/oi/colour.js';
+import { loadDataFile } from '/src/_lib/oi/util.js';
 
 export const css = `
   .table-holder { display: block; overflow-x: auto; }

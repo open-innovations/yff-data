@@ -1,4 +1,4 @@
-import { document } from '/oi/document.ts';
+import { document } from '/src/_lib/oi/document.ts';
 
 const ns = 'http://www.w3.org/2000/svg';
 
