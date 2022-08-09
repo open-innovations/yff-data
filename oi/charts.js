@@ -45,7 +45,7 @@ export function CategoryChart(config,csv){
 						}
 					}
 					if(this.opt.series[s].label && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
-					datum = {'x':csv.columns[this.opt.series[s].value][i],'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]},'title':label};
+					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]},'title':label};
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
 					data.push(datum);
 				}
