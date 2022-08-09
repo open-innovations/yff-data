@@ -9,7 +9,7 @@ locale: "en-GB"
 # If left as is, will commit directly onto main
 # publish_mode: editorial_workflow
 
-media_folder: "src/images/uploads"
+media_folder: "src/assets/images/uploads"
 
 collections:
   - name: report
