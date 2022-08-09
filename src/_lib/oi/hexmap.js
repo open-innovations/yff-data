@@ -225,7 +225,6 @@ export function HexMap(attr) {
   };
 
   this.drawHex = function (q, r) {
-    console.log(range);
     if (this.properties) {
       let x, y;
       const cs = this.properties.s.cos;

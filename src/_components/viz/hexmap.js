@@ -14,7 +14,6 @@ export const css = `
 export default function ({ config, sources }) {
   const layout = loadDataFile(config.layout, sources);
 
-  console.log(layout);
   const hexmap = new HexMap({
     hexjson: layout,
     width: config?.width,
