@@ -19,7 +19,7 @@ export default ({ config, sources }) => {
   //   data = 2d array of data
   //   rows = array of objects with data referenced by name
   //   columns = object with column data as array
-  const table = loadDataFile(config.file, sources);
+  let table = loadDataFile(config, sources);
 
   // Create array to store html text
   const html = [];
@@ -48,7 +48,8 @@ export default ({ config, sources }) => {
 
 	var r,c,c1,m,label,cspan,rspan,r2,c2,n;
 
-	// Create 2D array of cells to mimic header/body cells
+	// Create 2D array of cells mimicing header/body cells
+	// Each array element stores if we've processed this cell
 	var done = {'data':[],'head':[]};
 	for(r = 0; r < table.header.length; r++){
 		done.head[r] = [];
@@ -63,26 +64,48 @@ export default ({ config, sources }) => {
 	// For each row of the headers we will work out if we need to merge
 	for(r = 0; r < table.header.length; r++){
 		html.push('<tr>');
+
+		// For each of the columns in the config
 		for(c = 0; c < config.columns.length; c++){
+
+			// Get the column number of this column in the data table
 			c1 = table.colnum[config.columns[c].name];
+
+			// The number of cells to merge horizontally
 			m = 1;
+
 			// Get the label for the header cell
 			label = table.header[r][c1]||"";
+
 			// If the column hasn't been processed we see how many of the subsequent columns need merging
 			if(!done.head[r][c]){
+
+				// Set it to processed
 				done.head[r][c] = true;
+
+				// The column/row spanning
 				cspan = 1;
 				rspan = 1;
+
+				// If we are renaming the column we don't want to process any of the other header rows in this column.
 				if(config.columns[c].rename){
-					// If we are renaming the column we don't want to process any of the other header rows in this column.
+
+					// The label is set to the rename value
 					label = config.columns[c].rename;
+
 					// Set the rest of rows in this column to done
 					for(r2 = r+1; r2 < table.header.length; r2++){
 						done.head[r2][c] = true;
-						rspan++;
+						rspan++;	// Increment the row span value
 					}
+
+					// Loop over subsequent columns
 					for(n = c+1; n < config.columns.length; n++){
+
+						// Find the column number of the next named column
 						c2 = table.colnum[config.columns[n].name];
+
+						// If the value in the first column equals this next one we mark this as done and increase the col span value
 						if(table.names[c1]==table.names[c2]){
 							done.head[r][n] = true;
 							cspan++;
@@ -94,8 +117,14 @@ export default ({ config, sources }) => {
 				}else{
 				
 					if(typeof c1==="number"){
+
+						// Loop over subsequent columns
 						for(n = c+1; n < config.columns.length; n++){
+
+							// Find the column number of the next named column
 							c2 = table.colnum[config.columns[n].name];
+
+							// If the value in the first column equals this next one we mark this as done and increase the col span value
 							if(table.header[r][c1]==table.header[r][c2]){
 								done.head[r][n] = true;
 								cspan++;
@@ -105,6 +134,7 @@ export default ({ config, sources }) => {
 						}
 					}
 				}
+				// Return the column header cell <th>
 				html.push('<th'+(cspan > 1 ? ' colspan="'+cspan+'"':'')+(rspan > 1 ? ' rowspan="'+rspan+'"':'')+(config.columns[c].width ? ' width="'+config.columns[c].width+'"':'')+'>'+label.replace(/\n/g,"<br />")+'</th>');
 			}
 		}
@@ -172,30 +202,42 @@ export default ({ config, sources }) => {
 		}
 	}
 
-	// Loop over rows
+	// Loop over each row
 	for(r = 0; r < table.data.length; r++){
+
 		html.push('<tr>');
+
+		// Loop over the columns
 		for(c = 0; c < config.columns.length; c++){
+
 			// Get index of column in the data structure
 			c2 = table.colnum[config.columns[c].name];
-			m = 0;
+
+			// The number of cells to merge
+			m = 1;
+
 			// If this is a merging column we work out how many rows to merge
 			if(config.columns[c].mergerows){
-				m = 1;
+
+				// Loop over subsequent rows checking if the value matches the current one
 				for(r2 = r+1; r2 < table.data.length; r2++){
 					if(table.data[r][c2]==table.data[r2][c2]){
 						done.data[r2][c2] = true;
 						m++;
 					}else{
+						// Break out of the loop
 						r2 = table.data.length;
 					}
 				}
 			}
 
+			// If this cell isn't classed as done
 			if(!done.data[r][c2]){
+
 				html.push('<td'+(m > 1 ? ' rowspan="'+m+'"':'')+' style="');
 				html.push(config.columns[c].align ? 'text-align:'+config.columns[c].align+';':'');
 				var v = table.data[r][c2];
+				// If this column has heatmap=true and the value for this cell is a number we will work out the foreground/background colours
 				if(config.columns[c].heatmap && typeof v=="number"){
 					if(!isNaN(v)){
 						bg = colourScales.getColourFromScale(config.columns[c].scale||'Viridis',table.data[r][c2],config.columns[c].min,config.columns[c].max);
@@ -207,13 +249,17 @@ export default ({ config, sources }) => {
 					}
 				}
 				html.push('">'+(typeof v=="undefined" ? "" : v)+'</td>');
+
 			}
 		}
-		html.push('</tr>');
-	}
-  html.push('</tbody>')
-  html.push('</table></div>')
 
-  // Join the array
-  return html.join('\n');
+		html.push('</tr>');
+
+	}
+
+	html.push('</tbody>')
+	html.push('</table></div>')
+
+	// Join the array
+	return html.join('\n');
 }
