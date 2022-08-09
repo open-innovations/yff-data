@@ -6,6 +6,7 @@ import netlifyCMS from "lume/plugins/netlify_cms.ts";
 // import postcss from "lume/plugins/postcss.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
+import terser from "lume/plugins/terser.ts";
 import { stringify as yamlStringify } from "std/encoding/yaml.ts";
 import { copy } from "std/fs/copy.ts";
 import csvLoader from '/src/_lib/oi/csv-loader.ts';
@@ -27,7 +28,7 @@ site.use(slugifyUrls());
 site.use(
   netlifyCMS({
     previewStyle: '/style/wireframe.css',
-    extraHTML: `<script src='/assets/js/netlify-extras.js'></script>`,
+    extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
   })
 );
 
@@ -36,6 +37,15 @@ site.use(
 site.copy(['.css']);
 site.copy(['.svg']);
 site.copy(['.png']);
+
+// Process Javascript files
+site.use(terser({
+  options: {
+    compress: true,
+    mangle: true,
+    module: true,
+  },
+}));
 
 // Add csv loader
 site.loadData([".csv"], csvLoader);
