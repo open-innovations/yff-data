@@ -34,8 +34,9 @@ site.loadData([".csv"], csvLoader);
 site.loadData([".geojson", ".hexjson"], jsonLoader);
 
 // Copy source data files to live site
+const interimDataDir = 'generated-data-directory';
 site.script("copy-data-files", async () => {
-  await copy("src/_data/sources", "src/data/", {
+  await copy("src/_data/sources", `src/${interimDataDir}/`, {
     overwrite: true,
   });
 });
@@ -43,7 +44,7 @@ site.script("copy-data-files", async () => {
 // Execute it before the site is built
 site.addEventListener("beforeBuild", "copy-data-files");
 
-site.copy('data', 'data');
+site.copy(interimDataDir, 'data');
 
 // Add filters
 site.filter("yaml", (value, options = {}) => yamlStringify(value, options));
