@@ -1,32 +1,17 @@
 ---
 # https://inclusive-components.design/menus-menu-buttons/
 css: |
-  .site-title { font-weight: bold; }
-  .site-header-logo { display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; margin-right: 1em; }
-  .site-logo { width: 200px; }
-  .navigation > div { background: #efefef; }
-
-  .navigation ul.wrapper { margin: auto; }
-  .navigation button + * li {
-    display: inline-block;
-  }
-  .navigation button[aria-expanded] + * {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
+  /* This is the mechanics of the menu button */
   .navigation button[aria-expanded=true] + * { display: block; }
   .navigation button[aria-expanded=false] + * { display: none; }
-  .navigation button[aria-expanded] + * li { display: inline-block; }
+
   .navigation button[aria-expanded] {
     width: 30px;
     height: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid black;
+    border: none;
     padding: 0;
     background-color: inherit;
   }
@@ -46,19 +31,11 @@ css: |
     transform: translateY(-0.7rem) rotate(135deg) scale(1.41);
   }
   @media screen and (min-width: 840px) {
-    .navigation {
-      display: flex;
-    }
     .navigation button[aria-expanded] {
       display: none;
     }
     .navigation button[aria-expanded] + * {
       display: block;
-      position: relative;
-      top: initial;
-      left: initial;
-      right: initial;
-      text-align: center;
     }
   }
 
