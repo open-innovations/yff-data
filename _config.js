@@ -9,6 +9,7 @@ import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import { stringify as yamlStringify } from "std/encoding/yaml.ts";
 import { copy } from "std/fs/copy.ts";
 import csvLoader from '/src/_lib/oi/csv-loader.ts';
+import autoDependency from '/src/_lib/oi/auto-dependency.ts';
 
 const site = lume({
   src: './src',
@@ -47,6 +48,8 @@ site.script("copy-data-files", async () => {
 site.addEventListener("beforeBuild", "copy-data-files");
 
 site.copy(interimDataDir, 'data');
+
+site.process(['.html'], autoDependency);
 
 // Add filters
 site.filter("yaml", (value, options = {}) => yamlStringify(value, options));
