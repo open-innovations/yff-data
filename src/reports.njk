@@ -2,18 +2,24 @@
 nav_order: 20
 title: Reports
 ---
-<h1>Report Dashboard</h1>
+  <div class="page-title">
+	<div class="wrapper">
+		<h1>Report Dashboard</h1>
+	</div>
+  </div>
 
-{% comp 'grid.auto', { min_width: '30em' } %}
-  {% for page in search.pages('report', 'date') %}
-    {% comp 'grid.pane', { link: page.data.url } %}
-      <h2>{{ page.data.title }}</h2>
-      <p>
-        {% if page.data.visualisations %}
-          {{ comp.viz[page.data.visualisations[0].type](page.data.visualisations[0].config) | safe }}
-        {% endif %}
-        {{ page.data.summary | md | safe | striptags  }}
-      </p>
-    {% endcomp %}
-  {% endfor %}
-{% endcomp %}
+  <div class="wrapper">
+	{% comp 'grid.auto', { min_width: '30em' } %}
+	  {% for page in search.pages('report', 'date') %}
+		{% comp 'grid.pane', { link: page.data.url } %}
+		  <h2>{{ page.data.title }}</h2>
+		  <p>
+			{% if page.data.visualisations %}
+			  {{ comp.viz[page.data.visualisations[0].type](page.data.visualisations[0].config) | safe }}
+			{% endif %}
+			{{ page.data.summary | md | safe | striptags  }}
+		  </p>
+		{% endcomp %}
+	  {% endfor %}
+	{% endcomp %}
+  </div>

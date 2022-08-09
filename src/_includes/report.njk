@@ -1,38 +1,43 @@
 {% extends 'layout.njk' %}
 
 {% block main %}
-  <header>
-    <h1>{{ title }}</h1>
-  </header>
+  <div class="page-title">
+	<div class="wrapper">
+		<h1>{{ title }}</h1>
+	</div>
+  </div>
 
-  <section>
-    {{ summary | md | safe }}
-  </section>
+  <div class="wrapper">
 
-  <section style="display: flex;">
-    {{ comp.actions.download({ link: report_link }) | safe }}
-  </section>
+	  <section>
+		{{ summary | md | safe }}
+	  </section>
 
-  <section>
-    {{ comp.viz.main({ visualisations: visualisations }) | safe }}
-  </section>
+	  <section style="display: flex;">
+		{{ comp.actions.download({ link: report_link }) | safe }}
+	  </section>
 
-  {% for section in sections %}
-    <section id="narrative-{{ loop.index }}">
-      <h2>Narrative Point {{ loop.index }}: {{ section.title }}</h2>
+	  <section>
+		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+	  </section>
 
-      {{ comp['tag-cloud']({ tags: section.tags }) | safe }}
+	  {% for section in sections %}
+		<section id="narrative-{{ loop.index }}">
+		  <h2>Narrative Point {{ loop.index }}: {{ section.title }}</h2>
 
-      {% if section.blocks %}
-        <section>
-          {{ comp.report.section_featured_viz({ section: section }) | safe }}
-        </section>
-      {% endif %}
+		  {{ comp['tag-cloud']({ tags: section.tags }) | safe }}
 
-      {{ section.summary | md | safe }}
+		  {% if section.blocks %}
+			<section>
+			  {{ comp.report.section_featured_viz({ section: section }) | safe }}
+			</section>
+		  {% endif %}
 
-      <a href="{{ search.page("report=" + url + " index=" + loop.index0 ).data.url }}">READ MORE</a>
-    </section>
-  {% endfor %}
+		  {{ section.summary | md | safe }}
+
+		  <a href="{{ search.page("report=" + url + " index=" + loop.index0 ).data.url }}">READ MORE</a>
+		</section>
+	  {% endfor %}
+  </div>
 
 {% endblock %}

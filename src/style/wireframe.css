@@ -1,21 +1,27 @@
-/*@import 'css/reset.css';*/
-
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
 
-
 html {
-  font-family: monospace;
-  font-size: 16px;
+	font-family: monospace;
+	font-size: 16px;
 }
 
 body { margin: 0px; line-height: 1.25em; }
 
-.wrapper {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+.message {
+	background: #fbf5d0;
+	color: #5f5207;
+	padding: 1em;
+	text-align: center;
 }
 
+.wrapper {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+main .wrapper { padding: 2em 0; }
+main .wrapper > *:first-child { margin-top: 0; }
 h1 { font-size: 2.5em; font-weight: bold; line-height: 1.25em; }
 h1 + *, h2 + *, h3 + * { margin-top: 1em; }
 h2 { font-size: 1.5em; line-height: 1.25em; }
@@ -28,30 +34,33 @@ ul { list-style: disc; margin-left: 1em; }
 blockquote { border-left: 4px solid black; padding-left: 40px; }
 
 img { width: 100%; }
+
 .pane h2 { color: inherit; }
 
-.pane,
-section,
-main header,
-aside {
-	border: 1px dashed black;
-}
 
 section,
-main header,
 aside {
   margin: 1em 0;
   padding: 1em;
 }
 
+.pane,
+section,
+aside {
+	border: 1px dashed black;
+}
+
 .site-header {
-  position: sticky;
-  background: white;
-  left: 0;
-  right: 0;
-  top: 0;
-  border-bottom: 1px solid black;
-  z-index: 1000;
+	border-bottom: 1px solid black;
+}
+
+.site-header {
+	position: sticky;
+	background: white;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 1000;
 }
 
 .site-header img { height: auto; width: 200px; float: left; }
@@ -66,14 +75,12 @@ aside {
   font-size: 1.2rem;
   line-height: 2em;
 }
-
-#main {
-  padding: 1rem 0;
-}
+.site-header-logo { background: #efefef; }
+.site-header-logo span { position: absolute; left: 50%; top: 50%; transform: translate3d(-50%,-50%,0); }
 
 .tag-cloud li {
-  color: white;
-  background: black;
+	color: white;
+	background: black;
 }
 
 .download-link {
@@ -99,13 +106,6 @@ pre code {
   padding: 1rem;
 }
 
-.chart .axis {
-  stroke: #888;
-}
-.chart .axis text {
-  fill: #888;
-}
-
 .navigation ul {
   list-style: none;
   padding: 1em;
@@ -114,3 +114,10 @@ pre code {
 .navigation li {
   width: 10em;
 }
+footer { border-top: 1px solid black; padding: 2em 0; }
+footer .twocol {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+footer .twocol > *:last-child { text-align: right; }
+.small { font-size: 0.7em; }

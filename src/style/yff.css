@@ -1,0 +1,31 @@
+/* Youth Futures Foundation styles */
+
+h1 { color: #e25b27; text-align: center; }
+h1,h2,h3,h4,h5,h6 { font-family: "Century Gothic", Helvetica, sans-serif; }
+blockquote { border-left: 4px solid #e25b27; }
+
+.page-title { background: #efe4ea; position: relative; height: 180px; }
+.page-title::before { content: ""; background-image: url("/assets/images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; }
+.page-title::after { content: ""; background-image: url("/assets/images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; }
+.page-title h1 { position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); }
+
+section,
+aside {
+  margin: 1em 0;
+  padding: 1em;
+}
+.site-header { border-bottom: 0; }
+.site-header-logo { background: transparent; }
+.tag-cloud li { color: white; background: black; }
+
+footer {
+	border: 0;
+	font-family: "Century Gothic", Helvetica, sans-serif;
+	background: #efefef;
+	color: #56585A;
+	font-size: 17px;
+	font-weight: 500;
+	line-height: 1.8em;
+	padding: 3% 0;
+}
+footer a { color: #7d2248; }

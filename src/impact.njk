@@ -2,21 +2,26 @@
 nav_order: 10
 title: Impact
 ---
+  <div class="page-title">
+	<div class="wrapper">
+		<h1>Impact Dashboard</h1>
+	</div>
+  </div>
 
-<h1>Impact Dashboard</h1>
-
-{% comp 'grid.auto' %}
-  {% comp 'grid.pane', { link: '/reports/' } %}
-    <h2>Reports</h2>
-    <p>Details about reports</p>
-    {{ comp.number({ number:reports | length } ) | safe }}
-  {% endcomp %}
-  {% comp 'grid.pane' %}
-    <h2>Events</h2>
-    {{ comp.number({ number: 23 } ) | safe }}
-  {% endcomp %}
-  {% comp 'grid.pane' %}
-    <h2>Metric 3</h2>
-    {{ comp.number({ number: 12334 } ) | safe }}
-  {% endcomp %}
-{% endcomp %}
+<div class="wrapper">
+	{% comp 'grid.auto' %}
+	  {% comp 'grid.pane', { link: '/reports/' } %}
+		<h2>Reports</h2>
+		<p>Details about reports</p>
+		{{ comp.number({ number:reports | length } ) | safe }}
+	  {% endcomp %}
+	  {% comp 'grid.pane' %}
+		<h2>Events</h2>
+		{{ comp.number({ number: 23 } ) | safe }}
+	  {% endcomp %}
+	  {% comp 'grid.pane' %}
+		<h2>Metric 3</h2>
+		{{ comp.number({ number: 12334 } ) | safe }}
+	  {% endcomp %}
+	{% endcomp %}
+</div>

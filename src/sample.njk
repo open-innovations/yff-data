@@ -285,64 +285,70 @@ categorychartemployment:
 
 ---
 
-<h1>Samples</h1>
+  <div class="page-title">
+	<div class="wrapper">
+		<h1>Samples</h1>
+	</div>
+  </div>
 
-<section>
-	<h2>Simple Table</h2>
-	{{ comp.viz.table({ config: table }) | safe }}
-	<p>Built using config: </p>
-	<pre><code>
-	  {{- table | yaml -}}
-	</code></pre>
-	<a href="{{ table.file }}">Data file</a>
-</section>
+  <div class="wrapper">
+	<section>
+		<h2>Simple Table</h2>
+		{{ comp.viz.table({ config: table }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- table | yaml -}}
+		</code></pre>
+		<a href="{{ table.file }}">Data file</a>
+	</section>
 
-<section>
-	<h2>Heatmap Table</h2>
-	{{ comp.viz.table({ config: heatmap }) | safe }}
-	<p>Built using config: </p>
-	<pre><code>
-	  {{- heatmap | yaml -}}
-	</code></pre>
-	<a href="{{ heatmap.file }}">Data file</a>
-</section>
+	<section>
+		<h2>Heatmap Table</h2>
+		{{ comp.viz.table({ config: heatmap }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- heatmap | yaml -}}
+		</code></pre>
+		<a href="{{ heatmap.file }}">Data file</a>
+	</section>
 
-<section>
-	<h2>Gap Map Table</h2>
-	{{ comp.viz.table({ config: gapmap }) | safe }}
-	<p>Built using config: </p>
-	<pre><code>
-	  {{- gapmap | yaml -}}
-	</code></pre>
-	<a href="{{ gapmap.file }}">Data file</a>
-</section>
+	<section>
+		<h2>Gap Map Table</h2>
+		{{ comp.viz.table({ config: gapmap }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- gapmap | yaml -}}
+		</code></pre>
+		<a href="{{ gapmap.file }}">Data file</a>
+	</section>
 
-<section>
-	<h2>Line Chart</h2>
-	{{ comp.viz.chart({ config: linechart }) | safe }}
-	<p>Built using config: </p>
-	<pre><code>
-	  {{- linechart | yaml -}}
-	</code></pre>
-	<a href="{{ linechart.file }}">Data file</a>
-</section>
+	<section>
+		<h2>Line Chart</h2>
+		{{ comp.viz.chart({ config: linechart }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- linechart | yaml -}}
+		</code></pre>
+		<a href="{{ linechart.file }}">Data file</a>
+	</section>
 
-<section>
-	<h2>Category Chart</h2>
-	{{ comp.viz.chart({ config: categorychartgender }) | safe }}
-	<p>Built using config: </p>
-	<pre><code>
-	  {{- categorychartgender | yaml -}}
-	</code></pre>
-	<a href="{{ categorychartgender.file }}">Data file</a>
-</section>
+	<section>
+		<h2>Category Chart</h2>
+		{{ comp.viz.chart({ config: categorychartgender }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- categorychartgender | yaml -}}
+		</code></pre>
+		<a href="{{ categorychartgender.file }}">Data file</a>
+	</section>
 
-<section>
-	<h2>Category Chart with more series</h2>
-	{{ comp.viz.chart({ config: categorychartemployment }) | safe }}
-	<p>Built using config: </p>
-	<pre><code>
-	  {{- categorychartemployment | yaml -}}
-	</code></pre>
-	<a href="{{ categorychartemployment.file }}">Data file</a>
-</section>
+	<section>
+		<h2>Category Chart with more series</h2>
+		{{ comp.viz.chart({ config: categorychartemployment }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- categorychartemployment | yaml -}}
+		</code></pre>
+		<a href="{{ categorychartemployment.file }}">Data file</a>
+	</section>
+	</div>
