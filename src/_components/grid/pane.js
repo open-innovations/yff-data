@@ -1,10 +1,12 @@
 export const css = `
 .pane {
-  padding: 0.5rem;
+  padding: 1rem;
   display: block;
   height: 100%;
   min-height: 20rem;
+  color: inherit;
 }
+.pane:hover, .pane:focus { background: #efefef; }
 `;
 
 export default function ({ content, link, tag = 'div' }) {

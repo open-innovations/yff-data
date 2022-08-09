@@ -7,7 +7,7 @@ title: Reports
 {% comp 'grid.auto', { min_width: '30em' } %}
   {% for page in search.pages('report', 'date') %}
     {% comp 'grid.pane', { link: page.data.url } %}
-      <h1>{{ page.data.title }}</h2>
+      <h2>{{ page.data.title }}</h2>
       <p>
         {% if page.data.visualisations %}
           {{ comp.viz[page.data.visualisations[0].type](page.data.visualisations[0].config) | safe }}

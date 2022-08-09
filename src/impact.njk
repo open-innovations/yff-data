@@ -7,16 +7,16 @@ title: Impact
 
 {% comp 'grid.auto' %}
   {% comp 'grid.pane', { link: '/reports/' } %}
-    <h1>Reports</h1>
+    <h2>Reports</h2>
     <p>Details about reports</p>
     {{ comp.number({ number:reports | length } ) | safe }}
   {% endcomp %}
   {% comp 'grid.pane' %}
-    <h1>Events</h1>
+    <h2>Events</h2>
     {{ comp.number({ number: 23 } ) | safe }}
   {% endcomp %}
   {% comp 'grid.pane' %}
-    <h1>Metric 3</h1>
+    <h2>Metric 3</h2>
     {{ comp.number({ number: 12334 } ) | safe }}
   {% endcomp %}
 {% endcomp %}

@@ -1,23 +1,33 @@
 ---
 # https://inclusive-components.design/menus-menu-buttons/
 css: |
-  .navigation ul[hidden] {
-    display: none;
+  .site-title { font-weight: bold; }
+  .site-header-logo { display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; background: #efefef; margin-right: 1em; }
+  .site-header-logo span { position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); width: calc(100% - 2em); text-align: center; }
+  .navigation button + ul li {
+	display: inline-block;
   }
+  .navigation button[aria-expanded] + ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .navigation button[aria-expanded] + ul li { display: block; }
+  .navigation button[aria-expanded=true] + ul { display: block; }
+  .navigation button[aria-expanded=false] + ul { display: none; }
 js: |
   document.addEventListener('DOMContentLoaded', () => {
     var navButton = document.querySelector('#navigation button');
     navButton.addEventListener('click', function() {
       let expanded = this.getAttribute('aria-expanded') === 'true' || false;
       this.setAttribute('aria-expanded', !expanded);
-      let menu = this.nextElementSibling;
-      menu.hidden = !menu.hidden;
     });
   })
 ---
 <nav id="navigation" class="navigation">
   <button aria-expanded="false">Menu</button>
-  <ul hidden>
+  <ul>
     {% for link in search.pages('nav_order!=undefined', 'nav_order') -%}
       <li><a href="{{ link.data.url }}">{{ link.data.title }}</a></li>
     {% endfor -%}
