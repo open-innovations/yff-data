@@ -24,7 +24,12 @@ site.use(resolveUrls());
 site.use(slugifyUrls());
 
 // Setup admin
-site.use(netlifyCMS());
+site.use(
+  netlifyCMS({
+    previewStyle: '/style/wireframe.css',
+    extraHTML: `<script src='/assets/js/netlify-extras.js'></script>`,
+  })
+);
 
 // Process all css files
 // site.use(postcss({ sourceMap: true }));

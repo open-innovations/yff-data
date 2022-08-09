@@ -43,7 +43,7 @@ collections:
           - name: summary
             label: Section Summary
             widget: markdown
-          - name: topics
+          - name: tags
             label: Section Topics
             widget: categories
           - name: blocks
