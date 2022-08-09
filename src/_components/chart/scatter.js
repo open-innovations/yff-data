@@ -1,5 +1,5 @@
 export const css = `
-.chart .line {
+.scatter-chart .line {
   fill: none;
   stroke-width: 2px;
 }

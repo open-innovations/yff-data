@@ -478,7 +478,7 @@ OI.ready(function(){
 });
 `
 export const css = `
-.chart .line { stroke-width: 4px; }
+.chart .series path.line { stroke-width: 4px; }
 .key:before { content: "Key: "; font-family: 'Century Gothic', sans-serif; font-weight: bold; }
 .key { display: inline-block; text-align: center; background: #efefef; padding: 0.5em; margin-bottom: 1em; }
 .keyitem { display: inline-block; padding-right: 0.5em; font-family: 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; }
