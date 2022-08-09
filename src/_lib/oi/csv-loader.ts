@@ -95,21 +95,29 @@ export default async function csvLoader(path: string) {
     )
   );
 
-  // Create an object with data lists
+  // Create an object with a property per column name.
+  // The value of the key will be a 1 dimensional array of the values in that column.
   const columns = names.reduce(
-    (a, k, i) => ({ ...a, [k]: data.map((r) => r[i]) }),
+    function (accumulator: Record<string, (string|number)[]>, name, n) {
+      // Add a property to the object
+      // Set the value to the n-th column from the data array (defined in containing function)
+      accumulator[name] = data.map((row) => row[n]);
+
+      // Return the accumulator
+      return accumulator;
+    },
     {}
   );
   
-  const colnum = {};
+  const colnum: Record<string, number> = {};
   for(let j = 0; j < names.length; j++) colnum[names[j]] = j;
 
-  const ranges = Object.entries<[]>(columns).reduce(
-    (acc, [key, values], index) => {
-      return {
-        ...acc,
-        [key]: types[index] === FLOAT ? range(values) : undefined,
-      };
+  const ranges = Object.entries(columns).reduce(
+    (accumulator: Record<string, { min: number, max: number } | undefined>, current, index) => {
+      const key = current[0];
+      const values = current[1];
+      accumulator[key] = types[index] === FLOAT ? range(values) : undefined;
+      return accumulator;
     },
     {}
   );

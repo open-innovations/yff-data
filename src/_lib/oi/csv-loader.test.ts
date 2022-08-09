@@ -53,7 +53,7 @@ Deno.test('handle multi-line headers', async () => {
   }
 
   assertEquals(result.header, [['a', 'b'], ['c', 'd']])
-  assertEquals(result.names, ['a.c', 'b.d']);
+  assertEquals(result.names, ['a→c', 'b→d']);
   assertEquals(result.data, [[1, 2], [3, 4]])
 })
 
