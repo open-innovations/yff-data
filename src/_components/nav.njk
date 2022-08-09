@@ -4,18 +4,22 @@ css: |
   .site-title { font-weight: bold; }
   .site-header-logo { display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; background: #efefef; margin-right: 1em; }
   .site-header-logo span { position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); width: calc(100% - 2em); text-align: center; }
-  .navigation button + ul li {
-	display: inline-block;
+  .navigation > div { background: #efefef; }
+
+  .navigation ul.wrapper { margin: auto; }
+  .navigation button + * li {
+    display: inline-block;
   }
-  .navigation button[aria-expanded] + ul {
+  .navigation button[aria-expanded] + * {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
+    text-align: center;
   }
-  .navigation button[aria-expanded] + ul li { display: block; }
-  .navigation button[aria-expanded=true] + ul { display: block; }
-  .navigation button[aria-expanded=false] + ul { display: none; }
+  .navigation button[aria-expanded=true] + * { display: block; }
+  .navigation button[aria-expanded=false] + * { display: none; }
+  .navigation button[aria-expanded] + * li { display: inline-block; }
 js: |
   document.addEventListener('DOMContentLoaded', () => {
     var navButton = document.querySelector('#navigation button');
@@ -27,9 +31,11 @@ js: |
 ---
 <nav id="navigation" class="navigation">
   <button aria-expanded="false">Menu</button>
-  <ul>
-    {% for link in search.pages('nav_order!=undefined', 'nav_order') -%}
-      <li><a href="{{ link.data.url }}">{{ link.data.title }}</a></li>
-    {% endfor -%}
-  </ul>
+  <div>
+    <ul class="wrapper">
+      {% for link in search.pages('nav_order!=undefined', 'nav_order') -%}
+        <li><a href="{{ link.data.url }}">{{ link.data.title }}</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
 </nav>
