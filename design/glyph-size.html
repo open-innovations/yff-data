@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8" />
+	<title>Glyph widths</title>
+	<script src="highlight.min.js"></script>
+	<link rel="StyleSheet" href="highlight.css" type="text/css" />
+	<link rel="StyleSheet" href="style.css" type="text/css" />
+	<style>
+	body {
+		font-family: "Century Gothic";
+	}
+	#glyphs-bold { font-weight: bold; }
+	</style>
+</head>
+<body class="b1-bg">
+
+	<div class="holder padded">
+		<h1>Glyphs</h1>
+		<div id="glyphs"></div>
+		<div id="glyphs-bold"></div>
+	</div>
+
+	<script>
+	
+	var el = document.getElementById('glyphs');
+	var bd = document.getElementById('glyphs-bold');
+	
+	var text = '';
+	for(var charCode = 0; charCode <= 1000; charCode++){
+		text += '<span data="'+charCode+'">'+String.fromCharCode(charCode)+'</span>';
+	}
+	el.innerHTML = text;
+	bd.innerHTML = text;
+	
+	// Now work out widths
+	chars = el.querySelectorAll('span');
+	codes = [];
+	for(var c = 0; c < chars.length; c++){
+		codes.push(chars[c].offsetWidth);
+	}
+	str = JSON.stringify(codes);
+	console.log(str);
+
+	// Now work out widths
+	chars = bd.querySelectorAll('span');
+	codes = [];
+	for(var c = 0; c < chars.length; c++){
+		codes.push(chars[c].offsetWidth);
+	}
+	str = JSON.stringify(codes);
+	console.log(str);
+	
+	</script>
+
+	
+</body>
+</html>
