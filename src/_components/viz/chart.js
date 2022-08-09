@@ -67,8 +67,10 @@ export const js = `
 							serieskey[s].style.opacity = 1;
 							// Simulate z-index by moving to the end
 							serieskey[s].parentNode.appendChild(serieskey[s]);
+							//serieskey[s].querySelectorAll('circle').forEach(function(el){ el.setAttribute('tabindex','0'); });
 						}else{
 							serieskey[s].style.opacity = 0.1;
+							//serieskey[s].querySelectorAll('circle').forEach(function(el){ el.setAttribute('tabindex','-1'); });
 						}
 					}else{
 						serieskey[s].style.opacity = 1;
@@ -492,27 +494,43 @@ circle.selected { r: 5px; }
 function clone(a){ return JSON.parse(JSON.stringify(a)); }
 
 export default function ({ config, sources }) {
-  const csv = loadDataFile(config.file, sources);
 
-  var chart,html;
-  html = "?";
+	// Load the data from the sources
+	const csv = loadDataFile(config, sources);
 
-  const configcopy = clone(config);
-  configcopy.colours = {
-    "Female":"#ee7e3b","Male":"#264c59",
-    "Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358",
-    "Any other religion":"#69C2C9","Buddhist":"#C7B200","Christian":"#E55912","Hindu":"#874245","Jewish":"#7D2248","Muslim":"#005776","None":"#fdc358","Sikh":"#69C2C9",
-    "16-17":"#E52E36","18-24":"#F7AB3D","25-49":"#C7B200","50-64":"#005776"
-  };
-  if(configcopy.type=="line-chart"){
-    chart = new LineChart(configcopy,csv);
-	html = chart.getSVG();
-  }else if(configcopy.type=="category-chart"){
-    chart = new CategoryChart(configcopy,csv);
-	html = chart.getSVG();
-  }
-  return ['<div class="chart">',
-    html,
-    '</div>'
-  ].join('');
+	var chart,html;
+
+	// Set the output to "?" as a default
+	html = "?";
+
+	// Make a clone of the original config to avoid updating the contents elsewhere
+	const configcopy = clone(config);
+
+	// Add our default colours
+	configcopy.colours = {
+		"Female":"#ee7e3b","Male":"#264c59",
+		"Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358",
+		"Any other religion":"#69C2C9","Buddhist":"#C7B200","Christian":"#E55912","Hindu":"#874245","Jewish":"#7D2248","Muslim":"#005776","None":"#fdc358","Sikh":"#69C2C9",
+		"16-17":"#E52E36","18-24":"#F7AB3D","25-49":"#C7B200","50-64":"#005776"
+	};
+
+	if(configcopy.type=="line-chart"){
+
+		// Create a new Line Chart
+		chart = new LineChart(configcopy,csv);
+
+	}else if(configcopy.type=="category-chart"){
+
+		// Create a new Category Chart
+		chart = new CategoryChart(configcopy,csv);
+
+	}
+
+	// Get the output
+	if(chart) html = chart.getSVG();
+
+	return ['<div class="chart">',
+		html,
+		'</div>'
+	].join('');
 }
