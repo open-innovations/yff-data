@@ -35,8 +35,15 @@ export function CategoryChart(config,csv){
 				for(i = 0; i < csv.rows.length; i++){
 					categoryoffset = csv.rows.length-i-1;
 					seriesoffset = ((this.opt.series.length/2)-s-0.5)*(0.8/this.opt.series.length);
-					label = this.opt.series[s].title+"\n"+(csv.columns[this.opt.category][i]||"").replace(/\\n/g,"")+': '+csv.columns[this.opt.series[s].value][i];
-					label += (csv.columns[this.opt.series[s].errors[0]][i]==csv.columns[this.opt.series[s].errors[1]][i] ? ' ± '+csv.columns[this.opt.series[s].errors[0]][i] : ' (+'+csv.columns[this.opt.series[s].errors[1]][i]+', -'+csv.columns[this.opt.series[s].errors[0]][i]+')');
+					label = this.opt.series[s].title+"\n"+(csv.columns[this.opt.category][i]||"").replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "0" : csv.columns[this.opt.series[s].value][i]);
+					// If the errors have values we add them to the label
+					if(!isNaN(csv.columns[this.opt.series[s].errors[0]][i]) && !isNaN(csv.columns[this.opt.series[s].errors[1]][i])){
+						if(csv.columns[this.opt.series[s].errors[0]][i]==csv.columns[this.opt.series[s].errors[1]][i]){
+							label += (' ± '+(isNaN(csv.columns[this.opt.series[s].errors[0]][i]) ? "0" : csv.columns[this.opt.series[s].errors[0]][i]));
+						}else{
+							label += ' (+'+(isNaN(csv.columns[this.opt.series[s].errors[1]][i]) ? "0" : csv.columns[this.opt.series[s].errors[1]][i])+', -'+(isNaN(csv.columns[this.opt.series[s].errors[0]][i]) ? "0" : csv.columns[this.opt.series[s].errors[0]][i])+')';
+						}
+					}
 					if(this.opt.series[s].label && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
 					datum = {'x':csv.columns[this.opt.series[s].value][i],'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]},'title':label};
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
