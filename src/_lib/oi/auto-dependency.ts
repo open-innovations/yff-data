@@ -9,7 +9,7 @@
  * This will search a built dom tree for data-dependencies attributes and add a script element for each.
  * 
  */
-export default function (page: any}) {
+export default function (page: any) {
   // Search for all elements on page with a data-dependencies attribute and turn into an Array
   const elementsWithDepenencies = Array.from(
     page.document.querySelectorAll('[data-dependencies]')
