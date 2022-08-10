@@ -1,16 +1,16 @@
 <section class="block">
-<h2>{{ title }}</h2>
-{{ text | md | safe }}
-{% if visualisations %}
-  <section>
-    {{ comp.viz.main({ visualisations: visualisations }) | safe }}
-  </section>
-{% endif %}
+	<h2>{{ title }}</h2>
+	{{ text | md | safe }}
+	{% if visualisations %}
+	  <div class="viz">
+		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+	  </div>
+	{% endif %}
 
-{% if false %}
-<pre>
-  ---
-  featured: {{ featured_block }}
-</pre>
-{% endif %}
+	{% if false %}
+	<pre>
+	  ---
+	  featured: {{ featured_block }}
+	</pre>
+	{% endif %}
 </section>

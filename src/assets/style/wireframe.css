@@ -47,6 +47,8 @@ section, aside {
 }
 
 .pane,
+.block,
+.viz,
 section,
 aside {
 	border: 1px dashed black;
