@@ -5,19 +5,18 @@ h1 { color: #e25b27; text-align: center; }
 h1,h2,h3,h4,h5,h6 { font-family: "Century Gothic", Helvetica, sans-serif; }
 blockquote { border-left: 4px solid #e25b27; }
 
-.page-title { background: #efe4ea; position: relative; height: 180px; }
+.page-title { background: #efe4ea; position: relative; min-height: 180px; display: table; width: 100%; }
 .page-title::before { content: ""; background-image: url("/assets/images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
 .page-title::after { content: ""; background-image: url("/assets/images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
-.page-title .holder { position: relative; height: 100%; }
-.page-title h1 { position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); }
+.page-title .holder { position: relative; height: 100%; width: 58.8% !important; margin: auto !important; display: table-cell; vertical-align: middle; }
 
-section,
-aside {
-  margin: 1em 0;
-  padding: 1em;
-}
+.page-title h1 { }
+
+section, aside { margin: 1em 0; padding: 0; }
 .site-header { border-bottom: 0; }
 .site-header-logo { background: transparent; }
+.site-header-logo img { display: block; }
+.site-header-logo span { display: none; }
 .tag-cloud li { color: white; background: black; }
 
 .auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
@@ -26,6 +25,8 @@ aside {
 .pane:hover, .pane:focus { outline: 2px solid #e25b27; }
 .pane:hover h2 { color: #964e6d; }
 .grey { background: #efefef; }
+
+.pane, section, aside { border: 0; }
 
 td, th { padding: 0.25em; }
 
@@ -41,3 +42,9 @@ footer {
 }
 footer a { color: #7d2248; }
 footer .small { line-height: 1.25em; }
+
+
+
+@media screen and (max-width: 840px) {
+	.page-title h1 { font-size: 1.5em; }
+}
