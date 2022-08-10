@@ -1,16 +1,32 @@
 /* Youth Futures Foundation styles */
 
-body { font-family: "Century Gothic", Helvetica, sans-serif; }
+body { font-family: "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
 h1 { color: #e25b27; text-align: center; }
 h1,h2,h3,h4,h5,h6 { font-family: "Century Gothic", Helvetica, sans-serif; }
 blockquote { border-left: 4px solid #e25b27; }
+
+.navigation button[aria-expanded] i {
+	background-color: #e25b27;
+}
 
 .page-title { background: #efe4ea; position: relative; min-height: 180px; display: table; width: 100%; }
 .page-title::before { content: ""; background-image: url("/assets/images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
 .page-title::after { content: ""; background-image: url("/assets/images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
 .page-title .holder { position: relative; height: 100%; width: 58.8% !important; margin: auto !important; display: table-cell; vertical-align: middle; }
 
-.page-title h1 { }
+main .wrapper section { line-height: 1.8em; margin-bottom: 4em; }
+main .wrapper section > * { margin-bottom: 1em; }
+main .wrapper section > *:last-child { margin-bottom: 0; }
+main .wrapper section h2, main .wrapper section h3 { color: #e25b27; font-weight: bold; }
+main .wrapper section a:not(.download-link) {
+	color: #e25b27;
+	background-image: linear-gradient(to right,#e25b27 33%,rgba(255,255,255,0) 0%);
+	background-position: bottom;
+	background-size: 5px 1px;
+	background-repeat: repeat-x;
+}
+.download-link { background: #7C2147; text-transform: uppercase; margin: auto; }
+
 
 section, aside { margin: 1em 0; padding: 0; }
 .site-header { border-bottom: 0; }
@@ -30,6 +46,7 @@ section, aside { margin: 1em 0; padding: 0; }
 
 td, th { padding: 0.25em; }
 
+
 footer {
 	border: 0;
 	font-family: "Century Gothic", Helvetica, sans-serif;
@@ -46,5 +63,13 @@ footer .small { line-height: 1.25em; }
 
 
 @media screen and (max-width: 840px) {
+	.navigation > div { text-align: left; }
+	.navigation ul li { display: block; width: 100%; border-bottom: 1px solid rgba(0,0,0,.03); line-height: 3em; padding: 0 1em; }
+	.navigation ul li:hover { background: white; }
+	.navigation ul li:last-child { border-bottom: 0; }
+	.navigation ul li a { color: inherit; display: block; }
 	.page-title h1 { font-size: 1.5em; }
+	footer .twocol { display: block; }
+	footer .twocol > * { margin-bottom: 1em; }
+	footer .twocol > *:last-child { text-align: left; margin-bottom: 0; }
 }
