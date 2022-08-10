@@ -49,6 +49,7 @@ section, aside {
 .pane,
 .block,
 .viz,
+.back-to-report,
 section,
 aside {
 	border: 1px dashed black;

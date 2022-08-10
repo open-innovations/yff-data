@@ -57,7 +57,8 @@ section, aside { margin: 1em 0; padding: 0; }
 .pane:hover h2 { color: #964e6d; }
 .grey { background: #efefef; }
 
-.pane, .block, .viz, section, aside { border: 0; }
+
+.pane, .block, .viz, .back-to-report, section, aside { border: 0; }
 
 td, th { padding: 0.25em; }
 

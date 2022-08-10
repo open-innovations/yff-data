@@ -17,6 +17,7 @@ export default function* ({ reports }) {
       for (const [sectionIndex, section] of Object.entries(report.sections)) {
         yield {
           url: `${url}${section.title}/`,
+          reporttitle: `${report.title}`,
           report: url,
           layout: 'section.njk',
           tags: ['section'],
