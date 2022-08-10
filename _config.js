@@ -10,8 +10,8 @@ import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { copy } from 'std/fs/copy.ts';
-import csvLoader from '/src/_lib/oi/csv-loader.ts';
 import autoDependency from '/src/_lib/oi/auto-dependency.ts';
+import csvLoader from '/src/_lib/oi/csv-loader.ts';
 
 const site = lume({
   src: './src',
@@ -21,9 +21,6 @@ const site = lume({
 // Also process .html files
 site.loadPages(['.html']);
 
-site.use(basePath());
-site.use(resolveUrls());
-site.use(slugifyUrls());
 site.use(inline());
 
 // Setup admin
@@ -78,5 +75,11 @@ site.process(['.html'], autoDependency);
 
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
+
+// URL re-writing plugins. These have to be last to enable any urls installed by the
+// processors to be re-written
+site.use(basePath());
+site.use(resolveUrls());
+site.use(slugifyUrls());
 
 export default site;
