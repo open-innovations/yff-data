@@ -1,5 +1,6 @@
 /* Youth Futures Foundation styles */
 
+body { font-family: "Century Gothic", Helvetica, sans-serif; }
 h1 { color: #e25b27; text-align: center; }
 h1,h2,h3,h4,h5,h6 { font-family: "Century Gothic", Helvetica, sans-serif; }
 blockquote { border-left: 4px solid #e25b27; }
@@ -17,6 +18,15 @@ aside {
 .site-header { border-bottom: 0; }
 .site-header-logo { background: transparent; }
 .tag-cloud li { color: white; background: black; }
+
+.auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
+.pane { border: 0; background: #efefef; padding: 1.25em; line-height: 1.5em; }
+.pane h2 { font-weight: bold; }
+.pane:hover, .pane:focus { outline: 2px solid #e25b27; }
+.pane:hover h2 { color: #964e6d; }
+.grey { background: #efefef; }
+
+td, th { padding: 0.25em; }
 
 footer {
 	border: 0;

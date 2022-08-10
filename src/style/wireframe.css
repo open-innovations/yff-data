@@ -5,7 +5,7 @@ html {
 	font-size: 16px;
 }
 
-body { margin: 0px; line-height: 1.25em; }
+body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 
 .message {
 	background: #fbf5d0;
@@ -38,10 +38,9 @@ img { width: 100%; }
 .pane h2 { color: inherit; }
 
 
-section,
-aside {
-  margin: 1em 0;
-  padding: 1em;
+section, aside {
+	margin: 1em 0 4em 0;
+	padding: 1em;
 }
 
 .pane,
