@@ -46,7 +46,7 @@ main .wrapper section a:not(.download-link, .tab) {
 section, aside { margin: 1em 0; padding: 0; }
 .site-header { border-bottom: 0; }
 .site-header-logo { background: transparent; }
-.site-header-logo img { display: block; }
+.site-header-logo img, .site-header-logo svg { display: block; }
 .site-header-logo span { display: none; }
 .tag-cloud li { color: white; background: black; }
 

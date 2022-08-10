@@ -13,7 +13,7 @@ body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 	text-align: center;
 }
 
-.site-header-logo img { display: none; }
+.site-header-logo img, .site-header-logo svg { display: none; }
 
 .wrapper { padding: 2em 1em; }
 .padded { padding: 1em; }
