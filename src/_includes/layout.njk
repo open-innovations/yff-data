@@ -11,29 +11,25 @@
   <link rel="stylesheet" href="/components.css">
   <link rel="stylesheet" href="/style/wireframe.css">
   <script src="/components.js"></script>
-  {% for script in extra_scripts -%}
-    <script src="{{ script }}"></script>
-  {% endfor -%}
 </head>
 <body>
-  <div class="message">
+  <div class="message container">
     <div class="wrapper">
 		Warning: This site is under development and should not be used for analysis.
 	</div>
   </div>
-  <header id="site-header" class="site-header">
+  <header id="site-header" class="site-header container">
     <div class="site-header-content wrapper">
       <a href='/'><div class="site-header-logo"><span>Logo</span></div><span class="site-title">YFF Data</span></a>
       {{ comp.nav() | safe }}
     </div>
   </header>
-  <main id="main" role="main">
-
+  <main id="main" role="main" class="container">
     {% block main %}
     {{ content | safe }}
     {% endblock %}
   </main>
-  <footer>
+  <footer class="container">
 	<div class="wrapper">
 		<div class="twocol">
 			<div>

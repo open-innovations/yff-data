@@ -9,7 +9,7 @@ locale: "en-GB"
 # If left as is, will commit directly onto main
 # publish_mode: editorial_workflow
 
-media_folder: "src/images/uploads"
+media_folder: "src/assets/images/uploads"
 
 collections:
   - name: report
@@ -43,7 +43,7 @@ collections:
           - name: summary
             label: Section Summary
             widget: markdown
-          - name: topics
+          - name: tags
             label: Section Topics
             widget: categories
           - name: blocks

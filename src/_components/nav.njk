@@ -1,25 +1,45 @@
 ---
 # https://inclusive-components.design/menus-menu-buttons/
 css: |
-  .site-title { font-weight: bold; }
-  .site-header-logo { display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; margin-right: 1em; }
-  .site-logo { width: 200px; }
-  .navigation > div { background: #efefef; }
-
-  .navigation ul.wrapper { margin: auto; }
-  .navigation button + * li {
-    display: inline-block;
-  }
-  .navigation button[aria-expanded] + * {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
+  /* This is the mechanics of the menu button */
   .navigation button[aria-expanded=true] + * { display: block; }
   .navigation button[aria-expanded=false] + * { display: none; }
-  .navigation button[aria-expanded] + * li { display: inline-block; }
+
+  .navigation button[aria-expanded] {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    padding: 0;
+    background-color: inherit;
+  }
+  .navigation button[aria-expanded] i {
+    height: 0.3rem;
+    width: 100%;
+    background-color: black;
+    transition: ease transform 250ms;
+    border-radius: 0.8rem;
+  }
+  .navigation button[aria-expanded=true] i:nth-of-type(1) {
+    transform: translateY(0.7rem) scaleX(0);
+  }
+  .navigation button[aria-expanded=true] i:nth-of-type(2) {
+    transform: rotate(225deg) scale(1.41);
+  }
+  .navigation button[aria-expanded=true] i:nth-of-type(3) {
+    transform: translateY(-0.7rem) rotate(135deg) scale(1.41);
+  }
+  @media screen and (min-width: 840px) {
+    .navigation button[aria-expanded] {
+      display: none;
+    }
+    .navigation button[aria-expanded] + * {
+      display: block;
+    }
+  }
+
 js: |
   document.addEventListener('DOMContentLoaded', () => {
     var navButton = document.querySelector('#navigation button');
@@ -30,7 +50,11 @@ js: |
   })
 ---
 <nav id="navigation" class="navigation">
-  <button aria-expanded="false">Menu</button>
+  <button aria-expanded="false" aria-label="Menu">
+    <i role="none"></i>
+    <i role="none"></i>
+    <i role="none"></i>
+  </button>
   <div>
     <ul class="wrapper">
       {% for link in search.pages('nav_order!=undefined', 'nav_order') -%}

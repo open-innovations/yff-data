@@ -14,7 +14,12 @@ body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 	text-align: center;
 }
 
-.wrapper {
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.wrapper, .container > * {
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
@@ -62,9 +67,20 @@ aside {
 	z-index: 1000;
 }
 
+.site-title {
+  font-weight: bold;
+}
+.site-header-logo {
+  display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; margin-right: 1em;
+}
+.site-logo {
+  width: 200px;
+}
+
 .site-header img { height: auto; width: 200px; float: left; }
 .site-header-content {
   display: flex;
+  align-items: center;
   padding: 1rem 0;
 }
 .site-header-content > *:first-child {
@@ -76,6 +92,45 @@ aside {
 }
 .site-header-logo { background: #efefef; }
 .site-header-logo span { position: absolute; left: 50%; top: 50%; transform: translate3d(-50%,-50%,0); }
+
+/* Navigation styling */
+.navigation > div {
+  background: #efefef;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.navigation ul.wrapper { margin: auto; }
+.navigation button + * li { display: inline-block; }
+.navigation ul {
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+}
+.navigation li {
+  width: 10em;
+}
+
+@media screen and (min-width: 840px) {
+  .navigation > div {
+    background: initial;
+    position: relative;
+    top: initial;
+    left: initial;
+    right: initial;
+  }
+  .navigation ul.wrapper { margin: initial; }
+  .navigation button + * li { display: initial; }
+  .navigation ul {
+    display: flex;
+    gap: 1rem;
+  }
+  .navigation li {
+    width: initial;
+  }
+}
 
 .tag-cloud li {
 	color: white;
@@ -105,14 +160,6 @@ pre code {
   padding: 1rem;
 }
 
-.navigation ul {
-  list-style: none;
-  padding: 1em;
-  margin: 0;
-}
-.navigation li {
-  width: 10em;
-}
 footer { border-top: 1px solid black; padding: 2em 0; }
 footer .twocol {
 	display: grid;
