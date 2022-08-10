@@ -282,15 +282,31 @@ categorychartemployment:
     - title: "White"
       value: "White→Value (%)"
       errors: ["White→- (%)","White→+ (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+dashboard:
+  file: /data/example/dummy_dashboard.csv
+  type: dashboard
+  title: "Title"	# Column heading for title
+  value: "Value"	# Column heading for value
+  note: "Note"		# Column heading for note
+  columns: 4		# Number of horizontal columns (default: 4)
+  panels:
+    - name: "Thing 1"
+      class: "plum"
+    - name: "Thing 3"
+      class: "forest"
+    - name: "Thing 2"
+      class: "gold"
+    - name: "Thing 4"
+      class: "turquoise"
 ---
 
-  <div class="page-title">
-	<div class="holder">
+<div class="page-title">
+	<div class="holder wrapper">
 		<h1>{{ title }}</h1>
 	</div>
-  </div>
+</div>
 
-  <div class="wrapper holder">
+<div class="wrapper holder">
 	<section>
 		<h2>Simple Table</h2>
 		{{ comp.viz.table({ config: table }) | safe }}
@@ -350,4 +366,14 @@ categorychartemployment:
 		</code></pre>
 		<a href="{{ categorychartemployment.file }}">Data file</a>
 	</section>
-	</div>
+
+	<section>
+		<h2>Dashboard</h2>
+		{{ comp.viz.dashboard({ config: dashboard }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- dashboard | yaml -}}
+		</code></pre>
+		<a href="{{ dashboard.file }}">Data file</a>
+	</section>
+</div>

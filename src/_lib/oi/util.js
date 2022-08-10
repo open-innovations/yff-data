@@ -19,7 +19,6 @@ export function loadDataFile(path, sources) {
 	const name = path.replace(/\//g, '.').replace(/^.*data/, 'sources').replace(/\.[^\.]*$/, '');
 	data = eval(name);
 	
-  
 	if(typeof config==="object"){
 		data = augmentTable(config,data);
 	}
@@ -30,9 +29,10 @@ export function loadDataFile(path, sources) {
 function augmentTable(config, table){
 
 	var c,r,v,col,nc,h;
+	
 	// We want to build any custom columns here
-	nc = table.names.length;
-	if(config.columns){
+	if(config.columns && table.names){
+		nc = table.names.length;
 		for(c = 0; c < config.columns.length; c++){
 			if(config.columns[c].template){
 				col = config.columns[c];
