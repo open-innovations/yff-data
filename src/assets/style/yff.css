@@ -32,7 +32,7 @@ main .wrapper section { line-height: 1.8em; margin-bottom: 4em; }
 main .wrapper section > * { margin-bottom: 1em; }
 main .wrapper section > *:last-child { margin-bottom: 0; }
 main .wrapper section h2, main .wrapper section h3 { color: #e25b27; font-weight: bold; }
-main .wrapper section a:not(.download-link) {
+main .wrapper section a:not(.download-link, .tab) {
 	color: #e25b27;
 	background-image: linear-gradient(to right,#e25b27 33%,rgba(255,255,255,0) 0%);
 	background-position: bottom;
@@ -63,6 +63,23 @@ td, th { padding: 0.25em; }
 
 .tag-cloud { margin-left: 0; }
 .tag-cloud li { background: #7C2147; border-radius: 0; }
+
+
+/* Tabbed figures */
+.grid.tabs { margin-bottom: 0; }
+.grid.tabs li a {
+	background-color: #efefef;
+}
+.grid.tabs li a.active {
+	background-color: #fceee7;
+	color: black !important;
+}
+.panes .pane {
+	background-color: #fceee7;
+}
+
+
+
 
 .feedback { text-align: center; background: #e8d8de; border: 0; }
 .feedback a { color: #E55912; font-weight: bold; }

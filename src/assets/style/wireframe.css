@@ -112,6 +112,44 @@ aside {
   width: 10em;
 }
 
+/* Tabbed figures */
+.grid {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: auto auto;
+	grid-gap: 0 4px;
+	order: 1;
+	margin: 0px;
+}
+.tabs li a {
+	position: relative;
+	background: #b2b2b2;
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: black;
+	font: inherit;
+	line-height: inherit;
+	text-align: center;
+	padding: 0.5em;
+	line-height: 2em;
+	text-decoration: none;
+	cursor: pointer;
+}
+.tabs li a.active {
+	background: #efefef;
+}
+.panes {
+	width: 100%;
+	position: relative;
+	background: #efefef;
+}
+.pane {
+	width: 100%;
+	position: relative;
+}
+
 @media screen and (min-width: 840px) {
   .navigation > div {
     background: initial;

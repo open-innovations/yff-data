@@ -53,9 +53,15 @@ sections:
                 link: about:blank
             type: static-image
             config: 
-              link: https://dummyimage.com/600x200/777/fff.png&text=Section+1+Image+1
+              link: https://dummyimage.com/600x200/777/fff.png&text=Section+1+Image+1a
               # Description is used for the alt tag
               description: Some text that describes the image
+          - title: 2nd title
+            caption: A slightly longer description
+            type: static-image
+            config:
+              link: https://dummyimage.com/600x200/777/fff.png&text=Section+1+Image+1b
+              description: Some text for the second image
         text: |
           <p>Some <b>text</b> in section one</p>
       - text: |
