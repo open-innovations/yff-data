@@ -57,7 +57,7 @@ section, aside { margin: 1em 0; padding: 0; }
 .pane:hover h2 { color: #964e6d; }
 .grey { background: #efefef; }
 
-.pane, section, aside { border: 0; }
+.pane, .block, .viz, section, aside { border: 0; }
 
 td, th { padding: 0.25em; }
 
@@ -67,13 +67,9 @@ td, th { padding: 0.25em; }
 
 /* Tabbed figures */
 .grid.tabs { margin-bottom: 0; }
-.grid.tabs li a {
-	background-color: #efefef;
-}
-.grid.tabs li a.active {
-	background-color: #fceee7;
-	color: black !important;
-}
+.grid.tabs li a { background-color: #efefef; color: #565655; }
+.grid.tabs li a.active { background-color: #fceee7; color: #E55912; }
+.grid.tabs li a h3 { color: inherit; }
 .panes .pane {
 	background-color: #fceee7;
 }
