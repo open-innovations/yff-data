@@ -15,8 +15,8 @@ body { margin: 0px; line-height: 1.25em; }
 }
 
 .container {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .wrapper, .container > * {
