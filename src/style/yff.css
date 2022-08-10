@@ -5,6 +5,20 @@ h1 { color: #e25b27; text-align: center; }
 h1,h2,h3,h4,h5,h6 { font-family: "Century Gothic", Helvetica, sans-serif; }
 blockquote { border-left: 4px solid #e25b27; }
 
+.gold { background: #F7AB3D; }
+.orange { background: #E55912; }
+.turquoise { background: #69C2C9; }
+.cherry { background: #E52E36; }
+.chartreuse { background: #C7B200; }
+.plum { background: #7D2248; color: white; }
+.grey { background: #B2B2B2; }
+.blue { background: #005776; color: white; }
+.raisin { background: #874245; color: white; }
+.rose { background: #FF808B; }
+.forest { background: #4A783C; color: white; }
+.black { background: #000000; color: white; }
+.plum a, .blue a, .raisin a, .forest a, .black a { color: #E55912; font-weight: bold; }
+
 .navigation button[aria-expanded] i {
 	background-color: #e25b27;
 }
@@ -25,7 +39,8 @@ main .wrapper section a:not(.download-link) {
 	background-size: 5px 1px;
 	background-repeat: repeat-x;
 }
-.download-link { background: #7C2147; text-transform: uppercase; margin: auto; }
+.download-link, .button { background: #7C2147; text-transform: uppercase; margin: auto; padding: 15px 60px !important; font-size: 1.4em; font-weight: bold; }
+.download-link:hover, .download-link:focus, .button { background: #964E6D !important; }
 
 
 section, aside { margin: 1em 0; padding: 0; }
@@ -46,6 +61,11 @@ section, aside { margin: 1em 0; padding: 0; }
 
 td, th { padding: 0.25em; }
 
+.tag-cloud { margin-left: 0; }
+.tag-cloud li { background: #7C2147; border-radius: 0; }
+
+.feedback { text-align: center; background: #e8d8de; border: 0; }
+.feedback a { color: #E55912; font-weight: bold; }
 
 footer {
 	border: 0;
