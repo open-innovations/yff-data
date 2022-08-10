@@ -10,23 +10,20 @@ body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 .message {
 	background: #fbf5d0;
 	color: #5f5207;
-	padding: 1em;
 	text-align: center;
 }
 
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.wrapper, .container > * {
+.wrapper { padding: 2em 1em; }
+.padded { padding: 1em; }
+.holder {
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
+	
 }
-
-main .wrapper { padding: 2em 0; }
-main .wrapper > *:first-child { margin-top: 0; }
+main .wrapper > * { margin-bottom: 1em; }
+main .wrapper > *:last-child { margin-bottom: 0; }
+.wrapper > *:first-child { margin-top: 0; }
 h1 { font-size: 2.5em; font-weight: bold; line-height: 1.25em; }
 h1 + *, h2 + *, h3 + * { margin-top: 1em; }
 h2 { font-size: 1.5em; line-height: 1.25em; }
@@ -81,7 +78,8 @@ aside {
 .site-header-content {
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 .site-header-content > *:first-child {
   flex-grow: 1;

@@ -10,16 +10,17 @@
   <title>{{ title | default('PAGE TITLE') }} - Youth Futures Foundation</title>
   <link rel="stylesheet" href="/components.css">
   <link rel="stylesheet" href="/style/wireframe.css">
+  <!--<link rel="stylesheet" href="/style/yff.css">-->
   <script src="/components.js"></script>
 </head>
 <body>
   <div class="message container">
-    <div class="wrapper">
+    <div class="holder padded">
 		Warning: This site is under development and should not be used for analysis.
 	</div>
   </div>
   <header id="site-header" class="site-header container">
-    <div class="site-header-content wrapper">
+    <div class="site-header-content holder wrapper">
       <a href='/'><div class="site-header-logo"><span>Logo</span></div><span class="site-title">YFF Data</span></a>
       {{ comp.nav() | safe }}
     </div>
@@ -30,7 +31,7 @@
     {% endblock %}
   </main>
   <footer class="container">
-	<div class="wrapper">
+	<div class="holder wrapper">
 		<div class="twocol">
 			<div>
 				<div class="site-header-logo"><span>Logo</span></div>
@@ -42,7 +43,7 @@
 			<div></div>
 		</div>
 		<div class="twocol small">
-			<p><a href="https://youthfuturesfoundation.org//terms-of-use/">Terms of Use</a>&nbsp; | &nbsp;<a href="https://youthfuturesfoundation.org//privacy-policy">Privacy Policy</a>&nbsp; |&nbsp; <a href="https://youthfuturesfoundation.org//cookie-policy/">Cookie Policy</a>&nbsp; |&nbsp; <a href="https://youthfuturesfoundation.org//risk-checks/">Risk Checks</a></p>
+			<p><a href="https://youthfuturesfoundation.org/terms-of-use/">Terms of Use</a>&nbsp; | &nbsp;<a href="https://youthfuturesfoundation.org/privacy-policy">Privacy Policy</a>&nbsp; |&nbsp; <a href="https://youthfuturesfoundation.org/cookie-policy/">Cookie Policy</a>&nbsp; |&nbsp; <a href="https://youthfuturesfoundation.org/risk-checks/">Risk Checks</a></p>
 			<p>&copy; 2022 Youth Futures Foundation. Company number: 11814131</p>
 		</div>
 	</div>

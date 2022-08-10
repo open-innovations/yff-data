@@ -3,12 +3,12 @@ nav_order: 20
 title: Reports
 ---
   <div class="page-title">
-	<div class="wrapper">
+	<div class="holder">
 		<h1>Report Dashboard</h1>
 	</div>
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper holder">
 	{% comp 'grid.auto', { min_width: '30em' } %}
 	  {% for page in search.pages('report', 'date') %}
 		{% comp 'grid.pane', { link: page.data.url } %}

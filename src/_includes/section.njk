@@ -2,13 +2,13 @@
 
 {% block main %}
   <div class="page-title">
-	<div class="wrapper">
+	<div class="holder">
 		<a href='{{ report }}'>Go back to full report</a>
 		<h1>{{ title }}</h1>
 	</div>
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper holder">
   <aside>
   {{ comp['tag-cloud']({ tags: tags }) | safe }}
   </aside>
