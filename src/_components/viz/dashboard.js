@@ -17,14 +17,15 @@ if(!window.requestAnimFrame){
 }
 ready(function(){
 	var dashboards = document.querySelectorAll(".dashboard");
-	function animateNumber(el,val,duration,units){
+	function animateNumber(el,val,duration){
 		if(typeof val!=="number"){
 			val = el.getAttribute('data')||el.innerHTML;
 			if(val) val = parseFloat(val);
 			el.innerHTML = '';
 		}
-		if(!units) units = "";
 		var start = new Date();
+		var pre = el.getAttribute('data-prefix')||'';
+		var post = el.getAttribute('data-postfix')||'';
 		var v;
 		if(typeof duration!=="number") duration = 300;
 
@@ -34,10 +35,10 @@ ready(function(){
 			var f = (now - start)/duration;
 			if(f < 1){
 				v = formatNumber(Math.round(val*f));
-				el.innerHTML = units+v;
+				el.innerHTML = pre+v+post;
 				window.requestAnimFrame(frame);
 			}else{
-				el.innerHTML = (units||"")+formatNumber(val);
+				el.innerHTML = (pre||"")+formatNumber(val)+(post||"");
 			}
 		}
 

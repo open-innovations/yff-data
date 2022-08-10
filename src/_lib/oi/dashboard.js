@@ -29,7 +29,16 @@ export function Dashboard(config,csv){
 
 				panel = '<div class="panel'+(cls ? ' '+cls : '')+'">';
 				panel += '<h3>'+config.panels[p].name+'</h3>';
-				if(config.value && csv.columns[config.value]) panel += '<span class="bignum" data="'+csv.rows[idx][config.value]+'">'+csv.rows[idx][config.value].toLocaleString()+'</span>';
+				if(config.value && csv.columns[config.value]){
+					panel += '<span class="bignum" data="'+csv.rows[idx][config.value]+'"';
+					if(config.units){
+						if(config.units.prefix && csv.rows[idx][config.units.prefix]) panel += ' data-prefix="'+csv.rows[idx][config.units.prefix]+'"';
+						if(config.units.postfix && csv.rows[idx][config.units.postfix]) panel += ' data-postfix="'+csv.rows[idx][config.units.postfix]+'"';
+					}
+					panel += '>';
+					panel += csv.rows[idx][config.value].toLocaleString();
+					panel += '</span>';
+				}
 				if(config.note && csv.columns[config.note]) panel += '<span class="note">'+csv.rows[idx][config.note]+'</span>';
 				panel += '</div>';
 
