@@ -1,20 +1,19 @@
 /**
  * auto-dependency
- * 
+ *
  * Usage:
- * 
+ *
  *   import autoDependency from '<this file>'
  *   site.process(['.html'], autoDependency)
- * 
+ *
  * This will search a built dom tree for data-dependencies attributes and add a script element for each.
- * 
+ *
  */
 export default function (page: any) {
   // Search for all elements on page with a data-dependencies attribute and turn into an Array
   const elementsWithDepenencies = Array.from(
     page.document.querySelectorAll('[data-dependencies]')
   );
-
   // If none found, finish processing
   if (elementsWithDepenencies.length === 0) return;
 
@@ -38,7 +37,7 @@ export default function (page: any) {
   const deduplicatedDependencies = Array.from(new Set(fullDependencyList));
 
   // For each deduplicated depdency
-  deduplicatedDependencies.forEach(dependency => {
+  deduplicatedDependencies.forEach((dependency) => {
     // Create a new script element
     const newScriptElement = page.document.createElement('script');
     // Set the src attribute
@@ -48,4 +47,4 @@ export default function (page: any) {
     // Then append to the document head
     page.document.head.appendChild(newScriptElement);
   });
-};
+}
