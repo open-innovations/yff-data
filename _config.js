@@ -33,6 +33,7 @@ site.use(
 
 // Process all css files
 // site.use(postcss({ sourceMap: true }));
+site.copy(['.js']);
 site.copy(['.css']);
 site.copy(['.svg']);
 site.copy(['.png']);

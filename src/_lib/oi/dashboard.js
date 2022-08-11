@@ -1,14 +1,16 @@
 import { document } from '/src/_lib/oi/document.ts';
 
-const ns = 'http://www.w3.org/2000/svg';
+// This component uses "/assets/js/dashboard.js" to make things interactive in the browser.
+// It will only get included in pages that need it by using the "data-dependencies" attribute.
 
+const ns = 'http://www.w3.org/2000/svg';
 
 export function Dashboard(config,csv){
 
 	this.getHTML = function(){
 		var html,i,panel,r,cls,p,idx;
 		
-		html = ['<div class="dashboard" data-scroll="visible" style="grid-template-columns: repeat('+(config.columns||4)+', 1fr);">'];
+		html = ['<div class="dashboard" data-dependencies="/assets/js/dashboard.js" style="grid-template-columns: repeat('+(config.columns||4)+', 1fr);">'];
 
 		// Loop over the user-specified panels
 		for(p = 0 ; p < config.panels.length; p++){
