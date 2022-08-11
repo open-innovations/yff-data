@@ -313,6 +313,37 @@ barchartgender:
       value: "Female→Value (%)"
     - title: "Male"
       value: "Male→Value (%)"
+barchart:
+  file: /data/example/dummy_barchart_placements.csv
+  type: bar-chart
+  key:
+    show: true     # Default to false
+    position: "top right"
+  axis:
+    x:
+      min: 0
+      max: 60
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+      ticks:
+        - value: 10
+          label: "10%"
+        - value: 20
+          label: "20%"
+        - value: 30
+          label: "30%"
+        - value: 40
+          label: "40%"
+        - value: 50
+          label: "50%"
+    y:
+      grid:
+        stroke-width: 0.5
+  category: "Reason"  # Category names come from 
+  series:
+    - title: "School"
+      value: "School"
 barchartplacement:
   file: /data/example/dummy_barchart_placements.csv
   type: bar-chart
@@ -438,6 +469,16 @@ dashboard:
 
 	<section>
 		<h2>Bar Chart</h2>
+		{{ comp.viz.chart({ config: barchart }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- barchart | yaml -}}
+		</code></pre>
+		<a href="{{ barchart.file }}">Data file</a>
+	</section>
+
+	<section>
+		<h2>Bar Chart - multi-series</h2>
 		{{ comp.viz.chart({ config: barchartplacement }) | safe }}
 		<p>Built using config: </p>
 		<pre><code>
