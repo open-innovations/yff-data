@@ -728,12 +728,16 @@ function Series(s,props,data){
 			for(ax in data[i].error){
 				a = opt.getXY(data[i].x-data[i].error[ax][0],data[i].y);
 				b = opt.getXY(data[i].x+data[i].error[ax][1],data[i].y);
-				setAttr(pts[i].errorbar[ax],{'x1':roundTo(a.x, 3),'y1':roundTo(a.y, 3),'x2':roundTo(b.x, 3),'y2':roundTo(b.y, 3),'stroke':opt.errors.stroke||opt.points.color,'stroke-width':opt.errors['stroke-width']||1,'class':'errorbar'});
+				// If the x-values are numbers we update the attributes
+				if(!isNaN(a.x) && !isNaN(b.x)){
+					setAttr(pts[i].errorbar[ax],{'x1':roundTo(a.x, 3),'y1':roundTo(a.y, 3),'x2':roundTo(b.x, 3),'y2':roundTo(b.y, 3),'stroke':opt.errors.stroke||opt.points.color,'stroke-width':opt.errors['stroke-width']||1,'class':'errorbar'});
+				}
 			}
 
 			// Keep a copy 
-			if(typeof pts[i].old.x==="number" && typeof pts[i].old.y==="number") old = clone(pts[i].old);
-			else{
+			if(typeof pts[i].old.x==="number" && typeof pts[i].old.y==="number"){
+				old = clone(pts[i].old);
+			}else{
 				if(typeof old.x==="number" && typeof old.y==="number") pts[i].old = old;
 			}
 			// Update point position
