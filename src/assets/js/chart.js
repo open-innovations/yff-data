@@ -276,8 +276,11 @@
 	root.OI.InteractiveChart = function(el){ return new InteractiveChart(el); };
 
 	function h2d(h) {return parseInt(h,16);}
+	function brightnessIndex(rgb){ return rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114; }
+	function brightnessDiff(a,b){ return Math.abs(brightnessIndex(a)-brightnessIndex(b)); }
+	function hueDiff(a,b){ return Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]); }
 	function contrastColour(c){
-		var rgb = [];
+		var col,cols,rgb = [];
 		if(c.indexOf('#')==0){
 			rgb = [h2d(c.substring(1,3)),h2d(c.substring(3,5)),h2d(c.substring(5,7))];
 		}else if(c.indexOf('rgb')==0){
@@ -285,9 +288,19 @@
 			if(bits.length == 4) this.alpha = parseFloat(bits[3]);
 			rgb = [parseInt(bits[0]),parseInt(bits[1]),parseInt(bits[2])];
 		}
-		// Check brightness
-		var bri = rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114;
-		return (bri > 125 ? "black":"white");
+		// Check brightness contrast
+		cols = {'black':{'rgb':[0,0,0]},'white':{'rgb':[255,255,255]}};
+		for(col in cols){
+			cols[col].brightness = brightnessDiff(rgb,cols[col].rgb);
+			cols[col].hue = hueDiff(rgb,cols[col].rgb);
+			cols[col].ok = (cols[col].brightness > 125 && cols[col].hue > 500);
+		}
+		for(col in cols){
+			if(cols[col].ok) return 'rgb('+cols[col].rgb.join(",")+')';
+		}
+		col = (cols.white.brightness > cols.black.brightness) ? "white" : "black"
+		console.warn('Text contrast not enough for %c'+c+'%c (colour contrast: '+cols[col].brightness.toFixed(1)+', hue contrast: '+cols[col].hue+')','background:'+c+';color:'+col,'background:none;color:inherit;');
+		return col;
 	}
 
 	if(!root.OI) root.OI = {};
