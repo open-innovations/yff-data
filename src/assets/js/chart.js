@@ -39,7 +39,7 @@
 		var key = el.querySelector('.key');
 		var serieskey = el.querySelectorAll('.series');
 		var s,i,p;
-		var pt = el.querySelectorAll('.series circle');
+		var pt = el.querySelectorAll('.series circle, .series rect');
 		var pts = [];
 		var series = [];
 		for(p = 0; p < pt.length; p++){
@@ -80,10 +80,8 @@
 							serieskey[s].style.opacity = 1;
 							// Simulate z-index by moving to the end
 							serieskey[s].parentNode.appendChild(serieskey[s]);
-							//serieskey[s].querySelectorAll('circle').forEach(function(el){ el.setAttribute('tabindex','0'); });
 						}else{
 							serieskey[s].style.opacity = 0.1;
-							//serieskey[s].querySelectorAll('circle').forEach(function(el){ el.setAttribute('tabindex','-1'); });
 						}
 					}else{
 						serieskey[s].style.opacity = 1;
@@ -119,7 +117,7 @@
 		this.showTooltip = function(s,i){
 			el.style.position = 'relative';
 
-			var txt,bb,bbo,fill,hsv,hsl,selected;
+			var txt,bb,bbo,fill,hsv,hsl,selected,off;
 			this.tip = el.querySelector('.tooltip');
 			if(!this.tip){
 				this.tip = document.createElement('div');
@@ -146,7 +144,11 @@
 			bb = series[s][i].el.getBoundingClientRect();	// Bounding box of the element
 			bbo = el.getBoundingClientRect(); // Bounding box of SVG holder
 
-			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - 4px),0);display:'+(txt ? 'block':'none')+';');
+			var typ = svg.getAttribute('data-type');
+			off = 4;
+			if(typ=="bar-chart") off = bb.height/2;
+			
+			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - '+off+'px),0);display:'+(txt ? 'block':'none')+';');
 			this.tip.querySelector('.inner').style.background = fill;
 			this.tip.querySelector('.arrow').style['border-top-color'] = fill;
 			this.tip.style.color = contrastColour(fill);
@@ -160,7 +162,6 @@
 			dist = 1e100;
 			var matches = [];
 			var typ = svg.getAttribute('data-type');
-			
 
 			for(s = 0; s < series.length; s++){
 				if(series[s]){
@@ -180,13 +181,18 @@
 									dist = dy;
 									d = Math.sqrt(dx*dx + dy*dy);
 								}
-							}else{
+							}else if(typ=="line-chart"){
 								dx = Math.abs((p.x+p.width/2)-e.clientX);	// Find distance from circle centre to cursor
 								dy = Math.abs((p.y+p.width/2)-e.clientY);
 								if(dx < min && dx < dist){
 									idx = i;
 									dist = dx;
 									d = Math.sqrt(dx*dx + dy*dy);
+								}
+							}else if(typ=="bar-chart"){
+								// As the bars run horizontally, we just check if the vertical position lines up with a bar
+								if(e.clientY >= p.top && e.clientY <= p.top+p.height){
+									idx = i;
 								}
 							}
 						}

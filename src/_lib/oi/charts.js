@@ -2,6 +2,121 @@ import { document } from '/src/_lib/oi/document.ts';
 
 const ns = 'http://www.w3.org/2000/svg';
 
+export function BarChart(config,csv){
+
+	var opt = {
+		'type': 'bar-chart',
+		'padding':{'left':0,'top':0,'right':0,'bottom':0},
+		'left':0,
+		'right':0,
+		'top':0,
+		'bottom':0,
+		'tick':5,
+		'font-size': 17,
+		'key':{
+			'show':false,
+			'border':{'stroke':'#000000','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
+			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
+		},
+		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
+		'duration': '0.3s',
+		'buildSeries': function(){
+			// Series
+			var data,datum,label,i,s,categoryoffset,seriesoffset;
+			for(s = 0; s < this.opt.series.length; s++){
+				mergeDeep(this.opt.series[s],{
+					'line':{'show':false,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
+					'points':{'show':false,'size':4, 'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
+					'bars':{'show':true,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
+					'errorbars':{'stroke':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null),'stroke-width':2}
+				});
+				// Duplicate errors if only one error value given
+				if(this.opt.series[s].errors && this.opt.series[s].errors.length==1) this.opt.series[s].errors.push(this.opt.series[s].errors[0]);
+				data = [];
+				for(i = 0; i < csv.rows.length; i++){
+					categoryoffset = csv.rows.length-i-1;
+					seriesoffset = ((this.opt.series.length/2)-s-0.5)*(0.8/this.opt.series.length);
+					label = this.opt.series[s].title+"\n"+(csv.columns[this.opt.category][i]||"").replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
+					// If the errors have values we add them to the label
+					if(this.opt.series[s].errors){
+						if(!isNaN(csv.columns[this.opt.series[s].errors[0]][i]) && !isNaN(csv.columns[this.opt.series[s].errors[1]][i])){
+							if(csv.columns[this.opt.series[s].errors[0]][i]==csv.columns[this.opt.series[s].errors[1]][i]){
+								label += (' ± '+(isNaN(csv.columns[this.opt.series[s].errors[0]][i]) ? "0" : csv.columns[this.opt.series[s].errors[0]][i]));
+							}else{
+								label += ' (+'+(isNaN(csv.columns[this.opt.series[s].errors[1]][i]) ? "0" : csv.columns[this.opt.series[s].errors[1]][i])+', -'+(isNaN(csv.columns[this.opt.series[s].errors[0]][i]) ? "0" : csv.columns[this.opt.series[s].errors[0]][i])+')';
+							}
+						}
+					}
+					if(this.opt.series[s].label && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
+					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'title':label};
+					// Add errors if we have them
+					if(this.opt.series[s].errors) datum.error = {'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]};
+					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
+					data.push(datum);
+				}
+				this.series.push(new Series(s,this.opt.series[s],data,{'axis':this.opt.axis,'barsize':(0.8/this.opt.series.length)}));
+			}
+			return this;
+		},
+		'buildAxes': function(){
+			var i;
+			// Axes
+			// Build x-axis labels
+			for(i = 0; i < this.opt.axis.x.ticks.length; i++) this.opt.axis.x.labels[this.opt.axis.x.ticks[i].value] = this.opt.axis.x.ticks[i];
+			// Set y-axis range for categories
+			this.opt.axis.y.min = -0.5;
+			this.opt.axis.y.max = csv.rows.length-0.5;
+			// Build y-axis labels
+			for(i = 0 ; i < csv.rows.length; i++){
+				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(csv.rows[i][this.opt.category]||"").replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
+				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
+			}
+			return this;
+		},
+		'updatePadding': function(){
+			var i,l,pad,len,ax,lines,align;
+			// Work out padding
+			pad = {'l':0,'t':0,'b':0,'r':0};
+			for(ax in this.opt.axis){
+				// Work out x-axis padding
+				for(l in this.opt.axis[ax].labels){
+					len = 0;
+					// Split the label by any new line characters
+					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					if(ax=="x"){
+						// Length is based on the 
+						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+					}else{
+						// Work out the longest line
+						for(i = 0; i < lines.length; i++){
+							// Roughly calculate the length in pixels
+							len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + getTextLength(lines[i],this.opt['font-size'],this.opt['font-weight']) + this.opt.tick + this.opt.axis[ax].padding);
+						}
+					}
+					align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
+					if(ax=="x"){
+						if(align=="bottom") pad.b = Math.max(pad.b,len);
+						else pad.t = Math.max(pad.t,len);
+					}else{
+						if(align=="left") pad.l = Math.max(pad.l,len);
+						else pad.r = Math.max(pad.r,len);
+					}
+				}
+			}
+			this.opt.left = this.opt.padding.left + pad.l;
+			this.opt.right = this.opt.padding.right + pad.r;
+			this.opt.top = this.opt.padding.top + pad.t;
+			this.opt.bottom = this.opt.padding.bottom + pad.b;
+			return this;
+		}
+	};
+	mergeDeep(opt,config);
+
+	this.chart = new Chart(opt,csv);
+	this.getSVG = function(){ return this.chart.getSVG(); };
+	return this;
+}
 
 export function CategoryChart(config,csv){
 	var opt = {
@@ -12,7 +127,7 @@ export function CategoryChart(config,csv){
 		'top':0,
 		'bottom':0,
 		'tick':5,
-		'font-size': 16,
+		'font-size': 17,
 		'key':{
 			'show':false,
 			'border':{'stroke':'#000000','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
@@ -27,7 +142,7 @@ export function CategoryChart(config,csv){
 				mergeDeep(this.opt.series[s],{
 					'line':{'show':false,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
 					'points':{'size':4, 'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'errors':{'stroke':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null),'stroke-width':2}
+					'errorbars':{'stroke':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null),'stroke-width':2}
 				});
 				// Duplicate errors if only one error value given
 				if(this.opt.series[s].errors.length==1) this.opt.series[s].errors.push(this.opt.series[s].errors[0]);
@@ -87,7 +202,6 @@ export function CategoryChart(config,csv){
 						for(i = 0; i < lines.length; i++){
 							// Roughly calculate the length in pixels
 							len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + getTextLength(lines[i],this.opt['font-size'],this.opt['font-weight']) + this.opt.tick + this.opt.axis[ax].padding);
-							//console.log(i,lines[i],len);
 						}
 					}
 					align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
@@ -123,7 +237,7 @@ export function LineChart(config,csv){
 		'top':0,
 		'bottom':0,
 		'tick':5,
-		'font-size': 16,
+		'font-size': 17,
 		'key':{
 			'show':false,
 			'border':{'stroke':'#000000','stroke-width':1,'fill':'rgba(255,255,255,0.9)'},
@@ -337,9 +451,10 @@ function Chart(config,csv){
 		return svg.outerHTML;
 	};
 
-
 	this.draw = function(){
 		var u,i,fs,pd,hkey,wkey,x,y,s,text,line,circ,p,cl,po,tspan;
+
+		var defaultkeyitem = '<path d="M0 0 L 1 0" class="line" class="" stroke-width="3" stroke-linecap="round"></path><circle cx="0" cy="0" r="5" fill="silver"></circle>';
 
 		this.updateRange();
 
@@ -376,7 +491,7 @@ function Chart(config,csv){
 					add(key.g[s],key.el);
 				}
 				tspan = (this.series[s].getProperty('title')||"Series "+(s+1));
-				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+tspan+'</tspan></text><path d="M0 0 L 1 0" class="line" class="" stroke-width="3" stroke-linecap="round"></path><circle cx="0" cy="0" r="5" fill="silver"></circle>';
+				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+tspan+'</tspan></text>'+defaultkeyitem;
 				setAttr(key.g[s].querySelector('tspan'),this.series[s].getProperty('attr'));
 				// If we had a browser we could use getBoundingClientRect().width, but we don't so we'll approximate the length
 				wkey = Math.max(wkey,getTextLength(tspan,fs,this.opt.key.text['font-weight']));
@@ -398,6 +513,7 @@ function Chart(config,csv){
 			setAttr(key.border,{'x':x,'width':wkey+pd,'y':y});
 			y += pd;
 			x += pd;
+
 			for(s = 0; s < this.series.length; s++){
 				text = qs(key.g[s],'text');
 				line = qs(key.g[s],'path');
@@ -423,12 +539,6 @@ function Chart(config,csv){
 	return this;
 }
 function getTextLength(txt,fs,weight){
-	var fonts = {
-		'"Century Gothic", sans-serif': {
-			'std': [0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,5,12,9,12,12,3,6,6,7,10,4,5,4,7,9,9,9,9,9,9,9,9,9,9,4,4,10,10,10,9,14,12,9,13,12,9,8,14,11,4,8,9,7,15,12,14,9,14,10,8,7,10,11,15,10,9,8,6,10,6,11,8,6,11,11,10,11,10,5,11,10,3,3,8,3,15,10,10,11,11,5,6,5,10,9,13,8,9,7,6,11,6,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,9,9,9,9,11,10,6,12,6,7,10,5,12,8,6,9,5,6,6,9,9,5,5,5,6,7,13,13,13,9,12,12,12,12,12,12,16,13,9,9,9,9,4,4,4,4,13,12,14,14,14,14,14,10,14,10,10,10,10,9,9,9,11,11,11,11,11,11,19,10,10,10,10,10,3,3,3,3,10,10,10,10,10,10,10,9,10,10,10,10,10,9,11,9,12,11,12,11,12,11,13,10,13,10,13,10,13,10,12,11,13,11,9,10,9,10,9,10,9,10,9,10,14,11,14,11,14,11,14,11,11,10,11,10,4,3,4,3,4,3,4,3,4,3,11,6,8,3,9,8,8,7,3,7,3,7,3,7,4,8,5,12,10,12,10,12,10,10,12,10,14,10,14,10,14,10,19,18,10,5,10,5,10,5,8,6,8,6,8,6,8,6,7,5,7,5,7,5,10,10,10,10,10,10,10,10,10,10,10,10,15,13,9,9,9,8,7,8,7,8,7,3,8,12,9,8,9,8,11,11,7,12,13,9,8,8,10,12,8,9,9,12,12,12,4,5,12,8,4,8,13,12,8,12,12,8,15,11,10,8,9,9,6,9,6,4,10,4,10,12,9,12,12,13,8,10,7,9,9,7,7,8,8,7,7,8,3,5,4,5,21,19,15,16,14,9,18,16,12,12,7,5,4,12,8,12,8,12,8,12,8,12,8,12,8,7,12,7,12,7,14,11,12,8,12,8,12,8,12,8,12,8,9,7,4,21,19,15,12,8,15,9,12,8,12,11,16,19,14,10,12,7,12,7,10,7,10,7,5,4,5,4,12,8,12,8,11,5,11,5,12,8,12,8,9,6,10,4,9,6,12,8,10,8,10,8,10,7,12,7,10,7,12,8,12,8,12,8,12,8,12,8,4,8,5,4,12,12,12,11,8,10,10,6,7,9,6,11,12,12,10,7,6,4,11,8,11,5,12,8,7,8,8,8,7,7,8,8,7,7,10,7,7,9,7,5,8,8,7,8,7,8,8,8,4,4,4,4,4,4,9,12,12,12,8,8,8,8,10,11,9,5,5,5,5,5,5,5,8,8,6,5,5,7,5,4,4,8,9,8,8,12,8,8,7,8,7,7,7,7,7,7,12,8,7,7,9,4,8,7,8,7,7,13,14,14,9,7,10,13,9,9,8,8,10,10,5,5,2,3,3,3,5,7,5,4,6,5,5,5,5,5,4,4,9,9,9,9,8,8,5,8,5,5,5,5,5,5,4,4,5,5,5,5,5,5,7,4,5,5,7,9,0,6,5,3,3,5,4,3,3,3,3,3,5,5,5,5,7,5,5,5,5,5,5,5,5,5,4,5,5,5,5,6,6,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,7,10,7,5,5,12,9,13,13,5,7,7,7,4,6,13,13,13,13,6,6,12,4,9,12,4,13,14,13,10,13,3,12,9,7,12,9,8,11,14,4,9,11,15,12,9,14,11,9,13,8,7,9,14,10,13,13,4,9,11,7,10,3,10,11,10,9,9,7,7,10,10,3,8,9,10,9,7,10,11,11,9,11,6,10,12,8,12,14,3,10,10,10,14,11,8,8,12,14,12,8,11,9,12,8,11,7,9,7,9,7,12,9,13,12,10,8,11,7,9],
-			'bld': [0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,6,10,9,14,11,4,6,6,7,10,4,7,4,7,9,9,9,9,9,9,9,9,9,9,4,4,10,10,10,9,12,12,9,12,11,8,8,13,11,4,8,10,7,14,12,13,9,13,9,8,7,10,11,14,11,10,8,5,10,5,10,8,7,11,11,10,11,10,4,11,10,4,4,9,4,15,10,10,11,11,5,7,5,10,9,13,9,9,7,5,10,5,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,9,9,10,9,10,9,8,12,6,7,10,7,12,8,6,9,5,5,7,9,10,5,5,5,6,7,13,13,13,9,12,12,12,12,12,12,14,12,8,8,8,8,4,4,4,4,12,12,13,13,13,13,13,10,13,10,10,10,10,10,9,10,11,11,11,11,11,11,17,10,10,10,10,10,4,4,4,4,10,10,10,10,10,10,10,9,11,10,10,10,10,9,11,9,12,11,12,11,12,11,12,10,12,10,12,10,12,10,11,12,12,11,8,10,8,10,8,10,8,10,8,10,13,11,13,11,13,11,13,11,11,10,11,10,4,4,4,4,4,4,4,4,4,4,12,8,8,4,10,9,9,7,4,7,4,7,5,7,6,8,5,12,10,12,10,12,10,10,13,10,13,10,13,10,13,10,17,17,9,5,9,5,9,5,8,7,8,7,8,7,8,7,7,5,7,6,7,5,10,10,10,10,10,10,10,10,10,10,10,10,14,13,10,9,10,8,7,8,7,8,7,4,9,12,11,9,11,9,12,12,7,12,13,11,9,8,11,12,8,10,9,12,12,13,5,6,12,9,4,8,15,12,9,12,12,9,17,12,11,9,10,9,6,10,8,5,11,5,11,13,10,13,10,13,8,11,7,9,9,7,7,8,8,6,5,10,4,5,4,5,22,19,16,19,16,10,20,17,14,12,8,6,4,12,8,12,9,12,9,12,9,12,9,12,9,7,12,8,12,8,16,12,12,8,12,8,12,9,12,8,12,8,9,7,5,22,19,16,12,8,16,10,12,9,12,11,14,17,13,11,12,8,12,8,11,7,11,7,6,4,6,4,12,8,12,8,12,7,12,7,12,9,12,9,9,6,11,5,9,6,12,9,12,9,11,8,11,7,12,8,11,7,12,8,12,8,12,8,12,8,12,8,4,9,6,5,13,13,12,12,8,11,11,6,7,9,7,11,12,11,11,7,8,5,13,9,12,7,12,8,8,9,9,9,7,7,9,9,7,7,10,7,7,9,7,5,9,9,9,8,8,9,9,9,4,5,5,4,4,4,10,13,13,13,9,9,8,8,12,12,12,7,7,7,7,7,6,6,9,9,6,5,5,6,5,5,5,9,10,8,8,12,8,9,7,8,7,7,7,7,7,8,12,9,7,9,9,5,9,8,9,7,7,14,14,15,10,9,11,14,10,10,8,8,11,11,5,5,3,4,4,4,6,7,5,5,8,5,5,5,5,5,4,4,9,9,9,9,9,9,5,7,5,5,5,5,5,5,4,4,5,5,5,5,5,5,8,4,6,5,8,11,0,6,5,3,3,5,4,3,3,3,3,3,5,5,5,5,8,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,8,11,8,5,5,12,9,13,13,5,7,7,7,4,8,13,13,13,13,7,7,12,4,10,12,6,13,14,13,11,14,4,12,9,7,12,8,8,11,13,4,10,11,14,12,8,13,11,9,13,8,7,10,14,11,13,14,4,10,11,7,10,4,10,11,10,9,10,7,8,10,10,4,9,9,10,9,8,10,11,10,9,11,7,10,13,9,12,14,4,10,10,10,14,12,8,10,12,15,12,10,12,9,12,8,12,7,10,9,10,7,12,9,14,13,12,9,12,7,10]
-		}
-	};
 	var std = [0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,5,12,9,12,12,3,6,6,7,10,4,5,4,7,9,9,9,9,9,9,9,9,9,9,4,4,10,10,10,9,14,12,9,13,12,9,8,14,11,4,8,9,7,15,12,14,9,14,10,8,7,10,11,15,10,9,8,6,10,6,11,8,6,11,11,10,11,10,5,11,10,3,3,8,3,15,10,10,11,11,5,6,5,10,9,13,8,9,7,6,11,6,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,9,9,9,9,11,10,6,12,6,7,10,5,12,8,6,9,5,6,6,9,9,5,5,5,6,7,13,13,13,9,12,12,12,12,12,12,16,13,9,9,9,9,4,4,4,4,13,12,14,14,14,14,14,10,14,10,10,10,10,9,9,9,11,11,11,11,11,11,19,10,10,10,10,10,3,3,3,3,10,10,10,10,10,10,10,9,10,10,10,10,10,9,11,9,12,11,12,11,12,11,13,10,13,10,13,10,13,10,12,11,13,11,9,10,9,10,9,10,9,10,9,10,14,11,14,11,14,11,14,11,11,10,11,10,4,3,4,3,4,3,4,3,4,3,11,6,8,3,9,8,8,7,3,7,3,7,3,7,4,8,5,12,10,12,10,12,10,10,12,10,14,10,14,10,14,10,19,18,10,5,10,5,10,5,8,6,8,6,8,6,8,6,7,5,7,5,7,5,10,10,10,10,10,10,10,10,10,10,10,10,15,13,9,9,9,8,7,8,7,8,7,3,8,12,9,8,9,8,11,11,7,12,13,9,8,8,10,12,8,9,9,12,12,12,4,5,12,8,4,8,13,12,8,12,12,8,15,11,10,8,9,9,6,9,6,4,10,4,10,12,9,12,12,13,8,10,7,9,9,7,7,8,8,7,7,8,3,5,4,5,21,19,15,16,14,9,18,16,12,12,7,5,4,12,8,12,8,12,8,12,8,12,8,12,8,7,12,7,12,7,14,11,12,8,12,8,12,8,12,8,12,8,9,7,4,21,19,15,12,8,15,9,12,8,12,11,16,19,14,10,12,7,12,7,10,7,10,7,5,4,5,4,12,8,12,8,11,5,11,5,12,8,12,8,9,6,10,4,9,6,12,8,10,8,10,8,10,7,12,7,10,7,12,8,12,8,12,8,12,8,12,8,4,8,5,4,12,12,12,11,8,10,10,6,7,9,6,11,12,12,10,7,6,4,11,8,11,5,12,8,7,8,8,8,7,7,8,8,7,7,10,7,7,9,7,5,8,8,7,8,7,8,8,8,4,4,4,4,4,4,9,12,12,12,8,8,8,8,10,11,9,5,5,5,5,5,5,5,8,8,6,5,5,7,5,4,4,8,9,8,8,12,8,8,7,8,7,7,7,7,7,7,12,8,7,7,9,4,8,7,8,7,7,13,14,14,9,7,10,13,9,9,8,8,10,10,5,5,2,3,3,3,5,7,5,4,6,5,5,5,5,5,4,4,9,9,9,9,8,8,5,8,5,5,5,5,5,5,4,4,5,5,5,5,5,5,7,4,5,5,7,9,0,6,5,3,3,5,4,3,3,3,3,3,5,5,5,5,7,5,5,5,5,5,5,5,5,5,4,5,5,5,5,6,6,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,7,10,7,5,5,12,9,13,13,5,7,7,7,4,6,13,13,13,13,6,6,12,4,9,12,4,13,14,13,10,13,3,12,9,7,12,9,8,11,14,4,9,11,15,12,9,14,11,9,13,8,7,9,14,10,13,13,4,9,11,7,10,3,10,11,10,9,9,7,7,10,10,3,8,9,10,9,7,10,11,11,9,11,6,10,12,8,12,14,3,10,10,10,14,11,8,8,12,14,12,8,11,9,12,8,11,7,9,7,9,7,12,9,13,12,10,8,11,7,9];
 	var bld = [0,0,0,0,0,0,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,6,10,9,14,11,4,6,6,7,10,4,7,4,7,9,9,9,9,9,9,9,9,9,9,4,4,10,10,10,9,12,12,9,12,11,8,8,13,11,4,8,10,7,14,12,13,9,13,9,8,7,10,11,14,11,10,8,5,10,5,10,8,7,11,11,10,11,10,4,11,10,4,4,9,4,15,10,10,11,11,5,7,5,10,9,13,9,9,7,5,10,5,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,9,9,10,9,10,9,8,12,6,7,10,7,12,8,6,9,5,5,7,9,10,5,5,5,6,7,13,13,13,9,12,12,12,12,12,12,14,12,8,8,8,8,4,4,4,4,12,12,13,13,13,13,13,10,13,10,10,10,10,10,9,10,11,11,11,11,11,11,17,10,10,10,10,10,4,4,4,4,10,10,10,10,10,10,10,9,11,10,10,10,10,9,11,9,12,11,12,11,12,11,12,10,12,10,12,10,12,10,11,12,12,11,8,10,8,10,8,10,8,10,8,10,13,11,13,11,13,11,13,11,11,10,11,10,4,4,4,4,4,4,4,4,4,4,12,8,8,4,10,9,9,7,4,7,4,7,5,7,6,8,5,12,10,12,10,12,10,10,13,10,13,10,13,10,13,10,17,17,9,5,9,5,9,5,8,7,8,7,8,7,8,7,7,5,7,6,7,5,10,10,10,10,10,10,10,10,10,10,10,10,14,13,10,9,10,8,7,8,7,8,7,4,9,12,11,9,11,9,12,12,7,12,13,11,9,8,11,12,8,10,9,12,12,13,5,6,12,9,4,8,15,12,9,12,12,9,17,12,11,9,10,9,6,10,8,5,11,5,11,13,10,13,10,13,8,11,7,9,9,7,7,8,8,6,5,10,4,5,4,5,22,19,16,19,16,10,20,17,14,12,8,6,4,12,8,12,9,12,9,12,9,12,9,12,9,7,12,8,12,8,16,12,12,8,12,8,12,9,12,8,12,8,9,7,5,22,19,16,12,8,16,10,12,9,12,11,14,17,13,11,12,8,12,8,11,7,11,7,6,4,6,4,12,8,12,8,12,7,12,7,12,9,12,9,9,6,11,5,9,6,12,9,12,9,11,8,11,7,12,8,11,7,12,8,12,8,12,8,12,8,12,8,4,9,6,5,13,13,12,12,8,11,11,6,7,9,7,11,12,11,11,7,8,5,13,9,12,7,12,8,8,9,9,9,7,7,9,9,7,7,10,7,7,9,7,5,9,9,9,8,8,9,9,9,4,5,5,4,4,4,10,13,13,13,9,9,8,8,12,12,12,7,7,7,7,7,6,6,9,9,6,5,5,6,5,5,5,9,10,8,8,12,8,9,7,8,7,7,7,7,7,8,12,9,7,9,9,5,9,8,9,7,7,14,14,15,10,9,11,14,10,10,8,8,11,11,5,5,3,4,4,4,6,7,5,5,8,5,5,5,5,5,4,4,9,9,9,9,9,9,5,7,5,5,5,5,5,5,4,4,5,5,5,5,5,5,8,4,6,5,8,11,0,6,5,3,3,5,4,3,3,3,3,3,5,5,5,5,8,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,8,11,8,5,5,12,9,13,13,5,7,7,7,4,8,13,13,13,13,7,7,12,4,10,12,6,13,14,13,11,14,4,12,9,7,12,8,8,11,13,4,10,11,14,12,8,13,11,9,13,8,7,10,14,11,13,14,4,10,11,7,10,4,10,11,10,9,10,7,8,10,10,4,9,9,10,9,8,10,11,10,9,11,7,10,13,9,12,14,4,10,10,10,14,12,8,10,12,15,12,10,12,9,12,8,12,7,10,9,10,7,12,9,14,13,12,9,12,7,10];
 	var len = 0;
@@ -600,11 +710,10 @@ function Axis(ax,from,to,attr){
 	};
 	return this;
 }
-function Series(s,props,data){
+function Series(s,props,data,extra){
 	if(!props) return this;
 
 	var id = props.id||Math.round(Math.random()*1e8);
-	//var lbl = props.lbl||"chart-series";
 
 	var opt,line,path,pts,o,label;
 	var defaultcolor = '#000000';
@@ -612,7 +721,12 @@ function Series(s,props,data){
 	else if(s==1) defaultcolor = "#005776";
 	else if(s==2) defaultcolor = "#F7AB3D";
 	else if(s==3) defaultcolor = "#4A783C";
-	opt = {points:{show:true,color:defaultcolor,'stroke-linecap':'round','stroke':defaultcolor,'stroke-width':0,'fill-opacity':1},line:{show:true,color:defaultcolor,'stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'','fill':'none'},'opt':props.opt||{}};
+	opt = {
+		'points':{show:true,color:defaultcolor,'stroke-linecap':'round','stroke':defaultcolor,'stroke-width':0,'fill-opacity':1},
+		'line':{show:true,color:defaultcolor,'stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'','fill':'none'},
+		'bars':{show:false,color:defaultcolor,'stroke-width':0},
+		'opt':props.opt||{}
+	};
 	line = {};
 	path = "";
 	pts = [];
@@ -656,7 +770,7 @@ function Series(s,props,data){
 	};
 
 	this.update = function(){
-		var i,pt,txt,p,r,ps,o,ax,a,b,datum,d;
+		var i,pt,txt,p,r,ps,o,ax,a,b,datum,d,old,p1,p2;
 		// Check if we need to add a line
 		if(!line.el){
 			line.el = svgEl("path");
@@ -669,36 +783,65 @@ function Series(s,props,data){
 		setAttr(line.el,{'style':(opt.line.show ? 'display:block':'display:none'),'stroke':opt.line.color,'stroke-width':this.getStyle('line','stroke-width'),'stroke-linecap':this.getStyle('line','stroke-linecap'),'stroke-linejoin':this.getStyle('line','stroke-linejoin'),'stroke-dasharray':this.getStyle('line','stroke-dasharray'),'fill':this.getStyle('line','fill'),'vector-effect':'non-scaling-stroke'});
 
 		for(i = pts.length; i < data.length; i++){
-			datum = {'data-i':i};
-			pts[i] = {'point':svgEl('circle'),'title':svgEl("title"),'old':{}};
 
+			datum = {'data-i':i};
 			// Add any data attributes
 			for(d in data[i].data) datum['data-'+d] = data[i].data[d];
-			setAttr(pts[i].point,datum);
 
-			o = {'cx':0,'cy':0,'tabindex':0};
-			o['data-series'] = s+1;
-			setAttr(pts[i].point,o);
+			pts[i] = {'title':svgEl("title"),'old':{}};
 
-			if(data[i].error) pts[i].errorbar = {};
 			if(!data[i].label) data[i].label = "Point "+(i+1);
 			txt = (data[i].title || data[i].label+": "+data[i].y.toFixed(2));
-			if(pts[i].title){
-				pts[i].title.innerHTML = txt;
-				add(pts[i].title,pts[i].point);
+			if(pts[i].title) pts[i].title.innerHTML = txt;
+
+			// Do we show a bar?
+			if(opt.bars.show){
+
+				// Make a <rect>
+				pts[i].bar = svgEl("rect");
+
+				setAttr(pts[i].bar,datum);
+
+				// Update the bar with some default values
+				setAttr(pts[i].bar,{'data-series':(s+1),'tabindex':0,'x':0,'y':0,'width':0,'height':0});
+
+
+				// Add the bar to the element
+				add(pts[i].bar,this.el);
+
+				// Add the text label to the bar
+				add(pts[i].title,pts[i].bar);
+
 			}
-			if(pts[i].errorbar){
+
+			// Do we show error bars?
+			if(data[i].error){
+				pts[i].errorbar = {};
 				for(ax in data[i].error){
 					pts[i].errorbar[ax] = svgEl("line");
 					add(pts[i].errorbar[ax],this.el);
 				}
 			}
-			if(pts[i].point){
+
+			// Do we show the points
+			if(opt.points.show){
+				pts[i].point = svgEl('circle');
+
+				setAttr(pts[i].point,datum);
+
+				// Update the point
+				o = {'cx':0,'cy':0,'tabindex':0};
+				o['data-series'] = s+1;
+				setAttr(pts[i].point,o);
+
 				add(pts[i].point,this.el);
+
+				// Add animation to point
+				pts[i].anim_point = new Animate(pts[i].point,{'duration':opt.duration});
+
+				add(pts[i].title,pts[i].point);
 			}
 
-			// Add animations
-			pts[i].c = new Animate(pts[i].point,{'duration':opt.duration});
 		}
 		if(opt.line.label){
 			label = svgEl("text");
@@ -711,26 +854,37 @@ function Series(s,props,data){
 			add(label,this.el);
 		}
 
-		// Update points
+		// Update points/bars
 		p = [];
-		var old = {};
+		old = {};
+
 		for(i = 0; i < pts.length; i++){
+
 			r = (opt['stroke-width']||1)/2;
+
 			if(opt.points){
 				if(typeof opt.points.size==="number") r = Math.max(opt.points.size,r);
 				if(typeof opt.points.size==="function") r = opt.points.size.call(pt,{'series':s,'i':i,'data':data[i]});
 			}
-			setAttr(pts[i].point,{'r':r,'fill':opt.points.color,'fill-opacity':opt.points['fill-opacity'],'stroke':opt.points.stroke,'stroke-width':opt.points['stroke-width']});
+
+			// Set some initial values for the point
+			if(pts[i].point) setAttr(pts[i].point,{'r':r,'fill':opt.points.color,'fill-opacity':opt.points['fill-opacity'],'stroke':opt.points.stroke,'stroke-width':opt.points['stroke-width']});
+			// Set some initial values for the bar
+			if(pts[i].bar) setAttr(pts[i].bar,{'r':r,'fill':opt.points.color,'fill-opacity':opt.points['fill-opacity'],'stroke':opt.points.stroke,'stroke-width':opt.points['stroke-width']});
+			
 			ps = opt.getXY(data[i].x,data[i].y);
 			p.push(ps);
 
-			// Update error bars
-			for(ax in data[i].error){
-				a = opt.getXY(data[i].x-data[i].error[ax][0],data[i].y);
-				b = opt.getXY(data[i].x+data[i].error[ax][1],data[i].y);
-				// If the x-values are numbers we update the attributes
-				if(!isNaN(a.x) && !isNaN(b.x)){
-					setAttr(pts[i].errorbar[ax],{'x1':roundTo(a.x, 3),'y1':roundTo(a.y, 3),'x2':roundTo(b.x, 3),'y2':roundTo(b.y, 3),'stroke':opt.errors.stroke||opt.points.color,'stroke-width':opt.errors['stroke-width']||1,'class':'errorbar'});
+			// Style error bars
+			if(pts[i].errorbar && data[i].error){
+				// Update error bars
+				for(ax in data[i].error){
+					a = opt.getXY(data[i].x-data[i].error[ax][0],data[i].y);
+					b = opt.getXY(data[i].x+data[i].error[ax][1],data[i].y);
+					// If the x-values are numbers we update the attributes
+					if(!isNaN(a.x) && !isNaN(b.x)){
+						setAttr(pts[i].errorbar[ax],{'x1':roundTo(a.x, 3),'y1':roundTo(a.y, 3),'x2':roundTo(b.x, 3),'y2':roundTo(b.y, 3),'stroke':opt.errorbars.stroke||opt.points.color,'stroke-width':opt.errorbars['stroke-width']||1,'class':'errorbar'});
+					}
 				}
 			}
 
@@ -740,8 +894,18 @@ function Series(s,props,data){
 			}else{
 				if(typeof old.x==="number" && typeof old.y==="number") pts[i].old = old;
 			}
+
 			// Update point position
-			pts[i].c.set({'cx':{'from':pts[i].old.x||null,'to':ps.x},'cy':{'from':pts[i].old.y||null,'to':ps.y}});
+			if(pts[i].anim_point) pts[i].anim_point.set({'cx':{'from':pts[i].old.x||null,'to':ps.x},'cy':{'from':pts[i].old.y||null,'to':ps.y}});
+
+			// Update bar position
+			if(pts[i].bar){
+				p1 = opt.getXY(Math.max(0,extra.axis.x.min),data[i].y + extra.barsize/2);
+				p2 = opt.getXY(data[i].x,data[i].y - extra.barsize/2);
+				setAttr(pts[i].bar,{'x':p1.x,'y':p1.y,'width':Math.abs(p2.x-p1.x),'height':Math.abs(p2.y-p1.y),'test':true});
+			}
+
+			// Store the calculated points
 			pts[i].old = ps;
 		}
 

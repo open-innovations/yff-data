@@ -1,4 +1,4 @@
-import { CategoryChart, LineChart } from '/src/_lib/oi/charts.js';
+import { CategoryChart, LineChart, BarChart } from '/src/_lib/oi/charts.js';
 import { colourScales, Colour } from '/src/_lib/oi/colour.js';
 import { loadDataFile } from '/src/_lib/oi/util.js'
 
@@ -49,6 +49,11 @@ export default function ({ config, sources }) {
 
 		// Create a new Category Chart
 		chart = new CategoryChart(configcopy,csv);
+
+	}else if(configcopy.type=="bar-chart"){
+
+		// Create a new Category Chart
+		chart = new BarChart(configcopy,csv);
 
 	}
 
