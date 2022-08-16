@@ -146,7 +146,7 @@
 
 			var typ = svg.getAttribute('data-type');
 			off = 4;
-			if(typ=="bar-chart") off = bb.height/2;
+			if(typ=="bar-chart" || typ=="stacked-bar-chart") off = bb.height/2;
 			
 			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - '+off+'px),0);display:'+(txt ? 'block':'none')+';');
 			this.tip.querySelector('.inner').style.background = fill;
@@ -192,6 +192,11 @@
 							}else if(typ=="bar-chart"){
 								// As the bars run horizontally, we just check if the vertical position lines up with a bar
 								if(e.clientY >= p.top && e.clientY <= p.top+p.height){
+									idx = i;
+								}
+							}else if(typ=="stacked-bar-chart"){
+								// Check if the vertical position lines up with a bar and the horizontal position is within the bar
+								if(e.clientY >= p.top && e.clientY <= p.top+p.height && e.clientX >= p.left && e.clientX <= p.left+p.width){
 									idx = i;
 								}
 							}
