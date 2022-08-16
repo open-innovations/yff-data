@@ -1,4 +1,4 @@
-import { CategoryChart, LineChart, BarChart } from '/src/_lib/oi/charts.js';
+import { CategoryChart, LineChart, BarChart, StackedBarChart } from '/src/_lib/oi/charts.js';
 import { colourScales, Colour } from '/src/_lib/oi/colour.js';
 import { loadDataFile } from '/src/_lib/oi/util.js'
 
@@ -54,6 +54,11 @@ export default function ({ config, sources }) {
 
 		// Create a new Category Chart
 		chart = new BarChart(configcopy,csv);
+
+	}else if(configcopy.type=="stacked-bar-chart"){
+
+		// Create a new Category Chart
+		chart = new StackedBarChart(configcopy,csv);
 
 	}
 

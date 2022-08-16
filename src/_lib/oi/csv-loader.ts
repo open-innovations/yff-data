@@ -21,7 +21,8 @@ function guessType(value: string) {
   // Remove any quotes around the column value
   const cleaned = value.trim().replace(/(^\"|\"$)/, '');
 
-  if (isFinite(parseFloat(value))) {
+  // Don't include things that parse as numbers but which also contain other things e.g. "2002/03"
+  if (isFinite(parseFloat(value)) && parseFloat(value)==value) {
     // if (parseInt(value).toString() === value) {
     //   const intValue = parseInt(value);
     //   if (intValue > 1700 && intValue < 2100) return YEAR;
