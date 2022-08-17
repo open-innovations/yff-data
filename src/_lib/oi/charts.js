@@ -1038,7 +1038,7 @@ function Series(s,props,data,extra){
 			if(pts[i].bar){
 				p1 = opt.getXY(Math.max(data[i].xstart||0,extra.axis.x.min),data[i].y + extra.barsize/2);
 				p2 = opt.getXY(data[i].x,data[i].y - extra.barsize/2);
-				setAttr(pts[i].bar,{'x':p1.x,'y':p1.y,'width':Math.abs(p2.x-p1.x),'height':Math.abs(p2.y-p1.y),'test':true});
+				setAttr(pts[i].bar,{'x':p1.x,'y':p1.y,'width':Math.abs(p2.x-p1.x),'height':Math.abs(p2.y-p1.y)});
 			}
 
 			// Store the calculated points
