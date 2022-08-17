@@ -194,7 +194,7 @@ function Colours(scales) {
 		cs = scales[s].stops;
 		v2 = 100 * (v - min) / (max - min);
 		cfinal = {};
-		if (v == max) {
+		if (v >= max) {
 			cfinal = { 'r': cs[cs.length - 1].c.rgb[0], 'g': cs[cs.length - 1].c.rgb[1], 'b': cs[cs.length - 1].c.rgb[2], 'alpha': cs[cs.length - 1].c.alpha };
 		} else {
 			if (cs.length == 1) {
