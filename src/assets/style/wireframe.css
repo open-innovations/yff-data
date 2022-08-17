@@ -60,15 +60,12 @@ aside {
 
 .site-header {
 	border-bottom: 1px solid black;
-}
-
-.site-header {
 	position: sticky;
 	background: white;
 	left: 0;
 	right: 0;
 	top: 0;
-	z-index: 1000;
+	z-index: 1001;
 }
 
 .site-title {

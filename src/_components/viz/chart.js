@@ -1,5 +1,4 @@
 import { CategoryChart, LineChart, BarChart, StackedBarChart } from '/src/_lib/oi/charts.js';
-import { colourScales, Colour } from '/src/_lib/oi/colour.js';
 import { loadDataFile } from '/src/_lib/oi/util.js'
 
 // This component uses "/assets/js/chart.js" to make things interactive in the browser.

@@ -473,6 +473,39 @@ dashboard:
       class: "gold"
     - name: "Thing 4"
       class: "turquoise"
+map:
+  file: /data/example/dummy_map.csv
+  type: leaflet
+  geojson:
+    file: /data/maps/NUTS_Level_3_(January_2018)_Boundaries.geojson
+    key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+  title: "NUTS18NM"	# Column heading for title
+  key: "NUTS18CD"	# Column heading for unique ID
+  value: "Real GVA Growth (%)"	# Column heading for value
+  note: "Note"		# Column heading for note
+  bounds: [[60, 2],[50, -8]]
+  scale: Diverging
+  min: -20
+  max: 20
+  legend:
+    - value: 20
+      label: "Increase"
+    - value: 15
+      label: ""
+    - value: 10
+      label: ""
+    - value: 5
+      label: ""
+    - value: 0
+      label: ""
+    - value: -5
+      label: ""
+    - value: -10
+      label: ""
+    - value: -15
+      label: ""
+    - value: -20
+      label: "Decrease"
 ---
 
 <div class="page-title">
@@ -590,5 +623,16 @@ dashboard:
 		  {{- dashboard | yaml -}}
 		</code></pre>
 		<a href="{{ dashboard.file }}">Data file</a>
+	</section>
+
+	<section>
+		<h2>Leaflet Map with GeoJSON</h2>
+		<p><a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a></p>
+		{{ comp.viz.map({ config: map }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- map | yaml -}}
+		</code></pre>
+		<a href="{{ map.file }}">Data file</a>
 	</section>
 </div>
