@@ -61,7 +61,7 @@ export function StackedBarChart(config,csv){
 							}
 						}
 					}
-					if(this.opt.series[s].label && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
+					if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
 					x = (isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]);
 					// The final x-value is the current starting value plus the current value
 					datum = {'x':x+xo,'xstart':xo,'y':categoryoffset,'title':label};
@@ -183,7 +183,7 @@ export function BarChart(config,csv){
 							}
 						}
 					}
-					if(this.opt.series[s].label && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
+					if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
 					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'title':label};
 					// Add errors if we have them
 					if(this.opt.series[s].errors) datum.error = {'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]};
@@ -295,7 +295,7 @@ export function CategoryChart(config,csv){
 							label += ' (+'+(isNaN(csv.columns[this.opt.series[s].errors[1]][i]) ? "0" : csv.columns[this.opt.series[s].errors[1]][i])+', -'+(isNaN(csv.columns[this.opt.series[s].errors[0]][i]) ? "0" : csv.columns[this.opt.series[s].errors[0]][i])+')';
 						}
 					}
-					if(this.opt.series[s].label && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
+					if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
 					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]},'title':label};
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
 					data.push(datum);

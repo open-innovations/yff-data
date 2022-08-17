@@ -28,7 +28,7 @@ export function loadDataFile(path, sources) {
 
 function augmentTable(config, table){
 
-	var c,r,v,col,nc,h;
+	var c,r,v,col,nc,h,bits,p1,rtn,b;
 	
 	// We want to build any custom columns here
 	if(config.columns && table.names){
@@ -42,8 +42,42 @@ function augmentTable(config, table){
 				table.range[col.name] = undefined;
 				for(r = 0; r < table.data.length; r++){
 					v = config.columns[c].template.replace(/\{\{ *([^\}]+) *\}\}/g,function(m,p1){
+
+						// Remove a trailing space
 						p1 = p1.replace(/ $/g,"");
-						return table.columns[p1][r] || "";
+
+						// Split by pipes
+						bits = p1.split(/ \| /);
+
+						// The value is the first part
+						p1 = bits[0];
+
+						// Get the value from the table if one exists
+						p1 = (table.columns[p1] ? table.columns[p1][r] : "");
+
+						// Process each filter in turn
+						for(b = 1; b < bits.length; b++){
+							// toFixed(n)
+							rtn = bits[b].match(/toFixed\(([0-9]+)\)/);
+							if(p1 && rtn && rtn.length == 2){
+								if(typeof p1==="string") p1 = parseFloat(p1);
+								p1 = p1.toFixed(rtn[1]);
+							}
+							// multiply(n)
+							rtn = bits[b].match(/multiply\(([0-9\.\-\+]+)\)/);
+							if(p1 && rtn && rtn.length == 2){
+								if(typeof p1==="string") p1 = parseFloat(p1);
+								p1 = p1 * parseFloat(rtn[1]);
+							}
+							// toLocaleString()
+							rtn = bits[b].match(/toLocaleString\(\)/);
+							if(p1 && rtn){
+								if(typeof p1==="string") p1 = parseFloat(p1);
+								p1 = p1.toLocaleString();
+							}
+						}
+
+						return p1;
 					});
 					table.columns[col.name].push(v);
 					table.data[r].push(v);

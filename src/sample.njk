@@ -183,20 +183,33 @@ linechart:
         - value: 45
           grid: true
           label: "45"
+  columns:
+    - name: "Label 16-17"
+      template: "16-17<br />{{ Date }}: {{ 16-17→rate (%)1 | toFixed(1) }}%"
+    - name: "Label 18-24"
+      template: "18-24<br />{{ Date }}: {{ 18-24→rate (%)1 | toFixed(1) }}%"
+    - name: "Label 25-49"
+      template: "25-49<br />{{ Date }}: {{ 18-24→rate (%)1 | toFixed(1) }}%"
+    - name: "Label 50-64"
+      template: "50-64<br />{{ Date }}: {{ 18-24→rate (%)1 | toFixed(1) }}%"
   series:
     - title: "16-17"
       x: "Year"                       # Column heading to use for x-value
       y: "16-17→rate (%)1"            # Column heading to use fro y-value
       size: 10
+      tooltip: "Label 16-17"
     - title: "18-24"                  # Displayed in the key and tooltip
       x: "Year"
       y: "18-24→rate (%)1"
+      tooltip: "Label 18-24"
     - title: "25-49"                  # Displayed in the key and tooltip
       x: "Year"
       y: "25-49→rate (%)1"
+      tooltip: "Label 25-49"
     - title: "50-64"                  # Displayed in the key and tooltip
       x: "Year"
       y: "50 and over→rate (%)1"
+      tooltip: "Label 50-64"
 categorychartgender:
   file: /data/example/dummy_categorychart_gender.csv
   type: category-chart
@@ -308,11 +321,18 @@ barchartgender:
       grid:
         stroke-width: 0.5
   category: "Ethnic group"  # Category names come from 
+  columns:
+    - name: "Female Label"
+      template: "Female<br />{{ Ethnic group}}: {{ Female→Value (%) }}%"
+    - name: "Male Label"
+      template: "Male<br />{{ Ethnic group}}: {{ Male→Value (%) }}%"
   series:
     - title: "Female"
       value: "Female→Value (%)"
+      tooltip: "Female Label"
     - title: "Male"
       value: "Male→Value (%)"
+      tooltip: "Male Label"
 barchart:
   file: /data/example/dummy_barchart_placements.csv
   type: bar-chart
@@ -373,16 +393,26 @@ barchartplacement:
       grid:
         stroke-width: 0.5
   category: "Reason"  # Category names come from 
+  columns:
+    - name: "School Label"
+      template: "{{ Reason }}<br />School: {{ School }}%"
+    - name: "College Label"
+      template: "{{ Reason }}<br />College: {{ College }}%"
+    - name: "University Label"
+      template: "{{ Reason }}<br />University: {{ University }}%"
   series:
     - title: "School"
       value: "School"
       colour: "#E52E36"
+      tooltip: "School Label"
     - title: "College"
       value: "College"
       colour: "#F7AB3D"
+      tooltip: "College Label"
     - title: "University"
       value: "University"
       colour: "#69C2C9"
+      tooltip: "University Label"
 stackedbarchartplacement:
   file: /data/example/dummy_stackedbarchart_apprenticeships.csv
   summary: "This is an approximate version of the real data created by trying to read values from a chart"
