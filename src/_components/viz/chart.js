@@ -15,6 +15,7 @@ export const css = `
 .tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: 'Century Gothic', sans-serif; filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
 .tooltip .inner { padding: 1em; }
 circle.selected { r: 5px; }
+.chart rect { transition: 0.1s ease-in x; }
 `;
 
 function clone(a){ return JSON.parse(JSON.stringify(a)); }
