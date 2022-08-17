@@ -38,13 +38,27 @@ export default function (page: any) {
 
   // For each deduplicated depdency
   deduplicatedDependencies.forEach((dependency) => {
-    // Create a new script element
-    const newScriptElement = page.document.createElement('script');
-    // Set the src attribute
-    newScriptElement.setAttribute('src', dependency);
-    // And set a data-auto-depdendency attribute
-    newScriptElement.setAttribute('data-auto-dependency', true);
-    // Then append to the document head
-    page.document.head.appendChild(newScriptElement);
+	if(dependency.indexOf(".js") > 0){
+      // Create a new script element
+      const newScriptElement = page.document.createElement('script');
+      // Set the src attribute
+      newScriptElement.setAttribute('src', dependency);
+      // And set a data-auto-depdendency attribute
+      newScriptElement.setAttribute('data-auto-dependency', true);
+      // Then append to the document head
+      page.document.head.appendChild(newScriptElement);
+	}else if(dependency.indexOf(".css") > 0){
+	  // Create a new link element
+      const newCSSElement = page.document.createElement('link');
+      // Set the href attribute
+      newCSSElement.setAttribute('href', dependency);
+	  // Set the rel attribute
+      newCSSElement.setAttribute('rel', 'stylesheet');
+      // And set a data-auto-depdendency attribute
+      newCSSElement.setAttribute('data-auto-dependency', true);
+      // Then append to the document head
+      page.document.head.appendChild(newCSSElement);
+		
+	}
   });
 }
