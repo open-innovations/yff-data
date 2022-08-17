@@ -479,30 +479,25 @@ map:
   geojson:
     file: /data/maps/NUTS_Level_3_(January_2018)_Boundaries.geojson
     key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
-  title: "NUTS18NM"	# Column heading for title
   key: "NUTS18CD"	# Column heading for unique ID
   value: "Real GVA Growth (%)"	# Column heading for value
   scale: Diverging
-  min: -20
-  max: 20
+  min: -30
+  max: 30
   legend:
-    - value: 20
+    - value: 30
       label: "▲ Increase"
-    - value: 15
+    - value: 20
       label: ""
     - value: 10
       label: ""
-    - value: 5
-      label: ""
     - value: 0
-      label: ""
-    - value: -5
       label: ""
     - value: -10
       label: ""
-    - value: -15
-      label: ""
     - value: -20
+      label: ""
+    - value: -30
       label: "▼ Decrease"
 ---
 
@@ -513,7 +508,20 @@ map:
 </div>
 
 <div class="wrapper holder">
-	<section>
+
+	<ul>
+		<li><a href="#simple-table">Simple table</a></li>
+		<li><a href="#heatmap-table">Heatmap table</a></li>
+		<li><a href="#gapmap-table">Gap map table</a></li>
+		<li><a href="#line-chart">Line chart</a></li>
+		<li><a href="#category-chart">Category chart</a></li>
+		<li><a href="#bar-chart">Bar chart</a></li>
+		<li><a href="#stacked-bar-chart">Stacked bar chart</a></li>
+		<li><a href="#dashboard">Dashboard</a></li>
+		<li><a href="#leaflet-map">Leaflet map</a></li>
+	</ul>
+
+	<section id="simple-table">
 		<h2>Simple Table</h2>
 		{{ comp.viz.table({ config: table }) | safe }}
 		<p>Built using config: </p>
@@ -523,7 +531,7 @@ map:
 		<a href="{{ table.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="heatmap-table">
 		<h2>Heatmap Table</h2>
 		{{ comp.viz.table({ config: heatmap }) | safe }}
 		<p>Built using config: </p>
@@ -533,7 +541,7 @@ map:
 		<a href="{{ heatmap.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="gapmap-table">
 		<h2>Gap Map Table</h2>
 		{{ comp.viz.table({ config: gapmap }) | safe }}
 		<p>Built using config: </p>
@@ -543,7 +551,7 @@ map:
 		<a href="{{ gapmap.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="line-chart">
 		<h2>Line Chart</h2>
 		{{ comp.viz.chart({ config: linechart }) | safe }}
 		<p>Built using config: </p>
@@ -553,7 +561,7 @@ map:
 		<a href="{{ linechart.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="category-chart">
 		<h2>Category Chart</h2>
 		{{ comp.viz.chart({ config: categorychartgender }) | safe }}
 		<p>Built using config: </p>
@@ -573,7 +581,7 @@ map:
 		<a href="{{ categorychartemployment.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="bar-chart">
 		<h2>Bar Chart</h2>
 		{{ comp.viz.chart({ config: barchart }) | safe }}
 		<p>Built using config: </p>
@@ -603,7 +611,7 @@ map:
 		<a href="{{ barchartgender.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="stacked-bar-chart">
 		<h2>Stacked Bar Chart</h2>
 		{{ comp.viz.chart({ config: stackedbarchartplacement }) | safe }}
 		<p>Built using config: </p>
@@ -613,7 +621,7 @@ map:
 		<a href="{{ stackedbarchartplacement.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="dashboard">
 		<h2>Dashboard</h2>
 		{{ comp.viz.dashboard({ config: dashboard }) | safe }}
 		<p>Built using config: </p>
@@ -623,7 +631,7 @@ map:
 		<a href="{{ dashboard.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="leaflet-map">
 		<h2>Leaflet Map with GeoJSON</h2>
 		<p><a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a></p>
 		{{ comp.viz.map({ config: map }) | safe }}

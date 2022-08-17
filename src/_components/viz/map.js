@@ -6,7 +6,7 @@ export const css = `
 .map .leaflet { width: 100%; aspect-ratio: 16 / 9; background: #e2e2e2; position: relative; }
 .map .leaflet a { background-image: none!important; color: inherit!important; }
 .map .leaflet .legend { text-align: left; line-height: 18px; color: #555; }
-.map .leaflet .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.8; }
+.map .leaflet .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 1; }
 .map .leaflet .legend { background: rgba(255,255,255,0.8); padding: 1em; }
 `;
 

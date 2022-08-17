@@ -64,7 +64,7 @@ export function LeafletMap(config,csv){
 		html.push('				weight: 0.5,');
 		html.push('				opacity: 1,');
 		html.push('				color: "#B2B2B2",');
-		html.push('				fillOpacity: 0.8,');
+		html.push('				fillOpacity: 1,');
 		html.push('				fillColor: d.colour||"transparent"');
 		html.push('			};');
 		html.push('		}');
