@@ -80,38 +80,40 @@
 					// Find the origin of the bars by just taking the x-value of the first one in the first series
 					origin = serieskey[0].querySelector('rect').getAttribute('x');
 				}
+				rects = new Array(serieskey.length);
+				for(s = 0; s < serieskey.length; s++) rects[s] = serieskey[s].querySelectorAll('rect');
+
 				for(s = 0; s < serieskey.length; s++){
 					if(d){
 						if(serieskey[s]==selected){
 							serieskey[s].style.opacity = 1;
 							// Simulate z-index by moving to the end
 							serieskey[s].parentNode.appendChild(serieskey[s]);
-							// If it is a stacked bar chart we will change the left position and store that
-							if(typ == "stacked-bar-chart"){
-								// Find all the bars
-								rects = serieskey[s].querySelectorAll('rect');
-								for(r = 0; r < rects.length; r++){
-									// Store the x-value if we haven't already done so
-									if(!rects[r].hasAttribute('data-x')) rects[r].setAttribute('data-x',rects[r].getAttribute('x'));
-									// Update the x-value
-									rects[r].setAttribute('x',origin);
-								}
-							}
 						}else{
 							// Fade the unselected series
 							serieskey[s].style.opacity = 0.1;
+						}
+
+						// If it is a stacked bar chart we will change the left position and store that
+						if(typ == "stacked-bar-chart"){
+							// Find all the bars
+							for(r = 0; r < rects[s].length; r++){
+								// Store the x-value if we haven't already done so
+								if(!rects[s][r].hasAttribute('data-x')) rects[s][r].setAttribute('data-x',rects[s][r].getAttribute('x'));
+								// Update the x-value
+								if(origin) rects[s][r].setAttribute('x',origin);
+							}
 						}
 					}else{
 						serieskey[s].style.opacity = 1;
 						// Reset bar positions
 						if(typ == "stacked-bar-chart"){
 							// Find all the bars
-							rects = serieskey[s].querySelectorAll('rect');
-							for(r = 0; r < rects.length; r++){
+							for(r = 0; r < rects[s].length; r++){
 								// Get the stored x-value
-								x = rects[r].getAttribute('data-x');
+								x = rects[s][r].getAttribute('data-x');
 								// Update the x-values if we have them
-								if(x) rects[r].setAttribute('x',x);
+								if(x) rects[s][r].setAttribute('x',x);
 							}
 						}
 					}
