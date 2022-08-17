@@ -304,13 +304,13 @@
 		for(col in cols){
 			cols[col].brightness = brightnessDiff(rgb,cols[col].rgb);
 			cols[col].hue = hueDiff(rgb,cols[col].rgb);
-			cols[col].ok = (cols[col].brightness > 125 && cols[col].hue > 500);
+			cols[col].ok = (cols[col].brightness > 125 && cols[col].hue >= 500);
 		}
 		for(col in cols){
 			if(cols[col].ok) return 'rgb('+cols[col].rgb.join(",")+')';
 		}
 		col = (cols.white.brightness > cols.black.brightness) ? "white" : "black"
-		console.warn('Text contrast not enough for %c'+c+'%c (colour contrast: '+cols[col].brightness.toFixed(1)+', hue contrast: '+cols[col].hue+')','background:'+c+';color:'+col,'background:none;color:inherit;');
+		console.warn('Text contrast not enough for %c'+c+'%c (colour contrast: '+cols[col].brightness.toFixed(1)+'/125, hue contrast: '+cols[col].hue+'/500)','background:'+c+';color:'+col,'background:none;color:inherit;');
 		return col;
 	}
 
