@@ -78,11 +78,13 @@
 				typ = svg.getAttribute('data-type');
 				if(typ == "stacked-bar-chart"){
 					// Find the origin of the bars by just taking the x-value of the first one in the first series
-					origin = serieskey[0].querySelector('rect').getAttribute('x');
+					origin = parseFloat(serieskey[0].querySelector('rect').getAttribute('x'));
 				}
 				rects = new Array(serieskey.length);
 				for(s = 0; s < serieskey.length; s++) rects[s] = serieskey[s].querySelectorAll('rect');
-
+				function setRect(s,r,x){
+					if(typeof x==="number") rects[s][r].setAttribute('x',x);
+				}
 				for(s = 0; s < serieskey.length; s++){
 					if(d){
 						if(serieskey[s]==selected){
@@ -101,7 +103,7 @@
 								// Store the x-value if we haven't already done so
 								if(!rects[s][r].hasAttribute('data-x')) rects[s][r].setAttribute('data-x',rects[s][r].getAttribute('x'));
 								// Update the x-value
-								if(origin) rects[s][r].setAttribute('x',origin);
+								setRect(s,r,origin);
 							}
 						}
 					}else{
@@ -111,9 +113,8 @@
 							// Find all the bars
 							for(r = 0; r < rects[s].length; r++){
 								// Get the stored x-value
-								x = rects[s][r].getAttribute('data-x');
 								// Update the x-values if we have them
-								if(x) rects[s][r].setAttribute('x',x);
+								rects[s][r].setAttribute('x',parseFloat(rects[s][r].getAttribute('data-x')));
 							}
 						}
 					}
