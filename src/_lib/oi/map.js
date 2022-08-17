@@ -21,7 +21,7 @@ console.log('map',csv,config)
 		html.push('el.classList.add("leaflet");');
 		html.push('p.appendChild(el);');
 		html.push('var map = L.map(el);');
-		html.push('map.fitBounds([['+config.bounds[0]+'],['+config.bounds[1]+']]);');
+		if(config.bounds) html.push('map.fitBounds([['+config.bounds[0]+'],['+config.bounds[1]+']]);');
 		html.push('L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "Tiles: &copy; OpenStreetMap/CartoDB", subdomains: "abcd" }).addTo(map);');
 		html.push('map.attributionControl.setPrefix("Youth Futures Foundation");\n');
 		
@@ -73,6 +73,7 @@ console.log('map',csv,config)
 		html.push('		var geoattrs = { "style": style };\n');
 		html.push('		var geo = L.geoJSON(json,geoattrs);\n');
 		html.push('		geo.addTo(map);\n');
+		if(!config.bounds) html.push('		map.fitBounds(geo.getBounds());\n');
 
 		// Create the legend
 		html.push('		var legend = L.control({position: "bottomright"});\n');
