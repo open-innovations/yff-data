@@ -9,7 +9,7 @@ const ns = 'http://www.w3.org/2000/svg';
 function clone(a){ return JSON.parse(JSON.stringify(a)); }
 
 export function LeafletMap(config,csv){
-console.log('map',csv,config)
+
 	this.getHTML = function(){
 		var html,i,panel,r,cls,p,idx;
 		
@@ -49,7 +49,6 @@ console.log('map',csv,config)
 		}
 
 		html.push('		var csv = '+JSON.stringify(rows)+';');
-		html.push('		console.log("loaded",json,csv);');
 		html.push('		var geokey = "'+config.geojson.key+'";');
 		html.push('		var key = "'+config.key+'";');
 
@@ -82,7 +81,6 @@ console.log('map',csv,config)
 		html.push('			div.innerHTML = "'+legend+'";\n');
 		html.push('			return div;\n');
 		html.push('		}\n');
-		html.push('		console.log(legend);\n');
 		html.push('		legend.addTo(map);');
 
 
@@ -90,7 +88,6 @@ console.log('map',csv,config)
 		html.push('}).catch(error => {\n');
 		html.push('		console.error("Unable to load the data",error);\n');
 		html.push('});\n');
-		html.push('console.log("here",el,map);\n');
 		html.push('</script>\n');
 
 		html.push('</div>');
