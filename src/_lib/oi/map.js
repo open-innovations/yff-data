@@ -23,7 +23,17 @@ console.log('map',csv,config)
 		html.push('var map = L.map(el);');
 		html.push('map.fitBounds([['+config.bounds[0]+'],['+config.bounds[1]+']]);');
 		html.push('L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "Tiles: &copy; OpenStreetMap/CartoDB", subdomains: "abcd" }).addTo(map);');
-		html.push('map.attributionControl.setPrefix("Youth Futures Foundation");');
+		html.push('map.attributionControl.setPrefix("Youth Futures Foundation");\n');
+		
+		html.push('// Create a map label pane so labels can sit above polygons\n');
+		html.push('map.createPane("labels");\n');
+		html.push('map.getPane("labels").style.zIndex = 650;\n');
+		html.push('map.getPane("labels").style.pointerEvents = "none";\n');
+		html.push('	L.tileLayer("https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png", {\n');
+		html.push('		attribution: "",\n');
+		html.push('		pane: "labels"\n');
+		html.push('	}).addTo(map);\n');
+		
 		html.push('fetch("'+config.geojson.file+'").then(response => {');
 		html.push('		if(!response.ok) throw new Error("Network response was not OK");');
 		html.push('		return response.json();');
