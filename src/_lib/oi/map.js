@@ -450,12 +450,31 @@ function Layer(attr,map,i){
 
 	this.clear = function(){ g.innerHTML = ''; return this; };
 
+	function addToPath(path,xy){
+		xy = {'x':xy.x.toFixed(2),'y':xy.y.toFixed(2),'t':xy.t};
+		if(path.length == 0) path.push(xy);
+		else{
+			if(path[path.length-1].x!=xy.x || path[path.length-1].y!=xy.y || path[path.length-1].t!=xy.t) path.push(xy); 
+		}
+		return path;
+	}
+	function formatPath(path){
+		var p = "";
+		var t = "";
+		for(var i = 0; i < path.length; i++){
+			if(path[i].t!=t) p += path[i].t;
+			else p += ', ';
+			p += path[i].x+' '+path[i].y;
+		}
+		return p+'Z';
+	}
+
 	// Function to draw it on the map
 	this.update = function(){
 		// Clear existing layer
 		this.clear();
 		// Find the map bounds and work out the scale
-		var f,i,j,k,dlat,dlon,feature,lat,lon,w,h,b,p,c,d,xy,tspan;
+		var f,i,j,k,dlat,dlon,feature,lat,lon,w,h,b,p,c,d,xy,tspan,path;
 		w = map.w;
 		h = map.h;
 		b = map.getBounds();
@@ -477,18 +496,18 @@ function Layer(attr,map,i){
 							'stroke-opacity':this.options.opacity,
 							'stroke-width': this.options['stroke-width']
 						});
-						d = '';
+						path = [];
 						for(i = 0; i < c.length; i++){
 							for(j = 0; j < c[i].length; j++){
 								for(k = 0; k < c[i][j].length; k++){
 									this.bbox.expand(c[i][j][k]);
 									xy = latlon2xy(c[i][j][k][1],c[i][j][k][0],map.zoom);
-									if(k==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
-									else d += (k==1 ? ' L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+									xy.t = (k==0 ? 'M':'L');
+									addToPath(path,xy);
 								}
 							}
 						}
-						d += 'Z';
+						d = formatPath(path);
 						setAttr(p,{
 							'd':d,
 							'fill': this.options.color||this.options.fill,
@@ -506,16 +525,16 @@ function Layer(attr,map,i){
 							'stroke-opacity':this.options.opacity,
 							'stroke-width': this.options['stroke-width']
 						});
-						d = '';
+						path = [];
 						for(i = 0; i < c.length; i++){
 							for(j = 0; j < c[i].length; j++){
 								this.bbox.expand(c[i][j]);
 								xy = latlon2xy(c[i][j][1],c[i][j][0],map.zoom);
-								if(j==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
-								else d += (j==1 ? ' L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+								xy.t = (j==0 ? 'M':'L');
+								addToPath(path,xy);
 							}
 						}
-						d += 'Z';
+						d = formatPath(path);
 						setAttr(p,{
 							'd':d,
 							'fill': this.options.color||this.options.fill,
@@ -533,17 +552,20 @@ function Layer(attr,map,i){
 							'stroke-opacity':this.options.opacity,
 							'stroke-width': this.options['stroke-width']
 						});
-						d = '';
+						path = [];
 						for(i = 0; i < c.length; i++){
 							for(j = 0; j < c[i].length; j++){
 								this.bbox.expand(c[i][j]);
 								xy = latlon2xy(c[i][j][1],c[i][j][0],map.zoom);
-								lat = (90 - c[i][j][1]).toFixed(5);
-								lon = (c[i][j][0]).toFixed(5);
-								if(j==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
-								else d += (j==1 ? 'L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+								xy.t = (j==0 ? 'M':'L');
+								addToPath(path,xy);
+								//lat = (90 - c[i][j][1]).toFixed(5);
+								//lon = (c[i][j][0]).toFixed(5);
+								//if(j==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+								//else d += (j==1 ? 'L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
 							}
 						}
+						d = formatPath(path);
 						setAttr(p,{
 							'd':d,
 							'fill':'transparent',
