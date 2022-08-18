@@ -75,7 +75,22 @@ sections:
 
       - title: Section 2
         visualisations:
-          - title: Short title
+          - title: Table
+            caption: Slightly longer description to be used as a caption
+            citations:
+              - title: A short description of the citation
+                link: about:blank
+            type: table
+            config: 
+              file: /data/example/table.csv
+              columns:
+                - name: Overall category
+                  mergerows: true
+                - name: Intervention
+                  mergerows: true
+                - name: Sub-category
+                  mergerows: true
+          - title: Placeholder image
             caption: Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
@@ -96,21 +111,6 @@ sections:
     blocks:
       - title: Section 1
         visualisations:
-          - title: Short title
-            caption: Slightly longer description to be used as a caption
-            citations:
-              - title: A short description of the citation
-                link: about:blank
-            type: table
-            config: 
-              file: /data/example/table.csv
-              columns:
-                - name: Overall category
-                  mergerows: true
-                - name: Intervention
-                  mergerows: true
-                - name: Sub-category
-                  mergerows: true
           - title: Short title
             caption: Slightly longer description to be used as a caption
             citations:
