@@ -96,6 +96,14 @@ sections:
     blocks:
       - title: Section 1
         visualisations:
+#          - title: Short title
+#            caption: Slightly longer description to be used as a caption
+#            citations:
+#              - title: A short description of the citation
+#                link: about:blank
+#            type: table
+#            config: 
+#              file: /data/example/table.csv
           - title: Short title
             caption: Slightly longer description to be used as a caption
             citations:
