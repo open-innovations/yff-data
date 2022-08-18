@@ -8,7 +8,7 @@
 @font-face {
   font-display: swap;
   font-family: "CenturyGothicStdBold";
-  src: url(../fonts/CenturyGothicStdBold.woff2) format('woff2'), url(/assets/fonts/CenturyGothicStdBold.woff) format('woff');
+  src: url(../fonts/CenturyGothicStdBold.woff2) format('woff2'), url(../fonts/CenturyGothicStdBold.woff) format('woff');
   font-weight: 400
 }
 
@@ -36,8 +36,8 @@ blockquote { border-left: 4px solid #e25b27; }
 }
 
 .page-title { background: #efe4ea; position: relative; min-height: 180px; display: table; width: 100%; }
-.page-title::before { content: ""; background-image: url("/assets/images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
-.page-title::after { content: ""; background-image: url("/assets/images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
+.page-title::before { content: ""; background-image: url("../images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
+.page-title::after { content: ""; background-image: url("../images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
 .page-title .holder { position: relative; height: 100%; width: 58.8% !important; margin: auto !important; display: table-cell; vertical-align: middle; }
 
 main .wrapper section { line-height: 1.8em; margin-bottom: 4em; }
