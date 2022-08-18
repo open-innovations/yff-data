@@ -65,7 +65,7 @@
   </script>
   <script>
     addEventListener('DOMContentLoaded', function () {
-      if (new URL(location).searchParams.has('styled')) {
+      if (new URL(location).searchParams.has('styled') || sessionStorage.getItem('styled') === 'true') {
         var styles = document.querySelectorAll('link[rel=stylesheet][href$="/assets/style/yff.css"]');
         styles.forEach(function (style) { style.disabled = false; });
       }

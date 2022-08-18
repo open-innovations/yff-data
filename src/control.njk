@@ -1,0 +1,46 @@
+---
+title: Control Panel
+---
+<style>
+  .control-panel .entry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
+
+{{ comp.elements.title({ title: title }) | safe }}
+
+<div class="wrapper holder control-panel">
+  <p>Use this page to set application preferences:</p>
+
+  {% comp 'grid.auto' %}
+  <div class="entry">
+    <input id="styled" type="checkbox">
+    <label for="styled">Display using YFF styled content</label>
+  </div>
+  {% endcomp %}
+</div>
+
+<script>
+  addEventListener('DOMContentLoaded', function () {
+    // Find all controls
+    var checkboxControls = document.querySelectorAll('.entry input[type=checkbox]');
+
+    // Listener for control changes
+    function setCheckboxState(event) {
+      var value = event.target.checked;
+      console.log({ value });
+      sessionStorage.setItem(event.target.id, value);
+      // Reload!
+      window.location.href = window.location.href;
+    }
+    
+    // Set initial control state
+    checkboxControls.forEach(function (control) { 
+      var state = sessionStorage.getItem(control.id) === "true";
+      control.checked = state;
+      control.addEventListener('change', setCheckboxState);
+    });
+  });
+</script>
