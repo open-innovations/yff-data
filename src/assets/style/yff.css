@@ -2,13 +2,13 @@
 @font-face {
   font-display: swap;
   font-family: "CenturyGothicStd";
-  src: url(/assets/fonts/CenturyGothicStd.woff2) format('woff2'), url(/assets/fonts/CenturyGothicStd.woff) format('woff');
+  src: url(../fonts/CenturyGothicStd.woff2) format('woff2'), url(../fonts/CenturyGothicStd.woff) format('woff');
   font-weight: 400
 }
 @font-face {
   font-display: swap;
   font-family: "CenturyGothicStdBold";
-  src: url(/assets/fonts/CenturyGothicStdBold.woff2) format('woff2'), url(/assets/fonts/CenturyGothicStdBold.woff) format('woff');
+  src: url(../fonts/CenturyGothicStdBold.woff2) format('woff2'), url(/assets/fonts/CenturyGothicStdBold.woff) format('woff');
   font-weight: 400
 }
 
