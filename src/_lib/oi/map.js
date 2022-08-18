@@ -483,8 +483,8 @@ function Layer(attr,map,i){
 								for(k = 0; k < c[i][j].length; k++){
 									this.bbox.expand(c[i][j][k]);
 									xy = latlon2xy(c[i][j][k][1],c[i][j][k][0],map.zoom);
-									if(k==0) d += 'M'+xy.x+' '+xy.y;
-									else d += (k==1 ? ' L':', ')+xy.x+' '+xy.y;
+									if(k==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+									else d += (k==1 ? ' L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
 								}
 							}
 						}
@@ -511,8 +511,8 @@ function Layer(attr,map,i){
 							for(j = 0; j < c[i].length; j++){
 								this.bbox.expand(c[i][j]);
 								xy = latlon2xy(c[i][j][1],c[i][j][0],map.zoom);
-								if(j==0) d += 'M'+xy.x+' '+xy.y;
-								else d += (j==1 ? ' L':', ')+xy.x+' '+xy.y;
+								if(j==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+								else d += (j==1 ? ' L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
 							}
 						}
 						d += 'Z';
@@ -540,8 +540,8 @@ function Layer(attr,map,i){
 								xy = latlon2xy(c[i][j][1],c[i][j][0],map.zoom);
 								lat = (90 - c[i][j][1]).toFixed(5);
 								lon = (c[i][j][0]).toFixed(5);
-								if(j==0) d += 'M'+xy.x+' '+xy.y;
-								else d += (j==1 ? 'L':', ')+xy.x+' '+xy.y;
+								if(j==0) d += 'M'+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
+								else d += (j==1 ? 'L':', ')+xy.x.toFixed(2)+' '+xy.y.toFixed(2);
 							}
 						}
 						setAttr(p,{
@@ -568,8 +568,8 @@ function Layer(attr,map,i){
 							'text-anchor': this.options.textAnchor||feature.style['text-anchor']||'middle',
 							'font-size': (feature.properties.fontsize ? feature.properties.fontsize : 1),
 							'paint-order': 'stroke',
-							'x': xy.x,
-							'y': xy.y
+							'x': xy.x.toFixed(2),
+							'y': xy.y.toFixed(2)
 						});
 						if(typeof attr.style==="function") attr.style.call(this,feature,p);
 					}
