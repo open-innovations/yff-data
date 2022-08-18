@@ -499,6 +499,69 @@ map:
       label: ""
     - value: -30
       label: "▼ Decrease"
+map2:
+  file: /data/example/dummy_map.csv
+  type: leaflet-map
+  geojson:
+    layout: NUTS3
+    key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+  key: "NUTS18CD"	# Column heading for unique ID
+  value: "Hours Growth (%)"	# Column heading for value
+  scale: Diverging
+  min: -30
+  max: 30
+  legend:
+    - value: 30
+      label: "▲ Increase"
+    - value: 20
+      label: ""
+    - value: 10
+      label: ""
+    - value: 0
+      label: ""
+    - value: -10
+      label: ""
+    - value: -20
+      label: ""
+    - value: -30
+      label: "▼ Decrease"
+mapsvg:
+  file: /data/example/dummy_map.csv
+  type: svg-map
+  geojson:
+    layout: NUTS3
+    key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+  key: "NUTS18CD"	# Column heading for unique ID
+  value: "Hours Growth (%)"	# Column heading for value
+  scale: Diverging
+  min: -30
+  max: 30
+  places:
+    - name: London
+      text-anchor: start
+    - name: Liverpool
+      text-anchor: end
+    - name: Swansea
+      text-anchor: end
+    - name: Edinburgh
+      text-anchor: start
+    - name: Kingston upon Hull
+      text-anchor: start
+  legend:
+    - value: 30
+      label: "▲ Increase"
+    - value: 20
+      label: ""
+    - value: 10
+      label: ""
+    - value: 0
+      label: ""
+    - value: -10
+      label: ""
+    - value: -20
+      label: ""
+    - value: -30
+      label: "▼ Decrease"
 ---
 
 <div class="page-title">
@@ -641,4 +704,26 @@ map:
 		</code></pre>
 		<a href="{{ map.file }}">Data file</a>
 	</section>
+
+	<section>
+		<h2>Leaflet Map using <code>layout</code> for GeoJSON</h2>
+		<p>In the previous example we explicitly gave the path for the GeoJSON file to use. But we can also use a shorter key to refer to specific layouts e.g.  <code>NUTS2</code>, <code>NUTS3</code>, <code>LAD21</code>, <code>PCON21</code>.</p>
+		{{ comp.viz.map({ config: map2 }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- map2 | yaml -}}
+		</code></pre>
+		<a href="{{ map2.file }}">Data file</a>
+	</section>
+
+	<section>
+		<h2>SVG Map</h2>
+		{{ comp.viz.map({ config: mapsvg }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- mapsvg | yaml -}}
+		</code></pre>
+		<a href="{{ mapsvg.file }}">Data file</a>
+	</section>
+
 </div>

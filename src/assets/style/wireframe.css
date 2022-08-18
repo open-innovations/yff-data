@@ -193,7 +193,7 @@ aside {
 }
 
 pre { overflow-x: auto; background-color: #ddd; }
-code { background-color: #ddd; }
+code { background-color: #ddd; padding: 0 0.25em; }
 pre code {
   display: block;
   padding: 1rem;
