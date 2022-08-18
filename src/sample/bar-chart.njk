@@ -1,0 +1,47 @@
+---
+title: Bar Chart
+order: 8
+visualisations:
+  -
+    type: chart
+    config:
+      file: /data/example/dummy_barchart_placements.csv
+      type: bar-chart
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:
+          min: 0
+          max: 60
+          grid:
+            stroke-dasharray: "6 2"
+            stroke-width: 1
+          ticks:
+            - value: 10
+              label: "10%"
+            - value: 20
+              label: "20%"
+            - value: 30
+              label: "30%"
+            - value: 40
+              label: "40%"
+            - value: 50
+              label: "50%"
+        y:
+          grid:
+            stroke-width: 0.5
+      category: "Reason"  # Category names come from 
+      series:
+        - title: "School"
+          value: "School"
+---
+
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>
+
+<a href="{{ config.file }}">Data file</a>

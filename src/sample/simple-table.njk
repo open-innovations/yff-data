@@ -1,0 +1,24 @@
+---
+title: Simple Table
+order: 1
+visualisations:
+  - type: table
+    config:
+      file: /data/example/table.csv
+      columns:            # The ability to merge rows (in a specific column) that have the same value
+        - name: "Overall category"
+          mergerows: true
+        - name: "Intervention"
+          mergerows: true
+        - name: "Sub-category"
+          mergerows: true
+---
+
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>
+
+<a href="{{ config.file }}">Data file</a>

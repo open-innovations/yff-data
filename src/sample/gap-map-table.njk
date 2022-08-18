@@ -1,0 +1,52 @@
+---
+title: Gap Map Table
+order: 3
+visualisations: 
+  -
+    type: table
+    config:
+      file: /data/example/gapmap.csv
+      columns:
+        - name: "Source"
+          template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
+        - name: "Ethnic groups availability→Broad groupings (e.g. White, Black, Asian, mixed, other)→Rating"
+          rename: "Broad groupings e.g. White, Black, Asian, mixed, other"
+          width: "15%"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 3
+          max: 0
+        - name: "Ethnic groups availability→Ethnic groups (e.g. African, Carribean, other black background)→Rating"
+          rename: "Ethnic groups e.g. African, Carribean, other black background"
+          width: "15%"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 3
+          max: 0
+        - name: "Ethnic groups availability→Ethnic subgroups (e.g. Somali)→Rating"
+          rename: "Ethnic subgroups e.g. Somali"
+          width: "15%"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 3
+          max: 0
+        - name: "Ethnic groups availability→Other relevant subgroups (e.g. migration status)→Rating"
+          rename: "Other relevant subgroups e.g. migration status"
+          width: "15%"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 3
+          max: 0
+---
+
+		
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>
+<a href="{{ visualisations[0].config.file }}">Data file</a>

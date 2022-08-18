@@ -1,0 +1,137 @@
+---
+title: Line Chart
+order: 4
+visualisations:
+  -
+    type: chart
+    config:
+      file: /data/example/dummy_linechart.csv
+      type: line-chart
+      source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:  # Horizontal axis
+          min: 2001    # A minimum value
+          max: 2022    # A maximum value
+          grid:
+            stroke: "#efefef"
+          # Explicitly define the ticks.
+          # Each tick has a numeric value and a displayed label
+          ticks:
+            - value: 2001
+              label: ""
+            - value: 2002
+              label: ""
+            - value: 2003
+              label: ""
+            - value: 2004
+              label: ""
+            - value: 2005
+              label: "2005"
+            - value: 2006
+              label: ""
+            - value: 2007
+              label: ""
+            - value: 2008
+              label: ""
+            - value: 2009
+              label: ""
+            - value: 2010
+              label: "2010"
+            - value: 2011
+              label: ""
+            - value: 2012
+              label: ""
+            - value: 2013
+              label: ""
+            - value: 2014
+              label: ""
+            - value: 2015
+              label: "2015"
+            - value: 2016
+              label: ""
+            - value: 2017
+              label: ""
+            - value: 2018
+              label: ""
+            - value: 2019
+              label: ""
+            - value: 2020
+              label: "2020"
+            - value: 2021
+              label: ""
+        y:             # The vertical axes
+          min: 0       # A minimum value
+          max: 50      # A maximum value
+          title:
+            label: "Unemployment Rate %"
+          dominant-baseline: text-bottom
+          # Explicitly define the ticks.
+          # Each tick has a numeric value and a displayed label
+          ticks:
+            - value: 0
+              grid: true
+              label: "0"
+            - value: 5
+              grid: true
+              label: "5"
+            - value: 10
+              grid: true
+              label: "10"
+            - value: 15
+              grid: true
+              label: "15"
+            - value: 20
+              grid: true
+              label: "20"
+            - value: 25
+              grid: true
+              label: "25"
+            - value: 30
+              grid: true
+              label: "30"
+            - value: 35
+              grid: true
+              label: "35"
+            - value: 40
+              grid: true
+              label: "40"
+            - value: 45
+              grid: true
+              label: "45"
+      columns:
+        - name: "Label 16-17"
+          template: "16-17<br />{{ Date }}: {{ 16-17→rate (%)1 | toFixed(1) }}%"
+        - name: "Label 18-24"
+          template: "18-24<br />{{ Date }}: {{ 18-24→rate (%)1 | toFixed(1) }}%"
+        - name: "Label 25-49"
+          template: "25-49<br />{{ Date }}: {{ 18-24→rate (%)1 | toFixed(1) }}%"
+        - name: "Label 50-64"
+          template: "50-64<br />{{ Date }}: {{ 18-24→rate (%)1 | toFixed(1) }}%"
+      series:
+        - title: "16-17"
+          x: "Year"                       # Column heading to use for x-value
+          y: "16-17→rate (%)1"            # Column heading to use fro y-value
+          size: 10
+          tooltip: "Label 16-17"
+        - title: "18-24"                  # Displayed in the key and tooltip
+          x: "Year"
+          y: "18-24→rate (%)1"
+          tooltip: "Label 18-24"
+        - title: "25-49"                  # Displayed in the key and tooltip
+          x: "Year"
+          y: "25-49→rate (%)1"
+          tooltip: "Label 25-49"
+        - title: "50-64"                  # Displayed in the key and tooltip
+          x: "Year"
+          y: "50 and over→rate (%)1"
+          tooltip: "Label 50-64"
+---
+		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- visualisations | yaml -}}
+		</code></pre>
+		<a href="{{ visualisations[0].config.file }}">Data file</a>

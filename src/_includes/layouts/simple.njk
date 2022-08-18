@@ -1,0 +1,9 @@
+{% extends 'layout.njk' %}
+
+{% block main %}
+  {{ comp.elements.title({ title: title }) | safe }}
+
+  <div class="wrapper holder">
+    {{ content | safe }}
+  </div>
+{% endblock %}

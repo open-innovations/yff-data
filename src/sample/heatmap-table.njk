@@ -1,0 +1,54 @@
+---
+title: Heatmap Table
+order: 2
+visualisations:
+  -
+    type: table
+    config:
+      file: /data/example/heatmap.csv
+      columns:
+        - name: "Ranks→2018"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 1
+          max: 38
+        - name: "Ranks→2019"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 1
+          max: 38
+        - name: "Ranks→2020"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 1
+          max: 38
+        - name: "Country"
+        - name: "Index→2018"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 71
+          max: 23
+        - name: "Index→2019"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 71
+          max: 23
+        - name: "Index→2020"
+          align: center
+          heatmap: true
+          scale: YFF
+          min: 71
+          max: 23
+---
+
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>
+<a href="{{ visualisations[0].heatmap.file }}">Data file</a>

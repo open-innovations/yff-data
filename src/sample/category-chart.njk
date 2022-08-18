@@ -1,0 +1,47 @@
+---
+title: Category Chart
+order: 5
+visualisations:
+  -
+    type: chart
+    config:
+      file: /data/example/dummy_categorychart_gender.csv
+      type: category-chart
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:
+          min: 15
+          max: 58
+          grid:
+            stroke-dasharray: "6 2"
+            stroke-width: 1
+          ticks:
+            - value: 20
+              label: "20%"
+            - value: 30
+              label: "30%"
+            - value: 40
+              label: "40%"
+            - value: 50
+              label: "50%"
+        y:
+          grid:
+            stroke-width: 0.5
+      category: "Ethnic group"  # Category names come from 
+      series:
+        - title: "Female"
+          value: "Female→Value (%)"
+          errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
+        - title: "Male"
+          value: "Male→Value (%)"
+          errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
+---
+
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>
+<a href="{{ visualisations[0].config.file }}">Data file</a>

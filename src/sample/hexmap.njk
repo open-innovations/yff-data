@@ -1,21 +1,25 @@
 ---
-hex:
-  data: file.csv
-  layout: /data/example/leeds_wards.hexjson  # A HexJSON file
-  column-id: column-heading-for-id
-  column-value: column-heading-for-value
-  column-label: column-heading-for-label  # If not given we can build a label of the form "column-heading-for-id: column-heading-for-value"
-  scale: Viridis # a named colour scale (we can have a default)
-  min: 0	# optional explicit minimum for scale
-  max: 100 # optional explicit maximum for scale
-  height: 300
-  width: 300
+title: HexMap
+order: -1
+visualisations:
+  -
+    type: hexmap
+    config:
+      data: file.csv
+      layout: /data/example/leeds_wards.hexjson  # A HexJSON file
+      column-id: column-heading-for-id
+      column-value: column-heading-for-value
+      column-label: column-heading-for-label  # If not given we can build a label of the form "column-heading-for-id: column-heading-for-value"
+      scale: Viridis # a named colour scale (we can have a default)
+      min: 0	# optional explicit minimum for scale
+      max: 100 # optional explicit maximum for scale
+      height: 300
+      width: 300
 ---
 
-{{ comp.viz.hexmap({ config: hex }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
 
-<p>Code is</p>
-
-<div>
-  {{- comp.viz.hexmap({ config: hex }) -}}
-</div>
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>

@@ -1,0 +1,55 @@
+---
+title: Bar Chart Gender
+order: # 7
+visualisations:
+  -
+    type: chart
+    config:
+      file: /data/example/dummy_categorychart_gender.csv
+      type: bar-chart
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:
+          min: 15
+          max: 58
+          grid:
+            stroke-dasharray: "6 2"
+            stroke-width: 1
+          ticks:
+            - value: 20
+              label: "20%"
+            - value: 30
+              label: "30%"
+            - value: 40
+              label: "40%"
+            - value: 50
+              label: "50%"
+        y:
+          grid:
+            stroke-width: 0.5
+      category: "Ethnic group"  # Category names come from 
+      columns:
+        - name: "Female Label"
+          template: "Female<br />{{ Ethnic group}}: {{ Female→Value (%) }}%"
+        - name: "Male Label"
+          template: "Male<br />{{ Ethnic group}}: {{ Male→Value (%) }}%"
+      series:
+        - title: "Female"
+          value: "Female→Value (%)"
+          tooltip: "Female Label"
+        - title: "Male"
+          value: "Male→Value (%)"
+          tooltip: "Male Label"
+
+---
+
+{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+
+<p>Built using config: </p>
+<pre><code>
+  {{- visualisations | yaml -}}
+</code></pre>
+
+<a href="{{ config.file }}">Data file</a>
