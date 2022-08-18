@@ -111,6 +111,137 @@ sections:
     blocks:
       - title: Section 1
         visualisations:
+          - title: Example table 1
+            caption: Slightly longer description to be used as a caption
+            citations:
+              - title: A short description of the citation
+                link: about:blank
+            type: table
+            config:
+              file: /data/example/gapmap.csv
+              columns:
+                - name: "Source"
+                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
+                  width: 40%
+                - name: "Intersectional analysis→Two-way intersectional analysis (e.g. ethnic group by demographic characteristic)→Rating"
+                  rename: "Two-way intersectional analysis (e.g. ethnicity by demographic)"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 30%
+                - name: "Intersectional analysis→Three-way intersectional analysis possible (e.g. ethnic group by demographic characteristic by region)→Rating"
+                  rename: "Three-way intersectional analysis (e.g. ethnicity by demographic by region)"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 30%
+          - title: Example table 2
+            caption: Slightly longer description to be used as a caption
+            citations:
+              - title: A short description of the citation
+                link: about:blank
+            type: table
+            config:
+              file: /data/example/gapmap.csv
+              columns:
+                - name: "Source"
+                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
+                  width: 40%
+                - name: "Relevance of data→Culturally relevant data available→Rating"
+                  rename: "Culturally Relevant Data Available"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 30%
+                - name: "Relevance of data→Timeliness of data (e.g. covers a suitable time period, sufficiently up to date)→Rating"
+                  rename: "Timeliness of data"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 30%
+          - title: Example table 3
+            caption: Slightly longer description to be used as a caption
+            citations:
+              - title: A short description of the citation
+                link: about:blank
+            type: table
+            config:
+              file: /data/example/gapmap.csv
+              columns:
+                - name: "Source"
+                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
+                - name: "Employment data→Employment status→Rating"
+                  rename: "Employment Status"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Sector→Rating"
+                  rename: "Sector"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Occupation→Rating"
+                  rename: "Occupation"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Contract type→Rating"
+                  rename: "Contract Type"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Apprenticeships→Rating"
+                  rename: "Apprenticeship"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Pay→Rating"
+                  rename: "Pay"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Progression→Rating"
+                  rename: "Progression"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
+                - name: "Employment data→Discrimination in employment→Rating"
+                  rename: "Discrimination in Employment"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 10%
           - title: Short title
             caption: Slightly longer description to be used as a caption
             citations:
