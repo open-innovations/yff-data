@@ -475,7 +475,7 @@ dashboard:
       class: "turquoise"
 map:
   file: /data/example/dummy_map.csv
-  type: leaflet
+  type: leaflet-map
   geojson:
     file: /data/maps/NUTS_Level_3_(January_2018)_Boundaries.geojson
     key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
@@ -512,10 +512,10 @@ map:
 	<ul>
 		<li><a href="#simple-table">Simple table</a></li>
 		<li><a href="#heatmap-table">Heatmap table</a></li>
-		<li><a href="#gapmap-table">Gap map table</a></li>
 		<li><a href="#line-chart">Line chart</a></li>
 		<li><a href="#category-chart">Category chart</a></li>
 		<li><a href="#bar-chart">Bar chart</a></li>
+		<li><a href="#bar-chart-multi">Bar chart - multi-series</a></li>
 		<li><a href="#stacked-bar-chart">Stacked bar chart</a></li>
 		<li><a href="#dashboard">Dashboard</a></li>
 		<li><a href="#leaflet-map">Leaflet map</a></li>
@@ -591,7 +591,7 @@ map:
 		<a href="{{ barchart.file }}">Data file</a>
 	</section>
 
-	<section>
+	<section id="bar-chart-multi">
 		<h2>Bar Chart - multi-series</h2>
 		{{ comp.viz.chart({ config: barchartplacement }) | safe }}
 		<p>Built using config: </p>

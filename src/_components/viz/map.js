@@ -27,7 +27,7 @@ export default function ({ config, sources }) {
 		// Make a clone of the original config to avoid updating the contents elsewhere
 		const configcopy = clone(config);
 
-		if(configcopy.type=="leaflet"){
+		if(configcopy.type=="leaflet-map"){
 
 			// Create a new Line Chart
 			map = new LeafletMap(configcopy,csv);
