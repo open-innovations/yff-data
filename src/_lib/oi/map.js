@@ -163,7 +163,7 @@ export function SVGMap(config,csv,sources){
 			'options': { 'color': '#b2b2b2' },
 			'values': { 'column': config.key, 'geokey': config.geojson.key, 'min':min, 'max': max, 'rows': rows, 'colour': 'red' },
 			'style': function(feature,el){
-				var v,code,r,i;
+				var v,code,r,i,title;
 				v = this.attr.values;
 				code = feature.properties[v.geokey];
 				i = -1;
@@ -174,6 +174,12 @@ export function SVGMap(config,csv,sources){
 					}
 				}
 				if(i >= 0){
+					if(v.rows[i].Label){
+						// Add a text label 
+						title = document.createElement('title');
+						title.innerHTML = v.rows[i].Label;
+						el.appendChild(title);
+					}
 					el.setAttribute('fill-opacity',0.8);
 					el.setAttribute('fill',v.rows[i].colour);
 					el.setAttribute('stroke',v.rows[i].colour);
