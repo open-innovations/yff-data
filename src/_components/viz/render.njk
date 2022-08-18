@@ -1,6 +1,13 @@
+{% if DEBUG -%}
+<pre>
+type: {{ type }}
+config: {{ config | dump(2) }}
+</pre>
+{% endif -%}
+
 <figure>
   <h3>{{ title }}</h3>
-  {{ comp.viz[type](config) | safe }}
+  {{ comp.viz[type]({ config: config }) | safe }}
   <figcaption>
     <p>{{ caption }}</p>
   </figcaption>

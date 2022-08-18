@@ -18,6 +18,9 @@ const site = lume({
   location: new URL('https://yff-wireframe.open-innovations.org/'),
 });
 
+// To set the DEBUG global data, start the process with DEBUG=true in the environment
+Deno.env.get('DEBUG') || site.data('DEBUG', true);
+
 // Also process .html files
 site.loadPages(['.html']);
 
