@@ -284,7 +284,7 @@ function BasicMap(config,attr){
 
 	this.getHTML = function(){
 
-		var html = ['<div class="map" data-dependencies="/assets/js/svg-map.js">'];
+		var html = ['<div class="map svg-map" data-dependencies="/assets/js/svg-map.js">'];
 
 		html.push(this.svg.outerHTML);
 
