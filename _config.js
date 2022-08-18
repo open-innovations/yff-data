@@ -15,7 +15,7 @@ import csvLoader from '/src/_lib/oi/csv-loader.ts';
 
 const site = lume({
   src: './src',
-  location: new URL('https://open-innovations.github.io/yff-wireframe/'),
+  location: new URL('https://yff-wireframe.open-innovations.org/'),
 });
 
 // Also process .html files
@@ -97,5 +97,8 @@ site.copy('/assets/fonts');
 
 // Prevent jekyll building
 site.copy('.nojekyll');
+
+// Add CNAME file
+site.copy('CNAME');
 
 export default site;
