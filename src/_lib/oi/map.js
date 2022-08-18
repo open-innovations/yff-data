@@ -174,7 +174,11 @@ export function SVGMap(config,csv,sources){
 					}
 				}
 				if(i >= 0){
-					el.setAttribute('style','fill-opacity:0.8;fill:'+v.rows[i].colour+';stroke:'+v.rows[i].colour+';stroke-width:2;stroke-opacity:0.1;');
+					el.setAttribute('fill-opacity',0.8);
+					el.setAttribute('fill',v.rows[i].colour);
+					el.setAttribute('stroke',v.rows[i].colour);
+					el.setAttribute('stroke-width',2);
+					el.setAttribute('stroke-opacity',0.1);
 				}else{
 					el.setAttribute('style','display:none');
 				}
@@ -588,6 +592,7 @@ function Layer(attr,map,i){
 							'stroke-width': this.options['stroke-width']||'0.4%',
 							'stroke-linejoin': this.options['stroke-linejoin'],
 							'text-anchor': this.options.textAnchor||feature.style['text-anchor']||'middle',
+							'font-family': feature.style['font-family']||'Century Gothic',
 							'font-size': (feature.properties.fontsize ? feature.properties.fontsize : 1),
 							'paint-order': 'stroke',
 							'x': xy.x.toFixed(2),
