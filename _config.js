@@ -83,4 +83,16 @@ site.use(basePath());
 site.use(resolveUrls());
 site.use(slugifyUrls());
 
+// Define remote access to the font files
+[
+  'CenturyGothicStd.woff2',
+  'CenturyGothicStd.woff',
+  'CenturyGothicStdBold.woff2',
+  'CenturyGothicStdBold.woff',
+].forEach(font => {
+  site.remoteFile(`/assets/fonts/${font}`, `https://youthfuturesfoundation.org/wp-content/themes/youthfutures/assets/fonts/${font}`);
+})
+// Force provisioning of font files
+site.copy('/assets/fonts');
+
 export default site;

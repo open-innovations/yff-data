@@ -1,8 +1,20 @@
 /* Youth Futures Foundation styles */
+@font-face {
+  font-display: swap;
+  font-family: "CenturyGothicStd";
+  src: url(/assets/fonts/CenturyGothicStd.woff2) format('woff2'), url(/assets/fonts/CenturyGothicStd.woff) format('woff');
+  font-weight: 400
+}
+@font-face {
+  font-display: swap;
+  font-family: "CenturyGothicStdBold";
+  src: url(/assets/fonts/CenturyGothicStdBold.woff2) format('woff2'), url(/assets/fonts/CenturyGothicStdBold.woff) format('woff');
+  font-weight: 400
+}
 
-body { font-family: "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
+body { font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
 h1 { color: #e25b27; text-align: center; }
-h1,h2,h3,h4,h5,h6 { font-family: "Century Gothic", Helvetica, sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-family: "CenturyGothicStdBold", "Century Gothic", Helvetica, sans-serif; }
 blockquote { border-left: 4px solid #e25b27; }
 
 .gold { background: #F7AB3D; }
@@ -83,7 +95,7 @@ td, th { padding: 0.25em; }
 
 footer {
 	border: 0;
-	font-family: "Century Gothic", Helvetica, sans-serif;
+	font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif;
 	background: #efefef;
 	color: #56585A;
 	font-size: 17px;
