@@ -95,4 +95,7 @@ site.use(slugifyUrls());
 // Force provisioning of font files
 site.copy('/assets/fonts');
 
+// Prevent jekyll building
+site.copy('.nojekyll');
+
 export default site;
