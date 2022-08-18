@@ -153,11 +153,11 @@ export function SVGMap(config,csv,sources){
 			'id': 'outline',
 			'data': UK,
 			'options': { 'color': '#fafaf8' }
-		},{
+		},/*{
 			'id': 'motorways',
 			'data': motorways,
 			'options': { 'color': '#e8e8e7', 'stroke-width': 1.2 }
-		},{
+		},*/{
 			'id': 'data-layer',
 			'data': geo,
 			'options': { 'color': '#b2b2b2' },
@@ -180,7 +180,7 @@ export function SVGMap(config,csv,sources){
 						title.innerHTML = v.rows[i].Label;
 						el.appendChild(title);
 					}
-					el.setAttribute('fill-opacity',0.8);
+					el.setAttribute('fill-opacity',1);
 					el.setAttribute('fill',v.rows[i].colour);
 					el.setAttribute('stroke',v.rows[i].colour);
 					el.setAttribute('stroke-width',2);
