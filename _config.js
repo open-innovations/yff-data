@@ -19,7 +19,7 @@ const site = lume({
 });
 
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
-Deno.env.get('DEBUG') || site.data('DEBUG', true);
+if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
 
 // Also process .html files
 site.loadPages(['.html']);
