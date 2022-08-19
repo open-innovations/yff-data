@@ -31,10 +31,6 @@ blockquote { border-left: 4px solid #e25b27; }
 .black { background: #000000; color: white; }
 .plum a, .blue a, .raisin a, .forest a, .black a { color: #E55912; font-weight: bold; }
 
-.navigation button[aria-expanded] i {
-	background-color: #e25b27;
-}
-
 .page-title { background: #efe4ea; position: relative; min-height: 180px; display: table; width: 100%; }
 .page-title::before { content: ""; background-image: url("../images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
 .page-title::after { content: ""; background-image: url("../images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
@@ -106,16 +102,23 @@ footer {
 footer a { color: #7d2248; }
 footer .small { line-height: 1.25em; }
 
-
-
 @media screen and (max-width: 840px) {
-	.navigation > div { text-align: left; }
-	.navigation ul li { display: block; width: 100%; border-bottom: 1px solid rgba(0,0,0,.03); line-height: 3em; padding: 0 1em; }
-	.navigation ul li:hover { background: white; }
-	.navigation ul li:last-child { border-bottom: 0; }
-	.navigation ul li a { color: inherit; display: block; }
 	.page-title h1 { font-size: 1.5em; }
 	footer .twocol { display: block; }
 	footer .twocol > * { margin-bottom: 1em; }
 	footer .twocol > *:last-child { text-align: left; margin-bottom: 0; }
+}
+
+/*********************/
+/* Navigation styles */
+/*********************/
+.navigation button[aria-expanded] i {
+	--menu-button-colour: #e25b27;
+}
+@media screen and (max-width: 840px) {
+	.navigation > div { text-align: left; }
+	.navigation ul li { display: block; width: 100%; line-height: 3em; padding: 0 1em; }
+	.navigation ul li:hover { background: white; }
+	.navigation ul li:not(:last-child) { border-bottom: 1px solid rgba(0,0,0,.03);  }
+	.navigation ul li a { color: inherit; display: block; }
 }

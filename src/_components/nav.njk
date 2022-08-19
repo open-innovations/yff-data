@@ -16,20 +16,21 @@ css: |
     background-color: inherit;
   }
   .navigation button[aria-expanded] i {
-    height: 0.3rem;
+    --menu-button-colour: black;
     width: 100%;
-    background-color: black;
+    background-color: var(--menu-button-colour);
+    border: 3px solid var(--menu-button-colour);
     transition: ease transform 250ms;
     border-radius: 0.8rem;
   }
   .navigation button[aria-expanded=true] i:nth-of-type(1) {
-    transform: translateY(0.7rem) scaleX(0);
+    transform: translateY(12px) rotate(180deg) scaleX(0);
   }
   .navigation button[aria-expanded=true] i:nth-of-type(2) {
-    transform: rotate(225deg) scale(1.41);
+    transform: rotate(225deg) scaleX(1.2);
   }
   .navigation button[aria-expanded=true] i:nth-of-type(3) {
-    transform: translateY(-0.7rem) rotate(135deg) scale(1.41);
+    transform: translateY(-12px) rotate(135deg) scaleX(1.2);
   }
   @media screen and (min-width: 840px) {
     .navigation button[aria-expanded] {
