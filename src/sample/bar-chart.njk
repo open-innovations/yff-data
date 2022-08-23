@@ -1,9 +1,10 @@
 ---
-title: Bar Chart
+title: Bar Charts
 order: 8
 visualisations:
   -
     type: chart
+    tab: One series
     config:
       file: /data/example/dummy_barchart_placements.csv
       type: bar-chart
@@ -35,13 +36,146 @@ visualisations:
       series:
         - title: "School"
           value: "School"
+  -
+    type: chart
+    tab: Two series
+    caption:  A <code>tooltip</code> label is created as a virtual column for each series.
+    config:
+      file: /data/example/dummy_categorychart_gender.csv
+      type: bar-chart
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:
+          min: 15
+          max: 58
+          grid:
+            stroke-dasharray: "6 2"
+            stroke-width: 1
+          ticks:
+            - value: 20
+              label: "20%"
+            - value: 30
+              label: "30%"
+            - value: 40
+              label: "40%"
+            - value: 50
+              label: "50%"
+        y:
+          grid:
+            stroke-width: 0.5
+      category: "Ethnic group"  # Category names come from 
+      columns:
+        - name: "Female Label"
+          template: "Female<br />{{ Ethnic group}}: {{ Female→Value (%) }}%"
+        - name: "Male Label"
+          template: "Male<br />{{ Ethnic group}}: {{ Male→Value (%) }}%"
+      series:
+        - title: "Female"
+          value: "Female→Value (%)"
+          tooltip: "Female Label"
+        - title: "Male"
+          value: "Male→Value (%)"
+          tooltip: "Male Label"
+  -
+    type: chart
+    tab: Multi-series
+    caption: This example shows three series. The colours are explicitly set. A <code>tooltip</code> label is created as a virtual column for each series.
+    config:
+      file: /data/example/dummy_barchart_placements.csv
+      summary: "Employers were not asked separately about each type of placement"
+      type: bar-chart
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:
+          min: 0
+          max: 60
+          grid:
+            stroke-dasharray: "6 2"
+            stroke-width: 1
+          ticks:
+            - value: 10
+              label: "10%"
+            - value: 20
+              label: "20%"
+            - value: 30
+              label: "30%"
+            - value: 40
+              label: "40%"
+            - value: 50
+              label: "50%"
+        y:
+          grid:
+            stroke-width: 0.5
+      category: "Reason"  # Category names come from 
+      columns:
+        - name: "School Label"
+          template: "{{ Reason }}<br />School: {{ School }}%"
+        - name: "College Label"
+          template: "{{ Reason }}<br />College: {{ College }}%"
+        - name: "University Label"
+          template: "{{ Reason }}<br />University: {{ University }}%"
+      series:
+        - title: "School"
+          value: "School"
+          colour: "#E52E36"
+          tooltip: "School Label"
+        - title: "College"
+          value: "College"
+          colour: "#F7AB3D"
+          tooltip: "College Label"
+        - title: "University"
+          value: "University"
+          colour: "#69C2C9"
+          tooltip: "University Label"
+  -
+    type: chart
+    tab: Stacked bar
+    caption: A stacked bar chart. This is effectively a multi-series bar chart with special formatting. The interactive key has the special ability to shift the bars to the left when a series is focussed so that the values for that series can be more easily compared.
+    config:
+      file: /data/example/dummy_stackedbarchart_apprenticeships.csv
+      summary: "This is an approximate version of the real data created by trying to read values from a chart"
+      type: stacked-bar-chart
+      key:
+        show: true     # Default to false
+        position: "top right"
+      axis:
+        x:
+          min: 0
+          max: 600
+          grid:
+            stroke-dasharray: "6 2"
+            stroke-width: 1
+          ticks:
+            - value: 100
+              label: "100"
+            - value: 200
+              label: "200"
+            - value: 300
+              label: "300"
+            - value: 400
+              label: "400"
+            - value: 500
+              label: "500"
+            - value: 600
+              label: "600"
+        y:
+          grid:
+            stroke-width: 0.5
+      category: "Year"  # Category labels come from 
+      series:
+        - title: "Under 19"
+          value: "Under 19"
+          colour: "#69C2C9"
+        - title: "19-24"
+          value: "19-24"
+          colour: "#7D2248"
+        - title: "25+"
+          value: "25+"
+          colour: "#4A783C"
 ---
 
-{{ comp.viz.main({ visualisations: visualisations }) | safe }}
-
-<p>Built using config: </p>
-<pre><code>
-  {{- visualisations | yaml -}}
-</code></pre>
-
-<a href="{{ config.file }}">Data file</a>
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

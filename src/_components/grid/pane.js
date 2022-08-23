@@ -6,7 +6,6 @@ export const css = `
   height: 100%;
   min-height: 20rem;
   color: inherit;
-  max-height: var(--max-height);
 }
 .auto-grid .pane:hover, .auto-grid .pane:focus { background: #efefef; }
 `;

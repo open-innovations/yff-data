@@ -3,15 +3,22 @@ title: Sample Visualisations
 layout: layouts/simple.njk
 ---
 
+<style>
+.vis-example {
+	max-height: var(--auto-grid-min-size);
+	overflow-y: auto;
+	overflow-x: visible;
+}
+</style>
+
 {% comp 'grid.auto', { min_width: '30rem' } %}
   {% for page in search.pages('sample order>0', 'order') %}
   {% comp 'grid.pane', { link: page.data.url, maxHeight: '30rem' } %}
     <h2>{{ page.data.title }}</h2>
-    <p>
+    <p>{{ page.data.caption }}</p>
     {% if page.data.visualisations %}
       {{ comp.viz[page.data.visualisations[0].type]({ config: page.data.visualisations[0].config }) | safe }}
     {% endif %}
-    </p>
   {% endcomp %}
   {% endfor %}
 {% endcomp %}

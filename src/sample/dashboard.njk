@@ -1,0 +1,31 @@
+---
+title: Dashboards
+order: 8
+caption: Panels with numbers
+visualisations:
+  -
+    type: dashboard
+    tab: Dashboard
+    config:
+      file: /data/example/dummy_dashboard.csv
+      type: dashboard
+      title: "Title"	# Column heading for title
+      value: "Value"	# Column heading for value
+      note: "Note"		# Column heading for note
+      width: 250px		# Min width of column (default: 250px)
+      units:
+        prefix: "Units→Pre"
+        postfix: "Units→Post"
+      panels:
+        - name: "Thing 1"
+          class: "plum"
+        - name: "Thing 3"
+          class: "forest"
+        - name: "Thing 2"
+          class: "gold"
+        - name: "Thing 4"
+          class: "turquoise"
+---
+
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

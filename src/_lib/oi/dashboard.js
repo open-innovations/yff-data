@@ -10,7 +10,7 @@ export function Dashboard(config,csv){
 	this.getHTML = function(){
 		var html,i,panel,r,cls,p,idx;
 		
-		html = ['<div class="dashboard" data-dependencies="/assets/js/dashboard.js" style="grid-template-columns: repeat('+(config.columns||4)+', 1fr);">'];
+		html = ['<div class="dashboard" data-dependencies="/assets/js/dashboard.js" style="grid-template-columns: repeat(auto-fill, minmax(min(100%, '+(config.width||'250px')+'), 1fr));">'];
 
 		// Loop over the user-specified panels
 		for(p = 0 ; p < config.panels.length; p++){
@@ -41,7 +41,7 @@ export function Dashboard(config,csv){
 					panel += csv.rows[idx][config.value].toLocaleString();
 					panel += '</span>';
 				}
-				if(config.note && csv.columns[config.note]) panel += '<span class="note">'+csv.rows[idx][config.note]+'</span>';
+				if(config.note && csv.columns[config.note]) panel += '<span class="footnote">'+csv.rows[idx][config.note]+'</span>';
 				panel += '</div>';
 
 				html.push(panel);

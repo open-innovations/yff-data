@@ -1,0 +1,67 @@
+---
+title: Leaflet Maps
+order: 10
+caption: Zoomable and pan-able maps that use background map tiles.
+visualisations:
+  -
+    type: map
+    tab: Slippy map
+    config:
+      file: /data/example/dummy_map.csv
+      type: leaflet-map
+      geojson:
+        file: /data/maps/NUTS_Level_3_(January_2018)_Boundaries.geojson
+        key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+      key: "NUTS18CD"	# Column heading for unique ID
+      value: "Real GVA Growth (%)"	# Column heading for value
+      scale: Diverging
+      min: -30
+      max: 30
+      legend:
+        - value: 30
+          label: "▲ Increase"
+        - value: 20
+          label: ""
+        - value: 10
+          label: ""
+        - value: 0
+          label: ""
+        - value: -10
+          label: ""
+        - value: -20
+          label: ""
+        - value: -30
+          label: "▼ Decrease"
+  -
+    type: map
+    tab: Example 2
+    config:
+      file: /data/example/dummy_map.csv
+      type: leaflet-map
+      geojson:
+        layout: NUTS3
+        key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+      key: "NUTS18CD"	# Column heading for unique ID
+      value: "Hours Growth (%)"	# Column heading for value
+      scale: Diverging
+      min: -30
+      max: 30
+      legend:
+        - value: 30
+          label: "▲ Increase"
+        - value: 20
+          label: ""
+        - value: 10
+          label: ""
+        - value: 0
+          label: ""
+        - value: -10
+          label: ""
+        - value: -20
+          label: ""
+        - value: -30
+          label: "▼ Decrease"
+---
+
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

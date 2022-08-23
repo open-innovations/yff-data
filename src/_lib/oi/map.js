@@ -47,7 +47,18 @@ export function LeafletMap(config,csv){
 		html.push('	el.classList.add("leaflet");');
 		html.push('	p.appendChild(el);');
 		html.push('	var map = L.map(el);');
-		if(config.bounds) html.push('	map.fitBounds([['+config.bounds[0]+'],['+config.bounds[1]+']]);');
+
+		// Store the map in an array for the page
+		html.push('	if(!root.OI) root.OI = {};\n');
+		html.push('	if(!root.OI.maps) root.OI.maps = [];\n');
+		
+		html.push('	var id = root.OI.maps.length;\n');
+		html.push('	root.OI.maps.push({"map":map,"bounds":null});\n');
+
+		if(config.bounds){
+			html.push(' OI.maps[id].bounds = [['+config.bounds[0]+'],['+config.bounds[1]+']];');
+			html.push('	map.fitBounds([['+config.bounds[0]+'],['+config.bounds[1]+']]);');
+		}
 		html.push('	L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "Tiles: &copy; OpenStreetMap/CartoDB", subdomains: "abcd" }).addTo(map);');
 		html.push('	map.attributionControl.setPrefix("Youth Futures Foundation");\n');
 		
@@ -94,6 +105,7 @@ export function LeafletMap(config,csv){
 		html.push('		var geoattrs = { "style": style };\n');
 		html.push('		var geo = L.geoJSON(json,geoattrs);\n');
 		html.push('		geo.addTo(map);\n');
+		html.push('		OI.maps[id].bounds = geo.getBounds();\n');
 		if(!config.bounds) html.push('		map.fitBounds(geo.getBounds());\n');
 
 		// Create the legend and add it to the map
@@ -108,6 +120,8 @@ export function LeafletMap(config,csv){
 		html.push('	}).catch(error => {\n');
 		html.push('		console.error("Unable to load the data",error);\n');
 		html.push('	});\n');
+
+
 		html.push('})(window || this);\n');
 		html.push('</script>\n');
 

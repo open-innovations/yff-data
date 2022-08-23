@@ -1,0 +1,57 @@
+---
+title: SVG Maps
+order: 10
+caption: Vector graphics-based maps that can have interactive labels.
+visualisations:
+  -
+    type: map
+    tab: SVG map
+    caption: This SVG-based map has interactivity added which detects which polygon the mouse is over and displaying a tooltip. The tooltip is coloured to match the polygon's <code>fill</code> colour. Labels of UK places are explicitly added. Each one derives its coordinates from the <code>_data/sources/maps/simple-places.csv</code> file but longitude and/or latitude can be over-written to shift labels manually.
+    config:
+      file: /data/example/dummy_map.csv
+      type: svg-map
+      geojson:
+        layout: NUTS3
+        key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+      key: "NUTS18CD"	# Column heading for unique ID
+      value: "Hours Growth (%)"	# Column heading for value
+      scale: Diverging
+      min: -30
+      max: 30
+      columns:
+        - name: "Label"
+          template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
+      places:
+        - name: London
+          text-anchor: start
+          longitude: 0.8
+          latitude: 51.4
+        - name: Liverpool
+          text-anchor: end
+        - name: Swansea
+          text-anchor: end
+          latitude: 51.4
+        - name: Edinburgh
+          text-anchor: start
+        - name: Kingston upon Hull
+          text-anchor: start
+          longitude: 0
+      legend:
+        - value: 30
+          label: "▲ Increase"
+        - value: 20
+          label: ""
+        - value: 10
+          label: ""
+        - value: 0
+          label: ""
+        - value: -10
+          label: ""
+        - value: -20
+          label: ""
+        - value: -30
+          label: "▼ Decrease"
+---
+
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

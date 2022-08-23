@@ -26,6 +26,18 @@
 			tab.classList.add('active');
 			pane.closest('.panes').querySelectorAll('.pane').forEach(function(el){ el.style.display = "none"; });
 			pane.style.display = "";
+			// Loop over any potentially visible leaflet maps that haven't been sized and set the bounds
+			if(OI.maps){
+				for(var m = 0; m < OI.maps.length; m++){
+					if(OI.maps[m].map._container==pane.querySelector('.leaflet')){
+						OI.maps[m].map.invalidateSize(true);
+						if(!OI.maps[m].set){
+							if(OI.maps[m].bounds) OI.maps[m].map.fitBounds(OI.maps[m].bounds);
+							OI.maps[m].set = true;
+						}
+					}
+				}
+			}
 			return this;
 		};
 		this.enableTab = function(tab,t){

@@ -3,6 +3,14 @@
   <div class="panes">
 	<div class="pane">
       {{ comp.viz.render(visualisations[0]) | safe }}
+		{% if test %}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- visualisations[0] | yaml -}}
+		</code></pre>
+		<a href="{{ visualisations[0].heatmap.file }}">Data file</a>
+
+		{% endif %}
 	</div>
   </div>
 
@@ -11,7 +19,14 @@
   <div class="panes tabbed" role="tabpanel" data-dependencies="/assets/js/tabbed.js">
   {% for vis in visualisations %}
 	<div class="pane">
-	{{ comp.viz.render(vis) | safe }}
+		{{ comp.viz.render(vis) | safe }}
+		{% if test %}
+		<p>Built using config: </p>
+		<pre><code>
+		  {{- vis | yaml -}}
+		</code></pre>
+		<a href="{{ vis.heatmap.file }}">Data file</a>
+		{% endif %}
 	</div>
   {% endfor %}
   </div>
