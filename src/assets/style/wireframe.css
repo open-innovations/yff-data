@@ -150,10 +150,10 @@ aside {
 }
 
 
-.note { display: block; width: 12em; position: absolute; right: -0.5em; transform: translate3d(100%,0,0); padding: 1em; background-color: #E52E36; color:white; margin-bottom: 1em; margin-left: 0em; margin-top: 0.5em; }
+.note { z-index: 1000; display: block; width: 12em; position: absolute; right: -0.5em; transform: translate3d(100%,0,0); padding: 1em; background-color: black; color:white; margin-bottom: 1em; margin-left: 0em; margin-top: 0.5em; }
 .note:before {
 	background: transparent none repeat scroll 0 0;
-	border-color: transparent #E52E36 transparent transparent;
+	border-color: transparent black transparent transparent;
 	border-style: solid;
 	border-width: 0 1em 1em 0;
 	content: "";

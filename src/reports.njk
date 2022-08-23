@@ -17,7 +17,7 @@ title: Reports
 			{% if page.data.visualisations %}
 			  {{ comp.viz[page.data.visualisations[0].type](page.data.visualisations[0].config) | safe }}
 			{% endif %}
-			{{ page.data.summary | md | safe | striptags  }}
+			{{ page.data.summary | md | striplinks | safe  }}
 		  </p>
 		{% endcomp %}
 	  {% endfor %}
