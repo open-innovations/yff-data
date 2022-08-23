@@ -6,11 +6,12 @@ config: {{ config | dump(2) }}
 {% endif -%}
 
 <figure>
+  <span class="tab-title">{% if tab %}{{ tab }}{% else %}{{ title }}{% endif %}</span>
   <h3>{{ title }}</h3>
-  {{ comp.viz[type]({ config: config }) | safe }}
   <figcaption>
-    <p>{{ caption }}</p>
+    <p>{{ caption | safe}}</p>
   </figcaption>
+  {{ comp.viz[type]({ config: config }) | safe }}
 </figure>
 {% if citations %}
   <ul class="citations">

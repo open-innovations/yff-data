@@ -39,7 +39,7 @@
 		ul.setAttribute('role','tablist');
 		panes = el.querySelectorAll('.pane');
 		for(p = 0; p < panes.length; p++){
-			h = panes[p].querySelector('h3');
+			h = panes[p].querySelector('.tab-title');
 			li = document.createElement('li');
 			li.setAttribute('role','presentation');
 			a = document.createElement('a');
@@ -61,6 +61,6 @@
 })(window || this);
 
 OI.ready(function(){
-	var tabbed = document.querySelectorAll('.panes');
+	var tabbed = document.querySelectorAll('.panes.tabbed');
 	for(var i = 0; i < tabbed.length; i++) OI.TabbedInterface(tabbed[i]);
 });

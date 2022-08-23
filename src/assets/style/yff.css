@@ -31,6 +31,10 @@ blockquote { border-left: 4px solid #e25b27; }
 .black { background: #000000; color: white; }
 .plum a, .blue a, .raisin a, .forest a, .black a { color: #E55912; font-weight: bold; }
 
+.back-to-report { display: block; }
+
+.back-to-report, .tag-cloud li { text-transform: uppercase; }
+
 .page-title { background: #efe4ea; position: relative; min-height: 180px; display: table; width: 100%; }
 .page-title::before { content: ""; background-image: url("../images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
 .page-title::after { content: ""; background-image: url("../images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
@@ -59,10 +63,10 @@ section, aside { margin: 1em 0; padding: 0; }
 .tag-cloud li { color: white; background: black; }
 
 .auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
-.pane { border: 0; background: #efefef; padding: 1.25em; line-height: 1.5em; }
+.auto-grid .pane { border: 0; background: #efefef; padding: 1.25em; line-height: 1.5em; }
 .pane h2 { font-weight: bold; }
-.pane:hover, .pane:focus { outline: 2px solid #e25b27; }
-.pane:hover h2 { color: #964e6d; }
+.auto-grid .pane:hover, .auto-grid .pane:focus { outline: 2px solid #e25b27; }
+.auto-grid .pane:hover h2 { color: #964e6d; }
 .grey { background: #efefef; }
 
 
@@ -79,9 +83,11 @@ td, th { padding: 0.25em; }
 .grid.tabs li a { background-color: #efefef; color: #565655; }
 .grid.tabs li a.active { background-color: #fceee7; color: #E55912; }
 .grid.tabs li a h3 { color: inherit; }
-.panes .pane {
-	background-color: #fceee7;
-}
+
+.panes .pane { background-color: #fceee7; }
+.panes .pane { border: 0; padding: 1.25em; }
+figure .tab-title { display: none; }
+figcaption { margin-bottom: 1em; }
 
 
 

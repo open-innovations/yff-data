@@ -1,5 +1,5 @@
 export const css = `
-.pane {
+.auto-grid .pane {
   --max-height: unset;
   padding: 1rem;
   display: block;
@@ -9,7 +9,7 @@ export const css = `
   max-height: var(--max-height);
   overflow-y: scroll;
 }
-.pane:hover, .pane:focus { background: #efefef; }
+.auto-grid .pane:hover, .auto-grid .pane:focus { background: #efefef; }
 `;
 
 export default function ({ content, link, tag = 'div', maxHeight = undefined }) {

@@ -8,7 +8,7 @@ summary: |
   Data gaps can make it difficult to understand key outcomes
   for young people from ethnic minority backgrounds.
 
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet massa. Id cursus metus aliquam eleifend mi in nulla. Sit amet porttitor eget dolor morbi non arcu risus. Bibendum neque egestas congue quisque. Luctus accumsan tortor posuere ac ut consequat semper. Netus et malesuada fames ac turpis egestas. Dapibus ultrices in iaculis nunc. Eget nulla facilisi etiam dignissim diam quis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Blandit aliquam etiam erat velit scelerisque in dictum. Ornare massa eget egestas purus viverra. Cursus metus aliquam eleifend mi. Suspendisse faucibus interdum posuere lorem ipsum. Vestibulum sed arcu non odio euismod lacinia. Pharetra et ultrices neque ornare aenean euismod. Nulla facilisi morbi tempus iaculis urna id volutpat. Ornare massa eget egestas purus viverra accumsan. Ut venenatis tellus in metus vulputate eu scelerisque.
+  <span class="note">This text needs to be reviewed</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet massa. Id cursus metus aliquam eleifend mi in nulla. Sit amet porttitor eget dolor morbi non arcu risus. Bibendum neque egestas congue quisque. Luctus accumsan tortor posuere ac ut consequat semper. Netus et malesuada fames ac turpis egestas. Dapibus ultrices in iaculis nunc. Eget nulla facilisi etiam dignissim diam quis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Blandit aliquam etiam erat velit scelerisque in dictum. Ornare massa eget egestas purus viverra. Cursus metus aliquam eleifend mi. Suspendisse faucibus interdum posuere lorem ipsum. Vestibulum sed arcu non odio euismod lacinia. Pharetra et ultrices neque ornare aenean euismod. Nulla facilisi morbi tempus iaculis urna id volutpat. Ornare massa eget egestas purus viverra accumsan. Ut venenatis tellus in metus vulputate eu scelerisque.
 
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
@@ -37,7 +37,7 @@ report_link: /downloads/example-report.pdf
 sections:
   - title: Systemic Erasure
     summary: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet massa. Id cursus metus aliquam eleifend mi in nulla. Sit amet porttitor eget dolor morbi non arcu risus. Bibendum neque egestas congue quisque. Luctus accumsan tortor posuere ac ut consequat semper. Netus et malesuada fames ac turpis egestas. Dapibus ultrices in iaculis nunc. Eget nulla facilisi etiam dignissim diam quis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Blandit aliquam etiam erat velit scelerisque in dictum. Ornare massa eget egestas purus viverra. Cursus metus aliquam eleifend mi. Suspendisse faucibus interdum posuere lorem ipsum. Vestibulum sed arcu non odio euismod lacinia. Pharetra et ultrices neque ornare aenean euismod. Nulla facilisi morbi tempus iaculis urna id volutpat. Ornare massa eget egestas purus viverra accumsan. Ut venenatis tellus in metus vulputate eu scelerisque.
+      <span class="note">This text needs to be replaced</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet massa. Id cursus metus aliquam eleifend mi in nulla. Sit amet porttitor eget dolor morbi non arcu risus. Bibendum neque egestas congue quisque. Luctus accumsan tortor posuere ac ut consequat semper. Netus et malesuada fames ac turpis egestas. Dapibus ultrices in iaculis nunc. Eget nulla facilisi etiam dignissim diam quis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Blandit aliquam etiam erat velit scelerisque in dictum. Ornare massa eget egestas purus viverra. Cursus metus aliquam eleifend mi. Suspendisse faucibus interdum posuere lorem ipsum. Vestibulum sed arcu non odio euismod lacinia. Pharetra et ultrices neque ornare aenean euismod. Nulla facilisi morbi tempus iaculis urna id volutpat. Ornare massa eget egestas purus viverra accumsan. Ut venenatis tellus in metus vulputate eu scelerisque.
     tags:
       - pay
       - ethnic groups
@@ -47,8 +47,8 @@ sections:
 
       - title: Block 1
         visualisations:
-          - title: Systemic Erasure 
-            caption: Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. 
+          - title: Systemic Erasure
+            caption: <span class="note">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. 
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -74,7 +74,8 @@ sections:
                   min: 3
                   max: 0
           - title: Placeholder image
-            caption: Slightly longer description to be used as a caption
+            tab: Image
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -86,16 +87,16 @@ sections:
         featured_block: true
 
         text: |
-          Some text in section 1...
+          <span class="note">Review</span>Some text in section 1...
 
   - title: Lack of Culturally Relevant Data
     summary: |
-      Summary for this section
+      <span class="note">Review</span>Summary for this section
     blocks:
       - title: Block 1
         visualisations:
           - title: Lack of Culturally Relevant Data.
-            caption: Slightly longer description to be used as a caption
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -128,12 +129,12 @@ sections:
 
   - title: Lack of Employment Data
     summary: |
-      Summary for this section
+      <span class="note">Review</span>Summary for this section
     blocks:
       - title: Block 1
         visualisations:
           - title: Lack of data available on employment and discrimination in employment.
-            caption: Slightly longer description to be used as a caption
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -213,12 +214,13 @@ sections:
 
   - title: Example Tables
     summary: |
-      Summary for this section
+      <span class="note">Review</span>Summary for this section
     blocks:
       - title: Block 1
         visualisations:
-          - title: Example table 1
-            caption: Slightly longer description to be used as a caption
+          - title: Example table A
+            tab: Table A
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -245,8 +247,9 @@ sections:
                   min: 3
                   max: 0
                   width: 30%
-          - title: Example table 2
-            caption: Slightly longer description to be used as a caption
+          - title: Example table B
+            tab: Table B
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -321,7 +324,8 @@ sections:
                   max: 0
                   width: 10%
           - title: Short title
-            caption: Slightly longer description to be used as a caption
+            tab: Image C
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank

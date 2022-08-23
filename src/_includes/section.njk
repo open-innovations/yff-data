@@ -1,11 +1,11 @@
 {% extends 'layout.njk' %}
 
 {% block main %}
-  <div class="back-to-report plum">
+  <a href="{{ report }}" class="back-to-report plum" title="Go back to the full report">
     <div class="holder padded">
-		&larr; This is part of a report titled <a href='{{ report }}' title="The full report">{{ reporttitle }}</a>
+		&larr; {{ reporttitle }}
 	</div>
-  </div>
+  </a>
   <div class="page-title">
 	<div class="holder wrapper">
 		<h1>{{ title }}</h1>
