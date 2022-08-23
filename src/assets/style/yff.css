@@ -95,6 +95,9 @@ figcaption { margin-bottom: 1em; }
 .feedback { text-align: center; background: #e8d8de; border: 0; }
 .feedback a { color: #E55912; font-weight: bold; }
 
+header .et_pb_row { width: 90%; max-width: 1600px; }
+footer .et_pb_row { width: 80%; max-width: 1600px; padding: 3% 0; padding-bottom: 20px; }
+
 footer {
 	border: 0;
 	font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif;
@@ -107,10 +110,9 @@ footer {
 }
 footer a { color: #7d2248; }
 footer .small { line-height: 1.25em; }
-footer .site-header-logo { margin-bottom: 1em; }
+footer .site-header-logo { margin-bottom: 1.5em; }
+footer .twocol:first-child { padding-bottom: 20px; }
 
-header .et_pb_row { width: 90%; max-width: 1600px; }
-footer .et_pb_row { width: 80%; max-width: 1600px; }
 
 @media screen and (max-width: 1100px) {
 	.page-title h1 { font-size: 1.5em; }
