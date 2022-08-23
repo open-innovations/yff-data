@@ -149,6 +149,7 @@ aside {
 	position: relative;
 }
 
+iframe { width: 100%; aspect-ratio: 16 / 9; }
 
 .note { z-index: 1000; display: block; width: 12em; position: absolute; right: -0.5em; transform: translate3d(100%,0,0); padding: 1em; background-color: black; color:white; margin-bottom: 1em; margin-left: 0em; margin-top: 0.5em; }
 .note:before {

@@ -6,6 +6,7 @@ visualisations:
   -
     type: map
     tab: Slippy map
+    caption: A simple Leaflet map that uses data from the ONS's <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a>. The GeoJSON file to use is explicitly given.
     config:
       file: /data/example/dummy_map.csv
       type: leaflet-map
@@ -34,7 +35,8 @@ visualisations:
           label: "▼ Decrease"
   -
     type: map
-    tab: Example 2
+    tab: Layout key
+    caption: Instead of giving the GeoJSON <code>file</code> we can use a <code>layout</code> key e.g.  <code>NUTS2</code>, <code>NUTS3</code>, <code>LAD21</code>, or <code>PCON21</code>.
     config:
       file: /data/example/dummy_map.csv
       type: leaflet-map

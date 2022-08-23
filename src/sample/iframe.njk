@@ -1,0 +1,11 @@
+---
+title: IFrames
+order: 1
+visualisations:
+  -
+    type: iframe
+    config:
+      url: https://youthfuturesfoundation.org/wp-content/uploads/2022/03/Youth-Futures-Foundation-EGM-2022.html
+---
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

@@ -129,9 +129,5 @@ visualisations:
           y: "50 and over→rate (%)1"
           tooltip: "Label 50-64"
 ---
-		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
-		<p>Built using config: </p>
-		<pre><code>
-		  {{- visualisations | yaml -}}
-		</code></pre>
-		<a href="{{ visualisations[0].config.file }}">Data file</a>
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

@@ -1,0 +1,13 @@
+---
+title: Images
+order: 1
+visualisations:
+  -
+    type: static-image
+    config:
+      link: https://dummyimage.com/600x400/777/fff.png&text=Main+Image
+      description: Some text that describes the image
+
+---
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

@@ -17,7 +17,7 @@ layout: layouts/simple.njk
     <h2>{{ page.data.title }}</h2>
     <p>{{ page.data.caption }}</p>
     {% if page.data.visualisations %}
-      {{ comp.viz[page.data.visualisations[0].type]({ config: page.data.visualisations[0].config }) | safe }}
+      {{ comp.viz[page.data.visualisations[0].type]({ config: page.data.visualisations[0].config }) | striplinks | safe }}
     {% endif %}
   {% endcomp %}
   {% endfor %}
