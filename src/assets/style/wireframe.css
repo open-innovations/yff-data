@@ -25,11 +25,11 @@ body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 	margin-left: auto;
 	margin-right: auto;
 }
-.holder { position: relative; }
+section { position: relative; }
 main .wrapper > * { margin-bottom: 1em; }
 main .wrapper > *:last-child { margin-bottom: 0; }
 .wrapper > *:first-child { margin-top: 0; }
-h1 { font-size: 2.5em; font-weight: bold; line-height: 1.25em; }
+h1 { font-size: 35px; font-weight: 500; line-height: 1.25em; }
 h1 + *, h2 + *, h3 + * { margin-top: 1em; }
 h2 { font-size: 1.5em; line-height: 1.25em; }
 h3 { font-size: 1.33em; line-height: 1.25em; }
@@ -82,8 +82,8 @@ aside {
 .site-header-content {
   display: flex;
   align-items: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1.55em;
+  padding-bottom: 1.55em;
 }
 .site-header-content > *:first-child {
   flex-grow: 1;
@@ -104,11 +104,9 @@ aside {
   right: 0;
   text-align: center;
 }
-.navigation ul.wrapper { margin: auto; }
 .navigation button + * li { display: inline-block; }
-.navigation ul {
+.navigation ul { margin: auto;
   list-style: none;
-  padding: 1em;
   margin: 0;
 }
 .navigation li {
@@ -168,7 +166,7 @@ aside {
 }
 
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 1100px) {
   .navigation > div {
     background: initial;
     position: relative;
@@ -176,9 +174,9 @@ aside {
     left: initial;
     right: initial;
   }
-  .navigation ul.wrapper { margin: initial; }
   .navigation button + * li { display: initial; }
   .navigation ul {
+    margin: initial;
     display: flex;
     gap: 1rem;
   }

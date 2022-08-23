@@ -14,7 +14,7 @@ summary: |
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
   - title: Short title
-    caption: Slightly longer description to be used as a caption
+    caption: <span class="note">Review</span>Slightly longer description to be used as a caption
     citations:
       - title: A short description of the citation
         link: about:blank

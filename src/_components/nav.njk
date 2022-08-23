@@ -32,7 +32,7 @@ css: |
   .navigation button[aria-expanded=true] i:nth-of-type(3) {
     transform: translateY(-12px) rotate(135deg) scaleX(1.2);
   }
-  @media screen and (min-width: 840px) {
+  @media screen and (min-width: 1100px) {
     .navigation button[aria-expanded] {
       display: none;
     }
@@ -57,7 +57,7 @@ js: |
     <i role="none"></i>
   </button>
   <div>
-    <ul class="wrapper">
+    <ul>
       {% for link in search.pages('nav_order!=undefined', 'nav_order') -%}
         <li><a href="{{ link.data.url }}">{{ link.data.title }}</a></li>
       {% endfor -%}
