@@ -8,6 +8,7 @@ import netlifyCMS from 'lume/plugins/netlify_cms.ts';
 // import postcss from "lume/plugins/postcss.ts";
 import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
+import date from "lume/plugins/date.ts";	// To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { copy } from 'std/fs/copy.ts';
 import autoDependency from '/src/_lib/oi/auto-dependency.ts';
@@ -57,6 +58,14 @@ site.use(
     },
   })
 );
+
+// Format dates
+site.use(date({
+  locales: ["en-GB"],
+  formats: {
+    "YFF": "dd MMMM yyyy",
+  }
+}));
 
 // Add csv loader
 site.loadData(['.csv'], csvLoader);

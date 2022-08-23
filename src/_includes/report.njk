@@ -9,7 +9,8 @@
 
   <div class="wrapper holder">
 
-	  <section>
+      <div class="post-date">{{ publication_date | date('MMMM d, yyyy') }}</div>
+	  <section class="summary">
 		{{ summary | md | safe }}
 	  </section>
 
