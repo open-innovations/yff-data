@@ -79,7 +79,7 @@ site.process(['.html'], autoDependency);
 
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
-site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>/gi).replace(/<\/a>/gi) );
+site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi,function(m,p1){ return p1; }) );
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written
