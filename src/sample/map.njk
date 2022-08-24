@@ -126,19 +126,20 @@ visualisations:
     tab: Hex cartogram
     caption: This is a simple hex cartogram created in SVG.
     config:
-      file: /data/example/dummy_hexmap.csv
+      file: /data/example/dummy_map.csv
       type: hex-map
       hexjson:
-        file: /data/maps/uk-nuts1.hexjson  # A HexJSON file
-      key: "Region"
-      value: "Value"
+        file: /data/maps/uk-nuts3.hexjson  # A HexJSON file
+        key: "ITL"
+      key: "ITL Code"
+      value: "Hours Growth (%)"
       label: "Label"  # If not given we can build a label of the form "name: value"
-      scale: Viridis # a named colour scale (we can have a default)
-      min: 0	# optional explicit minimum for scale
-      max: 20	# optional explicit maximum for scale
+      scale: Diverging
+      min: -30
+      max: 30
       columns:
         - name: "Label"
-          template: "{{ Name }}: {{ Value }}"
+          template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
 ---
 
 

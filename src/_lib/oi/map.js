@@ -312,7 +312,7 @@ export function HexMap(config,csv,sources){
 		// Store this for use elsewhere
 		this.range = clone(range);
 
-		let path, label, hexclip, g, colour, title;
+		let path, label, hexclip, g, colour, title, hexid;
 		const defs = svgEl('defs');
 		add(defs, svg);
 		const id = (config.id || 'hex');
@@ -337,9 +337,11 @@ export function HexMap(config,csv,sources){
 
 					for(var i = 0; i < csv.rows.length; i++){
 
-						// If the CSV row matches the hexagon key
-						if(csv.rows[i][config.key]==r){
+						hexid = r;
+						if(config.hexjson.key && this.mapping.hexes[r][config.hexjson.key]) hexid = this.mapping.hexes[r][config.hexjson.key];
 
+						// If the CSV row matches the hexagon key
+						if(csv.rows[i][config.key]==hexid){
 							// Update the colour of the hexagon
 							colour = colourScales.getColourFromScale(config.scale||'Viridis',csv.rows[i][config.value],min,max);
 							setAttr(this.areas[r].hex,{'fill':colour,'data-value':csv.rows[i][config.value]});

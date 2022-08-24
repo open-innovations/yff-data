@@ -45,6 +45,18 @@ export default function ({ config, sources }) {
 				else configcopy.geojson.file = files['NUTS3'];
 			}
 		}
+		if(configcopy.hexjson){
+			var files = {
+				'NUTS1':'/data/maps/uk-nuts1.hexjson',
+				'NUTS2':'/data/maps/uk-nuts2.hexjson',
+				'NUTS3':'/data/maps/uk-nuts3.hexjson'
+			}
+			// If no explicit HexJSON file provided, check if a "layout" key has been set instead
+			if(!configcopy.hexjson.file){
+				if(configcopy.hexjson.layout && files[configcopy.hexjson.layout]) configcopy.hexjson.file = files[configcopy.hexjson.layout];
+				else configcopy.hexjson.file = files['NUTS3'];
+			}
+		}
 
 		if(configcopy.type=="leaflet-map"){
 
