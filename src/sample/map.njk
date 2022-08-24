@@ -93,7 +93,7 @@ visualisations:
           label: "▼ Decrease"
   -
     type: map
-    tab: Slippy map
+    tab: Leaflet map
     caption: A simple Leaflet map that uses data from the ONS's <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a>.
     config:
       file: /data/example/dummy_map.csv
@@ -121,6 +121,24 @@ visualisations:
           label: ""
         - value: -30
           label: "▼ Decrease"
+  -
+    type: map
+    tab: Hex cartogram
+    caption: This is a simple hex cartogram created in SVG.
+    config:
+      file: /data/example/dummy_hexmap.csv
+      type: hex-map
+      hexjson:
+        file: /data/maps/uk-nuts1.hexjson  # A HexJSON file
+      key: "Region"
+      value: "Value"
+      label: "Label"  # If not given we can build a label of the form "name: value"
+      scale: Viridis # a named colour scale (we can have a default)
+      min: 0	# optional explicit minimum for scale
+      max: 20	# optional explicit maximum for scale
+      columns:
+        - name: "Label"
+          template: "{{ Name }}: {{ Value }}"
 ---
 
 

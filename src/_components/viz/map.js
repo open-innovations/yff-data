@@ -1,4 +1,4 @@
-import { LeafletMap, SVGMap } from '/src/_lib/oi/map.js';
+import { LeafletMap, SVGMap, HexMap } from '/src/_lib/oi/map.js';
 import { loadDataFile } from '/src/_lib/oi/util.js'
 
 
@@ -55,6 +55,10 @@ export default function ({ config, sources }) {
 
 			// Create a new simple SVG map
 			map = new SVGMap(configcopy,csv,sources);
+
+		}else if(configcopy.type=="hex-map"){
+			
+			map = new HexMap(configcopy,csv,sources);
 
 		}
 

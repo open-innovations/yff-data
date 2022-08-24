@@ -56,13 +56,6 @@
 			// Get the fill colour
 			fill = e.data.el.getAttribute('fill');
 
-			// Remove current selections
-			//selected = el.querySelectorAll('circle.selected, rect.selected');
-			//for(var j = 0; j < selected.length; j++) selected[j].classList.remove('selected');
-			
-			// Select this point
-			//series[s][i].el.classList.add('selected');
-
 			this.tip.querySelector('.inner').innerHTML = (txt);
 
 			// Position the tooltip
@@ -71,7 +64,7 @@
 
 			var typ = svg.getAttribute('data-type');
 			off = 4;
-			if(typ=="bar-chart" || typ=="stacked-bar-chart") off = bb.height/2;
+			//if(typ=="hex-map") off = bb.height/2;
 			
 			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - '+off+'px),0);display:'+(txt ? 'block':'none')+';');
 			this.tip.querySelector('.inner').style.background = fill;
@@ -130,7 +123,7 @@
 })(window || this);
 
 OI.ready(function(){
-	var svgs = document.querySelectorAll('.map.svg-map');
+	var svgs = document.querySelectorAll('.map.svg-map, .map.hex-map');
 	for(var i = 0; i < svgs.length; i++){
 		OI.InteractiveSVGMap(svgs[i]);
 	}

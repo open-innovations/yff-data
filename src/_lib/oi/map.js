@@ -121,6 +121,257 @@ export function LeafletMap(config,csv){
 	return this;
 }
 
+// This component creates a hex map layout
+export function HexMap(config,csv,sources){
+
+	var el = document.createElement('div');
+	this.container = el;
+	el.innerHTML = "";
+	setAttr(this.container,{'style':'overflow:hidden'});
+
+	let range = {};
+	this.w = (config.width || 1200);
+	this.h = (config.height || 675);
+	this.attr = config;
+	const fs = config['font-size'] || 17;
+
+	this.style = {
+		'default': { 'fill': '#cccccc', 'fill-opacity': 1, 'font-size': fs, 'stroke-width': 1.5, 'stroke-opacity': 1, 'stroke': '#ffffff' },
+		'highlight': { 'fill': '#1DD3A7' },
+		'grid': { 'fill': '#aaa', 'fill-opacity': 0.1 }
+	};
+
+	if(!config.hexjson.file){
+		console.error('No HexJSON file given');
+		return this;
+	}
+
+	// Create the SVG element
+	let svg = svgEl('svg');
+	setAttr(svg,{'width':this.w,'height':this.h,'overflow':'visible','style':'max-width:100%;max-height:100%;background:'+(config.background||"transparent"),'preserveAspectRatio':'xMidYMid meet'});
+	svg.innerHTML = "";
+	svg.setAttribute('data-type','hex-map');
+
+	// Create a group which has a class list data-layer so that the interactive JS can find it
+	let group = svgEl('g');
+	group.classList.add('data-layer');
+	add(group,svg);
+
+	this.areas = {};
+
+	let min = 0;
+	let max = 1;
+	// Set min/max to the range for the value column
+	if(config.value && csv.range[config.value]) min = csv.range[config.value].min;
+	if(config.value && csv.range[config.value]) max = csv.range[config.value].max;
+	// Override min/max if provided in config
+	if(typeof config.min==="number") min = config.min;
+	if(typeof config.max==="number") max = config.max;
+
+
+	this.getHTML = function(){
+
+		var html = ['<div class="map hex-map" data-dependencies="/assets/js/svg-map.js">'];
+
+		html.push(svg.outerHTML);
+
+		html.push('</div>\n');
+
+		return html.join('');
+	};
+	this.init = function(){
+		// Get the contents of the HexJSON file
+		var hexjson = loadFromSources(config.hexjson.file,sources);
+		
+		// Process the HexJSON
+		this.setMapping(hexjson);
+		return this;
+	};
+	this.setMapping = function (mapping){
+		let region, p, s;
+		this.mapping = mapping;
+
+		if(!this.properties) this.properties = { "x": 100, "y": 100 };
+		p = mapping.layout.split("-");
+		this.properties.shift = p[0];
+		this.properties.orientation = p[1];
+
+		range = { 'r': { 'min': Infinity, 'max': -Infinity }, 'q': { 'min': Infinity, 'max': -Infinity } };
+		for(region in this.mapping.hexes){
+			if(this.mapping.hexes[region]){
+				p = updatePos(this.mapping.hexes[region].q, this.mapping.hexes[region].r, this.mapping.layout);
+				if (p.q > range.q.max) range.q.max = p.q;
+				if (p.q < range.q.min) range.q.min = p.q;
+				if (p.r > range.r.max) range.r.max = p.r;
+				if (p.r < range.r.min) range.r.min = p.r;
+			}
+		}
+		// Find range and mid points
+		range.q.d = range.q.max - range.q.min;
+		range.r.d = range.r.max - range.r.min;
+		range.q.mid = range.q.min + range.q.d / 2;
+		range.r.mid = range.r.min + range.r.d / 2;
+		this.range = clone(range);
+		
+		if(this.properties.orientation == "r") s = Math.min(0.5 * this.h / (range.r.d * 0.75 + 1), (1 / Math.sqrt(3)) * this.w / (range.q.d + 1));	// Pointy-topped
+		else s = Math.min((1 / Math.sqrt(3)) * this.h / (range.r.d + 1), 0.5 * this.w / (range.q.d * 0.75 + 1));	// Flat-topped
+
+		if(typeof config.size !== "number"){
+			if (typeof s !== "number") s = 10;
+			s = Math.round(100 * s) / 100;
+			config.size = s;
+			this.properties.size = s;	
+		}
+		this.properties.s = { 'cos': Math.round(10 * this.properties.size * Math.sqrt(3) / 2) / 10, 'sin': this.properties.size * 0.5 };
+		this.properties.s.c = this.properties.s.cos.toFixed(2);
+		this.properties.s.s = this.properties.s.sin.toFixed(2);
+
+		return this.draw();
+	};
+
+	// Create an object for the q,r coordinates that contains:
+	// array: <array> - the path for the hexagon as an array
+	// path: <string> - the path for the hexagon as a string
+	// x: <number> - the x position of the hexagon
+	// y: <number> - the y position of the hexagon
+	this.drawHex = function (q, r) {
+		if(this.properties){
+			let x, y;
+			const cs = this.properties.s.cos;
+			const ss = this.properties.s.sin;
+
+			const p = updatePos(q, r, this.mapping.layout);
+
+			if(this.properties.orientation == "r"){
+				// Pointy topped
+				x = (this.w / 2) + ((p.q - this.range.q.mid) * cs * 2);
+				y = (this.h / 2) - ((p.r - this.range.r.mid) * ss * 3);
+			}else{
+				// Flat topped
+				x = (this.w / 2) + ((p.q - this.range.q.mid) * ss * 3);
+				y = (this.h / 2) - ((p.r - this.range.r.mid) * cs * 2);
+			}
+			x = parseFloat(x.toFixed(1));
+			const path = [['M', [x, y]]];
+			if(this.properties.orientation == "r"){
+				// Pointy topped
+				path.push(['m', [cs, -ss]]);
+				path.push(['l', [0, 2 * ss, -cs, ss, -cs, -ss, 0, -2 * ss, cs, -ss, cs, ss]]);
+				path.push(['z', []]);
+			}else{
+				// Flat topped
+				path.push(['m', [-ss, cs]]);
+				path.push(['l', [2 * ss, 0, ss, -cs, -ss, -cs, -2 * ss, 0, -ss, cs]]);
+				path.push(['z', []]);
+			}
+			return { 'array': path, 'path': toPath(path), 'x': x, 'y': y };
+		}
+		return this;
+	};
+
+	// 
+	this.setHexStyle = function (r) {
+		let cls, p, colour;
+		const h = this.areas[r];
+		const style = clone(this.style['default']);
+		cls = "";
+		style['class'] = 'hex-cell' + cls;
+		setAttr(h.hex, style);
+
+		if(h.label) setAttr(h.label, { 'class': 'hex-label' + cls });
+		return h;
+	};
+	this.draw = function () {
+		let r, q, h, hex, region;
+
+		const range = this.range;
+		for (region in this.mapping.hexes) {
+			if (this.mapping.hexes[region]) {
+				q = this.mapping.hexes[region].q;
+				r = this.mapping.hexes[region].r;
+				if (q > range.q.max) range.q.max = q;
+				if (q < range.q.min) range.q.min = q;
+				if (r > range.r.max) range.r.max = r;
+				if (r < range.r.min) range.r.min = r;
+			}
+		}
+
+		// Add padding to range
+		range.q.min -= this.padding;
+		range.q.max += this.padding;
+		range.r.min -= this.padding;
+		range.r.max += this.padding;
+
+		// q,r coordinate of the centre of the range
+		const qp = (range.q.max + range.q.min) / 2;
+		const rp = (range.r.max + range.r.min) / 2;
+
+		this.properties.x = (this.w / 2) - (this.properties.s.cos * 2 * qp);
+		this.properties.y = (this.h / 2) + (this.properties.s.sin * 3 * rp);
+
+		// Store this for use elsewhere
+		this.range = clone(range);
+
+		let path, label, hexclip, g, colour, title;
+		const defs = svgEl('defs');
+		add(defs, svg);
+		const id = (config.id || 'hex');
+
+		for(r in this.mapping.hexes){
+			if(this.mapping.hexes[r]){
+
+				h = this.drawHex(this.mapping.hexes[r].q, this.mapping.hexes[r].r);
+
+				path = svgEl('path');
+				title = svgEl('title');
+				title.innerHTML = (this.mapping.hexes[r].n || r);
+				add(title,path);
+				setAttr(path, { 'd': h.path, 'class': 'hex-cell', 'transform-origin': h.x + 'px ' + h.y + 'px', 'data-q': this.mapping.hexes[r].q, 'data-r': this.mapping.hexes[r].r });
+				group.appendChild(path);
+				this.areas[r] = { 'hex': path, 'data': this.mapping.hexes[r], 'orig': h, 'title': title };
+
+				this.setHexStyle(r);
+
+				// See if we can match the hexagon in the data
+				if(config.key && csv.columns[config.key] && config.value && csv.columns[config.value]){
+
+					for(var i = 0; i < csv.rows.length; i++){
+
+						// If the CSV row matches the hexagon key
+						if(csv.rows[i][config.key]==r){
+
+							// Update the colour of the hexagon
+							colour = colourScales.getColourFromScale(config.scale||'Viridis',csv.rows[i][config.value],min,max);
+							setAttr(this.areas[r].hex,{'fill':colour,'data-value':csv.rows[i][config.value]});
+
+							// Update the title for the hexagon
+							if(config.label && csv.columns[config.label]) title.innerHTML = csv.rows[i][config.label];
+						}
+
+					}
+				}
+
+				setAttr(this.areas[r].hex, { 'stroke': this.style['default'].stroke, 'stroke-opacity': this.style['default']['stroke-opacity'], 'stroke-width': this.style['default']['stroke-width'], 'title': this.mapping.hexes[r].n, 'data-regions': r, 'style': 'cursor: pointer;' });
+			}
+		}
+
+		return this;
+	};
+	function updatePos(q, r, layout) {
+		if (layout == "odd-r" && (r % 2) != 0) q += 0.5;	// "odd-r" horizontal layout shoves odd rows right
+		if (layout == "even-r" && (r % 2) == 0) q += 0.5; // "even-r" horizontal layout shoves even rows right
+		if (layout == "odd-q" && (q % 2) != 0) r += 0.5;	// "odd-q" vertical layout shoves odd columns down
+		if (layout == "even-q" && (q % 2) == 0) r += 0.5; // "even-q" vertical layout shoves even columns down
+		return { 'q': q, 'r': r };
+	}
+	function toPath(p) {
+		let str = '';
+		for (let i = 0; i < p.length; i++) str += ((p[i][0]) ? p[i][0] : ' ') + (p[i][1].length > 0 ? p[i][1].join(',') : ' ');
+		return str;
+	}
+
+	return this.init();
+}
 
 // This component uses "/assets/js/svg-map.js" to make things interactive in the browser.
 // It will only get included in pages that need it by using the "data-dependencies" attribute.
@@ -199,7 +450,7 @@ export function SVGMap(config,csv,sources){
 		},{
 			'id': 'labels',
 			'data': places,
-			'options': { 'fill': '#4c5862', 'stroke': 'white', 'stroke-width': '0.7%', 'stroke-linejoin': 'round'  },
+			'options': { 'fill': '#4c5862', 'stroke': 'white', 'stroke-width': '0.7%', 'stroke-linejoin': 'round'	},
 			'type': 'text',
 			'values': {'places':config.places||[]},
 			'process': function(d,map){
@@ -264,6 +515,7 @@ function loadFromSources(path,sources){
 	}
 	return data;
 }
+
 
 
 function BasicMap(config,attr){
@@ -665,6 +917,7 @@ function BBox(lat,lon){
 	return this;
 }
 
+function add(el,to){ return to.appendChild(el); }
 function setAttr(el,prop){
 	for(var p in prop){
 		if(prop[p]) el.setAttribute(p,prop[p]);
