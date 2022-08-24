@@ -93,6 +93,25 @@ visualisations:
           label: "▼ Decrease"
   -
     type: map
+    tab: Hex cartogram
+    caption: This is a simple hex cartogram created in SVG.
+    config:
+      file: /data/example/dummy_map.csv
+      type: hex-map
+      hexjson:
+        file: /data/maps/uk-nuts3.hexjson  # A HexJSON file
+        key: "ITL"
+      key: "ITL Code"
+      value: "Hours Growth (%)"
+      label: "Label"  # If not given we can build a label of the form "name: value"
+      scale: Diverging
+      min: -30
+      max: 30
+      columns:
+        - name: "Label"
+          template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
+  -
+    type: map
     tab: Leaflet map
     caption: A simple Leaflet map that uses data from the ONS's <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a>.
     config:
@@ -102,7 +121,7 @@ visualisations:
         layout: NUTS3
         key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
       key: "NUTS18CD"	# Column heading for unique ID
-      value: "Real GVA Growth (%)"	# Column heading for value
+      value: "Hours Growth (%)"	# Column heading for value
       scale: Diverging
       min: -30
       max: 30
@@ -121,25 +140,6 @@ visualisations:
           label: ""
         - value: -30
           label: "▼ Decrease"
-  -
-    type: map
-    tab: Hex cartogram
-    caption: This is a simple hex cartogram created in SVG.
-    config:
-      file: /data/example/dummy_map.csv
-      type: hex-map
-      hexjson:
-        file: /data/maps/uk-nuts3.hexjson  # A HexJSON file
-        key: "ITL"
-      key: "ITL Code"
-      value: "Hours Growth (%)"
-      label: "Label"  # If not given we can build a label of the form "name: value"
-      scale: Diverging
-      min: -30
-      max: 30
-      columns:
-        - name: "Label"
-          template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
 ---
 
 
