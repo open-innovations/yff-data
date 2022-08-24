@@ -9,6 +9,11 @@ export const css = `
 .map .leaflet .legend { text-align: left; line-height: 18px; color: #555; }
 .map .leaflet .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 1; }
 .map .leaflet .legend { background: rgba(255,255,255,0.8); padding: 1em; }
+.map .leaflet-popup-content-wrapper { border-radius: 0; }
+.map .leaflet-popup-content { margin: 1em; }
+.map .leaflet-container, .map .leaflet-popup-content-wrapper, .map .leaflet-popup-content { font-size: 1em; font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; line-height: inherit; }
+.map .leaflet-popup-content-wrapper, .map .leaflet-popup-tip { box-shadow: none; }
+.map .leaflet-popup { filter: drop-shadow(0 1px 1px rgba(0,0,0,0.7)); }
 `;
 
 function clone(a){ return JSON.parse(JSON.stringify(a)); }

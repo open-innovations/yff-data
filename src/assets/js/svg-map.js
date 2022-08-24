@@ -118,6 +118,7 @@
 		console.warn('Text contrast not enough for %c'+c+'%c (colour contrast: '+cols[col].brightness.toFixed(1)+'/125, hue contrast: '+cols[col].hue+'/500)','background:'+c+';color:'+col,'background:none;color:inherit;');
 		return col;
 	}
+	root.OI.contrastColour = contrastColour;
 	root.OI.InteractiveSVGMap = function(el){ return new InteractiveSVGMap(el); };
 
 })(window || this);

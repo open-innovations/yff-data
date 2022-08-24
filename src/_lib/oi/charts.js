@@ -662,10 +662,13 @@ function Chart(config,csv){
 				if(typeof this.opt.key.text==="object"){
 					for(p in this.opt.key.text) text.setAttribute(p,this.opt.key.text[p]);
 				}
-				line.setAttribute('d','M'+0+','+roundTo(fs*0.5, 3)+' l '+(fs*1.5)+' 0');
 				p = this.series[s].getProperties();
 				setAttr(circ,{'cx':roundTo(fs*0.75, 3),'cy':roundTo(0.5*fs, 3),'fill':(p.points.color||""),'stroke-width':p.points['stroke-width']||0,'stroke':p.points.stroke||""});
-				if(p.line.color) line.setAttribute('stroke',p.line.color||"");
+
+				if(this.opt.type=="line-chart" || this.opt.type=="category-chart"){
+					line.setAttribute('d','M'+0+','+roundTo(fs*0.5, 3)+' l '+(fs*1.5)+' 0');
+					if(p.line.color) line.setAttribute('stroke',p.line.color||"");
+				}
 				
 				y += fs;
 			}

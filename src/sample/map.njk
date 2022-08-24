@@ -1,7 +1,7 @@
 ---
 title: Maps
 order: 8
-caption: Vector graphics-based maps that can have tooltips on polygons.
+caption: Simple, zoomable, or hexagon-based mapping of geographic data.
 visualisations:
   -
     type: map
@@ -121,6 +121,9 @@ visualisations:
           label: ""
         - value: -30
           label: "▼ Decrease"
+      columns:
+        - name: "Label"
+          template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
   -
     type: map
     tab: Hex cartogram

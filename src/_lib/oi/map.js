@@ -83,8 +83,8 @@ export function LeafletMap(config,csv){
 		html.push('			var d = getData(feature.properties[geokey]);\n');
 		html.push('			return {\n');
 		html.push('				weight: 0.5,\n');
-		html.push('				opacity: 1,\n');
-		html.push('				color: "#B2B2B2",\n');
+		html.push('				opacity: 0.5,\n');
+		html.push('				color: "#ffffff",\n');
 		html.push('				fillOpacity: 1,\n');
 		html.push('				fillColor: d.colour||"transparent"\n');
 		html.push('			};\n');
@@ -92,6 +92,18 @@ export function LeafletMap(config,csv){
 
 		// Add the GeoJSON to the map
 		html.push('		var geoattrs = { "style": style };\n');
+		html.push('		geoattrs.onEachFeature = function(feature, layer){\n');
+		html.push('			var d = getData(feature.properties[geokey]);\n');
+		html.push('			layer.bindPopup(d["Label"]||feature.properties[geokey]).on("popupopen",function(ev){\n');
+		html.push('				var ps = ev.popup._container;\n');
+		// Set the background colour of the popup
+		html.push('				ps.querySelector(".leaflet-popup-content-wrapper").style["background-color"] = d.colour;\n');
+		html.push('				ps.querySelector(".leaflet-popup-tip").style["background-color"] = d.colour;\n');
+		// Set the text colour of the popup
+		html.push('				ps.querySelector(".leaflet-popup-content-wrapper").style["color"] = OI.contrastColour(d.colour);\n');
+		html.push('			});\n');
+		html.push('		};\n');
+					
 		html.push('		var geo = L.geoJSON(json,geoattrs);\n');
 		html.push('		geo.addTo(map);\n');
 		html.push('		OI.maps[id].bounds = geo.getBounds();\n');
@@ -442,7 +454,7 @@ export function SVGMap(config,csv,sources){
 					}
 					el.setAttribute('fill-opacity',1);
 					el.setAttribute('fill',v.rows[i].colour);
-					el.setAttribute('stroke',v.rows[i].colour);
+					el.setAttribute('stroke','white');
 					el.setAttribute('stroke-width',2);
 					el.setAttribute('stroke-opacity',0.1);
 				}else{
