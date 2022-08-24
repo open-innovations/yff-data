@@ -69,14 +69,20 @@
 		};
 		this.clearSeries = function(e){
 			if(this.enabled){
-				e.data.s = null;
+				var ev = JSON.parse(JSON.stringify(e));
+				ev.data.s = null;
 				this.enabled = true;
-				this.highlightSeries(e);
+				this.highlightSeries(ev);
 			}
 			return this;
 		};
+		this.toggleSeries = function(e){
+			if(this.selected==null) this.highlightSeries(e);
+			else this.reset(e);
+			return this;
+		};
 		this.highlightSeries = function(e){
-			var d,selected,typ,s,r,origin,x;
+			var d,selected,typ,s,r,origin,x,pts,p;
 			if(this.enabled){
 				d = e.data.s;
 				this.selected = d;
@@ -93,14 +99,22 @@
 					}
 				}
 				for(s = 0; s < serieskey.length; s++){
+					pts = serieskey[s].querySelectorAll('circle,rect');
 					if(d){
+
 						if(serieskey[s]==selected){
 							serieskey[s].style.opacity = 1;
 							// Simulate z-index by moving to the end
-							serieskey[s].parentNode.appendChild(serieskey[s]);
+							if(typ == "stacked-bar-chart"){
+								serieskey[s].parentNode.appendChild(serieskey[s]);
+							}
+							// Make points selectable
+							for(p = 0; p < pts.length; p++) pts[p].setAttribute('tabindex',0);
 						}else{
 							// Fade the unselected series
 							serieskey[s].style.opacity = 0.1;
+							// Make points unselectable
+							for(p = 0; p < pts.length; p++) pts[p].removeAttribute('tabindex');
 						}
 
 						// If it is a stacked bar chart we will change the left position and store that
@@ -115,6 +129,8 @@
 						}
 					}else{
 						serieskey[s].style.opacity = 1;
+						// Make points selectable
+						for(p = 0; p < pts.length; p++) pts[p].setAttribute('tabindex',0);
 						// Reset bar positions
 						if(typ == "stacked-bar-chart"){
 							// Find all the bars
@@ -296,7 +312,13 @@
 
 
 				addEv('mouseover',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
-				addEv('focus',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
+				addEv('keydown',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},function(e){
+					if(e.keyCode==13){
+						e.preventDefault();
+						this.toggleSeries(e);
+					}
+				});
+				//addEv('focus',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
 				addEv('click',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.setSeries);
 				addEv('mouseout',keyitem,{'this':this,'s':null},this.highlightSeries);
 
