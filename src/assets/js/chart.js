@@ -291,7 +291,7 @@
 				keyseries[s].querySelector('text').parentNode.removeChild(keyseries[s].querySelector('text'));
 				add(keyseries[s],icon);
 				setAttr(keyseries[s],{'transform':''});
-				setAttr(icon,{'width':17*1.5,'height':17,'viewBox':'0 0 '+(17*1.5)+' 17','style':'margin:0.125em 0.25em 0.125em 0.5em;float:left'});
+				setAttr(icon,{'width':17*1.5,'height':17,'viewBox':'0 0 '+(17*1.5)+' 17'});
 				setAttr(keyitem,{'data-series':keyseries[s].getAttribute('data-series'),'tabindex':0,'title':'Highlight series: '+txt.innerHTML});
 
 
