@@ -1,0 +1,127 @@
+---
+title: Maps
+order: 8
+caption: Vector graphics-based maps that can have tooltips on polygons.
+visualisations:
+  -
+    type: map
+    tab: SVG map
+    caption: This SVG-based map has interactivity added which detects which polygon the mouse is over and displaying a tooltip. The tooltip is coloured to match the polygon's <code>fill</code> colour. Labels of UK places are explicitly added. Each one derives its coordinates from the <code>_data/sources/maps/simple-places.csv</code> file but longitude and/or latitude can be over-written to shift labels manually. The jobs data come from <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/datasets/subregionalproductivitylabourproductivitygvaperhourworkedandgvaperfilledjobindicesbyuknuts2andnuts3subregions">ONS</a> at ITL1 (NUTS1) level.
+    config:
+      file: /data/example/itlproductivity_itl1.csv
+      type: svg-map
+      geojson:
+        file: /data/maps/International_Territorial_Level_1_(January_2021)_UK_BUC.geojson
+        key: "ITL121CD" # Column heading for the ID of the feature in the GeoJSON
+      key: "ITL code"	# Column heading for unique ID
+      value: "2020"	# Column heading for value
+      scale: Viridis
+      min: 0
+      max: 5000000
+      columns:
+        - name: "Label"
+          template: "{{ Region name }}<br />2020: {{ 2020 | toLocaleString() }} jobs"
+      places:
+        - name: London
+          text-anchor: start
+          longitude: 0.8
+          latitude: 51.4
+        - name: Liverpool
+          text-anchor: end
+        - name: Swansea
+          text-anchor: end
+          latitude: 51.4
+        - name: Edinburgh
+          text-anchor: start
+        - name: Kingston upon Hull
+          text-anchor: start
+          longitude: 0
+      legend:
+        - value: 2000000
+          label: "2 million"
+        - value: 1000000
+          label: "1 million"
+        - value: 0
+          label: "0"
+  -
+    type: map
+    tab: Layout using short code
+    caption: Instead of giving the GeoJSON <code>file</code> we can use a <code>layout</code> short code (e.g. <code>ITL1</code>/<code>ITL2</code>/<code>ITL3</code>/<code>NUTS1</code>/<code>NUTS2</code>/<code>NUTS3</code>/<code>LAD21</code>/<code>PCON21</code>) which loads the appropriate GeoJSON file. Displays the ONS's <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a>.
+    config:
+      file: /data/example/dummy_map.csv
+      type: svg-map
+      geojson:
+        layout: NUTS3
+        key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+      key: "NUTS18CD"	# Column heading for unique ID
+      value: "Hours Growth (%)"	# Column heading for value
+      scale: Diverging
+      min: -30
+      max: 30
+      columns:
+        - name: "Label"
+          template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
+      places:
+        - name: London
+          text-anchor: start
+          longitude: 0.8
+          latitude: 51.4
+        - name: Liverpool
+          text-anchor: end
+        - name: Swansea
+          text-anchor: end
+          latitude: 51.4
+        - name: Edinburgh
+          text-anchor: start
+        - name: Kingston upon Hull
+          text-anchor: start
+          longitude: 0
+      legend:
+        - value: 30
+          label: "▲ Increase"
+        - value: 20
+          label: ""
+        - value: 10
+          label: ""
+        - value: 0
+          label: ""
+        - value: -10
+          label: ""
+        - value: -20
+          label: ""
+        - value: -30
+          label: "▼ Decrease"
+  -
+    type: map
+    tab: Slippy map
+    caption: A simple Leaflet map that uses data from the ONS's <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/regionalandsubregionalproductivityintheuk/february2020#results-for-nuts3-areas">Sub regional productivity data</a>.
+    config:
+      file: /data/example/dummy_map.csv
+      type: leaflet-map
+      geojson:
+        layout: NUTS3
+        key: "nuts318cd" # Column heading for the ID of the feature in the GeoJSON
+      key: "NUTS18CD"	# Column heading for unique ID
+      value: "Real GVA Growth (%)"	# Column heading for value
+      scale: Diverging
+      min: -30
+      max: 30
+      legend:
+        - value: 30
+          label: "▲ Increase"
+        - value: 20
+          label: ""
+        - value: 10
+          label: ""
+        - value: 0
+          label: ""
+        - value: -10
+          label: ""
+        - value: -20
+          label: ""
+        - value: -30
+          label: "▼ Decrease"
+---
+
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

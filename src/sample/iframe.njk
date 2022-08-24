@@ -1,11 +1,12 @@
 ---
 title: IFrames
 order: 1
+caption: Embed an external webpage in the page. This will need the external website to have enabled cross-site embedding.
 visualisations:
   -
     type: iframe
     config:
-      url: https://youthfuturesfoundation.org/wp-content/uploads/2022/03/Youth-Futures-Foundation-EGM-2022.html
+      url: https://open-innovations.github.io/
 ---
 
 {{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

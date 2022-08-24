@@ -10,21 +10,10 @@ function clone(a){ return JSON.parse(JSON.stringify(a)); }
 export function LeafletMap(config,csv){
 
 	this.getHTML = function(){
-		var html,i,panel,r,cls,p,idx,files,file;
-		
-		files = {
-			'NUTS2':'/data/maps/NUTS_Level_2_(January_2018)_Boundaries.geojson',
-			'NUTS3':'/data/maps/NUTS_Level_3_(January_2018)_Boundaries.geojson',
-			'LAD21':'/data/maps/Local_Authority_Districts_(December_2021)_GB_BUC.geojson',
-			'PCON21':'/data/maps/Westminster_Parliamentary_Constituencies_(December_2021)_UK_BUC.geojson'
-		}
-
+		var html,i,panel,r,cls,p,idx,file;
 
 		if(config.geojson.file) file = config.geojson.file;
-		else{
-			if(config.geojson.layout && files[config.geojson.layout]) file = files[config.geojson.layout];
-			else file = files['NUTS3'];
-		}
+		else console.error('No GeoJSON file given');
 
 		// Add a colour-scale colour to each row based on the "value" column
 		var rows = clone(csv.rows);
@@ -153,9 +142,13 @@ export function SVGMap(config,csv,sources){
 	// Work out default max/min from data
 	var min = 1e100;
 	var max = -1e100;
-	for(var i = 0; i < csv.columns[config.value].length; i++){
-		min = Math.min(min,csv.columns[config.value][i]);
-		max = Math.max(max,csv.columns[config.value][i]);
+	if(csv.columns[config.value]){
+		for(var i = 0; i < csv.columns[config.value].length; i++){
+			if(typeof csv.columns[config.value][i]==="number"){
+				min = Math.min(min,csv.columns[config.value][i]);
+				max = Math.max(max,csv.columns[config.value][i]);
+			}
+		}
 	}
 	// Override defaults if set
 	if(typeof config.min=="number") min = config.min;

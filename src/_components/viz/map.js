@@ -30,8 +30,12 @@ export default function ({ config, sources }) {
 
 		if(configcopy.geojson){
 			var files = {
+				'NUTS1':'/data/maps/NUTS_Level_1_(January_2018)_Boundaries.geojson',
 				'NUTS2':'/data/maps/NUTS_Level_2_(January_2018)_Boundaries.geojson',
 				'NUTS3':'/data/maps/NUTS_Level_3_(January_2018)_Boundaries.geojson',
+				'ITL1':'/data/maps/International_Territorial_Level_1_(January_2021)_UK_BUC.geojson',
+				'ITL2':'/data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson',
+				'ITL3':'/data/maps/International_Territorial_Level_3_(January_2021)_UK_BUC_V3.geojson',
 				'LAD21':'/data/maps/Local_Authority_Districts_(December_2021)_GB_BUC.geojson',
 				'PCON21':'/data/maps/Westminster_Parliamentary_Constituencies_(December_2021)_UK_BUC.geojson'
 			}

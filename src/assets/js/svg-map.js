@@ -45,7 +45,7 @@
 			this.tip = el.querySelector('.tooltip');
 			if(!this.tip){
 				this.tip = document.createElement('div');
-				this.tip.innerHTML = '<div class="inner" style="background: #b2b2b2;position:relative;"></div><div class="arrow" style="position: absolute; bottom: auto; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: 100%; transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
+				this.tip.innerHTML = '<div class="inner" style="background: #b2b2b2;position:relative;"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
 				addClasses(this.tip,['tooltip']);
 				add(this.tip,el);
 			}

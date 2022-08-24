@@ -58,7 +58,7 @@
 			a.classList.add('tab');
 			a.setAttribute('role','tab');
 			a.setAttribute('href','#');
-			a.appendChild(h);
+			if(h) a.appendChild(h);
 			li.appendChild(a);
 			ul.appendChild(li);
 			tabs[p] = {'tab':a,'pane':panes[p]};

@@ -7,10 +7,12 @@ config: {{ config | dump(2) }}
 
 <figure>
   <span class="tab-title">{% if tab %}{{ tab }}{% else %}{{ title }}{% endif %}</span>
-  <h3>{{ title }}</h3>
+  {% if title %}<h3>{{ title }}</h3>{% endif %}
+  {% if caption %}
   <figcaption>
     <p>{{ caption | safe}}</p>
   </figcaption>
+  {% endif %}
   {{ comp.viz[type]({ config: config }) | safe }}
 </figure>
 {% if citations %}

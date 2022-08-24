@@ -1,13 +1,14 @@
 ---
 title: Images
-order: 1
+order: 2
+caption: Include an image with a caption (and alt text).
 visualisations:
   -
     type: static-image
+    caption: This is a caption
     config:
       link: https://dummyimage.com/600x400/777/fff.png&text=Main+Image
-      description: Some text that describes the image
-
+      description: Main Image
 ---
 
 {{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

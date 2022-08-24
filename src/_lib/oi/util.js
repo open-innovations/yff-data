@@ -52,23 +52,29 @@ function augmentTable(config, table){
 						// The value is the first part
 						p1 = bits[0];
 
+						// Log a warning if the column doesn't exist
+						if(!table.columns[p1] && r==0) console.warn('No column '+p1+' appears to exist in the table '+config.file);
+
 						// Get the value from the table if one exists
 						p1 = (table.columns[p1] ? table.columns[p1][r] : "");
 
 						// Process each filter in turn
 						for(b = 1; b < bits.length; b++){
+
 							// toFixed(n)
 							rtn = bits[b].match(/toFixed\(([0-9]+)\)/);
 							if(p1 && rtn && rtn.length == 2){
 								if(typeof p1==="string") p1 = parseFloat(p1);
 								p1 = p1.toFixed(rtn[1]);
 							}
+
 							// multiply(n)
 							rtn = bits[b].match(/multiply\(([0-9\.\-\+]+)\)/);
 							if(p1 && rtn && rtn.length == 2){
 								if(typeof p1==="string") p1 = parseFloat(p1);
 								p1 = p1 * parseFloat(rtn[1]);
 							}
+
 							// toLocaleString()
 							rtn = bits[b].match(/toLocaleString\(\)/);
 							if(p1 && rtn){
