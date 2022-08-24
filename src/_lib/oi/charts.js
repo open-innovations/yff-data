@@ -646,22 +646,28 @@ function Chart(config,csv){
 				else if(po[u]=="top") y = this.opt.top+pd;
 				else if(po[u]=="bottom") y = this.h-this.opt.bottom-pd-hkey;
 			}
+			//setAttr(key.el,{'transform':'translate('+x+' '+y+')'});
 			setAttr(key.border,{'x':x,'width':wkey+pd,'y':y});
 			y += pd;
 			x += pd;
 
 			for(s = 0; s < this.series.length; s++){
+				// Set the transform on the group
+				setAttr(key.g[s],{'transform':'translate('+x+' '+y+')'});
+				
 				text = qs(key.g[s],'text');
 				line = qs(key.g[s],'path');
 				circ = qs(key.g[s],'circle');
-				setAttr(text,{'x':roundTo(x,3),'y':roundTo(y + s*fs + fs*0.2, 3),'font-family':this.opt['font-family']||"sans-serif"});
+				setAttr(text,{'x': 0,'y':roundTo(fs*0.2, 3),'font-family':this.opt['font-family']||"sans-serif"});
 				if(typeof this.opt.key.text==="object"){
 					for(p in this.opt.key.text) text.setAttribute(p,this.opt.key.text[p]);
 				}
-				line.setAttribute('d','M'+roundTo(x, 3)+','+roundTo(y+(0.5+s)*fs, 3)+' l '+(fs*1.5)+' 0');
+				line.setAttribute('d','M'+0+','+roundTo(fs*0.5, 3)+' l '+(fs*1.5)+' 0');
 				p = this.series[s].getProperties();
-				setAttr(circ,{'cx':roundTo(x+fs*0.75, 3),'cy':roundTo(y+(0.5+s)*fs, 3),'fill':(p.points.color||""),'stroke-width':p.points['stroke-width']||0,'stroke':p.points.stroke||""});
+				setAttr(circ,{'cx':roundTo(fs*0.75, 3),'cy':roundTo(0.5*fs, 3),'fill':(p.points.color||""),'stroke-width':p.points['stroke-width']||0,'stroke':p.points.stroke||""});
 				if(p.line.color) line.setAttribute('stroke',p.line.color||"");
+				
+				y += fs;
 			}
 		}
 

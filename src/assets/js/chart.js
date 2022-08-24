@@ -160,7 +160,7 @@
 			this.tip = el.querySelector('.tooltip');
 			if(!this.tip){
 				this.tip = document.createElement('div');
-				this.tip.innerHTML = '<div class="inner" style="background: #b2b2b2;position:relative;"></div><div class="arrow" style="position: absolute; bottom: auto; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: 100%; transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
+				this.tip.innerHTML = '<div class="inner" style="background: #b2b2b2;position:relative;"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
 				addClasses(this.tip,['tooltip']);
 				add(this.tip,el);
 			}
@@ -270,7 +270,7 @@
 
 
 			var keyseries = key.querySelectorAll('.data-series');
-			var keyitem,icon,txt,viewBox,xscale,yscale,dx,dy;
+			var keyitem,icon,txt,viewBox,xscale,yscale,dx,dy,g;
 			for(s = 0; s < keyseries.length; s++){
 				// Create a key item <div>
 				keyitem = document.createElement('div');
@@ -289,21 +289,9 @@
 
 				// Now remove the text label (we'll recreate it with HTML)
 				keyseries[s].querySelector('text').parentNode.removeChild(keyseries[s].querySelector('text'));
-				// Get the existing viewBox
-				viewBox = svg.getAttribute('viewBox').split(/ /);
-				xscale = parseFloat(viewBox[2])/svg.getBoundingClientRect().width;
-				yscale = parseFloat(viewBox[3])/svg.getBoundingClientRect().height;
-				viewBox[0] = 0;
-				viewBox[1] = 0;
-				viewBox[2] = parseFloat(viewBox[2])*keyseries[s].getBoundingClientRect().width/svg.getBoundingClientRect().width;
-				viewBox[3] = parseFloat(viewBox[3])*keyseries[s].getBoundingClientRect().height/svg.getBoundingClientRect().height;
-				// Get the offsets
-				dx = (keyseries[s].getBoundingClientRect().x-svg.getBoundingClientRect().x)*xscale;
-				dy = (keyseries[s].getBoundingClientRect().y-svg.getBoundingClientRect().y)*yscale;
-
-				setAttr(keyseries[s],{'transform':'translate(-'+dx+' -'+dy+')'});
 				add(keyseries[s],icon);
-				setAttr(icon,{'width':keyseries[s].getBoundingClientRect().width,'height':keyseries[s].getBoundingClientRect().height,'viewBox':viewBox.join(" ")});
+				setAttr(keyseries[s],{'transform':''});
+				setAttr(icon,{'width':17*1.5,'height':17,'viewBox':'0 0 '+(17*1.5)+' 17','style':'margin:0.125em 0.25em 0.125em 0.5em;float:left'});
 				setAttr(keyitem,{'data-series':keyseries[s].getAttribute('data-series'),'tabindex':0,'title':'Highlight series: '+txt.innerHTML});
 
 
