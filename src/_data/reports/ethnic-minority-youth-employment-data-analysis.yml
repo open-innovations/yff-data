@@ -200,7 +200,7 @@ sections:
                   max: 0
                   width: 10%
           - title: Lack of data available on employment and discrimination in employment.
-            tab: Lack of data (full)
+            tab: Lack of data (more detail)
             caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
