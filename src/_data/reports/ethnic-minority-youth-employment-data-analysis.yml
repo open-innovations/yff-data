@@ -13,8 +13,8 @@ summary: |
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
-  - title: Short title
-    caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+  - title: Main image to represent the whole report
+    caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
     citations:
       - title: A short description of the citation
         link: about:blank
@@ -47,6 +47,17 @@ sections:
 
       - title: Block 1
         visualisations:
+          - title: Dashboard
+            type: dashboard
+            config: 
+              file: /data/example/gapmap.csv
+              title: "Title"	# Column heading for title
+              value: "Value"	# Column heading for value
+              note: "Note"		# Column heading for note
+              width: 250px		# Min width of column (default: 250px)
+              panels:
+                - name: "Thing 1"
+                  class: "plum"
           - title: Systemic Erasure
             caption: <span class="note">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. 
             citations:
@@ -73,17 +84,6 @@ sections:
                   scale: YFF
                   min: 3
                   max: 0
-          - title: Placeholder image
-            tab: Image
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
-            citations:
-              - title: A short description of the citation
-                link: about:blank
-            type: static-image
-            config: 
-              link: https://dummyimage.com/600x200/777/fff.png&text=Section+1+Image+2
-              # Description is used for the alt tag
-              description: Some text that describes the image
         featured_block: true
 
         text: |
@@ -134,6 +134,7 @@ sections:
       - title: Block 1
         visualisations:
           - title: Lack of data available on employment and discrimination in employment.
+            tab: Lack of data
             caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
@@ -142,16 +143,6 @@ sections:
             config:
               file: /data/example/gapmap.csv
               columns:
-                - name: "Source"
-                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
-                - name: "Employment data→Employment status→Rating"
-                  rename: "Employment Status"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
                 - name: "Employment data→Sector→Rating"
                   rename: "Sector"
                   align: center
@@ -201,13 +192,89 @@ sections:
                   max: 0
                   width: 10%
                 - name: "Employment data→Discrimination in employment→Rating"
-                  rename: "Discrimination in Employment"
+                  rename: "Discrimination"
                   align: center
                   heatmap: true
                   scale: YFF
                   min: 3
                   max: 0
                   width: 10%
+          - title: Lack of data available on employment and discrimination in employment.
+            tab: Lack of data (full)
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            citations:
+              - title: A short description of the citation
+                link: about:blank
+            type: table
+            config:
+              file: /data/example/gapmap.csv
+              columns:
+                - name: "Source"
+                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Short name }}</a>"
+                - name: "Employment data→Employment status→Rating"
+                  rename: "Employment Status"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Sector→Rating"
+                  rename: "Sector"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Occupation→Rating"
+                  rename: "Occupation"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Contract type→Rating"
+                  rename: "Contract Type"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Apprenticeships→Rating"
+                  rename: "Apprenticeship"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Pay→Rating"
+                  rename: "Pay"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Progression→Rating"
+                  rename: "Progression"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
+                - name: "Employment data→Discrimination in employment→Rating"
+                  rename: "Discrimination in Employment"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 3
+                  max: 0
+                  width: 8%
     tags:
           - education
           - white people
