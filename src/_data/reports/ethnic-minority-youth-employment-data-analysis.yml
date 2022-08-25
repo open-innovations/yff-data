@@ -48,8 +48,8 @@ sections:
       - title: Block 1
         visualisations:
           - title: Two/three-way intersectional analysis
-            caption: The percentage of reports we looked at that had two (e.g. ethnicity by demographic) or three-way (e.g. ethnicity by demographic by region) intersectional analysis.
-            tab: Intersectional data
+            caption: <span class="note">Review</span>The percentage of reports we looked at that had two (e.g. ethnicity by demographic) or three-way (e.g. ethnicity by demographic by region) intersectional analysis.
+            tab: Summary
             type: dashboard
             config: 
               file: /data/gap_mapping_2022/systemic_erasure_summary.csv
@@ -61,22 +61,32 @@ sections:
                 postfix: "Units post"
               panels:
                 - name: "2-way not met"
-                  class: "plum"
+                  scale: YFF
+                  scale-value: 100
                 - name: "2-way partially met"
-                  class: "orange"
+                  scale: YFF
+                  scale-value: 66.6
                 - name: "2-way mostly met"
-                  class: "gold"
+                  colour: "rgba(199,218,128,1)"
+                  scale: YFF
+                  scale-value: 33.33
                 - name: "2-way fully met"
-                  class: "forest"
+                  scale: YFF
+                  scale-value: 0
                 - name: "3-way not met"
-                  class: "plum"
+                  scale: YFF
+                  scale-value: 100
                 - name: "3-way partially met"
-                  class: "orange"
+                  scale: YFF
+                  scale-value: 66.6
                 - name: "3-way mostly met"
-                  class: "gold"
+                  scale: YFF
+                  scale-value: 33.33
                 - name: "3-way fully met"
-                  class: "forest"
+                  scale: YFF
+                  scale-value: 0
           - title: Systemic Erasure
+            tab: Breakdown
             caption: <span class="note">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. 
             citations:
               - title: A short description of the citation

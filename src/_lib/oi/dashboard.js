@@ -1,4 +1,5 @@
 import { document } from '/src/_lib/oi/document.ts';
+import { colourScales, Colour, contrastColour } from '/src/_lib/oi/colour.js';
 
 // This component uses "/assets/js/dashboard.js" to make things interactive in the browser.
 // It will only get included in pages that need it by using the "data-dependencies" attribute.
@@ -8,7 +9,7 @@ const ns = 'http://www.w3.org/2000/svg';
 export function Dashboard(config,csv){
 
 	this.getHTML = function(){
-		var html,i,panel,r,cls,p,idx;
+		var html,i,panel,r,cls,p,idx,col,v,c;
 		
 		html = ['<div class="dashboard" data-dependencies="/assets/js/dashboard.js" style="grid-template-columns: repeat(auto-fill, minmax(min(100%, '+(config.width||'250px')+'), 1fr));">'];
 
@@ -28,8 +29,23 @@ export function Dashboard(config,csv){
 				// Build classes
 				cls = config.class||'';
 				cls += (cls ? " ":"")+(config.panels[p].class||'');
+				col = (config.panels[p].colour||'');
+				if(col) c = contrastColour(col);
+				v = "";
 
-				panel = '<div class="panel'+(cls ? ' '+cls : '')+'">';
+				// Get the value for this panel
+				if(config.value && csv.columns[config.value]) v = csv.rows[idx][config.value];
+
+				// If we haven't set a colour explicitly but we have set a colour scale
+				if(!config.panels[p].colour && config.panels[p].scale){
+					// If a scale value has been given, use that instead of the value of the panel
+					if(typeof config.panels[p]['scale-value']==="number") v = config.panels[p]['scale-value'];
+					// Find the colour from the colour scale
+					col = colourScales.getColourFromScale(config.panels[p].scale||'Viridis',v,config.panels[p].min||0,config.panels[p].max||100);
+					// Process the colour so we can get the 
+					c = contrastColour(col);
+				}
+				panel = '<div class="panel'+(cls ? ' '+cls : '')+'"'+(col ? ' style="background-color:'+col+';color:'+c+'"' : '')+'>';
 				panel += '<h3>'+config.panels[p].name+'</h3>';
 				if(config.value && csv.columns[config.value]){
 					panel += '<span class="bignum" data="'+csv.rows[idx][config.value]+'"';

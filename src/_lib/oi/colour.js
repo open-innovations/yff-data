@@ -4,66 +4,6 @@
 // Define colour routines
 export function Colour(c, n) {
 	if (!c) return {};
-	function d2h(d) { return ((d < 16) ? "0" : "") + d.toString(16); }
-	function h2d(h) { return parseInt(h, 16); }
-	/**
-	 * Converts an RGB color value to HSV. Conversion formula
-	 * adapted from http://en.wikipedia.org/wiki/HSV_color_space.
-	 * Assumes r, g, and b are contained in the set [0, 255] and
-	 * returns h, s, and v in the set [0, 1].
-	 *
-	 * @param	Number	r		 The red color value
-	 * @param	Number	g		 The green color value
-	 * @param	Number	b		 The blue color value
-	 * @return	Array				The HSV representation
-	 */
-	function rgb2hsv(r, g, b) {
-		r = r / 255;
-		g = g / 255;
-		b = b / 255;
-		var max = Math.max(r, g, b), min = Math.min(r, g, b);
-		var h, s, v = max;
-		var d = max - min;
-		s = max == 0 ? 0 : d / max;
-		if (max == min) h = 0; // achromatic
-		else {
-			switch (max) {
-				case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-				case g: h = (b - r) / d + 2; break;
-				case b: h = (r - g) / d + 4; break;
-			}
-			h /= 6;
-		}
-		return [h, s, v];
-	}
-
-	// Functions for working out colour contrasts
-	function brightnessIndex(rgb){ return rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114; }
-	function brightnessDiff(a,b){ return Math.abs(brightnessIndex(a)-brightnessIndex(b)); }
-	function hueDiff(a,b){ return Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]); }
-	function contrastColour(c){
-		var col,cols,rgb = [];
-		if(c.indexOf('#')==0){
-			rgb = [h2d(c.substring(1,3)),h2d(c.substring(3,5)),h2d(c.substring(5,7))];
-		}else if(c.indexOf('rgb')==0){
-			var bits = c.match(/[0-9\.]+/g);
-			if(bits.length == 4) this.alpha = parseFloat(bits[3]);
-			rgb = [parseInt(bits[0]),parseInt(bits[1]),parseInt(bits[2])];
-		}
-		// Check brightness contrast
-		cols = {'black':{'rgb':[0,0,0]},'white':{'rgb':[255,255,255]}};
-		for(col in cols){
-			cols[col].brightness = brightnessDiff(rgb,cols[col].rgb);
-			cols[col].hue = hueDiff(rgb,cols[col].rgb);
-			cols[col].ok = (cols[col].brightness > 125 && cols[col].hue >= 500);
-		}
-		for(col in cols){
-			if(cols[col].ok) return 'rgb('+cols[col].rgb.join(",")+')';
-		}
-		col = (cols.white.brightness > cols.black.brightness) ? "white" : "black"
-		//console.warn('Text contrast not enough for '+c+' (colour contrast: '+cols[col].brightness.toFixed(1)+'/125, hue contrast: '+cols[col].hue+'/500)','background:'+c+';color:'+col,'background:none;color:inherit;');
-		return col;
-	}
 
 	this.alpha = 1;
 
@@ -90,6 +30,68 @@ export function Colour(c, n) {
 	this.text = contrastColour(this.hex);
 	return this;
 }
+
+
+function d2h(d) { return ((d < 16) ? "0" : "") + d.toString(16); }
+function h2d(h) { return parseInt(h, 16); }
+/**
+ * Converts an RGB color value to HSV. Conversion formula
+ * adapted from http://en.wikipedia.org/wiki/HSV_color_space.
+ * Assumes r, g, and b are contained in the set [0, 255] and
+ * returns h, s, and v in the set [0, 1].
+ *
+ * @param	Number	r		 The red color value
+ * @param	Number	g		 The green color value
+ * @param	Number	b		 The blue color value
+ * @return	Array				The HSV representation
+ */
+function rgb2hsv(r, g, b) {
+	r = r / 255;
+	g = g / 255;
+	b = b / 255;
+	var max = Math.max(r, g, b), min = Math.min(r, g, b);
+	var h, s, v = max;
+	var d = max - min;
+	s = max == 0 ? 0 : d / max;
+	if (max == min) h = 0; // achromatic
+	else {
+		switch (max) {
+			case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+			case g: h = (b - r) / d + 2; break;
+			case b: h = (r - g) / d + 4; break;
+		}
+		h /= 6;
+	}
+	return [h, s, v];
+}
+
+// Functions for working out colour contrasts
+function brightnessIndex(rgb){ return rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114; }
+function brightnessDiff(a,b){ return Math.abs(brightnessIndex(a)-brightnessIndex(b)); }
+function hueDiff(a,b){ return Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]); }
+export function contrastColour(c){
+	var col,cols,rgb = [];
+	if(c.indexOf('#')==0){
+		rgb = [h2d(c.substring(1,3)),h2d(c.substring(3,5)),h2d(c.substring(5,7))];
+	}else if(c.indexOf('rgb')==0){
+		var bits = c.match(/[0-9\.]+/g);
+		rgb = [parseInt(bits[0]),parseInt(bits[1]),parseInt(bits[2])];
+	}
+	// Check brightness contrast
+	cols = {'black':{'rgb':[0,0,0]},'white':{'rgb':[255,255,255]}};
+	for(col in cols){
+		cols[col].brightness = brightnessDiff(rgb,cols[col].rgb);
+		cols[col].hue = hueDiff(rgb,cols[col].rgb);
+		cols[col].ok = (cols[col].brightness > 125 && cols[col].hue >= 500);
+	}
+	for(col in cols){
+		if(cols[col].ok) return 'rgb('+cols[col].rgb.join(",")+')';
+	}
+	col = (cols.white.brightness > cols.black.brightness) ? "white" : "black"
+	//console.warn('Text contrast not enough for '+c+' (colour contrast: '+cols[col].brightness.toFixed(1)+'/125, hue contrast: '+cols[col].hue+'/500)','background:'+c+';color:'+col,'background:none;color:inherit;');
+	return col;
+}
+
 
 function Colours(scales) {
 	if (!scales) scales = { 'Viridis': 'rgb(68,1,84) 0%, rgb(72,35,116) 10%, rgb(64,67,135) 20%, rgb(52,94,141) 30%, rgb(41,120,142) 40%, rgb(32,143,140) 50%, rgb(34,167,132) 60%, rgb(66,190,113) 70%, rgb(121,209,81) 80%, rgb(186,222,39) 90%, rgb(253,231,36) 100%' };
@@ -230,3 +232,5 @@ export const colourScales = new Colours({
 	'YFF': 'rgb(99,190,123) 0%, rgb(250,233,131) 50%, rgb(248,105,107) 100%',
 	'Diverging': 'rgb(0,87,118) 0%, rgb(247,247,247) 50%, rgb(229,89,18) 100%'
 });
+
+
