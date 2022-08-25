@@ -1,5 +1,3 @@
-/*jshint esversion: 6 */ 
-
 import { document } from '/src/_lib/oi/document.ts';
 import { loadDataFile } from '/src/_lib/oi/util.js';
 import { colourScales, Colour } from '/src/_lib/oi/colour.js';
@@ -104,6 +102,7 @@ export function LeafletMap(config,csv){
 		html.push('				ps.querySelector(".leaflet-popup-tip").style["background-color"] = d.colour;\n');
 		// Set the text colour of the popup
 		html.push('				ps.querySelector(".leaflet-popup-content-wrapper").style["color"] = OI.contrastColour(d.colour);\n');
+		html.push('				ps.style["color"] = OI.contrastColour(d.colour);\n');
 		html.push('			});\n');
 		html.push('		};\n');
 					
