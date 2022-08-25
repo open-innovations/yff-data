@@ -23,10 +23,7 @@ export function LeafletMap(config,csv){
 		}
 
 		// Build a legend
-		var legend = '';
-		for(i in config.legend){
-			legend += '<i style=\\"background:'+colourScales.getColourFromScale(config.scale||'Viridis',config.legend[i].value,config.min,config.max)+'\\"></i> ' + config.legend[i].label + '<br />';
-		}
+		var legend = getLegend(config).replace(/\"/g,'\\"');
 
 		html = ['<div class="map" data-dependencies="/assets/leaflet/leaflet.js,/assets/leaflet/leaflet.css">'];
 		
@@ -188,6 +185,10 @@ export function HexMap(config,csv,sources){
 		var html = ['<div class="map hex-map" data-dependencies="/assets/js/svg-map.js">'];
 
 		html.push(svg.outerHTML);
+
+		// Create the legend
+		var legend = buildLegend(config);
+		html.push(legend.outerHTML);
 
 		html.push('</div>\n');
 
@@ -521,6 +522,27 @@ export function SVGMap(config,csv,sources){
 
 }
 
+function getLegend(config){
+	
+	// Build a legend
+	var legend = '';
+	for(var i in config.legend){
+		legend += '<i style="background:'+colourScales.getColourFromScale(config.scale||'Viridis',config.legend[i].value,config.min,config.max)+'"></i> ' + config.legend[i].label + '<br />';
+	}
+	return legend;
+}
+
+// Build a legend in SVG
+function buildLegend(config){
+
+	var container = document.createElement('div');
+	setAttr(container,{'class':'leaflet-bottom leaflet-right'});
+	var legend = document.createElement('div');
+	setAttr(legend,{'class':'legend leaflet-control'});
+	legend.innerHTML = getLegend(config);
+	add(legend,container);
+	return container;
+}
 
 function loadFromSources(path,sources){
 
@@ -568,6 +590,10 @@ function BasicMap(config,attr){
 		var html = ['<div class="map svg-map" data-dependencies="/assets/js/svg-map.js">'];
 
 		html.push(this.svg.outerHTML);
+
+		// Create the legend
+		var legend = buildLegend(config);
+		html.push(legend.outerHTML);
 
 		html.push('</div>\n');
 
@@ -653,28 +679,8 @@ function BasicMap(config,attr){
 			for(i = 0; i < tspans.length; i++){
 				tspans[i].setAttribute('style','font-size:'+pc.toFixed(3)+'%;');
 			}
-
-/*
-This needs to be updated to replace getBoundingClientRect() as we don't have it
-			// Remove overlapping labels on a last-in-first-out basis.
-			for(i = svgLabels.length-1 ; i >= 0; i--){
-				lbla = svgLabels[i];
-				lbla.style = lbla.getAttribute('style')+';display:block;';
-				a = lbla.getBoundingClientRect();
-				console.log(i,a);
-				for(j = 0; j < svgLabels.length; j++ ){
-					lblb = svgLabels[j];
-					if(lbla != lblb){
-						b = lblb.getBoundingClientRect();
-						if( !( b.left > a.right || b.right < a.left || b.top > a.bottom || b.bottom < a.top) ){
-							lbla.style = lbla.getAttribute('style')+';display:none;';
-							continue;
-						}
-					}
-				}
-			}
-			*/
 		}
+
 		return this;
 	};
 
