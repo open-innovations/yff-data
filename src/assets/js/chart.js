@@ -36,7 +36,7 @@
 	}
 	function InteractiveChart(el){
 		var svg = el.querySelector('svg');
-		var key = el.querySelector('.key');
+		var key = el.querySelector('.legend');
 		var serieskey = el.querySelectorAll('.series');
 		var s,i,p;
 		var pt = el.querySelectorAll('.series circle, .series rect');
@@ -281,7 +281,7 @@
 		if(key){
 			// We build an HTML version of the key
 			var newkey = document.createElement('div');
-			newkey.classList.add('key');
+			newkey.classList.add('legend');
 			el.insertBefore(newkey, el.firstChild);
 
 
@@ -290,7 +290,7 @@
 			for(s = 0; s < keyseries.length; s++){
 				// Create a key item <div>
 				keyitem = document.createElement('div');
-				keyitem.classList.add('keyitem');
+				keyitem.classList.add('legend-item');
 				add(keyitem,newkey);
 
 				// Make the new SVG just for the icon

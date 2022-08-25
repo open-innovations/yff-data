@@ -438,7 +438,7 @@ function Chart(config,csv){
 		'tick':5,
 		'font-size': 16,
 		'font-family':'"Century Gothic",sans-serif',
-		'key':{
+		'legend':{
 			'show':false,
 			'border':{'stroke':'#000000','stroke-width':1,'fill':'none'},
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
@@ -598,18 +598,18 @@ function Chart(config,csv){
 		// Update axes
 		for(ax in this.axes) this.axes[ax].update();
 
-		if(this.opt.key.show){
+		if(this.opt.legend.show){
 			fs = this.opt['font-size']||16;
-			pd = this.opt.key.padding||fs*0.5;
-			hkey = (this.opt.key.label ? 1:0)*fs +(2*pd) + (this.series.length*fs);
+			pd = this.opt.legend.padding||fs*0.5;
+			hkey = (this.opt.legend.label ? 1:0)*fs +(2*pd) + (this.series.length*fs);
 			x = 0;
 			y = 0;
 			if(!key){
 				key = {'el':svgEl("g"),'g':[],'border':svgEl("rect")};
-				key.el.classList.add('key');
+				key.el.classList.add('legend');
 				setAttr(key.border,{'x':0,'y':this.opt.top,'width':this.w,'height':hkey});
-				if(typeof this.opt.key.border==="object"){
-					for(p in this.opt.key.border) key.border.setAttribute(p,this.opt.key.border[p]);
+				if(typeof this.opt.legend.border==="object"){
+					for(p in this.opt.legend.border) key.border.setAttribute(p,this.opt.legend.border[p]);
 				}
 				add(key.border,key.el);
 				add(key.el,svg);
@@ -631,14 +631,14 @@ function Chart(config,csv){
 				key.g[s].innerHTML = '<text><tspan dx="'+(fs*2)+'" dy="0">'+tspan+'</tspan></text>'+defaultkeyitem;
 				setAttr(key.g[s].querySelector('tspan'),this.series[s].getProperty('attr'));
 				// If we had a browser we could use getBoundingClientRect().width, but we don't so we'll approximate the length
-				wkey = Math.max(wkey,textLength(tspan,fs,this.opt.key.text['font-weight'],'Century Gothic'));
+				wkey = Math.max(wkey,textLength(tspan,fs,this.opt.legend.text['font-weight']||"standard",'Century Gothic'));
 			}
-			if(typeof this.opt.key.width==="number") wkey = this.opt.key.width;
+			if(typeof this.opt.legend.width==="number") wkey = this.opt.legend.width;
 			else wkey += fs*1.5 + pd*2;	// The width is approximately half the font-size plus twice the font size (for the icon) and some padding
 
 
-			if(!this.opt.key.position) this.opt.key.position = 'top right';
-			po = this.opt.key.position.split(/ /);
+			if(!this.opt.legend.position) this.opt.legend.position = 'top right';
+			po = this.opt.legend.position.split(/ /);
 
 			x = y = 0;
 			for(u = 0; u < po.length; u++){
@@ -660,8 +660,8 @@ function Chart(config,csv){
 				line = qs(key.g[s],'path');
 				circ = qs(key.g[s],'circle');
 				setAttr(text,{'x': 0,'y':roundTo(fs*0.2, 3),'font-family':this.opt['font-family']||"sans-serif"});
-				if(typeof this.opt.key.text==="object"){
-					for(p in this.opt.key.text) text.setAttribute(p,this.opt.key.text[p]);
+				if(typeof this.opt.legend.text==="object"){
+					for(p in this.opt.legend.text) text.setAttribute(p,this.opt.legend.text[p]);
 				}
 				p = this.series[s].getProperties();
 				setAttr(circ,{'cx':roundTo(fs*0.75, 3),'cy':roundTo(0.5*fs, 3),'fill':(p.points.color||""),'stroke-width':p.points['stroke-width']||0,'stroke':p.points.stroke||""});
