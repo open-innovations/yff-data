@@ -16,7 +16,7 @@ export function loadDataFile(path, sources) {
 		config = path;
 		path = path.file;
 	}
-	const name = path.replace(/\//g, '.').replace(/^.*data/, 'sources').replace(/\.[^\.]*$/, '');
+	const name = path.replace(/\//g, '.').replace(/^.*?data/, 'sources').replace(/\.[^\.]*$/, '');
 	data = eval(name);
 	
 	if(typeof config==="object"){

@@ -50,7 +50,7 @@ sections:
           - title: Dashboard
             type: dashboard
             config: 
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               title: "Title"	# Column heading for title
               value: "Value"	# Column heading for value
               note: "Note"		# Column heading for note
@@ -65,7 +65,7 @@ sections:
                 link: about:blank
             type: table
             config: 
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               columns:
                 - name: "Source"
                   template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
@@ -102,7 +102,7 @@ sections:
                 link: about:blank
             type: table
             config:
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               columns:
                 - name: "Source"
                   template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
@@ -141,7 +141,7 @@ sections:
                 link: about:blank
             type: table
             config:
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               columns:
                 - name: "Employment data→Sector→Rating"
                   rename: "Sector"
@@ -207,7 +207,7 @@ sections:
                 link: about:blank
             type: table
             config:
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               columns:
                 - name: "Source"
                   template: "<a href=\"{{ Source→Link }}\">{{ Source→Short name }}</a>"
@@ -293,7 +293,7 @@ sections:
                 link: about:blank
             type: table
             config:
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               columns:
                 - name: "Source"
                   template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
@@ -322,7 +322,7 @@ sections:
                 link: about:blank
             type: table
             config:
-              file: /data/example/gapmap.csv
+              file: /data/gap_mapping_2022/gapmap.csv
               columns:
                 - name: "Source"
                   template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
