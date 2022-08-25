@@ -10,7 +10,7 @@ config: {{ config | dump(2) }}
   {% if title %}<h3>{{ title }}</h3>{% endif %}
   {% if caption %}
   <figcaption>
-    <p>{{ caption | safe}}</p>
+    <p>{{ caption | applyReplacementFilters | safe}}</p>
   </figcaption>
   {% endif %}
   {{ comp.viz[type]({ config: config }) | safe }}

@@ -12,6 +12,7 @@ import date from "lume/plugins/date.ts";	// To format dates see: https://lume.la
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { copy } from 'std/fs/copy.ts';
 import autoDependency from '/src/_lib/oi/auto-dependency.ts';
+import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 import csvLoader from '/src/_lib/oi/csv-loader.ts';
 
 const site = lume({
@@ -89,6 +90,7 @@ site.process(['.html'], autoDependency);
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
 site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi,function(m,p1){ return p1; }) );
+site.filter('applyReplacementFilters', (value, options = {'filter':true}) => applyReplacementFilters(value,options));
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written

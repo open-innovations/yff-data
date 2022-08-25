@@ -48,7 +48,7 @@ sections:
       - title: Block 1
         visualisations:
           - title: Two/three-way intersectional analysis
-            caption: <span class="note">Review</span>The percentage of reports we looked at that had two (e.g. ethnicity by demographic) or three-way (e.g. ethnicity by demographic by region) intersectional analysis.
+            caption: "<span class=\"note\">Review</span>The percentage of reports we looked at that had two-way (e.g. ethnicity by demographic) or three-way (e.g. ethnicity by demographic by region) intersectional analysis."
             tab: Summary
             type: dashboard
             config: 
@@ -87,7 +87,7 @@ sections:
                   scale-value: 0
           - title: Systemic Erasure
             tab: Breakdown
-            caption: <span class="note">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. 
+            caption: "<span class=\"note\">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
