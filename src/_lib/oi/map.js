@@ -108,14 +108,16 @@ export function LeafletMap(config,csv){
 		html.push('		OI.maps[id].bounds = geo.getBounds();\n');
 		if(!config.bounds) html.push('		map.fitBounds(geo.getBounds());\n');
 
-		// Create the legend and add it to the map
-		html.push('		var legend = L.control({position: "bottomright"});\n');
-		html.push('		legend.onAdd = function (map){\n');
-		html.push('			var div = L.DomUtil.create("div", "info legend");\n');
-		html.push('			div.innerHTML = "'+legend+'";\n');
-		html.push('			return div;\n');
-		html.push('		}\n');
-		html.push('		legend.addTo(map);\n');
+		if(config.legend){
+			// Create the legend and add it to the map
+			html.push('		var legend = L.control({position: "'+((config.legend.position||"bottom right").replace(/ /g,""))+'"});\n');
+			html.push('		legend.onAdd = function (map){\n');
+			html.push('			var div = L.DomUtil.create("div", "info legend");\n');
+			html.push('			div.innerHTML = "'+legend+'";\n');
+			html.push('			return div;\n');
+			html.push('		}\n');
+			html.push('		legend.addTo(map);\n');
+		}
 
 		html.push('	}).catch(error => {\n');
 		html.push('		console.error("Unable to load the data",error);\n');
@@ -526,8 +528,10 @@ function getLegend(config){
 	
 	// Build a legend
 	var legend = '';
-	for(var i in config.legend){
-		legend += '<i style="background:'+colourScales.getColourFromScale(config.scale||'Viridis',config.legend[i].value,config.min,config.max)+'"></i> ' + config.legend[i].label + '<br />';
+	if(config.legend && config.legend.items){
+		for(var i = 0; i < config.legend.items.length; i++){
+			legend += '<i style="background:'+colourScales.getColourFromScale(config.scale||'Viridis',config.legend.items[i].value,config.min,config.max)+'"></i> ' + config.legend.items[i].label + '<br />';
+		}
 	}
 	return legend;
 }
@@ -536,11 +540,18 @@ function getLegend(config){
 function buildLegend(config){
 
 	var container = document.createElement('div');
-	setAttr(container,{'class':'leaflet-bottom leaflet-right'});
-	var legend = document.createElement('div');
-	setAttr(legend,{'class':'legend leaflet-control'});
-	legend.innerHTML = getLegend(config);
-	add(legend,container);
+	if(config.legend){
+		if(!config.legend.position) config.legend.position = "bottom right";
+		config.legend.position = config.legend.position.replace(/(^| )/g,function(m,p1){ return p1+'leaflet-'; });
+		setAttr(container,{'class':config.legend.position});
+	}
+	
+	if(config.legend && config.legend.items){
+		var legend = document.createElement('div');
+		setAttr(legend,{'class':'legend leaflet-control'});
+		legend.innerHTML = getLegend(config);
+		add(legend,container);
+	}
 	return container;
 }
 

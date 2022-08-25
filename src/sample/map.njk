@@ -37,18 +37,20 @@ visualisations:
           text-anchor: start
           longitude: 0
       legend:
-        - value: 5000000
-          label: "5 million"
-        - value: 4000000
-          label: "4 million"
-        - value: 3000000
-          label: "3 million"
-        - value: 2000000
-          label: "2 million"
-        - value: 1000000
-          label: "1 million"
-        - value: 0
-          label: "0"
+        position: "top right"
+        items:
+          - value: 5000000
+            label: "5 million"
+          - value: 4000000
+            label: "4 million"
+          - value: 3000000
+            label: "3 million"
+          - value: 2000000
+            label: "2 million"
+          - value: 1000000
+            label: "1 million"
+          - value: 0
+            label: "0"
   -
     type: map
     tab: Layout using short code
@@ -83,20 +85,22 @@ visualisations:
           text-anchor: start
           longitude: 0
       legend:
-        - value: 30
-          label: "▲ Increase"
-        - value: 20
-          label: ""
-        - value: 10
-          label: ""
-        - value: 0
-          label: ""
-        - value: -10
-          label: ""
-        - value: -20
-          label: ""
-        - value: -30
-          label: "▼ Decrease"
+        position: "top right"
+        items:
+          - value: 30
+            label: "▲ Increase"
+          - value: 20
+            label: ""
+          - value: 10
+            label: ""
+          - value: 0
+            label: ""
+          - value: -10
+            label: ""
+          - value: -20
+            label: ""
+          - value: -30
+            label: "▼ Decrease"
   -
     type: map
     tab: Leaflet map
@@ -113,20 +117,22 @@ visualisations:
       min: -30
       max: 30
       legend:
-        - value: 30
-          label: "▲ Increase"
-        - value: 20
-          label: ""
-        - value: 10
-          label: ""
-        - value: 0
-          label: ""
-        - value: -10
-          label: ""
-        - value: -20
-          label: ""
-        - value: -30
-          label: "▼ Decrease"
+        position: "top right"
+        items:
+          - value: 30
+            label: "▲ Increase"
+          - value: 20
+            label: ""
+          - value: 10
+            label: ""
+          - value: 0
+            label: ""
+          - value: -10
+            label: ""
+          - value: -20
+            label: ""
+          - value: -30
+            label: "▼ Decrease"
       columns:
         - name: "Label"
           template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
@@ -150,20 +156,22 @@ visualisations:
         - name: "Label"
           template: "{{ NUTS18NM }}: {{ Hours Growth (%) }}%"
       legend:
-        - value: 30
-          label: "▲ Increase"
-        - value: 20
-          label: ""
-        - value: 10
-          label: ""
-        - value: 0
-          label: ""
-        - value: -10
-          label: ""
-        - value: -20
-          label: ""
-        - value: -30
-          label: "▼ Decrease"
+        position: "top right"
+        items:
+          - value: 30
+            label: "▲ Increase"
+          - value: 20
+            label: ""
+          - value: 10
+            label: ""
+          - value: 0
+            label: ""
+          - value: -10
+            label: ""
+          - value: -20
+            label: ""
+          - value: -30
+            label: "▼ Decrease"
 ---
 
 
