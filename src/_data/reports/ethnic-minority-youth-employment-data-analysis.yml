@@ -47,17 +47,35 @@ sections:
 
       - title: Block 1
         visualisations:
-          - title: Dashboard
+          - title: Two/three-way intersectional analysis
+            caption: The percentage of reports we looked at that had two (e.g. ethnicity by demographic) or three-way (e.g. ethnicity by demographic by region) intersectional analysis.
+            tab: Intersectional data
             type: dashboard
             config: 
-              file: /data/gap_mapping_2022/gapmap.csv
+              file: /data/gap_mapping_2022/systemic_erasure_summary.csv
               title: "Title"	# Column heading for title
               value: "Value"	# Column heading for value
               note: "Note"		# Column heading for note
               width: 250px		# Min width of column (default: 250px)
+              units:
+                postfix: "Units post"
               panels:
-                - name: "Thing 1"
+                - name: "2-way not met"
                   class: "plum"
+                - name: "2-way partially met"
+                  class: "orange"
+                - name: "2-way mostly met"
+                  class: "gold"
+                - name: "2-way fully met"
+                  class: "forest"
+                - name: "3-way not met"
+                  class: "plum"
+                - name: "3-way partially met"
+                  class: "orange"
+                - name: "3-way mostly met"
+                  class: "gold"
+                - name: "3-way fully met"
+                  class: "forest"
           - title: Systemic Erasure
             caption: <span class="note">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. 
             citations:

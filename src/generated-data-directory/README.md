@@ -1,4 +1,3 @@
-This directory is populated before the server builds by copying
-the files in `_data/sources`.
+# Notes on data files
 
-See <https://lume.land/docs/creating-pages/shared-data/> for details.
+Put data files as CSV files into subdirectories here. Sub-directories should not start with a number and should not contain a `-` - try to use `_` instead.

@@ -17,16 +17,16 @@ h1 { color: #e25b27; text-align: center; }
 h1,h2,h3,h4,h5,h6 { font-family: "CenturyGothicStdBold", "Century Gothic", Helvetica, sans-serif; }
 blockquote { border-left: 4px solid #e25b27; }
 
-.gold { background: #F7AB3D; }
-.orange { background: #E55912; }
-.turquoise { background: #69C2C9; }
-.cherry { background: #E52E36; }
-.chartreuse { background: #C7B200; }
-.plum { background: #7D2248; color: white; }
-.grey { background: #B2B2B2; }
+.gold { background: #F7AB3D; color: black; }
+.orange { background: #E55912; color: white; }
+.turquoise { background: #69C2C9; color: black; }
+.cherry { background: #E52E36; color: white; }
+.chartreuse { background: #C7B200; color: black; }
+.plum { background: #7D2248; color: white; color: white; }
+.grey { background: #B2B2B2; color: black; }
 .blue { background: #005776; color: white; }
 .raisin { background: #874245; color: white; }
-.rose { background: #FF808B; }
+.rose { background: #FF808B; color: black; }
 .forest { background: #4A783C; color: white; }
 .black { background: #000000; color: white; }
 .plum a, .blue a, .raisin a, .forest a, .black a { color: #E55912; font-weight: bold; }
