@@ -3,12 +3,11 @@ import { loadDataFile } from '/src/_lib/oi/util.js'
 
 
 export const css = `
-.map { background: #e2e2e2; }
+.map { background: #e2e2e2; position: relative; }
 .map .leaflet { width: 100%; aspect-ratio: 16 / 9; background: #e2e2e2; position: relative; }
 .map .leaflet a { background-image: none!important; color: inherit!important; }
-.map .leaflet .legend { text-align: left; line-height: 18px; color: #555; }
-.map .leaflet .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 1; }
-.map .leaflet .legend { background: rgba(255,255,255,0.8); padding: 1em; }
+.map .legend { text-align: left; line-height: 18px; color: #555; background: rgba(255,255,255,0.8); padding: 1em; }
+.map .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 1; }
 .map .leaflet-popup-content-wrapper { border-radius: 0; }
 .map .leaflet-popup-content { margin: 1em; }
 .map .leaflet-container, .map .leaflet-popup-content-wrapper, .map .leaflet-popup-content { font-size: 1em; font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; line-height: inherit; }

@@ -9,9 +9,10 @@
 	<link rel="StyleSheet" href="style.css" type="text/css" />
 	<style>
 	body {
-		font-family: "Century Gothic";
+		font-family: "Arial";
 	}
 	#glyphs-bold { font-weight: bold; }
+	textarea { width: 100%; height: 10em; }
 	</style>
 </head>
 <body class="b1-bg">
@@ -20,6 +21,12 @@
 		<h1>Glyphs</h1>
 		<div id="glyphs"></div>
 		<div id="glyphs-bold"></div>
+		
+		<h2>Standard widths</h2>
+		<textarea id="standard"></textarea>
+
+		<h2>Bold widths</h2>
+		<textarea id="bold"></textarea>
 	</div>
 
 	<script>
@@ -28,29 +35,29 @@
 	var bd = document.getElementById('glyphs-bold');
 	
 	var text = '';
-	for(var charCode = 0; charCode <= 1000; charCode++){
+	for(var charCode = 0; charCode <= 11000; charCode++){
 		text += '<span data="'+charCode+'">'+String.fromCharCode(charCode)+'</span>';
 	}
 	el.innerHTML = text;
 	bd.innerHTML = text;
 	
-	// Now work out widths
+	// Now work out widths for standard weight
 	chars = el.querySelectorAll('span');
 	codes = [];
 	for(var c = 0; c < chars.length; c++){
 		codes.push(chars[c].offsetWidth);
 	}
 	str = JSON.stringify(codes);
-	console.log(str);
+	document.getElementById('standard').innerHTML = str;
 
-	// Now work out widths
+	// Now work out widths for bold weight
 	chars = bd.querySelectorAll('span');
 	codes = [];
 	for(var c = 0; c < chars.length; c++){
 		codes.push(chars[c].offsetWidth);
 	}
 	str = JSON.stringify(codes);
-	console.log(str);
+	document.getElementById('bold').innerHTML = str;
 	
 	</script>
 
