@@ -1,6 +1,9 @@
+/*jshint esversion: 6 */ 
+
 import { document } from '/src/_lib/oi/document.ts';
-import { loadDataFile } from '/src/_lib/oi/util.js'
+import { loadDataFile } from '/src/_lib/oi/util.js';
 import { colourScales, Colour } from '/src/_lib/oi/colour.js';
+
 
 function clone(a){ return JSON.parse(JSON.stringify(a)); }
 
@@ -10,20 +13,20 @@ function clone(a){ return JSON.parse(JSON.stringify(a)); }
 export function LeafletMap(config,csv){
 
 	this.getHTML = function(){
-		var html,i,panel,r,cls,p,idx,file;
+		var html,i,r,file;
 
 		if(config.geojson.file) file = config.geojson.file;
 		else console.error('No GeoJSON file given');
 
 		// Add a colour-scale colour to each row based on the "value" column
 		var rows = clone(csv.rows);
-		for(var r = 0; r < rows.length; r++){
+		for(r = 0; r < rows.length; r++){
 			rows[r].colour = colourScales.getColourFromScale(config.scale||'Viridis',rows[r][config.value],config.min,config.max);
 		}
 
 		// Build a legend
 		var legend = '';
-		for(var i in config.legend){
+		for(i in config.legend){
 			legend += '<i style=\\"background:'+colourScales.getColourFromScale(config.scale||'Viridis',config.legend[i].value,config.min,config.max)+'\\"></i> ' + config.legend[i].label + '<br />';
 		}
 
@@ -281,20 +284,8 @@ export function HexMap(config,csv,sources){
 		return this;
 	};
 
-	// 
-	this.setHexStyle = function (r) {
-		let cls, p, colour;
-		const h = this.areas[r];
-		const style = clone(this.style['default']);
-		cls = "";
-		style['class'] = 'hex-cell' + cls;
-		setAttr(h.hex, style);
-
-		if(h.label) setAttr(h.label, { 'class': 'hex-label' + cls });
-		return h;
-	};
 	this.draw = function () {
-		let r, q, h, hex, region;
+		let r, q, h, region;
 
 		const range = this.range;
 		for (region in this.mapping.hexes) {
@@ -324,29 +315,45 @@ export function HexMap(config,csv,sources){
 		// Store this for use elsewhere
 		this.range = clone(range);
 
-		let path, label, hexclip, g, colour, title, hexid;
-		//const defs = svgEl('defs');
-		//add(defs, svg);
-		const id = (config.id || 'hex');
+		let path, colour, title, hexid;
+
+		let style = clone(this.style['default']);
+		style['class'] = 'hex-cell';
 
 		for(r in this.mapping.hexes){
 			if(this.mapping.hexes[r]){
 
 				h = this.drawHex(this.mapping.hexes[r].q, this.mapping.hexes[r].r);
 
+				// Create a <path> for the hexagon outline
 				path = svgEl('path');
+
+				// Create a <title> to go inside the path - gives us tooltips by default
 				title = svgEl('title');
+
+				// Set the default for the title to the name in the HexJSON or the ID of the hex
 				title.innerHTML = (this.mapping.hexes[r].n || r);
+
+				// Add the <title> to the <path>
 				add(title,path);
+
+				// Define the path and some properties
 				setAttr(path, { 'd': h.path, 'class': 'hex-cell', 'transform-origin': h.x + 'px ' + h.y + 'px', 'data-q': this.mapping.hexes[r].q, 'data-r': this.mapping.hexes[r].r });
+
+				// Apply more styles to the path
+				setAttr(path, style);
+
+				// Add the path to the data-layer group
 				group.appendChild(path);
+
+				// Keep the DOM elements for this hex to use later
 				this.areas[r] = { 'hex': path, 'data': this.mapping.hexes[r], 'orig': h, 'title': title };
 
-				this.setHexStyle(r);
-
-				// See if we can match the hexagon in the data
+				// We need to update the hex's colour and title.
+				// First check if we have key/value columns.
 				if(config.key && csv.columns[config.key] && config.value && csv.columns[config.value]){
 
+					// Loop over the rows in the CSV to check each one
 					for(var i = 0; i < csv.rows.length; i++){
 
 						hexid = r;
@@ -354,6 +361,7 @@ export function HexMap(config,csv,sources){
 
 						// If the CSV row matches the hexagon key
 						if(csv.rows[i][config.key]==hexid){
+
 							// Update the colour of the hexagon
 							colour = colourScales.getColourFromScale(config.scale||'Viridis',csv.rows[i][config.value],min,max);
 							setAttr(this.areas[r].hex,{'fill':colour,'data-value':csv.rows[i][config.value]});
@@ -365,6 +373,7 @@ export function HexMap(config,csv,sources){
 					}
 				}
 
+				// Apply some styles/colours to the hexagon
 				setAttr(this.areas[r].hex, { 'stroke': this.style['default'].stroke, 'stroke-opacity': this.style['default']['stroke-opacity'], 'stroke-width': this.style['default']['stroke-width'], 'title': this.mapping.hexes[r].n, 'data-regions': r, 'style': 'cursor: pointer;' });
 			}
 		}
@@ -393,7 +402,7 @@ export function SVGMap(config,csv,sources){
 
 	let geo = loadFromSources(config.geojson.file,sources);
 	let UK = loadFromSources("data/maps/simple-UK.geojson",sources);
-	let motorways = loadFromSources("data/maps/simple-motorways.geojson",sources);
+	//let motorways = loadFromSources("data/maps/simple-motorways.geojson",sources);
 	let places = loadFromSources("data/maps/simple-places.csv", sources);
 
 	console.log('TYPE: SVG-MAP',config.geojson.file);
@@ -468,7 +477,7 @@ export function SVGMap(config,csv,sources){
 			'type': 'text',
 			'values': {'places':config.places||[]},
 			'process': function(d,map){
-				var header,i,c,cols,num,locations,fs,f,loc,dlat,threshold,place,p;
+				var i,c,locations,fs,f,loc,threshold,place,p;
 
 				locations = [];
 				fs = 1;
@@ -511,7 +520,7 @@ export function SVGMap(config,csv,sources){
 
 	return map;
 
-};
+}
 
 
 function loadFromSources(path,sources){
@@ -641,7 +650,7 @@ function BasicMap(config,attr){
 		if(svgLabels.length > 0){
 			var pc = 100;
 			pc = 100*(tileBox.x.range > tileBox.y.range ? tileBox.x.range/this.w : tileBox.y.range/this.h);
-			var i,j,a,b,lbla,lblb;
+			var i;
 			for(i = 0; i < tspans.length; i++){
 				tspans[i].setAttribute('style','font-size:'+pc.toFixed(3)+'%;');
 			}
@@ -757,7 +766,7 @@ function Layer(attr,map,i){
 		// Clear existing layer
 		this.clear();
 		// Find the map bounds and work out the scale
-		var f,i,j,k,dlat,dlon,feature,lat,lon,w,h,b,p,c,d,xy,tspan,path;
+		var f,i,j,k,dlat,dlon,feature,w,h,b,p,c,d,xy,tspan,path;
 		w = map.w;
 		h = map.h;
 		b = map.getBounds();
