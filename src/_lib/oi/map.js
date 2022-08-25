@@ -160,7 +160,7 @@ export function HexMap(config,csv,sources){
 
 	// Create the SVG element
 	let svg = svgEl('svg');
-	setAttr(svg,{'width':this.w,'height':this.h,'overflow':'visible','style':'max-width:100%;max-height:100%;background:'+(config.background||"transparent"),'preserveAspectRatio':'xMidYMid meet'});
+	setAttr(svg,{'viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;max-height:100%;background:'+(config.background||"transparent"),'preserveAspectRatio':'xMidYMid meet'});
 	svg.innerHTML = "";
 	svg.setAttribute('data-type','hex-map');
 
@@ -325,8 +325,8 @@ export function HexMap(config,csv,sources){
 		this.range = clone(range);
 
 		let path, label, hexclip, g, colour, title, hexid;
-		const defs = svgEl('defs');
-		add(defs, svg);
+		//const defs = svgEl('defs');
+		//add(defs, svg);
 		const id = (config.id || 'hex');
 
 		for(r in this.mapping.hexes){
