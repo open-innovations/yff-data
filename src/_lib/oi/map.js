@@ -161,7 +161,7 @@ export function HexMap(config,csv,sources){
 
 	// Create the SVG element
 	let svg = svgEl('svg');
-	setAttr(svg,{'viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;max-height:100%;background:'+(config.background||"transparent"),'preserveAspectRatio':'xMidYMid meet'});
+	setAttr(svg,{'xmlns':'http://www.w3.org/2000/svg','version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;max-height:100%;background:'+(config.background||"transparent"),'preserveAspectRatio':'xMidYMid meet'});
 	svg.innerHTML = "";
 	svg.setAttribute('data-type','hex-map');
 

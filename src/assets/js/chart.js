@@ -285,6 +285,10 @@
 			el.insertBefore(newkey, el.firstChild);
 
 
+			var lbl = document.createElement('span');
+			lbl.innerHTML = "Key:";
+			newkey.appendChild(lbl);
+
 			var keyseries = key.querySelectorAll('.data-series');
 			var keyitem,icon,txt,viewBox,xscale,yscale,dx,dy,g;
 			for(s = 0; s < keyseries.length; s++){

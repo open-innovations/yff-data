@@ -6,8 +6,8 @@ import { loadDataFile } from '/src/_lib/oi/util.js'
 
 export const css = `
 .chart .series path.line { stroke-width: 4px; }
-.chart .legend:before { content: "Key: "; font-family: 'Century Gothic', sans-serif; font-weight: bold; }
-.chart .legend { display: inline-block; text-align: center; background: #efefef; padding: 0.5em; margin-bottom: 1em; }
+.chart .legend span { font-family: 'Century Gothic', sans-serif; font-weight: bold; }
+.chart .legend { display: inline-block; text-align: center; padding: 0.5em; margin-bottom: 1em; max-width: calc(100% - 3em); }
 .chart .legend-item { display: inline-block; padding-right: 0.5em; font-family: 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; line-height: 1.5em; }
 .chart .legend-item svg { margin: 0.25em 0.25em 0.25em 0.5em; float: left; }
 .chart .legend-item:hover { background: white; }

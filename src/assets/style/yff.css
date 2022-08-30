@@ -31,18 +31,18 @@ blockquote { border-left: 4px solid #e25b27; }
 .black { background: #000000; color: white; }
 .plum a, .blue a, .raisin a, .forest a, .black a { color: #E55912; font-weight: bold; }
 
-.gold-bg { background: #fdeed8; }
-.orange-bg { background: #faded0; }
-.turquoise-bg { background: #e1f3f4; }
-.cherry-bg { background: #fad5d7; }
-.chartreuse-bg { background: #f4f0cc; }
-.plum-bg { background: #e5d3da; }
-.grey-bg { background: #f0f0f0; }
-.blue-bg { background: #ccdde4; }
-.raisin-bg { background: #e7d9da; }
-.rose-bg { background: #ffe6e8; }
-.forest-bg { background: #dbe4d8; }
-.black-bg { background: #d8d9da; }
+.gold-bg { background: #fdeed8; color: inherit; }
+.orange-bg { background: #faded0; color: inherit; }
+.turquoise-bg { background: #e1f3f4; color: inherit; }
+.cherry-bg { background: #fad5d7; color: inherit; }
+.chartreuse-bg { background: #f4f0cc; color: inherit; }
+.plum-bg { background: #e5d3da; color: inherit; }
+.grey-bg { background: #f0f0f0; color: inherit; }
+.blue-bg { background: #ccdde4; color: inherit; }
+.raisin-bg { background: #e7d9da; color: inherit; }
+.rose-bg { background: #ffe6e8; color: inherit; }
+.forest-bg { background: #dbe4d8; color: inherit; }
+.black-bg { background: #d8d9da; color: inherit; }
 
 .back-to-report { display: block; }
 
@@ -95,17 +95,29 @@ section.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothic
 
 /* Tabbed figures */
 .grid.tabs { margin-bottom: 0; }
-.grid.tabs li a { background-color: #efefef; color: #565655; }
-.grid.tabs li a.active { background-color: #fceee7; color: inherit; font-weight: bold; }
+.grid.tabs li a { background-color: #efefef; color: #565655; z-index: 100; }
+.grid.tabs li a.active { background-color: #fceee7; color: inherit; font-weight: bold;}
 .grid.tabs li a h3 { color: inherit; }
 
 .panes .pane { background-color: #fceee7; }
 .panes .pane { border: 0; padding: 1.25em; }
+figure { position: relative; }
 figure .tab-title { display: none; }
 figcaption { margin-bottom: 1em; }
 cite { font-size: 0.8em; }
 
+a:focus, button:focus, figure .figure-menu:focus + label { outline: 2px solid #E55912; border-radius: 2px; }
 
+figure .figure-options { float: right; text-align: right; line-height: 0; }
+figure .figure-menu, figure .figure-menu + label { font-size: 1.33em; }
+figure .figure-options label { position: absolute; top: 0; right: 0; display: inline-block; text-align: center; font-weight: bold; line-height: 1.5em; min-width: 1.5em; z-index: 500; }
+figure .figure-menu { position: relative; height: 1.5em; width: 1.5em; opacity: 0.01; z-index: 510; cursor: pointer; }
+figure .added .figure-menu:checked ~ ul { display: block; position: absolute; z-index: 500; right: 0; }
+figure .figure-options ul { list-style: none; margin: unset; }
+figure .figure-options.added ul { display: none; }
+figure .figure-options ul li > * { position: relative; display: block; background-image: unset!important; text-align: left; padding: 0 1em; line-height: 2.5em; border: 0; font-size: inherit; width: 100%; white-space: nowrap; cursor: pointer; }
+figure .figure-menu:focus + label, figure .figure-options ul li > *:hover, figure .figure-options ul li > *:focus { color: white; background: #9d4f64; }
+figure .figure-options ul li > *:hover, figure .figure-options ul li > *:focus { z-index: 520; }
 
 .feedback { text-align: center; background: #e0e0e0; border: 0; }
 .feedback a { color: #7d2248; font-weight: bold; }
