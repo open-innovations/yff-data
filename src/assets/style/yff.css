@@ -101,6 +101,7 @@ section.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothic
 
 .panes .pane { background-color: #fceee7; }
 .panes .pane { border: 0; padding: 1.25em; }
+.pane .source { font-size: 0.8em; text-align: right; }
 figure { position: relative; }
 figure .tab-title { display: none; }
 figcaption { margin-bottom: 1em; }

@@ -113,6 +113,7 @@
 		return this;
 	}
 	function saveDOMImage(el,opt){
+		var w,h,src,d;
 		if(!opt) opt = {};
 		if(!opt.file) opt.file = "figure.png";
 		if(opt.scale){
@@ -125,6 +126,12 @@
 			el.style.setProperty('height',(opt.height)+'px');
 		}
 		el.classList.add('capture');
+		d = new Date();
+		src = document.createElement('div');
+		src.classList.add('source');
+		src.innerHTML = "&copy; Youth Futures Foundation "+d.getFullYear();
+		el.appendChild(src);
+
 		domtoimage.toPng(el,opt).then(function(dataUrl){
 			var link = document.createElement('a');
 			link.download = opt.file;
@@ -136,6 +143,7 @@
 				el.style.setProperty('height',h);
 			}
 			el.classList.remove('capture');
+			el.removeChild(src);
 			if(typeof opt.callback==="function") opt.callback.call();
 		});
 	}
