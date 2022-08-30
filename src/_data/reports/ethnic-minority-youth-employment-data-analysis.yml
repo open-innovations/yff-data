@@ -123,8 +123,49 @@ sections:
     blocks:
       - title: Block 1
         visualisations:
+          - title: Lack of Culturally Relevant Data 
+            caption: "<span class=\"note\">Review</span>The percentage of reports we looked at that had culturally relevant and timely data for analysis."
+            tab: Summary
+            type: dashboard
+            config: 
+              file: /data/gap_mapping_2022/culturally_relevant_data_summary.csv
+              title: "Title"	# Column heading for title
+              value: "Value"	# Column heading for value
+              note: "Note"		# Column heading for note
+              width: 250px		# Min width of column (default: 250px)
+              units:
+                postfix: "Units post"
+              panels:
+                - name: "Culturally not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Culturally partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Culturally mostly met"
+                  colour: "rgba(199,218,128,1)"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Culturally fully met"
+                  scale: YFF
+                  scale-value: 0
+                - name: "Timeliness of data not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Timeliness of data partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Timeliness of data mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Timeliness of data fully met"
+                  scale: YFF
+                  scale-value: 0
+      - title: Block 2
+        visualisations:
           - title: Lack of Culturally Relevant Data.
             caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            tab: Breakdown
             citations:
               - title: A short description of the citation
                 link: about:blank
