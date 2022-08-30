@@ -11,9 +11,17 @@ title: Home
 	<p>This is a clickable wireframe prototype for a data dashboard site. It has been created for Youth Futures Foundation.</p>
 
 	{% comp 'grid.auto' %}
-	{% comp 'grid.pane', { link: '/impact' } %}
-	<h2>Impact Dashboard</h2>
-	<p>Understand our Impact</p>
-	{% endcomp %}
+  {% comp 'grid.pane', { link: '~/reports.njk' | url } %}
+		<h2>Reports</h2>
+		<p>
+      {{ comp.note({ content: 'Review' }) | safe }}
+      This page contains summaries of some of our recent reports.
+    </p>
+    {{ comp.number({ number:reports | length } ) | safe }}
+    <p>
+      Visit the page to review headline narratives and visualisations of key findings.
+    </p>
+  {% endcomp %}
+
 	{% endcomp %}
 </div>
