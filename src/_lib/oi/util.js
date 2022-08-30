@@ -28,10 +28,17 @@ export function loadDataFile(path, sources) {
 	return data;
 }
 
+// Add some extra filters for templates:
+//   toFixed(n)
+//   multiply(n)
+//   toLocaleString()
+//   colourScale(scale,min,max) - this let's us get a colour to, for example, use as a background style
+//   contrastColour - find the most contrasting colour so that, for example, we can contrast the text colour
 export function applyReplacementFilters(value,options) {
 
 	var c,r,v,col,nc,h,bits,p1,rtn,b,scale,min,max;
 
+	// For each {{ value }} we will parse it to see if we recognise it
 	value = value.replace(/\{\{ *([^\}]+) *\}\}/g,function(m,p1){
 
 		// Remove a trailing space
