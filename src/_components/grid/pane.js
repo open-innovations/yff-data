@@ -26,7 +26,7 @@ export default function ({ content, link, tag = 'div', maxHeight = undefined }) 
   if ( link ) {
     return `
       <${tag}>
-        <a class='pane'${style} href='${link}'>
+        <a class='pane grey-bg'${style} href='${link}'>
           ${ content }
         </a>
       </${tag}>

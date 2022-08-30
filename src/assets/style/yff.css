@@ -31,6 +31,19 @@ blockquote { border-left: 4px solid #e25b27; }
 .black { background: #000000; color: white; }
 .plum a, .blue a, .raisin a, .forest a, .black a { color: #E55912; font-weight: bold; }
 
+.gold-bg { background: #fdeed8; }
+.orange-bg { background: #faded0; }
+.turquoise-bg { background: #e1f3f4; }
+.cherry-bg { background: #fad5d7; }
+.chartreuse-bg { background: #f4f0cc; }
+.plum-bg { background: #e5d3da; }
+.grey-bg { background: #f0f0f0; }
+.blue-bg { background: #ccdde4; }
+.raisin-bg { background: #e7d9da; }
+.rose-bg { background: #ffe6e8; }
+.forest-bg { background: #dbe4d8; }
+.black-bg { background: #d8d9da; }
+
 .back-to-report { display: block; }
 
 .back-to-report, .tag-cloud li { text-transform: uppercase; }
@@ -64,7 +77,7 @@ section, aside { margin: 1em 0; padding: 0; }
 .tag-cloud li { color: white; background: black; }
 
 .auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
-.auto-grid .pane { border: 0; background: #efefef; padding: 1.25em; line-height: 1.5em; }
+.auto-grid .pane { border: 0; padding: 1.25em; line-height: 1.5em; }
 .pane h2 { font-weight: bold; }
 .auto-grid .pane:hover, .auto-grid .pane:focus { outline: 2px solid #e25b27; }
 .auto-grid .pane:hover h2 { color: #964e6d; }
@@ -83,7 +96,7 @@ section.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothic
 /* Tabbed figures */
 .grid.tabs { margin-bottom: 0; }
 .grid.tabs li a { background-color: #efefef; color: #565655; }
-.grid.tabs li a.active { background-color: #fceee7; color: #E55912; }
+.grid.tabs li a.active { background-color: #fceee7; color: inherit; font-weight: bold; }
 .grid.tabs li a h3 { color: inherit; }
 
 .panes .pane { background-color: #fceee7; }
@@ -94,8 +107,8 @@ cite { font-size: 0.8em; }
 
 
 
-.feedback { text-align: center; background: #e8d8de; border: 0; }
-.feedback a { color: #E55912; font-weight: bold; }
+.feedback { text-align: center; background: #e0e0e0; border: 0; }
+.feedback a { color: #7d2248; font-weight: bold; }
 
 header .et_pb_row { width: 90%; max-width: 1600px; }
 footer .et_pb_row { width: 80%; max-width: 1600px; padding: 3% 0; padding-bottom: 20px; }
@@ -116,8 +129,8 @@ footer .site-header-logo { margin-bottom: 1.5em; }
 footer .twocol:first-child { padding-bottom: 20px; }
 
 
-.note { background-color: #E52E36; color:white; }
-.note:before { border-color: transparent #E52E36 transparent transparent; }
+.note { background-color: #7D2248; color:white; }
+.note:before { border-color: transparent #7D2248 transparent transparent; }
 
 
 

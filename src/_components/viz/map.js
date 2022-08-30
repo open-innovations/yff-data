@@ -3,7 +3,7 @@ import { loadDataFile } from '/src/_lib/oi/util.js'
 
 
 export const css = `
-.map { background: #e2e2e2; position: relative; }
+.map { position: relative; }
 .map .leaflet { width: 100%; aspect-ratio: 16 / 9; background: #e2e2e2; position: relative; }
 .map .leaflet a { background-image: none!important; color: inherit!important; }
 .map .legend { text-align: left; line-height: 18px; color: #555; background: rgba(255,255,255,0.8); padding: 1em; }
