@@ -7,5 +7,5 @@ export const css = `
 
 export default function ({ link }) {
   if (link === undefined) return;
-  return `<a class='download-link' href="${link}">Download the report</a>`;
+  return `<a class='download-link orange' href="${link}">Download the report</a>`;
 }
