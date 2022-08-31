@@ -204,6 +204,7 @@ figure .figure-options .figure-option:hover, figure .figure-options .figure-opti
 .download-link {
   background: black;
   color: white;
+  position: relative;
 }
 .download-link li {
   margin: 0.2rem;
