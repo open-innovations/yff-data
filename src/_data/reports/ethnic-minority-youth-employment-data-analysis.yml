@@ -135,16 +135,16 @@ sections:
               units:
                 postfix: "Units post"
               panels:
-                - name: "Culturally relevant not met"
+                - name: "Culturally relevant data not met"
                   scale: YFF
                   scale-value: 100
-                - name: "Culturally relevant partially met"
+                - name: "Culturally relevant data partially met"
                   scale: YFF
                   scale-value: 66.6
-                - name: "Culturally relevant mostly met"
+                - name: "Culturally relevant data mostly met"
                   scale: YFF
                   scale-value: 33.33
-                - name: "Culturally relevant fully met"
+                - name: "Culturally relevant data fully met"
                   scale: YFF
                   scale-value: 0
                 - name: "Timeliness of data not met"
