@@ -95,9 +95,9 @@ section.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothic
 
 /* Tabbed figures */
 .grid.tabs { margin-bottom: 0; }
-.grid.tabs li a { background-color: #efefef; color: #565655; z-index: 100; }
-.grid.tabs li a.active { background-color: #fceee7; color: inherit; font-weight: bold;}
-.grid.tabs li a h3 { color: inherit; }
+.grid.tabs button { background-color: #efefef; color: #565655; z-index: 100; border: 0; font: inherit; line-height: inherit; }
+.grid.tabs button[aria-selected=true] { background-color: #fceee7; color: inherit; font-weight: bold;}
+.grid.tabs button h3 { color: inherit; }
 
 .panes .pane { background-color: #fceee7; }
 .panes .pane { border: 0; padding: 1.25em; }

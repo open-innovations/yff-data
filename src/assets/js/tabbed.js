@@ -17,15 +17,23 @@
 		};
 	}
 	function TabbedInterface(el){
-		var tabs,panes,li,p,h,a,ul;
+		var tabs,panes,li,p,h,b,l;
 		this.selectTab = function(t){
 			var tab,pane;
 			tab = tabs[t].tab;
 			pane = tabs[t].pane;
-			tab.closest('ul').querySelectorAll('li a').forEach(function(el){ el.classList.remove('active'); });
-			tab.classList.add('active');
-			pane.closest('.panes').querySelectorAll('.pane').forEach(function(el){ el.style.display = "none"; });
+
+			// Remove existing selection and set all tabindex values to -1
+			tab.parentNode.querySelectorAll('button').forEach(function(el){ el.removeAttribute('aria-selected'); el.setAttribute('tabindex',-1); });
+
+			// Update the selected tab
+			tab.setAttribute('aria-selected','true');
+			tab.setAttribute('tabindex',0);
+			tab.focus();
+
+			pane.closest('.panes').querySelectorAll('.pane').forEach(function(el){ el.style.display = "none"; el.setAttribute('hidden',true); });
 			pane.style.display = "";
+			pane.removeAttribute('hidden');
 			// Loop over any potentially visible leaflet maps that haven't been sized and set the bounds
 			if(OI.maps){
 				for(var m = 0; m < OI.maps.length; m++){
@@ -42,29 +50,55 @@
 		};
 		this.enableTab = function(tab,t){
 			var _obj = this;
-			tab.addEventListener('click',function(e){ e.preventDefault(); _obj.selectTab(t); });
+
+			// Set the tabindex of the tab panel
+			panes[t].setAttribute('tabindex',0);
+
+			// Add a focus event
+			tab.addEventListener('focus',function(e){ e.preventDefault(); var t = parseInt(e.target.getAttribute('data-tab')); _obj.selectTab(t); });
+
+			// Store the tab number in the tab (for use in the keydown event)
+			tab.setAttribute('data-tab',t);
+
+			// Add keyboard navigation to arrow keys following https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role
+			tab.addEventListener('keydown',function(e){
+
+				// Get the tab number from the attribute we set
+				t = parseInt(e.target.getAttribute('data-tab'));
+
+				if(e.keyCode === 39 || e.keyCode === 40){
+					e.preventDefault();
+					// Move right or down
+					t++;
+					if(t >= tabs.length) t = 0;
+					_obj.selectTab(t);
+				}else if(e.keyCode === 37 || e.keyCode === 38){
+					e.preventDefault();
+					// Move left or up
+					t--;
+					if(t < 0) t = tabs.length-1;
+					_obj.selectTab(t);
+				}
+			});
 		};
 		tabs = [];
 
-		ul = document.createElement('ul');
-		ul.classList.add('grid','tabs');
-		ul.setAttribute('role','tablist');
+		l = document.createElement('div');
+		l.classList.add('grid','tabs');
+		l.setAttribute('role','tablist');
+		l.setAttribute('aria-label','Visualisations');
 		panes = el.querySelectorAll('.pane');
 		for(p = 0; p < panes.length; p++){
 			h = panes[p].querySelector('.tab-title');
-			li = document.createElement('li');
-			li.setAttribute('role','presentation');
-			a = document.createElement('a');
-			a.classList.add('tab');
-			a.setAttribute('role','tab');
-			a.setAttribute('href','#');
-			if(h) a.appendChild(h);
-			li.appendChild(a);
-			ul.appendChild(li);
-			tabs[p] = {'tab':a,'pane':panes[p]};
-			this.enableTab(a,p);
+			b = document.createElement('button');
+			b.classList.add('tab');
+			b.setAttribute('role','tab');
+			if(h) b.appendChild(h);
+			l.appendChild(b);
+			tabs[p] = {'tab':b,'pane':panes[p]};
+			this.enableTab(b,p);
 		}
-		el.insertAdjacentElement('beforebegin', ul);
+		el.insertAdjacentElement('beforebegin', l);
 		this.selectTab(0);
 		return this;
 	}

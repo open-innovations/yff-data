@@ -13,17 +13,21 @@
 			else document.addEventListener('DOMContentLoaded', fn);
 		};
 	}
+	var counter = { 'item': 0, 'menu': 0 };
 	function FigureMenu(el){
 		var opts,opt,menuitems,inp,lbl,svg,li,btn;
 		opts = el.querySelector('.figure-options');
 		opts.classList.add('added');
-		opt = opts.querySelector('ul');
+		opt = opts.querySelector('.figure-option-list');
+		opt.setAttribute('role','menu');
+		opt.setAttribute('id','menu-'+counter.menu);
 
 		// Add screenshot function
-		li = document.createElement('li');
-		li.innerHTML = '<button class="orange-bg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16"><path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg> Save figure</button>';
-		opt.appendChild(li);
-		btn = li.querySelector('button');
+		btn = document.createElement('button');
+		btn.classList.add('orange-bg','figure-option');
+		btn.setAttribute('role','menuitem');
+		btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16"><path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg> Save figure';
+		opt.appendChild(btn);
 		btn.addEventListener('click',function(e){
 			var i,ignore,nts,hide;
 			// Add menu button
@@ -51,10 +55,11 @@
 		svg = el.querySelector('.chart > svg, .svg-map > svg, .hex-map > svg');
 		if(svg){
 			// Add "Download SVG" option
-			li = document.createElement('li');
-			li.innerHTML = '<button class="orange-bg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-image-fill" viewBox="0 0 16 16"><path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/><path d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z"/></svg> Save .svg</button>';
-			opt.appendChild(li);
-			btn = li.querySelector('button');
+			btn = document.createElement('button');
+			btn.classList.add('orange-bg','figure-option');
+			btn.setAttribute('role','menuitem');
+			btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-image-fill" viewBox="0 0 16 16"><path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/><path d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z"/></svg> Save .svg';
+			opt.appendChild(btn);
 			btn.addEventListener('click',function(e){
 				// Add width/height to SVG
 				svg.setAttribute('width',svg.clientWidth+'px');
@@ -63,7 +68,7 @@
 			});
 		}
 
-		menuitems = opt.querySelectorAll('li > *');
+		menuitems = opts.querySelectorAll('.figure-option');
 
 		// Add the menu selector
 		if(menuitems.length > 0){
@@ -71,15 +76,25 @@
 			inp = document.createElement('input');
 			inp.setAttribute('type','checkbox');
 			inp.classList.add('figure-menu');
+			inp.setAttribute('id','menu-'+counter.menu+'-item-'+counter.item);
 			opt.insertAdjacentElement('beforebegin', inp);
 
 			lbl = document.createElement('label');
 			lbl.setAttribute('title','Toggle figure menu');
+			lbl.setAttribute('for','menu-'+counter.menu+'-item-'+counter.item);
+			lbl.setAttribute('aria-label','Open menu');
+			lbl.setAttribute('aria-controls','menu-'+counter.menu);
+			lbl.setAttribute('id','menu-button-'+counter.menu);
 			lbl.classList.add('orange-bg');
 			lbl.innerHTML = "&#8801;";
 			opt.insertAdjacentElement('beforebegin', lbl);
+			
+			// Update the menu toggle aria-labelledby value
+			opt.setAttribute('aria-labelledby','menu-button-'+counter.menu);
 
-			menuitems[menuitems.length-1].addEventListener('blur',function(e){ inp.checked = false; });
+			//menuitems[menuitems.length-1].addEventListener('blur',function(e){ inp.checked = false; });
+			
+			counter.item++;
 		}
 		return this;
 	};
