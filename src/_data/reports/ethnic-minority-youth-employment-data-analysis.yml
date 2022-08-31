@@ -408,6 +408,62 @@ sections:
                   min: 3
                   max: 0
                   width: 10%
+          - title: Lack of data available on employment and discrimination in employment.    
+            type: chart
+            tab: Bar Chart
+            caption: A stacked bar chart. This is effectively a multi-series bar chart with special formatting. The interactive key has the special ability to shift the bars to the left when a series is focussed so that the values for that series can be more easily compared.
+            config:
+              file: /data/gap_mapping_2022/employment_bar.csv
+              summary: "This is an approximate version of the real data created by trying to read values from a chart"
+              type: stacked-bar-chart
+              legend:
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 0
+                  max: 120
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 10
+                      label: "10%"
+                    - value: 20
+                      label: "20%"
+                    - value: 30
+                      label: "30%"
+                    - value: 40
+                      label: "40%"
+                    - value: 50
+                      label: "50%"
+                    - value: 60
+                      label: "60%"
+                    - value: 70
+                      label: "70%"
+                    - value: 80
+                      label: "80%"
+                    - value: 90
+                      label: "90%"
+                    - value: 100
+                      label: "100%"
+                y:
+                  grid:
+                    stroke-width: 0.5
+              category: "Data Type"  # Category labels come from 
+              series:
+                - title: "Not met (%)"
+                  value: "Not met (%)"
+                  colour: "#69C2C9"
+                - title: "Partially met (%)"
+                  value: "Partially met (%)"
+                  colour: "#7D2248"
+                - title: "Mostly met (%)"
+                  value: "Mostly met (%)"
+                  colour: "#4A783C"
+                - title: "Fully met (%)"
+                  value: "Fully met (%)"
+                  colour: "#69C2C9"
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data (more detail)
             caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
