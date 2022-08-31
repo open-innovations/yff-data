@@ -17,7 +17,7 @@ title: Home
       {{ comp.note({ content: 'Review' }) | safe }}
       This page contains summaries of some of our recent reports.
     </p>
-    {{ comp.number({ number:reports | length } ) | safe }}
+    {{ comp.number({ number: search.pages('report') | length } ) | safe }}
     <p>
       Visit the page to review headline narratives and visualisations of key findings.
     </p>
