@@ -133,7 +133,7 @@ footer .site-header-logo { margin-bottom: 1.5em; }
 footer .twocol:first-child { padding-bottom: 20px; }
 
 
-.note { background-color: #7D2248; color:white; }
+.note { background-color: #7D2248; color:white; font-size: 17px; font-weight: normal; text-transform: none; }
 .note:before { border-color: transparent #7D2248 transparent transparent; }
 
 
