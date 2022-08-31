@@ -75,6 +75,8 @@ export function contrastColour(c){
 		rgb = [h2d(c.substring(1,3)),h2d(c.substring(3,5)),h2d(c.substring(5,7))];
 	}else if(c.indexOf('rgb')==0){
 		var bits = c.match(/[0-9\.]+/g);
+		// If the opacity is low we'll return 'inherit'
+		if(bits.length==4 && parseFloat(bits[3]) < 0.4) return "inherit"; 
 		rgb = [parseInt(bits[0]),parseInt(bits[1]),parseInt(bits[2])];
 	}
 	// Check brightness contrast
@@ -230,7 +232,8 @@ export const colourScales = new Colours({
 	'Planck': 'rgb(0,0,255) 0%, rgb(0,112,255) 16.666%, rgb(0,221,255) 33.3333%, rgb(255,237,217) 50%, rgb(255,180,0) 66.666%, rgb(255,75,0) 100%',
 	'Plasma': 'rgb(12,7,134) 0%, rgb(82,1,163) 12.5%, rgb(137,8,165) 25%, rgb(184,50,137) 37.5%, rgb(218,90,104) 50%, rgb(243,135,72) 62.5%, rgb(253,187,43) 75%, rgb(239,248,33) 87.5%',
 	'YFF': 'rgb(99,190,123) 0%, rgb(250,233,131) 50%, rgb(248,105,107) 100%',
-	'Diverging': 'rgb(0,87,118) 0%, rgb(247,247,247) 50%, rgb(229,89,18) 100%'
+	'Diverging': 'rgb(0,87,118) 0%, rgb(247,247,247) 50%, rgb(229,89,18) 100%',
+	'YFF-Highlight': 'rgba(229,89,18,0) 0%, rgba(229,89,18,1) 100%'
 });
 
 

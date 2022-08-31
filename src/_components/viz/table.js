@@ -1,4 +1,4 @@
-import { colourScales, Colour } from '/src/_lib/oi/colour.js';
+import { colourScales, contrastColour } from '/src/_lib/oi/colour.js';
 import { loadDataFile } from '/src/_lib/oi/util.js';
 
 export const css = `
@@ -28,23 +28,6 @@ export default ({ config, sources }) => {
 
   // Build header cells
   html.push('<thead>');
-/* Giles' code
-  for (const row of table.header) {
-    html.push('<tr>');
-    const spans = row.reduce((acc, curr) => {
-      if (acc.prev != curr) acc.header.push({ name: curr, count: 0 })
-      acc.header[acc.header.length - 1].count++;
-      acc.prev = curr;
-      return acc;
-    }, { header: [] });
-    for (const cell of spans.header) {
-      const { name, count } = cell;
-      html.push(`<th${(count > 1) ? ' colspan=' + count : ''}>${name}</th>`)
-    }
-    html.push('</tr>');
-  }
-  const mergeRows = table.names.reduce((acc, key) => ({ ...acc, [key]: config.columns?.find(x => x.name === key)?.mergeRows || false }), {});
-  */
 
 	var r,c,c1,m,label,cspan,rspan,r2,c2,n;
 
@@ -143,48 +126,11 @@ export default ({ config, sources }) => {
 
   html.push('</thead>');
 
-  // Giles' code: const mergeRows = table.names.reduce((acc, key) => ({ ...acc, [key]: config.columns?.find(x => x.name === key)?.mergeRows || false }), {});
   // Build data part
   html.push('<tbody>');
-/* Giles' code
-  for (const [rowNumber, row] of table.data.entries()) {
-    html.push('<tr>');
-    for (const [colNumber, cell] of row.entries()) {
-      const colName = table.names[colNumber];
-      let count = undefined;
-      let output = true;
-      if (mergeRows[colName]) {
-        if (rowNumber === 0 || table.columns[colName][rowNumber - 1] !== cell) {
-          count = 0;
-          const restOfCol = table.columns[colName].slice(rowNumber);
-          for (const [i, v] of restOfCol.entries()) {
-            if (v !== cell) break;
-            count++;
-          }
-        } else {
-          output = false;
-        }
-      };
-      const rowSpan = count ? 'rowspan=' + count : '';
-      const cellText = (isNaN(cell) && ['float'].includes(table.types[colNumber])) ? '' : cell;
-      const { align, heatmap, scale = 'Viridis', min, max } = config.columns?.find(x => x.name === colName) || {};
-      let heatMapStyle = '';
-      if (heatmap && !isNaN(cell)) {
-        const background = colourScales.getColourFromScale(scale, cell, min, max);
-        const textCol = (new Colour(background)).text;
-        heatMapStyle = `background: ${background}; color: ${textCol};`;
-      }
-      const style = `style="
-      ${ align ? 'text-align: ' + align + ';' : ''}
-      ${ heatMapStyle }
-      "`;
-      if (output) html.push(`<td ${rowSpan} ${style}>${cellText}</td>`)
-    }
-    html.push('</tr>');
-  }
-*/
+
 	// Find the min/max values of a column (as a fallback if none provided)
-	var min,max,bg,col;
+	var min,max,bg,col,sty;
 
 	for(c = 0; c < config.columns.length; c++){
 		c2 = table.colnum[config.columns[c].name];
@@ -235,20 +181,20 @@ export default ({ config, sources }) => {
 			if(!done.data[r][c2]){
 
 				html.push('<td'+(m > 1 ? ' rowspan="'+m+'"':'')+' style="');
-				html.push(config.columns[c].align ? 'text-align:'+config.columns[c].align+';':'');
+				sty = '';
+				sty += (config.columns[c].align ? 'text-align:'+config.columns[c].align+';':'');
 				var v = table.data[r][c2];
 				// If this column has heatmap=true and the value for this cell is a number we will work out the foreground/background colours
 				if(config.columns[c].heatmap && typeof v=="number"){
 					if(!isNaN(v)){
 						bg = colourScales.getColourFromScale(config.columns[c].scale||'Viridis',table.data[r][c2],config.columns[c].min,config.columns[c].max);
-						html.push('background:'+bg+';');
-						col = new Colour(bg);
-						html.push('color:'+col.text+';');
+						sty += 'background:'+bg+';';
+						sty += 'color:'+contrastColour(bg)+';';
 					}else{
 						v = "";
 					}
 				}
-				html.push('">'+(typeof v=="undefined" ? "" : v)+'</td>');
+				html.push(sty+'">'+(typeof v=="undefined" ? "" : v)+'</td>');
 
 			}
 		}
