@@ -109,16 +109,7 @@ cite { font-size: 0.8em; }
 
 a:focus, button:focus, figure .figure-menu:focus + label { outline: 2px solid #E55912; border-radius: 2px; }
 
-figure .figure-options { float: right; text-align: right; line-height: 0; }
-figure .figure-menu, figure .figure-menu + label { font-size: 1.33em; }
-figure .figure-options label { position: absolute; top: 0; right: 0; display: inline-block; text-align: center; font-weight: bold; line-height: 1.5em; min-width: 1.5em; z-index: 500; }
-figure .figure-menu { position: relative; height: 1.5em; width: 1.5em; opacity: 0.01; z-index: 510; cursor: pointer; }
-figure .added .figure-menu:checked ~ ul { display: block; position: absolute; z-index: 500; right: 0; }
-figure .figure-options ul { list-style: none; margin: unset; }
-figure .figure-options.added ul { display: none; }
-figure .figure-options ul li > * { position: relative; display: block; background-image: unset!important; text-align: left; padding: 0 1em; line-height: 2.5em; border: 0; font-size: inherit; width: 100%; white-space: nowrap; cursor: pointer; }
 figure .figure-menu:focus + label, figure .figure-options ul li > *:hover, figure .figure-options ul li > *:focus { color: white; background: #9d4f64; }
-figure .figure-options ul li > *:hover, figure .figure-options ul li > *:focus { z-index: 520; }
 
 .feedback { text-align: center; background: #e0e0e0; border: 0; }
 .feedback a { color: #7d2248; font-weight: bold; }

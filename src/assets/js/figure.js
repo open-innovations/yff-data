@@ -1,9 +1,7 @@
 /*
-	Open Innovations Tabbed Interface v0.1
-	Helper function that find elements with the class "panes",
-	looks for elements with "pane" within them,
-	finds their <h3> elements, 
-	then builds a simple tabbed interface.
+	Open Innovations Figure Menu
+	Helper function that finds <figure> within the class "panes",
+	then adds basic menus to them to save/download.
 */
 
 (function(root){
