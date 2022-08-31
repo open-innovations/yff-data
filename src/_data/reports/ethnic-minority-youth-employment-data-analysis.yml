@@ -314,33 +314,33 @@ sections:
                   rename: "Not met (%)"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 100
-                  max: 0
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
                   width: 10%
                 - name: "Partially met (%)"
                   rename: "Partially met (%)"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 100
-                  max: 0
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
                   width: 10%
                 - name: "Mostly met (%)"
                   rename: "Mostly met (%)"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 100
-                  max: 0
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
                   width: 10%
                 - name: "Fully met (%)"
                   rename: "Fully met (%)"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 100
-                  max: 0
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
                   width: 10%
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data
