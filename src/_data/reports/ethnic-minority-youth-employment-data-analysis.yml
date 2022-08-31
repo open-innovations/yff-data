@@ -87,7 +87,7 @@ sections:
                   scale-value: 0
           - title: Systemic Erasure
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "<span class=\"note\">Review</span>Data gap mapping analysis demonstrates a lack of data available to perform intersectional analysis. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -161,7 +161,7 @@ sections:
                   scale-value: 0
           - title: Lack of Culturally Relevant Data.
             tab: Breakdown
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -344,7 +344,7 @@ sections:
                   width: 10%
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -466,7 +466,7 @@ sections:
                   colour: "#69C2C9"
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data (more detail)
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -552,7 +552,7 @@ sections:
         visualisations:
           - title: Example table A
             tab: Table A
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -581,7 +581,7 @@ sections:
                   width: 30%
           - title: Example table B
             tab: Table B
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
