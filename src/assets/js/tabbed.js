@@ -18,7 +18,7 @@
 	}
 	function TabbedInterface(el){
 		var tabs,panes,li,p,h,b,l;
-		this.selectTab = function(t){
+		this.selectTab = function(t,focusIt){
 			var tab,pane;
 			tab = tabs[t].tab;
 			pane = tabs[t].pane;
@@ -29,7 +29,7 @@
 			// Update the selected tab
 			tab.setAttribute('aria-selected','true');
 			tab.setAttribute('tabindex',0);
-			tab.focus();
+			if(focusIt) tab.focus();
 
 			pane.closest('.panes').querySelectorAll('.pane').forEach(function(el){ el.style.display = "none"; el.setAttribute('hidden',true); });
 			pane.style.display = "";
@@ -55,7 +55,7 @@
 			panes[t].setAttribute('tabindex',0);
 
 			// Add a focus event
-			tab.addEventListener('focus',function(e){ e.preventDefault(); var t = parseInt(e.target.getAttribute('data-tab')); _obj.selectTab(t); });
+			tab.addEventListener('focus',function(e){ e.preventDefault(); var t = parseInt(e.target.getAttribute('data-tab')); _obj.selectTab(t,true); });
 
 			// Store the tab number in the tab (for use in the keydown event)
 			tab.setAttribute('data-tab',t);
@@ -71,13 +71,13 @@
 					// Move right or down
 					t++;
 					if(t >= tabs.length) t = 0;
-					_obj.selectTab(t);
+					_obj.selectTab(t,true);
 				}else if(e.keyCode === 37 || e.keyCode === 38){
 					e.preventDefault();
 					// Move left or up
 					t--;
 					if(t < 0) t = tabs.length-1;
-					_obj.selectTab(t);
+					_obj.selectTab(t,true);
 				}
 			});
 		};
