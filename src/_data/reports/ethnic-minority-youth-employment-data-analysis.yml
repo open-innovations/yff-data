@@ -422,7 +422,7 @@ sections:
               axis:
                 x:
                   min: 0
-                  max: 120
+                  max: 105
                   grid:
                     stroke-dasharray: "6 2"
                     stroke-width: 1
@@ -454,13 +454,13 @@ sections:
               series:
                 - title: "Not met (%)"
                   value: "Not met (%)"
-                  colour: "#69C2C9"
+                  colour: "#7D2248"
                 - title: "Partially met (%)"
                   value: "Partially met (%)"
-                  colour: "#7D2248"
+                  colour: "#E55912"
                 - title: "Mostly met (%)"
                   value: "Mostly met (%)"
-                  colour: "#4A783C"
+                  colour: "#F7AB3D"
                 - title: "Fully met (%)"
                   value: "Fully met (%)"
                   colour: "#69C2C9"
