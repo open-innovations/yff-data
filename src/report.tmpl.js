@@ -1,7 +1,7 @@
 export const layout = 'report.njk';
 export const tags = ['report'];
 
-const conditionalReportFilter = (_, report) => report.draft !== true;
+const conditionalReportFilter = ([_, report]) => report.draft !== true;
 
 /**
  * Generator function which creates a page per report data object.
