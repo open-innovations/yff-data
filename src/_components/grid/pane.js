@@ -10,7 +10,7 @@ export const css = `
 .auto-grid .pane:hover, .auto-grid .pane:focus { background: #efefef; }
 `;
 
-export default function ({ content, link, tag = 'div', maxHeight = undefined }) {
+export default function ({ content, link, tag = 'div', maxHeight = undefined, extra_classes = 'grey-bg' }) {
   // let paneContent = content;
   // if (link) {
   //   paneContent = `<a href=${link} class='>${content}</a>`
@@ -26,7 +26,7 @@ export default function ({ content, link, tag = 'div', maxHeight = undefined }) 
   if ( link ) {
     return `
       <${tag}>
-        <a class='pane grey-bg'${style} href='${link}'>
+        <a class='pane ${extra_classes}'${style} href='${link}'>
           ${ content }
         </a>
       </${tag}>

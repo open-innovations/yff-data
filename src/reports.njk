@@ -11,7 +11,7 @@ title: Reports
   <div class="wrapper holder">
 	{% comp 'grid.auto', { min_width: '30em' } %}
 	  {% for page in search.pages('report', 'date') %}
-		{% comp 'grid.pane', { link: page.data.url } %}
+		{% comp 'grid.pane', { link: page.data.url, extra_classes: 'turquoise-bg' } %}
 		  <h2>{{ page.data.title }}</h2>
 		  <div class="post-date">{{ page.data.publication_date | date('dd MMMM yyyy') }}</div>
 		  <p>
