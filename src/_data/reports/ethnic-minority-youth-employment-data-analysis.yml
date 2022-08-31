@@ -143,7 +143,6 @@ sections:
                   scale: YFF
                   scale-value: 66.6
                 - name: "Culturally mostly met"
-                  colour: "rgba(199,218,128,1)"
                   scale: YFF
                   scale-value: 33.33
                 - name: "Culturally fully met"
@@ -161,11 +160,9 @@ sections:
                 - name: "Timeliness of data fully met"
                   scale: YFF
                   scale-value: 0
-      - title: Block 2
-        visualisations:
           - title: Lack of Culturally Relevant Data.
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             tab: Breakdown
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -202,6 +199,103 @@ sections:
     blocks:
       - title: Block 1
         visualisations:
+          - title: Lack of Data on Employment and Discrimination 
+            caption: "<span class=\"note\">Review</span>The percentage of reports we looked at that had data for analysis on employment."
+            tab: Dashboard
+            type: dashboard
+            config: 
+              file: /data/gap_mapping_2022/employment_summary.csv
+              title: "Title"	# Column heading for title
+              value: "Value"	# Column heading for value
+              note: "Note"		# Column heading for note
+              width: 250px		# Min width of column (default: 250px)
+              units:
+                postfix: "Units post"
+              panels:
+                - name: "Sector not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Sector partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Sector mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Sector fully met"
+                  scale: YFF
+                  scale-value: 0
+                - name: "Occupation not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Occupation partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Occupation mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Occupation fully met"
+                  scale: YFF
+                  scale-value: 0
+                - name: "Contract Type not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Contract Type partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Contract Type mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Contract Type fully met"
+                  scale: YFF
+                  scale-value: 0
+                - name: "Apprenticeships not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Apprenticeships partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Apprenticeships mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Apprenticeships fully met"
+                  scale: YFF
+                  scale-value: 0   
+                - name: "Pay not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Pay partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Pay mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Pay fully met"
+                  scale: YFF
+                  scale-value: 0             
+                - name: "Progression not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Progression partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Progression mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Progression fully met"
+                  scale: YFF
+                  scale-value: 0
+                - name: "Discrimination in Employment not met"
+                  scale: YFF
+                  scale-value: 100
+                - name: "Discrimination in Employment partially met"
+                  scale: YFF
+                  scale-value: 66.6
+                - name: "Discrimination in Employment mostly met"
+                  scale: YFF
+                  scale-value: 33.33
+                - name: "Discrimination in Employment fully met"
+                  scale: YFF
+                  scale-value: 0
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data
             caption: <span class="note">Review</span>Slightly longer description to be used as a caption
