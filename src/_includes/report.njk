@@ -36,7 +36,7 @@
 
 		  {{ section.summary | md | safe }}
 
-		  <a href="{{ search.page("report=" + url + " index=" + loop.index0 ).data.url }}">READ MORE</a>
+		  <a href="{{ search.page("report=" + url + " index=" + loop.index0 ).data.url }}" aria-label="Read more in {{ section.title | safe }}">READ MORE</a>
 		</section>
 	  {% endfor %}
   </div>
