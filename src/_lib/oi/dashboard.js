@@ -56,12 +56,17 @@ export function Dashboard(config,csv){
 					panel += '>';
 					panel += csv.rows[idx][config.value].toLocaleString();
 					panel += '</span>';
+				}else{
+					console.error('WARNING: No column named "'+config.value+'" in panel '+p+' ('+config.file+')');
 				}
+
 				if(config.note && csv.columns[config.note]) panel += '<span class="footnote">'+csv.rows[idx][config.note]+'</span>';
 				panel += '</div>';
 
 				html.push(panel);
 				
+			}else{
+				console.error('WARNING: Unable to find matching row for panel '+p+' "'+config.panels[p].name+'" ('+config.file+').');
 			}
 		}
 		html.push('</div>');
