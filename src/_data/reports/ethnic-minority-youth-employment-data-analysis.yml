@@ -113,7 +113,6 @@ sections:
                   min: 3
                   max: 0
         featured_block: true
-
         text: |
           <span class="note">Review</span>Some text in section 1...
 
@@ -136,16 +135,16 @@ sections:
               units:
                 postfix: "Units post"
               panels:
-                - name: "Culturally not met"
+                - name: "Culturally relevant not met"
                   scale: YFF
                   scale-value: 100
-                - name: "Culturally partially met"
+                - name: "Culturally relevant partially met"
                   scale: YFF
                   scale-value: 66.6
-                - name: "Culturally mostly met"
+                - name: "Culturally relevant mostly met"
                   scale: YFF
                   scale-value: 33.33
-                - name: "Culturally fully met"
+                - name: "Culturally relevant fully met"
                   scale: YFF
                   scale-value: 0
                 - name: "Timeliness of data not met"
@@ -219,6 +218,7 @@ sections:
                   scale: YFF
                   scale-value: 66.6
                 - name: "Sector mostly met"
+                  colour: "rgba(199,218,128,1)"
                   scale: YFF
                   scale-value: 33.33
                 - name: "Sector fully met"
@@ -284,18 +284,64 @@ sections:
                 - name: "Progression fully met"
                   scale: YFF
                   scale-value: 0
-                - name: "Discrimination in Employment not met"
+                - name: "Discrimination not met"
                   scale: YFF
                   scale-value: 100
-                - name: "Discrimination in Employment partially met"
+                - name: "Discrimination partially met"
                   scale: YFF
                   scale-value: 66.6
-                - name: "Discrimination in Employment mostly met"
+                - name: "Discrimination mostly met"
                   scale: YFF
                   scale-value: 33.33
-                - name: "Discrimination in Employment fully met"
+                - name: "Discrimination fully met"
                   scale: YFF
                   scale-value: 0
+          - title: Lack of data available on employment and discrimination in employment.
+            tab: Summary
+            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            citations:
+              - title: A short description of the citation
+                link: about:blank
+            type: table
+            config:
+              file: /data/gap_mapping_2022/employment_summary_table.csv
+              columns:
+                - name: "Data Type"
+                  rename: "Data Type"
+                  align: center
+                  width: 10%
+                - name: "Not met (%)"
+                  rename: "Not met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 100
+                  max: 0
+                  width: 10%
+                - name: "Partially met (%)"
+                  rename: "Partially met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 100
+                  max: 0
+                  width: 10%
+                - name: "Mostly met (%)"
+                  rename: "Mostly met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 100
+                  max: 0
+                  width: 10%
+                - name: "Fully met (%)"
+                  rename: "Fully met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF
+                  min: 100
+                  max: 0
+                  width: 10%
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data
             caption: <span class="note">Review</span>Slightly longer description to be used as a caption
