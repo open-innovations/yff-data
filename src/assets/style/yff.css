@@ -78,7 +78,7 @@ section, aside { margin: 1em 0; padding: 0; }
 .site-header-logo img, .site-header-logo svg { display: block; }
 .site-header-logo span { display: none; }
 .site-header-content .logos a:first-child svg { height: 24px; margin: 33px 0; }
-.site-header-content .logos a:last-child { border-left: 2px solid #d4d4d4; padding-left: 25px; }
+.site-header-content .logos a:last-child { border-left: 2px solid #d4d4d4; padding-left: 25px; margin-left: 25px; }
 .tag-cloud li { color: white; background: black; }
 
 .auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }

@@ -65,15 +65,10 @@ aside {
 	z-index: 1001;
 }
 
-.site-title {
-  font-weight: bold;
-}
-.site-header-logo {
-  display: inline-block; height: 90px; vertical-align: middle; position: relative; margin-right: 1em;
-}
-.site-logo {
-  width: 200px;
-}
+.site-title { font-weight: bold; }
+.site-header-logo { display: inline-block; height: 90px; vertical-align: middle; position: relative;  }
+.site-header-content .logos > *:last-child .site-header-logo { margin-right: 1em; }
+.site-logo { width: 200px; }
 
 .site-header-content .logos a { display: inline-block; }
 .site-header-logo img, .site-header-logo svg { display: none; height: 100%; }
