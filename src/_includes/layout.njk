@@ -10,7 +10,7 @@
   <title>{{ title | default('PAGE TITLE') }} - Youth Futures Foundation</title>
   <link rel="stylesheet" href="/components.css">
   <link rel="stylesheet" href="/assets/style/wireframe.css">
-  <link rel="stylesheet" href="/assets/style/yff.css" disabled>
+  <link rel="stylesheet" href="/assets/style/yff.css">
   <script src="/components.js" inline></script>
 </head>
 <body>
@@ -67,9 +67,9 @@
   </script>
   <script>
     addEventListener('DOMContentLoaded', function () {
-      if (new URL(location).searchParams.has('styled') || sessionStorage.getItem('styled') === 'true') {
+      if (sessionStorage.getItem('unstyled') === 'true') {
         var styles = document.querySelectorAll('link[rel=stylesheet][href$="/assets/style/yff.css"]');
-        styles.forEach(function (style) { style.disabled = false; });
+        styles.forEach(function (style) { style.disabled = true; });
       }
     });
   </script>
