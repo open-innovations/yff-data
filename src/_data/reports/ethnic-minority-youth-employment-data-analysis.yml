@@ -126,12 +126,15 @@ sections:
 
   - title: Lack of Culturally Relevant Data
     summary: |
-      <span class="note">Review</span>Summary for this section
+      <span class="note">Review</span>
+      There is a particular gap in relation to Gypsy, Roma and Irish Traveller groups. These groups are frequently excluded from surveys and national data. Where they are included, sample sizes are too small in order to conduct meaningful analysis. Individuals from these backgrounds may not identify their ethnicity in surveys or may use a broader ethnic group (e.g. Irish). In addition, data on employment outcomes does not contain the nuance necessary to account for specific cultural experiences in this area. The quantitative review also showed that these groups are generally not included in analysis in this area.
+
+      There is another gap in relation to regional and subregional data. Although these variables exist in national surveys and datasets, our analysis shows that sample sizes are generally too small for meaningful regional analysis of the employment outcomes of young people from minority ethnic groups. Regional analysis was also generally lacking in the evidence assessed in the quantitative review. In addition, there is a lack of published local datasets and data on culturally relevant regional issues.
     blocks:
       - title: Block 1
         visualisations:
           - title: Lack of Culturally Relevant Data 
-            caption: "<span class=\"note\">Review</span>The percentage of reports we looked at that had culturally relevant and timely data for analysis."
+            caption: "<span class=\"note\">Review</span>Description text needed."
             tab: Summary
             type: dashboard
             config: 
@@ -167,9 +170,10 @@ sections:
                 - name: "Timeliness of data fully met"
                   scale: YFF
                   scale-value: 0
-          - title: Lack of Culturally Relevant Data.
+          - title: Lack of Culturally Relevant Data
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "<span class=\"note\">Review</span>Description text needed.
+            Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -201,12 +205,12 @@ sections:
 
   - title: Lack of Employment Data
     summary: |
-      <span class="note">Review</span>Summary for this section
+      <span class="note">Review</span>Summary text needed for this section. 
     blocks:
       - title: Block 1
         visualisations:
           - title: Lack of Data on Employment and Discrimination 
-            caption: "<span class=\"note\">Review</span>The percentage of reports we looked at that had data for analysis on employment."
+            caption: "<span class=\"note\">Review</span>Description text needed for this visualisation."
             tab: Dashboard
             type: dashboard
             config: 
@@ -305,7 +309,7 @@ sections:
                   scale-value: 0
           - title: Lack of data available on employment and discrimination in employment.
             tab: Summary
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
+            caption: <span class="note">Review</span>Description text needed for this visualisation. 
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -351,7 +355,8 @@ sections:
                   width: 10%
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data
-            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "<span class=\"note\">Review</span>Description text needed for this visualisation. 
+            Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -418,10 +423,10 @@ sections:
           - title: Lack of data available on employment and discrimination in employment.    
             type: chart
             tab: Bar Chart
-            caption: A stacked bar chart. This is effectively a multi-series bar chart with special formatting. The interactive key has the special ability to shift the bars to the left when a series is focussed so that the values for that series can be more easily compared.
+            caption: Description text needed for this section.
             config:
               file: /data/gap_mapping_2022/employment_bar.csv
-              summary: "This is an approximate version of the real data created by trying to read values from a chart"
+              summary: "Summary text needed for this visualisation."
               type: stacked-bar-chart
               legend:
                 show: true     # Default to false
@@ -473,7 +478,9 @@ sections:
                   colour: "#69C2C9"
           - title: Lack of data available on employment and discrimination in employment.
             tab: Lack of data (more detail)
-            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "<span class=\"note\">Review</span>Description text needed for this section. 
+            
+            Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
                 link: about:blank
@@ -549,128 +556,4 @@ sections:
                   width: 8%
     tags:
           - education
-
-  - title: Example Tables
-    summary: |
-      <span class="note">Review</span>Summary for this section
-    blocks:
-      - title: Block 1
-        visualisations:
-          - title: Example table A
-            tab: Table A
-            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
-            citations:
-              - title: A short description of the citation
-                link: about:blank
-            type: table
-            config:
-              file: /data/gap_mapping_2022/gapmap.csv
-              columns:
-                - name: "Source"
-                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
-                  width: 40%
-                - name: "Relevance of data→Culturally relevant data available→Rating"
-                  rename: "Culturally Relevant Data Available"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 30%
-                - name: "Relevance of data→Timeliness of data (e.g. covers a suitable time period, sufficiently up to date)→Rating"
-                  rename: "Timeliness of data"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 30%
-          - title: Example table B
-            tab: Table B
-            caption: "<span class=\"note\">Review</span>Slightly longer description to be used as a caption. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
-            citations:
-              - title: A short description of the citation
-                link: about:blank
-            type: table
-            config:
-              file: /data/gap_mapping_2022/gapmap.csv
-              columns:
-                - name: "Source"
-                  template: "<a href=\"{{ Source→Link }}\">{{ Source→Name }}</a>"
-                - name: "Employment data→Employment status→Rating"
-                  rename: "Employment Status"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Sector→Rating"
-                  rename: "Sector"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Occupation→Rating"
-                  rename: "Occupation"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Contract type→Rating"
-                  rename: "Contract Type"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Apprenticeships→Rating"
-                  rename: "Apprenticeship"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Pay→Rating"
-                  rename: "Pay"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Progression→Rating"
-                  rename: "Progression"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Discrimination in employment→Rating"
-                  rename: "Discrimination in Employment"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-          - title: Short title
-            tab: Image C
-            caption: <span class="note">Review</span>Slightly longer description to be used as a caption
-            citations:
-              - title: A short description of the citation
-                link: about:blank
-            type: static-image
-            config: 
-              link: https://dummyimage.com/600x200/777/fff.png&text=B2+S1+V1
-              # Description is used for the alt tag
-              description: Some text that describes the image
-    tags:
-      - education
+          
