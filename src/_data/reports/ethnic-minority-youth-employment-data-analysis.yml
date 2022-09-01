@@ -353,73 +353,6 @@ sections:
                   min: 0
                   max: 100
                   width: 10%
-          - title: Lack of data available on employment and discrimination in employment.
-            tab: Lack of data
-            caption: "<span class=\"note\">Review</span>Description text needed for this visualisation. 
-            Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
-            citations:
-              - title: A short description of the citation
-                link: about:blank
-            type: table
-            config:
-              file: /data/gap_mapping_2022/gapmap.csv
-              columns:
-                - name: "Employment data→Sector→Rating"
-                  rename: "Sector"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Occupation→Rating"
-                  rename: "Occupation"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Contract type→Rating"
-                  rename: "Contract Type"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Apprenticeships→Rating"
-                  rename: "Apprenticeship"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Pay→Rating"
-                  rename: "Pay"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Progression→Rating"
-                  rename: "Progression"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
-                - name: "Employment data→Discrimination in employment→Rating"
-                  rename: "Discrimination"
-                  align: center
-                  heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
-                  width: 10%
           - title: Lack of data available on employment and discrimination in employment.    
             type: chart
             tab: Bar Chart
@@ -477,7 +410,7 @@ sections:
                   value: "Fully met (%)"
                   colour: "#69C2C9"
           - title: Lack of data available on employment and discrimination in employment.
-            tab: Lack of data (more detail)
+            tab: Breakdown
             caption: "<span class=\"note\">Review</span>Description text needed for this section. 
             
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
@@ -547,7 +480,7 @@ sections:
                   max: 0
                   width: 8%
                 - name: "Employment data→Discrimination in employment→Rating"
-                  rename: "Discrimination in Employment"
+                  rename: "Discrimination"
                   align: center
                   heatmap: true
                   scale: YFF
@@ -556,4 +489,3 @@ sections:
                   width: 8%
     tags:
           - education
-          
