@@ -2,6 +2,6 @@
   "deno.codeLens.test": true,
   "deno.enable": false,
   "deno.enablePaths": [
-    "./oi"
+    "./lib"
   ]
 }
