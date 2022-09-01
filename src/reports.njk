@@ -12,14 +12,7 @@ title: Reports
 	{% comp 'grid.auto', { min_width: '30em' } %}
 	  {% for page in search.pages('report', 'date') %}
 		{% comp 'grid.pane', { link: page.data.url, extra_classes: 'turquoise-bg' } %}
-		  <h2>{{ page.data.title }}</h2>
-		  <div class="post-date">{{ page.data.publication_date | date('dd MMMM yyyy') }}</div>
-		  <p>
-			{% if page.data.visualisations %}
-			  {{ comp.viz[page.data.visualisations[0].type](page.data.visualisations[0].config) | safe }}
-			{% endif %}
-			{{ page.data.summary | md | striplinks | safe  }}
-		  </p>
+      {{ comp.report.pane({ report: page.data }) | safe }}
 		{% endcomp %}
 	  {% endfor %}
 	{% endcomp %}
