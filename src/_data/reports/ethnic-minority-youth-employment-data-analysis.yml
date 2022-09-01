@@ -5,8 +5,7 @@ title: Ethnic Minority Youth Employment Data Analysis
 publication_date: 2022-10-01
 
 summary: |
-  Data gaps can make it difficult to understand key outcomes
-  for young people from ethnic minority backgrounds.
+  Data gaps can make it difficult to understand key outcomes for young people from ethnic minority backgrounds.
 
   <span class="note">This text needs to be reviewed</span>
   Young people from minority ethnic backgrounds have long experienced higher unemployment and lower wages than their white peers. The impact of the Coronavirus pandemic has only exacerbated these inequalities, with research showing an unequal impact on employment across ethnic groups. In addition, previous work has identified substantial gaps in the collection and analysis of data relating to young people from minority ethnic backgrounds. There are particular concerns around systematic erasure in data collection, lack of observations and small sample sizes, and a lack of culturally relevant data.
@@ -39,8 +38,16 @@ report_link: /downloads/example-report.pdf
 # If there are more blocks available, show a read more
 sections:
   - title: Systemic Erasure
-    summary: |
-      <span class="note">This text needs to be replaced</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet massa. Id cursus metus aliquam eleifend mi in nulla. Sit amet porttitor eget dolor morbi non arcu risus. Bibendum neque egestas congue quisque. Luctus accumsan tortor posuere ac ut consequat semper. Netus et malesuada fames ac turpis egestas. Dapibus ultrices in iaculis nunc. Eget nulla facilisi etiam dignissim diam quis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Blandit aliquam etiam erat velit scelerisque in dictum. Ornare massa eget egestas purus viverra. Cursus metus aliquam eleifend mi. Suspendisse faucibus interdum posuere lorem ipsum. Vestibulum sed arcu non odio euismod lacinia. Pharetra et ultrices neque ornare aenean euismod. Nulla facilisi morbi tempus iaculis urna id volutpat. Ornare massa eget egestas purus viverra accumsan. Ut venenatis tellus in metus vulputate eu scelerisque.
+    summary: |      
+      Not all national datasets include breakdowns by ethnic group. In particular, current (and planned future) releases of Universal Credit statistics do not include ethnic breakdowns, unlike statistics on Jobseekers Allowance or Employment and Support Allowance. This gap impedes understanding of the uptake of specific benefits by different ethnic groups.
+
+      Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups.
+
+      The latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, requiring the use of parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, it should be noted that the next wave of the study will ask young people their ethnicity.
+
+      Although the quantitative review identified a number of studies that included culturally relevant data, many national surveys (e.g. Labour Force family of surveys) do not include relevant cultural questions. 
+
+      <span class="note">This text needs to be reviewed</span>
     tags: []
     blocks:
       # All attributes optional
@@ -49,7 +56,7 @@ sections:
       - title: Block 1
         visualisations:
           - title: Two/three-way intersectional analysis
-            caption: "<span class=\"note\">Review</span>The percentage of reports we looked at that had two-way (e.g. ethnicity by demographic) or three-way (e.g. ethnicity by demographic by region) intersectional analysis."
+            caption: "<span class=\"note\">Review</span>Analysis by ethnic subgroups (groups at a more granular level than the standard 16-18 detailed ethnic groups used in ONS research) is impossible using national surveys or datasets, as relevant subgroups (e.g. Somali) are not included."
             tab: Summary
             type: dashboard
             config: 
