@@ -11,11 +11,19 @@ url: false
 
 <div class="wrapper holder">
 	{% comp 'grid.auto' %}
-	  {% comp 'grid.pane', { link: '/reports/' } %}
-		<h2>Reports</h2>
-		<p>Details about reports</p>
-		{{ comp.number({ number:reports | length } ) | safe }}
-	  {% endcomp %}
+
+    {% comp 'grid.pane', { link: '~/reports.njk' | url, extra_classes: 'plum-bg' } %}
+      <h2>Reports</h2>
+      <p>
+        {{ comp.note({ content: 'Review' }) | safe }}
+        This page contains summaries of some of our recent reports.
+      </p>
+      {{ comp.number({ number: search.pages('report') | length } ) | safe }}
+      <p>
+        Visit the page to review headline narratives and visualisations of key findings.
+      </p>
+    {% endcomp %}
+
 	  {% comp 'grid.pane' %}
 		<h2>Events</h2>
 		{{ comp.number({ number: 23 } ) | safe }}
