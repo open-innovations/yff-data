@@ -6,14 +6,14 @@ import esbuild from 'lume/plugins/esbuild.ts';
 import inline from "lume/plugins/inline.ts";
 import netlifyCMS from 'lume/plugins/netlify_cms.ts';
 // import postcss from "lume/plugins/postcss.ts";
+import date from "lume/plugins/date.ts"; // To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
 import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
-import date from "lume/plugins/date.ts";	// To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
-import { copy } from 'std/fs/copy.ts';
+import { walkSync } from 'std/fs/mod.ts';
 import autoDependency from '/src/_lib/oi/auto-dependency.ts';
-import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 import csvLoader from '/src/_lib/oi/csv-loader.ts';
+import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 
 const site = lume({
   src: './src',
@@ -73,24 +73,23 @@ site.loadData(['.csv'], csvLoader);
 site.loadData(['.geojson', '.hexjson'], jsonLoader);
 
 // Copy source data files to live site
-const interimDataDir = 'generated-data-directory';
-site.script('copy-data-files', async () => {
-  await copy('src/_data/sources', `src/${interimDataDir}/`, {
-    overwrite: true,
-  });
+const dataDir = 'src/_data/sources';
+const dataPath = '/data';
+const dataFiles = Array.from(walkSync(dataDir, {
+  includeDirs: false,
+})).map(({ path }) => path);
+dataFiles.forEach(remote => {
+  const local = remote.replace(dataDir, dataPath);
+  site.remoteFile(local, './' + remote);
 });
-
-// Execute it before the site is built
-site.addEventListener('beforeBuild', 'copy-data-files');
-
-site.copy(interimDataDir, 'data');
+site.copy(dataPath);
 
 site.process(['.html'], autoDependency);
 
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
-site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi,function(m,p1){ return p1; }) );
-site.filter('applyReplacementFilters', (value, options = {'filter':true}) => applyReplacementFilters(value,options));
+site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi, function (m, p1) { return p1; }));
+site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => applyReplacementFilters(value, options));
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written
