@@ -38,9 +38,7 @@ sections:
   - title: Systemic Erasure
     summary: |
       <span class="note">This text needs to be replaced</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet massa. Id cursus metus aliquam eleifend mi in nulla. Sit amet porttitor eget dolor morbi non arcu risus. Bibendum neque egestas congue quisque. Luctus accumsan tortor posuere ac ut consequat semper. Netus et malesuada fames ac turpis egestas. Dapibus ultrices in iaculis nunc. Eget nulla facilisi etiam dignissim diam quis. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Blandit aliquam etiam erat velit scelerisque in dictum. Ornare massa eget egestas purus viverra. Cursus metus aliquam eleifend mi. Suspendisse faucibus interdum posuere lorem ipsum. Vestibulum sed arcu non odio euismod lacinia. Pharetra et ultrices neque ornare aenean euismod. Nulla facilisi morbi tempus iaculis urna id volutpat. Ornare massa eget egestas purus viverra accumsan. Ut venenatis tellus in metus vulputate eu scelerisque.
-    tags:
-      - pay
-      - ethnic groups
+    tags: []
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
@@ -190,7 +188,6 @@ sections:
                   width: 30%
     tags:
           - education
-          - white people
 
   - title: Lack of Employment Data
     summary: |
@@ -542,7 +539,6 @@ sections:
                   width: 8%
     tags:
           - education
-          - white people
 
   - title: Example Tables
     summary: |
@@ -668,4 +664,3 @@ sections:
               description: Some text that describes the image
     tags:
       - education
-      - white people
