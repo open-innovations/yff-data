@@ -21,7 +21,7 @@ visualisations:
   - title: Main image to represent the whole report
     caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
     citations:
-      - title: A short description of the citation
+      - title: 
         link: about:blank
     type: static-image
     config: 
@@ -40,17 +40,15 @@ report_link: /downloads/example-report.pdf
 # When rendering the report page render the feature block.
 # If there are more blocks available, show a read more
 sections:
-  - title: Systemic Erasure
+  - title: Systemic Erasure in Data Collection
     summary: |      
-      Not all national datasets include breakdowns by ethnic group. In particular, current (and planned future) releases of Universal Credit statistics do not include ethnic breakdowns, unlike statistics on Jobseekers Allowance or Employment and Support Allowance. This gap impedes understanding of the uptake of specific benefits by different ethnic groups.
+      Capturing data about the experience of different ethnic groups, alongside other key demographic information such as geographic region, socioeconomic status, and religion is crucial to allowing intersectional analysis and thereby fully understanding the experiences of different ethnic groups.
 
-      Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups.
+      Few national datasets or other evidence include breakdowns by ethnic groups at a sufficiently granular level to understand the impact of policy changes or interventions, with some such as the Universal Credit statistics not including ethnic breakdowns. This lack of data capture impedes understanding of the uptake of specific benefits by different ethnic groups, and is in contrast to statistics on Jobseekers Allowance or Employment and Support Allowance. 
 
-      The latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, requiring the use of parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, it should be noted that the next wave of the study will ask young people their ethnicity.
+      Where datasets do include ethnicity, most focus on broad ethnic groupings based on the standard five ethnic groups included in ONS research (white, black, Asian, mixed, and other). Where more detailed ethnic groups are used, this is often limited to the 16-18 detailed ethnic groups used in ONS research, meaning that relevant subgroups, such Somali as a subcategory of black African, are not included. This results in a lack of understanding of the experience of these subgroups. 
 
-      Although the quantitative review identified a number of studies that included culturally relevant data, many national surveys (e.g. Labour Force family of surveys) do not include relevant cultural questions. 
-
-      <span class="note">This text needs to be reviewed</span>
+      There are other ways in which ethnic identity is erased. For instance, Gypsy, Roma and Irish Traveller groups are frequently excluded from surveys and national data leading to a gap in data available for analysis, and the latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, instead using parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, the next wave of the study will ask young people their ethnicity.
     tags: []
     blocks:
       # All attributes optional
@@ -103,7 +101,7 @@ sections:
             tab: Breakdown
             caption: "<span class=\"note\">Review</span>Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
-              - title: A short description of the citation
+              - title:
                 link: about:blank
             type: table
             config: 
@@ -134,15 +132,22 @@ sections:
 
   - title: Lack of Culturally Relevant Data
     summary: |
-      <span class="note">Review</span>
-      There is a particular gap in relation to Gypsy, Roma and Irish Traveller groups. These groups are frequently excluded from surveys and national data. Where they are included, sample sizes are too small in order to conduct meaningful analysis. Individuals from these backgrounds may not identify their ethnicity in surveys or may use a broader ethnic group (e.g. Irish). In addition, data on employment outcomes does not contain the nuance necessary to account for specific cultural experiences in this area. The quantitative review also showed that these groups are generally not included in analysis in this area.
+      While the timeliness of data is generally good, only 4 pieces of evidence fully met this criteria by including a time period that covered both pre- and post-pandemic data.   
 
-      There is another gap in relation to regional and subregional data. Although these variables exist in national surveys and datasets, our analysis shows that sample sizes are generally too small for meaningful regional analysis of the employment outcomes of young people from minority ethnic groups. Regional analysis was also generally lacking in the evidence assessed in the quantitative review. In addition, there is a lack of published local datasets and data on culturally relevant regional issues.
+      Many communities experience challenges or barriers not shared by the majority population, or by other minority ethnic communities. There are also differences in practices, experiences and systems of support across different cultures and communities, such as different approaches to debt or differences in access to personal protective equipment, that may be missed or misunderstood without the collection of relevant data. 
+
+      The review shows that culturally relevant data is generally lacking in evidence on employment outcomes for young people from minority ethnic groups, with many data collection instruments not covering questions or considerations that are culturally relevant for specific ethnic groups. 
+
+      This creates challenges as the data on employment outcomes does not contain the nuance necessary to account for specific cultural experiences, and leads to a lack of understanding about the specific challenges faced.  
+
+      In addition to this, there is a lack of published local datasets and data on culturally relevant regional issues.
     blocks:
       - title: Block 1
         visualisations:
-          - title: Lack of Culturally Relevant Data 
-            caption: "<span class=\"note\">Review</span>Description text needed."
+          - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence 
+            caption: |
+              Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. 
+              Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims.
             tab: Summary
             type: dashboard
             config: 
@@ -178,12 +183,11 @@ sections:
                 - name: "Timeliness of data fully met"
                   scale: YFF
                   scale-value: 0
-          - title: Lack of Culturally Relevant Data
+          - title: Presence of culturally relevant and use of timely data by report
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Description text needed."
-            Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "<span class=\"note\">Review</span>Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
-              - title: A short description of the citation
+              - title: 
                 link: about:blank
             type: table
             config:
@@ -211,17 +215,40 @@ sections:
     tags:
           - education
 
-  - title: Lack of Employment Data
+  - title: Lack of Different Types of Employment Data
     summary: |
-      <span class="note">Review</span>Summary text needed for this section. 
+      Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria: 
+      <ul>
+        <li><b>Employment status:</b> Whether an individual is employed, unemployed, in education, or in training</li>
+        <li><b>Sector:</b> Industry sector of employment.</li> 
+        <li><b>Occupation:</b> Occupational role of employment</li> 
+        <li><b>Contract type:</b> Details of contract type, such as security of contract or guaranteed hours. </li>
+        <li><b>Apprenticeships:</b> Details on apprenticeship participation, level and/or sector. </li> 
+        <li><b>Pay:</b> Information about salaries, such as yearly averages or hourly pay. </li>
+        <li><b>Progression:</b> This refers to information about progression in labour market outcomes of individuals, such as salary increases or changes in employment status. </li>
+        <li><b>Discrimination in employment:</b> Self-identified experiences of ethnic discrimination in the workplace. </li>
+      </ul>
+      Employment characteristics are generally poorly represented in evidence on employment outcomes for young people from minority ethnic groups, with employment status the only employment characteristic that was well represented across the evidence, especially in Government statistics websites and some academic studies. 
+
+      Other employment characteristics fared much worse. Details of employment such as sector, occupation and contract types are poorly covered in the analysis of employment outcomes for minority ethnic young people. The review shows that information on discrimination in employment is a substantial gap, with only one piece of evidence reviewed included any mention of discrimination in employment in their analysis. 
+
+      This lack of data on key employment details in many reports combined with low sample sizes in those reports where this is considered makes it impossible to conduct meaningful analysis of employment details by granular ethnic group. 
+
+      This prevents a full understanding of the experience of employment by minority ethnic groups.
+
+      The quantitative review showed that measures of job quality, such as contract type, hours worked and pay, are generally poorly covered in the evidence in this area. Our data analysis was able to identify some useful findings in relation to job quality. However, sample sizes limited the level of granular and intersectional analysis that could be conducted. 
+
+      The quantitative review showed that measures of job quality, such as contract type, hours worked and pay, are generally poorly covered in the evidence in this area. Our data analysis was able to identify some useful findings in relation to job quality. However, sample sizes limited the level of granular and intersectional analysis that could be conducted. 
+
+      Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
     blocks:
       - title: Block 1
         visualisations:
-          - title: Lack of data available on employment and discrimination in employment.
+          - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence
             tab: Summary
-            caption: <span class="note">Review</span>Description text needed for this visualisation. 
+            caption: <span class="note">Review</span>Coverage of employment data in quantitative evidence.
             citations:
-              - title: A short description of the citation
+              - title: 
                 link: about:blank
             type: table
             config:
@@ -319,12 +346,12 @@ sections:
                 - title: "Fully met (%)"
                   value: "Fully met (%)"
                   colour: "#69C2C9"
-          - title: Lack of data available on employment and discrimination in employment.
+          - title: Presence of culturally relevant and use of timely data by report
             tab: Breakdown
             caption: "<span class=\"note\">Review</span>Description text needed for this section."
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
-              - title: A short description of the citation
+              - title: 
                 link: about:blank
             type: table
             config:
