@@ -9,19 +9,15 @@ title: Data Dashboard
 
 <div class="wrapper holder">
 	<p>This is a data microsite created for Youth Futures Foundation by <a href="https://open-innovations.org/">Open Innovations</a>.</p>
+</div>
 
-	{% comp 'grid.auto' %}
-  {% comp 'grid.pane', { link: '~/reports.njk' | url, extra_classes: 'plum-bg' } %}
-		<h2>Reports</h2>
-		<p>
-      {{ comp.note({ content: 'Review' }) | safe }}
-      This page contains summaries of some of our recent reports.
-    </p>
-    {{ comp.number({ number: search.pages('report') | length } ) | safe }}
-    <p>
-      Visit the page to review headline narratives and visualisations of key findings.
-    </p>
-  {% endcomp %}
-
+<div class="wrapper holder">
+  <h2>Reports</h2>
+	{% comp 'grid.auto', { min_width: '30em' } %}
+	  {% for page in search.pages('report', 'date') %}
+		{% comp 'grid.pane', { link: page.data.url, extra_classes: 'turquoise-bg' } %}
+      {{ comp.report.pane({ report: page.data }) | safe }}
+		{% endcomp %}
+	  {% endfor %}
 	{% endcomp %}
 </div>
