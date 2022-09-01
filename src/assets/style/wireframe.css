@@ -193,9 +193,6 @@ figure .figure-options .figure-option:hover, figure .figure-options .figure-opti
   .navigation li {
     width: initial;
   }
-  .navigation ul li.social-icon { display: inline-block; width: unset; padding: 0; }
-  .navigation ul li.social-icon.first-social { margin-left: 1.5em; }
-  .navigation ul li.social-icon a { line-height: 0; padding: 0.5em; }
 }
 
 .tag-cloud li {
