@@ -22,6 +22,8 @@ config: {{ config | dump(2) }}
 {% endif %}
   {{ comp.viz[type]({ config: config }) | safe }}
 </figure>
+{#
+TODO Removed from current render based on discussion between MB, TC and GD
 {% if citations %}
   <ul class="citations">
     {% for citation in citations %}
@@ -30,4 +32,5 @@ config: {{ config | dump(2) }}
       </li>
     {% endfor %}
 {% endif %}
+#}
 </ul>
