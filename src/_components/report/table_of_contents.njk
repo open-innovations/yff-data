@@ -1,0 +1,15 @@
+---
+css: |
+  .table-of-contents {
+    padding: 1rem;
+  }
+---
+
+<nav class='table-of-contents'>
+  <h2>{{ title or 'Contents' }}</h2>
+  <ul>
+  {% for section in sections %}
+    <li><a href="#narrative-{{ loop.index }}">{{ section.title }}</a></li>
+  {% endfor %}
+  </ul>
+</nav>

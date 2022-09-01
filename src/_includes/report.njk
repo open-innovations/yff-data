@@ -9,10 +9,13 @@
 
   <div class="wrapper holder">
 
-      <div class="post-date">{{ publication_date | date('MMMM d, yyyy') }}</div>
+    <div class="post-date">{{ publication_date | date('MMMM d, yyyy') }}</div>
+    {% comp 'flex' %}
 	  <section class="summary">
 		{{ summary | md | safe }}
 	  </section>
+    {{ comp.report.table_of_contents({ sections: sections }) | safe }}
+    {% endcomp %}
 
 	  <section style="display: flex;">
 		{{ comp.actions.download({ link: report_link }) | safe }}
@@ -24,7 +27,7 @@
 
 	  {% for section in sections %}
 		<section id="narrative-{{ loop.index }}">
-		  <h2>Narrative Point {{ loop.index }}: {{ section.title }}</h2>
+		  <h2>{{ section.title }}</h2>
 
 		  {{ comp['tag-cloud']({ tags: section.tags }) | safe }}
 

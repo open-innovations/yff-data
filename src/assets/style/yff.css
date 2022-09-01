@@ -173,3 +173,7 @@ footer .twocol:first-child { padding-bottom: 20px; }
 	.navigation ul li.social-icon.first-social { margin-left: 1.5em; }
 	.navigation ul li.social-icon a { line-height: 0; padding: 0.5em; }
 }
+
+.table-of-contents {
+  background-color: #dff3f4;
+}
