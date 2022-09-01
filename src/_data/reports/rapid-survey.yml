@@ -1,0 +1,78 @@
+# The title of the report
+title: Rapid Survey
+
+# Date the report was published
+publication_date: 2022-09-14
+
+summary: |
+  Lorem ipsum dolor sit amet. Ut minima quaerat nam reiciendis magnam et architecto asperiores et sunt maiores et possimus animi rem illo labore est amet dolorum. 
+  
+  Est odio laboriosam in quisquam commodi et cupiditate quia. Eum voluptatem beatae ab molestiae doloribus sit voluptate esse. Ut magnam voluptas sed officia vero ut nesciunt rerum sed rerum quia qui expedita galisum ut voluptatibus esse rem laudantium magnam. Aut expedita similique id dolor dolores nam dolorum labore sed atque quas. Ut voluptas voluptatem quo repellat beatae qui aliquam tempore. Ut provident corporis vel velit galisum vel galisum fuga et aliquid tempore ut aliquam quisquam ex corporis aliquam.
+
+  <span class="note">This text needs to be reviewed</span>
+
+visualisations:
+  - title: Main image to represent the whole report
+    caption: What goes here will most likely emerge as we create this report.
+    citations:
+      - title: A short description of the citation
+        link: about:blank
+    type: static-image
+    config: 
+      link: https://youthfuturesfoundation.org/wp-content/uploads/2021/03/YF-10_Our_Approach_To_What_Works.svg
+      # Description is used for the alt tag
+      description: Some text that describes the image
+
+# Link to download the report. Could be on this site or elsewhere.
+report_link: /downloads/example-report.pdf
+
+sections:
+  - title: First Section
+    summary: |      
+      Lorem ipsum dolor sit amet. Ut minima quaerat nam reiciendis magnam et architecto asperiores et sunt maiores et possimus animi rem illo labore est amet dolorum. Est odio laboriosam in quisquam commodi et cupiditate quia. 
+      Eum voluptatem beatae ab molestiae doloribus sit voluptate esse. Ut magnam voluptas sed officia vero ut nesciunt rerum sed rerum quia qui expedita galisum ut voluptatibus esse rem laudantium magnam. Aut expedita similique id dolor dolores nam dolorum labore sed atque quas.
+      Ut voluptas voluptatem quo repellat beatae qui aliquam tempore. Ut provident corporis vel velit galisum vel galisum fuga et aliquid tempore ut aliquam quisquam ex corporis aliquam.
+    tags: []
+    blocks:
+      # All attributes optional
+      # First featured only would be shown on summary page
+      - title: Block 1 
+        visualisations:
+        - title: First headline point
+          caption: Caption text to describe the first headline point.
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+  - title: Second Section
+    summary: | 
+      Lorem ipsum dolor sit amet. Ut minima quaerat nam reiciendis magnam et architecto asperiores et sunt maiores et possimus animi rem illo labore est amet dolorum. Est odio laboriosam in quisquam commodi et cupiditate quia. 
+      Eum voluptatem beatae ab molestiae doloribus sit voluptate esse. Ut magnam voluptas sed officia vero ut nesciunt rerum sed rerum quia qui expedita galisum ut voluptatibus esse rem laudantium magnam. Aut expedita similique id dolor dolores nam dolorum labore sed atque quas.
+      Ut voluptas voluptatem quo repellat beatae qui aliquam tempore. Ut provident corporis vel velit galisum vel galisum fuga et aliquid tempore ut aliquam quisquam ex corporis aliquam.
+    tags: []
+    blocks: 
+      - title: Block 2
+        visualisations: 
+        - title: Second headline point
+          caption: Caption text to describe the second headline point.
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+
+
+
+
+
+
+
+
+
