@@ -11,12 +11,9 @@ body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 	background: #fbf5d0;
 	color: #5f5207;
 	text-align: center;
-	height: 50vh;
+	height: auto;
 	position: relative;
 }
-.message > .holder { position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); }
-
-.site-header-logo img, .site-header-logo svg { display: none; }
 
 .wrapper { padding: 2em 1em; }
 .padded { padding: 1em; }
@@ -68,15 +65,13 @@ aside {
 	z-index: 1001;
 }
 
-.site-title {
-  font-weight: bold;
-}
-.site-header-logo {
-  display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; margin-right: 1em;
-}
-.site-logo {
-  width: 200px;
-}
+.site-title { font-weight: bold; }
+.site-header-logo { display: inline-block; height: 90px; vertical-align: middle; position: relative;  }
+.site-header-content .logos > *:last-child .site-header-logo { margin-right: 1em; }
+.site-logo { width: 200px; }
+
+.site-header-content .logos a { display: inline-block; }
+.site-header-logo img, .site-header-logo svg { display: none; height: 100%; }
 
 .site-header img { height: auto; width: 200px; float: left; }
 .site-header-content {
@@ -105,6 +100,7 @@ aside {
   text-align: center;
 }
 .navigation button + * li { display: inline-block; }
+
 .navigation ul { margin: auto;
   list-style: none;
   margin: 0;
