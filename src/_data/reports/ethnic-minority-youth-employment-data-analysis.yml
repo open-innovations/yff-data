@@ -6,11 +6,12 @@ publication_date: 2022-10-01
 
 summary: |
   Data gaps can make it difficult to understand key outcomes for young people from ethnic minority backgrounds.
-
-  <span class="note">This text needs to be reviewed</span>
+  
   Young people from minority ethnic backgrounds have long experienced higher unemployment and lower wages than their white peers. The impact of the Coronavirus pandemic has only exacerbated these inequalities, with research showing an unequal impact on employment across ethnic groups. In addition, previous work has identified substantial gaps in the collection and analysis of data relating to young people from minority ethnic backgrounds. There are particular concerns around systematic erasure in data collection, lack of observations and small sample sizes, and a lack of culturally relevant data.
+  
   The data analysis and quantitative review have identified a range of gaps in data and analysis of the employment outcomes of young people from minority ethnic backgrounds, broadly relating to the three themes of systematic erasure in data collection, lack of observations and sampling, and a lack of culturally relevant data. This includes gaps in terms of availability of ethnic breakdowns; demographic data; employment details and features of surveys or datasets.
 
+  <span class="note">This text needs to be reviewed</span>
 
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
@@ -172,7 +173,7 @@ sections:
                   scale-value: 0
           - title: Lack of Culturally Relevant Data
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Description text needed.
+            caption: "<span class=\"note\">Review</span>Description text needed."
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
@@ -411,8 +412,7 @@ sections:
                   colour: "#69C2C9"
           - title: Lack of data available on employment and discrimination in employment.
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Description text needed for this section. 
-            
+            caption: "<span class=\"note\">Review</span>Description text needed for this section."
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: A short description of the citation
