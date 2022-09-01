@@ -99,7 +99,7 @@ sections:
                   scale-value: 0
           - title: Intersectional Analysis by Report 
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title:
                 link: about:blank
@@ -127,8 +127,7 @@ sections:
                   max: 0
                   width: 15%
         featured_block: true
-        text: |
-          <span class="note">Review</span>Some text in section 1...
+        text: 
 
   - title: Lack of Culturally Relevant Data
     summary: |
@@ -185,7 +184,7 @@ sections:
                   scale-value: 0
           - title: Presence of culturally relevant and use of timely data by report
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: 
                 link: about:blank
@@ -246,7 +245,7 @@ sections:
         visualisations:
           - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence
             tab: Summary
-            caption: <span class="note">Review</span>Coverage of employment data in quantitative evidence.
+            caption: Coverage of employment data in quantitative evidence.
             citations:
               - title: 
                 link: about:blank
@@ -348,7 +347,7 @@ sections:
                   colour: "#69C2C9"
           - title: Presence of culturally relevant and use of timely data by report
             tab: Breakdown
-            caption: "<span class=\"note\">Review</span>Description text needed for this section."
+            caption: "Description text needed for this section."
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             citations:
               - title: 
