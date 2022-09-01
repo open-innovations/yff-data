@@ -15,8 +15,6 @@ body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
 	position: relative;
 }
 
-.site-header-logo img, .site-header-logo svg { display: none; }
-
 .wrapper { padding: 2em 1em; }
 .padded { padding: 1em; }
 .holder {
@@ -71,11 +69,14 @@ aside {
   font-weight: bold;
 }
 .site-header-logo {
-  display: inline-block; width: 200px; height: 90px; vertical-align: middle; position: relative; margin-right: 1em;
+  display: inline-block; height: 90px; vertical-align: middle; position: relative; margin-right: 1em;
 }
 .site-logo {
   width: 200px;
 }
+
+.site-header-content .logos a { display: inline-block; }
+.site-header-logo img, .site-header-logo svg { display: none; height: 100%; }
 
 .site-header img { height: auto; width: 200px; float: left; }
 .site-header-content {
