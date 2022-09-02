@@ -1,0 +1,14 @@
+Region,Name,Code,Value
+E12000001,"North East","TLC",5
+E12000002,"North West","TLD",2
+E12000003,"Yorkshire and the Humber","TLE",1
+E12000004,"East Midlands","TLF",3
+E12000005,"West Midlands","TLG",6
+E12000006,"East of England","TLH",8
+E12000007,"London","TLI",0
+E12000008,"South East","TLJ",12
+E12000009,"South West","TLK",13
+W92000004,"Wales","TLL",9
+S92000003,"Scotland","TLM",4
+N92000002,"Northern Ireland","TLN",8
+X99999999,"Other","TLX",7
