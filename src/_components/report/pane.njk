@@ -4,4 +4,6 @@
   {% set key_visualisation = report.visualisations | first %}
   {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config}) | safe }}
 {% endif %}
-{{ report.summary | md | striplinks | safe }}
+<div class="summary">
+{{ report.summary | first | md | striplinks | safe }}
+</div>

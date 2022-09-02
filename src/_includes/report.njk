@@ -12,7 +12,7 @@
     <div class="post-date">{{ publication_date | date('MMMM d, yyyy') }}</div>
     {% comp 'flex' %}
 	  <section class="summary">
-		{{ summary | md | safe }}
+    {% for s in summary %}{{ s | md | safe }}{% endfor %}
 	  </section>
     {{ comp.report.table_of_contents({ sections: sections }) | safe }}
     {% endcomp %}

@@ -97,7 +97,9 @@ td, th { padding: 0.25em; }
 .tag-cloud { margin-left: 0; }
 .tag-cloud li { background: #7C2147; border-radius: 0; }
 
-section.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothicStdBold',sans-serif; }
+.summary > * { margin-bottom: 1em; }
+.summary > *:last-child { margin-bottom: 0; }
+.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothicStdBold',sans-serif; }
 
 /* Tabbed figures */
 .grid.tabs { margin-bottom: 0; }
