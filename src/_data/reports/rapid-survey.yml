@@ -30,7 +30,7 @@ sections:
       When asked about their future job, earning a high salary is by far the most likely to be considered one of the three most important priorities by young people from ethnic minority backgrounds (44%).
 
       Three in ten (30%) rank good working conditions or a clear career path (30%) in the top three.
-    tags: []
+    topics: []
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
@@ -88,7 +88,7 @@ sections:
     summary: | 
       Overall, 73% of young people from ethnic minorities are confident they will achieve their future goals.
       On balance, confidence is highest for young people from White minority backgrounds, significantly higher than other ethnic groups – and around one in ten Asian (11%) or Black (13%) young people are not confident they will achieve their goals.
-    tags: []
+    topics: []
     blocks: 
       - title: Block 2
         visualisations: 
@@ -139,7 +139,7 @@ sections:
   - title: At least three in ten have experienced some form of workplace discrimination
     summary: | 
       Half (47%) of young people from ethnic minority backgrounds have experienced discrimination when dealing with customers/clients at work, while two in five have experienced it when applying to a job (39%) and/or at a job interview (38%)    
-    tags: []
+    topics: []
     blocks: 
       - title: Block 1
         visualisations: 
@@ -194,7 +194,7 @@ sections:
     summary: | 
       No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
       That said, some significant differences do emerge among different groups of young people. 
-    tags: []
+    topics: []
     blocks: 
       - title: Block 1
         visualisations: 
@@ -221,7 +221,7 @@ sections:
     summary: | 
       No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
       That said, some significant differences do emerge among different groups of young people. 
-    tags: []
+    topics: []
     blocks: 
       - title: Block 1
         visualisations: 
@@ -275,7 +275,7 @@ sections:
     summary: | 
       No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
       That said, some significant differences do emerge among different groups of young people. 
-    tags: []
+    topics: []
     blocks: 
       - title: Block 1
         visualisations: 

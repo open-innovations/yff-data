@@ -84,7 +84,7 @@
         "summary": {
           "type": "string"
         },
-        "tags": {
+        "topics": {
           "type": "array",
           "description": "Topics covered by the section",
           "items": {

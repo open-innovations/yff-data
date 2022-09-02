@@ -37,7 +37,7 @@ report_link: /downloads/example-report.pdf
 # Per section:
 #  title - title of the section
 #  summary - a textual summary of the section
-#  tags
+#  topics
 # When rendering the report page render the feature block.
 # If there are more blocks available, show a read more
 sections:
@@ -50,7 +50,7 @@ sections:
       Where datasets do include ethnicity, most focus on broad ethnic groupings based on the standard five ethnic groups included in ONS research (white, black, Asian, mixed, and other). Where more detailed ethnic groups are used, this is often limited to the 16-18 detailed ethnic groups used in ONS research, meaning that relevant subgroups, such Somali as a subcategory of black African, are not included. This results in a lack of understanding of the experience of these subgroups. 
 
       There are other ways in which ethnic identity is erased. For instance, Gypsy, Roma and Irish Traveller groups are frequently excluded from surveys and national data leading to a gap in data available for analysis, and the latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, instead using parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, the next wave of the study will ask young people their ethnicity.
-    tags: []
+    topics: []
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
@@ -212,7 +212,7 @@ sections:
                   min: 3
                   max: 0
                   width: 30%
-    tags:
+    topics:
           - education
 
   - title: Lack of Different Types of Employment Data
@@ -423,5 +423,5 @@ sections:
                   min: 3
                   max: 0
                   width: 8%
-    tags:
+    topics:
           - education

@@ -75,7 +75,7 @@ export const ReportSchema = {
         summary: {
           type: 'string',
         },
-        tags: {
+        topics: {
           type: 'array',
           description: 'Topics covered by the section',
           items: { type: 'string' },
