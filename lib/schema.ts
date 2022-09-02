@@ -10,6 +10,9 @@ export const ReportSchema = {
     title: {
       type: 'string',
     },
+    draft: {
+      type: 'boolean',
+    },
     publication_date: {
       // type: 'string',
       // format: 'date',

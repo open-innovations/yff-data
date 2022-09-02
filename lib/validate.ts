@@ -1,4 +1,6 @@
 import * as yaml from 'std/encoding/yaml.ts';
+import { walk } from 'std/fs/mod.ts';
+
 import Ajv from 'https://esm.sh/ajv@8.11.0';
 import { ReportSchema } from './schema.ts';
 
@@ -18,7 +20,8 @@ async function process(filePath: string) {
 
 console.log(Deno.args);
 
-const filePath = Deno.args[0];
-if (filePath === undefined) Deno.exit();
-
-process(filePath);
+const reportRoot = "src/_data/reports";
+for await (const dirEntry of walk(reportRoot, { includeDirs: false })) {
+  console.log(dirEntry.path);
+  await process(`${reportRoot}/${dirEntry.name}`);
+}
