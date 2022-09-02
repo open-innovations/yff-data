@@ -109,6 +109,15 @@ site.use(slugifyUrls());
 // Force provisioning of font files
 site.copy('/assets/fonts');
 
+// Define remote image assets from wordpress theme
+[
+  'Orange_arrow_right-01.svg',
+  'Grey_arrow_right-01.svg',
+].forEach(image => {
+  site.remoteFile(`/assets/images/yff/${image}`, `https://youthfuturesfoundation.org/wp-content/themes/youthfutures/assets/img/${image}`);
+});
+site.copy('/assets/images/yff');
+
 // Prevent jekyll building
 site.copy('.nojekyll');
 
