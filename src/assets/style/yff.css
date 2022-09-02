@@ -176,6 +176,46 @@ footer .twocol:first-child { padding-bottom: 20px; }
 	.navigation ul li.social-icon a { line-height: 0; padding: 0.5em; }
 }
 
+/* Table of Contents */
 .table-of-contents {
-  background-color: #dff3f4;
+}
+.table-of-contents ul {
+  list-style: none;
+  margin: 30px 0;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 100;
+}
+.table-of-contents li {
+	width: 100%;
+	border: 0;
+	height: auto;
+	border-bottom: 1px solid #d9d9d9;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+.table-of-contents a {
+  display: block;
+  color: #565656;
+  padding: 0 0 10px 0;
+}
+.table-of-contents a:hover {
+  color: #e25b27;
+}
+.table-of-contents a::after {
+  background: url(/assets/images/yff/Grey_arrow_right-01.svg) no-repeat;
+	content: " ";
+	width: 10px;
+	height: 20px;
+	display: inline-block;
+	right: 0;
+	margin-left: 10px;
+	vertical-align: middle;
+	-webkit-transition: transform 0.1s ease;
+	-moz-transition: transform 0.1s ease;
+	-o-transition: transform 0.1s ease;
+	transition: transform 0.1s ease;
+}
+.table-of-contents a:hover::after {
+  background: url(/assets/images/yff/Orange_arrow_right-01.svg) no-repeat;
 }
