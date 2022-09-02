@@ -14,7 +14,7 @@ title: Data Dashboard
 <div class="wrapper holder">
   <h2>Reports</h2>
 	{% comp 'grid.auto', { min_width: '30em' } %}
-	  {% for page in search.pages('report', 'date') %}
+	  {% for page in search.pages('report', 'publication_date=desc') %}
 		{% comp 'grid.pane', { link: page.data.url, extra_classes: 'turquoise-bg' } %}
       {{ comp.report.pane({ report: page.data }) | safe }}
 		{% endcomp %}

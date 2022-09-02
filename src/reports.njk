@@ -10,7 +10,7 @@ title: Reports
 
   <div class="wrapper holder">
 	{% comp 'grid.auto', { min_width: '30em' } %}
-	  {% for page in search.pages('report', 'date') %}
+	  {% for page in search.pages('report', 'publication_date=desc') %}
 		{% comp 'grid.pane', { link: page.data.url, extra_classes: 'turquoise-bg' } %}
       {{ comp.report.pane({ report: page.data }) | safe }}
 		{% endcomp %}
