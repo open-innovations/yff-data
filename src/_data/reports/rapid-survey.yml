@@ -28,19 +28,56 @@ visualisations:
 report_link: /downloads/example-report.pdf
 
 sections:
-  - title: First Section
+  - title: Young people from ethnic minorities are most likely to prioritise a good salary, working conditions and a clear career path
     summary: |      
-      Lorem ipsum dolor sit amet. Ut minima quaerat nam reiciendis magnam et architecto asperiores et sunt maiores et possimus animi rem illo labore est amet dolorum. Est odio laboriosam in quisquam commodi et cupiditate quia. 
-      Eum voluptatem beatae ab molestiae doloribus sit voluptate esse. Ut magnam voluptas sed officia vero ut nesciunt rerum sed rerum quia qui expedita galisum ut voluptatibus esse rem laudantium magnam. Aut expedita similique id dolor dolores nam dolorum labore sed atque quas.
-      Ut voluptas voluptatem quo repellat beatae qui aliquam tempore. Ut provident corporis vel velit galisum vel galisum fuga et aliquid tempore ut aliquam quisquam ex corporis aliquam.
+      When asked about their future job, earning a high salary is by far the most likely to be considered one of the three most important priorities by young people from ethnic minority backgrounds (44%).
+
+      Three in ten (30%) rank good working conditions or a clear career path (30%) in the top three.
     tags: []
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
       - title: Block 1 
         visualisations:
-        - title: First headline point
-          caption: Caption text to describe the first headline point.
+        - title: Clear career path and progression
+          caption: Young Asian people are more likely than their peers from other groups to prioritise a clear career path and progression (37% vs. 30% Black and 20% White minorities) and having a positive impact on communities (27% vs. 22% Black and 20% White minorities).
+          tab: Career Path & Progression
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+        - title: Friends & Family
+          caption: |
+            Young Black people place larger emphasis on making their family and friends proud when thinking about future jobs (22%, compared to 17% of the overall sample), and much more likely than Asian young people to prioritise impressing their friends and family (11% vs. 5%) or being able to work for themselves (21% vs. 12%). 
+            
+            Across all ethnic minority groups, males found impressing their family and friends significantly more important (13%) than their female counterparts (4%). This gender gap was in particular driven by young Black males (18%, vs 7% of Black females), but could also be seen among Asian young people (21% of young Asian males vs. 16% young Asian females). Young Asian people are much less likely than those from White minority or Black backgrounds to be influenced by their friends (9% vs. 18% and 17% respectively). 
+          tab: Friends & Family 
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+        - title: Personal Influences
+          caption: Young people from ethnic minorities are most likely to be influenced by their own interests and passions when thinking about their future career (with 26% saying this is the most important factor, and 54% ranking this in the top 3). Mental health (33%), family (32%), the state of the job market/ economy (32%) are also influential factors. Beliefs and values linked to their ethnic heritage / background was important to 20% of young Black people, significantly higher than other groups.
+          tab: Personal Influences
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+        - title: Gender Breakdown
+          caption: "Across all ethnic minority groups, males were more likely to be influenced by their social environment such as: work colleagues (20% vs 11%), friends (17% vs 9%), beliefs and values linked to their ethnic heritage / background (17% vs 12%). Meanwhile, females over-indexed males in personal influences: their own interests and passions (67% vs 40%), their mental health (39% vs 27%), their individual beliefs and values (34% vs 26%)."
+          tab: Gender Breakdown 
           citations:
             - title: A short description of the citation
               link: about:blank
