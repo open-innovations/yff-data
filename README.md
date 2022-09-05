@@ -1,6 +1,6 @@
-# yff-wireframe
+# yff-data
 
-> Experimentation in YFF dashboards
+> Source of the Youth Futures Foundation data portal
 
 ## Data
 
