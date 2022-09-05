@@ -26,3 +26,7 @@ The `deno.json` file includes useful tasks:
 `deno task serve` - serves the site at https://localhost:3000/.
 
 `deno task build` - builds the site into `_site`
+
+## License
+
+The code to build this portal is [licensed under the terms of an MIT License](./LICENSE) by [Open Innovations](https://open-innovations.org).
