@@ -9,7 +9,11 @@
 
   <div class="wrapper holder">
 
-    <div class="post-date">{{ publication_date | date('MMMM d, yyyy') }}</div>
+	  <section>
+		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+	  </section>
+
+    <div class="post-date">{{ publication_date | date('YFF') }}</div>
     {% comp 'flex' %}
 	  <section class="summary">
     {% for s in summary %}{{ s | md | safe }}{% endfor %}
@@ -17,12 +21,8 @@
     {{ comp.report.table_of_contents({ sections: sections }) | safe }}
     {% endcomp %}
 
-	  <section style="display: flex;">
+	  <section class="dl">
 		{{ comp.actions.download({ link: report_link }) | safe }}
-	  </section>
-
-	  <section>
-		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
 	  </section>
 
 	  {% for section in sections %}

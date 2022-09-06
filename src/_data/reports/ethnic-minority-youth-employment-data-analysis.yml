@@ -2,7 +2,7 @@
 title: Ethnic Minority Youth Employment Data Analysis
 
 # Date the report was published
-publication_date: 2022-10-01
+publication_date: 2022-09
 
 summary:
   - |
@@ -217,35 +217,14 @@ sections:
 
   - title: Lack of Different Types of Employment Data
     summary: |
-      Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria: 
-      <ul>
-        <li><b>Employment status:</b> Whether an individual is employed, unemployed, in education, or in training</li>
-        <li><b>Sector:</b> Industry sector of employment.</li> 
-        <li><b>Occupation:</b> Occupational role of employment</li> 
-        <li><b>Contract type:</b> Details of contract type, such as security of contract or guaranteed hours. </li>
-        <li><b>Apprenticeships:</b> Details on apprenticeship participation, level and/or sector. </li> 
-        <li><b>Pay:</b> Information about salaries, such as yearly averages or hourly pay. </li>
-        <li><b>Progression:</b> This refers to information about progression in labour market outcomes of individuals, such as salary increases or changes in employment status. </li>
-        <li><b>Discrimination in employment:</b> Self-identified experiences of ethnic discrimination in the workplace. </li>
-      </ul>
-      Employment characteristics are generally poorly represented in evidence on employment outcomes for young people from minority ethnic groups, with employment status the only employment characteristic that was well represented across the evidence, especially in Government statistics websites and some academic studies. 
+      Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria. 
 
-      Other employment characteristics fared much worse. Details of employment such as sector, occupation and contract types are poorly covered in the analysis of employment outcomes for minority ethnic young people. The review shows that information on discrimination in employment is a substantial gap, with only one piece of evidence reviewed included any mention of discrimination in employment in their analysis. 
-
-      This lack of data on key employment details in many reports combined with low sample sizes in those reports where this is considered makes it impossible to conduct meaningful analysis of employment details by granular ethnic group. 
-
-      This prevents a full understanding of the experience of employment by minority ethnic groups.
-
-      The quantitative review showed that measures of job quality, such as contract type, hours worked and pay, are generally poorly covered in the evidence in this area. Our data analysis was able to identify some useful findings in relation to job quality. However, sample sizes limited the level of granular and intersectional analysis that could be conducted. 
-
-      The quantitative review showed that measures of job quality, such as contract type, hours worked and pay, are generally poorly covered in the evidence in this area. Our data analysis was able to identify some useful findings in relation to job quality. However, sample sizes limited the level of granular and intersectional analysis that could be conducted. 
-
-      Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
+      Est Lorem commodo commodo laboris sit ipsum. Mollit id irure aliqua ad magna cillum sint in id exercitation aute ullamco
+      veniam eiusmod. Nostrud duis occaecat fugiat ut est.
     blocks:
-      - title: Block 1
+      - 
         visualisations:
           - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence
-            tab: Summary
             caption: Coverage of employment data in quantitative evidence.
             # citations:
             #   - title: 
@@ -290,6 +269,40 @@ sections:
                   min: 0
                   max: 100
                   width: 10%
+      -
+        text: |
+            Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria: 
+
+            * <b>Employment status:</b> Whether an individual is employed, unemployed, in education, or in training
+            * <b>Sector:</b> Industry sector of employment. 
+            * <b>Occupation:</b> Occupational role of employment 
+            * <b>Contract type:</b> Details of contract type, such as security of contract or guaranteed hours. 
+            * <b>Apprenticeships:</b> Details on apprenticeship participation, level and/or sector.  
+            * <b>Pay:</b> Information about salaries, such as yearly averages or hourly pay. 
+            * <b>Progression:</b> This refers to information about progression in labour market outcomes of individuals, such as salary increases or changes in employment status. 
+            * <b>Discrimination in employment:</b> Self-identified experiences of ethnic discrimination in the workplace. 
+
+            Employment characteristics are generally poorly represented in evidence on employment outcomes for young people from minority
+            ethnic groups, with employment status the only employment characteristic that was well represented across the evidence, especially
+            in Government statistics websites and some academic studies. 
+
+            Other employment characteristics fared much worse. Details of employment such as sector, occupation and contract types are poorly
+            covered in the analysis of employment outcomes for minority ethnic young people. The review shows that information on discrimination
+            in employment is a substantial gap, with only one piece of evidence reviewed included any mention of discrimination in employment in
+            their analysis. 
+
+            This lack of data on key employment details in many reports combined with low sample sizes in those reports where this is considered
+            makes it impossible to conduct meaningful analysis of employment details by granular ethnic group. 
+
+            This prevents a full understanding of the experience of employment by minority ethnic groups.
+
+            The quantitative review showed that measures of job quality, such as contract type, hours worked and pay, are generally poorly covered in the evidence in this area. Our data analysis was able to identify some useful findings in relation to job quality. However, sample sizes limited the level of granular and intersectional analysis that could be conducted. 
+
+            Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
+
+      -
+        featured_block: true
+        visualisations:
           - title: Lack of data available on employment and discrimination in employment.    
             type: chart
             tab: Bar Chart
@@ -346,8 +359,9 @@ sections:
                 - title: "Fully met (%)"
                   value: "Fully met (%)"
                   colour: "#69C2C9"
+      -
+        visualisations:
           - title: Presence of culturally relevant and use of timely data by report
-            tab: Breakdown
             caption: "Description text needed for this section."
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             # citations:

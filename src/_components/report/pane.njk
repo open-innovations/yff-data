@@ -1,5 +1,5 @@
 <h2>{{ report.title }}</h2>
-<div class="post-date">{{ report.publication_date | date('dd MMMM yyyy') }}</div>
+<div class="post-date">{{ report.publication_date | date('YFF') }}</div>
 {% if report.visualisations %}
   {% set key_visualisation = report.visualisations | first %}
   {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config}) | safe }}

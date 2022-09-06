@@ -12,6 +12,7 @@
   font-weight: 400
 }
 
+html { scroll-behavior: smooth; }
 body { font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
 h1 { color: #e25b27; text-align: center; }
 h1,h2,h3,h4,h5,h6 { font-family: "CenturyGothicStdBold", "Century Gothic", Helvetica, sans-serif; }
@@ -56,7 +57,9 @@ blockquote { border-left: 4px solid #e25b27; }
 .page-title::after { content: ""; background-image: url("../images/YFF_icon_stack2-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; right: 0; top: 0; z-index: 0; }
 .page-title .holder { position: relative; height: 100%; width: 58.8% !important; margin: auto !important; display: table-cell; vertical-align: middle; }
 
-main .wrapper section { line-height: 1.8em; margin-bottom: 4em; }
+main .wrapper section { line-height: 1.8em; }
+main .wrapper > section  { padding-top: 9em; }
+main .wrapper > section:first-child, main .wrapper > aside + section { padding-top: 0; }
 main .wrapper section > * { margin-bottom: 1em; }
 main .wrapper section > *:last-child { margin-bottom: 0; }
 main .wrapper section h2, main .wrapper section h3 { color: #e25b27; font-weight: bold; }
@@ -67,6 +70,7 @@ main .wrapper section a:not(.download-link, .tab) {
 	background-size: 5px 1px;
 	background-repeat: repeat-x;
 }
+main section.dl { padding-top: 0; display: flex; }
 .button { background: #7C2147; color: white; }
 .download-link, .button { text-transform: uppercase; margin: auto; padding: 15px 60px !important; font-size: 1.4em; font-weight: bold; transition: background 0.3s ease-in; }
 .download-link:hover, .download-link:focus, .button { background: #964E6D !important; }
