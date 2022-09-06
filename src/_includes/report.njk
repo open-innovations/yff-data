@@ -17,7 +17,7 @@
     {{ comp.report.table_of_contents({ sections: sections }) | safe }}
     {% endcomp %}
 
-	  <section style="display: flex;">
+	  <section class="dl">
 		{{ comp.actions.download({ link: report_link }) | safe }}
 	  </section>
 
