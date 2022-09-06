@@ -9,6 +9,10 @@
 
   <div class="wrapper holder">
 
+	  <section>
+		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
+	  </section>
+
     <div class="post-date">{{ publication_date | date('MMMM d, yyyy') }}</div>
     {% comp 'flex' %}
 	  <section class="summary">
@@ -19,10 +23,6 @@
 
 	  <section class="dl">
 		{{ comp.actions.download({ link: report_link }) | safe }}
-	  </section>
-
-	  <section>
-		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
 	  </section>
 
 	  {% for section in sections %}
