@@ -242,7 +242,55 @@ sections:
 
       Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
     blocks:
-      - title: Block 1
+      - 
+        visualisations:
+          - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence
+            caption: Coverage of employment data in quantitative evidence.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: table
+            config:
+              file: /data/gap_mapping_2022/employment_summary_table.csv
+              columns:
+                - name: "Data Type"
+                  rename: "Data Type"
+                  align: center
+                  width: 10%
+                - name: "Not met (%)"
+                  rename: "Not met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
+                  width: 10%
+                - name: "Partially met (%)"
+                  rename: "Partially met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
+                  width: 10%
+                - name: "Mostly met (%)"
+                  rename: "Mostly met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
+                  width: 10%
+                - name: "Fully met (%)"
+                  rename: "Fully met (%)"
+                  align: center
+                  heatmap: true
+                  scale: YFF-Highlight
+                  min: 0
+                  max: 100
+                  width: 10%
+      -
+        featured_block: true
         visualisations:
           - title: Lack of data available on employment and discrimination in employment.    
             type: chart
@@ -300,56 +348,9 @@ sections:
                 - title: "Fully met (%)"
                   value: "Fully met (%)"
                   colour: "#69C2C9"
-      - title: Block 2
+      -
         visualisations:
-          - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence
-            tab: Summary
-            caption: Coverage of employment data in quantitative evidence.
-            # citations:
-            #   - title: 
-            #     link: about:blank
-            type: table
-            config:
-              file: /data/gap_mapping_2022/employment_summary_table.csv
-              columns:
-                - name: "Data Type"
-                  rename: "Data Type"
-                  align: center
-                  width: 10%
-                - name: "Not met (%)"
-                  rename: "Not met (%)"
-                  align: center
-                  heatmap: true
-                  scale: YFF-Highlight
-                  min: 0
-                  max: 100
-                  width: 10%
-                - name: "Partially met (%)"
-                  rename: "Partially met (%)"
-                  align: center
-                  heatmap: true
-                  scale: YFF-Highlight
-                  min: 0
-                  max: 100
-                  width: 10%
-                - name: "Mostly met (%)"
-                  rename: "Mostly met (%)"
-                  align: center
-                  heatmap: true
-                  scale: YFF-Highlight
-                  min: 0
-                  max: 100
-                  width: 10%
-                - name: "Fully met (%)"
-                  rename: "Fully met (%)"
-                  align: center
-                  heatmap: true
-                  scale: YFF-Highlight
-                  min: 0
-                  max: 100
-                  width: 10%
           - title: Presence of culturally relevant and use of timely data by report
-            tab: Breakdown
             caption: "Description text needed for this section."
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             # citations:
