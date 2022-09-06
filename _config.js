@@ -64,7 +64,7 @@ site.use(
 site.use(date({
   locales: ["en-GB"],
   formats: {
-    "YFF": "dd MMMM yyyy",
+    "YFF": "MMMM yyyy",
   }
 }));
 
