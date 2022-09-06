@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: open-innovations/yff-wireframe
+  repo: open-innovations/yff-data
   branch: main
 
 locale: "en-GB"
