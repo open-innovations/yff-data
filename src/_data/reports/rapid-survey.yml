@@ -25,7 +25,7 @@ visualisations:
 report_link: /downloads/example-report.pdf
 
 sections:
-  - title: Young people from ethnic minorities are most likely to prioritise a good salary, working conditions and a clear career path
+  - title: Priorities for Choosing a Career Path
     summary: |      
       When asked about their future job, earning a high salary is by far the most likely to be considered one of the three most important priorities by young people from ethnic minority backgrounds (44%).
 
@@ -84,7 +84,7 @@ sections:
             # Description is used for the alt tag
             description: Some text that describes the image
 
-  - title: Young people from ethnic minorities are confident they will achieve their employment goals but do see ethnicity as a key barrier
+  - title: Barriers to Achieving Employment Goals
     summary: | 
       Overall, 73% of young people from ethnic minorities are confident they will achieve their future goals.
       On balance, confidence is highest for young people from White minority backgrounds, significantly higher than other ethnic groups – and around one in ten Asian (11%) or Black (13%) young people are not confident they will achieve their goals.
@@ -136,7 +136,7 @@ sections:
             # Description is used for the alt tag
             description: Some text that describes the image
 
-  - title: At least three in ten have experienced some form of workplace discrimination
+  - title: Workplace Discrimination
     summary: | 
       Half (47%) of young people from ethnic minority backgrounds have experienced discrimination when dealing with customers/clients at work, while two in five have experienced it when applying to a job (39%) and/or at a job interview (38%)    
     topics: []
@@ -190,7 +190,7 @@ sections:
             # Description is used for the alt tag
             description: Some text that describes the image
 
-  - title: Almost all young people are worried about the future of employment
+  - title: Worries About Employment
     summary: | 
       No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
       That said, some significant differences do emerge among different groups of young people. 
@@ -217,7 +217,7 @@ sections:
             # Description is used for the alt tag
             description: Some text that describes the image
 
-  - title: More than 4 in 5 young people have felt a negative impact of COVID-19
+  - title: Impact of COVID-19
     summary: | 
       No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
       That said, some significant differences do emerge among different groups of young people. 
@@ -271,7 +271,7 @@ sections:
             # Description is used for the alt tag
             description: Some text that describes the image
       
-  - title: The cost of living crisis has had a severe impact on young people
+  - title: Cost of Living Crisis
     summary: | 
       No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
       That said, some significant differences do emerge among different groups of young people. 
