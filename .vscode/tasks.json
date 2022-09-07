@@ -4,11 +4,14 @@
     {
       "type": "deno",
       "command": "task",
-      "args": ["lume", "-s"],
+      "args": [
+        "lume",
+        "-s"
+      ],
       "problemMatcher": [
         "$deno"
       ],
-      "label": "lume: run server"
+      "label": "deno: lume serve"
     }
   ]
 }
