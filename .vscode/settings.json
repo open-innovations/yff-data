@@ -1,7 +1,8 @@
 {
   "deno.codeLens.test": true,
-  "deno.enable": false,
+  "deno.enable": true,
   "deno.enablePaths": [
     "./lib"
-  ]
+  ],
+  "deno.unstable": true
 }
