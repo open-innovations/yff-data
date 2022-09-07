@@ -11,7 +11,11 @@
       "problemMatcher": [
         "$deno"
       ],
-      "label": "deno: lume serve"
+      "label": "deno: lume serve",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ]
 }
