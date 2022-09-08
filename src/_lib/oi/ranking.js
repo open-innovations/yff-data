@@ -4,6 +4,25 @@ import { colourScales, contrastColour } from '/src/_lib/oi/colour.js';
 
 const ns = 'http://www.w3.org/2000/svg';
 
+/*
+	Ranking Chart v 0.2
+	
+	This will make a rankings chart where each row is turned into a line
+	that moves up and down depending on the columns used for rankings.
+	
+	First define the column name that is used to make each series:
+		by: "Country"
+
+	To colour the series by a value, you can use the following options:
+		scale: "YFF"
+		scaleby: "Ranks→2018"
+		min: 1
+		max: 38
+		
+	Alternatively, a colour string can be given in the CSV file e.g.:
+		scaleby: "Colour"
+*/
+
 export function RankingChart(config,csv){
 	
 	var svg,id,seriesgroup;
