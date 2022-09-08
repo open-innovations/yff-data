@@ -1,0 +1,24 @@
+---
+title: Ranking chart
+order: 3
+caption: A ranking chart to show how the rank of something varies with time.
+visualisations:
+  - type: ranking
+    tab: Rankings
+    caption: An example ranking chart. The colour scale is based on the <code>min</code>/<code>max</code> values.
+    config:
+      file: /data/example/heatmap.csv
+      by: "Country"
+      scale: "YFF"
+      min: 1
+      max: 38
+      columns:
+        - name: "Ranks→2018"
+          rename: "2018"
+        - name: "Ranks→2019"
+          rename: "2019"
+        - name: "Ranks→2020"
+          rename: "2020"
+---
+
+{{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}
