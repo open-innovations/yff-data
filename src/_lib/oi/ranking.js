@@ -84,7 +84,7 @@ export function RankingChart(config,csv){
 			// If there are values for this series we add the structure for it
 			if(ok){
 
-				s = {'title':csv.columns[config.by][r],'data':data};
+				s = {'title':csv.columns[config.by][r],'data':data,'row':r};
 
 				g = svgEl('g');
 				g.classList.add('series');
@@ -181,9 +181,24 @@ export function RankingChart(config,csv){
 				oldx = xv;
 				oldrank = rank;
 			}
-			bg = colourScales.getColourFromScale(config.scale||'Viridis', series[s].data[0], config.min, config.max);
 
-			setAttr(series[s].path,{'d':path,'stroke':bg,'stroke-width':(dy*0.5).toFixed(2)});
+			v = 0;
+			if(config.scaleby && csv.rows[series[s].row]){
+				// If a "scaleby" is set, we will use that column to define the colours
+				// It doesn't have to be one of the data columns
+				v = csv.rows[series[s].row][config.scaleby];
+			}else{
+				if(config.columns[0].name && csv.columns[config.columns[0].name]){
+					// Use the first column provided
+					v = csv.columns[config.columns[0].name][series[s].row];
+				}else{
+					// Default to the first data value
+					v = series[s].data[0]||0;
+				}
+			}
+			if(typeof v==="number") v = colourScales.getColourFromScale(config.scale||'Viridis', v, config.min, config.max);
+
+			setAttr(series[s].path,{'d':path,'stroke':v,'stroke-width':(dy*0.5).toFixed(2)});
 		}
 
 		return this;
