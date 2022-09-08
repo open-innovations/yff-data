@@ -203,10 +203,13 @@ export function RankingChart(config,csv){
 					bg = csv.columns[config.columns[0].name][series[s].row];
 				}else{
 					// Default to the first data value
-					bg = series[s].data[0]||0;
+					bg = series[s].data[0]||'#444444';
 				}
 			}
-			if(typeof bg==="number") bg = colourScales.getColourFromScale(config.scale||'Viridis', bg, config.min, config.max);
+			if(typeof bg==="number"){
+				if(typeof config.min==="number" && typeof config.max==="number") bg = colourScales.getColourFromScale(config.scale||'Viridis', bg, config.min, config.max);
+				else bg = "#444444";
+			}
 			
 			// Build path and circles
 			v = 0;

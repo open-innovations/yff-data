@@ -4,7 +4,7 @@ order: 7
 caption: A ranking chart to show how the rank of something varies with time.
 visualisations:
   - type: ranking
-    tab: Rankings
+    tab: Rankings (colour scale)
     caption: An example ranking chart. The colour scale is based on the <code>min</code>/<code>max</code> values.
     config:
       file: /data/example/heatmap.csv
@@ -15,6 +15,43 @@ visualisations:
       max: 38
       curvature: 1
       height: 800
+      circles: 0.9
+      columns:
+        - name: "Ranks→2018"
+          rename: "2018"
+        - name: "Ranks→2019"
+          rename: "2019"
+        - name: "Ranks→2020"
+          rename: "2020"
+  - type: ranking
+    tab: Rankings (plain)
+    caption: An example ranking chart. No colours are applied.
+    config:
+      file: /data/example/heatmap.csv
+      by: "Country"
+      curvature: 1
+      height: 800
+      circles: 0.9
+      columns:
+        - name: "Ranks→2018"
+          rename: "2018"
+        - name: "Ranks→2019"
+          rename: "2019"
+        - name: "Ranks→2020"
+          rename: "2020"
+  - type: ranking
+    tab: Ranking (colours)
+    caption: "An example ranking chart. The colours are set from the <code>Colour</code> column in the CSV file. Key: <span style=\"padding:0.125em 0.25em;background:#f4ac36;color:black;\">Asia</span> <span style=\"padding:0.125em 0.25em;background:#e53012;color:white;\">Australia</span> <span style=\"padding:0.125em 0.25em;background:#0083c6;color:white;\">Europe</span> <span style=\"padding:0.125em 0.25em;background:#009640;color:white;\">N. America</span> <span style=\"padding:0.125em 0.25em;background:#b70d7f;color:white;\">S. America</span>"
+    config:
+      file: /data/example/heatmap.csv
+      by: "Country"
+      scale: "YFF"
+      scaleby: "Colour"
+      min: 1
+      max: 38
+      curvature: 1
+      height: 800
+      circles: 0.9
       columns:
         - name: "Ranks→2018"
           rename: "2018"
