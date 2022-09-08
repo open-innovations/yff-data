@@ -26,12 +26,12 @@
 		}
 		function focusLine(i){
 			for(var s = 0; s < series.length; s++){
-				series[s].style = (i==s) ? '' : 'filter:grayscale(100%);opacity:0.1';
+				series[s].style = (i==s) ? '' : 'filter:grayscale(100%);opacity:0.1;transition: 0.2s ease-in opacity;';
 			}
 		}
 		function resetLines(){
 			for(var s = 0; s < series.length; s++){
-				series[s].style = '';
+				series[s].style = 'transition: 0.2s ease-in opacity;';
 			}
 		}
 		for(var s = 0; s < series.length; s++) enableSeries(s,series[s]);
