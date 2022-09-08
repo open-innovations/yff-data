@@ -87,6 +87,7 @@ export function RankingChart(config,csv){
 				s = {'title':csv.columns[config.by][r],'data':data};
 
 				g = svgEl('g');
+				g.classList.add('series');
 				s.g = g;
 				svg.appendChild(g);
 
@@ -182,7 +183,7 @@ export function RankingChart(config,csv){
 			}
 			bg = colourScales.getColourFromScale(config.scale||'Viridis', series[s].data[0], config.min, config.max);
 
-			setAttr(series[s].path,{'d':path,'stroke':bg});
+			setAttr(series[s].path,{'d':path,'stroke':bg,'stroke-width':(dy*0.5).toFixed(2)});
 		}
 
 		return this;

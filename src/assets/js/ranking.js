@@ -14,7 +14,28 @@
 	}
 	
 	function InteractiveRankingChart(el){
-		console.log(el);
+
+		var series = el.querySelectorAll('g.series');
+
+		function enableSeries(i,el){
+			el.setAttribute('tabindex',0);
+			el.addEventListener('mouseover',function(e){ focusLine(i); });
+			el.addEventListener('mouseleave',function(e){ resetLines(i); });
+			el.addEventListener('focus',function(e){ focusLine(i); });
+			el.addEventListener('blur',function(e){ resetLines(i); });
+		}
+		function focusLine(i){
+			for(var s = 0; s < series.length; s++){
+				series[s].style = (i==s) ? '' : 'filter:grayscale(100%);opacity:0.1';
+			}
+		}
+		function resetLines(){
+			for(var s = 0; s < series.length; s++){
+				series[s].style = '';
+			}
+		}
+		for(var s = 0; s < series.length; s++) enableSeries(s,series[s]);
+
 		return this;
 	}
 
