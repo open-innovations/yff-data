@@ -21,6 +21,15 @@ const ns = 'http://www.w3.org/2000/svg';
 		
 	Alternatively, a colour string can be given in the CSV file e.g.:
 		scaleby: "Colour"
+
+	It is also possible to change the amount of curvature using 0-1:
+		curvature: 0 (straight lines)
+		curvature: 1 (fully curvy)
+
+	Optional rank circles can be shown by setting the value of circles e.g.
+		circles: 1 (full size)
+		circles: 0.5 (half the size)
+		circles: 0 (not shown)
 */
 
 export function RankingChart(config,csv){
@@ -31,11 +40,12 @@ export function RankingChart(config,csv){
 	this.opt = {
 		'type': 'ranking',
 		'padding':{'left':0,'top':0,'right':0,'bottom':0},
-		'width': 960,
-		'height': 600,
+		'width': 1024,
+		'height': 640,
 		'font-size': 17,
 		'font-family':'"Century Gothic",sans-serif',
-		'curvature': 1
+		'curvature': 1,
+		'circles': 0
 	};
 
 	// Update defaults with custom config
@@ -74,7 +84,7 @@ export function RankingChart(config,csv){
 
 	this.draw = function(){
 
-		var dy,y,yv,x,xv,h,w,pad,xoff,yoff,dx,delta,r,s,lbl,g,series,fs,v,i,ok,data,path,oldx,oldy,oldrank,rank,orderby,reverse,bg,talign;
+		var dy,y,yv,x,xv,h,w,pad,xoff,yoff,xlbl,dx,delta,r,s,lbl,g,series,fs,v,i,ok,data,path,oldx,oldy,oldrank,rank,orderby,reverse,bg,talign,circle,radius,txt;
 
 		fs = this.opt['font-size'];
 
@@ -144,6 +154,7 @@ export function RankingChart(config,csv){
 		w = this.opt.width;
 		h = this.opt.height - yoff;
 		dy = h / series.length;
+		radius = dy*this.opt.circles*0.5;
 
 		// Shrink the font if the y-spacing is too small
 		fs = Math.min(dy,fs);
@@ -155,9 +166,10 @@ export function RankingChart(config,csv){
 		for(s = 0; s < series.length; s++){
 			xoff = Math.max(xoff,textLength(series[s].title,fs,"standard",this.opt['font-family'].split(/,/)[0].replace(/\"/g,"")));
 		}
-		xoff += pad*2;
+		xlbl = xoff + pad;
+		xoff = xlbl + pad + radius;
 
-		dx = (w - xoff)/(config.columns.length-1);
+		dx = (w - xoff - radius)/(config.columns.length-1);
 
 
 		// Let's make some column headers
@@ -167,7 +179,7 @@ export function RankingChart(config,csv){
 			talign = 'middle';
 			if(i==0) talign = 'start';
 			if(i==config.columns.length-1) talign = 'end';
-			setAttr(lbl,{'x':(xoff + i*dx),'y': fs*0.2,'font-size':fs+'px','dominant-baseline':'hanging','text-anchor':talign});
+			setAttr(lbl,{'x':(xoff + i*dx + (i==0 ? -radius : (i==config.columns.length-1 ? +radius : 0))),'y': fs*0.2,'font-size':fs+'px','dominant-baseline':'hanging','text-anchor':talign});
 			svg.appendChild(lbl);
 		}
 
@@ -178,46 +190,65 @@ export function RankingChart(config,csv){
 		
 		// Update label positions and font size
 		for(s = 0; s < series.length; s++){
+
+			// Get colour
+			bg = 'black';
+			if(config.scaleby && csv.rows[series[s].row]){
+				// If a "scaleby" is set, we will use that column to define the colours
+				// It doesn't have to be one of the data columns
+				bg = csv.rows[series[s].row][config.scaleby];
+			}else{
+				if(config.columns[0].name && csv.columns[config.columns[0].name]){
+					// Use the first column provided
+					bg = csv.columns[config.columns[0].name][series[s].row];
+				}else{
+					// Default to the first data value
+					bg = series[s].data[0]||0;
+				}
+			}
+			if(typeof bg==="number") bg = colourScales.getColourFromScale(config.scale||'Viridis', bg, config.min, config.max);
+			
+			// Build path and circles
 			v = 0;
 			y = getY(s);
-			setAttr(series[s].label,{'x':xoff-pad,'y':y,'font-size':fs+'px'});
+			setAttr(series[s].label,{'x':xlbl	,'y':y,'font-size':fs+'px'});
 			
-			// Make path for this series
 
 			rank = series[s].data[0];
 			oldx = xoff;
 			oldrank = rank;
 			oldy = getY(s);
-			path = 'M'+oldx.toFixed(2)+','+oldy.toFixed(2);
 
-			for(i = 1; i < series[s].data.length; i++){
+			// Make path for this series
+			path = "";
+			for(i = 0; i < series[s].data.length; i++){
 				rank = series[s].data[i];
 				yv = getY(rank-1);
 				xv = xoff + (i)*dx;
-				path += 'C'+(oldx+(dx/2)*this.opt.curvature).toFixed(2)+','+oldy.toFixed(2)+','+(xv-(dx/2)*this.opt.curvature).toFixed(2)+','+yv.toFixed(2)+','+(xv).toFixed(2)+','+yv.toFixed(2);
+				if(i == 0){
+					path += 'M'+xv.toFixed(2)+','+yv.toFixed(2);
+				}else{
+					path += 'C'+(oldx+(dx/2)*this.opt.curvature).toFixed(2)+','+oldy.toFixed(2)+','+(xv-(dx/2)*this.opt.curvature).toFixed(2)+','+yv.toFixed(2)+','+(xv).toFixed(2)+','+yv.toFixed(2);
+				}
+				
+				if(this.opt.circles){
+					circle = svgEl('circle');
+					setAttr(circle,{'cx':xv.toFixed(2),'cy':yv.toFixed(2),'r':radius,'fill':bg});
+					series[s].g.appendChild(circle);
 
+					txt = svgEl('text');
+					txt.innerText = rank;
+					setAttr(txt,{'font-size':fs+'px','fill':contrastColour(bg),'x':xv.toFixed(2),'y':yv.toFixed(2),'dominant-baseline':'central','text-anchor':'middle','font-size':(radius*1)+'px'});
+					series[s].g.appendChild(txt);
+				}
+				
 				oldy = yv;
 				oldx = xv;
 				oldrank = rank;
 			}
 
-			v = 0;
-			if(config.scaleby && csv.rows[series[s].row]){
-				// If a "scaleby" is set, we will use that column to define the colours
-				// It doesn't have to be one of the data columns
-				v = csv.rows[series[s].row][config.scaleby];
-			}else{
-				if(config.columns[0].name && csv.columns[config.columns[0].name]){
-					// Use the first column provided
-					v = csv.columns[config.columns[0].name][series[s].row];
-				}else{
-					// Default to the first data value
-					v = series[s].data[0]||0;
-				}
-			}
-			if(typeof v==="number") v = colourScales.getColourFromScale(config.scale||'Viridis', v, config.min, config.max);
 
-			setAttr(series[s].path,{'d':path,'stroke':v,'stroke-width':(dy*0.5).toFixed(2)});
+			setAttr(series[s].path,{'d':path,'stroke':bg,'stroke-width':(dy*0.5).toFixed(2)});
 		}
 
 		return this;
