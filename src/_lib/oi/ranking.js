@@ -45,7 +45,8 @@ export function RankingChart(config,csv){
 		'font-size': 17,
 		'font-family':'"Century Gothic",sans-serif',
 		'curvature': 1,
-		'circles': 0
+		'circles': 0,
+		'stroke-width': 0.5
 	};
 
 	// Update defaults with custom config
@@ -84,7 +85,7 @@ export function RankingChart(config,csv){
 
 	this.draw = function(){
 
-		var dy,y,yv,x,xv,h,w,pad,xoff,yoff,xlbl,dx,delta,r,s,lbl,g,series,fs,v,i,ok,data,path,oldx,oldy,oldrank,rank,orderby,reverse,bg,talign,circle,radius,txt;
+		var dy,y,yv,x,xv,h,w,pad,xoff,yoff,xlbl,dx,r,s,lbl,g,series,fs,v,i,ok,data,path,oldx,oldy,oldrank,rank,orderby,reverse,bg,talign,circle,radius,txt;
 
 		fs = this.opt['font-size'];
 
@@ -150,7 +151,6 @@ export function RankingChart(config,csv){
 
 		// Calculate some dimensions
 		yoff = this.opt['font-size']*1.2;
-		delta = (1/6);
 		w = this.opt.width;
 		h = this.opt.height - yoff;
 		dy = h / series.length;
@@ -251,7 +251,7 @@ export function RankingChart(config,csv){
 			}
 
 
-			setAttr(series[s].path,{'d':path,'stroke':bg,'stroke-width':(dy*0.5).toFixed(2)});
+			setAttr(series[s].path,{'d':path,'stroke':bg,'stroke-width':(dy*this.opt['stroke-width']).toFixed(2)});
 		}
 
 		return this;

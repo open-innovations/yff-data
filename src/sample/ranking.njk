@@ -22,11 +22,12 @@ visualisations:
           rename: "2020"
   - type: ranking
     tab: Rankings (no scale)
-    caption: An example ranking chart. No colours are applied. The <code>curvature</code> is reduced.
+    caption: An example ranking chart. No colours are applied. The <code>curvature</code> is reduced (0 - 1) and a <code>stroke-width</code> applied (0 - 1).
     config:
       file: /data/example/heatmap.csv
       by: "Country"
       curvature: 0
+      stroke-width: 0.2
       columns:
         - name: "Ranks→2018"
           rename: "2018"
