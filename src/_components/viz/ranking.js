@@ -2,6 +2,7 @@ import { RankingChart } from '/src/_lib/oi/ranking.js';
 import { loadDataFile } from '/src/_lib/oi/util.js';
 
 export const css = `
+.ranking svg g:focus { outline: none; }
 `;
 
 export default ({ config, sources }) => {
