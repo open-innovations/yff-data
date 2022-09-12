@@ -1,9 +1,7 @@
 /*
 	Open Innovations Chart Interactivity v0.2
 	Helper function that find ".chart" elements 
-	looks for elements with "pane" within them,
-	finds their <h3> elements, 
-	then builds a simple tabbed interface.
+	makes a new HTML legend, and adds tooltips.
 */
 
 (function(root){
