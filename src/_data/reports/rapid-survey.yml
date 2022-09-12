@@ -36,9 +36,9 @@ sections:
       # First featured only would be shown on summary page
       - title: Block 1 
         visualisations:
-        - title: Clear career path and progression
+        - title: Ethnic Group
           caption: Young Asian people are more likely than their peers from other groups to prioritise a clear career path and progression (37% vs. 30% Black and 20% White minorities) and having a positive impact on communities (27% vs. 22% Black and 20% White minorities).
-          tab: Career Path & Progression
+          tab: Ethnic Group
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -47,12 +47,12 @@ sections:
             link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
             # Description is used for the alt tag
             description: Some text that describes the image
-        - title: Friends & Family
+        - title: Gender
           caption: |
             Young Black people place larger emphasis on making their family and friends proud when thinking about future jobs (22%, compared to 17% of the overall sample), and much more likely than Asian young people to prioritise impressing their friends and family (11% vs. 5%) or being able to work for themselves (21% vs. 12%). 
             
             Across all ethnic minority groups, males found impressing their family and friends significantly more important (13%) than their female counterparts (4%). This gender gap was in particular driven by young Black males (18%, vs 7% of Black females), but could also be seen among Asian young people (21% of young Asian males vs. 16% young Asian females). Young Asian people are much less likely than those from White minority or Black backgrounds to be influenced by their friends (9% vs. 18% and 17% respectively). 
-          tab: Friends & Family 
+          tab: Gender
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -61,9 +61,9 @@ sections:
             link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
             # Description is used for the alt tag
             description: Some text that describes the image
-        - title: Personal Influences
+        - title: Disability
           caption: Young people from ethnic minorities are most likely to be influenced by their own interests and passions when thinking about their future career (with 26% saying this is the most important factor, and 54% ranking this in the top 3). Mental health (33%), family (32%), the state of the job market/ economy (32%) are also influential factors. Beliefs and values linked to their ethnic heritage / background was important to 20% of young Black people, significantly higher than other groups.
-          tab: Personal Influences
+          tab: Disability
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -92,9 +92,9 @@ sections:
     blocks: 
       - title: Block 2
         visualisations: 
-        - title: Young people see ethnicity as a barrier to achieving their goals
+        - title: Ethnic Group
           caption: Despite the generally high confidence levels, young people from ethnic minorities are most likely to cite their ethnicity as one of the top three reasons why they may not achieve their goals (37% overall). This rises to 58% for young Black people, significantly higher than other ethnic groups, and 65% of young Black females.
-          tab: Ethnicity
+          tab: Ethnic Group
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -103,11 +103,11 @@ sections:
             link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
             # Description is used for the alt tag
             description: Some text that describes the image
-        - title: Optimism about employment prospects varies by gender
+        - title: Gender
           caption: |
             Gender, along with ethnicity, is a key differentiator for being optimistic about one’s prospects in the labour market. Black females show the highest levels of confidence of any group, male or female (82%, and only 5% saying they are not confident). 
             In contrast, one in five (22%) black males are not confident they will achieve their goals. Asian males are significantly more confident than their female counterparts (76% vs 66%), as are White minority males (75% vs. 71%).
-          tab: Gender Breakdown
+          tab: Gender 
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -116,7 +116,7 @@ sections:
             link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
             # Description is used for the alt tag
             description: Some text that describes the image
-        - title: Other common barriers for all ethnic groups
+        - title: Disability
           caption: |
             Across all ethnic minority groups, other common barriers include:
             <ul>
@@ -126,7 +126,96 @@ sections:
               <li>Tough competition (17%) was cited as a top 3 barrier by a quarter (24%) of Asian young people (vs. only 5% of White minority and 15% Black young people).</li>
               <li>Money due to the cost-of-living crisis (17%) was also a key concern across all ethnic groups.</li>
             </ul>
-          tab: Common Barriers
+          tab: Disability
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+  
+  - title: Impact of COVID-19
+    summary: | 
+      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
+      That said, some significant differences do emerge among different groups of young people. 
+    topics: []
+    blocks: 
+      - title: Block 1
+        visualisations: 
+        - title: Ethnic Group
+          caption: |
+            Three in five (58%) agree the pandemic has made society more aware of inequalities, and half (51%) agree it has brought people from different backgrounds closer together.
+            Seven in ten (68%) young Black people say it has made society more aware of inequalities due to race/ethnicity, although 60% agree the pandemic has made society more polarised.
+            Young Black people and White minorities are also more likely than those from Asian backgrounds to say the pandemic has created new opportunities for them (54% and 53% vs. 35%).
+            Over half of females from ethnic minorities disagree that the pandemic created new opportunities for them (52%, vs 39% of males).
+          tab: Ethnic Group
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+
+        - title: Gender
+          caption: |
+            (55%) feel less confident they will be able to get a good job and feel that it is less likely that they will achieve their workplace goals (52%).
+            The latter is particularly pronounced among White minorities (61%).
+          tab: Gender
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+
+        - title: Two in five young people from ethnic minorities say their mental health has suffered due to the pandemic
+          caption: |
+            A quarter of young people reported that their education/grades (25%), relationships with friends (23%), and physical health (23%) has suffered.
+            Across ethnic minority groups, females are more likely to have experienced negative impacts, whereas males are more likely to say the have experienced none (17% vs. 11%). This is particularly pronounced when it comes to the negative impacts on mental health (56% female vs. 26% male).
+            Young Asian people are more likely than other groups to say their mental health (51%) and education/grades (33%) have suffered.
+            Young Black people are most likely to have struggled to pay for essential goods and services (31%), had their future plans delayed (25%), and to have taken out loads/credit (17%).
+          tab: Disability
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+      
+  - title: Cost of Living Crisis
+    summary: | 
+      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
+      That said, some significant differences do emerge among different groups of young people. 
+    topics: []
+    blocks: 
+      - title: Block 1
+        visualisations: 
+        - title: Two in five young people say their mental health has suffered
+          caption: |
+            As with the COVID-19 pandemic, females are more likely to have experienced negative impacts – particularly on their mental health (50% vs. 25% males) – as are those with a disability.
+          tab: Ethnic Group
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: static-image
+          config: 
+            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
+            # Description is used for the alt tag
+            description: Some text that describes the image
+
+        - title: Young people have struggled to pay for goods and services
+          caption: |
+            Around a quarter of young people from ethnic minority backgrounds (23%) have also struggled to pay for essential goods and services, rising to a third (31%) of those from Black backgrounds.
+            Young Black people are also more likely to have struggled to pay for transport to/from my place of work or education (23%), had relationships with family suffer (17%), taken out loans / credit (16%), struggled to maintain their business/self-employment (15%), and had to care for vulnerable family members (13%).
+          tab: Gender 
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -154,7 +243,7 @@ sections:
               <li>People don’t think they act or speak the ‘right’ way (40%),</li>
               <li>Employers underestimate their abilities because of their ethnic background (43%).</li>
             </ul>
-          tab: Concerns Around Ethnicity
+          tab: Ethnic Group 
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -167,7 +256,7 @@ sections:
           caption: |
             Gender, along with ethnicity, is a key differentiator for being optimistic about one’s prospects in the labour market. Black females show the highest levels of confidence of any group, male or female (82%, and only 5% saying they are not confident). 
             In contrast, one in five (22%) black males are not confident they will achieve their goals. Asian males are significantly more confident than their female counterparts (76% vs 66%), as are White minority males (75% vs. 71%).
-          tab: Discrimination
+          tab: Disability
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -207,7 +296,7 @@ sections:
               <li>Guaranteed internship, apprenticeship or first job at living wage (27%),</li>
             </ul>
             Reflecting their greater likelihood to pursue self-employment, a quarter of young people from Black backgrounds are more likely to say they want the Government to offer career coaching or mentoring in their chosen industry (25%) or investment, training and support for young entrepreneurs or self-employed (24%).
-          tab: Government Intervention 
+          tab: Ethnic Group 
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -215,103 +304,4 @@ sections:
           config: 
             link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
             # Description is used for the alt tag
-            description: Some text that describes the image
-
-  - title: Impact of COVID-19
-    summary: | 
-      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
-      That said, some significant differences do emerge among different groups of young people. 
-    topics: []
-    blocks: 
-      - title: Block 1
-        visualisations: 
-        - title: Young people agree that the pandemic has made society more aware of inequalities
-          caption: |
-            Three in five (58%) agree the pandemic has made society more aware of inequalities, and half (51%) agree it has brought people from different backgrounds closer together.
-            Seven in ten (68%) young Black people say it has made society more aware of inequalities due to race/ethnicity, although 60% agree the pandemic has made society more polarised.
-            Young Black people and White minorities are also more likely than those from Asian backgrounds to say the pandemic has created new opportunities for them (54% and 53% vs. 35%).
-            Over half of females from ethnic minorities disagree that the pandemic created new opportunities for them (52%, vs 39% of males).
-          tab: Awareness of Inequalities
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
-        - title: Half of young people feel less confident in their employment prospects post-pandemic
-          caption: |
-            (55%) feel less confident they will be able to get a good job and feel that it is less likely that they will achieve their workplace goals (52%).
-            The latter is particularly pronounced among White minorities (61%).
-          tab: Impact on Confidence
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
-        - title: Two in five young people from ethnic minorities say their mental health has suffered due to the pandemic
-          caption: |
-            A quarter of young people reported that their education/grades (25%), relationships with friends (23%), and physical health (23%) has suffered.
-            Across ethnic minority groups, females are more likely to have experienced negative impacts, whereas males are more likely to say the have experienced none (17% vs. 11%). This is particularly pronounced when it comes to the negative impacts on mental health (56% female vs. 26% male).
-            Young Asian people are more likely than other groups to say their mental health (51%) and education/grades (33%) have suffered.
-            Young Black people are most likely to have struggled to pay for essential goods and services (31%), had their future plans delayed (25%), and to have taken out loads/credit (17%).
-          tab: Mental Health
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-      
-  - title: Cost of Living Crisis
-    summary: | 
-      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
-      That said, some significant differences do emerge among different groups of young people. 
-    topics: []
-    blocks: 
-      - title: Block 1
-        visualisations: 
-        - title: Two in five young people say their mental health has suffered
-          caption: |
-            As with the COVID-19 pandemic, females are more likely to have experienced negative impacts – particularly on their mental health (50% vs. 25% males) – as are those with a disability.
-          tab: Mental Health
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
-        - title: Young people have struggled to pay for goods and services
-          caption: |
-            Around a quarter of young people from ethnic minority backgrounds (23%) have also struggled to pay for essential goods and services, rising to a third (31%) of those from Black backgrounds.
-            Young Black people are also more likely to have struggled to pay for transport to/from my place of work or education (23%), had relationships with family suffer (17%), taken out loans / credit (16%), struggled to maintain their business/self-employment (15%), and had to care for vulnerable family members (13%).
-          tab: Financial Difficulty 
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        
-
-
-
-
-
-
-
-
-
+            description: Some text that describes the image 
