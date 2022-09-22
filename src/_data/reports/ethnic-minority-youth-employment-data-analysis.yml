@@ -197,6 +197,97 @@ sections:
                 - title: "White"
                   value: "White→Value (%)"
                   errors: ["White→- (%)","White→+ (%)"]  
+      
+  - title: Employment by Disability and Ethnic Group.
+    summary: Some content will go here soon.   
+    topics: []
+    blocks:
+      # All attributes optional
+      # First featured only would be shown on summary page
+      - title: Block 1
+        visualisations: 
+          - title:  Employment by Ethnic Group and Disability
+            tab: Tab 1 
+            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/empl_ethn_disab.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 10
+                  max: 70
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 20
+                      label: "20%"
+                    - value: 40
+                      label: "40%"
+                    - value: 60
+                      label: "60%"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"  
+              series:
+                - title: "Disabled"
+                  value: "Disabled→Value (%)"
+                  errors: ["Disabled→- (%)","Disabled→+ (%)"] 
+                - title: "Not disabled"
+                  value: "Not disabled→Value (%)"
+                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
+
+  - title: Employment by Religious Group
+    summary: Some content will go here soon.   
+    topics: []
+    blocks:
+      # All attributes optional
+      # First featured only would be shown on summary page
+      - title: Block 1
+        visualisations: 
+          - title:  Employment by Religious Group
+            tab: Tab 1 
+            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/empl_relig.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 10
+                  max: 70
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 20
+                      label: "20%"
+                    - value: 40
+                      label: "40%"
+                    - value: 60
+                      label: "60%"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Religious Group"  
+              series:
+                - title: "Employment"
+                  value: "Employment→Value (%)"
+                  errors: ["Employment→- (%)","Employment→+ (%)"] 
 
   - title: Systemic Erasure in Data Collection
     summary: |      
