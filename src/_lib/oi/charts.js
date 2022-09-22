@@ -51,7 +51,7 @@ export function StackedBarChart(config,csv){
 
 				// Loop over each series
 				for(s = 0; s < this.opt.series.length; s++){
-					label = this.opt.series[s].title+"\n"+(csv.columns[this.opt.category][i]||"").replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
+					label = this.opt.series[s].title+"\n"+(""+(csv.columns[this.opt.category][i]||"")).replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
 					// If the errors have values we add them to the label
 					if(this.opt.series[s].errors){
 						if(!isNaN(csv.columns[this.opt.series[s].errors[0]][i]) && !isNaN(csv.columns[this.opt.series[s].errors[1]][i])){
@@ -90,7 +90,7 @@ export function StackedBarChart(config,csv){
 			// Build y-axis labels
 			for(i = 0 ; i < csv.rows.length; i++){
 				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(csv.rows[i][this.opt.category]||"").replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(""+(csv.rows[i][this.opt.category]||"")).replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
 				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
 			}
 			return this;
@@ -173,7 +173,7 @@ export function BarChart(config,csv){
 				for(i = 0; i < csv.rows.length; i++){
 					categoryoffset = csv.rows.length-i-1;
 					seriesoffset = ((this.opt.series.length/2)-s-0.5)*(0.8/this.opt.series.length);
-					label = this.opt.series[s].title+"\n"+(csv.columns[this.opt.category][i]||"").replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
+					label = this.opt.series[s].title+"\n"+(""+(csv.columns[this.opt.category][i]||"")).replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
 					// If the errors have values we add them to the label
 					if(this.opt.series[s].errors){
 						if(!isNaN(csv.columns[this.opt.series[s].errors[0]][i]) && !isNaN(csv.columns[this.opt.series[s].errors[1]][i])){
@@ -206,7 +206,7 @@ export function BarChart(config,csv){
 			// Build y-axis labels
 			for(i = 0 ; i < csv.rows.length; i++){
 				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(csv.rows[i][this.opt.category]||"").replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(""+(csv.rows[i][this.opt.category]||"")).replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
 				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
 			}
 			return this;
@@ -287,7 +287,7 @@ export function CategoryChart(config,csv){
 				for(i = 0; i < csv.rows.length; i++){
 					categoryoffset = csv.rows.length-i-1;
 					seriesoffset = ((this.opt.series.length/2)-s-0.5)*(0.8/this.opt.series.length);
-					label = this.opt.series[s].title+"\n"+(csv.columns[this.opt.category][i]||"").replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
+					label = this.opt.series[s].title+"\n"+(""+(csv.columns[this.opt.category][i]||"")).replace(/\\n/g,"")+': '+(isNaN(csv.columns[this.opt.series[s].value][i]) ? "?" : csv.columns[this.opt.series[s].value][i]);
 					// If the errors have values we add them to the label
 					if(!isNaN(csv.columns[this.opt.series[s].errors[0]][i]) && !isNaN(csv.columns[this.opt.series[s].errors[1]][i])){
 						if(csv.columns[this.opt.series[s].errors[0]][i]==csv.columns[this.opt.series[s].errors[1]][i]){
@@ -316,7 +316,7 @@ export function CategoryChart(config,csv){
 			// Build y-axis labels
 			for(i = 0 ; i < csv.rows.length; i++){
 				this.opt.axis.y.labels[csv.rows.length-i-1.5] = {'label':'','grid':true};
-				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(csv.rows[i][this.opt.category]||"").replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
+				this.opt.axis.y.labels[csv.rows.length-i-1] = {'label':(""+(csv.rows[i][this.opt.category]||"")).replace(/\\n/g,"\n"),'ticksize':0,'grid':false,'data':{'category':csv.rows[i][this.opt.category]},'font-weight':'bold'};
 				this.opt.axis.y.labels[csv.rows.length-i-0.5] = {'label':'','grid':true};
 			}
 			return this;
