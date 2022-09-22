@@ -65,7 +65,8 @@ export function StackedBarChart(config,csv){
 					if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
 					x = (isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]);
 					// The final x-value is the current starting value plus the current value
-					datum = {'x':x+xo,'xstart':xo,'y':categoryoffset,'title':label};
+					datum = {'x':(typeof x==="null" ? null : x+xo),'xstart':xo,'y':categoryoffset,'title':label};
+
 					xo += x;
 					// Add errors if we have them
 					if(this.opt.series[s].errors) datum.error = {'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]};
@@ -185,7 +186,7 @@ export function BarChart(config,csv){
 						}
 					}
 					if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
-					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'title':label};
+					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? null : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'title':label};
 					// Add errors if we have them
 					if(this.opt.series[s].errors) datum.error = {'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]};
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
@@ -297,7 +298,7 @@ export function CategoryChart(config,csv){
 						}
 					}
 					if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
-					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? 0 : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]},'title':label};
+					datum = {'x':(isNaN(csv.columns[this.opt.series[s].value][i]) ? null : csv.columns[this.opt.series[s].value][i]),'y':categoryoffset+seriesoffset,'error':{'x':[csv.columns[this.opt.series[s].errors[0]][i],csv.columns[this.opt.series[s].errors[1]][i]]},'title':label};
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
 					data.push(datum);
 				}
@@ -918,6 +919,9 @@ function Series(s,props,data,extra){
 
 		for(i = pts.length; i < data.length; i++){
 
+			data[i].good = (typeof data[i].x==="number");
+			if(!data[i].good) data[i].x = 0;
+
 			datum = {'data-i':i};
 			// Add any data attributes
 			for(d in data[i].data) datum['data-'+d] = data[i].data[d];
@@ -993,7 +997,6 @@ function Series(s,props,data,extra){
 		old = {};
 
 		for(i = 0; i < pts.length; i++){
-
 			r = (opt['stroke-width']||1)/2;
 
 			if(opt.points){
@@ -1031,6 +1034,8 @@ function Series(s,props,data,extra){
 
 			// Update point position
 			if(pts[i].anim_point) pts[i].anim_point.set({'cx':{'from':pts[i].old.x||null,'to':ps.x},'cy':{'from':pts[i].old.y||null,'to':ps.y}});
+			
+			if(!data[i].good) setAttr(pts[i].point,{'visibility':'hidden'});
 
 			// Update bar position
 			if(pts[i].bar){
