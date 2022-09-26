@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-from os import chdir
-from os.path import realpath
+from os import chdir, makedirs
+from os.path import realpath, join
 from pandas import read_excel
 from yff_data.qlms import download_latest
 
 
 WORK_DIR = realpath('working')
-DATA_DIR = realpath('data')
+DATA_DIR = realpath(join('data', 'qlms'))
 def main():
     chdir(WORK_DIR)
     qlms_file = download_latest()
@@ -39,7 +39,7 @@ def main():
       'Unnamed: 0': 'Quarter'
     }, inplace=True)
 
-
+    makedirs(DATA_DIR, exist_ok=True)
     chdir(DATA_DIR)
     data9.to_csv('qlms-9.csv', index=False)
     data11.to_csv('qlms-11.csv', index=False)
