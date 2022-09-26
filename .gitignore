@@ -1,3 +1,7 @@
 _site/
 coverage/
 design/data/
+
+
+.py[co]
+__pycache__

@@ -82,6 +82,16 @@ dataFiles.forEach(remote => {
   const local = remote.replace(dataDir, dataPath);
   site.remoteFile(local, './' + remote);
 });
+
+// Copy QLMS data to live site
+[
+  'qlms-9.csv',
+  'qlms-11.csv',
+  'qlms-12.csv',
+  'qlms-20.csv',
+].forEach(f => site.remoteFile(`/data/qlms/${f}`, `data/qlms/${f}`));
+
+// Copy /data to live site
 site.copy(dataPath);
 
 site.process(['.html'], autoDependency);
