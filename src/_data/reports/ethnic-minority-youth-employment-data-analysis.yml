@@ -1,5 +1,5 @@
 # The title of the report
-title: Ethnic Minority Youth Employment Data Analysis
+title: Ethnic Minority Youth Employment Evidence Gap Analysis
 
 # Date the report was published
 publication_date: 2022-09
@@ -16,22 +16,22 @@ summary:
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
-  - title:  Employment by Gender and Ethnic Group
+  - title:  Employment by Region and Ethnic Group
     caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
     # citations:
     #   - title: 
     #     link: about:blank
     type: chart
     config: 
-      file: /data/gap_mapping_2022/ethn_empl_gend.csv
+      file: /data/gap_mapping_2022/empl_region_ethn.csv
       type: category-chart
       legend: 
         show: true     # Default to false
         position: "top right"
       axis:
         x:
-          min: 15
-          max: 65
+          min: 0
+          max: 100
           grid:
             stroke-dasharray: "6 2"
             stroke-width: 1
@@ -46,71 +46,19 @@ visualisations:
               label: "50%"
             - value: 60
               label: "60%"  
+            - value: 70
+              label: "70%"
+            - value: 80
+              label: "80%"  
+            - value: 90
+              label: "90%"
+            - value: 100
+              label: "100%"  
         y:
           grid:
             stroke-width: 0.5
-      category: "Ethnic group"  # Category names come from 
+      category: "Region"  # Category names come from 
       series:
-        - title: "Female"
-          value: "Female→Value (%)"
-          errors: ["Female→Uncertainty minus (%)","Female→Uncertainty plus (%)"]   # The column headings to use for the lower/upper error bar (value-lower and value+upper)
-        - title: "Male"
-          value: "Male→Value (%)"
-          errors: ["Male→Uncertainty minus (%)","Male→Uncertainty plus (%)"]  # The column headings to use for the lower/upper error bar size
-
-
-# Link to download the report. Could be on this site or elsewhere.
-report_link: /downloads/example-report.pdf
-
-# Report sections
-# Per section:
-#  title - title of the section
-#  summary - a textual summary of the section
-#  topics
-# When rendering the report page render the feature block.
-# If there are more blocks available, show a read more
-sections:
-  - title: Employment by Gender, Age and Ethnicity
-    summary: Some content will go here soon.   
-    topics: []
-    blocks:
-      # All attributes optional
-      # First featured only would be shown on summary page
-
-      - title: Block 1
-        visualisations: 
-          - title:  Employment by Age and Ethnic Group - Female
-            tab: Female Employment, Age, Ethnicity
-            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
-            # citations:
-            #   - title: 
-            #     link: about:blank
-            type: chart
-            config: 
-              file: /data/gap_mapping_2022/empl_ethn_gend_age_female.csv
-              type: category-chart
-              legend: 
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:
-                  min: 0
-                  max: 100
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 25
-                      label: "25%"
-                    - value: 50
-                      label: "50%"
-                    - value: 75
-                      label: "75%"
-                y:
-                  grid:
-                    stroke-width: 1
-              category: "Age"
-              series:
                 - title: "Bangladeshi"
                   value: "Bangladeshi→Value (%)"
                   errors: ["Bangladeshi→- (%)","Bangladeshi→+ (%)"]  
@@ -138,228 +86,18 @@ sections:
                 - title: "White"
                   value: "White→Value (%)"
                   errors: ["White→- (%)","White→+ (%)"] 
-          - title:  Employment by Age and Ethnic Group - Male
-            tab: Male Employment, Age, Ethnicity
-            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
-            # citations:
-            #   - title: 
-            #     link: about:blank
-            type: chart
-            config: 
-              file: /data/gap_mapping_2022/empl_ethn_gend_age_male.csv
-              type: category-chart
-              legend: 
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:
-                  min: 0
-                  max: 100
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 25
-                      label: "25%"
-                    - value: 50
-                      label: "50%"
-                    - value: 75
-                      label: "75%"
-                y:
-                  grid:
-                    stroke-width: 1
-              category: "Age"  
-              series:
-                - title: "Bangladeshi"
-                  value: "Bangladeshi→Value (%)"
-                  errors: ["Bangladeshi→- (%)","Bangladeshi→+ (%)"] 
-                - title: "Black/African/Caribbean/Black British"
-                  value: "Black/African/Caribbean/Black British→Value (%)"
-                  errors: ["Black/African/Caribbean/Black British→- (%)","Black/African/Caribbean/Black British→+ (%)"] 
-                - title: "Chinese"
-                  value: "Chinese→Value (%)"
-                  errors: ["Chinese→- (%)","Chinese→+ (%)"] 
-                - title: "Indian"
-                  value: "Indian→Value (%)"
-                  errors: ["Indian→- (%)","Indian→+ (%)"] 
-                - title: "Mixed/Multiple"
-                  value: "Mixed/Multiple→Value (%)"
-                  errors: ["Mixed/Multiple→- (%)","Mixed/Multiple→+ (%)"] 
-                - title: "Other"
-                  value: "Other→Value (%)"
-                  errors: ["Other→- (%)","Other→+ (%)"]  
-                - title: "Pakistani"
-                  value: "Pakistani→Value (%)"
-                  errors: ["Pakistani→- (%)","Pakistani→+ (%)"]  
-                - title: "Other Asian"
-                  value: "Other Asian→Value (%)"
-                  errors: ["Other Asian→- (%)","Other Asian→+ (%)"]  
-                - title: "White"
-                  value: "White→Value (%)"
-                  errors: ["White→- (%)","White→+ (%)"]  
-      
-  - title: Employment by Disability and Ethnic Group.
-    summary: Some content will go here soon.   
-    topics: []
-    blocks:
-      # All attributes optional
-      # First featured only would be shown on summary page
-      - title: Block 1
-        visualisations: 
-          - title:  Employment by Ethnic Group and Disability
-            tab: Tab 1 
-            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
-            # citations:
-            #   - title: 
-            #     link: about:blank
-            type: chart
-            config: 
-              file: /data/gap_mapping_2022/empl_ethn_disab.csv
-              type: category-chart
-              legend: 
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:
-                  min: 10
-                  max: 70
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 20
-                      label: "20%"
-                    - value: 40
-                      label: "40%"
-                    - value: 60
-                      label: "60%"
-                y:
-                  grid:
-                    stroke-width: 1
-              category: "Ethnic Group"  
-              series:
-                - title: "Disabled"
-                  value: "Disabled→Value (%)"
-                  errors: ["Disabled→- (%)","Disabled→+ (%)"] 
-                - title: "Not disabled"
-                  value: "Not disabled→Value (%)"
-                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
 
-  - title: Employment by Religious Group
-    summary: Some content will go here soon.   
-    topics: []
-    blocks:
-      # All attributes optional
-      # First featured only would be shown on summary page
-      - title: Block 1
-        visualisations: 
-          - title: 
-            tab: Tab 1 
-            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
-            # citations:
-            #   - title: 
-            #     link: about:blank
-            type: chart
-            config: 
-              file: /data/gap_mapping_2022/empl_relig.csv
-              type: category-chart
-              legend: 
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:
-                  min: 25
-                  max: 70
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 20
-                      label: "20%"
-                    - value: 40
-                      label: "40%"
-                    - value: 60
-                      label: "60%"
-                y:
-                  grid:
-                    stroke-width: 1
-              category: "Religious Group"  
-              series:
-                - title: "Employment"
-                  value: "Employment→Value (%)"
-                  errors: ["Employment→- (%)","Employment→+ (%)"] 
+# Link to download the report. Could be on this site or elsewhere.
+report_link: /downloads/example-report.pdf
 
-  - title: Education
-    summary: Some content will go here soon.   
-    topics: []
-    blocks:
-      # All attributes optional
-      # First featured only would be shown on summary page
-      - title: Block 1
-        visualisations: 
-          - title: Percentage in Education by Employment and Religious Group 
-            tab: Tab 1 
-            caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
-            # citations:
-            #   - title: 
-            #     link: about:blank
-            type: chart
-            config: 
-              file: /data/gap_mapping_2022/educ_region_ethn.csv
-              type: category-chart
-              legend: 
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:
-                  min: 25
-                  max: 110
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 40
-                      label: "40%"
-                    - value: 60
-                      label: "60%"
-                    - value: 80
-                      label: "80%"
-                    - value: 100
-                      label: "100%"
-                y:
-                  grid:
-                    stroke-width: 1
-              category: "Region"  
-              series:
-                - title: "Bangladeshi"
-                  value: "Bangladeshi→Value (%)"
-                  errors: ["Bangladeshi→- (%)","Bangladeshi→+ (%)"] 
-                - title: "Black/African/Caribbean/Black British"
-                  value: "Black/African/Caribbean/Black British→Value (%)"
-                  errors: ["Black/African/Caribbean/Black British→- (%)","Black/African/Caribbean/Black British→+ (%)"] 
-                - title: "Chinese"
-                  value: "Chinese→Value (%)"
-                  errors: ["Chinese→- (%)","Chinese→+ (%)"] 
-                - title: "Indian"
-                  value: "Indian→Value (%)"
-                  errors: ["Indian→- (%)","Indian→+ (%)"] 
-                - title: "Mixed/Multiple"
-                  value: "Mixed/Multiple→Value (%)"
-                  errors: ["Mixed/Multiple→- (%)","Mixed/Multiple→+ (%)"] 
-                - title: "Other"
-                  value: "Other→Value (%)"
-                  errors: ["Other→- (%)","Other→+ (%)"]  
-                - title: "Pakistani"
-                  value: "Pakistani→Value (%)"
-                  errors: ["Pakistani→- (%)","Pakistani→+ (%)"]  
-                - title: "Other Asian"
-                  value: "Other Asian→Value (%)"
-                  errors: ["Other Asian→- (%)","Other Asian→+ (%)"]  
-                - title: "White"
-                  value: "White→Value (%)"
-                  errors: ["White→- (%)","White→+ (%)"]  
-
-
+# Report sections
+# Per section:
+#  title - title of the section
+#  summary - a textual summary of the section
+#  topics
+# When rendering the report page render the feature block.
+# If there are more blocks available, show a read more
+sections:
   - title: Systemic Erasure in Data Collection
     summary: |      
       Capturing data about the experience of different ethnic groups, alongside other key demographic information such as geographic region, socioeconomic status, and religion is crucial to allowing intersectional analysis and thereby fully understanding the experiences of different ethnic groups.
