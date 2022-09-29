@@ -352,4 +352,50 @@ sections:
                 - title: "Muslim"
                   value: "Muslim→Value (%)"
                   errors: ["Muslim→- (%)","Muslim→+ (%)"] 
-  
+
+  - title: Pay, Hours & Contracts
+    summary: Some content will go here soon.   
+    topics: []
+    blocks:
+      # All attributes optional
+      # First featured only would be shown on summary page
+      - title:
+        visualisations: 
+          - title: Mean hourly pay by gender and ethnic group
+            tab: Female mean hourly pay by gender and ethnic group
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/pay_ethn_gender.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 5
+                  max: 20
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 0.1
+                  ticks:
+                    - value: 5
+                      label: "£5"
+                    - value: 10
+                      label: "£10"
+                    - value: 15
+                      label: "£15"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"  
+              series:
+                - title: "Female"
+                  value: "Female→Value (%)"
+                  errors: ["Female→- (%)","Female→+ (%)"] 
+                - title: "Male"
+                  value: "Male→Value (%)"
+                  errors: ["Male→- (%)","Male→+ (%)"]               
