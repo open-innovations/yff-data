@@ -398,4 +398,144 @@ sections:
                   errors: ["Female→- (%)","Female→+ (%)"] 
                 - title: "Male"
                   value: "Male→Value (%)"
-                  errors: ["Male→- (%)","Male→+ (%)"]               
+                  errors: ["Male→- (%)","Male→+ (%)"]  
+      - title:
+        visualisations: 
+          - title: Mean hours worked by gender and ethnic group
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/ethn_gend_hours.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 18
+                  max: 35
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 0.1
+                  ticks:
+                    - value: 20
+                      label: "20"
+                    - value: 25
+                      label: "25"
+                    - value: 30
+                      label: "30"
+                    - value: 35
+                      label: "35"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"  
+              series:
+                - title: "Female"
+                  value: "Female→Value (%)"
+                  errors: ["Female→- (%)","Female→+ (%)"] 
+                - title: "Male"
+                  value: "Male→Value (%)"
+                  errors: ["Male→- (%)","Male→+ (%)"] 
+
+      - title: Mean Hourly Pay by Disability, Gender and Ethnic Group
+        visualisations:    
+          - title:  Mean Hourly Pay by Disability, Gender and Ethnic Group
+            tab: Female Disability, Gender and Ethnic Group
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/pay_disab_ethn_female.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 3
+                  max: 19
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 4
+                      label: "£4"
+                    - value: 6
+                      label: "£6"
+                    - value: 8
+                      label: "£8"
+                    - value: 10
+                      label: "£10"
+                    - value: 12
+                      label: "£12"
+                    - value: 14
+                      label: "£14"
+                    - value: 16
+                      label: "£16"
+                    - value: 18
+                      label: "£18"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"
+              series:
+                - title: "Disabled"
+                  value: "Disabled→Value (%)"
+                  errors: ["Disabled→- (%)","Disabled→+ (%)"]  
+                - title: "Not disabled"
+                  value: "Not disabled→Value (%)"
+                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
+          - title:  
+            tab: Male Disability, Gender and Ethnic Group
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/pay_disab_ethn_male.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 2
+                  max: 17
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 2
+                      label: "£2"
+                    - value: 4
+                      label: "£4"
+                    - value: 6
+                      label: "£6"
+                    - value: 8
+                      label: "£8"
+                    - value: 10
+                      label: "£10"
+                    - value: 12
+                      label: "£12"
+                    - value: 14
+                      label: "£14"
+                    - value: 16
+                      label: "£16"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"
+              series:
+                - title: "Disabled"
+                  value: "Disabled→Value (%)"
+                  errors: ["Disabled→- (%)","Disabled→+ (%)"]  
+                - title: "Not disabled"
+                  value: "Not disabled→Value (%)"
+                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"]           
