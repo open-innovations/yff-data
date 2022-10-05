@@ -376,14 +376,12 @@ sections:
                 position: "top right"
               axis:
                 x:
-                  min: 5
-                  max: 20
+                  min: 7
+                  max: 17
                   grid:
                     stroke-dasharray: "6 2"
                     stroke-width: 0.1
                   ticks:
-                    - value: 5
-                      label: "£5"
                     - value: 10
                       label: "£10"
                     - value: 15
@@ -538,4 +536,152 @@ sections:
                   errors: ["Disabled→- (%)","Disabled→+ (%)"]  
                 - title: "Not disabled"
                   value: "Not disabled→Value (%)"
-                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"]           
+                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"]     
+
+  - title: Education 
+    summary: Some content will go here soon.   
+    topics: []
+    blocks:
+      # All attributes optional
+      # First featured only would be shown on summary page
+      - title:
+        visualisations: 
+          - title: Percentage in Education by Gender and Ethnic Group 
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/educ_ethn_gend.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 40
+                  max: 90
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 0.1
+                  ticks:
+                    - value: 40
+                      label: "40"
+                    - value: 50
+                      label: "50"
+                    - value: 60
+                      label: "60"
+                    - value: 80
+                      label: "80"
+                    - value: 90
+                      label: "90"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"  
+              series:
+                - title: "Female"
+                  value: "Female→Value (%)"
+                  errors: ["Female→- (%)","Female→+ (%)"] 
+                - title: "Male"
+                  value: "Male→Value (%)"
+                  errors: ["Male→- (%)","Male→+ (%)"]   
+
+
+      - title: Education by Disability, Gender and Ethnic Group
+        visualisations:    
+          - title:  Education by Disability, Gender and Ethnic Group
+            tab: Female Disability, Gender and Ethnic Group
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/educ_ethn_disab_female.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 15
+                  max: 90
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 20
+                      label: "20%"
+                    - value: 30
+                      label: "30%"
+                    - value: 40
+                      label: "40%"
+                    - value: 50
+                      label: "50%"
+                    - value: 60
+                      label: "60%"
+                    - value: 70
+                      label: "70%"
+                    - value: 80
+                      label: "80%"
+                    - value: 90
+                      label: "90%"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"
+              series:
+                - title: "Disabled"
+                  value: "Disabled→Value (%)"
+                  errors: ["Disabled→- (%)","Disabled→+ (%)"]  
+                - title: "Not disabled"
+                  value: "Not disabled→Value (%)"
+                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
+          - title:  
+            tab: Male Disability, Gender and Ethnic Group
+            caption: What goes here will most likely emerge as we create this report.
+            # citations:
+            #   - title: 
+            #     link: about:blank
+            type: chart
+            config: 
+              file: /data/gap_mapping_2022/educ_ethn_disab_male.csv
+              type: category-chart
+              legend: 
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 25
+                  max: 95
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 30
+                      label: "30%"
+                    - value: 40
+                      label: "40%"
+                    - value: 50
+                      label: "50%"
+                    - value: 60
+                      label: "60%"
+                    - value: 70
+                      label: "70%"
+                    - value: 80
+                      label: "80%"
+                    - value: 90
+                      label: "90%"
+                y:
+                  grid:
+                    stroke-width: 1
+              category: "Ethnic Group"
+              series:
+                - title: "Disabled"
+                  value: "Disabled→Value (%)"
+                  errors: ["Disabled→- (%)","Disabled→+ (%)"]  
+                - title: "Not disabled"
+                  value: "Not disabled→Value (%)"
+                  errors: ["Not disabled→- (%)","Not disabled→+ (%)"]        
