@@ -34,6 +34,7 @@ export default function ({ config, sources }) {
 	const configcopy = clone(config);
 
 	// Add our default colours
+  // TODO make this external data
 	configcopy.colours = {
 		"Female":"#ee7e3b","Male":"#264c59",
 		"Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358",
