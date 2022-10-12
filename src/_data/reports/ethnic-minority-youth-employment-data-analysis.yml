@@ -357,8 +357,7 @@ sections:
 
             Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
 
-      -
-        featured_block: true
+      - featured_block: true
         visualisations:
           - title: Lack of data available on employment and discrimination in employment.    
             type: chart

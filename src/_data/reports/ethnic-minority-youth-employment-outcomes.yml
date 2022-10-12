@@ -6,14 +6,13 @@ publication_date: 2022-09
 
 summary:
   - |
-    Some content will go here soon.
+    This page will be used to visualise analysis of youth employment outcomes data from the Ethnic Minority Youth Employment Data Analysis report. 
 
-  
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
   - title:  Employment by Ethnic Group
-    caption: What goes here will most likely emerge as we create this report.
+    caption: 
     # citations:
     #   - title: 
     #     link: about:blank
