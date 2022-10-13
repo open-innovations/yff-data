@@ -82,7 +82,7 @@ visualisations:
   -
     type: chart
     tab: Multi-series
-    caption: This example shows three series. The colours are explicitly set. A <code>tooltip</code> label is created as a virtual column for each series.
+    caption: This example shows three series. The colours are explicitly set. A <code>tooltip</code> label is created as a virtual column for each series. We also adjust the fractional <code>gap</code> between bars within a category.
     config:
       file: /data/example/dummy_barchart_placements.csv
       summary: "Employers were not asked separately about each type of placement"
@@ -111,6 +111,7 @@ visualisations:
         y:
           grid:
             stroke-width: 0.5
+      gap: 0.2
       category: "Reason"  # Category names come from 
       columns:
         - name: "School Label"
