@@ -5,13 +5,10 @@ title: Rapid Survey
 publication_date: 2022-09-14
 
 summary:
-  - |
-    Lorem ipsum dolor sit amet. Ut minima quaerat nam reiciendis magnam et architecto asperiores et sunt maiores et possimus animi rem illo labore est amet dolorum. 
-    
-    Est odio laboriosam in quisquam commodi et cupiditate quia. Eum voluptatem beatae ab molestiae doloribus sit voluptate esse. Ut magnam voluptas sed officia vero ut nesciunt rerum sed rerum quia qui expedita galisum ut voluptatibus esse rem laudantium magnam. Aut expedita similique id dolor dolores nam dolorum labore sed atque quas. Ut voluptas voluptatem quo repellat beatae qui aliquam tempore. Ut provident corporis vel velit galisum vel galisum fuga et aliquid tempore ut aliquam quisquam ex corporis aliquam.
+  - This page will be used to visualise analysis of data collected as part of the Rapid Survey report. 
 visualisations:
-  - title:  "Key narrative: Even with increased vacancies, young people are worried about their employment prospects due to the cost of living crisis."
-    caption: <span class="note">Review</span> What goes here will most likely emerge as we create this report.
+  - title:  "Young people are worried about their employment prospects due to the cost of living crisis."
+    caption: 
     citations:
       - title: A short description of the citation
         link: about:blank
@@ -25,145 +22,190 @@ visualisations:
 report_link: /downloads/example-report.pdf
 
 sections:
-  - title: Priorities for Choosing a Career Path
-    summary: |      
-      When asked about their future job, earning a high salary is by far the most likely to be considered one of the three most important priorities by young people from ethnic minority backgrounds (44%).
-
-      Three in ten (30%) rank good working conditions or a clear career path (30%) in the top three.
-    topics: []
-    blocks:
-      # All attributes optional
-      # First featured only would be shown on summary page
-      - title: Block 1 
-        visualisations:
-        - title: Ethnic Group
-          caption: Young Asian people are more likely than their peers from other groups to prioritise a clear career path and progression (37% vs. 30% Black and 20% White minorities) and having a positive impact on communities (27% vs. 22% Black and 20% White minorities).
-          tab: Ethnic Group
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        - title: Gender
-          caption: |
-            Young Black people place larger emphasis on making their family and friends proud when thinking about future jobs (22%, compared to 17% of the overall sample), and much more likely than Asian young people to prioritise impressing their friends and family (11% vs. 5%) or being able to work for themselves (21% vs. 12%). 
-            
-            Across all ethnic minority groups, males found impressing their family and friends significantly more important (13%) than their female counterparts (4%). This gender gap was in particular driven by young Black males (18%, vs 7% of Black females), but could also be seen among Asian young people (21% of young Asian males vs. 16% young Asian females). Young Asian people are much less likely than those from White minority or Black backgrounds to be influenced by their friends (9% vs. 18% and 17% respectively). 
-          tab: Gender
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        - title: Disability
-          caption: Young people from ethnic minorities are most likely to be influenced by their own interests and passions when thinking about their future career (with 26% saying this is the most important factor, and 54% ranking this in the top 3). Mental health (33%), family (32%), the state of the job market/ economy (32%) are also influential factors. Beliefs and values linked to their ethnic heritage / background was important to 20% of young Black people, significantly higher than other groups.
-          tab: Disability
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        - title: Gender Breakdown
-          caption: "Across all ethnic minority groups, males were more likely to be influenced by their social environment such as: work colleagues (20% vs 11%), friends (17% vs 9%), beliefs and values linked to their ethnic heritage / background (17% vs 12%). Meanwhile, females over-indexed males in personal influences: their own interests and passions (67% vs 40%), their mental health (39% vs 27%), their individual beliefs and values (34% vs 26%)."
-          tab: Gender Breakdown 
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
   - title: Barriers to Achieving Employment Goals
-    summary: | 
-      Overall, 73% of young people from ethnic minorities are confident they will achieve their future goals.
-      On balance, confidence is highest for young people from White minority backgrounds, significantly higher than other ethnic groups – and around one in ten Asian (11%) or Black (13%) young people are not confident they will achieve their goals.
-    topics: []
-    blocks: 
-      - title: Block 2
-        visualisations: 
-        - title: Ethnic Group
-          caption: Despite the generally high confidence levels, young people from ethnic minorities are most likely to cite their ethnicity as one of the top three reasons why they may not achieve their goals (37% overall). This rises to 58% for young Black people, significantly higher than other ethnic groups, and 65% of young Black females.
-          tab: Ethnic Group
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        - title: Gender
-          caption: |
-            Gender, along with ethnicity, is a key differentiator for being optimistic about one’s prospects in the labour market. Black females show the highest levels of confidence of any group, male or female (82%, and only 5% saying they are not confident). 
-            In contrast, one in five (22%) black males are not confident they will achieve their goals. Asian males are significantly more confident than their female counterparts (76% vs 66%), as are White minority males (75% vs. 71%).
-          tab: Gender 
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        - title: Disability
-          caption: |
-            Across all ethnic minority groups, other common barriers include:
-            <ul>
-              <li>(Lack of) connections to the ‘right’ people (21%), especially for 28% of females from ethnic minorities (vs. 15% of males), and 27% among Asian young people.</li>
-              <li>Religion (19%), rising to 28% among Asian young people and is a concern for half (47%) of young people from Muslim backgrounds.</li>
-              <li>Gender (17%), a quarter (25%) of females from ethnic minority backgrounds expect this to be a significant barrier (vs. 8% of males).</li>
-              <li>Tough competition (17%) was cited as a top 3 barrier by a quarter (24%) of Asian young people (vs. only 5% of White minority and 15% Black young people).</li>
-              <li>Money due to the cost-of-living crisis (17%) was also a key concern across all ethnic groups.</li>
-            </ul>
-          tab: Disability
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-  
-  - title: Impact of COVID-19
-    summary: | 
-      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
-      That said, some significant differences do emerge among different groups of young people. 
     topics: []
     blocks: 
       - title: Block 1
         visualisations: 
         - title: Ethnic Group
-          caption: |
-            Three in five (58%) agree the pandemic has made society more aware of inequalities, and half (51%) agree it has brought people from different backgrounds closer together.
-            Seven in ten (68%) young Black people say it has made society more aware of inequalities due to race/ethnicity, although 60% agree the pandemic has made society more polarised.
-            Young Black people and White minorities are also more likely than those from Asian backgrounds to say the pandemic has created new opportunities for them (54% and 53% vs. 35%).
-            Over half of females from ethnic minorities disagree that the pandemic created new opportunities for them (52%, vs 39% of males).
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q13_barriers.csv
+            type: bar-chart
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 75
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+                  - value: 60
+                    label: 60%
+                  - value: 70
+                    label: 70%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Response
+            series:
+              - title: White
+                value: White
+              - title: White (exclu. Irish)
+                value: White (exclu. Irish)            
+              - title: Asian/Asian British
+                value: Asian/Asian British              
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British             
+              - title: Middle Eastern
+                value: Middle Eastern
+              - title: Mixed/Multiple
+                value: Mixed/Multiple
+              - title: Mixed/Multiple (exclu. White Irish/British)
+                value: Mixed/Multiple (exclu. White Irish/British)
+              - title: Other
+                value: Other
+  
+  - title: Impact of COVID-19
+    topics: []
+    blocks: 
+      - title: Block 1
+        visualisations: 
+        - title: Ethnic Group
           tab: Ethnic Group
           citations:
             - title: A short description of the citation
               link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
+          type: chart
+          config:
+            file: /data/rapid_survey/q19_covid_ethn.csv
+            type: bar-chart
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 75
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+                  - value: 60
+                    label: 60%
+                  - value: 70
+                    label: 70%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Response
+            series:
+              - title: Total
+                value: Total
+              - title: White
+                value: White
+              - title: White (exclu. Irish)
+                value: White (exclu. Irish)            
+              - title: Asian/ Asian British
+                value: Asian/ Asian British              
+              - title: Black/ African/ Caribbean/ Black British
+                value: Black/ African/ Caribbean/ Black British             
+              - title: Middle Eastern
+                value: Middle Eastern
+              - title: Mixed / multiple (all)
+                value: Mixed / multiple (all)
+              - title: Mixed / multiple (exclu. White Irish/British)
+                value: Mixed / multiple (exclu. White Irish/British)
+              - title: Another Ethnic Group
+                value: Another Ethnic Group
+            
+      - title: Block 2
+        visualisations: 
+        - title: COVID-19 made me less confident I will get a good job
+          tab: COVID-19 made me less confident I will get a good job
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q19_covid_ethn_2.csv
+            type: bar-chart
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 75
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+                  - value: 60
+                    label: 60%
+                  - value: 70
+                    label: 70%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Response
+            series:
+              - title: Total
+                value: Total
+              - title: White
+                value: White
+              - title: White (exclu. Irish)
+                value: White (exclu. Irish)            
+              - title: Asian/ Asian British
+                value: Asian/ Asian British              
+              - title: Black/ African/ Caribbean/ Black British
+                value: Black/ African/ Caribbean/ Black British             
+              - title: Middle Eastern
+                value: Middle Eastern
+              - title: Mixed / multiple (all)
+                value: Mixed / multiple (all)
+              - title: Mixed / multiple (exclu. White Irish/British)
+                value: Mixed / multiple (exclu. White Irish/British)
+              - title: Another Ethnic Group
+                value: Another Ethnic Group
 
         - title: Gender
-          caption: |
-            (55%) feel less confident they will be able to get a good job and feel that it is less likely that they will achieve their workplace goals (52%).
-            The latter is particularly pronounced among White minorities (61%).
           tab: Gender
           citations:
             - title: A short description of the citation
@@ -175,11 +217,6 @@ sections:
             description: Some text that describes the image
 
         - title: Two in five young people from ethnic minorities say their mental health has suffered due to the pandemic
-          caption: |
-            A quarter of young people reported that their education/grades (25%), relationships with friends (23%), and physical health (23%) has suffered.
-            Across ethnic minority groups, females are more likely to have experienced negative impacts, whereas males are more likely to say the have experienced none (17% vs. 11%). This is particularly pronounced when it comes to the negative impacts on mental health (56% female vs. 26% male).
-            Young Asian people are more likely than other groups to say their mental health (51%) and education/grades (33%) have suffered.
-            Young Black people are most likely to have struggled to pay for essential goods and services (31%), had their future plans delayed (25%), and to have taken out loads/credit (17%).
           tab: Disability
           citations:
             - title: A short description of the citation
@@ -191,59 +228,74 @@ sections:
             description: Some text that describes the image
       
   - title: Cost of Living Crisis
-    summary: | 
-      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
-      That said, some significant differences do emerge among different groups of young people. 
     topics: []
     blocks: 
       - title: Block 1
         visualisations: 
-        - title: Two in five young people say their mental health has suffered
-          caption: |
-            As with the COVID-19 pandemic, females are more likely to have experienced negative impacts – particularly on their mental health (50% vs. 25% males) – as are those with a disability.
-          tab: Ethnic Group
+        - title: Cost of Living Crisis
+          caption:
           citations:
             - title: A short description of the citation
               link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
-        - title: Young people have struggled to pay for goods and services
-          caption: |
-            Around a quarter of young people from ethnic minority backgrounds (23%) have also struggled to pay for essential goods and services, rising to a third (31%) of those from Black backgrounds.
-            Young Black people are also more likely to have struggled to pay for transport to/from my place of work or education (23%), had relationships with family suffer (17%), taken out loans / credit (16%), struggled to maintain their business/self-employment (15%), and had to care for vulnerable family members (13%).
-          tab: Gender 
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
+          type: chart
+          config:
+            file: /data/rapid_survey/q20_cost_of_living.csv
+            type: bar-chart
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 60
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Response
+            series:
+              - title: Total
+                value: Total
+                colour: "#ee7e3b"
+              - title: White
+                value: White
+              - title: White (exclu. Irish)
+                value: White (exclu. Irish)      
+                colour: "#874245"     
+              - title: Asian/Asian British
+                value: Asian/ Asian British 
+                colour: "#39c2b0"             
+              - title: Black/African/Caribbean/Black British
+                value: Black/ African/ Caribbean/ Black British        
+              - title: Middle Eastern
+                value: Middle Eastern
+              - title: Mixed/Multiple
+                value: Mixed / multiple (all)
+              - title: Mixed / multiple (exclu. White Irish/British)
+                value: Mixed / multiple (exclu. White Irish/British)
+                colour: "#fe9400"
+              - title: Other
+                value: Other
 
   - title: Workplace Discrimination
-    summary: | 
-      Half (47%) of young people from ethnic minority backgrounds have experienced discrimination when dealing with customers/clients at work, while two in five have experienced it when applying to a job (39%) and/or at a job interview (38%)    
     topics: []
     blocks: 
       - title: Block 1
         visualisations: 
         - title: Young people from ethnic minority backgrounds worry about how their ethnicity will impact their experience of the workplace
-          caption: |
-            Around two in five young people feel that:
-            <ul>
-              <li>They will be/ have been paid less than people from other ethnic backgrounds (41%),</li>
-              <li>Family responsibilities often stand in the way of work (39%),</li>
-              <li>Employers do not take them seriously or treat them differently (37%),</li>
-              <li>They feel excluded socially (39%),</li>
-              <li>People don’t think they act or speak the ‘right’ way (40%),</li>
-              <li>Employers underestimate their abilities because of their ethnic background (43%).</li>
-            </ul>
-          tab: Ethnic Group 
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -252,56 +304,3 @@ sections:
             link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
             # Description is used for the alt tag
             description: Some text that describes the image
-        - title: Males and those with a disability were more likely to report discrimination
-          caption: |
-            Gender, along with ethnicity, is a key differentiator for being optimistic about one’s prospects in the labour market. Black females show the highest levels of confidence of any group, male or female (82%, and only 5% saying they are not confident). 
-            In contrast, one in five (22%) black males are not confident they will achieve their goals. Asian males are significantly more confident than their female counterparts (76% vs 66%), as are White minority males (75% vs. 71%).
-          tab: Disability
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-        - title: Differences among ethnic groups
-          caption: |
-            Interestingly, young Asian people are the least likely to report having experienced discrimination, in any scenario tested.
-            More than half of young Black people feel that that employers underestimate their abilities because of their ethnic background (54%), and an even higher proportion (58%) agree that self-employment is a way of overcoming discrimination in workplaces.
-          tab: Ethnic Groups
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
-  - title: Worries About Employment
-    summary: | 
-      No concern tested in the survey stands out compared to the others overall, indicating this could be driven by personal circumstances and experiences. 
-      That said, some significant differences do emerge among different groups of young people. 
-    topics: []
-    blocks: 
-      - title: Block 1
-        visualisations: 
-        - title: How young people feel the government could help
-          caption: |
-            When asked what three things the government could do, young people from all ethnic backgrounds were more likely to choose:
-            <ul>
-              <li>Guaranteed work experience for every young person in school (28%),</li>
-              <li>Initiatives to eradicate discrimination in education and employment (27%),</li>
-              <li>Guaranteed internship, apprenticeship or first job at living wage (27%),</li>
-            </ul>
-            Reflecting their greater likelihood to pursue self-employment, a quarter of young people from Black backgrounds are more likely to say they want the Government to offer career coaching or mentoring in their chosen industry (25%) or investment, training and support for young entrepreneurs or self-employed (24%).
-          tab: Ethnic Group 
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image 
