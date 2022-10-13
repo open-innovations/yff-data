@@ -192,7 +192,7 @@ export function BarChart(config,csv){
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
 					data.push(datum);
 				}
-				this.series.push(new Series(s,this.opt.series[s],data,{'axis':this.opt.axis,'barsize':(0.8/this.opt.series.length)}));
+				this.series.push(new Series(s,this.opt.series[s],data,{'axis':this.opt.axis,'barsize':(typeof this.opt.gap==="number" ? (1-this.opt.gap) : 1)*(0.8/this.opt.series.length)}));
 			}
 			return this;
 		},
