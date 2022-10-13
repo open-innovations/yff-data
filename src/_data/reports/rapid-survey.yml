@@ -233,7 +233,7 @@ sections:
       - title: Block 1
         visualisations: 
         - title: Cost of Living Crisis
-          caption:
+          caption: HEre is some text
           citations:
             - title: A short description of the citation
               link: about:blank
@@ -241,6 +241,7 @@ sections:
           config:
             file: /data/rapid_survey/q20_cost_of_living.csv
             type: bar-chart
+            height: 1200
             legend:
               show: true
               position: top right
@@ -265,13 +266,20 @@ sections:
               'y':
                 grid:
                   stroke-width: 0.5
-            category: Response
+            category: Category
+            columns:
+              - name: Total Tooltip
+                template: "Total<br />{{ Response }}: {{ Total }}"
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"
             series:
               - title: Total
                 value: Total
                 colour: "#ee7e3b"
+                tooltip: Total Tooltip
               - title: White
                 value: White
+                tooltip: White Tooltip
               - title: White (exclu. Irish)
                 value: White (exclu. Irish)      
                 colour: "#874245"     

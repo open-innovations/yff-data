@@ -1,21 +1,21 @@
-﻿Response,Total,White,White (exclu. Irish),Asian/ Asian British,Black/ African/ Caribbean/ Black British,Middle Eastern,Mixed / multiple (all),Mixed / multiple (exclu. White Irish/British),Other
----,---,---,---,---,---,---,---,---,---
-My mental health has suffered,40,29,30,44,41,28,48,40,54
-"I have struggled / I am struggling to pay for essential goods and services (e.g. eating, heating)",24,22,23,22,31,18,27,28,34
-My physical health has suffered,20,16,16,22,23,27,17,16,28
-I have struggled to pay for transport to/from my place of work or education,19,14,14,20,23,16,19,16,25
-My relationships with friends have suffered,18,17,18,17,18,15,26,20,31
-My education/grades have suffered,18,12,10,21,18,28,17,16,30
-"My future plans have been delayed e.g. starting education, apprenticeships, starting my own business",18,15,15,16,20,14,22,21,42
-My relationships with family have suffered,15,14,14,13,17,17,19,16,29
-I have had to take a job with fewer progression prospects because I needed the money,14,15,13,15,16,11,10,10,3
-I have had to take out loans / credit,12,11,9,9,15,16,16,14,0
-I have had to mov  back home to live with my family,10,11,9,9,12,4,14,15,10
-I have struggled to say in education,10,13,13,9,11,7,9,11,8
-I have struggled to start or maintain my business/ self-employment,9,9,10,7,15,10,5,5,9
-I have to care for vulnerable family members,8,5,5,7,13,13,7,6,0
-I have to delay starting a family due to costs associated with it (e.g. childcare),7,9,9,6,10,13,5,7,9
-I have struggled to pay for the childcare needed to be able to work,6,7,8,5,11,2,4,5,0
-I have had a quit a job for childcare reasons,4,4,5,4,5,6,3,5,0
-Other,1,1,1,1,1,1,0,0,0
-None of these,17,9,10,22,14,16,20,16,13
+﻿Category,Response,Total,White,White (exclu. Irish),Asian/ Asian British,Black/ African/ Caribbean/ Black British,Middle Eastern,Mixed / multiple (all),Mixed / multiple (exclu. White Irish/British),Other
+---,---,---,---,---,---,---,---,---,---,---
+A,My mental health has suffered,40,29,30,44,41,28,48,40,54
+B,"I have struggled / I am struggling to pay for essential goods and services (e.g. eating, heating)",24,22,23,22,31,18,27,28,34
+C,My physical health has suffered,20,16,16,22,23,27,17,16,28
+D,I have struggled to pay for transport to/from my place of work or education,19,14,14,20,23,16,19,16,25
+E,My relationships with friends have suffered,18,17,18,17,18,15,26,20,31
+F,My education/grades have suffered,18,12,10,21,18,28,17,16,30
+G,"My future plans have been delayed e.g. starting education, apprenticeships, starting my own business",18,15,15,16,20,14,22,21,42
+H,My relationships with family have suffered,15,14,14,13,17,17,19,16,29
+I,I have had to take a job with fewer progression prospects because I needed the money,14,15,13,15,16,11,10,10,3
+J,I have had to take out loans / credit,12,11,9,9,15,16,16,14,0
+K,I have had to mov  back home to live with my family,10,11,9,9,12,4,14,15,10
+L,I have struggled to say in education,10,13,13,9,11,7,9,11,8
+M,I have struggled to start or maintain my business/ self-employment,9,9,10,7,15,10,5,5,9
+O,I have to care for vulnerable family members,8,5,5,7,13,13,7,6,0
+P,I have to delay starting a family due to costs associated with it (e.g. childcare),7,9,9,6,10,13,5,7,9
+Q,I have struggled to pay for the childcare needed to be able to work,6,7,8,5,11,2,4,5,0
+R,I have had a quit a job for childcare reasons,4,4,5,4,5,6,3,5,0
+Other,Other,1,1,1,1,1,1,0,0,0
+None,None of these,17,9,10,22,14,16,20,16,13
