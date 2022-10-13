@@ -456,8 +456,8 @@ function Chart(config,csv){
 	this.xmax = 0;
 	this.ymin = 0;
 	this.ymax = 0;
-	this.w = this.opt.width||960;
-	this.h = this.opt.height||600;
+	this.w = this.opt.width||1120;
+	this.h = this.opt.height||700;
 	this.series = [];
 	this.axes = {};
 	id = Math.round(Math.random()*1e8);
@@ -475,7 +475,7 @@ function Chart(config,csv){
 		// Create SVG container
 		if(!svg){
 			svg = svgEl('svg');
-			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;','preserveAspectRatio':'none','data-type':this.opt.type};
+			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;width:100%','preserveAspectRatio':'xMidyMin meet','data-type':this.opt.type};
 			if(this.opt.width) svgopt.width = this.opt.width;
 			if(this.opt.height) svgopt.height = this.opt.height;
 			setAttr(svg,svgopt);
