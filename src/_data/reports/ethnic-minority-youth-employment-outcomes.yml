@@ -26,7 +26,7 @@ visualisations:
       axis:
         x:
           min: 15
-          max: 60
+          max: 63
           grid:
             stroke-dasharray: "6 2"
             stroke-width: 1
@@ -94,7 +94,7 @@ sections:
               axis:
                 x:
                   min: 15
-                  max: 65
+                  max: 68
                   grid:
                     stroke-dasharray: "6 2"
                     stroke-width: 1
@@ -139,7 +139,7 @@ sections:
               axis:
                 x:
                   min: 0
-                  max: 100
+                  max: 103
                   grid:
                     stroke-dasharray: "6 2"
                     stroke-width: 1
@@ -152,7 +152,7 @@ sections:
                       label: "75%"
                 y:
                   grid:
-                    stroke-width: 1
+                    stroke-width: 0.5
               category: "Ethnic Group"
               series:
                 - title: "Disabled"
@@ -178,10 +178,10 @@ sections:
               axis:
                 x:
                   min: 0
-                  max: 75
+                  max: 78
                   grid:
                     stroke-dasharray: "6 2"
-                    stroke-width: 1
+                    stroke-width: 0.5
                   ticks:
                     - value: 25
                       label: "25%"
@@ -229,7 +229,7 @@ sections:
                       label: "40%"
                 y:
                   grid:
-                    stroke-width: 1
+                    stroke-width: 0.5
               category: "Sector"  
               series:
                 - title: "Bangladeshi"
@@ -295,7 +295,7 @@ sections:
                       label: "100%"
                 y:
                   grid:
-                    stroke-width: 1
+                    stroke-width: 0.5
               category: "Ethnic Group"  
               series:
                 - title: "None"
@@ -327,7 +327,7 @@ sections:
                   max: 75
                   grid:
                     stroke-dasharray: "6 2"
-                    stroke-width: 1
+                    stroke-width: 0.5
                   ticks:
                     - value: 20
                       label: "20%"
@@ -379,12 +379,18 @@ sections:
                   max: 17
                   grid:
                     stroke-dasharray: "6 2"
-                    stroke-width: 0.1
+                    stroke-width: 0.5
                   ticks:
+                    - value: 8
+                      label: "£8"
                     - value: 10
                       label: "£10"
-                    - value: 15
-                      label: "£15"
+                    - value: 12
+                      label: "£12"
+                    - value: 14
+                      label: "£14"
+                    - value: 16
+                      label: "£16"
                 y:
                   grid:
                     stroke-width: 1
@@ -560,10 +566,10 @@ sections:
               axis:
                 x:
                   min: 40
-                  max: 90
+                  max: 93
                   grid:
                     stroke-dasharray: "6 2"
-                    stroke-width: 0.1
+                    stroke-width: 0.5
                   ticks:
                     - value: 40
                       label: "40"
@@ -571,6 +577,8 @@ sections:
                       label: "50"
                     - value: 60
                       label: "60"
+                    - value: 70
+                      label: "70"
                     - value: 80
                       label: "80"
                     - value: 90
@@ -606,7 +614,7 @@ sections:
               axis:
                 x:
                   min: 15
-                  max: 90
+                  max: 93
                   grid:
                     stroke-dasharray: "6 2"
                     stroke-width: 1
