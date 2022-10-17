@@ -1,23 +1,23 @@
-﻿Response,Total,White,White (exclu. Irish),Asian/ Asian British,Black/ African/ Caribbean/ Black British,Middle Eastern,Mixed / multiple (all),Mixed / multiple (exclu. White Irish/British),Another Ethnic Group
----,---,---,---,,,,,,
-My mental health \n has suffered,45,31,32,50,43,37,54,54,67
-My education/grades \n have suffered,28,20,20,33,22,26,30,30,24
-My relationships with \n friends have suffered,25,18,19,25,26,25,30,21,41
-My physical health has \n suffered,24,14,15,27,27,26,26,20,53
-"I have struggled to pay \n for essential goods and services \n (e.g. eating, heating)",23,18,17,23,31,27,23,28,25
-I have been unable to \n get relevant work experience due to \n businesses/ organisations being closed,20,17,18,23,18,14,18,26,45
-"My future plans have \n been delayed e.g. starting education, \n apprenticeships, starting my own business",19,15,13,19,24,16,18,15,45
-My relationships with \n family have suffered,16,13,11,17,17,7,21,19,31
-I have struggled to get \n and keep a job,13,10,9,15,15,6,12,9,20
-I have had to move back \n home to live with my family,12,10,11,11,16,11,12,11,14
-I have had to take out \n loans / credit,11,12,10,9,17,16,12,10,0
-I have to care for \n vulnerable family members,11,9,10,12,13,4,11,12,3
-I have struggled to \n say in education,9,8,9,9,11,11,8,7,6
-I have lost a job,9,13,12,7,10,8,8,8,0
-I have struggled to start \n or maintain my \n business/self-employment,8,8,9,6,11,6,6,9,7
-I have to delay starting \n a family due to costs associated \n with it (e.g. childcare),7,7,7,6,11,10,3,4,7
-I have been unable to \n get the funding I need to start \n my own business,6,6,7,4,10,7,6,5,10
-I have had to pay for \n additional childcare,6,6,6,5,9,7,3,3,0
-I have had a quit a job \n for childcare reasons,3,5,5,3,5,3,1,3,3
-Other,0,0,1,0,1,1,0,0,4
-None of these,11,6,6,13,10,9,12,13,9
+﻿Category,Response,Total,White,White (exclu. Irish),Asian/Asian British,Black/African/Caribbean/Black British,Middle Eastern,Mixed/Multiple,Mixed/Multiple (exclu. White Irish/British),Other
+---,---,---,---,---,,,,,,
+Mental health,My mental health has suffered,45,31,32,50,43,37,54,54,67
+Education has suffered,My education/grades have suffered,28,20,20,33,22,26,30,30,24
+Friendships suffered,My relationships with friends have suffered,25,18,19,25,26,25,30,21,41
+Physical health issues,My physical health has suffered,24,14,15,27,27,26,26,20,53
+Unable to afford essentials,"I have struggled to pay for essential goods and services (e.g. eating, heating)",23,18,17,23,31,27,23,28,25
+Lack of opportunities due to closure,I have been unable to get relevant work experience due to businesses/ organisations being closed,20,17,18,23,18,14,18,26,45
+Future plans delayed,"My future plans have been delayed e.g. starting education, apprenticeships, starting my own business",19,15,13,19,24,16,18,15,45
+Family relationships suffered,My relationships with family have suffered,16,13,11,17,17,7,21,19,31
+Struggled to get and keep a job,I have struggled to get and keep a job,13,10,9,15,15,6,12,9,20
+Moved back home,I have had to move back home to live with my family,12,10,11,11,16,11,12,11,14
+Had to take out loans/credit,I have had to take out loans / credit,11,12,10,9,17,16,12,10,0
+Caring for family members,I have to care for vulnerable family members,11,9,10,12,13,4,11,12,3
+Struggled to stay in education,I have struggled to say in education,9,8,9,9,11,11,8,7,6
+Lost a job,I have lost a job,9,13,12,7,10,8,8,8,0
+Struggled to start a business,I have struggled to start or maintain my business/self-employment,8,8,9,6,11,6,6,9,7
+Delayed starting a family due to cost,I have to delay starting a family due to costs associated with it (e.g. childcare),7,7,7,6,11,10,3,4,7
+Lack of funding to start a business,I have been unable to get the funding I need to start my own business,6,6,7,4,10,7,6,5,10
+Had to pay for additional childcare,I have had to pay for additional childcare,6,6,6,5,9,7,3,3,0
+Quit a job due to childcare,I have had a quit a job for childcare reasons,3,5,5,3,5,3,1,3,3
+Other,Other,0,0,1,0,1,1,0,0,4
+None of these,None of these,11,6,6,13,10,9,12,13,9
