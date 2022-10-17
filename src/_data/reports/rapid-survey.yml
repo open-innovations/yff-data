@@ -293,7 +293,7 @@ sections:
   - title: Cost of Living Crisis
     topics: []
     blocks: 
-      - title: Block 1
+      - title: Title
         visualisations: 
         - title: Cost of Living Crisis
           caption: Here is some text
@@ -386,14 +386,170 @@ sections:
   - title: Workplace Discrimination
     topics: []
     blocks: 
-      - title: Block 1
+      - title: 
         visualisations: 
-        - title: Young people from ethnic minority backgrounds worry about how their ethnicity will impact their experience of the workplace
+        - title: Workplace Discrimination
+          caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
           citations:
             - title: A short description of the citation
               link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
+          type: chart
+          config:
+            file: /data/rapid_survey/q14_discrimination.csv
+            type: bar-chart
+            height: 700
+            width: 1120
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 60
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Category
+            columns:
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"              
+              - name: White (exclu. Irish) Tooltip
+                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
+              - name: Asian/Asian British Tooltip
+                template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+              - name: Black/African/Caribbean/Black British Tooltip
+                template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+              - name: Middle Eastern Tooltip
+                template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
+              - name: Mixed/Multiple Tooltip
+                template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
+              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
+                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
+              - name: Other Tooltip
+                template: "Other<br />{{ Response }}: {{ Other }}"
+            series:
+              - title: White
+                value: White
+                tooltip: White Tooltip
+              - title: White (exclu. Irish)
+                value: White (exclu. Irish)  
+                tooltip: White (exclu. Irish) Tooltip    
+                colour: "#874245"     
+              - title: Asian/Asian British
+                value: Asian/Asian British 
+                colour: "#39c2b0"
+                tooltip: Asian/Asian British Tooltip             
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British 
+                tooltip: Black/African/Caribbean/Black British Tooltip       
+              - title: Middle Eastern
+                value: Middle Eastern
+                tooltip: Middle Eastern Tooltip
+              - title: Mixed/Multiple
+                value: Mixed/Multiple
+                tooltip: Mixed/Multiple Tooltip
+              - title: Mixed/Multiple (exclu. White Irish/British)
+                value: Mixed/Multiple (exclu. White Irish/British)
+                colour: "#fe9400"
+                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
+              - title: Other
+                value: Other
+                tooltip: Other Tooltip
+
+      - title: 
+        visualisations: 
+        - title: Workplace Discrimination
+          caption: To what extent, if at all, do you agree or disagree with each of the following statements about employment?
+          citations:
+            - title: A short description of the citation
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q15_discrimination.csv
+            type: bar-chart
+            height: 700
+            width: 1120
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 60
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Category
+            columns:
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"              
+              - name: White (exclu. Irish) Tooltip
+                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
+              - name: Asian/Asian British Tooltip
+                template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+              - name: Black/African/Caribbean/Black British Tooltip
+                template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+              - name: Middle Eastern Tooltip
+                template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
+              - name: Mixed/Multiple Tooltip
+                template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
+              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
+                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
+              - name: Other Tooltip
+                template: "Other<br />{{ Response }}: {{ Other }}"
+            series:
+              - title: White
+                value: White
+                tooltip: White Tooltip
+              - title: White (exclu. Irish)
+                value: White (exclu. Irish)  
+                tooltip: White (exclu. Irish) Tooltip    
+                colour: "#874245"     
+              - title: Asian/Asian British
+                value: Asian/Asian British 
+                colour: "#39c2b0"
+                tooltip: Asian/Asian British Tooltip             
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British 
+                tooltip: Black/African/Caribbean/Black British Tooltip       
+              - title: Middle Eastern
+                value: Middle Eastern
+                tooltip: Middle Eastern Tooltip
+              - title: Mixed/Multiple
+                value: Mixed/Multiple
+                tooltip: Mixed/Multiple Tooltip
+              - title: Mixed/Multiple (exclu. White Irish/British)
+                value: Mixed/Multiple (exclu. White Irish/British)
+                colour: "#fe9400"
+                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
+              - title: Other
+                value: Other
+                tooltip: Other Tooltip

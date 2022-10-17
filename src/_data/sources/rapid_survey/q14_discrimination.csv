@@ -1,14 +1,14 @@
-﻿Response,White,White (exclu. Irish),Asian/Asian British,Black/African/Caribbean/Black British,Middle Eastern,Mixed/Multiple,Mixed/Multiple  (exclu. White Irish/British),Other
----,---,---,---,---,---,---,---,---
-Making an initial application for a job,0.44,0.43,0.28,0.5,0.55,0.33,0.38,0.39
-At a job interview,0.41,0.4,0.27,0.48,0.46,0.35,0.4,0.29
-Trying to get promoted at work,0.45,0.44,0.24,0.45,0.41,0.3,0.4,0.13
-At an annual review or appraisal at work,0.35,0.34,0.15,0.37,0.37,0.24,0.31,0.13
-At team meetings/gatherings at work,0.41,0.38,0.25,0.44,0.39,0.35,0.45,0.2
-With a job/work coach at a job centre,0.37,0.33,0.16,0.4,0.36,0.25,0.34,0.07
-With a careers adviser,0.44,0.42,0.17,0.35,0.35,0.21,0.31,0.14
-When work is being divided up and allocated to staff,0.43,0.41,0.25,0.46,0.46,0.31,0.4,0.25
-"When engaging with customers, clients or external people",0.46,0.45,0.39,0.57,0.57,0.48,0.48,0.32
-Work social events,0.36,0.33,0.24,0.47,0.38,0.37,0.45,0.21
-When seeking investment to start my own business,0.41,0.37,0.15,0.36,0.43,0.23,0.29,0.1
-When looking for new customers/clients for my own business,0.38,0.35,0.16,0.39,0.4,0.29,0.34,0.07
+﻿Category,Response,White,White (exclu. Irish),Asian/Asian British,Black/African/Caribbean/Black British,Middle Eastern,Mixed/Multiple,Mixed/Multiple (exclu. White Irish/British),Other
+---,---,---,---,---,---,---,---,---,
+Making a job application,Making an initial application for a job,44,43,28,50,55,33,38,39
+At a job interview ,At a job interview,41,40,27,48,46,35,40,29
+Trying to get promoted,Trying to get promoted at work,45,44,24,45,41,30,40,13
+Annual review/appraisal,At an annual review or appraisal at work,35,34,15,37,37,24,31,13
+At team meetings,At team meetings/gatherings at work,41,38,25,44,39,35,45,20
+At a job centre ,With a job/work coach at a job centre,37,33,16,40,36,25,34,7
+With a careers adviser,With a careers adviser,44,42,17,35,35,21,31,14
+When work is allocated,When work is being divided up and allocated to staff,43,41,25,46,46,31,40,25
+Engaging with clients ,"When engaging with customers, clients or external people",46,45,39,57,57,48,48,32
+Work social events ,Work social events,36,33,24,47,38,37,45,21
+Seeking investment,When seeking investment to start my own business,41,37,15,36,43,23,29,10
+Looking for new clients,When looking for new customers/clients for my own business,38,35,16,39,40,29,34,7
