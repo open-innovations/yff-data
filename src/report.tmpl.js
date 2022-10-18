@@ -17,7 +17,7 @@ export default function* ({ reports }) {
 
     if (report.sections !== undefined ) {
       for (const [sectionIndex, section] of Object.entries(report.sections)) {
-        yield {
+        if (section.read_more === undefined || section.read_more !== false) yield {
           url: `${url}${section.title}/`,
           reporttitle: `${report.title}`,
           report: url,
