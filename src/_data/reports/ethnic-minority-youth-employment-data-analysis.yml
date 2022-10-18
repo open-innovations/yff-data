@@ -108,6 +108,7 @@ sections:
 
       There are other ways in which ethnic identity is erased. For instance, Gypsy, Roma and Irish Traveller groups are frequently excluded from surveys and national data leading to a gap in data available for analysis, and the latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, instead using parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, the next wave of the study will ask young people their ethnicity.
     topics: []
+    read_more: false
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
