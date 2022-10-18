@@ -438,15 +438,15 @@ function Chart(config,csv){
 		'bottom':0,
 		'tick':5,
 		'font-size': 16,
-		'font-family':'"Century Gothic",sans-serif',
+		'font-family':'CenturyGothicStd,"Century Gothic",sans-serif',
 		'legend':{
 			'show':false,
 			'border':{'stroke':'#000000','stroke-width':1,'fill':'none'},
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
 		},
 		'axis':{
-			'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'},
-			'y':{'padding':10,'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'}
+			'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'CenturyGothicStd,"Century Gothic",sans-serif'},
+			'y':{'padding':10,'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'CenturyGothicStd,"Century Gothic",sans-serif'}
 		},
 		'duration': '0.3s'
 	};
@@ -694,7 +694,7 @@ function Axis(ax,from,to,attr){
 		'right': 0,
 		'top': 0,
 		'bottom': 0,
-		'font-family': '"Century Gothic",sans-serif',
+		'font-family': 'CenturyGothicStd,"Century Gothic",sans-serif',
 		'font-weight': 'bold',
 		'line':{'show':true,stroke:'#000000','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
 		'grid':{'show':false,'stroke':'#B2B2B2','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
