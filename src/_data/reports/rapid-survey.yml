@@ -215,10 +215,10 @@ sections:
               link: about:blank
           type: chart
           config:
-            file: /data/rapid_survey/q19_covid_ethn_2.csv
+            file: /data/rapid_survey/q18_covid.csv
             type: bar-chart
-            height: 700
-            width: 1120
+            height: 500
+            width: 1100
             legend:
               show: true
               position: top right
@@ -255,40 +255,18 @@ sections:
                 value: White
               - title: White (exclu. Irish)
                 value: White (exclu. Irish)            
-              - title: Asian/ Asian British
-                value: Asian/ Asian British              
-              - title: Black/ African/ Caribbean/ Black British
-                value: Black/ African/ Caribbean/ Black British             
+              - title: Asian/Asian British
+                value: Asian/Asian British              
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British             
               - title: Middle Eastern
                 value: Middle Eastern
-              - title: Mixed / multiple (all)
-                value: Mixed / multiple (all)
-              - title: Mixed / multiple (exclu. White Irish/British)
-                value: Mixed / multiple (exclu. White Irish/British)
-              - title: Another Ethnic Group
-                value: Another Ethnic Group
-
-        - title: Gender
-          tab: Gender
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
-
-        - title: Two in five young people from ethnic minorities say their mental health has suffered due to the pandemic
-          tab: Disability
-          citations:
-            - title: A short description of the citation
-              link: about:blank
-          type: static-image
-          config: 
-            link: https://dummyimage.com/982x400/777/fff.png&text=Awaiting+Data
-            # Description is used for the alt tag
-            description: Some text that describes the image
+              - title: Mixed/Multiple
+                value: Mixed/Multiple
+              - title: Mixed/Multiple (exclu. White Irish/British)
+                value: Mixed/Multiple (exclu. White Irish/British)
+              - title: Other
+                value: Other
       
   - title: Cost of Living Crisis
     topics: []
