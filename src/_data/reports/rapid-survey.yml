@@ -10,7 +10,7 @@ visualisations:
   - title:  "Young people are worried about their employment prospects due to the cost of living crisis."
     caption: 
     citations:
-      - title: A short description of the citation
+      - title: 
         link: about:blank
     type: static-image
     config: 
@@ -24,12 +24,14 @@ report_link: /downloads/example-report.pdf
 sections:
   - title: Barriers to Achieving Employment Goals
     topics: []
+    read_more: false
     blocks: 
-      - title: Block 1
+      - title: 
         visualisations: 
-        - title: Ethnic Group
+        - title: 
+          caption: Which three of the following, if any, do you feel are most likely to be barriers to you achieving your goals and ambitions for work/employment in the future?
           citations:
-            - title: A short description of the citation
+            - title: 
               link: about:blank
           type: chart
           config:
@@ -115,9 +117,10 @@ sections:
       - title: 
         visualisations: 
         - title: Ethnic Group
+          caption: Thinking again about the Covid-19 pandemic (beginning March 2020), in which of the below ways have you been negatively impacted?
           tab: Ethnic Group
           citations:
-            - title: A short description of the citation
+            - title: 
               link: about:blank
           type: chart
           config:
@@ -209,9 +212,14 @@ sections:
       - title: 
         visualisations: 
         - title: COVID-19 made me less confident I will get a good job
+          caption: | 
+            Thinking about the Covid-19 pandemic, in which of the following ways, if any, do you think it has impacted either yourself or society more widely?
+
+            Percentage of respondents who said: 'Covid-19 made me less confident I will be able to get a good job'
+
           tab: COVID-19 made me less confident I will get a good job
           citations:
-            - title: A short description of the citation
+            - title: 
               link: about:blank
           type: chart
           config:
@@ -270,13 +278,14 @@ sections:
       
   - title: Cost of Living Crisis
     topics: []
+    read_more: false
     blocks: 
-      - title: Title
+      - title:
         visualisations: 
         - title: Cost of Living Crisis
-          caption: Here is some text
+          caption: Thinking about the rising cost-of-living, which of the following, if any, have you experienced over the past year?
           citations:
-            - title: A short description of the citation
+            - title: 
               link: about:blank
           type: chart
           config:
@@ -369,7 +378,7 @@ sections:
         - title: Workplace Discrimination
           caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
           citations:
-            - title: A short description of the citation
+            - title: 
               link: about:blank
           type: chart
           config:
@@ -453,21 +462,21 @@ sections:
         - title: Workplace Discrimination
           caption: To what extent, if at all, do you agree or disagree with each of the following statements about employment?
           citations:
-            - title: A short description of the citation
+            - title: 
               link: about:blank
           type: chart
           config:
             file: /data/rapid_survey/q15_discrimination.csv
             type: bar-chart
-            height: 700
-            width: 1120
+            height: 600
+            width: 1100
             legend:
               show: true
               position: top right
             axis:
               x:
                 min: 0
-                max: 60
+                max: 28
                 grid:
                   stroke-dasharray: 6 2
                   stroke-width: 1
@@ -476,12 +485,6 @@ sections:
                     label: 10%
                   - value: 20
                     label: 20%
-                  - value: 30
-                    label: 30%
-                  - value: 40
-                    label: 40%
-                  - value: 50
-                    label: 50%
               'y':
                 grid:
                   stroke-width: 0.5

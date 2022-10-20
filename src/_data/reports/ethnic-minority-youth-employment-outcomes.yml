@@ -124,7 +124,7 @@ sections:
       - title: 
         visualisations: 
           - title:  Employment by Disability, Gender and Ethnic Group
-            tab: Female Disability, Gender and Ethnic Group
+            tab: Female
             caption: 
             # citations:
             #   - title: 
@@ -163,7 +163,7 @@ sections:
                   errors: ["Not disabled→- (%)","Not disabled→+ (%)"]
                 
           - title:  Employment by Disability, Gender and Ethnic Group
-            tab: Male Disability, Gender and Ethnic Group
+            tab: Male
             caption: 
             # citations:
             #   - title: 
@@ -263,7 +263,7 @@ sections:
       - title:
         visualisations: 
           - title: Employment by Gender, Ethnic Group and Religious Group
-            tab: Female Employment by Ethnic Group and Religious Group
+            tab: Female
             caption: 
             # citations:
             #   - title: 
@@ -309,7 +309,7 @@ sections:
                   errors: ["Muslim→- (%)","Muslim→+ (%)"] 
 
           - title: Employment by Gender, Ethnic Group and Religious Group
-            tab: Male Employment by Ethnic Group and Religious Group
+            tab: Male
             caption: 
             # citations:
             #   - title: 
@@ -361,7 +361,7 @@ sections:
       - title:
         visualisations: 
           - title: Mean hourly pay by gender and ethnic group
-            tab: Female mean hourly pay by gender and ethnic group
+            tab: Female
             caption: 
             # citations:
             #   - title: 
@@ -447,7 +447,7 @@ sections:
       - title: Mean Hourly Pay by Disability, Gender and Ethnic Group
         visualisations:    
           - title:  Mean Hourly Pay by Disability, Gender and Ethnic Group
-            tab: Female Disability, Gender and Ethnic Group
+            tab: Female
             caption: 
             # citations:
             #   - title: 
@@ -494,8 +494,8 @@ sections:
                 - title: "Not disabled"
                   value: "Not disabled→Value (%)"
                   errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
-          - title:  
-            tab: Male Disability, Gender and Ethnic Group
+          - title: Mean Hourly Pay by Disability, Gender and Ethnic Group
+            tab: Male
             caption: 
             # citations:
             #   - title: 
@@ -599,7 +599,7 @@ sections:
       - title: Education by Disability, Gender and Ethnic Group
         visualisations:    
           - title:  Education by Disability, Gender and Ethnic Group
-            tab: Female Disability, Gender and Ethnic Group
+            tab: Female
             caption: 
             # citations:
             #   - title: 
@@ -647,7 +647,7 @@ sections:
                   value: "Not disabled→Value (%)"
                   errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
           - title:  
-            tab: Male Disability, Gender and Ethnic Group
+            tab: Male
             caption: 
             # citations:
             #   - title: 
