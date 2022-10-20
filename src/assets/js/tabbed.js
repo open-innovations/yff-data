@@ -54,7 +54,8 @@
 			// Set the tabindex of the tab panel
 			panes[t].setAttribute('tabindex',0);
 
-			// Add a focus event
+			// Add a click/focus event
+			tab.addEventListener('click',function(e){ e.preventDefault(); var t = parseInt((e.target.tagName.toUpperCase()==="BUTTON" ? e.target : e.target.closest('button')).getAttribute('data-tab')); _obj.selectTab(t,true); });
 			tab.addEventListener('focus',function(e){ e.preventDefault(); var t = parseInt(e.target.getAttribute('data-tab')); _obj.selectTab(t,true); });
 
 			// Store the tab number in the tab (for use in the keydown event)
@@ -100,6 +101,7 @@
 		}
 		el.insertAdjacentElement('beforebegin', l);
 		this.selectTab(0);
+
 		return this;
 	}
 	root.OI.TabbedInterface = function(el){ return new TabbedInterface(el); };

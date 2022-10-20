@@ -192,7 +192,7 @@ export function BarChart(config,csv){
 					datum.data = {'category':csv.columns[this.opt.category][i],'series':this.opt.series[s].title};
 					data.push(datum);
 				}
-				this.series.push(new Series(s,this.opt.series[s],data,{'axis':this.opt.axis,'barsize':(0.8/this.opt.series.length)}));
+				this.series.push(new Series(s,this.opt.series[s],data,{'axis':this.opt.axis,'barsize':(this.opt.gap ? (1-Math.min(1,Math.max(0,parseFloat(this.opt.gap)))) : 1)*(0.8/this.opt.series.length)}));
 			}
 			return this;
 		},
@@ -438,15 +438,15 @@ function Chart(config,csv){
 		'bottom':0,
 		'tick':5,
 		'font-size': 16,
-		'font-family':'"Century Gothic",sans-serif',
+		'font-family':'CenturyGothicStd,"Century Gothic",sans-serif',
 		'legend':{
 			'show':false,
 			'border':{'stroke':'#000000','stroke-width':1,'fill':'none'},
 			'text':{'text-anchor':'start','dominant-baseline':'hanging','font-weight':'bold','fill':'#000000','stroke-width':0}
 		},
 		'axis':{
-			'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'},
-			'y':{'padding':10,'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'"Century Gothic",sans-serif'}
+			'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'CenturyGothicStd,"Century Gothic",sans-serif'},
+			'y':{'padding':10,'labels':{},'getXY':function(x,y){ return _obj.getXY(x,y); },'font-family':'CenturyGothicStd,"Century Gothic",sans-serif'}
 		},
 		'duration': '0.3s'
 	};
@@ -456,8 +456,8 @@ function Chart(config,csv){
 	this.xmax = 0;
 	this.ymin = 0;
 	this.ymax = 0;
-	this.w = this.opt.width||960;
-	this.h = this.opt.height||600;
+	this.w = this.opt.width||800;
+	this.h = this.opt.height||500;
 	this.series = [];
 	this.axes = {};
 	id = Math.round(Math.random()*1e8);
@@ -475,7 +475,7 @@ function Chart(config,csv){
 		// Create SVG container
 		if(!svg){
 			svg = svgEl('svg');
-			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;','preserveAspectRatio':'none','data-type':this.opt.type};
+			svgopt = {'xmlns':ns,'version':'1.1','viewBox':'0 0 '+this.w+' '+this.h,'overflow':'visible','style':'max-width:100%;width:100%','preserveAspectRatio':'xMidyMin meet','data-type':this.opt.type};
 			if(this.opt.width) svgopt.width = this.opt.width;
 			if(this.opt.height) svgopt.height = this.opt.height;
 			setAttr(svg,svgopt);
@@ -694,7 +694,7 @@ function Axis(ax,from,to,attr){
 		'right': 0,
 		'top': 0,
 		'bottom': 0,
-		'font-family': '"Century Gothic",sans-serif',
+		'font-family': 'CenturyGothicStd,"Century Gothic",sans-serif',
 		'font-weight': 'bold',
 		'line':{'show':true,stroke:'#000000','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},
 		'grid':{'show':false,'stroke':'#B2B2B2','stroke-width':1,'stroke-linecap':'round','stroke-dasharray':''},

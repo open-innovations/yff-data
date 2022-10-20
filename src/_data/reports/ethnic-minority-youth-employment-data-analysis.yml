@@ -17,7 +17,7 @@ summary:
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
   - title:  Employment by Region and Ethnic Group
-    caption: <span class="note">Review</span>What goes here will most likely emerge as we create this report.
+    caption: 
     # citations:
     #   - title: 
     #     link: about:blank
@@ -31,7 +31,7 @@ visualisations:
       axis:
         x:
           min: 0
-          max: 100
+          max: 103
           grid:
             stroke-dasharray: "6 2"
             stroke-width: 1
@@ -108,11 +108,12 @@ sections:
 
       There are other ways in which ethnic identity is erased. For instance, Gypsy, Roma and Irish Traveller groups are frequently excluded from surveys and national data leading to a gap in data available for analysis, and the latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, instead using parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, the next wave of the study will ask young people their ethnicity.
     topics: []
+    read_more: false 
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
 
-      - title: Block 1
+      - title: 
         visualisations:
           - title: Coverage of intersectional analysis in quantitative evidence
             caption: |
@@ -199,7 +200,7 @@ sections:
 
       In addition to this, there is a lack of published local datasets and data on culturally relevant regional issues.
     blocks:
-      - title: Block 1
+      - title: 
         visualisations:
           - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence 
             caption: |
@@ -269,15 +270,12 @@ sections:
                   min: 3
                   max: 0
                   width: 30%
-    topics:
-          - education
+    topics: []
 
   - title: Lack of Different Types of Employment Data
     summary: |
       Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria. 
 
-      Est Lorem commodo commodo laboris sit ipsum. Mollit id irure aliqua ad magna cillum sint in id exercitation aute ullamco
-      veniam eiusmod. Nostrud duis occaecat fugiat ut est.
     blocks:
       - 
         visualisations:
@@ -357,16 +355,15 @@ sections:
 
             Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
 
-      -
-        featured_block: true
+      - featured_block: true
         visualisations:
           - title: Lack of data available on employment and discrimination in employment.    
             type: chart
             tab: Bar Chart
-            caption: Description text needed for this section.
+            caption: 
             config:
               file: /data/gap_mapping_2022/employment_bar.csv
-              summary: "Summary text needed for this visualisation."
+              summary: 
               type: stacked-bar-chart
               legend:
                 show: true     # Default to false
@@ -419,7 +416,7 @@ sections:
       -
         visualisations:
           - title: Presence of culturally relevant and use of timely data by report
-            caption: "Description text needed for this section."
+            caption: 
             Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             # citations:
             #   - title: 
@@ -494,5 +491,4 @@ sections:
                   min: 3
                   max: 0
                   width: 8%
-    topics:
-          - education
+    topics: []
