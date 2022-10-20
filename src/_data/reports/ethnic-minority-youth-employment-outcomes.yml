@@ -71,7 +71,7 @@ report_link: /downloads/example-report.pdf
 # If there are more blocks available, show a read more
 sections:
   - title: Employment
-    summary: Some content will go here soon.   
+    summary:   
     topics: []
     blocks:
       # All attributes optional
