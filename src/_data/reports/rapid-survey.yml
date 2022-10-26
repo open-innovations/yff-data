@@ -71,8 +71,6 @@ sections:
             columns:
               - name: White Tooltip
                 template: "White<br />{{ Response }}: {{ White }}"              
-              - name: White (exclu. Irish) Tooltip
-                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
               - name: Asian/Asian British Tooltip
                 template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
               - name: Black/African/Caribbean/Black British Tooltip
@@ -81,17 +79,12 @@ sections:
                 template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
               - name: Mixed/Multiple Tooltip
                 template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
-              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
-                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
               - name: Other Tooltip
                 template: "Other<br />{{ Response }}: {{ Other }}"
             series:
               - title: White
                 value: White
                 tooltip: White Tooltip
-              - title: White (exclu. Irish)
-                value: White (exclu. Irish)
-                tooltip: White (exclu. Irish) Tooltip            
               - title: Asian/Asian British
                 value: Asian/Asian British  
                 tooltip: Asian/Asian British Tooltip            
@@ -104,9 +97,6 @@ sections:
               - title: Mixed/Multiple
                 value: Mixed/Multiple
                 tooltip: Mixed/Multiple Tooltip
-              - title: Mixed/Multiple (exclu. White Irish/British)
-                value: Mixed/Multiple (exclu. White Irish/British)
-                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
               - title: Other
                 value: Other
                 tooltip: Other Tooltip
@@ -124,7 +114,84 @@ sections:
               link: about:blank
           type: chart
           config:
-            file: /data/rapid_survey/q19_covid_ethn.csv
+            file: /data/rapid_survey/q19_covid_ethn_section.csv
+            type: bar-chart
+            height: 350
+            width: 1120
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 75
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+                  - value: 60
+                    label: 60%
+                  - value: 70
+                    label: 70%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Category
+            columns:
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"              
+              - name: Asian/Asian British Tooltip
+                template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+              - name: Black/African/Caribbean/Black British Tooltip
+                template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+              - name: Middle Eastern Tooltip
+                template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
+              - name: Mixed/Multiple Tooltip
+                template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
+              - name: Other Tooltip
+                template: "Other<br />{{ Response }}: {{ Other }}"
+            series:
+              - title: White
+                value: White
+                tooltip: White Tooltip
+              - title: Asian/Asian British
+                value: Asian/Asian British 
+                colour: "#7D2248"
+                tooltip: Asian/Asian British Tooltip             
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British 
+                tooltip: Black/African/Caribbean/Black British Tooltip       
+              - title: Middle Eastern
+                value: Middle Eastern
+                tooltip: Middle Eastern Tooltip
+              - title: Mixed/Multiple
+                value: Mixed/Multiple
+                tooltip: Mixed/Multiple Tooltip
+              - title: Other
+                value: Other
+                tooltip: Other Tooltip
+
+      - title: 
+        visualisations: 
+        - title: Ethnic Group
+          caption: Thinking again about the Covid-19 pandemic (beginning March 2020), in which of the below ways have you been negatively impacted?
+          tab: Ethnic Group
+          citations:
+            - title: 
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q19_covid_ethn_main.csv
             type: bar-chart
             height: 700
             width: 1120
@@ -158,12 +225,8 @@ sections:
                   stroke-width: 0.5
             category: Category
             columns:
-              - name: Total Tooltip
-                template: "Total<br />{{ Response }}: {{ Total }}"
               - name: White Tooltip
                 template: "White<br />{{ Response }}: {{ White }}"              
-              - name: White (exclu. Irish) Tooltip
-                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
               - name: Asian/Asian British Tooltip
                 template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
               - name: Black/African/Caribbean/Black British Tooltip
@@ -172,25 +235,15 @@ sections:
                 template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
               - name: Mixed/Multiple Tooltip
                 template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
-              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
-                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
               - name: Other Tooltip
                 template: "Other<br />{{ Response }}: {{ Other }}"
             series:
-              - title: Total
-                value: Total
-                colour: "#ee7e3b"
-                tooltip: Total Tooltip
               - title: White
                 value: White
                 tooltip: White Tooltip
-              - title: White (exclu. Irish)
-                value: White (exclu. Irish)  
-                tooltip: White (exclu. Irish) Tooltip    
-                colour: "#874245"     
               - title: Asian/Asian British
                 value: Asian/Asian British 
-                colour: "#39c2b0"
+                colour: "#7D2248"
                 tooltip: Asian/Asian British Tooltip             
               - title: Black/African/Caribbean/Black British
                 value: Black/African/Caribbean/Black British 
@@ -201,10 +254,6 @@ sections:
               - title: Mixed/Multiple
                 value: Mixed/Multiple
                 tooltip: Mixed/Multiple Tooltip
-              - title: Mixed/Multiple (exclu. White Irish/British)
-                value: Mixed/Multiple (exclu. White Irish/British)
-                colour: "#fe9400"
-                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
               - title: Other
                 value: Other
                 tooltip: Other Tooltip
@@ -261,8 +310,6 @@ sections:
                 value: Total
               - title: White
                 value: White
-              - title: White (exclu. Irish)
-                value: White (exclu. Irish)            
               - title: Asian/Asian British
                 value: Asian/Asian British              
               - title: Black/African/Caribbean/Black British
@@ -271,14 +318,11 @@ sections:
                 value: Middle Eastern
               - title: Mixed/Multiple
                 value: Mixed/Multiple
-              - title: Mixed/Multiple (exclu. White Irish/British)
-                value: Mixed/Multiple (exclu. White Irish/British)
               - title: Other
                 value: Other
       
   - title: Cost of Living Crisis
     topics: []
-    read_more: false
     blocks: 
       - title:
         visualisations: 
@@ -289,7 +333,78 @@ sections:
               link: about:blank
           type: chart
           config:
-            file: /data/rapid_survey/q20_cost_of_living.csv
+            file: /data/rapid_survey/q20_cost_of_living_section.csv
+            type: bar-chart
+            height: 400
+            width: 1100
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 60
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Category
+            columns:
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"              
+              - name: Asian/Asian British Tooltip
+                template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+              - name: Black/African/Caribbean/Black British Tooltip
+                template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+              - name: Middle Eastern Tooltip
+                template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
+              - name: Mixed/Multiple Tooltip
+                template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
+              - name: Other Tooltip
+                template: "Other<br />{{ Response }}: {{ Other }}"
+            series:
+              - title: White
+                value: White
+                tooltip: White Tooltip
+              - title: Asian/Asian British
+                value: Asian/Asian British 
+                colour: "#7D2248"
+                tooltip: Asian/Asian British Tooltip             
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British 
+                tooltip: Black/African/Caribbean/Black British Tooltip       
+              - title: Middle Eastern
+                value: Middle Eastern
+                tooltip: Middle Eastern Tooltip
+              - title: Mixed/Multiple
+                value: Mixed/Multiple
+                tooltip: Mixed/Multiple Tooltip
+              - title: Other
+                value: Other
+                tooltip: Other Tooltip
+      - title:
+        visualisations: 
+        - title: Cost of Living Crisis
+          caption: Thinking about the rising cost-of-living, which of the following, if any, have you experienced over the past year?
+          citations:
+            - title: 
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q20_cost_of_living_main.csv
             type: bar-chart
             height: 700
             width: 1120
@@ -319,12 +434,8 @@ sections:
                   stroke-width: 0.5
             category: Category
             columns:
-              - name: Total Tooltip
-                template: "Total<br />{{ Response }}: {{ Total }}"
               - name: White Tooltip
                 template: "White<br />{{ Response }}: {{ White }}"              
-              - name: White (exclu. Irish) Tooltip
-                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
               - name: Asian/Asian British Tooltip
                 template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
               - name: Black/African/Caribbean/Black British Tooltip
@@ -333,25 +444,15 @@ sections:
                 template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
               - name: Mixed/Multiple Tooltip
                 template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
-              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
-                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
               - name: Other Tooltip
                 template: "Other<br />{{ Response }}: {{ Other }}"
             series:
-              - title: Total
-                value: Total
-                colour: "#ee7e3b"
-                tooltip: Total Tooltip
               - title: White
                 value: White
                 tooltip: White Tooltip
-              - title: White (exclu. Irish)
-                value: White (exclu. Irish)  
-                tooltip: White (exclu. Irish) Tooltip    
-                colour: "#874245"     
               - title: Asian/Asian British
                 value: Asian/Asian British 
-                colour: "#39c2b0"
+                colour: "#7D2248"
                 tooltip: Asian/Asian British Tooltip             
               - title: Black/African/Caribbean/Black British
                 value: Black/African/Caribbean/Black British 
@@ -362,10 +463,6 @@ sections:
               - title: Mixed/Multiple
                 value: Mixed/Multiple
                 tooltip: Mixed/Multiple Tooltip
-              - title: Mixed/Multiple (exclu. White Irish/British)
-                value: Mixed/Multiple (exclu. White Irish/British)
-                colour: "#fe9400"
-                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
               - title: Other
                 value: Other
                 tooltip: Other Tooltip
@@ -375,16 +472,89 @@ sections:
     blocks: 
       - title: 
         visualisations: 
+          - title: Workplace Discrimination
+            caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
+            citations:
+              - title: 
+                link: about:blank
+            type: chart
+            config:
+              file: /data/rapid_survey/q14_discrimination.csv
+              type: bar-chart
+              height: 700
+              width: 1120
+              legend:
+                show: true
+                position: top right
+              axis:
+                x:
+                  min: 0
+                  max: 60
+                  grid:
+                    stroke-dasharray: 6 2
+                    stroke-width: 1
+                  ticks:
+                    - value: 10
+                      label: 10%
+                    - value: 20
+                      label: 20%
+                    - value: 30
+                      label: 30%
+                    - value: 40
+                      label: 40%
+                    - value: 50
+                      label: 50%
+                'y':
+                  grid:
+                    stroke-width: 0.5
+              category: Category
+              columns:
+                - name: White Tooltip
+                  template: "White<br />{{ Response }}: {{ White }}"              
+                - name: Asian/Asian British Tooltip
+                  template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+                - name: Black/African/Caribbean/Black British Tooltip
+                  template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+                - name: Middle Eastern Tooltip
+                  template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
+                - name: Mixed/Multiple Tooltip
+                  template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
+                - name: Other Tooltip
+                  template: "Other<br />{{ Response }}: {{ Other }}"
+              series:
+                - title: White
+                  value: White
+                  tooltip: White Tooltip
+                - title: Asian/Asian British
+                  value: Asian/Asian British 
+                  colour: "#7D2248"
+                  tooltip: Asian/Asian British Tooltip             
+                - title: Black/African/Caribbean/Black British
+                  value: Black/African/Caribbean/Black British 
+                  tooltip: Black/African/Caribbean/Black British Tooltip       
+                - title: Middle Eastern
+                  value: Middle Eastern
+                  tooltip: Middle Eastern Tooltip
+                - title: Mixed/Multiple
+                  value: Mixed/Multiple
+                  tooltip: Mixed/Multiple Tooltip
+                - title: Other
+                  value: Other
+                  tooltip: Other Tooltip
+
+      - title: 
+        visualisations: 
         - title: Workplace Discrimination
+          tab: Female
           caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
           citations:
             - title: 
               link: about:blank
           type: chart
           config:
-            file: /data/rapid_survey/q14_discrimination.csv
+            file: /data/rapid_survey/q14_discrimination_female.csv
             type: bar-chart
-            height: 700
+            height: 550
             width: 1120
             legend:
               show: true
@@ -392,7 +562,7 @@ sections:
             axis:
               x:
                 min: 0
-                max: 60
+                max: 70
                 grid:
                   stroke-dasharray: 6 2
                   stroke-width: 1
@@ -407,6 +577,8 @@ sections:
                     label: 40%
                   - value: 50
                     label: 50%
+                  - value: 60
+                    label: 60%
               'y':
                 grid:
                   stroke-width: 0.5
@@ -414,69 +586,45 @@ sections:
             columns:
               - name: White Tooltip
                 template: "White<br />{{ Response }}: {{ White }}"              
-              - name: White (exclu. Irish) Tooltip
-                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
               - name: Asian/Asian British Tooltip
                 template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
               - name: Black/African/Caribbean/Black British Tooltip
                 template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
-              - name: Middle Eastern Tooltip
-                template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
-              - name: Mixed/Multiple Tooltip
-                template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
-              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
-                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
               - name: Other Tooltip
                 template: "Other<br />{{ Response }}: {{ Other }}"
             series:
               - title: White
                 value: White
                 tooltip: White Tooltip
-              - title: White (exclu. Irish)
-                value: White (exclu. Irish)  
-                tooltip: White (exclu. Irish) Tooltip    
-                colour: "#874245"     
               - title: Asian/Asian British
                 value: Asian/Asian British 
-                colour: "#39c2b0"
+                colour: "#7D2248"
                 tooltip: Asian/Asian British Tooltip             
               - title: Black/African/Caribbean/Black British
                 value: Black/African/Caribbean/Black British 
                 tooltip: Black/African/Caribbean/Black British Tooltip       
-              - title: Middle Eastern
-                value: Middle Eastern
-                tooltip: Middle Eastern Tooltip
-              - title: Mixed/Multiple
-                value: Mixed/Multiple
-                tooltip: Mixed/Multiple Tooltip
-              - title: Mixed/Multiple (exclu. White Irish/British)
-                value: Mixed/Multiple (exclu. White Irish/British)
-                colour: "#fe9400"
-                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
               - title: Other
                 value: Other
                 tooltip: Other Tooltip
-
-      - title: 
-        visualisations: 
-        - title: Workplace Discrimination
-          caption: To what extent, if at all, do you agree or disagree with each of the following statements about employment?
+        - title: Workplace Discrimination 
+          tab: Male
+          caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
           citations:
             - title: 
               link: about:blank
           type: chart
           config:
-            file: /data/rapid_survey/q15_discrimination.csv
+            file: /data/rapid_survey/q14_discrimination_male.csv
             type: bar-chart
-            height: 600
-            width: 1100
+            height: 550
+            width: 1120
             legend:
               show: true
               position: top right
             axis:
               x:
                 min: 0
-                max: 28
+                max: 70
                 grid:
                   stroke-dasharray: 6 2
                   stroke-width: 1
@@ -485,6 +633,14 @@ sections:
                     label: 10%
                   - value: 20
                     label: 20%
+                  - value: 30
+                    label: 30%
+                  - value: 40
+                    label: 40%
+                  - value: 50
+                    label: 50%
+                  - value: 60
+                    label: 60%
               'y':
                 grid:
                   stroke-width: 0.5
@@ -492,45 +648,204 @@ sections:
             columns:
               - name: White Tooltip
                 template: "White<br />{{ Response }}: {{ White }}"              
-              - name: White (exclu. Irish) Tooltip
-                template: "White (exclu. Irish)<br />{{ Response }}: {{ White (exclu. Irish) }}"
               - name: Asian/Asian British Tooltip
                 template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
               - name: Black/African/Caribbean/Black British Tooltip
                 template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
-              - name: Middle Eastern Tooltip
-                template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
-              - name: Mixed/Multiple Tooltip
-                template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
-              - name: Mixed/Multiple (exclu. White Irish/British) Tooltip
-                template: "Mixed/Multiple (exclu. White Irish/British)<br />{{ Response }}: {{ Mixed/Multiple (exclu. White Irish/British) }}"
               - name: Other Tooltip
                 template: "Other<br />{{ Response }}: {{ Other }}"
             series:
               - title: White
                 value: White
                 tooltip: White Tooltip
-              - title: White (exclu. Irish)
-                value: White (exclu. Irish)  
-                tooltip: White (exclu. Irish) Tooltip    
-                colour: "#874245"     
               - title: Asian/Asian British
                 value: Asian/Asian British 
-                colour: "#39c2b0"
+                colour: "#7D2248"
                 tooltip: Asian/Asian British Tooltip             
               - title: Black/African/Caribbean/Black British
                 value: Black/African/Caribbean/Black British 
                 tooltip: Black/African/Caribbean/Black British Tooltip       
-              - title: Middle Eastern
-                value: Middle Eastern
-                tooltip: Middle Eastern Tooltip
-              - title: Mixed/Multiple
-                value: Mixed/Multiple
-                tooltip: Mixed/Multiple Tooltip
-              - title: Mixed/Multiple (exclu. White Irish/British)
-                value: Mixed/Multiple (exclu. White Irish/British)
-                colour: "#fe9400"
-                tooltip: Mixed/Multiple (exclu. White Irish/British) Tooltip
+              - title: Other
+                value: Other
+                tooltip: Other Tooltip
+
+      - title: 
+        visualisations: 
+          - title: Workplace Discrimination
+            caption: To what extent, if at all, do you agree or disagree with each of the following statements about employment?
+            citations:
+              - title: 
+                link: about:blank
+            type: chart
+            config:
+              file: /data/rapid_survey/q15_discrimination.csv
+              type: bar-chart
+              height: 600
+              width: 1100
+              legend:
+                show: true
+                position: top right
+              axis:
+                x:
+                  min: 0
+                  max: 28
+                  grid:
+                    stroke-dasharray: 6 2
+                    stroke-width: 1
+                  ticks:
+                    - value: 10
+                      label: 10%
+                    - value: 20
+                      label: 20%
+                'y':
+                  grid:
+                    stroke-width: 0.5
+              category: Category
+              columns:
+                - name: White Tooltip
+                  template: "White<br />{{ Response }}: {{ White }}"              
+                - name: Asian/Asian British Tooltip
+                  template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+                - name: Black/African/Caribbean/Black British Tooltip
+                  template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+                - name: Middle Eastern Tooltip
+                  template: "Middle Eastern<br />{{ Response }}: {{ Middle Eastern }}"              
+                - name: Mixed/Multiple Tooltip
+                  template: "Mixed/Multiple<br />{{ Response }}: {{ Mixed/Multiple }}"
+                - name: Other Tooltip
+                  template: "Other<br />{{ Response }}: {{ Other }}"
+              series:
+                - title: White
+                  value: White
+                  tooltip: White Tooltip
+                - title: Asian/Asian British
+                  value: Asian/Asian British 
+                  colour: "#7D2248"
+                  tooltip: Asian/Asian British Tooltip             
+                - title: Black/African/Caribbean/Black British
+                  value: Black/African/Caribbean/Black British 
+                  tooltip: Black/African/Caribbean/Black British Tooltip       
+                - title: Middle Eastern
+                  value: Middle Eastern
+                  tooltip: Middle Eastern Tooltip
+                - title: Mixed/Multiple
+                  value: Mixed/Multiple
+                  tooltip: Mixed/Multiple Tooltip
+                - title: Other
+                  value: Other
+                  tooltip: Other Tooltip
+
+      - title: 
+        visualisations: 
+        - title: Workplace Discrimination - Q15
+          tab: Female
+          caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
+          citations:
+            - title: 
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q15_discrimination_female.csv
+            type: bar-chart
+            height: 500
+            width: 1120
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 35
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Category
+            columns:
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"              
+              - name: Asian/Asian British Tooltip
+                template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+              - name: Black/African/Caribbean/Black British Tooltip
+                template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+              - name: Other Tooltip
+                template: "Other<br />{{ Response }}: {{ Other }}"
+            series:
+              - title: White
+                value: White
+                tooltip: White Tooltip
+              - title: Asian/Asian British
+                value: Asian/Asian British 
+                colour: "#7D2248"
+                tooltip: Asian/Asian British Tooltip             
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British 
+                tooltip: Black/African/Caribbean/Black British Tooltip       
+              - title: Other
+                value: Other
+                tooltip: Other Tooltip
+        - title: Workplace Discrimination 
+          tab: Male
+          caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
+          citations:
+            - title: 
+              link: about:blank
+          type: chart
+          config:
+            file: /data/rapid_survey/q15_discrimination_male.csv
+            type: bar-chart
+            height: 500
+            width: 1120
+            legend:
+              show: true
+              position: top right
+            axis:
+              x:
+                min: 0
+                max: 35
+                grid:
+                  stroke-dasharray: 6 2
+                  stroke-width: 1
+                ticks:
+                  - value: 10
+                    label: 10%
+                  - value: 20
+                    label: 20%
+                  - value: 30
+                    label: 30%
+              'y':
+                grid:
+                  stroke-width: 0.5
+            category: Category
+            columns:
+              - name: White Tooltip
+                template: "White<br />{{ Response }}: {{ White }}"              
+              - name: Asian/Asian British Tooltip
+                template: "Asian/Asian British<br />{{ Response }}: {{ Asian/Asian British }}"              
+              - name: Black/African/Caribbean/Black British Tooltip
+                template: "Black/African/Caribbean/Black British<br />{{ Response }}: {{ Black/African/Caribbean/Black British }}"
+              - name: Other Tooltip
+                template: "Other<br />{{ Response }}: {{ Other }}"
+            series:
+              - title: White
+                value: White
+                tooltip: White Tooltip
+              - title: Asian/Asian British
+                value: Asian/Asian British 
+                colour: "#7D2248"
+                tooltip: Asian/Asian British Tooltip             
+              - title: Black/African/Caribbean/Black British
+                value: Black/African/Caribbean/Black British 
+                tooltip: Black/African/Caribbean/Black British Tooltip       
               - title: Other
                 value: Other
                 tooltip: Other Tooltip
