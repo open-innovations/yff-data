@@ -220,6 +220,18 @@ sections:
                 - name: "Culturally relevant data not met"
                   scale: YFF
                   scale-value: 100
+                  newScale:
+                    function: floor
+                    # The logic of this is that red is anything zero or above,
+                    # amber is anything 20 or above...
+                    breaks:
+                      - {colour: red, value: 0}
+                      - colour: amber
+                        value: 20
+                      - colour: green
+                        value: 60
+                      - colour: very green
+                        value: 80       
                 - name: "Culturally relevant data partially met"
                   scale: YFF
                   scale-value: 66.6
