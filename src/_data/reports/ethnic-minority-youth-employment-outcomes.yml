@@ -1,17 +1,18 @@
 # The title of the report
-title: Ethnic Minority Youth Employment Outcomes Analysis
+title: Ethnic Minority Youth Employment outcomes analysis
 
 # Date the report was published
 publication_date: 2022-09-01T09:00:00
 
 summary:
   - |
-    This page will be used to visualise analysis of youth employment outcomes data from the Ethnic Minority Youth Employment Data Analysis report. 
+    This page will be used to visualise analysis of youth employment outcomes
+    data from the Ethnic Minority Youth Employment Data Analysis report. 
 
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
-  - title:  Employment by Ethnic Group
+  - title:  Employment by ethnic group
     caption: 
     # citations:
     #   - title: 
@@ -79,7 +80,7 @@ sections:
       - title: 
         featured_block: true
         visualisations: 
-          - title:  Employment by Gender and Ethnic Group
+          - title:  Employment by gender and ethnic group
             caption: 
             # citations:
             #   - title: 
@@ -123,7 +124,7 @@ sections:
       
       - title: 
         visualisations: 
-          - title:  Employment by Disability, Gender and Ethnic Group
+          - title:  Employment by disability, gender and ethnic group
             tab: Female
             caption: 
             # citations:
@@ -162,7 +163,7 @@ sections:
                   value: "Not disabled→Value (%)"
                   errors: ["Not disabled→- (%)","Not disabled→+ (%)"]
                 
-          - title:  Employment by Disability, Gender and Ethnic Group
+          - title:  Employment by disability, gender and ethnic group
             tab: Male
             caption: 
             # citations:
@@ -203,7 +204,7 @@ sections:
 
       - title: 
         visualisations: 
-          - title:  Employment by Sector and Ethnic Group
+          - title:  Employment by sector and ethnic group
             caption: 
             # citations:
             #   - title: 
@@ -262,7 +263,7 @@ sections:
 
       - title:
         visualisations: 
-          - title: Employment by Gender, Ethnic Group and Religious Group
+          - title: Employment by gender, ethnic group and religious group
             tab: Female
             caption: 
             # citations:
@@ -308,7 +309,7 @@ sections:
                   value: "Muslim→Value (%)"
                   errors: ["Muslim→- (%)","Muslim→+ (%)"] 
 
-          - title: Employment by Gender, Ethnic Group and Religious Group
+          - title: Employment by gender, ethnic group and religious group
             tab: Male
             caption: 
             # citations:
@@ -352,7 +353,7 @@ sections:
                   value: "Muslim→Value (%)"
                   errors: ["Muslim→- (%)","Muslim→+ (%)"] 
 
-  - title: Pay, Hours & Contracts
+  - title: Pay, hours and contracts
     summary:   
     topics: []
     blocks:
@@ -444,9 +445,8 @@ sections:
                   value: "Male→Value (%)"
                   errors: ["Male→- (%)","Male→+ (%)"] 
 
-      - title: Mean Hourly Pay by Disability, Gender and Ethnic Group
-        visualisations:    
-          - title:  Mean Hourly Pay by Disability, Gender and Ethnic Group
+      - visualisations:    
+          - title:  Mean hourly pay by disability, gender and ethnic group
             tab: Female
             caption: 
             # citations:
@@ -494,7 +494,7 @@ sections:
                 - title: "Not disabled"
                   value: "Not disabled→Value (%)"
                   errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
-          - title: Mean Hourly Pay by Disability, Gender and Ethnic Group
+          - title: Mean hourly pay by disability, gender and ethnic group
             tab: Male
             caption: 
             # citations:
@@ -549,13 +549,9 @@ sections:
     blocks:
       # All attributes optional
       # First featured only would be shown on summary page
-      - title:
+      - 
         visualisations: 
-          - title: Percentage in Education by Gender and Ethnic Group 
-            caption: 
-            # citations:
-            #   - title: 
-            #     link: about:blank
+          - title: Percentage in education by gender and ethnic group
             type: chart
             config: 
               file: /data/gap_mapping_2022/educ_ethn_gend.csv
@@ -596,9 +592,9 @@ sections:
                   errors: ["Male→- (%)","Male→+ (%)"]   
 
 
-      - title: Education by Disability, Gender and Ethnic Group
-        visualisations:    
-          - title:  Education by Disability, Gender and Ethnic Group
+      -
+        visualisations:
+          - title:  Education by disability, gender and ethnic group
             tab: Female
             caption: 
             # citations:
@@ -646,7 +642,7 @@ sections:
                 - title: "Not disabled"
                   value: "Not disabled→Value (%)"
                   errors: ["Not disabled→- (%)","Not disabled→+ (%)"] 
-          - title:  
+          - title:  Education by disability, gender and ethnic group
             tab: Male
             caption: 
             # citations:
