@@ -102,7 +102,7 @@ visualisations:
                   errors: ["White→- (%)","White→+ (%)"] 
 
 # Link to download the report. Could be on this site or elsewhere.
-report_link: /downloads/example-report.pdf
+report_link: https://youthfuturesfoundation.org/wp-content/uploads/2022/10/Final-report-Ethnic-minority-youth-employment-data-analysis.pdf
 
 # Report sections
 # Per section:

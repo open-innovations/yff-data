@@ -15,5 +15,5 @@ export default function ({ link }) {
     console.error('WARNING: Download file '+link+' does not exist.');
     note = '<span class="note">No PDF yet</span>';
   }*/
-  return `<a class='download-link orange' href="${link}">${note}Go to the report</a>`;
+  return `<a class='download-link orange' href="${link}">${note}Get the report</a>`;
 }
