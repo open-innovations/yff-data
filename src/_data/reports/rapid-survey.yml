@@ -180,7 +180,7 @@ sections:
                 value: Other
                 tooltip: Other Tooltip
 
-     - title:
+      - title:
         visualisations:
         - title: Ethnic group
           caption: Thinking again about the Covid-19 pandemic (beginning March 2020), in which of the below ways have you been negatively impacted?
