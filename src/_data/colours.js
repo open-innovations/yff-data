@@ -17,7 +17,7 @@ export const colours = {
 	"Female":"#ee7e3b",
 	"Male":"#264c59",
 	// Ethnicities
-	"Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358", "Total":"#ee7e3b", "White (exclu. Irish)":"#39c2b0","Asian/Asian British":"#fe9400", "Middle Eastern":"#274b57",
+	"Bangladeshi":"#7D2248","Black/African/Caribbean/Black British":"#75b8d3","Chinese":"#fe9400", "Indian":"#274b57","Mixed/Multiple":"#E55912","Other":"#0685cc","Pakistani":"#874245","Other Asian":"#39c2b0","White":"#fdc358", "Total":"#ee7e3b", "White (exclu. Irish)":"#39c2b0","Asian/Asian British":"#7D2248", "Middle Eastern":"#274b57",
 	// Religions
 	"Any other religion":"#69C2C9","Buddhist":"#C7B200","Christian":"#E55912","Hindu":"#874245","Jewish":"#7D2248","Muslim":"#005776","None":"#fdc358","Sikh":"#69C2C9",
 	// Age groups
