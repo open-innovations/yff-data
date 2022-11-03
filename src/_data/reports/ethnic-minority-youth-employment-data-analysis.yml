@@ -1,22 +1,36 @@
 # The title of the report
-title: Ethnic Minority Youth Employment Evidence Gap Analysis
+title: Ethnic Minority Youth Employment evidence gap analysis
 
 # Date the report was published
 publication_date: 2022-09-01T12:00:00
 
 summary:
   - |
-    Data gaps can make it difficult to understand key outcomes for young people from ethnic minority backgrounds.
+    Data gaps can make it difficult to understand key outcomes for young people
+    from ethnic minority backgrounds.
   
-    Young people from minority ethnic backgrounds have long experienced higher unemployment and lower wages than their white peers. The impact of the Coronavirus pandemic has only exacerbated these inequalities, with research showing an unequal impact on employment across ethnic groups. In addition, previous work has identified substantial gaps in the collection and analysis of data relating to young people from minority ethnic backgrounds. There are particular concerns around systematic erasure in data collection, lack of observations and small sample sizes, and a lack of culturally relevant data.
+    Young people from minority ethnic backgrounds have long experienced higher
+    unemployment and lower wages than their white peers. The impact of the
+    Coronavirus pandemic has only exacerbated these inequalities, with research
+    showing an unequal impact on employment across ethnic groups. In addition,
+    previous work has identified substantial gaps in the collection and analysis
+    of data relating to young people from minority ethnic backgrounds. There are
+    particular concerns around systematic erasure in data collection, lack of
+    observations and small sample sizes, and a lack of culturally relevant data.
 
   - |
-    The data analysis and quantitative review have identified a range of gaps in data and analysis of the employment outcomes of young people from minority ethnic backgrounds, broadly relating to the three themes of systematic erasure in data collection, lack of observations and sampling, and a lack of culturally relevant data. This includes gaps in terms of availability of ethnic breakdowns; demographic data; employment details and features of surveys or datasets. 
+    The data analysis and quantitative review have identified a range of gaps in
+    data and analysis of the employment outcomes of young people from minority
+    ethnic backgrounds, broadly relating to the three themes of systematic
+    erasure in data collection, lack of observations and sampling, and a lack of
+    culturally relevant data. This includes gaps in terms of availability of
+    ethnic breakdowns; demographic data; employment details and features of
+    surveys or datasets. 
 
 # featured visualisation defined as per other visualisations
 # type: category-chart, heatmap, hexmap, dashboard, static-image
 visualisations:
-  - title:  Employment by Region and Ethnic Group
+  - title:  Employment by region and ethnic group
     caption: 
     # citations:
     #   - title: 
@@ -98,15 +112,38 @@ report_link: /downloads/example-report.pdf
 # When rendering the report page render the feature block.
 # If there are more blocks available, show a read more
 sections:
-  - title: Systemic Erasure in Data Collection
+  - title: Systemic erasure in data collection
     summary: |      
-      Capturing data about the experience of different ethnic groups, alongside other key demographic information such as geographic region, socioeconomic status, and religion is crucial to allowing intersectional analysis and thereby fully understanding the experiences of different ethnic groups.
+      Capturing data about the experience of different ethnic groups, alongside
+      other key demographic information such as geographic region, socioeconomic
+      status, and religion is crucial to allowing intersectional analysis and
+      thereby fully understanding the experiences of different ethnic groups.
 
-      Few national datasets or other evidence include breakdowns by ethnic groups at a sufficiently granular level to understand the impact of policy changes or interventions, with some such as the Universal Credit statistics not including ethnic breakdowns. This lack of data capture impedes understanding of the uptake of specific benefits by different ethnic groups, and is in contrast to statistics on Jobseekers Allowance or Employment and Support Allowance. 
+      Few national datasets or other evidence include breakdowns by ethnic
+      groups at a sufficiently granular level to understand the impact of policy
+      changes or interventions, with some such as the Universal Credit
+      statistics not including ethnic breakdowns. This lack of data capture
+      impedes understanding of the uptake of specific benefits by different
+      ethnic groups, and is in contrast to statistics on Jobseekers Allowance or
+      Employment and Support Allowance. 
 
-      Where datasets do include ethnicity, most focus on broad ethnic groupings based on the standard five ethnic groups included in ONS research (white, black, Asian, mixed, and other). Where more detailed ethnic groups are used, this is often limited to the 16-18 detailed ethnic groups used in ONS research, meaning that relevant subgroups, such Somali as a subcategory of black African, are not included. This results in a lack of understanding of the experience of these subgroups. 
+      Where datasets do include ethnicity, most focus on broad ethnic groupings
+      based on the standard five ethnic groups included in ONS research (white,
+      black, Asian, mixed, and other). Where more detailed ethnic groups are
+      used, this is often limited to the 16-18 detailed ethnic groups used in
+      ONS research, meaning that relevant subgroups, such Somali as a
+      subcategory of black African, are not included. This results in a lack of
+      understanding of the experience of these subgroups. 
 
-      There are other ways in which ethnic identity is erased. For instance, Gypsy, Roma and Irish Traveller groups are frequently excluded from surveys and national data leading to a gap in data available for analysis, and the latest wave of the Millennium Cohort Study did not ask young people (aged 17) their ethnicity, instead using parental ethnicity in analysis. This gap masks any changes in ethnic identification between young people and their parents, and may lead to errors where parents are from separate ethnic backgrounds. However, the next wave of the study will ask young people their ethnicity.
+      There are other ways in which ethnic identity is erased. For instance,
+      Gypsy, Roma and Irish Traveller groups are frequently excluded from
+      surveys and national data leading to a gap in data available for analysis,
+      and the latest wave of the Millennium Cohort Study did not ask young
+      people (aged 17) their ethnicity, instead using parental ethnicity in
+      analysis. This gap masks any changes in ethnic identification between
+      young people and their parents, and may lead to errors where parents are
+      from separate ethnic backgrounds. However, the next wave of the study will
+      ask young people their ethnicity.
     topics: []
     read_more: false 
     blocks:
@@ -117,9 +154,15 @@ sections:
         visualisations:
           - title: Coverage of intersectional analysis in quantitative evidence
             caption: |
-              There is generally poor coverage of demographic breakdowns to enable significant analysis in the employment outcomes of young people from minority ethnic backgrounds.
+              There is generally poor coverage of demographic breakdowns to
+              enable significant analysis in the employment outcomes of young
+              people from minority ethnic backgrounds.
 
-              Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables.
+              Two-way intersectional analysis refers to evidence that includes
+              the analysis of an employment outcome by ethnic group by another
+              variable, while three-way intersectional analysis refers to
+              evidence that includes analysis of an employment variable by
+              ethnic group by two other variables.
             tab: Summary
             type: dashboard
             config: 
@@ -156,7 +199,7 @@ sections:
                 - name: "3-way fully met"
                   scale: YFF
                   scale-value: 0
-          - title: Intersectional Analysis by Report 
+          - title: Intersectional analysis by report 
             tab: Breakdown
             caption: "Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
             # citations:
@@ -188,21 +231,34 @@ sections:
         featured_block: true
         text: 
 
-  - title: Lack of Culturally Relevant Data
+  - title: Lack of culturally relevant data
     summary: |
-      While the timeliness of data is generally good, only 4 pieces of evidence fully met this criteria by including a time period that covered both pre- and post-pandemic data.   
+      While the timeliness of data is generally good, only 4 pieces of evidence
+      fully met this criteria by including a time period that covered both pre-
+      and post-pandemic data.   
 
-      Many communities experience challenges or barriers not shared by the majority population, or by other minority ethnic communities. There are also differences in practices, experiences and systems of support across different cultures and communities, such as different approaches to debt or differences in access to personal protective equipment, that may be missed or misunderstood without the collection of relevant data. 
+      Many communities experience challenges or barriers not shared by the
+      majority population, or by other minority ethnic communities. There are
+      also differences in practices, experiences and systems of support across
+      different cultures and communities, such as different approaches to debt
+      or differences in access to personal protective equipment, that may be
+      missed or misunderstood without the collection of relevant data. 
 
-      The review shows that culturally relevant data is generally lacking in evidence on employment outcomes for young people from minority ethnic groups, with many data collection instruments not covering questions or considerations that are culturally relevant for specific ethnic groups. 
+      The review shows that culturally relevant data is generally lacking in
+      evidence on employment outcomes for young people from minority ethnic
+      groups, with many data collection instruments not covering questions or
+      considerations that are culturally relevant for specific ethnic groups. 
 
-      This creates challenges as the data on employment outcomes does not contain the nuance necessary to account for specific cultural experiences, and leads to a lack of understanding about the specific challenges faced.  
+      This creates challenges as the data on employment outcomes does not
+      contain the nuance necessary to account for specific cultural experiences,
+      and leads to a lack of understanding about the specific challenges faced.  
 
-      In addition to this, there is a lack of published local datasets and data on culturally relevant regional issues.
+      In addition to this, there is a lack of published local datasets and data
+      on culturally relevant regional issues.
     blocks:
       - title: 
         visualisations:
-          - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence 
+          - title: Presence of culturally relevant data and use of timely data in quantitative evidence 
             caption: |
               Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. 
               Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims.
@@ -284,9 +340,10 @@ sections:
                   width: 30%
     topics: []
 
-  - title: Lack of Different Types of Employment Data
+  - title: Lack of different types of employment data
     summary: |
-      Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria. 
+      Evidence looked in at the quantitative review was assessed against eight
+      different types of employment grouping criteria. 
 
     blocks:
       - 
@@ -338,7 +395,8 @@ sections:
                   width: 10%
       -
         text: |
-            Evidence looked in at the quantitative review was assessed against eight different types of employment grouping criteria: 
+            Evidence looked in at the quantitative review was assessed against
+            eight different types of employment grouping criteria: 
 
             * <b>Employment status:</b> Whether an individual is employed, unemployed, in education, or in training
             * <b>Sector:</b> Industry sector of employment. 
@@ -349,23 +407,42 @@ sections:
             * <b>Progression:</b> This refers to information about progression in labour market outcomes of individuals, such as salary increases or changes in employment status. 
             * <b>Discrimination in employment:</b> Self-identified experiences of ethnic discrimination in the workplace. 
 
-            Employment characteristics are generally poorly represented in evidence on employment outcomes for young people from minority
-            ethnic groups, with employment status the only employment characteristic that was well represented across the evidence, especially
-            in Government statistics websites and some academic studies. 
+            Employment characteristics are generally poorly represented in
+            evidence on employment outcomes for young people from minority
+            ethnic groups, with employment status the only employment
+            characteristic that was well represented across the evidence,
+            especially in Government statistics websites and some academic
+            studies. 
 
-            Other employment characteristics fared much worse. Details of employment such as sector, occupation and contract types are poorly
-            covered in the analysis of employment outcomes for minority ethnic young people. The review shows that information on discrimination
-            in employment is a substantial gap, with only one piece of evidence reviewed included any mention of discrimination in employment in
+            Other employment characteristics fared much worse. Details of
+            employment such as sector, occupation and contract types are poorly
+            covered in the analysis of employment outcomes for minority ethnic
+            young people. The review shows that information on discrimination in
+            employment is a substantial gap, with only one piece of evidence
+            reviewed included any mention of discrimination in employment in
             their analysis. 
 
-            This lack of data on key employment details in many reports combined with low sample sizes in those reports where this is considered
-            makes it impossible to conduct meaningful analysis of employment details by granular ethnic group. 
+            This lack of data on key employment details in many reports combined
+            with low sample sizes in those reports where this is considered
+            makes it impossible to conduct meaningful analysis of employment
+            details by granular ethnic group. 
 
-            This prevents a full understanding of the experience of employment by minority ethnic groups.
+            This prevents a full understanding of the experience of employment
+            by minority ethnic groups.
 
-            The quantitative review showed that measures of job quality, such as contract type, hours worked and pay, are generally poorly covered in the evidence in this area. Our data analysis was able to identify some useful findings in relation to job quality. However, sample sizes limited the level of granular and intersectional analysis that could be conducted. 
+            The quantitative review showed that measures of job quality, such as
+            contract type, hours worked and pay, are generally poorly covered in
+            the evidence in this area. Our data analysis was able to identify
+            some useful findings in relation to job quality. However, sample
+            sizes limited the level of granular and intersectional analysis that
+            could be conducted. 
 
-            Progression and discrimination in employment are substantial gaps in this area. Although they were not included in our data analysis, the quantitative review shows that they are rarely covered in analysis of employment outcomes for minority ethnic young people. This gap prevents a full understanding of the experience of employment by minority ethnic groups. 
+            Progression and discrimination in employment are substantial gaps in
+            this area. Although they were not included in our data analysis, the
+            quantitative review shows that they are rarely covered in analysis
+            of employment outcomes for minority ethnic young people. This gap
+            prevents a full understanding of the experience of employment by
+            minority ethnic groups. 
 
       - featured_block: true
         visualisations:
