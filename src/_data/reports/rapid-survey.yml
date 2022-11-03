@@ -14,7 +14,7 @@ visualisations:
         link: about:blank
     type: static-image
     config: 
-      link: https://youthfuturesfoundation.org/wp-content/uploads/2021/03/YF-10_Our_Approach_To_What_Works.svg
+      link: /assets/images/rapid-survey/summary.png
       # Description is used for the alt tag
       description: Some text that describes the image
 
