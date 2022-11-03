@@ -1,4 +1,5 @@
-import { colourScales, Colour, contrastColour } from '/src/_lib/oi/colour.js';
+import { colours } from '/src/_data/colours.js';
+import { Colour, ColourScale } from 'local/oi/colours.js';
 
 export function transpose(matrix) {
   return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
@@ -36,7 +37,7 @@ export function loadDataFile(path, sources) {
 //   contrastColour - find the most contrasting colour so that, for example, we can contrast the text colour
 export function applyReplacementFilters(value,options) {
 
-	var c,r,v,col,nc,h,bits,p1,rtn,b,scale,min,max;
+	var c,r,v,col,nc,h,bits,p1,rtn,b,scale,min,max,colour;
 
 	// For each {{ value }} we will parse it to see if we recognise it
 	value = value.replace(/\{\{ *([^\}]+) *\}\}/g,function(m,p1){
@@ -95,12 +96,41 @@ export function applyReplacementFilters(value,options) {
 						max = parseFloat(rtn[2]);
 					}
 				}
-				p1 = colourScales.getColourFromScale(scale,parseFloat(p1),min,max);
+				// Get the ColourScale from either:
+				// string - a key referencing a scale
+				// object:
+				//     function: 'round'
+				//     stops:
+				//         - { value: 0, colour: name1 }
+				//         - { value: 50, colour: name2 }
+				//         - { value: 100, colour: name3 }
+				var scaleObj = scales[(scales[scale] ? config.columns[c].scale : 'Viridis')];
+
+				// Find the background colour
+				p1 = scaleObj(parseFloat(p1),min,max);
+
+			}
+
+			// colour()
+			rtn = bits[b].match(/colour\(\)/);
+			if(p1 && rtn) p1 = (colours[p1]||p1);
+
+			// colour(name)
+			rtn = bits[b].match(/colour\([\"\']([^\"]+)[\"\']\)/);
+			if(p1 && rtn){
+				colour = rtn[1]||"";
+				p1 = (colours[colour]||"#000000");
 			}
 
 			// contrastColour()
 			rtn = bits[b].match(/contrastColour\(\)/);
-			if(p1 && rtn) p1 = contrastColour(p1);
+			if(p1 && rtn) p1 = Colour(colours[p1]||p1).contrast;
+
+			// contrastColour(name)
+			rtn = bits[b].match(/contrastColour\([\"\']([^\"]+)[\"\']\)/);
+			if(p1 && rtn){
+				p1 = Colour(colours[p1]||p1).contrast;
+			}
 			
 		}
 

@@ -1,6 +1,6 @@
 
 /* ============== */
-/* Colours v0.3.2 */
+/* Colours v0.3.3 */
 // Define colour routines
 export function Colour(c, n) {
 	if (!c) return {};
@@ -185,9 +185,33 @@ function Colours(scales) {
 		return scales[id].str;
 	};
 	// Return the colour string for this scale, value and min/max
-	this.getColourFromScale = function (s, v, min, max, inParts) {
-		var cs, v2, pc, c, cfinal;
+	this.getColourFromScale = function (s, v, min, max, inParts){
+		var cs, v2, pc, c, cfinal, range;
 		if (typeof inParts !== "boolean") inParts = false;
+		if(typeof s==="object"){
+
+			// Check if a function is set
+			if(typeof s.function!=="string") s.function = "floor";
+			// Check if the Math object has the function
+			if(typeof Math[s.function]!=="function") s.function = "floor";
+
+			if(!s.stops || s.stops.length < 2){
+				console.error('No valid colour stop array defined for',s);
+				return 'rgba(0,0,0,1)';
+			}
+			for(c = 0; c < s.stops.length-1; c++){
+				min = s.stops[c].value;
+				max = s.stops[c+1].value;
+				range = max - min;
+				if(range <= 0) range = 1;
+				v2 = min + Math[s.function]((v - min)/range)*range;
+				// If it is in the range for this stop return the colour
+				if(v2 >= min && v2 < max) return s.stops[c].colour||'rgba(0,0,0,1)';
+			}
+			// Return the last stop
+			return s.stops[s.stops.length-1].colour||'rgba(0,0,0,1)';
+		}
+		
 		if (!scales[s]) {
 			this.log('WARNING', 'No colour scale ' + s + ' exists');
 			return '';

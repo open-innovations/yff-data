@@ -72,33 +72,45 @@ visualisations:
           width: "15%"
           align: center
           heatmap: true
-          scale: YFF
-          min: 3
-          max: 0
+          scale:
+            stops:
+              - { value: 0, colour: Cherry-1 }
+              - { value: 1, colour: Orange-2 }
+              - { value: 2, colour: Chartreuse-2 }
+              - { value: 3, colour: Forest-2 }
         - name: "Ethnic groups availability→Ethnic groups (e.g. African, Carribean, other black background)→Rating"
           rename: "Ethnic groups e.g. African, Carribean, other black background"
           width: "15%"
           align: center
           heatmap: true
-          scale: YFF
-          min: 3
-          max: 0
+          scale:
+            stops:
+              - { value: 0, colour: Cherry-1 }
+              - { value: 1, colour: Orange-2 }
+              - { value: 2, colour: Chartreuse-2 }
+              - { value: 3, colour: Forest-2 }
         - name: "Ethnic groups availability→Ethnic subgroups (e.g. Somali)→Rating"
           rename: "Ethnic subgroups e.g. Somali"
           width: "15%"
           align: center
           heatmap: true
-          scale: YFF
-          min: 3
-          max: 0
+          scale:
+            stops:
+              - { value: 0, colour: Cherry-1 }
+              - { value: 1, colour: Orange-2 }
+              - { value: 2, colour: Chartreuse-2 }
+              - { value: 3, colour: Forest-2 }
         - name: "Ethnic groups availability→Other relevant subgroups (e.g. migration status)→Rating"
           rename: "Other relevant subgroups e.g. migration status"
           width: "15%"
           align: center
           heatmap: true
-          scale: YFF
-          min: 3
-          max: 0
+          scale:
+            stops:
+              - { value: 0, colour: Cherry-1 }
+              - { value: 1, colour: Orange-2 }
+              - { value: 2, colour: Chartreuse-2 }
+              - { value: 3, colour: Forest-2 }
 ---
 
 {{ comp.viz.main({ visualisations: visualisations, test: true }) | safe }}

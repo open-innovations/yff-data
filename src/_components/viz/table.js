@@ -1,4 +1,5 @@
-import { colourScales, contrastColour } from '/src/_lib/oi/colour.js';
+import { colours, scales } from '/src/_data/colours.js';
+import { Colour, ColourScale } from 'local/oi/colours.js';
 import { loadDataFile } from '/src/_lib/oi/util.js';
 
 export const css = `
@@ -130,7 +131,7 @@ export default ({ config, sources }) => {
   html.push('<tbody>');
 
 	// Find the min/max values of a column (as a fallback if none provided)
-	var min,max,bg,col,sty;
+	var min,max,bg,col,sty,txt,scale;
 
 	for(c = 0; c < config.columns.length; c++){
 		c2 = table.colnum[config.columns[c].name];
@@ -187,9 +188,25 @@ export default ({ config, sources }) => {
 				// If this column has heatmap=true and the value for this cell is a number we will work out the foreground/background colours
 				if(config.columns[c].heatmap && typeof v=="number"){
 					if(!isNaN(v)){
-						bg = colourScales.getColourFromScale(config.columns[c].scale||'Viridis',table.data[r][c2],config.columns[c].min,config.columns[c].max);
+
+						// Get the ColourScale from either:
+						// string - a key referencing a scale
+						// object:
+						//     function: 'round'
+						//     stops:
+						//         - { value: 0, colour: name1 }
+						//         - { value: 50, colour: name2 }
+						//         - { value: 100, colour: name3 }
+						scale = (typeof config.columns[c].scale==="string") ? scales[(scales[config.columns[c].scale] ? config.columns[c].scale : 'Viridis')] : ColourScale(config.columns[c].scale);
+
+						// Find the background colour
+						bg = scale(table.data[r][c2],config.columns[c].min,config.columns[c].max);
+
+						// If it is a named colour we'll use that
+						if(colours && colours[bg]) bg = colours[bg];
+
 						sty += 'background:'+bg+';';
-						sty += 'color:'+contrastColour(bg)+';';
+						sty += 'color:'+ Colour(bg).contrast+';';
 					}else{
 						v = "";
 					}

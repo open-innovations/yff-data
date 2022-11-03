@@ -1,5 +1,6 @@
 import { document } from '/src/_lib/oi/document.ts';
 import { textLength } from '/src/_lib/oi/text.js';
+import { colours, scales } from '/src/_data/colours.js';
 
 const ns = 'http://www.w3.org/2000/svg';
 const basefs = 17;
@@ -31,10 +32,10 @@ export function StackedBarChart(config,csv){
 			for(s = 0; s < this.opt.series.length; s++){
 				data[s] = [];
 				mergeDeep(this.opt.series[s],{
-					'line':{'show':false,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'points':{'show':false,'size':4, 'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'bars':{'show':true,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'errorbars':{'stroke':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null),'stroke-width':2}
+					'line':{'show':false,'color':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'points':{'show':false,'size':4, 'color': (this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'bars':{'show':true,'color':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'errorbars':{'stroke':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null),'stroke-width':2}
 				});
 				// Duplicate errors if only one error value given
 				if(this.opt.series[s].errors && this.opt.series[s].errors.length==1) this.opt.series[s].errors.push(this.opt.series[s].errors[0]);
@@ -163,10 +164,10 @@ export function BarChart(config,csv){
 			var data,datum,label,i,s,categoryoffset,seriesoffset;
 			for(s = 0; s < this.opt.series.length; s++){
 				mergeDeep(this.opt.series[s],{
-					'line':{'show':false,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'points':{'show':false,'size':4, 'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'bars':{'show':true,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'errorbars':{'stroke':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null),'stroke-width':2}
+					'line':{'show':false,'color':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'points':{'show':false,'size':4, 'color': (this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'bars':{'show':true,'color':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'errorbars':{'stroke':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null),'stroke-width':2}
 				});
 				// Duplicate errors if only one error value given
 				if(this.opt.series[s].errors && this.opt.series[s].errors.length==1) this.opt.series[s].errors.push(this.opt.series[s].errors[0]);
@@ -278,9 +279,9 @@ export function CategoryChart(config,csv){
 			var data,datum,label,i,s,categoryoffset,seriesoffset;
 			for(s = 0; s < this.opt.series.length; s++){
 				mergeDeep(this.opt.series[s],{
-					'line':{'show':false,'color':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'points':{'size':4, 'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null)},
-					'errorbars':{'stroke':(this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||null),'stroke-width':2}
+					'line':{'show':false,'color':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'points':{'size':4, 'color': (this.opt.series[s].colour||colours[this.opt.series[s].title]||null)},
+					'errorbars':{'stroke':(this.opt.series[s].colour||colours[this.opt.series[s].title]||null),'stroke-width':2}
 				});
 				// Duplicate errors if only one error value given
 				if(this.opt.series[s].errors.length==1) this.opt.series[s].errors.push(this.opt.series[s].errors[0]);
@@ -513,8 +514,8 @@ function Chart(config,csv){
 			var data,datum,label;
 			for(s = 0; s < this.opt.series.length; s++){
 				mergeDeep(this.opt.series[s],{
-					'line':{'show':true,'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||'')},
-					'points':{'size':1, 'color': (this.opt.series[s].colour||this.opt.colours[this.opt.series[s].title]||'')}
+					'line':{'show':true,'color': (this.opt.series[s].colour||colours[this.opt.series[s].title]||'')},
+					'points':{'size':1, 'color': (this.opt.series[s].colour||colours[this.opt.series[s].title]||'')}
 				});
 				data = [];
 				for(i = 0; i < csv.rows.length; i++){

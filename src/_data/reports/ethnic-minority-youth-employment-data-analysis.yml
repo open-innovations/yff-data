@@ -175,33 +175,24 @@ sections:
                 postfix: "Units post"
               panels:
                 - name: "2-way not met"
-                  scale: YFF
-                  scale-value: 100
+                  colour: Cherry-1
                 - name: "2-way partially met"
-                  scale: YFF
-                  scale-value: 66.6
+                  colour: Orange-2
                 - name: "2-way mostly met"
-                  colour: "rgba(199,218,128,1)"
-                  scale: YFF
-                  scale-value: 33.33
+                  colour: Chartreuse-2
                 - name: "2-way fully met"
-                  scale: YFF
-                  scale-value: 0
+                  colour: Forest-2
                 - name: "3-way not met"
-                  scale: YFF
-                  scale-value: 100
+                  colour: Cherry-1
                 - name: "3-way partially met"
-                  scale: YFF
-                  scale-value: 66.6
+                  colour: Orange-2
                 - name: "3-way mostly met"
-                  scale: YFF
-                  scale-value: 33.33
+                  colour: Chartreuse-2
                 - name: "3-way fully met"
-                  scale: YFF
-                  scale-value: 0
+                  colour: Forest-2
           - title: Intersectional analysis by report 
             tab: Breakdown
-            caption: "Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "Two-way intersectional analysis refers to evidence that includes the analysis of an employment outcome by ethnic group by another variable, while three-way intersectional analysis refers to evidence that includes analysis of an employment variable by ethnic group by two other variables. Key: <span style=\"padding:0.125em 0.25em;background:{{ Forest-2 | colour() }};color:{{ Forest-2 | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ Chartreuse-2 | colour() }};color:{{ Chartreuse-2 | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ Orange-2 | colour() }};color:{{ Orange-2 | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ Cherry-1 | colour() }};color:{{ Cherry-1 | contrastColour() }}\">0 = Not met</span>"
             # citations:
             #   - title:
             #     link: about:blank
@@ -216,17 +207,23 @@ sections:
                   rename: "Two-way intersectional analysis"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
+                  scale:
+                    stops:
+                      - { value: 0, colour: "Cherry-1" }
+                      - { value: 1, colour: "Orange-2" }
+                      - { value: 2, colour: "Chartreuse-2" }
+                      - { value: 3, colour: "Forest-2" }
                   width: 15%
                 - name: "Intersectional analysis→Three-way intersectional analysis possible (e.g. ethnic group by demographic characteristic by region)→Rating"
                   rename: "Three-way intersectional analysis"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
+                  scale:
+                    stops:
+                      - { value: 0, colour: "Cherry-1" }
+                      - { value: 1, colour: "Orange-2" }
+                      - { value: 2, colour: "Chartreuse-2" }
+                      - { value: 3, colour: "Forest-2" }
                   width: 15%
         featured_block: true
         text: 
@@ -274,44 +271,24 @@ sections:
                 postfix: "Units post"
               panels:
                 - name: "Culturally relevant data not met"
-                  scale: YFF
-                  scale-value: 100
-                  newScale:
-                    function: floor
-                    # The logic of this is that red is anything zero or above,
-                    # amber is anything 20 or above...
-                    breaks:
-                      - {colour: red, value: 0}
-                      - colour: amber
-                        value: 20
-                      - colour: green
-                        value: 60
-                      - colour: very green
-                        value: 80       
+                  colour: "Cherry-1"
                 - name: "Culturally relevant data partially met"
-                  scale: YFF
-                  scale-value: 66.6
+                  colour: "Orange-2"
                 - name: "Culturally relevant data mostly met"
-                  scale: YFF
-                  scale-value: 33.33
+                  colour: "Chartreuse-2"
                 - name: "Culturally relevant data fully met"
-                  scale: YFF
-                  scale-value: 0
+                  colour: "Forest-2"
                 - name: "Timeliness of data not met"
-                  scale: YFF
-                  scale-value: 100
+                  colour: "Cherry-1"
                 - name: "Timeliness of data partially met"
-                  scale: YFF
-                  scale-value: 66.6
+                  colour: "Orange-2"
                 - name: "Timeliness of data mostly met"
-                  scale: YFF
-                  scale-value: 33.33
+                  colour: "Chartreuse-2"
                 - name: "Timeliness of data fully met"
-                  scale: YFF
-                  scale-value: 0
+                  colour: "Forest-2"
           - title: Presence of culturally relevant and use of timely data by report
             tab: Breakdown
-            caption: "Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims. Key: <span style=\"padding:0.125em 0.25em;background:{{ 0 | colourScale('YFF',0,100) }};color:{{ 0 | colourScale('YFF',0,100) | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ 33.33 | colourScale('YFF',0,100) }};color:{{ 33.33 | colourScale('YFF',0,100) | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ 66.66 | colourScale('YFF',0,100) }};color:{{ 66.66 | colourScale('YFF',0,100) | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ 100 | colourScale('YFF',0,100) }};color:{{ 100 | colourScale('YFF',0,100) | contrastColour() }}\">0 = Not met</span>"
+            caption: "Culturally relevant data is any additional information that can provide background or cultural information for specific groups that may be faced by different communities, and may be missed or misunderstood without the collection of relevant data. Timeliness of data considers how up to date the data used in the evidence is, and if the data covers a suitable time for its aims. Key: <span style=\"padding:0.125em 0.25em;background:{{ Forest-2 | colour() }};color:{{ Forest-2 | contrastColour() }}\">3 = Fully met</span> <span style=\"padding:0.125em 0.25em;background:{{ Chartreuse-2 | colour() }};color:{{ Chartreuse-2 | contrastColour() }}\">2 = Mostly met</span> <span style=\"padding:0.125em 0.25em;background:{{ Orange-2 | colour() }};color:{{ Orange-2 | contrastColour() }}\">1 = Partially met</span> <span style=\"padding:0.125em 0.25em;background:{{ Cherry-1 | colour() }};color:{{ Cherry-1 | contrastColour() }}\">0 = Not met</span>"
             # citations:
             #   - title: 
             #     link: about:blank
@@ -326,17 +303,23 @@ sections:
                   rename: "Culturally Relevant Data Available"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
+                  scale:
+                    stops:
+                      - { value: 0, colour: "Cherry-1" }
+                      - { value: 1, colour: "Orange-2" }
+                      - { value: 2, colour: "Chartreuse-2" }
+                      - { value: 3, colour: "Forest-2" }
                   width: 30%
                 - name: "Relevance of data→Timeliness of data (e.g. covers a suitable time period, sufficiently up to date)→Rating"
                   rename: "Timeliness of data"
                   align: center
                   heatmap: true
-                  scale: YFF
-                  min: 3
-                  max: 0
+                  scale:
+                    stops:
+                      - { value: 0, colour: "Cherry-1" }
+                      - { value: 1, colour: "Orange-2" }
+                      - { value: 2, colour: "Chartreuse-2" }
+                      - { value: 3, colour: "Forest-2" }
                   width: 30%
     topics: []
 
@@ -348,7 +331,7 @@ sections:
     blocks:
       - 
         visualisations:
-          - title: Presence of Culturally Relevant data and use of timely data in quantitative evidence
+          - title: Presence of culturally relevant data and use of timely data in quantitative evidence
             caption: Coverage of employment data in quantitative evidence.
             # citations:
             #   - title: 
