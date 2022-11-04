@@ -1,11 +1,11 @@
 # The title of the report
-title: Rapid Survey
+title: Rapid survey
 
 # Date the report was published
 publication_date: 2022-09-14
 
 summary:
-  - This page will be used to visualise analysis of data collected as part of the Rapid Survey report.
+  - This page will be used to visualise analysis of data collected as part of the Rapid survey report.
 visualisations:
   - title:  "Young people are worried about their employment prospects due to the cost of living crisis."
     caption:
