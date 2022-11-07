@@ -5,9 +5,12 @@ title: Rapid survey
 publication_date: 2022-11-08
 
 summary:
-  - This page will be used to visualise analysis of data collected as part of the Rapid survey report.
+  - | 
+    We recognised the need for understanding the impact of discrimination at work as well as rising cost of living for young people from an ethnic minority background. 
+
+    According to our independent survey of 2,296 ethnic minority young people, seven in 10 (71%) have experienced some form of workplace discrimination. Almost half (46%) of young people from ethnic minority backgrounds have experienced discrimination when dealing with customers or clients at work, while two in five have experienced it when applying for a job (37%) and/or at a job interview (36%). With the cost of living crisis taking hold, two in five (40%) say their mental health has suffered.
 visualisations:
-  - title:  "Young people are worried about their employment prospects due to the cost of living crisis."
+  - title: 
     caption:
     citations:
       - title:
@@ -23,6 +26,8 @@ report_link: /downloads/example-report.pdf
 
 sections:
   - title: Barriers to achieving employment goals
+    summary: |
+      Young people from Asian backgrounds were more likely to select Mental health as a barrier to achieving their goals. Young people from Black backgrounds were more likely to highlight the inability to afford essentials compared to other backgrounds.
     topics: []
     read_more: false
     blocks:
@@ -102,6 +107,8 @@ sections:
                 tooltip: Other Tooltip
 
   - title: Impact of COVID-19
+    summary: | 
+      For all ethnic groups, the pandemic affected their mental health, education, friendships and financial decisions.
     topics: []
     blocks:
       - title:
@@ -318,6 +325,8 @@ sections:
                 value: Other
 
   - title: Cost of living crisis
+    summary: |
+      The cost of living crisis has had a detrimental impact on their mental health as well as their ability to afford essentials.
     topics: []
     blocks:
       - title:
@@ -463,10 +472,12 @@ sections:
 
   - title: Workplace discrimination
     topics: []
+    summary: |
+      Many young people have faced discrimination when making a job application, at interview, and when trying to engage with clients.
     blocks:
       - title:
         visualisations:
-          - title: Workplace discrimination
+          - title: Young people from ethnic minority backgrounds worry about how their ethnicity will impact their experience of the workplace
             caption: Thinking specifically about your experiences of employment, have you ever experienced discrimination due to your ethnicity in any of the following situations?
             citations:
               - title:
