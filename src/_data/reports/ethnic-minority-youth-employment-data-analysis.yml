@@ -2,7 +2,7 @@
 title: Ethnic minority youth employment evidence gap analysis
 
 # Date the report was published
-publication_date: 2022-09-01T12:00:00
+publication_date: 2022-04-01T12:00:00
 
 summary:
   - |
@@ -229,6 +229,7 @@ sections:
         text: 
 
   - title: Lack of culturally relevant data
+    read_more: false
     summary: |
       While the timeliness of data is generally good, only 4 pieces of evidence
       fully met this criteria by including a time period that covered both pre-
