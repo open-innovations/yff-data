@@ -1,0 +1,200 @@
+
+.auto-grid .pane {
+  --max-height: unset;
+  padding: 1rem;
+  display: block;
+  height: 100%;
+  min-height: 20rem;
+  color: inherit;
+}
+.auto-grid .pane:hover, .auto-grid .pane:focus { background: #efefef; }
+
+
+.chart .series path.line { stroke-width: 4px; }
+.chart .legend span { font-family: CenturyGothicStd, 'Century Gothic', sans-serif; font-weight: bold; }
+.chart .legend { display: inline-block; text-align: center; padding: 0.5em; margin-bottom: 1em; max-width: calc(100% - 3em); }
+.chart .legend-item { display: inline-block; padding-right: 0.5em; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; line-height: 1.5em; }
+.chart .legend-item svg { margin: 0.25em 0.25em 0.25em 0.5em; float: left; }
+.chart .legend-item:hover { background: white; }
+
+.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
+.tooltip .inner { padding: 1em; }
+circle.selected { r: 5px; }
+.chart rect { transition: 0.1s ease-in x; }
+
+.auto-grid {
+  --auto-grid-min-size: 16rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--auto-grid-min-size)), 1fr));
+  grid-gap: 1rem;
+}
+
+
+.scatter-chart .line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+
+.axis {
+  stroke: black;
+  stroke-width: 2px;
+}
+.axis text {
+  font-size: 8px;
+}
+.x-axis  text {
+  text-anchor: middle;
+  dominant-baseline: hanging;
+}
+.y-axis text {
+  text-anchor: end;
+  dominant-baseline: central;
+}
+
+
+  .scatter-chart {
+    width: 100%;
+    stroke-linecap: round;
+  }
+  .scatter-chart * {
+    vector-effect: non-scaling-stroke;
+  }
+  .scatter-chart text {
+    stroke: none;
+  }
+
+
+  .big-number {
+    font-size: 3rem;
+	line-height: 1.25em;
+    text-align: center;
+    border: none;
+  }
+
+
+  .table-holder { display: block; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; }
+  th { border: 0; font-weight: bold; }
+  td { border: 1px solid black; }
+  td:first-child { border-left: 0; }
+  td:last-child { border-right: 0; }
+  td, th { padding: 0.25em; }
+
+
+.ranking svg g:focus { outline: none; }
+
+
+.dashboard {
+	--auto-dashboard-min-size: 200px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--auto-dashboard-min-size)), 1fr));
+	grid-gap: 1em;
+}
+.dashboard .panel h3 { color: inherit!important; font-weight: normal; font-size: 1em; }
+.panel { background: #efefef; padding: 1em; }
+.dashboard .bignum { font-size: 4em; line-height: 1.25em; font-weight: bold; text-align: center; display: block; margin-top: 0; }
+.dashboard .footnote { font-size: 0.7em; text-align: center; display: block; }
+@media screen and (max-width: 1200px) {
+	.dashboard { grid-gap: 1.5vw; }
+	.dashboard .panel { font-size: max(10px, 1.5vw); }
+	.dashboard .footnote { font-size: max(10px, 0.7em); }
+}
+
+
+.map { background: #e2e2e2; position: relative; }
+.map .leaflet { width: 100%; aspect-ratio: 16 / 9; background: #e2e2e2; position: relative; }
+.map .leaflet a { background-image: none!important; color: inherit!important; }
+.map .legend { text-align: left; line-height: 18px; color: #555; background: rgba(255,255,255,0.8); padding: 1em; }
+.map .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 1; }
+.map .leaflet-popup-content-wrapper { border-radius: 0; }
+.map .leaflet-popup-content { margin: 1em; }
+.map .leaflet-container, .map .leaflet-popup-content-wrapper, .map .leaflet-popup-content { font-size: 1em; font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; line-height: inherit; }
+.map .leaflet-popup-content-wrapper, .map .leaflet-popup-tip { box-shadow: none; }
+.map .leaflet-popup { filter: drop-shadow(0 1px 1px rgba(0,0,0,0.7)); }
+.map .leaflet-container a.leaflet-popup-close-button { color: inherit; }
+.map .leaflet-control { z-index: 400; }
+.map .leaflet-top, .leaflet-bottom { position: absolute; z-index: 400; pointer-events: none; }
+.leaflet-top { top: 0; }
+.leaflet-right { right: 0; }
+.leaflet-bottom { bottom: 0; }
+.leaflet-left { left: 0; }
+
+/* This is the mechanics of the menu button */
+.navigation button[aria-expanded=true] + * { display: block; }
+.navigation button[aria-expanded=false] + * { display: none; }
+
+.navigation button[aria-expanded] {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  padding: 0;
+  background-color: inherit;
+}
+.navigation button[aria-expanded] i {
+  --menu-button-colour: black;
+  width: 100%;
+  background-color: var(--menu-button-colour);
+  border: 3px solid var(--menu-button-colour);
+  transition: ease transform 250ms;
+  border-radius: 0.8rem;
+}
+.navigation button[aria-expanded=true] i:nth-of-type(1) {
+  transform: translateY(12px) rotate(180deg) scaleX(0);
+}
+.navigation button[aria-expanded=true] i:nth-of-type(2) {
+  transform: rotate(225deg) scaleX(1.2);
+}
+.navigation button[aria-expanded=true] i:nth-of-type(3) {
+  transform: translateY(-12px) rotate(135deg) scaleX(1.2);
+}
+@media screen and (min-width: 1100px) {
+  .navigation button[aria-expanded] {
+    display: none;
+  }
+  .navigation button[aria-expanded] + * {
+    display: block;
+  }
+}
+
+
+  .tag-cloud {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    font-size: 0.8em;
+  }
+  .tag-cloud li {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.3rem;
+  }
+
+p.cc {
+  line-height: 1.5em;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.table-of-contents {
+  padding: 1rem;
+  min-width: 35rem;
+}
+
+@media screen and (min-width: 1100px) {
+  .flex-container {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+
+  .download-link {
+    display: block;
+    padding: 0.5rem 0.7rem;
+  }

@@ -1,0 +1,53 @@
+backend:
+  name: github
+  repo: open-innovations/yff-data
+  branch: main
+locale: en-GB
+media_folder: src/assets/images/uploads
+collections:
+  - name: report
+    label: Report
+    extension: yml
+    folder: src/_data/reports/
+    create: true
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Publication Date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: D MMM YYYY
+        time_format: false
+        picker_utc: true
+      - name: summary
+        label: Summary
+        widget: markdown
+      - name: sections
+        label: Sections
+        widget: list
+        collapsed: true
+        summary: '{{fields.title}}'
+        fields:
+          - name: title
+            label: Section Title
+            widget: string
+          - name: summary
+            label: Section Summary
+            widget: markdown
+          - name: tags
+            label: Section Topics
+            widget: categories
+          - name: blocks
+            label: Section Blocks
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - name: title
+                label: Block Title
+                type: string
+              - name: summary
+                type: text
+site_url: 'https://yff-wireframe.open-innovations.org/'
+local_backend: false
