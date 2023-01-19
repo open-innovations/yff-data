@@ -16,7 +16,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.x
+          python-version: '3.10'
           cache: pipenv
 
       - name: Install dependencies
@@ -26,8 +26,7 @@ jobs:
 
       - name: Run DVC pipelines
         run: |
-          pipenv shell
-          dvc repro -R scripts
+          pipenv run dvc repro -R scripts
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
