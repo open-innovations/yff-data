@@ -1,5 +1,4 @@
 export const layout = 'report.njk';
-export const tags = ['report'];
 
 const conditionalReportFilter = ([_, report]) => report.draft !== true;
 
@@ -30,6 +29,7 @@ export default function* ({ reports }) {
     }
     yield {
       url,
+      tags: ['report'],
       ...report,
     }
   }

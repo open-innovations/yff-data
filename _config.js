@@ -7,6 +7,7 @@ import inline from "lume/plugins/inline.ts";
 import netlifyCMS from 'lume/plugins/netlify_cms.ts';
 // import postcss from "lume/plugins/postcss.ts";
 import date from "lume/plugins/date.ts"; // To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
+import enGB from "npm:date-fns/locale/en-GB/index.js";
 import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
@@ -62,7 +63,7 @@ site.use(
 
 // Format dates
 site.use(date({
-  locales: ["en-GB"],
+  locales: { enGB },
   formats: {
     "YFF": "MMMM yyyy",
   }
