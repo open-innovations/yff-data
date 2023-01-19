@@ -40,7 +40,7 @@
 		  {{ section.summary | md | safe }}
 
       {% if section.read_more | default(true) %}
-		    <a href="{{ search.page("report=" + url + " index=" + loop.index0 ).data.url }}" aria-label="Read more in {{ section.title | safe }}">READ MORE</a>
+		    <a href="{{ (url + section.title + '/') | slugify }}" aria-label="Read more in {{ section.title | safe }}">READ MORE</a>
       {% endif %}
 		</section>
 	  {% endfor %}
