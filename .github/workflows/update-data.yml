@@ -25,7 +25,9 @@ jobs:
           pipenv install
 
       - name: Run DVC pipelines
-        run: dvc repro -R scripts
+        run: |
+          pipenv shell
+          dvc repro -R scripts
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
