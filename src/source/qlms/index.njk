@@ -1,0 +1,26 @@
+---
+title: Quarterly Labour Market Statistics
+link: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics
+producer: Office for National Statistics
+data_dir: /data/qlms/
+---
+
+<a href="{{ link }}">Link</a>
+
+<h2>Sections</h2>
+
+<h3>QLMS 9</h3>
+
+{{ comp.datalink({ dir: data_dir, file: 'qlms-9.csv' }) | safe }}
+
+<h3>QLMS 11</h3>
+
+{{ comp.datalink({ dir: data_dir, file: 'qlms-11.csv' }) | safe }}
+
+<h3>QLMS 12</h3>
+
+{{ comp.datalink({ dir: data_dir, file: 'qlms-12.csv' }) | safe }}
+
+<h3>QLMS 20</h3>
+
+{{ comp.datalink({ dir: data_dir, file: 'qlms-20.csv' }) | safe }}
