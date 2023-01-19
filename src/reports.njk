@@ -1,19 +1,6 @@
 ---
 REMOVED_nav_order: 20
-title: Reports
+title: Report Dashboard
+layout: layouts/simple.njk
 ---
-  <div class="page-title">
-	<div class="holder wrapper">
-		<h1>Report Dashboard</h1>
-	</div>
-  </div>
-
-  <div class="wrapper holder">
-	{% comp 'grid.auto', { min_width: '30em' } %}
-	  {% for page in search.pages('report', 'publication_date=desc') %}
-		{% comp 'grid.pane', { link: page.data.url, extra_classes: 'turquoise-bg' } %}
-      {{ comp.report.pane({ report: page.data }) | safe }}
-		{% endcomp %}
-	  {% endfor %}
-	{% endcomp %}
-  </div>
+{{ comp.report.list() | safe }}
