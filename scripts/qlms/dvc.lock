@@ -1,0 +1,27 @@
+schema: '2.0'
+stages:
+  extract:
+    cmd: python3 scripts/qlms/extract.py
+    deps:
+    - path: scripts/qlms/extract.py
+      md5: c78045dd1046d3aa75803fdfcd5be52f
+      size: 2072
+    outs:
+    - path: working/qlms/a01latest.xls
+      md5: 0ea218daf2980341531b18ddff232433
+      size: 3792384
+  transform:
+    cmd: python3 scripts/qlms/transform.py
+    deps:
+    - path: scripts/qlms/transform.py
+      md5: 29ec3f00d5c405415e530655a0d41e9a
+      size: 1717
+      isexec: true
+    - path: working/qlms/a01latest.xls
+      md5: 0ea218daf2980341531b18ddff232433
+      size: 3792384
+    outs:
+    - path: data/qlms/
+      md5: 08faaa9bb9e4cae5101015b0f90cd8e0.dir
+      size: 1005669
+      nfiles: 4

@@ -1,5 +1,4 @@
-
-from os.path import basename, exists
+import os
 from re import compile
 from urllib.parse import urlparse
 from urllib.request import (Request, build_opener, install_opener, urlopen,
@@ -26,6 +25,10 @@ headers = [
     # ("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0) Gecko/20100101 Firefox/102.0"),
 ]
 
+WORK_DIR = os.path.join('working', 'qlms')
+os.makedirs(WORK_DIR, exist_ok=True)
+QLMS_RAW_LATEST = os.path.join(WORK_DIR, 'a01latest.xls')
+
 
 def get_filename():
     url = urlparse(
@@ -45,10 +48,11 @@ def get_filename():
 
 def download_latest():
     url = get_filename()
-    filename = basename(url)
-    if not exists(filename):
-        opener = build_opener()
-        opener.addheaders = headers
-        install_opener(opener)
-        urlretrieve(url, filename)
-    return filename
+    opener = build_opener()
+    opener.addheaders = headers
+    install_opener(opener)
+    urlretrieve(url, QLMS_RAW_LATEST)
+
+
+if __name__ == '__main__':
+    download_latest()
