@@ -12,7 +12,7 @@ url: false
 <div class="wrapper holder">
 	{% comp 'grid.auto' %}
 
-    {% comp 'grid.pane', { link: '~/reports.njk' | url, extra_classes: 'plum-bg' } %}
+    {% comp 'grid.pane', { link: '~/pages/reports.njk' | url, extra_classes: 'plum-bg' } %}
       <h2>Reports</h2>
       <p>
         {{ comp.note({ content: 'Review' }) | safe }}
