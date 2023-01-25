@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  extract:
+    cmd: PYTHONPATH=. python scripts/neet/extract.py
+    deps:
+    - path: scripts/neet/extract.py
+      md5: 8ad09b62c1ddbdca260c1bdc89fc4830
+      size: 560
+    outs:
+    - path: working/neet/neetlatest.xlsx
+      md5: 792ee207de4626a90f239d94cb5a76cf
+      size: 162762

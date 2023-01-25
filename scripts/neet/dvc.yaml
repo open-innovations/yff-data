@@ -1,0 +1,9 @@
+stages:
+  extract:
+    cmd: PYTHONPATH=. python scripts/neet/extract.py
+    wdir: ../..
+    deps:
+      - scripts/neet/extract.py
+    outs:
+      - working/neet/neetlatest.xlsx:
+          cache: false
