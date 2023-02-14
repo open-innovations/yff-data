@@ -8,20 +8,19 @@ stages:
       size: 2072
     outs:
     - path: working/qlms/a01latest.xls
-      md5: 0ea218daf2980341531b18ddff232433
-      size: 3792384
+      md5: 9977e7c3e36ed5cb40ac138b3cf425be
+      size: 3801600
   transform:
     cmd: python3 scripts/qlms/transform.py
     deps:
     - path: scripts/qlms/transform.py
       md5: 29ec3f00d5c405415e530655a0d41e9a
       size: 1717
-      isexec: true
     - path: working/qlms/a01latest.xls
-      md5: 0ea218daf2980341531b18ddff232433
-      size: 3792384
+      md5: 9977e7c3e36ed5cb40ac138b3cf425be
+      size: 3801600
     outs:
     - path: data/qlms/
-      md5: 08faaa9bb9e4cae5101015b0f90cd8e0.dir
-      size: 1005669
+      md5: 54069308783fc496504800a54c9e778d.dir
+      size: 1008451
       nfiles: 4
