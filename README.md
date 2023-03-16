@@ -27,6 +27,21 @@ The `deno.json` file includes useful tasks:
 
 `deno task build` - builds the site into `_site`
 
+## Versioned content
+
+Navigation order and inclusion is set on a per-page basis by including the nav_order data in the front-matter for a page. It takes the following format:
+
+```
+nav_order:
+  <version_tag>: <ordering>
+```
+
+in `_config.ts`, the `version` global data is set. By convention this is set to `v1`, `v2`, etc - but could be anything.
+
+The `nav` component interprets this and selects the pages to include based on the presence of the relevant key.
+
+Similarly, the homepage versions (`/home/v1.njk`, `/home/v2.njk`) are set to be the site homepage by comparison between their slug (`v1`, `v2`) and the global data version. If the slug matches the version, the url for the page is set to `/`, otherwise it defaults to `/home/v<x>/`. This is done in the `/home/_data.ts` file.
+
 ## License
 
 The code to build this portal is [licensed under the terms of an MIT License](./LICENSE) by [Open Innovations](https://open-innovations.org).
