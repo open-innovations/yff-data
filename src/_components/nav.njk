@@ -50,6 +50,7 @@ js: |
     });
   })
 ---
+{% set version_key = 'nav_order.' + (version or 'v1') %}
 <nav id="navigation" class="navigation">
   <button aria-expanded="false" aria-label="Menu">
     <i role="none"></i>
@@ -58,7 +59,7 @@ js: |
   </button>
   <div>
     <ul>
-      {% for link in search.pages('nav_order!=undefined', 'nav_order') -%}
+      {% for link in search.pages( version_key + '!=undefined', version_key ) -%}
         <li><a href="{{ link.data.url }}">{{ link.data.title }}</a></li>
       {% endfor -%}
 	    <li class="social-icon first-social"><a target="_blank" rel="noopener" href="https://www.linkedin.com/company/youthfuturesfoundation/"><img src="/assets/images/social-linkedin.svg" inline></a></li>

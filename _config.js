@@ -21,6 +21,9 @@ const site = lume({
   location: new URL('https://yff-wireframe.open-innovations.org/'),
 });
 
+// Change this to update the version of the site that is built. This mainly affects navigation.
+site.data('version', 'v1');
+
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
 
