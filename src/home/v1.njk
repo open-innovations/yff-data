@@ -1,31 +1,20 @@
 ---
 title: Data Dashboard
-url: /
 ---
-<div class="page-title">
-	<div class="holder wrapper">
-		<h1>Data Dashboard</h1>
-	</div>
-</div>
+<p>
+  <a href="https://youthfuturesfoundation.org/">Youth Futures Foundation</a> was set up in
+  2019 to improve the youth employment system and reduce the number of young people not in
+  education, employment or training (NEET) in England.
+</p>
 
-<div class="wrapper holder">
-  <p>
-    <a href="https://youthfuturesfoundation.org/">Youth Futures Foundation</a> was set up in
-    2019 to improve the youth employment system and reduce the number of young people not in
-    education, employment or training (NEET) in England.
-  </p>
- 
-  <p>
-    We created this data site to showcase our latest reports and data.
-    Our aim is to reduce gaps in data and research to address the disparities in employment
-    outcomes of young people from marginalised backgrounds.
-    The site is currently under development.
-    If you have any feedback, please
-    <a href="mailto:hello@open-innovations.org,analysis@youthfuturesfoundation.org?subject=YFF Feedback&body=Page title: {{ title | safe }}%0d%0aURL: {{ url }}%0d%0a%0d%0aYour feedback here">get in touch</a>.
-  </p>
-</div>
+<p>
+  We created this data site to showcase our latest reports and data.
+  Our aim is to reduce gaps in data and research to address the disparities in employment
+  outcomes of young people from marginalised backgrounds.
+  The site is currently under development.
+  If you have any feedback, please
+  <a href="mailto:hello@open-innovations.org,analysis@youthfuturesfoundation.org?subject=YFF Feedback&body=Page title: {{ title | safe }}%0d%0aURL: {{ url }}%0d%0a%0d%0aYour feedback here">get in touch</a>.
+</p>
 
-<div class="wrapper holder">
-  <h2>Reports</h2>
-  {{ comp.report.list() | safe }}
-</div>
+<h2>Reports</h2>
+{{ comp.report.list() | safe }}
