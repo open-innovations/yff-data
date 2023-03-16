@@ -1,4 +1,4 @@
-export const layout ='section.njk';
+export const layout ='layouts/section.njk';
 export const tags = ['section'];
 
 export default function*({ search }) {
