@@ -1,0 +1,17 @@
+{
+	"layout":"odd-r",
+	"hexes": {
+		"UKC":{"n":"North East","region":"UKC","name":"North East","q":5,"r":3},
+		"UKD":{"n":"North West","region":"UKD","name":"North West","q":4,"r":2},
+		"UKE":{"n":"Yorkshire and the Humber","region":"UKE","name":"Yorkshire and the Humber","q":5,"r":2},
+		"UKF":{"n":"East Midlands","region":"UKF","name":"East Midlands","q":6,"r":1},
+		"UKG":{"n":"West Midlands","region":"UKG","name":"West Midlands","q":5,"r":1},
+		"UKH":{"n":"East of England","region":"UKH","name":"East of England","q":7,"r":1},
+		"UKI":{"n":"London","region":"UKI","name":"London","q":5,"r":0},
+		"UKJ":{"n":"South East","region":"UKJ","name":"South East","q":6,"r":0},
+		"UKK":{"n":"South West","region":"UKK","name":"South West","q":4,"r":0},
+		"UKL":{"n":"Wales","region":"UKL","name":"Wales","q":4,"r":1},
+		"UKM":{"n":"Scotland","region":"UKM","name":"Scotland","q":4,"r":4},
+		"UKN":{"n":"Northern Ireland","region":"UKN","name":"Northern Ireland","q":3,"r":3}
+	}
+}

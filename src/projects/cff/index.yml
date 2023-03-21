@@ -83,11 +83,11 @@ sections:
     summary: 
     read_more: false
     blocks:
-      - title: Bar chart
+      - title: 
         visualisations:
-          - title:
+          - title: Local authority
             type: map
-            tab: Hex cartogram
+            tab: Local Authority
             caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
             config:
               file: /data/cff/application_count_local_authority.csv
@@ -116,6 +116,40 @@ sections:
                   - value: 2
                     label: ''
                   - value: 1
+                    label: ''
+                  - value: 0
+                    label: ▼ Applications
+          - title: NUTS Region
+            type: map
+            tab: NUTS Region 
+            caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
+            config:
+              file: /data/cff/application_count_by_region.csv
+              type: hex-map
+              hexjson:
+                file: /data/maps/NUTS-regions.hexjson
+                key: name
+              key: Region
+              value: Number of applications
+              label: Label
+              scale: Diverging
+              min: 0
+              max: 15
+              columns:
+                - name: Label
+                  template: '{{ Region }}: {{ Number of applications }}'
+              legend:
+                position: top right
+                items:
+                  - value: 15
+                    label: ▲ Applications
+                  - value: 12
+                    label: ''
+                  - value: 9
+                    label: ''
+                  - value: 6
+                    label: ''
+                  - value: 3
                     label: ''
                   - value: 0
                     label: ▼ Applications
