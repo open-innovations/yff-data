@@ -1,0 +1,121 @@
+# The title of the report
+title: Connected Futures Fund 
+contents: false 
+
+summary: 
+  - | 
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
+    since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+    five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the 
+    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+    including versions of Lorem Ipsum.
+
+  - |
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
+    since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+    five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the 
+    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+    including versions of Lorem Ipsum.
+
+
+sections:
+  - title: Applications
+    summary: 
+    read_more: false
+    blocks:
+      - title: 
+        visualisations:
+          - title: Headline Statistics
+            type: dashboard
+            config: 
+              file: /data/cff/dummy_headlines.csv
+              title: "Title"	# Column heading for title
+              value: "Value"	# Column heading for value
+              note: "Note"		# Column heading for note
+              width: 333px		# Min width of column (default: 250px)
+              panels:
+                - name: "Received"
+                  colour: Cherry-1
+                - name: "Shortlisted"
+                  colour: Orange-2
+                - name: "Accepted"
+                  colour: Chartreuse-2
+
+  - title: Bar chart showing applications by region
+    summary: 
+    read_more: false
+    blocks:
+      - title: Bar chart
+        visualisations:
+          - title: Bar chart
+            type: chart
+            tab: Bar Chart
+            caption: 
+            config:
+              file: /data/cff/application_count_by_region.csv
+              summary: 
+              type: stacked-bar-chart
+              legend:
+                show: true     # Default to false
+                position: "top right"
+              axis:
+                x:
+                  min: 0
+                  max: 25
+                  grid:
+                    stroke-dasharray: "6 2"
+                    stroke-width: 1
+                  ticks:
+                    - value: 10
+                      label: "10"
+                    - value: 20
+                      label: "20"
+                y:
+                  grid:
+                    stroke-width: 0.5
+              category: "Region"  # Category labels come from 
+              series:
+                - title: "Number of applications"
+                  value: "Number of applications"
+                  colour: "#7D2248"
+
+  - title: Hexmap applications by region
+    summary: 
+    read_more: false
+    blocks:
+      - title: Bar chart
+        visualisations:
+          - title:
+            type: map
+            tab: Hex cartogram
+            caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
+            config:
+              file: /data/cff/application_count_local_authority.csv
+              type: hex-map
+              hexjson:
+                file: /data/maps/uk-local-authority-districts.hexjson
+                key: id
+              key: LAD18CD
+              value: Count
+              label: Label
+              scale: Diverging
+              min: 0
+              max: 5
+              columns:
+                - name: Label
+                  template: '{{ Local authority }}: {{ Count }}'
+              legend:
+                position: top right
+                items:
+                  - value: 5
+                    label: ▲ Applications
+                  - value: 4
+                    label: ''
+                  - value: 3
+                    label: ''
+                  - value: 2
+                    label: ''
+                  - value: 1
+                    label: ''
+                  - value: 0
+                    label: ▼ Applications

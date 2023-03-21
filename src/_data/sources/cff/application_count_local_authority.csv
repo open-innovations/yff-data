@@ -1,0 +1,62 @@
+﻿LAD18CD,Local authority,Region,Urban or Rural,Secondary ,Count
+E07000170,Ashfield,East Midlands,Urban,City and Town,1
+E07000034,Chesterfield,East Midlands,Urban,City and Town,1
+E06000015,Derby,East Midlands,Urban,City and Town,2
+E06000016,Leicester,East Midlands,Urban,City and Town,2
+E07000138,Lincoln,East Midlands,Urban,City and Town,1
+E07000174,Mansfield,East Midlands,Urban,City and Town,1
+E06000018,Nottingham,East Midlands,Urban,Minor Conurbation ,3
+,Basildon,East of England,Urban,City and Town,1
+E07000145,Great Yarmouth,East of England,Urban,Significant Rural ,1
+E07000202,Ipswich,East of England,Urban,City and Town,1
+,Brent,London,Urban,Major Conurbation ,2
+E09000012,Hackney,London,Urban,Major Conurbation ,2
+E09000014,Haringey,London,Urban,Major Conurbation,4
+E09000019,Islington,London,Urban,Major Conurbation ,3
+E09000022,Lambeth,London,Urban,Major Conurbation ,3
+E09000023,Lewisham,London,Urban,Major Conurbation ,1
+E09000028,Southwark,London,Urban,Major Conurbation ,1
+E06000047,County Durham,North East,Rural, including hub towns,1
+,Darlington,North East,Urban,City and Town,1
+E06000001,Hartlepool,North East,Urban,City and Town,1
+E08000021,Newcastle upon Tyne,North East,Urban,Major Conurbation ,1
+E08000022,North Tyneside,North East,Urban,Major Conurbation ,1
+E06000057,Northumberland,North East,Rural, including hub towns,1
+E06000004,Stockton-on-Tees,North East,Urban,City and Town,2
+E08000024,Sunderland,North East,Urban,Major Conurbation ,1
+E06000008,Blackburn with Darwen,NW,Urban,City and Town,1
+E06000009,Blackpool,NW,Urban,City and Town,1
+E08000001,Bolton,NW,Urban,Major Conurbation ,1
+,Burnley,NW,Urban,City and Town,1
+E06000006,Halton,NW,Urban,City and Town,1
+E08000011,Knowsley,NW,Urban,Major Conurbation ,2
+E08000012,Liverpool,NW,Urban,Major Conurbation,1
+E08000003,Manchester,NW,Urban,Major Conurbation,4
+E08000004,Oldham,NW,Urban,Major Conurbation ,2
+E08000005,Rochdale,NW,Urban,Major Conurbation ,1
+E08000006,Salford,NW,Urban,Minor Conurbation,3
+E08000014,Sefton,NW,Urban,Major Conurbation ,1
+E08000013,St. Helens,NW,Urban,Major Conurbation ,1
+E08000008,Tameside,NW,Urban,Major Conurbation,2
+E08000015,Wirral,NW,Urban,Major Conurbation ,1
+E07000062,Hastings,South East,Urban,City and Town,1
+E06000046,Isle of Wight,South East,Rural, including hub towns,1
+E06000035,Medway,South East,Urban,City and Town,1
+E06000044,Portsmouth,South East,Urban,City and Town,1
+E07000113,Swale,South East,Rural, including hub towns,1
+E07000114,Thanet,South East,Urban,City and Town,1
+E06000023,Bristol,South West,Urban,City and Town,1
+,Plymouth,South West,Urban,City and Town,1
+E08000025,Birmingham,West Midlands,Urban,Major Conurbation ,5
+E08000026,Coventry,West Midlands,Urban,City and Town,2
+E07000236,Redditch,West Midlands,Urban,City and Town,1
+E08000029,Solihull,West Midlands,Urban,Major Conurbation ,1
+E06000021,Stoke-on-Trent,West Midlands,Urban,City and Town,1
+E08000031,Wolverhampton,West Midlands,Urban,Major Conurbation ,1
+,Barnsley,YH,Urban,Minor Conurbation ,2
+E08000033,Calderdale,YH,Urban,Major Conurbation ,1
+E08000017,Doncaster,YH,Urban,Minor Conurbation ,1
+E06000010,Kingston upon Hull,YH,Urban,City and Town,1
+E08000035,Leeds,YH,Urban,Major Conurbation ,3
+E06000003,Redcar & Cleveland,YH,Urban,Significant Rural ,1
+E08000019,Sheffield,YH,Urban,Minor Conurbation ,1
