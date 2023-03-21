@@ -7,10 +7,14 @@ export const css = `
   }
 `;
 
-export default function ({ link }) {
+export default function ({ link, note }) {
   if (link === undefined) return;
   // Create a note if the download file doesn't exist
-  let note = "";
+  if (note === undefined) { 
+    return `<a class='download-link orange' href="${link}">Get the report</a>`;
+  }
+  else return  `<a class='download-link orange' href="${link}">${note}</a>`;
+     
   /*if (!existsSync(link)) {
     console.error('WARNING: Download file '+link+' does not exist.');
     note = '<span class="note">No PDF yet</span>';
