@@ -18,11 +18,15 @@
 	  <section class="summary">
     {% for s in summary %}{{ s | md | safe }}{% endfor %}
 	  </section>
-    {{ comp.report.table_of_contents({ sections: sections }) | safe }}
-    {% endcomp %}
+
+	{% if contents | default(true) %}
+		{{ comp.report.table_of_contents({ sections: sections }) | safe }}
+	{% endif %}
+	{% endcomp %}
+
 
 	  <section class="dl">
-		{{ comp.actions.download({ link: report_link }) | safe }}
+		{{ comp.actions.download({ link: report_link, note: link_text }) | safe }}
 	  </section>
 
 	  {% for section in sections %}
