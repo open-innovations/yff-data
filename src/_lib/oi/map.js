@@ -409,6 +409,11 @@ export function SVGMap(config,csv,sources){
 
 	console.log('TYPE: SVG-MAP',config.geojson.file);
 
+	// IF the GeoJSON object doesn't contain a type: FeatureCollection we stop
+	if(!geo.type || !geo.type == "FeatureCollection"){
+		throw new Error("No FeatureCollection in the GeoJSON: "+config.geojson.file);
+	}
+
 	// Add a colour-scale colour to each row based on the "value" column
 	var rows = clone(csv.rows);
 	for(var r = 0; r < rows.length; r++){
