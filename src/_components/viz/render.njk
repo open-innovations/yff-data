@@ -13,7 +13,7 @@ config: {{ config | dump(2) }}
 {% endif %}
 	</div>
   </div>
-  <span class="tab-title">{% if tab %}{{ tab }}{% else %}{{ title }}{% endif %}</span>
+  <span class="tab-title">{% if tab %}{{ tab | safe }}{% else %}{{ title | safe }}{% endif %}</span>
   {% if title %}<h3>{{ title }}</h3>{% endif %}
 {% if caption %}
   <figcaption>
