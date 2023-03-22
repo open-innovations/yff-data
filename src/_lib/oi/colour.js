@@ -65,6 +65,32 @@ function rgb2hsv(r, g, b) {
 	return [h, s, v];
 }
 
+// Convert to sRGB colorspace
+// https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+function sRGBToLinear(v){
+	v /= 255;
+    if (v <= 0.03928) return v/12.92;
+	else return Math.pow((v+0.055)/1.055,2.4);
+}
+
+// https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+function relativeLuminance(rgb){
+	return 0.2126 * sRGBToLinear(rgb[0]) + 0.7152 * sRGBToLinear(rgb[1]) + 0.0722 * sRGBToLinear(rgb[2]);
+}
+
+// https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
+export function contrastRatio(a, b){
+	let L1 = relativeLuminance(a);
+	let L2 = relativeLuminance(b);
+	if(L1 < L2){
+		let temp = L2;
+		L2 = L1;
+		L1 = temp;
+	}
+	return (L1 + 0.05) / (L2 + 0.05);
+}
+
+
 // Functions for working out colour contrasts
 function brightnessIndex(rgb){ return rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114; }
 function brightnessDiff(a,b){ return Math.abs(brightnessIndex(a)-brightnessIndex(b)); }
@@ -81,17 +107,16 @@ export function contrastColour(c){
 	}
 	// Check brightness contrast
 	cols = {'black':{'rgb':[0,0,0]},'white':{'rgb':[255,255,255]}};
-	for(col in cols){
-		cols[col].brightness = brightnessDiff(rgb,cols[col].rgb);
-		cols[col].hue = hueDiff(rgb,cols[col].rgb);
-		cols[col].ok = (cols[col].brightness > 125 && cols[col].hue >= 500);
+	var maxRatio = 0;
+	var contrast = "black";
+	for(const col in cols){
+		let contr = contrastRatio(rgb, cols[col].rgb);
+		if(contr > maxRatio){
+			maxRatio = contr;
+			contrast = col;
+		}
 	}
-	for(col in cols){
-		if(cols[col].ok) return 'rgb('+cols[col].rgb.join(",")+')';
-	}
-	col = (cols.white.brightness > cols.black.brightness) ? "white" : "black"
-	//console.warn('Text contrast not enough for '+c+' (colour contrast: '+cols[col].brightness.toFixed(1)+'/125, hue contrast: '+cols[col].hue+'/500)','background:'+c+';color:'+col,'background:none;color:inherit;');
-	return col;
+	return contrast;
 }
 
 
