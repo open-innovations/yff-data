@@ -153,7 +153,7 @@ sections:
                     label: ''
                   - value: 0
                     label: ▼ Applications
-          - title: SVG Map
+          - title: SVG Map 
             type: map
             tab: SVG map
             config:
@@ -200,3 +200,50 @@ sections:
                     label: 5 
                   - value: 0
                     label: '0'
+          - title: SVG Map ITL2
+            type: map
+            tab: SVG map ITL2
+            config:
+              file: /data/cff/application_by_itl2.csv
+              type: svg-map
+              geojson:
+                file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC.geojson
+                key: ITL221CD
+              key: ITL Code
+              value: Application count
+              scale: Viridis
+              min: 0
+              max: 10
+              columns:
+                - name: ITL Region
+                  template: '{{ ITL Region }}<br />Application count: {{ Application count | toLocaleString() }} applications'
+              places:
+                - name: London
+                  text-anchor: start
+                  longitude: 0.8
+                  latitude: 51.4
+                - name: Liverpool
+                  text-anchor: end
+                - name: Swansea
+                  text-anchor: end
+                  latitude: 51.4
+                - name: Edinburgh
+                  text-anchor: start
+                - name: Kingston upon Hull
+                  text-anchor: start
+                  longitude: 0
+              legend:
+                position: top right
+                items:
+                  - value: 10
+                    label: 10 
+                  - value: 8
+                    label: 8 
+                  - value: 6
+                    label: 6 
+                  - value: 4
+                    label: 4
+                  - value: 2
+                    label: 2
+                  - value: 0
+                    label: 0
