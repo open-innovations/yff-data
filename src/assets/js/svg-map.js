@@ -38,7 +38,7 @@
 		pts = [];
 
 		this.showTooltip = function(e){
-			console.log('showTooltip',e.data,this);
+			//console.log('showTooltip',e.data,this);
 			el.style.position = 'relative';
 
 			var txt,bb,bbo,fill,hsv,hsl,selected,off;
