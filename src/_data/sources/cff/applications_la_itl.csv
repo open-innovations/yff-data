@@ -22,6 +22,8 @@ Medway,E06000035,E06000035,Medway,TLJ41,Medway,TLJ4,Kent,TLJ,South East (England
 North Tyneside,E08000022,E08000022,North Tyneside,TLC22,Tyneside,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England),1
 Portsmouth,E06000044,E06000044,Portsmouth,TLJ31,Portsmouth,TLJ3,Hampshire and Isle of Wight,TLJ,South East (England),1
 Great Yarmouth,E07000145,E07000145,Great Yarmouth,TLH15,Norwich and East Norfolk,TLH1,East Anglia,TLH,East,1
+"Liverpool
+",,,,,,,,,,1
 Knowsley,E08000011,E08000011,Knowsley,TLD71,East Merseyside,TLD7,Merseyside,TLD,North West (England),2
 Sefton,E08000014,E08000014,Sefton,TLD73,Sefton,TLD7,Merseyside,TLD,North West (England),1
 St. Helens,E08000013,E08000013,St. Helens,TLD71,East Merseyside,TLD7,Merseyside,TLD,North West (England),1
@@ -30,8 +32,10 @@ Halton,E06000006,E06000006,Halton,TLD71,East Merseyside,TLD7,Merseyside,TLD,Nort
 Ipswich,E07000202,E07000202,Ipswich,TLH14,Suffolk CC,TLH1,East Anglia,TLH,East,1
 Brent,E09000005,E09000005,Brent,TLI72,Brent,TLI7,Outer London - West and North West,TLI,London,2
 Sunderland,E08000024,E08000024,Sunderland,TLC23,Sunderland,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England),1
+Kingston upon Hull,,,,,,,,,,1
 Lincoln,E07000138,E07000138,Lincoln,TLF30,Lincolnshire CC,TLF3,Lincolnshire,TLF,East Midlands (England),1
 Northumberland,E06000057,E06000057,Northumberland,TLC21,Northumberland,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England),1
+Redcar & Cleveland,,,,,,,,,,1
 Southwark,E09000028,E09000028,Southwark,TLI44,Lewisham and Southwark,TLI4,Inner London - East,TLI,London,1
 Plymouth,E06000026,E06000026,Plymouth,TLK41,Plymouth,TLK4,Devon,TLK,South West (England),1
 Leeds,E08000035,E08000035,Leeds,TLE42,Leeds,TLE4,West Yorkshire,TLE,Yorkshire and The Humber,3
@@ -42,6 +46,7 @@ Hastings,E07000062,E07000062,Hastings,TLJ22,East Sussex CC,TLJ2,"Surrey, East an
 Barnsley,E08000016,E08000016,Barnsley,TLE31,"Barnsley, Doncaster and Rotherham",TLE3,South Yorkshire,TLE,Yorkshire and The Humber,2
 Basildon,E07000066,E07000066,Basildon,TLH37,Essex Thames Gateway,TLH3,Essex,TLH,East,1
 Burnley,E07000117,E07000117,Burnley,TLD46,East Lancashire,TLD4,Lancashire,TLD,North West (England),1
+Bristol,,,,,,,,,,1
 Islington,E09000019,E09000019,Islington,TLI43,Haringey and Islington,TLI4,Inner London - East,TLI,London,3
 Coventry,E08000026,E08000026,Coventry,TLG33,Coventry,TLG3,West Midlands,TLG,West Midlands (England),2
 Ashfield,E07000170,E07000170,Ashfield,TLF15,North Nottinghamshire,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England),1

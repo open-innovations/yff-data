@@ -41,7 +41,7 @@ sections:
                 - name: "Accepted"
                   colour: Chartreuse-2
 
-  - title: Bar chart showing applications by region
+  - title: Number of applications by region
     summary: 
     read_more: false
     blocks:
@@ -79,7 +79,7 @@ sections:
                   value: "Number of applications"
                   colour: "#7D2248"
 
-  - title: Hexmap applications by region
+  - title: Applications made by region
     summary: 
     read_more: false
     blocks:
@@ -209,14 +209,14 @@ sections:
               geojson:
                 file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson
                 key: ITL221CD
-              key: ITL Code
+              key: ITL221CD
               value: Application count
               scale: Viridis
               min: 0
               max: 10
               columns:
                 - name: ITL Region
-                  template: '{{ ITL Region }}<br />Application count: {{ Application count | toLocaleString() }} applications'
+                  template: '{{ ITL221NM }}<br />Application count: {{ Application count | toLocaleString() }} applications'
               places:
                 - name: London
                   text-anchor: start
@@ -247,3 +247,53 @@ sections:
                     label: 2
                   - value: 0
                     label: 0
+
+  - title: Shortlisted and accepted applications
+    summary: 
+    read_more: false
+    blocks:
+      - title: 
+        visualisations:
+          - title: SVG Map Shortlisted
+            type: map
+            tab: SVG map ITL2
+            config:
+              file: /data/cff/apps_shortlisted.csv
+              type: svg-map
+              geojson:
+                file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson
+                key: ITL221CD
+              key: ITL221CD
+              value: Status
+              scale: Viridis
+              min: 0
+              max: 10
+              columns:
+                - name: ITL Region
+                  template: '{{ ITL221NM }}<br />Status: {{ Status | toLocaleString() }} '
+              places:
+                - name: London
+                  text-anchor: start
+                  longitude: 0.8
+                  latitude: 51.4
+                - name: Liverpool
+                  text-anchor: end
+                - name: Swansea
+                  text-anchor: end
+                  latitude: 51.4
+                - name: Edinburgh
+                  text-anchor: start
+                - name: Kingston upon Hull
+                  text-anchor: start
+                  longitude: 0
+              legend:
+                position: top right
+                items:
+                  - value: 3
+                    label: Accepted
+                  - value: 2
+                    label: Shortlisted
+                  - value: 1
+                    label: Applied
+                  - value: 0
+                    label: 

@@ -1,0 +1,63 @@
+Local authority,Application count,LAD21CD,LAU121CD,LAU121NM,ITL321CD,ITL321NM,ITL221CD,ITL221NM,ITL121CD,ITL121NM
+Haringey,4,E09000014,E09000014,Haringey,TLI43,Haringey and Islington,TLI4,Inner London - East,TLI,London
+Manchester,4,E08000003,E08000003,Manchester,TLD33,Manchester,TLD3,Greater Manchester,TLD,North West (England)
+Salford,3,E08000006,E08000006,Salford,TLD34,Greater Manchester South West,TLD3,Greater Manchester,TLD,North West (England)
+Tameside,2,E08000008,E08000008,Tameside,TLD35,Greater Manchester South East,TLD3,Greater Manchester,TLD,North West (England)
+County Durham,1,E06000047,E06000047,County Durham,TLC14,Durham,TLC1,Tees Valley and Durham,TLC,North East (England)
+Hackney,2,E09000012,E09000012,Hackney,TLI41,Hackney and Newham,TLI4,Inner London - East,TLI,London
+Hartlepool,1,E06000001,E06000001,Hartlepool,TLC11,Hartlepool and Stockton-on-Tees,TLC1,Tees Valley and Durham,TLC,North East (England)
+Leicester,2,E06000016,E06000016,Leicester,TLF21,Leicester,TLF2,"Leicestershire, Rutland and Northamptonshire",TLF,East Midlands (England)
+Doncaster,1,E08000017,E08000017,Doncaster,TLE31,"Barnsley, Doncaster and Rotherham",TLE3,South Yorkshire,TLE,Yorkshire and The Humber
+Thanet,1,E07000114,E07000114,Thanet,TLJ44,East Kent,TLJ4,Kent,TLJ,South East (England)
+Swale,1,E07000113,E07000113,Swale,TLJ43,Kent Thames Gateway,TLJ4,Kent,TLJ,South East (England)
+Darlington,1,E06000005,E06000005,Darlington,TLC13,Darlington,TLC1,Tees Valley and Durham,TLC,North East (England)
+Birmingham,5,E08000025,E08000025,Birmingham,TLG31,Birmingham,TLG3,West Midlands,TLG,West Midlands (England)
+Calderdale,1,E08000033,E08000033,Calderdale,TLE44,Calderdale and Kirklees,TLE4,West Yorkshire,TLE,Yorkshire and The Humber
+Isle of Wight,1,E06000046,E06000046,Isle of Wight,TLJ34,Isle of Wight,TLJ3,Hampshire and Isle of Wight,TLJ,South East (England)
+Lambeth,3,E09000022,E09000022,Lambeth,TLI45,Lambeth,TLI4,Inner London - East,TLI,London
+Nottingham,3,E06000018,E06000018,Nottingham,TLF14,Nottingham,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England)
+Oldham,2,E08000004,E08000004,Oldham,TLD37,Greater Manchester North East,TLD3,Greater Manchester,TLD,North West (England)
+Wolverhampton,1,E08000031,E08000031,Wolverhampton,TLG39,Wolverhampton,TLG3,West Midlands,TLG,West Midlands (England)
+Medway,1,E06000035,E06000035,Medway,TLJ41,Medway,TLJ4,Kent,TLJ,South East (England)
+North Tyneside,1,E08000022,E08000022,North Tyneside,TLC22,Tyneside,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England)
+Portsmouth,1,E06000044,E06000044,Portsmouth,TLJ31,Portsmouth,TLJ3,Hampshire and Isle of Wight,TLJ,South East (England)
+Great Yarmouth,1,E07000145,E07000145,Great Yarmouth,TLH15,Norwich and East Norfolk,TLH1,East Anglia,TLH,East
+"Liverpool
+",1,,,,,,,,,
+Knowsley,2,E08000011,E08000011,Knowsley,TLD71,East Merseyside,TLD7,Merseyside,TLD,North West (England)
+Sefton,1,E08000014,E08000014,Sefton,TLD73,Sefton,TLD7,Merseyside,TLD,North West (England)
+St. Helens,1,E08000013,E08000013,St. Helens,TLD71,East Merseyside,TLD7,Merseyside,TLD,North West (England)
+Wirral,1,E08000015,E08000015,Wirral,TLD74,Wirral,TLD7,Merseyside,TLD,North West (England)
+Halton,1,E06000006,E06000006,Halton,TLD71,East Merseyside,TLD7,Merseyside,TLD,North West (England)
+Ipswich,1,E07000202,E07000202,Ipswich,TLH14,Suffolk CC,TLH1,East Anglia,TLH,East
+Brent,2,E09000005,E09000005,Brent,TLI72,Brent,TLI7,Outer London - West and North West,TLI,London
+Sunderland,1,E08000024,E08000024,Sunderland,TLC23,Sunderland,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England)
+Kingston upon Hull,1,,,,,,,,,
+Lincoln,1,E07000138,E07000138,Lincoln,TLF30,Lincolnshire CC,TLF3,Lincolnshire,TLF,East Midlands (England)
+Northumberland,1,E06000057,E06000057,Northumberland,TLC21,Northumberland,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England)
+Redcar & Cleveland,1,,,,,,,,,
+Southwark,1,E09000028,E09000028,Southwark,TLI44,Lewisham and Southwark,TLI4,Inner London - East,TLI,London
+Plymouth,1,E06000026,E06000026,Plymouth,TLK41,Plymouth,TLK4,Devon,TLK,South West (England)
+Leeds,3,E08000035,E08000035,Leeds,TLE42,Leeds,TLE4,West Yorkshire,TLE,Yorkshire and The Humber
+Bolton,1,E08000001,E08000001,Bolton,TLD36,Greater Manchester North West,TLD3,Greater Manchester,TLD,North West (England)
+Blackburn with Darwen,1,E06000008,E06000008,Blackburn with Darwen,TLD41,Blackburn with Darwen,TLD4,Lancashire,TLD,North West (England)
+Newcastle upon Tyne,1,E08000021,E08000021,Newcastle upon Tyne,TLC22,Tyneside,TLC2,"Northumberland, and Tyne and Wear",TLC,North East (England)
+Hastings,1,E07000062,E07000062,Hastings,TLJ22,East Sussex CC,TLJ2,"Surrey, East and West Sussex",TLJ,South East (England)
+Barnsley,2,E08000016,E08000016,Barnsley,TLE31,"Barnsley, Doncaster and Rotherham",TLE3,South Yorkshire,TLE,Yorkshire and The Humber
+Basildon,1,E07000066,E07000066,Basildon,TLH37,Essex Thames Gateway,TLH3,Essex,TLH,East
+Burnley,1,E07000117,E07000117,Burnley,TLD46,East Lancashire,TLD4,Lancashire,TLD,North West (England)
+Bristol,1,,,,,,,,,
+Islington,3,E09000019,E09000019,Islington,TLI43,Haringey and Islington,TLI4,Inner London - East,TLI,London
+Coventry,2,E08000026,E08000026,Coventry,TLG33,Coventry,TLG3,West Midlands,TLG,West Midlands (England)
+Ashfield,1,E07000170,E07000170,Ashfield,TLF15,North Nottinghamshire,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England)
+Chesterfield,1,E07000034,E07000034,Chesterfield,TLF12,East Derbyshire,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England)
+Derby,2,E06000015,E06000015,Derby,TLF11,Derby,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England)
+Mansfield,1,E07000174,E07000174,Mansfield,TLF15,North Nottinghamshire,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England)
+Rochdale,1,E08000005,E08000005,Rochdale,TLD37,Greater Manchester North East,TLD3,Greater Manchester,TLD,North West (England)
+Redditch,1,E07000236,E07000236,Redditch,TLG12,Worcestershire CC,TLG1,"Herefordshire, Worcestershire and Warwickshire",TLG,West Midlands (England)
+Blackpool,1,E06000009,E06000009,Blackpool,TLD42,Blackpool,TLD4,Lancashire,TLD,North West (England)
+Sheffield,1,E08000019,E08000019,Sheffield,TLE32,Sheffield,TLE3,South Yorkshire,TLE,Yorkshire and The Humber
+Stockton-on-Tees,2,E06000004,E06000004,Stockton-on-Tees,TLC11,Hartlepool and Stockton-on-Tees,TLC1,Tees Valley and Durham,TLC,North East (England)
+Stoke-on-Trent,1,E06000021,E06000021,Stoke-on-Trent,TLG23,Stoke-on-Trent,TLG2,Shropshire and Staffordshire,TLG,West Midlands (England)
+Lewisham,1,E09000023,E09000023,Lewisham,TLI44,Lewisham and Southwark,TLI4,Inner London - East,TLI,London
+Solihull,1,E08000029,E08000029,Solihull,TLG32,Solihull,TLG3,West Midlands,TLG,West Midlands (England)
