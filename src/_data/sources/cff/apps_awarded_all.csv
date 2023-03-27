@@ -300,11 +300,11 @@ E07000044,South Hams,E07000044,South Hams,TLK43,Devon CC,TLK4,Devon,TLK,South We
 E07000045,Teignbridge,E07000045,Teignbridge,TLK43,Devon CC,TLK4,Devon,TLK,South West (England),0
 E07000046,Torridge,E07000046,Torridge,TLK43,Devon CC,TLK4,Devon,TLK,South West (England),0
 E07000047,West Devon,E07000047,West Devon,TLK43,Devon CC,TLK4,Devon,TLK,South West (England),0
-E06000009,Blackpool,E06000009,Blackpool,TLD42,Blackpool,TLD4,Lancashire,TLD,North West (England),1
-E07000117,Burnley,E07000117,Burnley,TLD46,East Lancashire,TLD4,Lancashire,TLD,North West (England),1
-E06000015,Derby,E06000015,Derby,TLF11,Derby,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England),1
-E06000018,Nottingham,E06000018,Nottingham,TLF14,Nottingham,TLF1,Derbyshire and Nottinghamshire,TLF,East Midlands (England),1
-E09000023,Lewisham,E09000023,Lewisham,TLI44,Lewisham and Southwark,TLI4,Inner London - East,TLI,London,1
-E09000005,Brent,E09000005,Brent,TLI72,Brent,TLI7,Outer London - West and North West,TLI,London,1
-E07000062,Hastings,E07000062,Hastings,TLJ22,East Sussex CC,TLJ2,"Surrey, East and West Sussex",TLJ,South East (England),1
-E06000010,"Kingston upon Hull, City of",E06000010,"Kingston upon Hull, City of",TLE11,"Kingston upon Hull, City of",TLE1,East Yorkshire and Northern Lincolnshire,TLE,Yorkshire and The Humber,1
+E06000009,Blackpool,E06000009,Blackpool,TLD42,Blackpool,TLD4,Blackpool,TLD,North West (England),1
+E07000117,Burnley,E07000117,Burnley,TLD46,Burnley,TLD4,Burnley,TLD,North West (England),1
+E06000015,Derby,E06000015,Derby,TLF11,Derby,TLF1,Derby and Nottingham,TLF,East Midlands (England),1
+E06000018,Nottingham,E06000018,Nottingham,TLF14,Nottingham,TLF1,Derby and Nottingham,TLF,East Midlands (England),1
+E09000023,Lewisham,E09000023,Lewisham,TLI44,Lewisham,TLI4,Lewisham,TLI,London,1
+E09000005,Brent,E09000005,Brent,TLI72,Brent,TLI7,Brent,TLI,London,1
+E07000062,Hastings,E07000062,Hastings,TLJ22,Hastings,TLJ2,Hastings,TLJ,South East (England),1
+E06000010,Hull,E06000010,Hull,TLE11,Hull,TLE1,Hull,TLE,Yorkshire and The Humber,1
