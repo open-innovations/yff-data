@@ -58,7 +58,7 @@ blockquote { border-left: 4px solid #e25b27; }
 .page-title .holder { position: relative; height: 100%; width: 58.8% !important; margin: auto !important; display: table-cell; vertical-align: middle; }
 
 main .wrapper section { line-height: 1.8em; }
-main .wrapper > section  { padding-top: 3em; }
+main .wrapper > section  { padding-top: 2em; }
 main .wrapper > section:first-child, main .wrapper > aside + section { padding-top: 0; }
 main .wrapper section > * { margin-bottom: 1em; }
 main .wrapper section > *:last-child { margin-bottom: 0; }
