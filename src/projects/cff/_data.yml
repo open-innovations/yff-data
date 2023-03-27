@@ -1,2 +1,2 @@
 layout: layouts/report.njk
-contents: false
+contents: true
