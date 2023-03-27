@@ -2,275 +2,79 @@
 title: Connected Futures Fund 
 contents: false 
 
+
 summary: 
   - | 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
-    since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
-    five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the 
-    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
-    including versions of Lorem Ipsum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum.
 
   - |
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
-    since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
-    five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the 
-    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
-    including versions of Lorem Ipsum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum.
 
+sections: 
 
-sections:
-  - title: Applications
+  - title: Local Partnerships
     summary: 
-    read_more: false
-    blocks:
-      - title: 
-        visualisations:
-          - title: Headline Statistics
-            type: dashboard
-            config: 
-              file: /data/cff/dummy_headlines.csv
-              title: "Title"	# Column heading for title
-              value: "Value"	# Column heading for value
-              note: "Note"		# Column heading for note
-              width: 333px		# Min width of column (default: 250px)
-              panels:
-                - name: "Received"
-                  colour: Cherry-1
-                - name: "Shortlisted"
-                  colour: Orange-2
-                - name: "Accepted"
-                  colour: Chartreuse-2
+    read_more: false 
+    blocks: 
+      - title:
+        visualisations: 
+          - title:
+            type: table
+            tab: 
+            config:
+              file: /data/cff/awarded_table.csv
+              columns:
+                - name: Local partner
+                  mergerows: true
+                - name: Led by
+                  mergerows: true
 
-  - title: Number of applications by region
+  - title: 
+    summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+      in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum. 
+      
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+      in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.
+    read_more: false 
+
+  - title: 
     summary: 
-    read_more: false
-    blocks:
-      - title: Bar chart
-        visualisations:
-          - title: Bar chart
-            type: chart
-            tab: Bar Chart
+    read_more: false 
+    blocks: 
+      - title:
+        visualisations: 
+          - title: 
+            type: map
             caption: 
+              This section shows the local partnerships set to benefit from the Connected Futures Fund. Each partnership will explore with 
+              young people the challenges they face, and where support is missing or lets them down, 
+              from schools and employers to housing, care or criminal justice. For more information on each partnership, visit the 
+              <a href = "https://youthfuturesfoundation.org/our-work/invest/connected-futures/">Youth Futures Foundation website</a>. 
+            
             config:
-              file: /data/cff/application_count_by_region.csv
-              summary: 
-              type: stacked-bar-chart
-              legend:
-                show: true     # Default to false
-                position: "top right"
-              axis:
-                x:
-                  min: 0
-                  max: 25
-                  grid:
-                    stroke-dasharray: "6 2"
-                    stroke-width: 1
-                  ticks:
-                    - value: 10
-                      label: "10"
-                    - value: 20
-                      label: "20"
-                y:
-                  grid:
-                    stroke-width: 0.5
-              category: "Region"  # Category labels come from 
-              series:
-                - title: "Number of applications"
-                  value: "Number of applications"
-                  colour: "#7D2248"
-
-  - title: Applications made by region
-    summary: 
-    read_more: false
-    blocks:
-      - title: 
-        visualisations:
-          - title: Local authority
-            type: map
-            tab: Local Authority
-            caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
-            config:
-              file: /data/cff/application_count_local_authority.csv
-              type: hex-map
-              hexjson:
-                file: /data/maps/uk-local-authority-districts.hexjson
-                key: id
-              key: LAD18CD
-              value: Count
-              label: Label
-              scale: Diverging
-              min: 0
-              max: 5
-              columns:
-                - name: Label
-                  template: '{{ Local authority }}: {{ Count }}'
-              legend:
-                position: top right
-                items:
-                  - value: 5
-                    label: ▲ Applications
-                  - value: 4
-                    label: ''
-                  - value: 3
-                    label: ''
-                  - value: 2
-                    label: ''
-                  - value: 1
-                    label: ''
-                  - value: 0
-                    label: ▼ Applications
-          - title: NUTS Region
-            type: map
-            tab: NUTS Region 
-            caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
-            config:
-              file: /data/cff/application_count_by_region.csv
-              type: hex-map
-              hexjson:
-                file: /data/maps/NUTS-regions.hexjson
-                key: name
-              key: Region
-              value: Number of applications
-              label: Label
-              scale: Diverging
-              min: 0
-              max: 15
-              columns:
-                - name: Label
-                  template: '{{ Region }}: {{ Number of applications }}'
-              legend:
-                position: top right
-                items:
-                  - value: 15
-                    label: ▲ Applications
-                  - value: 12
-                    label: ''
-                  - value: 9
-                    label: ''
-                  - value: 6
-                    label: ''
-                  - value: 3
-                    label: ''
-                  - value: 0
-                    label: ▼ Applications
-          - title: SVG Map 
-            type: map
-            tab: SVG map
-            config:
-              file: /data/cff/application_by_itl1.csv
-              type: svg-map
-              geojson:
-                file: /data/maps/International_Territorial_Level_1_(January_2021)_UK_BUC.geojson
-                key: ITL121CD
-              key: ITL code
-              value: Count
-              scale: Viridis
-              min: 0
-              max: 30
-              columns:
-                - name: Label
-                  template: '{{ Region name }}<br />Count: {{ Count | toLocaleString() }} applications'
-              places:
-                - name: London
-                  text-anchor: start
-                  longitude: 0.8
-                  latitude: 51.4
-                - name: Liverpool
-                  text-anchor: end
-                - name: Swansea
-                  text-anchor: end
-                  latitude: 51.4
-                - name: Edinburgh
-                  text-anchor: start
-                - name: Kingston upon Hull
-                  text-anchor: start
-                  longitude: 0
-              legend:
-                position: top right
-                items:
-                  - value: 25
-                    label: 25 
-                  - value: 20
-                    label: 20 
-                  - value: 15
-                    label: 15 
-                  - value: 10
-                    label: 10 
-                  - value: 5
-                    label: 5 
-                  - value: 0
-                    label: '0'
-          - title: SVG Map ITL2
-            type: map
-            tab: SVG map ITL2
-            config:
-              file: /data/cff/application_by_itl2.csv
+              file: /data/cff/apps_awarded_all.csv
               type: svg-map
               geojson:
                 file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson
                 key: ITL221CD
-              key: ITL221CD
-              value: Application count
-              scale: Viridis
-              min: 0
-              max: 10
-              columns:
-                - name: ITL Region
-                  template: '{{ ITL221NM }}<br />Application count: {{ Application count | toLocaleString() }} applications'
-              places:
-                - name: London
-                  text-anchor: start
-                  longitude: 0.8
-                  latitude: 51.4
-                - name: Liverpool
-                  text-anchor: end
-                - name: Swansea
-                  text-anchor: end
-                  latitude: 51.4
-                - name: Edinburgh
-                  text-anchor: start
-                - name: Kingston upon Hull
-                  text-anchor: start
-                  longitude: 0
-              legend:
-                position: top right
-                items:
-                  - value: 10
-                    label: 10 
-                  - value: 8
-                    label: 8 
-                  - value: 6
-                    label: 6 
-                  - value: 4
-                    label: 4
-                  - value: 2
-                    label: 2
-                  - value: 0
-                    label: 0
-
-  - title: Shortlisted and accepted applications
-    summary: 
-    read_more: false
-    blocks:
-      - title: 
-        visualisations:
-          - title: SVG Map Shortlisted
-            type: map
-            tab: SVG map ITL2
-            config:
-              file: /data/cff/apps_shortlisted.csv
-              type: svg-map
-              geojson:
-                file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson
-                key: ITL221CD
-              key: ITL221CD
+              key: ITL2 Code
               value: Status
               scale: Viridis
               min: 0
-              max: 10
+              max: 1
               columns:
-                - name: ITL Region
-                  template: '{{ ITL221NM }}<br />Status: {{ Status | toLocaleString() }} '
+                - name: Label
+                  template: '{{ ITL2 Name }}<br />Status: {{ Status | toLocaleString() }} Awarded'
               places:
                 - name: London
                   text-anchor: start
@@ -286,14 +90,291 @@ sections:
                 - name: Kingston upon Hull
                   text-anchor: start
                   longitude: 0
-              legend:
-                position: top right
-                items:
-                  - value: 3
-                    label: Accepted
-                  - value: 2
-                    label: Shortlisted
-                  - value: 1
-                    label: Applied
-                  - value: 0
-                    label: 
+
+
+
+
+
+
+
+
+
+# sections:
+#   - title: Applications
+#     summary: 
+#     read_more: false
+#     blocks:
+#       - title: 
+#         visualisations:
+#           - title: Headline Statistics
+#             type: dashboard
+#             config: 
+#               file: /data/cff/dummy_headlines.csv
+                # title: "Title"	
+                # value: "Value"	
+                # note: "Note"		
+                # width: 333px		
+#               panels:
+#                 - name: "Received"
+#                   colour: Cherry-1
+#                 - name: "Shortlisted"
+#                   colour: Orange-2
+#                 - name: "Accepted"
+#                   colour: Chartreuse-2
+
+#   - title: Number of applications by region
+#     summary: 
+#     read_more: false
+#     blocks:
+#       - title: Bar chart
+#         visualisations:
+#           - title: Bar chart
+#             type: chart
+#             tab: Bar Chart
+#             caption: 
+#             config:
+#               file: /data/cff/application_count_by_region.csv
+#               summary: 
+#               type: stacked-bar-chart
+#               legend:
+#                 show: true     # Default to false
+#                 position: "top right"
+#               axis:
+#                 x:
+#                   min: 0
+#                   max: 25
+#                   grid:
+#                     stroke-dasharray: "6 2"
+#                     stroke-width: 1
+#                   ticks:
+#                     - value: 10
+#                       label: "10"
+#                     - value: 20
+#                       label: "20"
+#                 y:
+#                   grid:
+#                     stroke-width: 0.5
+#               category: "Region"  # Category labels come from 
+#               series:
+#                 - title: "Number of applications"
+#                   value: "Number of applications"
+#                   colour: "#7D2248"
+
+#   - title: Applications made by region
+#     summary: 
+#     read_more: false
+#     blocks:
+#       - title: 
+#         visualisations:
+#           - title: Local authority
+#             type: map
+#             tab: Local Authority
+#             caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
+#             config:
+#               file: /data/cff/application_count_local_authority.csv
+#               type: hex-map
+#               hexjson:
+#                 file: /data/maps/uk-local-authority-districts.hexjson
+#                 key: id
+#               key: LAD18CD
+#               value: Count
+#               label: Label
+#               scale: Diverging
+#               min: 0
+#               max: 5
+#               columns:
+#                 - name: Label
+#                   template: '{{ Local authority }}: {{ Count }}'
+#               legend:
+#                 position: top right
+#                 items:
+#                   - value: 5
+#                     label: ▲ Applications
+#                   - value: 4
+#                     label: ''
+#                   - value: 3
+#                     label: ''
+#                   - value: 2
+#                     label: ''
+#                   - value: 1
+#                     label: ''
+#                   - value: 0
+#                     label: ▼ Applications
+#           - title: NUTS Region
+#             type: map
+#             tab: NUTS Region 
+#             caption: This hexmap aims to visualise the number of applications received, shortlisted and accepted by local authority, region and constituency.
+#             config:
+#               file: /data/cff/application_count_by_region.csv
+#               type: hex-map
+#               hexjson:
+#                 file: /data/maps/NUTS-regions.hexjson
+#                 key: name
+#               key: Region
+#               value: Number of applications
+#               label: Label
+#               scale: Diverging
+#               min: 0
+#               max: 15
+#               columns:
+#                 - name: Label
+#                   template: '{{ Region }}: {{ Number of applications }}'
+#               legend:
+#                 position: top right
+#                 items:
+#                   - value: 15
+#                     label: ▲ Applications
+#                   - value: 12
+#                     label: ''
+#                   - value: 9
+#                     label: ''
+#                   - value: 6
+#                     label: ''
+#                   - value: 3
+#                     label: ''
+#                   - value: 0
+#                     label: ▼ Applications
+#           - title: SVG Map 
+#             type: map
+#             tab: SVG map
+#             config:
+#               file: /data/cff/application_by_itl1.csv
+#               type: svg-map
+#               geojson:
+#                 file: /data/maps/International_Territorial_Level_1_(January_2021)_UK_BUC.geojson
+#                 key: ITL121CD
+#               key: ITL code
+#               value: Count
+#               scale: Viridis
+#               min: 0
+#               max: 30
+#               columns:
+#                 - name: Label
+#                   template: '{{ Region name }}<br />Count: {{ Count | toLocaleString() }} applications'
+#               places:
+#                 - name: London
+#                   text-anchor: start
+#                   longitude: 0.8
+#                   latitude: 51.4
+#                 - name: Liverpool
+#                   text-anchor: end
+#                 - name: Swansea
+#                   text-anchor: end
+#                   latitude: 51.4
+#                 - name: Edinburgh
+#                   text-anchor: start
+#                 - name: Kingston upon Hull
+#                   text-anchor: start
+#                   longitude: 0
+#               legend:
+#                 position: top right
+#                 items:
+#                   - value: 25
+#                     label: 25 
+#                   - value: 20
+#                     label: 20 
+#                   - value: 15
+#                     label: 15 
+#                   - value: 10
+#                     label: 10 
+#                   - value: 5
+#                     label: 5 
+#                   - value: 0
+#                     label: '0'
+#           - title: SVG Map ITL2
+#             type: map
+#             tab: SVG map ITL2
+#             config:
+#               file: /data/cff/application_by_itl2.csv
+#               type: svg-map
+#               geojson:
+#                 file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson
+#                 key: ITL221CD
+#               key: ITL221CD
+#               value: Application count
+#               scale: Viridis
+#               min: 0
+#               max: 10
+#               columns:
+#                 - name: ITL Region
+#                   template: '{{ ITL221NM }}<br />Application count: {{ Application count | toLocaleString() }} applications'
+#               places:
+#                 - name: London
+#                   text-anchor: start
+#                   longitude: 0.8
+#                   latitude: 51.4
+#                 - name: Liverpool
+#                   text-anchor: end
+#                 - name: Swansea
+#                   text-anchor: end
+#                   latitude: 51.4
+#                 - name: Edinburgh
+#                   text-anchor: start
+#                 - name: Kingston upon Hull
+#                   text-anchor: start
+#                   longitude: 0
+#               legend:
+#                 position: top right
+#                 items:
+#                   - value: 10
+#                     label: 10 
+#                   - value: 8
+#                     label: 8 
+#                   - value: 6
+#                     label: 6 
+#                   - value: 4
+#                     label: 4
+#                   - value: 2
+#                     label: 2
+#                   - value: 0
+#                     label: 0
+
+#   - title: Shortlisted and accepted applications
+#     summary: 
+#     read_more: false
+#     blocks:
+#       - title: 
+#         visualisations:
+#           - title: SVG Map Shortlisted
+#             type: map
+#             tab: SVG map ITL2
+#             config:
+#               file: /data/cff/apps_shortlisted.csv
+#               type: svg-map
+#               geojson:
+#                 file: /data/maps/International_Territorial_Level_2_(January_2021)_UK_BUC_V2.geojson
+#                 key: ITL221CD
+#               key: ITL221CD
+#               value: Status
+#               scale: Viridis
+#               min: 0
+#               max: 10
+#               columns:
+#                 - name: ITL Region
+#                   template: '{{ ITL221NM }}<br />Status: {{ Status | toLocaleString() }} '
+#               places:
+#                 - name: London
+#                   text-anchor: start
+#                   longitude: 0.8
+#                   latitude: 51.4
+#                 - name: Liverpool
+#                   text-anchor: end
+#                 - name: Swansea
+#                   text-anchor: end
+#                   latitude: 51.4
+#                 - name: Edinburgh
+#                   text-anchor: start
+#                 - name: Kingston upon Hull
+#                   text-anchor: start
+#                   longitude: 0
+#               legend:
+#                 position: top right
+#                 items:
+#                   - value: 3
+#                     label: Accepted
+#                   - value: 2
+#                     label: Shortlisted
+#                   - value: 1
+#                     label: Applied
+#                   - value: 0
+#                     label: 
