@@ -17,6 +17,28 @@ summary:
 
 sections: 
 
+  - title: Headline Statistics
+    summary: 
+    read_more: false
+    blocks:
+      - title: 
+        visualisations:
+          - title: 
+            type: dashboard
+            config: 
+              file: /data/cff/dummy_headlines.csv
+              title: "Title"	
+              value: "Value"	
+              note: "Note"		
+              width: 333px		
+              panels:
+                - name: "Eligible Regions"
+                  colour: Cherry-1
+                - name: "Local Partnerships Awarded"
+                  colour: Orange-2
+                - name: "Other Statistics"
+                  colour: Chartreuse-2
+
   - title: Local Partnerships
     summary: 
     read_more: false 
@@ -35,7 +57,7 @@ sections:
                   mergerows: true
 
   # TODO: Find an easy way to add paragraph text. 
-  - title: Eligible Regions
+  - title: Overview of Eligible Regions
     read_more: false 
     summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
       minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
