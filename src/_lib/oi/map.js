@@ -905,7 +905,7 @@ function Layer(attr,map,i){
 							'stroke-width': this.options['stroke-width']||'0.4%',
 							'stroke-linejoin': this.options['stroke-linejoin'],
 							'text-anchor': this.options.textAnchor||feature.style['text-anchor']||'middle',
-							'font-family': feature.style['font-family']||'Century Gothic',
+							'font-family': feature.style['font-family']||'CenturyGothicStd',
 							'font-size': (feature.properties.fontsize ? feature.properties.fontsize : 1),
 							'paint-order': 'stroke',
 							'x': xy.x.toFixed(2),
