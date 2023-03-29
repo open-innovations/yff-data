@@ -20,9 +20,9 @@ sections:
               panels:
                 - name: "Eligible Regions"
                   colour: Cherry-1
-                - name: "Local Partnerships Awarded"
+                - name: "Applications Made"
                   colour: Orange-2
-                - name: "Other Statistics"
+                - name: "Local Partnerships Awarded"
                   colour: Chartreuse-2
 
   - title: Local Partnerships
@@ -42,7 +42,6 @@ sections:
                 - name: Led by
                   mergerows: true
 
-  # TODO: Find an easy way to add paragraph text. 
   - title: Overview of Eligible Regions
     read_more: false 
     summary: 
