@@ -435,6 +435,13 @@ export function SVGMap(config,csv,sources){
 	if(typeof config.min=="number") min = config.min;
 	if(typeof config.max=="number") max = config.max;
 
+	function getData(csv,key,k){
+		for(var i = 0; i < csv.length; i++){
+			if(csv[i][key] == k) return csv[i];
+		}
+		return false;
+	}
+
 	var map = new BasicMap(config,{
 		'background': 'transparent',
 		'layers': [{
@@ -454,22 +461,16 @@ export function SVGMap(config,csv,sources){
 				var v,code,r,i,title;
 				v = this.attr.values;
 				code = feature.properties[v.geokey];
-				i = -1;
-				for(r = 0; r < v.rows.length; r++){
-					if(v.rows[r][v.column]==code){
-						i = r;
-						continue;
-					}
-				}
-				if(i >= 0){
-					if(v.rows[i].Label){
+				var row = getData(this.attr.values.rows,this.attr.values.column,code);
+				if(row){
+					if(row.Label){
 						// Add a text label 
 						title = document.createElement('title');
-						title.innerHTML = v.rows[i].Label;
+						title.innerHTML = row.Label;
 						el.appendChild(title);
 					}
 					el.setAttribute('fill-opacity',1);
-					el.setAttribute('fill',v.rows[i].colour);
+					el.setAttribute('fill',row.colour);
 					el.setAttribute('stroke','white');
 					el.setAttribute('stroke-width',2);
 					el.setAttribute('stroke-opacity',0.1);
