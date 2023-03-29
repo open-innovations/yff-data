@@ -65,6 +65,15 @@ sections:
               geojson:
                 file: /data/maps/International_Territorial_Level_1_(January_2021)_UK_BUC.geojson
                 key: ITL121CD
+              background:
+                file: /data/maps/simple-England.geojson
+              bounds:
+                lat:
+                  min: 49.5
+                  max: 56.2
+                lon:
+                  min: -5
+                  max: 1
               key: ITL1 Code
               value: Status
               scale: Viridis
@@ -80,11 +89,13 @@ sections:
                   latitude: 51.4
                 - name: Liverpool
                   text-anchor: end
-                - name: Swansea
+                - name: Bristol
                   text-anchor: end
-                  latitude: 51.4
-                - name: Edinburgh
+                - name: Plymouth
+                  latitude: 50.2
+                - name: Newcastle upon Tyne
                   text-anchor: start
+                  longitude: -1.4
                 - name: Kingston upon Hull
                   text-anchor: start
                   longitude: 0
