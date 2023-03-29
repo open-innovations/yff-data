@@ -403,7 +403,7 @@ export function HexMap(config,csv,sources){
 export function SVGMap(config,csv,sources){
 
 	let geo = loadFromSources(config.geojson.file,sources);
-	let UK = loadFromSources("data/maps/simple-UK.geojson",sources);
+	let bg = loadFromSources((config.background ? config.background.file : "")||"data/maps/simple-UK.geojson",sources);
 	//let motorways = loadFromSources("data/maps/simple-motorways.geojson",sources);
 	let places = loadFromSources("data/maps/simple-places.csv", sources);
 
@@ -445,8 +445,8 @@ export function SVGMap(config,csv,sources){
 	var map = new BasicMap(config,{
 		'background': 'transparent',
 		'layers': [{
-			'id': 'outline',
-			'data': UK,
+			'id': 'background',
+			'data': bg,
 			'options': { 'color': '#fafaf8' }
 		},/*{
 			'id': 'motorways',
@@ -521,8 +521,12 @@ export function SVGMap(config,csv,sources){
 			}
 		}],
 		'complete': function(){
+			if(config.bounds){
+				if(typeof config.bounds==="string") return this.zoomToData(config.bounds);
+				else if(config.bounds.lat && config.bounds.lon) return this.setBounds(new BBox(config.bounds.lat,config.bounds.lon));
+			}
 			if(this.getLayerPos('data-layer') >= 0) this.zoomToData('data-layer');
-			else this.zoomToData('outline');
+			else this.zoomToData('background');
 		}
 	});
 
@@ -802,7 +806,6 @@ function Layer(attr,map,i){
 				if(this.data.features[f]){
 					feature = this.data.features[f];
 					c = feature.geometry.coordinates;
-
 					if(feature.geometry.type == "MultiPolygon"){
 						p = svgEl('path');
 						setAttr(p,{
