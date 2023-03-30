@@ -118,8 +118,42 @@ export function LeafletMap(config,csv){
 					
 		html.push('		var geo = L.geoJSON(json,geoattrs);\n');
 		html.push('		geo.addTo(map);\n');
+
 		html.push('		OI.maps[id].bounds = geo.getBounds();\n');
 		if(!config.bounds) html.push('		map.fitBounds(geo.getBounds());\n');
+
+		if(config.markers){
+			var icon;
+			for(var m = 0; m < config.markers.length; m++){
+				icon = null;
+				if(icons[config.markers[m].icon]) icon = clone(icons[config.markers[m].icon]);
+				else if(config.markers[m].icon.svg){ icon = config.markers[m].icon; }
+				if(!icon.iconSize) icon.iconSize = [40,40];
+				if(!icon.iconAnchor) icon.iconAnchor = [20,0];
+				icon.bgPos = [icon.iconAnchor[0],icon.iconSize[1]-icon.iconAnchor[1]];
+				icon.html = '<div style="color:'+(config.markers[m].color ? config.markers[m].color : "black")+'">'+icon.svg+'</div>';
+				delete config.markers[m].svg;
+				config.markers[m].icon = icon;
+			}
+			html.push('		var markers = '+JSON.stringify(config.markers)+';\n');
+			html.push('		var mark;\n');
+			html.push('		for(var m = 0; m < markers.length; m++){\n');
+			html.push('			icon = L.divIcon({"html":markers[m].icon.html,"iconSize":markers[m].icon.iconSize,"iconAnchor":markers[m].icon.bgPos});\n');
+			html.push('			mark = L.marker([markers[m].latitude,markers[m].longitude], {icon: icon})\n');
+			html.push('			mark.addTo(map);\n');
+			html.push('			if(markers[m].tooltip) mark.bindPopup(markers[m].tooltip,{"className":"popup"});\n');
+			html.push('		}\n');
+			html.push('		function wrap(el,colour) { const wrappingElement = document.createElement("div"); el.replaceWith(wrappingElement); wrappingElement.appendChild(el); }');
+
+			html.push('		map.on("popupopen", function (e) {\n');
+			html.push('			var colour = window.getComputedStyle(e.popup._source._icon.querySelector("div")).color;\n');
+			html.push('			el = e.popup._container;\n');
+			html.push('			var style = "background-color:"+colour+"!important;color:"+OI.contrastColour(colour)+"!important;";\n');
+			html.push('			el.querySelector(".leaflet-popup-content-wrapper").setAttribute("style",style);\n');
+			html.push('			el.querySelector(".leaflet-popup-tip").setAttribute("style",style);\n');
+			html.push('			el.querySelector(".leaflet-popup-close-button").setAttribute("style",style);\n');
+			html.push('		})\n');
+		}
 
 		if(config.legend){
 			// Create the legend and add it to the map
