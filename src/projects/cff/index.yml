@@ -109,28 +109,33 @@ sections:
                   longitude: 0
               markers:
                 - icon: geo-alt
-                  tooltip: |
-                    Test pin
-                    <br />Flamborough Head
-                  latitude: 54.1161
-                  longitude: -0.0755
-                - icon: geo
-                  tooltip: London
-                  latitude: 51.519
-                  longitude: -0.121
-                  color: "#e62e36"
-                - icon: balloon
-                  tooltip: "Bristol has 100 balloons"
-                  latitude: 51.461
-                  longitude: -2.582
-                  color: "#7d2248"
-                - icon:
-                    svg: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-pin-fill" viewBox="0 0 16 16"><path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354z" fill="currentColor" /></svg>'
-                    iconSize: [20,20]
-                    iconAnchor: [10,0]
-                  tooltip: "Leeds"
-                  latitude: 53.7978
-                  longitude: -1.5436
+                  tooltip: Hull
+                  latitude: 53.76939409716048
+                  longitude: -0.32615083886031454
+                - icon: geo-alt
+                  tooltip: Hastings
+                  latitude: 50.8543806475805
+                  longitude: 0.5723701253057497
+                - icon: geo-alt
+                  tooltip: Blackpool
+                  latitude: 53.81667368931173
+                  longitude: -3.0375935104367113
+                - icon: geo-alt
+                  tooltip: Burnley
+                  latitude: 53.78894116918683
+                  longitude: -2.240599271024268
+                - icon: geo-alt
+                  tooltip: Nottingham
+                  latitude: 52.95648378748908
+                  longitude: -1.1556437966000024 
+                - icon: geo-alt
+                  tooltip: Brent
+                  latitude: 51.56142070032231
+                  longitude: -0.2706574302371995
+                - icon: geo-alt
+                  tooltip: Lewisham
+                  latitude: 51.46133961984077
+                  longitude: -0.0075300711017617225
 
 
 
