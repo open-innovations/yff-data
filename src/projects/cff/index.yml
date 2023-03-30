@@ -82,6 +82,13 @@ sections:
               columns:
                 - name: Label
                   template: '{{ ITL1 Name }}<br />Status: {{ Status | toLocaleString() }} Awarded'
+              legend:
+                position: top right
+                items:
+                  - value: 1
+                    label: Awarded
+                  - value: 0
+                    label: Not awarded
               places:
                 - name: London
                   text-anchor: start
