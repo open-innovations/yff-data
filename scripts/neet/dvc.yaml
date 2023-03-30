@@ -1,6 +1,7 @@
 stages:
   extract:
     cmd: PYTHONPATH=. python scripts/neet/extract.py
+    always_changed: true
     wdir: ../..
     deps:
       - scripts/neet/extract.py
@@ -13,4 +14,7 @@ stages:
     deps:
       - scripts/neet/transform.py
       - working/neet/neetlatest.xlsx
-    outs: []
+    outs:
+      - data/neet/:
+          cache: false
+          persist: false

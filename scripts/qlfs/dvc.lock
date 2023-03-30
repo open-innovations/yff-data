@@ -1,0 +1,32 @@
+schema: '2.0'
+stages:
+  extract:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/extract.py
+    deps:
+    - path: scripts/qlfs/extract.py
+      md5: b02d93e0e95e6b65b3e5755edaef0a46
+      size: 747
+    outs:
+    - path: working/qlfs/a06latest.xls
+      md5: 15a65d761ae30a7714fc866b5013e0c6
+      size: 1399808
+    - path: working/qlfs/unem01latest.xls
+      md5: 082978d202800b4f81988305c751d8e4
+      size: 954368
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
+    deps:
+    - path: scripts/qlfs/transform.py
+      md5: 6d3567e373de68f65716fda4bfcc136c
+      size: 1078
+    - path: working/qlfs/a06latest.xls
+      md5: 15a65d761ae30a7714fc866b5013e0c6
+      size: 1399808
+    - path: working/qlfs/unem01latest.xls
+      md5: 082978d202800b4f81988305c751d8e4
+      size: 954368
+    outs:
+    - path: data/qlfs/
+      md5: d7fe8468ddd22aa2baec1f02019affd5.dir
+      size: 10603
+      nfiles: 1

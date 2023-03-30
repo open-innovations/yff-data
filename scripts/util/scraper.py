@@ -4,6 +4,8 @@ from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
 
+from scripts.util.downloader import download_file
+
 
 def get_filename(url, pattern):
     url = urlparse(url)
@@ -18,3 +20,8 @@ def get_filename(url, pattern):
     links = [l['href'] for l in soup.find_all(href=compile(pattern))]
     file_link = url._replace(path=links[0])
     return file_link.geturl()
+
+
+def download_latest(link, file, pattern='.xlsx{0,1}$'):
+    url = get_filename(link, pattern=pattern)
+    download_file(url, file)
