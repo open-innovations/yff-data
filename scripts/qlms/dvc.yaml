@@ -1,20 +1,24 @@
 stages:
   extract:
-    cmd: python3 scripts/qlms/extract.py
+    cmd: PYTHONPATH=. python3 scripts/qlms/extract.py
+    always_changed: true
     wdir: ../..
     deps:
       - scripts/qlms/extract.py
     outs:
-      - working/qlms/a01latest.xls:
+      - working/qlms/a06latest.xls:
           cache: false
           persist: false
-  transform:
-    cmd: python3 scripts/qlms/transform.py
-    wdir: ../..
-    deps:
-      - scripts/qlms/transform.py
-      - working/qlms/a01latest.xls
-    outs:
-      - data/qlms/:
+      - working/qlms/unem01latest.xls:
           cache: false
           persist: false
+  # transform:
+  #   cmd: PYTHONPATH=. python3 scripts/qlms/transform.py
+  #   wdir: ../..
+  #   deps:
+  #     - scripts/qlms/transform.py
+  #     - working/qlms/a01latest.xls
+  #   outs:
+  #     - data/qlms/:
+  #         cache: false
+  #         persist: false

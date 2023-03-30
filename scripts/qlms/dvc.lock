@@ -1,15 +1,18 @@
 schema: '2.0'
 stages:
   extract:
-    cmd: python3 scripts/qlms/extract.py
+    cmd: PYTHONPATH=. python3 scripts/qlms/extract.py
     deps:
     - path: scripts/qlms/extract.py
-      md5: c78045dd1046d3aa75803fdfcd5be52f
-      size: 2072
+      md5: 7859c87cfae581a81f76300a1b0d6752
+      size: 747
     outs:
-    - path: working/qlms/a01latest.xls
-      md5: cbcaf6f304cb270fbcc299d1f82ad999
-      size: 3781120
+    - path: working/qlms/a06latest.xls
+      md5: 15a65d761ae30a7714fc866b5013e0c6
+      size: 1399808
+    - path: working/qlms/unem01latest.xls
+      md5: 082978d202800b4f81988305c751d8e4
+      size: 954368
   transform:
     cmd: python3 scripts/qlms/transform.py
     deps:

@@ -4,8 +4,8 @@ stages:
     cmd: PYTHONPATH=. python scripts/neet/extract.py
     deps:
     - path: scripts/neet/extract.py
-      md5: 17ea3aa26deb8e982e1482e42c0b51ea
-      size: 588
+      md5: 8c14ab3b3e57b27998e1b9cf53e4e4be
+      size: 450
     outs:
     - path: working/neet/neetlatest.xlsx
       md5: 50244a60014fad2e2622538284b235a1
