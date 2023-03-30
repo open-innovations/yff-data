@@ -4,7 +4,7 @@ import pandas as pd
 from extract import A06_SA_LATEST
 
 
-DATA_DIR = os.path.realpath(os.path.join('data', 'qlms'))
+DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
 

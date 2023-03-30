@@ -1,0 +1,25 @@
+stages:
+  extract:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/extract.py
+    always_changed: true
+    wdir: ../..
+    deps:
+      - scripts/qlfs/extract.py
+    outs:
+      - working/qlfs/a06latest.xls:
+          cache: false
+          persist: false
+      - working/qlfs/unem01latest.xls:
+          cache: false
+          persist: false
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
+    wdir: ../..
+    deps:
+      - scripts/qlfs/transform.py
+      - working/qlfs/a06latest.xls
+      - working/qlfs/unem01latest.xls
+    outs:
+      - data/qlfs/:
+          cache: false
+          persist: false

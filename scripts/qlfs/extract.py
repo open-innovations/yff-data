@@ -2,7 +2,7 @@ import os
 
 from scripts.util.scraper import download_latest
 
-WORK_DIR = os.path.join('working', 'qlms')
+WORK_DIR = os.path.join('working', 'qlfs')
 os.makedirs(WORK_DIR, exist_ok=True)
 A06_SA_LATEST = os.path.join(WORK_DIR, 'a06latest.xls')
 UNEM01_SA_LATEST = os.path.join(WORK_DIR, 'unem01latest.xls')
