@@ -14,8 +14,8 @@ stages:
     cmd: PYTHONPATH=. python scripts/neet/transform.py
     deps:
     - path: scripts/neet/transform.py
-      md5: b6e583f999b34af38121b5ff25af14d2
-      size: 1867
+      md5: 6158becb180df7da08d87bf82e632e92
+      size: 1928
     - path: working/neet/neetlatest.xlsx
       md5: 50244a60014fad2e2622538284b235a1
       size: 183641

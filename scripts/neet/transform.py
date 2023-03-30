@@ -55,5 +55,8 @@ if __name__ == "__main__":
     data = load_data()
     data = reindex_columns(data)
 
-    # Select just the 16-24 age group and save to CSV
-    data.loc[:, ('Aged 16-24')].to_csv(NEET_16_24)
+    # Select just the 16-24 age group for the last 16 quarters and save to CSV
+    data \
+      .loc[:, ('Aged 16-24')] \
+      .tail(16) \
+      .to_csv(NEET_16_24)
