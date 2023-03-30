@@ -12,13 +12,14 @@ stages:
       - working/qlms/unem01latest.xls:
           cache: false
           persist: false
-  # transform:
-  #   cmd: PYTHONPATH=. python3 scripts/qlms/transform.py
-  #   wdir: ../..
-  #   deps:
-  #     - scripts/qlms/transform.py
-  #     - working/qlms/a01latest.xls
-  #   outs:
-  #     - data/qlms/:
-  #         cache: false
-  #         persist: false
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/qlms/transform.py
+    wdir: ../..
+    deps:
+      - scripts/qlms/transform.py
+      - working/qlms/a06latest.xls
+      - working/qlms/unem01latest.xls
+    outs:
+      - data/qlms/:
+          cache: false
+          persist: false
