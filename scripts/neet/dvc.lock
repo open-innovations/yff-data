@@ -19,3 +19,8 @@ stages:
     - path: working/neet/neetlatest.xlsx
       md5: 50244a60014fad2e2622538284b235a1
       size: 183641
+    outs:
+    - path: data/neet/
+      md5: d70d01ef025d302eb2a1d0e75a82d131.dir
+      size: 1635
+      nfiles: 1

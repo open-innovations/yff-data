@@ -14,4 +14,7 @@ stages:
     deps:
       - scripts/neet/transform.py
       - working/neet/neetlatest.xlsx
-    outs: []
+    outs:
+      - data/neet/:
+          cache: false
+          persist: false
