@@ -7,3 +7,10 @@ stages:
     outs:
       - working/neet/neetlatest.xlsx:
           cache: false
+  transform:
+    cmd: PYTHONPATH=. python scripts/neet/transform.py
+    wdir: ../..
+    deps:
+      - scripts/neet/transform.py
+      - working/neet/neetlatest.xlsx
+    outs: []
