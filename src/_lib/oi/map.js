@@ -1003,15 +1003,9 @@ function Layer(attr,map,i){
 								p.innerHTML = txt;
 								mergeDeep(opt,{
 									'viewBox': '0 0 16 16',
-//									'fill': this.options.fill||this.options.color,
-//									'fill-opacity': this.options.fillOpacity,
-//									'stroke': this.options.stroke||this.options.color,
-//									'stroke-width': this.options['stroke-width']||'0.4%',
-//									'stroke-linejoin': this.options['stroke-linejoin'],
-//									'paint-order': 'stroke',
-									'x': xy.x.toFixed(2),
-									'y': xy.y.toFixed(2),
-									'transform': 'translate('+(-(style.iconSize[0] - style.iconAnchor[0])*scale)+','+(-(style.iconSize[1] - style.iconAnchor[1])*scale)+')'
+									// Shift the x/y values to adjust for iconAnchor and iconSize
+									'x': (xy.x + (-(style.iconSize[0] - style.iconAnchor[0])*scale)).toFixed(2),
+									'y': (xy.y + (-(style.iconSize[1] - style.iconAnchor[1])*scale)).toFixed(2)
 								});
 								setAttr(p,opt);
 								p.setAttribute('width',style.iconSize[0]*scale);

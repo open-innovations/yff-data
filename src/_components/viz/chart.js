@@ -12,8 +12,9 @@ export const css = `
 .chart .legend-item svg { margin: 0.25em 0.25em 0.25em 0.5em; float: left; }
 .chart .legend-item:hover { background: white; }
 
-.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
+.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; }
 .tooltip .inner { padding: 1em; }
+.tooltip > * { filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
 circle.selected { r: 5px; }
 .chart rect { transition: 0.1s ease-in x; }
 `;

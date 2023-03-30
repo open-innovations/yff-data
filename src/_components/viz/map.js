@@ -13,6 +13,7 @@ export const css = `
 .map .leaflet-container, .map .leaflet-popup-content-wrapper, .map .leaflet-popup-content { font-size: 1em; font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; line-height: inherit; }
 .map .leaflet-popup-content-wrapper, .map .leaflet-popup-tip { box-shadow: none; }
 .map .leaflet-popup { filter: drop-shadow(0 1px 1px rgba(0,0,0,0.7)); }
+.map .leaflet-popup > * { filter: none; }
 .map .leaflet-container a.leaflet-popup-close-button { color: inherit; }
 .map .leaflet-control { z-index: 400; }
 .map .leaflet-top, .leaflet-bottom { position: absolute; z-index: 400; pointer-events: none; }
