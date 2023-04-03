@@ -1,0 +1,7 @@
+{% comp 'grid.auto', { min_width: '30em' } %}
+  {% for page in search.pages('project', 'publication_date=desc') | data %}
+  {% comp 'grid.pane', { link: page.url, extra_classes: 'turquoise-bg' } %}
+    {{ comp.project.pane({ project: page }) | safe }}
+  {% endcomp %}
+  {% endfor %}
+{% endcomp %}
