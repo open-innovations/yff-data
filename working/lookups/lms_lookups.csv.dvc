@@ -1,9 +1,9 @@
-md5: 8d1585bbd016d3e2d88f188346252b4d
+md5: 377cae4bee697cbd9b02418c1fa0dc1c
 frozen: true
 deps:
 - checksum: '"b13fcacfab280dbb8f6e2c826ff3f8fab773d7e33ad95dc78270179aed1b6441"'
   size: 137643
-  path: https://github.com/economic-analytics/edd/raw/main/data/csv/lms_lookups.csv
+  path: https://github.com/economic-analytics/edd/raw/main/data/csv/LMS_variable_lookup.csv
 outs:
 - md5: 697eb686fe7560ca0b3aeb7df42c4f51
   size: 137643
