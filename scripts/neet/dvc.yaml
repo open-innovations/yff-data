@@ -13,6 +13,7 @@ stages:
     wdir: ../..
     deps:
       - scripts/neet/transform.py
+      - scripts/util/date.py
       - working/neet/neetlatest.xlsx
     outs:
       - data/neet/:

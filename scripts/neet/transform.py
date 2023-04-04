@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 
+from scripts.util.date import quarter_to_date, most_recent_stats
+
 from extract import NEET_RAW_LATEST
 
 DATA_DIR = os.path.join('data', 'neet')
@@ -20,6 +22,7 @@ def load_data():
 
     # Remove any rows with no information in the first column
     data = data[data.iloc[:, 0].notna()]
+    data.columns = data.columns.droplevel(level=[3])
 
     data.index.names = ['quarter']
 
@@ -27,36 +30,19 @@ def load_data():
     return data
 
 
-def reindex_columns(data):
-    new_index = data.columns.to_frame()
-
-    # Set sensible names for levels
-    new_index.columns = ['age_range', 'group', 'measure', 'numeric']
-
-    # Rename measures to make them easier to deal with
-    new_index.loc[new_index.group == 'Young people who were NEET',
-                  ['measure']] = 'neet_' + new_index.measure.str.lower().str.replace(r"\s+", "_", regex=True)
-    new_index.loc[new_index.group == 'Total people in relevant population group',
-                  ['measure']] = 'total_popuplation'
-    new_index.loc[new_index.group == 'People who were NEET as a percentage of people in relevant population group',
-                  ['measure']] = 'percentage_neet'
-
-    # Drop levels 'group' and 'numeric'
-    new_index.drop(columns=['group', 'numeric'], inplace=True)
-
-    # Convert back into an index and reassign to dataframe
-    data.columns = pd.MultiIndex.from_frame(new_index)
-
-    # Return the data
-    return data
-
-
 if __name__ == "__main__":
     data = load_data()
-    data = reindex_columns(data)
+    data.index = quarter_to_date(data.index)
+
+    def column_mapper(x):
+        (level_1, level_2) = x
+        if "Unnamed:" in level_2:
+            level_2 = ""
+        return ' '.join([level_1, level_2]).strip()
+
+    data = data.loc[:, ('Aged 16-24')]
+    data.columns = data.columns.map(column_mapper)
 
     # Select just the 16-24 age group for the last 16 quarters and save to CSV
-    data \
-      .loc[:, ('Aged 16-24')] \
-      .tail(16) \
+    most_recent_stats(data) \
       .to_csv(NEET_16_24)
