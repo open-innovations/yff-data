@@ -15,6 +15,16 @@ Please note, that the extension is ignored. Note that data files with the same n
 extension will be merged at the object level. Any keys will be taken from the last loaded value, which is 
 potentially indeterminate! The safest thing is to ensure no potential clashes.
 
+### Importing external data
+
+Remote data is imported using the `dvc import-url` command.
+
+```sh
+dvc import-url <remote_url> <local_filename>
+```
+
+This creates a `<local_filename>.dvc` which tracks the remote file. It can be refreshed using the command `dvc update <local_filename>.dvc`.
+
 ## Pre-requisites
 
 You will need to have [`deno` installed](https://deno.land/#installation) and in your path.
