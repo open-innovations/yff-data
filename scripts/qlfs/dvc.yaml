@@ -19,6 +19,7 @@ stages:
       - scripts/qlfs/transform.py
       - working/qlfs/a06latest.xls
       - working/qlfs/unem01latest.xls
+      - working/lookups/lms_lookups.csv
     outs:
       - data/qlfs/:
           cache: false
