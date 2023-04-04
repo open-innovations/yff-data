@@ -17,6 +17,7 @@ stages:
     wdir: ../..
     deps:
       - scripts/qlfs/transform.py
+      - scripts/util/date.py
       - working/qlfs/a06latest.xls
       - working/qlfs/unem01latest.xls
       - working/lookups/lms_lookups.csv

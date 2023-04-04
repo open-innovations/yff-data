@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 from extract import A06_SA_LATEST, UNEM01_SA_LATEST
+from scripts.util.date import quarter_to_date, most_recent_stats
 
 DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -30,19 +31,6 @@ def extract_quarters(data):
         stop=3).isin(['Jan', 'Apr', 'Jul', 'Oct'])]
 
 
-def quarter_to_date(index):
-    new_index = pd.to_datetime(
-        index.str.slice(stop=3) + '-' + index.str.slice(start=8)
-    )
-    new_index.name = 'quarter_start'
-    return new_index
-
-
-def most_recent_stats(data, level=0, years=3):
-    idx = data.index.get_level_values(level=level)
-    return data.loc[idx > idx.max() - pd.DateOffset(years=years)]
-
-
 def transform_A06():
     # Read the latest A06 data
     A06_data = load_data(A06_SA_LATEST)
@@ -51,7 +39,7 @@ def transform_A06():
     A06_data = extract_quarters(A06_data)
     A06_data.index = quarter_to_date(A06_data.index)
 
-    most_recent_stats(A06_data, level=0, years=4) \
+    most_recent_stats(A06_data) \
         .rename(columns=column_name) \
         .to_csv(os.path.join(DATA_DIR, '16_to_24_not_in_education.csv'))
 
@@ -65,7 +53,7 @@ def transform_UNEM01():
     UNEM01_data = extract_quarters(UNEM01_data)
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
-    most_recent_stats(UNEM01_data, level=0, years=4) \
+    most_recent_stats(UNEM01_data) \
         .rename(columns=column_name) \
         .to_csv(os.path.join(DATA_DIR, '18_to_24_long_term_unemployed.csv'))
 
