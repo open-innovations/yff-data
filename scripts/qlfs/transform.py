@@ -54,7 +54,7 @@ def transform_UNEM01():
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
     UNEM01_data['16_to_24_unemployed'] = UNEM01_data.YBVN + UNEM01_data.YBVH
-    UNEM01_data['16_to_24_unemployed_over_12_months'] = UNEM01_data.YBVN + UNEM01_data.YBVH
+    UNEM01_data['16_to_24_unemployed_over_12_months'] = UNEM01_data.YBXY + UNEM01_data.YBXJ
 
     most_recent_stats(UNEM01_data) \
         .rename(columns=column_name) \
