@@ -23,7 +23,17 @@ Remote data is imported using the `dvc import-url` command.
 dvc import-url <remote_url> <local_filename>
 ```
 
-This creates a `<local_filename>.dvc` which tracks the remote file. It can be refreshed using the command `dvc update <local_filename>.dvc`.
+This creates a `<local_filename>.dvc` which tracks the remote file. It can be refreshed using the command `dvc update <local_filename>.dvc`. To refresh a whole directory, run
+
+```sh
+dvc update -R working
+```
+
+If the entry `frozen: true` is removed from the `<local_filename>.dvc` file, the `repro` subcommand can also be used. To run all the pipelines, including pulling data updates, this should suffice.
+
+```sh
+dvc repro -R scripts
+```
 
 ## Pre-requisites
 
