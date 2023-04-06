@@ -48,14 +48,17 @@ def transform_A06():
 
 def transform_UNEM01():
     UNEM01_data = load_data(UNEM01_SA_LATEST)
-    measures = ['YBVN', 'YBXY']
+    measures = ['YBVN', 'YBXY', 'YBVH', 'YBXJ']
     UNEM01_data = UNEM01_data[measures]
     UNEM01_data = extract_quarters(UNEM01_data)
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
+    UNEM01_data['16_to_24_unemployed'] = UNEM01_data.YBVN + UNEM01_data.YBVH
+    UNEM01_data['16_to_24_unemployed_over_12_months'] = UNEM01_data.YBVN + UNEM01_data.YBVH
+
     most_recent_stats(UNEM01_data) \
         .rename(columns=column_name) \
-        .to_csv(os.path.join(DATA_DIR, '18_to_24_long_term_unemployed.csv'))
+        .to_csv(os.path.join(DATA_DIR, '16_to_24_long_term_unemployed.csv'))
 
     return UNEM01_data
 
