@@ -20,8 +20,8 @@ stages:
       md5: d2fed35d67655d65dddd0cfb8c74275f
       size: 1895
     - path: scripts/util/date.py
-      md5: 42dc980722fc7e740fcded440b092505
-      size: 377
+      md5: 541fdb42d596b87ba93234e2815f5045
+      size: 401
     - path: working/lookups/lms_lookups.csv
       md5: 697eb686fe7560ca0b3aeb7df42c4f51
       size: 137643

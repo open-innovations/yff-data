@@ -3,7 +3,8 @@ import pandas as pd
 
 def quarter_to_date(index):
     new_index = pd.to_datetime(
-        index.str.slice(stop=3) + '-' + index.str.slice(start=8)
+        index.str.slice(stop=3) + '-' + index.str.slice(start=8),
+        format="%b-%Y"
     )
     new_index.name = 'quarter_start'
     return new_index

@@ -26,6 +26,7 @@ jobs:
 
       - name: Run DVC pipelines
         run: |
+          pipenv run dvc update -R working
           pipenv run dvc repro -R scripts
 
       - name: Commit and push changes
