@@ -7,4 +7,3 @@ outs:
 - md5: 697eb686fe7560ca0b3aeb7df42c4f51
   size: 137643
   path: lms_lookups.csv
-  isexec: true
