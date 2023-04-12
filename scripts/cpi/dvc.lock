@@ -1,0 +1,28 @@
+schema: '2.0'
+stages:
+  extract:
+    cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
+    deps:
+    - path: scripts/cpi/extract.py
+      md5: 2ec54df1c8a109ee7018bad8e79070f7
+      size: 414
+    outs:
+    - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
+      md5: 84b8521ce62004971231a48618ad7b9d
+      size: 2151581
+      isexec: true
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
+    deps:
+    - path: scripts/cpi/transform.py
+      md5: 41937159d5a787c224a72825a4499f00
+      size: 1065
+    - path: scripts/util/date.py
+      md5: 541fdb42d596b87ba93234e2815f5045
+      size: 416
+    - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
+      md5: 84b8521ce62004971231a48618ad7b9d
+      size: 2151581
+    - path: working/lookups/lms_lookups.csv
+      md5: 697eb686fe7560ca0b3aeb7df42c4f51
+      size: 137643
