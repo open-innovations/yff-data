@@ -10,6 +10,7 @@ sections:
     read_more: false
     blocks:
       - title: 
+        featured_block: true
         visualisations:
           - title: 
             type: dashboard
@@ -43,10 +44,13 @@ sections:
                   mergerows: true
                 - name: Led by
                   mergerows: true
+                - name: Link
+                  mergerows: false
 
   - title: Overview of Eligible Regions
     read_more: false 
     summary: 
+
   - title: Local Partnerships by Region
     summary: 
     read_more: false 
@@ -80,13 +84,15 @@ sections:
               value: Status
               scale: Viridis
               min: 0
-              max: 1
+              max: 2
               columns:
                 - name: Label
                   template: '{{ ITL1 Name }}<br />Status: {{ Status | toLocaleString() }} Awarded'
               legend:
                 position: top right
                 items:
+                  - value: 2
+                    label: Awarded                  
                   - value: 1
                     label: Awarded
                   - value: 0
@@ -138,7 +144,6 @@ sections:
                   tooltip: Lewisham
                   latitude: 51.46133961984077
                   longitude: -0.0075300711017617225
-
 
 
 
