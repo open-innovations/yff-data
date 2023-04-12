@@ -97,24 +97,6 @@ sections:
                     label: Awarded
                   - value: 0
                     label: Not awarded
-              places:
-                - name: London
-                  text-anchor: start
-                  longitude: 0.8
-                  latitude: 51.4
-                - name: Liverpool
-                  text-anchor: end
-                - name: Bristol
-                  text-anchor: end
-                  longitude: -2.7
-                - name: Plymouth
-                  latitude: 50.2
-                - name: Newcastle upon Tyne
-                  text-anchor: start
-                  longitude: -1.4
-                - name: Kingston upon Hull
-                  text-anchor: start
-                  longitude: 0
               markers:
                 - icon: geo-alt
                   tooltip: Hull
