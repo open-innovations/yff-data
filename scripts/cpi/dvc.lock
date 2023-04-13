@@ -15,8 +15,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
-      md5: 41937159d5a787c224a72825a4499f00
-      size: 1065
+      md5: 4bd89cbec30ab302cd963861188799e5
+      size: 2194
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
