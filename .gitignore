@@ -5,3 +5,4 @@ design/data/
 
 .py[co]
 __pycache__
+/MM23_variable_lookup.csv
