@@ -55,9 +55,10 @@ if __name__ == "__main__":
     df['quarterly_idx_change'] = quarterly_change
     column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
                           usecols=['code', 'name'], index_col='code').to_dict()['name']
-    
+    dates = pd.Series(data={'latest_month': month, 'quarterly': m2})
     df.rename(index=column_name, inplace=True)
     df.to_csv(os.path.join(DATA_DIR, 'CPI.csv'))
+    dates.to_json(os.path.join(DATA_DIR, 'dates.json'))
     
     
     

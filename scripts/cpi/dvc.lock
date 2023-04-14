@@ -15,14 +15,23 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
-      md5: 0e062a58eb27431dd85defd9656740fb
-      size: 2547
+      md5: b48094e85ed1054f2694d089b4a13120
+      size: 2668
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: 84b8521ce62004971231a48618ad7b9d
       size: 2151581
-    - path: working/lookups/lms_lookups.csv
-      md5: 697eb686fe7560ca0b3aeb7df42c4f51
-      size: 137643
+    - path: working/lookups/MM23_variable_lookup.csv
+      md5: 8c5b7ddcb89c096732ba8bee10939238
+      size: 295471
+    outs:
+    - path: data/cpi/CPI.csv
+      md5: fe6800c24bd6b5aa11fd336c0a9e6f15
+      size: 345
+      isexec: true
+    - path: data/cpi/dates.json
+      md5: 82734c5de4c39646559220f2601dccb3
+      size: 40
+      isexec: true

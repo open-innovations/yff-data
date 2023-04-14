@@ -1,14 +1,14 @@
 stages:
-  # extract:
-  #   cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
-  #   always_changed: true
-  #   wdir: ../..
-  #   deps:
-  #     - scripts/cpi/extract.py
-  #   outs:
-  #     - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx:
-  #         cache: false
-  #         persist: false
+  extract:
+    cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
+    always_changed: true
+    wdir: ../..
+    deps:
+      - scripts/cpi/extract.py
+    outs:
+      - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx:
+          cache: false
+          persist: false
       
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
@@ -17,8 +17,11 @@ stages:
       - scripts/cpi/transform.py
       - scripts/util/date.py
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-      - working/lookups/lms_lookups.csv
-    # outs:
-    #   - data/cpi/16_to_24_long_term_unemployed.csv:
-    #       cache: false
-    #       persist: false
+      - working/lookups/MM23_variable_lookup.csv
+    outs:
+      - data/cpi/CPI.csv:
+          cache: false
+          persist: false
+      - data/cpi/dates.json:
+          cache: false
+          persist: false
