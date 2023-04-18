@@ -17,8 +17,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
-      md5: a720ee1e4f95bacc46e9a665133880c5
-      size: 2279
+      md5: 05c5844286a4343c54fed4f2b87c7d75
+      size: 3041
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 401
@@ -36,5 +36,5 @@ stages:
       md5: 2fbdfbbeb7975e6121e8075de675eb80
       size: 903
     - path: data/qlfs/16_to_24_not_in_education.csv
-      md5: 958276ff5411b166a251d4fd80d70751
-      size: 1310
+      md5: 84b3b76d8c1996bdb5fce9f5f4002319
+      size: 2131
