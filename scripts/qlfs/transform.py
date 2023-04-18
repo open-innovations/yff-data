@@ -8,7 +8,7 @@ DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
 column_name = pd.read_csv('working/lookups/lms_lookups.csv',
-                          usecols=['code', 'name'], index_col='code').to_dict()['name']
+                          usecols=['code', 'name'], index_col='code').name.to_dict()
 
 
 def load_data(filename):
@@ -48,16 +48,21 @@ def transform_A06():
 
 def transform_UNEM01():
     UNEM01_data = load_data(UNEM01_SA_LATEST)
-    measures = ['YBVN', 'YBXY', 'YBVH', 'YBXJ']
+    measures = [
+        'YBVH', 'YBXJ', 'YBXM', # 16-17
+        'YBVN', 'YBXY', 'YBYB', # 18-24
+    ]
     UNEM01_data = UNEM01_data[measures]
     UNEM01_data = extract_quarters(UNEM01_data)
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
-    UNEM01_data['16_to_24_unemployed'] = UNEM01_data.YBVN + UNEM01_data.YBVH
-    UNEM01_data['16_to_24_unemployed_over_12_months'] = UNEM01_data.YBXY + UNEM01_data.YBXJ
+    data_16_to_24 = pd.DataFrame({
+        '16_to_24_unemployed': UNEM01_data.YBVN + UNEM01_data.YBVH,
+        '16_to_24_unemployed_over_12_months': UNEM01_data.YBXY + UNEM01_data.YBXJ
+    })
+    data_16_to_24['16_to_24_unemployed_over_12_months_rate'] = data_16_to_24['16_to_24_unemployed_over_12_months'] / data_16_to_24['16_to_24_unemployed'] * 100
 
-    most_recent_stats(UNEM01_data) \
-        .rename(columns=column_name) \
+    most_recent_stats(data_16_to_24) \
         .to_csv(os.path.join(DATA_DIR, '16_to_24_long_term_unemployed.csv'))
 
     return UNEM01_data
