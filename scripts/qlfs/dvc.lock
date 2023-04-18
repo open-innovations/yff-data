@@ -8,11 +8,11 @@ stages:
       size: 747
     outs:
     - path: working/qlfs/a06latest.xls
-      md5: 15a65d761ae30a7714fc866b5013e0c6
-      size: 1399808
+      md5: 8b2829344f2a39b6182e655e060345b0
+      size: 1399296
     - path: working/qlfs/unem01latest.xls
-      md5: 082978d202800b4f81988305c751d8e4
-      size: 954368
+      md5: 110f88d867c397305b5d1aede7715ad0
+      size: 952320
   transform:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
@@ -23,14 +23,14 @@ stages:
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 401
     - path: working/lookups/lms_lookups.csv
-      md5: 697eb686fe7560ca0b3aeb7df42c4f51
+      md5: eb12567d3b2aee1199be9d29cf92bc94
       size: 137643
     - path: working/qlfs/a06latest.xls
-      md5: 15a65d761ae30a7714fc866b5013e0c6
-      size: 1399808
+      md5: 8b2829344f2a39b6182e655e060345b0
+      size: 1399296
     - path: working/qlfs/unem01latest.xls
-      md5: 082978d202800b4f81988305c751d8e4
-      size: 954368
+      md5: 110f88d867c397305b5d1aede7715ad0
+      size: 952320
     outs:
     - path: data/qlfs/16_to_24_long_term_unemployed.csv
       md5: aad5d61843e0b056020e1e35d460a9ec
