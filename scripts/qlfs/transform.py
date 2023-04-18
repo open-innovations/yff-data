@@ -50,7 +50,7 @@ def transform_A06():
 
     most_recent_stats(A06_data) \
         .rename(columns=column_name) \
-        .to_csv(os.path.join(DATA_DIR, '16_to_24_not_in_education.csv'))
+        .to_csv(os.path.join(DATA_DIR, 'not_in_education.csv'))
 
     return A06_data
 
@@ -72,7 +72,7 @@ def transform_UNEM01():
     data_16_to_24['16_to_24_unemployed_over_12_months_rate'] = data_16_to_24['16_to_24_unemployed_over_12_months'] / data_16_to_24['16_to_24_unemployed'] * 100
 
     most_recent_stats(data_16_to_24) \
-        .to_csv(os.path.join(DATA_DIR, '16_to_24_long_term_unemployed.csv'))
+        .to_csv(os.path.join(DATA_DIR, 'long_term_unemployed.csv'))
 
     return UNEM01_data
 
