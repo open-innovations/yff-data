@@ -12,13 +12,13 @@ column_name = pd.read_csv('working/lookups/lms_lookups.csv',
                           usecols=['code', 'name'], index_col='code').name.to_dict()
 
 column_mapper = {
-    'JN6B': 'age_16_to_24_not_in_education_total_sa',  # Total not in education, 16-24
-    'AGNJ': 'age_16_to_24_not_in_education_in_employment_sa',  # Employed level, 16-24
-    'AGOL': 'age_16_to_24_not_in_education_unemployed_sa',  # Unemployed level, 16-24
-    'AGPM': 'age_16_to_24_not_in_education_economically_inactive_sa',  # Economivally inactive level, 16-24
-    'AIVZ': 'age_16_to_24_not_in_education_employement_rate_sa',  # Employed rate, 16-24
-    'MGWY': 'age_16_to_24_not_in_education_unemployement_rate_sa',  # Unemployed rate, 16-24
-    'AIYL': 'age_16_to_24_not_in_education_economic_inactivity_rate_sa',  # Economivally inactive rate, 16-24
+    'JN6B': 'age_16_to_24_not_in_ft_education_total_sa',  # Total not in education, 16-24
+    'AGNJ': 'age_16_to_24_not_in_ft_education_in_employment_sa',  # Employed level, 16-24
+    'AGOL': 'age_16_to_24_not_in_ft_education_unemployed_sa',  # Unemployed level, 16-24
+    'AGPM': 'age_16_to_24_not_in_ft_education_economically_inactive_sa',  # Economivally inactive level, 16-24
+    'AIWI': 'age_16_to_24_not_in_ft_education_employement_rate_sa',  # Employed rate, 16-24
+    'AIXT': 'age_16_to_24_not_in_ft_education_unemployement_rate_sa',  # Unemployed rate, 16-24
+    'AIYU': 'age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',  # Economivally inactive rate, 16-24
     # 16-17
     'YBVH': 'age_16_to_17_unemployed_sa',
     'YBXJ': 'age_16_to_17_unemployed_over_12_months_sa',
@@ -59,9 +59,9 @@ def transform_A06():
         'AGNJ',  # Employed level, 16-24
         'AGOL',  # Unemployed level, 16-24
         'AGPM',  # Economivally inactive level, 16-24
-        'AIVZ',  # Employed rate, 16-24
-        'MGWY',  # Unemployed rate, 16-24
-        'AIYL',  # Economivally inactive rate, 16-24
+        'AIWI',  # Employed rate, 16-24
+        'AIXT',  # Unemployed rate, 16-24
+        'AIYU',  # Economivally inactive rate, 16-24
     ]
     A06_data = A06_data[measures]
     A06_data = extract_quarters(A06_data)
