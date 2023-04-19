@@ -4,13 +4,9 @@ nav_order:
   v2: 10
 ---
 <ul>
+  {% for dashboard in search.pages("dashboard", "title") | data %}
   <li>
-    <a href="/dashboard/qlfs/">QLFS Dashboard</a>
+    <a href="{{ dashboard.url }}">{{ dashboard.title }}</a>
   </li>
-  <li>
-    <a href="/dashboard/neet/">NEET Dashboard</a>
-  </li>
-  <li>
-    <a href="/dashboard/economics/">Economics Dashboard</a>
-  </li>
+  {% endfor %}
 </ul>
