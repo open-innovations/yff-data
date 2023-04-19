@@ -16,6 +16,6 @@ stages:
       - scripts/util/date.py
       - working/neet/neetlatest.xlsx
     outs:
-      - data/neet/:
+      - data/neet/neet.csv:
           cache: false
           persist: false
