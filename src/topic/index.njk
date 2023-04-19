@@ -1,0 +1,5 @@
+<ul>
+  {% for topic in search.pages("topic", "title") | data %}
+    <li><a href="{{ topic.url }}">{{ topic.title }}</a></li>
+  {% endfor %}
+</ul>
