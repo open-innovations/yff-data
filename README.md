@@ -2,6 +2,12 @@
 
 > Source of the Youth Futures Foundation data portal
 
+To run the latest version of the code, set the VERSION environmment variable. On a macos / Linux platform this can be done as follows:
+
+```sh
+VERSION=v2 deno task serve
+```
+
 ## Data
 
 Data to drive visualisations is managed in the `_data/sources` directory.

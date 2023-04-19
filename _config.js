@@ -22,7 +22,7 @@ const site = lume({
 });
 
 // Change this to update the version of the site that is built. This mainly affects navigation.
-site.data('version', 'v1');
+site.data('version', Deno.env.get('VERSION') || 'v1');
 
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
