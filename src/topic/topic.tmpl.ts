@@ -1,20 +1,16 @@
-function toTitleCase(str) {
-  return str.replace(
-    /\w\S*/g,
-    function(txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }
-  );
-}
+const firstCharacterInSentence = /(^\w{1}|\.\s*\w{1})/gi;
+const firstCharacter = /\w/;
+const followingSpaces = /\b\w/g
 
 export default function*({ search }) {
-  const topics = search.values('topics') as string[];
+  const topics = (search.values('topics') as string[]).map(s => s.trim());
 
   for (const topic of topics) {
+    const slug = topic.replace(/\W+/g, '-');
+
     yield {
-      url: `/topic/${topic}/`,
-      title: topic.replace(/_/g, ' ').replace(/(^\w{1}|\.\s*\w{1})/gi, (s) => s.toUpperCase()),
-      topic: topic,
+      url: `/topic/${slug}/`,
+      title: topic,
       tags: 'topic',
     }
   }
