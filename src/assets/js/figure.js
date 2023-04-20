@@ -166,7 +166,7 @@
 })(window || this);
 
 OI.ready(function(){
-	var figs = document.querySelectorAll('.panes figure');
+	var figs = document.querySelectorAll('.pane figure');
 	for(var i = 0; i < figs.length; i++) OI.FigureMenu(figs[i]);
 });
 

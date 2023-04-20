@@ -1,35 +1,30 @@
-{% if visualisations | length === 1 %}
-
-  <div class="panes">
-	<div class="pane">
-      {{ comp.viz.render(visualisations[0]) | safe }}
-		{% if test %}
-		<p>Built using config: </p>
-		<pre><code>
-		  {{- visualisations[0] | yaml -}}
-		</code></pre>
-		<a href="{{ visualisations[0].config.file }}">Data file</a>
-
-		{% endif %}
-	</div>
+{% macro doTheVis(visualisation) %}
+  <div class="pane">
+    {{ comp.viz.render(visualisation) | safe }}
+    {% if test %}
+      <p>Built using config: </p>
+      <pre><code>
+		    {{- visualisation | yaml -}}
+		  </code></pre>
+      <a href="{{ visualisation.config.file }}">Data file</a>
+    {% endif %}
   </div>
+{% endmacro %}
+
+{% if not visualisations | isArray %}
+
+  <div class="panes">{{ doTheVis(visualisations) }}</div>
+
+{% elif visualisations | length === 1 %}
+
+  <div class="panes">{{ doTheVis(visualisations[0]) }}</div>
 
 {% elif visualisations | length > 1 %}
 
   <div class="panes tabbed" role="tabpanel" data-dependencies="/assets/js/tabbed.js">
-  {% for vis in visualisations %}
-	<div class="pane">
-		{{ comp.viz.render(vis) | safe }}
-		{% if test %}
-		<p>Built using config: </p>
-		<pre><code>
-		  {{- vis | yaml -}}
-		</code></pre>
-		<a href="{{ vis.config.file }}">Data file</a>
-		{% endif %}
-	</div>
-  {% endfor %}
+    {% for vis in visualisations %}
+      {{ doTheVis(vis) }}
+    {% endfor %}
   </div>
 
 {% endif %}
-

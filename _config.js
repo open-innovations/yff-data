@@ -111,6 +111,7 @@ site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi, 
 site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => applyReplacementFilters(value, options));
 
 site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
+site.filter('isArray', (item) => Array.isArray(item));
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written
