@@ -1,39 +1,29 @@
-title: Toolkit 
+title: Toolkit
 
-contents: false
+layout: layouts/landing_page.njk
 
 topics:
- - Wage subsidies
- - On-the-job training
- - Off-the-job training
- - Mentoring
- - Basic skills training
- - Life skills training
- - Apprenticeships
+  - Wage subsidies
+  - On-the-job training
+  - Off-the-job training
+  - Mentoring
+  - Basic skills training
+  - Life skills training
+  - Apprenticeships
 
-summary: 
-- |
-  The Toolkit is a free, online evidence resource. It contains summaries of high-quality evidence on selected interventions aimed at 
-  improving youth employment outcomes, with a particular focus on marginalised young people. 
-  
-- |
-  The first version will contain entries on seven different kinds of intervention and we plan to add more information and update 
-  content on an ongoing basis. 
-  
-  For each topic, the Toolkit includes findings from a rapid evidence assessment looking at the impact of the intervention on youth 
-  employment, along with information about the kinds of activities involved, the sorts of evidence that are available about its 
-  effectiveness, and how to implement it well.
+summary:
+  - |
+    The Toolkit is a free, online evidence resource. It contains summaries of high-quality evidence on selected interventions aimed at 
+    improving youth employment outcomes, with a particular focus on marginalised young people.
 
-report_link: 
-link_text: View the Toolkit
+  - |
+    The first version will contain entries on seven different kinds of intervention and we plan to add more information and update 
+    content on an ongoing basis. 
 
+    For each topic, the Toolkit includes findings from a rapid evidence assessment looking at the impact of the intervention on youth 
+    employment, along with information about the kinds of activities involved, the sorts of evidence that are available about its 
+    effectiveness, and how to implement it well.
 
-
-
-
-
-
-
-
-
-
+link:
+  url: about:blank
+  text: View the Toolkit

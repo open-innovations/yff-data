@@ -1,0 +1,10 @@
+---
+layout: layouts/simple.njk
+---
+{% comp 'flex' %}
+{% include "partials/page/summary.njk" %}
+{% endcomp %}
+
+<section class="dl">
+  {{ comp.actions.download({ link: link.url, note: link.text }) | safe }}
+</section>
