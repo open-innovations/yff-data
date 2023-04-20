@@ -1,0 +1,9 @@
+---
+layout: layouts/simple.njk
+---
+
+<ul>
+{% for page in search.pages("topics*=" + title) | data %}
+  <li><a href="{{ page.url }}">{{ page.title or "UNKNOWN" }}</a></li>
+{% endfor %}
+</ul>

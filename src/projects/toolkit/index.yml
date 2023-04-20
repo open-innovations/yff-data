@@ -2,15 +2,14 @@ title: Toolkit
 
 contents: false
 
-topics: [
-  wage_subsidies,
-  on_the_job_training,
-  off_the_job_training,
-  mentoring,
-  basic_skills_training, 
-  life_skills_training, 
-  apprenticeships
-]
+topics:
+ - Wage subsidies
+ - On-the-job training
+ - Off-the-job training
+ - Mentoring
+ - Basic skills training
+ - Life skills training
+ - Apprenticeships
 
 summary: 
 - |

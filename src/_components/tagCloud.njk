@@ -1,0 +1,29 @@
+---
+css: |
+  .tag-cloud {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0;
+    margin: 0;
+  }
+  .tag-cloud li {
+    color: var(--tag-colour-text, white);
+    background: var(--tag-colour, black);
+  }
+  .tag-cloud a {
+    color: inherit;
+  }
+---
+<ul class="tag-cloud">
+  {% for tag in tags %}
+    <li>
+    {%- if link_prefix -%}
+      <a href="/{{ link_prefix }}/{{ tag | slugify }}/"<>{{ tag }}</a>
+    {%- else -%}
+      {{ tag }}
+    {%- endif -%}
+    </li>
+  {% endfor %}
+</ul>

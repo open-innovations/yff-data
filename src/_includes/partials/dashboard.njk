@@ -1,0 +1,7 @@
+<ul>
+  {% for dashboard in search.pages("dashboard", "title") | data %}
+  <li>
+    <a href="{{ dashboard.url }}">{{ dashboard.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

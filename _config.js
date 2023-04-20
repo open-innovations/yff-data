@@ -5,7 +5,7 @@ import basePath from 'lume/plugins/base_path.ts';
 import esbuild from 'lume/plugins/esbuild.ts';
 import inline from "lume/plugins/inline.ts";
 import netlifyCMS from 'lume/plugins/netlify_cms.ts';
-// import postcss from "lume/plugins/postcss.ts";
+import postcss from "lume/plugins/postcss.ts";
 import date from "lume/plugins/date.ts"; // To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
 import enGB from "npm:date-fns/locale/en-GB/index.js";
 import resolveUrls from 'lume/plugins/resolve_urls.ts';
@@ -22,10 +22,13 @@ const site = lume({
 });
 
 // Change this to update the version of the site that is built. This mainly affects navigation.
-site.data('version', 'v1');
+site.data('version', Deno.env.get('VERSION') || 'v1');
 
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
+
+// Process all css files
+site.use(postcss());
 
 // Also process .html files
 site.loadPages(['.html']);
@@ -33,17 +36,15 @@ site.loadPages(['.html']);
 site.use(inline());
 
 // Setup admin
-site.use(
+if (Deno.env.get('EDITOR') !== undefined) site.use(
   netlifyCMS({
     previewStyle: '/style/wireframe.css',
     extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
   })
 );
 
-// Process all css files
-// site.use(postcss({ sourceMap: true }));
 site.copy(['.js']);
-site.copy(['.css']);
+// site.copy(['.css']);
 site.copy(['.svg']);
 site.copy(['.png']);
 
