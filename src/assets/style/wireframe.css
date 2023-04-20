@@ -46,15 +46,6 @@ section, aside {
 	padding: 1em;
 }
 
-.pane,
-.block,
-.viz,
-.back-to-report,
-section,
-aside {
-	border: 1px dashed black;
-}
-
 /* Navigation styling */
 .navigation > div {
   background: #efefef;

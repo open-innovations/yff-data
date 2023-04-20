@@ -14,3 +14,9 @@
 {{ project.summary | first | md | striplinks | safe }}
 </div>
 {% endif %}
+
+{% if project.topics %}
+<div>
+{{ comp.tagCloud({ tags: project.topics }) | safe }}
+</div>
+{% endif %}
