@@ -1,8 +1,7 @@
 {
   "deno.codeLens.test": true,
   "deno.enable": true,
-  "deno.enablePaths": [
-    "./lib"
-  ],
-  "deno.unstable": true
+  "deno.unstable": true,
+  "deno.config": "deno.json",
+  "deno.importMap": "import_map.json"
 }
