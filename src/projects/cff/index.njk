@@ -1,0 +1,40 @@
+---
+title: Connected Futures 
+layout: layouts/simple.njk
+summary:
+  - |
+    PROJECT DETAILS GO HERE
+---
+
+{% comp 'flex' %}
+{% include "partials/page/summary.njk" %}
+{% include "partials/page/topic-cloud.njk" %}
+{% endcomp %}
+
+<section>
+  <h2>Headline statistics</h2>
+  {{ comp.viz.main({ visualisations: visualisations | pick(1) }) | safe }}
+</section>
+
+<section>
+  <h2>Local Partnerships</h2>
+  {{ comp.viz.main({ visualisations: visualisations | pick(2) }) | safe }}
+</section>
+
+<section>
+  <h2>Overview of Eligible Regions</h2>
+
+</section>
+
+<section>
+  <h2>Local Partnerships by Region</h2>
+
+  <p>
+    This section shows the local partnerships set to benefit from the Connected Futures Fund. Each partnership will explore with
+    young people the challenges they face, and where support is missing or lets them down,
+    from schools and employers to housing, care or criminal justice. For more information on each partnership, visit the
+    <a href = "https://youthfuturesfoundation.org/our-work/invest/connected-futures/">Youth Futures Foundation website</a>.
+  </p>
+
+  {{ comp.viz.main({ visualisations: visualisations | pick(0) }) | safe }}
+</section>

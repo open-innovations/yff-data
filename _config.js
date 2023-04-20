@@ -106,6 +106,8 @@ site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
 site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi, function (m, p1) { return p1; }));
 site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => applyReplacementFilters(value, options));
 
+site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
+
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written
 site.use(basePath());
