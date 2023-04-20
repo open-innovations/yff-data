@@ -1,0 +1,49 @@
+- tab: Not in full time education (levels)
+  type: table
+  caption: |
+    This table presents seasonally adjusted population levels for young people aged 16-24 not in full-time education
+  config:
+    file: /data/qlfs/not_in_education.csv
+    columns:
+      - name: quarter_start
+        rename: Quarter
+      - name: age_16_to_24_not_in_ft_education_total_sa
+        rename: Population not in full-time education
+      - name: age_16_to_24_not_in_ft_education_in_employment_sa
+        rename: Population employed
+      - name: age_16_to_24_not_in_ft_education_unemployed_sa
+        rename: Population unemployed
+      - name: age_16_to_24_not_in_ft_education_economically_inactive_sa
+        rename: Population economially inactive
+
+- tab: Not in full time education (rates)
+  type: table
+  caption: |
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 not in full-time education
+  config:
+    file: /data/qlfs/not_in_education.csv
+    columns:
+      - name: quarter_start
+        rename: Quarter
+      - name: age_16_to_24_not_in_ft_education_employement_rate_sa
+        rename: Employed rate
+      - name: age_16_to_24_not_in_ft_education_unemployement_rate_sa
+        rename: Unemployed rate
+      - name: age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa
+        rename: Economially inactive rate
+
+- tab: Long term unemployed
+  type: table
+  caption: |
+    This table presents seasonally adjusted long-term unemployment rates for young people aged 16-24 not in full-time education
+  config:
+    file: /data/qlfs/long_term_unemployed.csv
+    columns:
+      - name: quarter_start
+        rename: Quarter
+      - name: age_16_to_24_unemployed_over_12_months_rate_sa
+        rename: Rate of unemployment over 12 months
+      - name: age_16_to_24_unemployed_over_12_months_sa
+        rename: Population unemployed for more than 12 months
+      - name: age_16_to_24_unemployed_sa
+        rename: Population unemployed

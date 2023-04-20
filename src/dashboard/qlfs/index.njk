@@ -8,3 +8,13 @@ raw_data:
   - /data/raw/qlfs/not_in_education.csv
   - /data/raw/qlfs/long_term_unemployed.csv
 ---
+
+<h2>Visualisation examples</h2>
+
+<h3>Dump all the visualisations</h3>
+{# Just dump out all the visualisations ------> set this vvvvv to true to debug #}
+{{ comp.viz.main({ visualisations: visualisations, test: false }) | safe }}
+
+<h3>Select a single one</h2>
+{# Or do them one-by-one #}
+{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
