@@ -77,24 +77,28 @@ site.use(date({
 site.loadData(['.csv'], csvLoader);
 site.loadData(['.geojson', '.hexjson'], jsonLoader);
 
-// Copy source data files to live site
-const dataDir = 'src/_data/sources';
-const dataPath = '/data';
-const dataFiles = Array.from(walkSync(dataDir, {
-  includeDirs: false,
-})).map(({ path }) => path);
-dataFiles.forEach(remote => {
-  const local = remote.replace(dataDir, dataPath);
-  site.remoteFile(local, './' + remote);
-});
+/**
+ * Descend into a folder tree and remotely map each file to the Lume build
+ * 
+ * @param {string} source Source directory, relative to this file
+ * @param {string} target Location in the lume build virtual file system
+ */
+function remoteTree(source, target) {
+  const files = Array.from(walkSync(source, {
+    includeDirs: false,
+  })).map(({ path }) => path);
 
-// Copy QLMS data to live site
-[
-  'qlms-9.csv',
-  'qlms-11.csv',
-  'qlms-12.csv',
-  'qlms-20.csv',
-].forEach(f => site.remoteFile(`/data/qlms/${f}`, `data/qlms/${f}`));
+  files.forEach(remote => {
+    const local = remote.replace(source, target);
+    site.remoteFile(local, './' + remote);
+  });
+}
+
+const dataPath = '/data';
+// Mirror source data files to live site
+remoteTree('src/_data/sources', dataPath);
+// Mirror raw data tiles to live site
+remoteTree('data', dataPath + '/raw');
 
 // Copy /data to live site
 site.copy(dataPath);
