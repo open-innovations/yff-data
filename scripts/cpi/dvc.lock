@@ -5,12 +5,11 @@ stages:
     deps:
     - path: scripts/cpi/extract.py
       md5: 2ec54df1c8a109ee7018bad8e79070f7
-      size: 414
+      size: 401
     outs:
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: 67e46b9a9c7fd2222de142f4b0dc94d8
       size: 2158248
-      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform_v2.py
     deps:
