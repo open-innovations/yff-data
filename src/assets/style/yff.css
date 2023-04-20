@@ -1,4 +1,5 @@
 @import 'css/site-header.css';
+@import 'css/tag-cloud.css';
 
 /* Youth Futures Foundation styles */
 @font-face {
@@ -52,7 +53,7 @@ blockquote { border-left: 4px solid #e25b27; }
 
 .back-to-report { display: block; }
 
-.back-to-report, .tag-cloud li { text-transform: uppercase; }
+.back-to-report { text-transform: uppercase; }
 
 .page-title { background: #dff3f4; position: relative; min-height: 180px; display: table; width: 100%; }
 .page-title::before { content: ""; background-image: url("../images/YFF_icon_stack1-01.svg"); height: 100%; aspect-ratio: 1 / 2; position: absolute; left: 0; top: 0; z-index: 0; }
@@ -79,7 +80,6 @@ main section.dl { padding-top: 0; display: flex; }
 
 
 section, aside { margin: 1em 0; padding: 0; }
-.tag-cloud li { color: white; background: black; }
 
 .auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
 .auto-grid .pane { border: 0; padding: 1.25em; line-height: 1.5em; }
@@ -92,9 +92,6 @@ section, aside { margin: 1em 0; padding: 0; }
 .pane, .block, .viz, .back-to-report, section, aside { border: 0; }
 
 td, th { padding: 0.25em; }
-
-.tag-cloud { margin-left: 0; }
-.tag-cloud li { background: #7C2147; border-radius: 0; }
 
 .summary > * { margin-bottom: 1em; }
 .summary > *:last-child { margin-bottom: 0; }

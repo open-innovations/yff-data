@@ -8,7 +8,7 @@ export default function*({ search }) {
   const topics = (search.values('topics') as string[]).map(s => s.trim());
 
   for (const topic of topics) {
-    const slug = topic.replace(/\W+/g, '-');
+    const slug = topic.replace(/\W+/g, '-').toLowerCase();
 
     yield {
       url: `/topic/${slug}/`,

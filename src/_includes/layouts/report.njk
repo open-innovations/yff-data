@@ -33,7 +33,7 @@
 		<section id="narrative-{{ loop.index }}">
 		  <h2>{{ section.title }}</h2>
 
-		  {{ comp['tag-cloud']({ tags: section.topics }) | safe }}
+		  {{ comp.tagCloud({ tags: section.topics }) | safe }}
 
 		  {% if section.blocks %}
 			<section>

@@ -1,0 +1,8 @@
+---
+layout: layouts/simple.njk
+---
+<aside>
+  <p>Topics:</p>
+  {{ comp.tagCloud({ tags: topics, link_prefix: 'topic' }) | safe }}
+</aside>
+{{ content | safe }}

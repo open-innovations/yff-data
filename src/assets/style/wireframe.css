@@ -160,11 +160,6 @@ figure .figure-options .figure-option:hover, figure .figure-options .figure-opti
   }
 }
 
-.tag-cloud li {
-	color: white;
-	background: black;
-}
-
 .download-link {
   background: black;
   color: white;
