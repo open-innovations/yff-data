@@ -1,8 +1,9 @@
 ---
 layout: layouts/simple.njk
 ---
-<aside>
-  <p>Topics:</p>
-  {{ comp.tagCloud({ tags: topics, link_prefix: 'topic' }) | safe }}
-</aside>
+{% comp 'flex' %}
+{% include "partials/page/summary.njk" %}
+{% include 'partials/page/topic-cloud.njk' %}
+{% endcomp %}
+
 {{ content | safe }}
