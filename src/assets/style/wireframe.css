@@ -1,3 +1,5 @@
+@import 'css/site-header.css';
+
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
 
 html {
@@ -54,41 +56,6 @@ section,
 aside {
 	border: 1px dashed black;
 }
-
-.site-header {
-	border-bottom: 1px solid black;
-	position: sticky;
-	background: white;
-	left: 0;
-	right: 0;
-	top: 0;
-	z-index: 1001;
-}
-
-.site-title { font-weight: bold; }
-.site-header-logo { display: inline-block; height: 90px; vertical-align: middle; position: relative;  }
-.site-header-content .logos > *:last-child .site-header-logo { margin-right: 1em; }
-.site-logo { width: 200px; }
-
-.site-header-content .logos a { display: inline-block; }
-.site-header-logo img, .site-header-logo svg { display: none; height: 100%; }
-
-.site-header img { height: auto; width: 200px; float: left; }
-.site-header-content {
-  display: flex;
-  align-items: center;
-  padding-top: 1.55em;
-  padding-bottom: 1.55em;
-}
-.site-header-content > *:first-child {
-  flex-grow: 1;
-}
-.site-header-content h1 {
-  font-size: 1.2rem;
-  line-height: 2em;
-}
-.site-header-logo { background: #efefef; }
-.site-header-logo span { position: absolute; left: 50%; top: 50%; transform: translate3d(-50%,-50%,0); }
 
 /* Navigation styling */
 .navigation > div {
