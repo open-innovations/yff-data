@@ -19,15 +19,7 @@
 		  This site is under active development. Please <a href="mailto:hello@open-innovations.org,analysis@youthfuturesfoundation.org?subject=YFF Feedback&body=Page title: {{ title | safe }}%0d%0aURL: {{ url }}%0d%0a%0d%0aYour feedback here">email us with your feedback</a>.
 	</div>
   </div>
-  <header id="site-header" class="site-header container">
-    <div class="site-header-content holder et_pb_row">
-	  <div class="logos">
-        <a href='/'><div class="site-sub-logo"><img src="/assets/images/yff-data.svg" inline></div></a>
-        <a href='https://youthfuturesfoundation.org/'><div class="site-header-logo"><img src="/assets/images/yff-logo.svg" inline></div></a>
-	  </div>
-      {{ comp.nav() | safe }}
-    </div>
-  </header>
+  {% include 'partials/site-header.njk' %}
   <main id="main" role="main" class="container">
     {% block main %}
     {{ content | safe }}

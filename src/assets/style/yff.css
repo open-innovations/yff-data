@@ -1,3 +1,5 @@
+@import 'css/site-header.css';
+
 /* Youth Futures Foundation styles */
 @font-face {
   font-display: swap;
@@ -119,7 +121,6 @@ figure .figure-menu:focus + label, figure .figure-options ul li > *:hover, figur
 .feedback { text-align: center; background: #e0e0e0; border: 0; }
 .feedback a { color: #7d2248; font-weight: bold; }
 
-header .et_pb_row { width: 90%; max-width: 1600px; }
 footer .et_pb_row { width: 80%; max-width: 1600px; padding: 3% 0; padding-bottom: 20px; }
 
 footer {
