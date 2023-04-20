@@ -38,3 +38,22 @@ stages:
     - path: data/qlfs/not_in_education.csv
       md5: c6698c274ec714f0fefdb16a775ead39
       size: 2048
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
+    deps:
+    - path: data/qlfs/long_term_unemployed.csv
+      md5: 7a20c22017cd4dfcca029b2967322328
+      size: 924
+    - path: data/qlfs/not_in_education.csv
+      md5: c6698c274ec714f0fefdb16a775ead39
+      size: 2048
+    - path: scripts/qlfs/prepare.py
+      md5: 349ee707073fd53ae1a03b2a3f6b720a
+      size: 384
+    outs:
+    - path: src/_data/sources/qlfs/long_term_unemployed.csv
+      md5: 7a20c22017cd4dfcca029b2967322328
+      size: 924
+    - path: src/_data/sources/qlfs/not_in_education.csv
+      md5: c6698c274ec714f0fefdb16a775ead39
+      size: 2048

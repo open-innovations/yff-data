@@ -28,3 +28,17 @@ stages:
       - data/qlfs/not_in_education.csv:
           cache: false
           persist: false
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
+    wdir: ../..
+    deps:
+      - scripts/qlfs/prepare.py
+      - data/qlfs/long_term_unemployed.csv
+      - data/qlfs/not_in_education.csv
+    outs:
+      - src/_data/sources/qlfs/long_term_unemployed.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/qlfs/not_in_education.csv:
+          cache: false
+          persist: false
