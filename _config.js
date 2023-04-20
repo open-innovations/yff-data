@@ -13,7 +13,7 @@ import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { walkSync } from 'std/fs/mod.ts';
 import autoDependency from '/src/_lib/oi/auto-dependency.ts';
-import csvLoader from '/src/_lib/oi/csv-loader.ts';
+import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
 import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 
 const site = lume({

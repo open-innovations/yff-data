@@ -797,6 +797,11 @@
     "https://deno.land/x/nunjucks@3.2.3-2/src/tests.js": "0f68a51c0be20e82eb033c913bb10bca1fc7eb4fcc603943515aac4608e88999",
     "https://deno.land/x/nunjucks@3.2.3-2/src/transformer.js": "401e3b1588ea2933883cc43cc329077f5b1a3a5da391f9dfc0a2a63a1a89660c",
     "https://deno.land/x/nunjucks@3.2.3-2/src/waterfall.js": "4d8878b3ebcf0a1b4bf9e7575e2f30bc6467cb8ee3717b80754c945cde661b9e",
+    "https://deno.land/x/oi_lume_utils@v0.2.0/loaders/csv-loader.ts": "7dc282f75e7923f79ba13c63e9be02df856539c106879477c50d0c6e9b93ed5c",
+    "https://deno.land/x/oi_lume_utils@v0.2.0/util/ensure-number.ts": "f7e52b6496d90a26fb62d1d7057ca4d75af8e625a1f884876362eb2d208b690d",
+    "https://deno.land/x/oi_lume_utils@v0.2.0/util/mod.ts": "ba90e1d6b310520fb613c33ad9d1f5a57e32933097c8c5595c21510ded5a64d2",
+    "https://deno.land/x/oi_lume_utils@v0.2.0/util/range.ts": "d32a98fd87c85be059f2e240b5677d28360444bcdb653061e16c55fb3a1dc81e",
+    "https://deno.land/x/oi_lume_utils@v0.2.0/util/transpose.ts": "a41a5b7581d740cd227f7c95c749cfc51cef85ef266efcda61549552365f8184",
     "https://deno.land/x/outdent@v0.8.0/mod.ts": "72630e680dcc36d5ae556fbff6900b12706c81a6fd592345fc98bcc0878fb3ca",
     "https://deno.land/x/outdent@v0.8.0/src/index.ts": "6dc3df4108d5d6fedcdb974844d321037ca81eaaa16be6073235ff3268841a22"
   },
