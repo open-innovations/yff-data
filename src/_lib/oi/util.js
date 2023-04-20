@@ -12,15 +12,44 @@ export function range(array) {
   };
 }
 
-export function loadDataFile(path, sources) {
-	let config,data;
+/**
+ * unction to resolve data from a given context
+ *
+ * @param ref dot-separated reference to the dataset
+ * @param context the context in which to search for the data
+ * @returns
+ */
+export function resolveData(
+  ref,
+  context,
+) {
+  // Initialise the result to be the whole context.
+  // If we provide no key, we should return the whole thing!
+  let result = context;
+  // Split the ref by the '.' character and iterate over the resulting array
+  for (const key of ref.split('.')) {
+    result = result[key];
+  }
+  return result;
+}
+
+export function mapPotentiallyFakePath(path) {
+  if (path.match('/')) { // Assume that this is a fake path
+    // So map to the sources data element
+    return path.replace(/\//g, '.').replace(/^.*?data/, 'sources').replace(/\.[^\.]*$/, '');
+  }
+  return path;
+}
+
+export function loadDataFile(path, context) {
+  let config;
 
 	if(typeof path==="object"){
 		config = path;
 		path = path.file;
 	}
-	const name = path.replace(/\//g, '.').replace(/^.*?data/, 'sources').replace(/\.[^\.]*$/, '');
-	data = eval(name);
+  const name = mapPotentiallyFakePath(path);
+	let data = structuredClone(resolveData(name, context));
 	
 	if(typeof config==="object"){
 		data = augmentTable(config,data);

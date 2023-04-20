@@ -5,7 +5,8 @@ export const css = `
 .ranking svg g:focus { outline: none; }
 `;
 
-export default ({ config, sources }) => {
+export default (context) => {
+  const { config } = context;
 
 	// Get loaded data from sources object
 	// Data structure will include the following:
@@ -14,7 +15,7 @@ export default ({ config, sources }) => {
 	//   data = 2d array of data
 	//   rows = array of objects with data referenced by name
 	//   columns = object with column data as array
-	const csv = loadDataFile(config, sources);
+	const csv = loadDataFile(config, context);
 
 	var chart,html;
 

@@ -25,10 +25,11 @@ export const css = `
 
 function clone(a){ return JSON.parse(JSON.stringify(a)); }
 
-export default function ({ config, sources }) {
+export default function (context) {
+  const { config, sources } = context;
 
 	// Load the data from the sources
-	const csv = loadDataFile(config, sources);
+	const csv = loadDataFile(config, context);
 
 	// Set the output to "?" as a default
 	let html = "?";

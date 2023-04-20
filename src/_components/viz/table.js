@@ -12,7 +12,8 @@ export const css = `
   td, th { padding: 0.25em; }
 `;
 
-export default ({ config, sources }) => {
+export default (context) => {
+  const { config } = context;
   // Get loaded data from sources object
   // Data structure will include the following:
   //   headers = 2d array of headers
@@ -20,7 +21,7 @@ export default ({ config, sources }) => {
   //   data = 2d array of data
   //   rows = array of objects with data referenced by name
   //   columns = object with column data as array
-  let table = loadDataFile(config, sources);
+  let table = loadDataFile(config, context);
 
   // Create array to store html text
   const html = [];
