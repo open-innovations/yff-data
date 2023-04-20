@@ -2,7 +2,7 @@
   "imports": {
     "/": "./",
     "./": "./",
-    "lume/": "https://deno.land/x/lume@v1.15.1/",
+    "lume/": "https://deno.land/x/lume@v1.16.2/",
     "local/": "./local-lib/",
     "std/": "https://deno.land/std@0.82.0/"
   }

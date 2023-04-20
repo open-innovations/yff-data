@@ -59,7 +59,6 @@ site.use(
       keepNames: true,
       platform: 'browser',
       target: 'es6',
-      incremental: true,
       treeShaking: true,
     },
   })
