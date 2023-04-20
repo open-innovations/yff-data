@@ -37,6 +37,10 @@
   height: min(90px, 16vw);
 }
 
+.site-footer-logo {
+  height: 90px;
+}
+
 .site-sub-logo {
   height: 24px;
   & path {

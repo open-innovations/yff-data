@@ -30,32 +30,7 @@
 		<p>This is a prototype website and we'd <a href="mailto:hello@open-innovations.org,analysis@youthfuturesfoundation.org?subject=YFF Feedback&body=Page title: {{ title | safe }}%0d%0aURL: {{ url }}%0d%0a%0d%0aYour feedback here">appreciate your feedback</a>.</p>
 	</div>
   </div>
-  <footer class="container">
-	<div class="holder wrapper et_pb_row">
-		<div class="twocol">
-			<div>
-				<div class="site-header-logo"><span>Logo</span><img src="/assets/images/yff-logo.svg" inline></div>
-				<p class="address">Youth Futures Foundation
-				<br />Tintagel House
-				<br />92 Albert Embankment
-				<br />London SE1 7TY</p>
-			</div>
-			<div></div>
-		</div>
-		<div class="twocol small">
-			<p><a href="https://youthfuturesfoundation.org/terms-of-use/">Terms of Use</a>&nbsp; | &nbsp;<a href="https://youthfuturesfoundation.org/privacy-policy">Privacy Policy</a>&nbsp; |&nbsp; <a href="https://youthfuturesfoundation.org/cookie-policy/">Cookie Policy</a>&nbsp; |&nbsp; <a href="https://youthfuturesfoundation.org/risk-checks/">Risk Checks</a></p>
-			<p>&copy; 2022 Youth Futures Foundation. Company number: 11814131</p>
-		</div>
-    <div class="small">
-      {{ comp.license.cc_by({
-        title: 'Data Portal',
-        url: 'https://data.youthfuturesfoundation.org',
-        creator: 'Youth Futures Foundation',
-        creator_url: 'https://youthfuturesfoundation.org'
-      }) | safe }}
-    </div>
-	</div>
-  </footer>
+  {% include 'partials/site-footer.njk' %}
 
   <script>
   /*
