@@ -19,7 +19,7 @@ stages:
     #   - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
     #   - working/lookups/MM23_variable_lookup.csv
     # outs:
-    #   - data/cpi/CPI.csv:
+    #   - data/cpi/cpi.csv:
     #       cache: false
     #       persist: false
     #   - data/cpi/dates.json:
@@ -34,9 +34,22 @@ stages:
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       - working/lookups/MM23_variable_lookup.csv
     outs:
-      - data/cpi/CPI.csv:
+      - data/cpi/cpi.csv:
           cache: false
           persist: false
       - data/cpi/stats.json:
+          cache: false
+          persist: false
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
+    wdir: ../..
+    deps:
+      - scripts/cpi/prepare.py
+      - data/cpi/cpi.csv
+    outs:
+      - src/_data/sources/cpi/cpi.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/cpi/stats.json:
           cache: false
           persist: false

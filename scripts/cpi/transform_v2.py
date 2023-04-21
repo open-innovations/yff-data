@@ -51,10 +51,27 @@ if __name__ == "__main__":
     df.rename(index=column_name, inplace=True)
     df.rename(index=slugify, inplace=True)
     df.index.name = 'sector'
-    print(df)
-    df.to_csv(os.path.join(DATA_DIR, 'CPI.csv'))
-    stats.to_json(os.path.join(DATA_DIR, 'stats.json'))
+    df = df.round(2)
+    df.rename(index={'cpi_index_01_food_and_non_alcoholic_beverages_2015_100': "Food & Non-Alcoholic Beverages",
+                     'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & Footwear",
+                     'cpi_index_04_housing_water_and_fuels_2015_100': "Housing & Water & Fuels",
+                     'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture"},
+                     inplace=True)
     
+    #the below, up to writefiles is possibly to be added in to prepare stage for tidiness.
+    minum = min(df.min())
+    maxum = max(df.max())
+    if minum > 0:
+        stats['min'] = 0
+    if minum < 0:
+        stats['min'] = minum
+    if maxum > 0:
+        stats['max'] = round(maxum, -1)
+    #I'd expect there will always be a positive pct change. 
+    
+    #write file
+    df.to_csv(os.path.join(DATA_DIR, 'cpi.csv'))
+    stats.to_json(os.path.join(DATA_DIR, 'stats.json'))
     
 
     

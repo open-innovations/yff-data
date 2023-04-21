@@ -5,17 +5,18 @@ stages:
     deps:
     - path: scripts/cpi/extract.py
       md5: 2ec54df1c8a109ee7018bad8e79070f7
-      size: 401
+      size: 414
     outs:
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: 67e46b9a9c7fd2222de142f4b0dc94d8
       size: 2158248
+      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform_v2.py
     deps:
     - path: scripts/cpi/transform_v2.py
-      md5: 45c5bedcde185398e77c17da70edfe13
-      size: 2563
+      md5: 2c4928ac332f6b72f268a05e1124294e
+      size: 3385
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
@@ -26,11 +27,29 @@ stages:
       md5: 8c5b7ddcb89c096732ba8bee10939238
       size: 295471
     outs:
-    - path: data/cpi/CPI.csv
-      md5: e8d8bfab0693d121010f60aad70ae50f
-      size: 476
+    - path: data/cpi/cpi.csv
+      md5: 1173b7fa85d79fdb951f18d4c3534fcd
+      size: 222
       isexec: true
     - path: data/cpi/stats.json
-      md5: 3a6873d58e0f49308017ac64ebf0c051
-      size: 79
+      md5: 34dee9d08e5ab59cbda34422902c8382
+      size: 98
+      isexec: true
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
+    deps:
+    - path: data/cpi/cpi.csv
+      md5: 1173b7fa85d79fdb951f18d4c3534fcd
+      size: 222
+    - path: scripts/cpi/prepare.py
+      md5: 0701b314b1886f2466ecfa26f3f57ed9
+      size: 378
+    outs:
+    - path: src/_data/sources/cpi/cpi.csv
+      md5: 1173b7fa85d79fdb951f18d4c3534fcd
+      size: 222
+      isexec: true
+    - path: src/_data/sources/cpi/stats.json
+      md5: 34dee9d08e5ab59cbda34422902c8382
+      size: 98
       isexec: true

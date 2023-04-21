@@ -1,0 +1,39 @@
+- title: CPI Percentage Change
+  # citations:
+  #   - title:
+  #     link: about:blank
+  type: chart
+  config:
+    file: /data/cpi/cpi.csv
+    type: bar-chart
+    legend:
+      show: true # Default to false
+      position: "top right"
+    axis:
+      x:
+        min: 0
+        max: 30
+        grid:
+          stroke-dasharray: "6 2"
+          stroke-width: 1
+        ticks:
+          - value: 0
+            label: "0%"
+          - value: 10
+            label: "10%"
+          - value: 20
+            label: "20%"
+          - value: 30
+            label: "30%"
+      y:
+        grid:
+          stroke-width: 0.5
+    category: "sector" # Category names come from
+    series:
+      - title: "Monthly change"
+        value: "monthly_pct_change"
+      - title: "Quarterly change"
+        value: "quarterly_pct_change"
+      - title: "Yearly change"
+        value: "yearly_pct_change"
+      
