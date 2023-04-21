@@ -35,30 +35,35 @@ export default function (context) {
 	// Make a clone of the original config to avoid updating the contents elsewhere
 	const configcopy = clone(config);
 
-	if(configcopy.type=="line-chart"){
+  try {
+    if (configcopy.type == "line-chart") {
 
-		// Create a new Line Chart
-		chart = new LineChart(configcopy,csv);
+      // Create a new Line Chart
+      chart = new LineChart(configcopy, csv);
 
-	}else if(configcopy.type=="category-chart"){
+    } else if (configcopy.type == "category-chart") {
 
-		// Create a new Category Chart
-		chart = new CategoryChart(configcopy,csv);
+      // Create a new Category Chart
+      chart = new CategoryChart(configcopy, csv);
 
-	}else if(configcopy.type=="bar-chart"){
+    } else if (configcopy.type == "bar-chart") {
 
-		// Create a new Category Chart
-		chart = new BarChart(configcopy,csv);
+      // Create a new Category Chart
+      chart = new BarChart(configcopy, csv);
 
-	}else if(configcopy.type=="stacked-bar-chart"){
+    } else if (configcopy.type == "stacked-bar-chart") {
 
-		// Create a new Category Chart
-		chart = new StackedBarChart(configcopy,csv);
+      // Create a new Category Chart
+      chart = new StackedBarChart(configcopy, csv);
 
-	}
+    }
 
-	// Get the output
-	if(chart) html = chart.getSVG();
+    // Get the output
+    if (chart) html = chart.getSVG();
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
 
 	return ['<div class="chart" data-dependencies="/assets/js/chart.js">',
 		html,
