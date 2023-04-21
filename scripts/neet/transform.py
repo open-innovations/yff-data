@@ -19,10 +19,10 @@ column_mapper = {
 }
 
 
-def load_data():
+def load_data(sheet_name='People - SA'):
     # Load the relevant sheef from the excel file
     data = pd.read_excel(NEET_RAW_LATEST,
-                         sheet_name='People - SA',
+                         sheet_name=sheet_name,
                          skiprows=4,
                          header=[0, 1, 2, 3],
                          index_col=0,
@@ -38,8 +38,7 @@ def load_data():
     return data
 
 
-if __name__ == "__main__":
-    data = load_data()
+def process_data(data, prefix='people'):
     data.index = quarter_to_date(data.index)
 
     def collapse_columns(x):
@@ -50,8 +49,18 @@ if __name__ == "__main__":
 
     data = data.loc[:, ('Aged 16-24')]
     data.columns = data.columns.map(collapse_columns)
+    data = data.rename(columns=column_mapper).rename(
+        columns=lambda c: '_'.join([prefix, c]))
+    return data
 
-    # Select just the 16-24 age group for the last 16 quarters and save to CSV
-    most_recent_stats(data) \
-      .rename(columns=column_mapper) \
-      .to_csv(NEET_16_24)
+
+if __name__ == "__main__":
+    people = process_data(load_data(sheet_name='People - SA'), prefix='people')
+    men = process_data(load_data(sheet_name='Men - SA'), prefix='men')
+    women = process_data(load_data(sheet_name='Women - SA'), prefix='women')
+
+    data = pd.concat([
+        people, men, women
+    ], axis=1)
+
+    most_recent_stats(data).to_csv(NEET_16_24)

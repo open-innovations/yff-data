@@ -14,8 +14,8 @@ stages:
     cmd: PYTHONPATH=. python scripts/neet/transform.py
     deps:
     - path: scripts/neet/transform.py
-      md5: 1acd4da3af45d744eaffa3d7947f6742
-      size: 1823
+      md5: c1f776327a7d51c8c8232000feeee1b6
+      size: 2150
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 401
@@ -24,5 +24,5 @@ stages:
       size: 183641
     outs:
     - path: data/neet/neet.csv
-      md5: a21066553762484c05caf0214a95c9cf
-      size: 1302
+      md5: 7e8d11df6b0f118ea33fa59715b38cb7
+      size: 3730
