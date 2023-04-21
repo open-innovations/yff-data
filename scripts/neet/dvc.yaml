@@ -19,3 +19,13 @@ stages:
       - data/neet/neet.csv:
           cache: false
           persist: false
+  prepare:
+    cmd: PYTHONPATH=. python scripts/neet/prepare.py
+    wdir: ../..
+    deps:
+      - scripts/neet/prepare.py
+      - data/neet/neet.csv
+    outs:
+      - src/_data/sources/neet/neet.csv:
+          cache: false
+          persist: false
