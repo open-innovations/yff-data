@@ -17,12 +17,12 @@
         max: 1
     key: ITL1 Code
     value: Status
-    scale: YFF-Highlight
-    min: -1
+    scale: YFF-Highlight-Solid
+    min: -3
     max: 1
     columns:
       - name: Label
-        template: '{{ ITL1 Name }}<br />Status: {{ Status | toLocaleString() }} Awarded'
+        template: '{{ Status | toLocaleString() }} partnerships in {{ ITL1 Name }}'
     markers:
       - icon: geo-alt
         tooltip: Hull
