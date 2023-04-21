@@ -1,0 +1,47 @@
+visualisations:
+  - tab: Rates chart
+    type: chart
+    config:
+      file: /data/neet/neet.csv
+      type: bar-chart
+      category: quarter_start
+      legend:
+        show: true     # Default to false
+        position: "top right"
+      series:
+        - title: 'Women'
+          value: women_age_16_to_24_neet_total_rate_sa
+        - title: 'Men'
+          value: men_age_16_to_24_neet_total_rate_sa
+      axis:
+        x:
+          min: 0
+          max: 20
+          ticks:
+            - value: 0
+              grid: true
+              label: ""
+            - value: 5
+              grid: true
+              label: "5%"
+            - value: 10
+              grid: true
+              label: "10%"
+            - value: 15
+              grid: true
+              label: "15%"
+            - value: 20
+              grid: true
+              label: "20%"
+  - tab: Rates table
+    type: table
+    caption: |
+      TKTKTK
+    config:
+      file: /data/neet/neet.csv
+      columns:
+        - name: quarter_start
+          rename: Quarter
+        - name: people_age_16_to_24_neet_total_rate_sa
+        - name: women_age_16_to_24_neet_total_rate_sa
+        - name: men_age_16_to_24_neet_total_rate_sa
