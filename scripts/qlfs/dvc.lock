@@ -48,12 +48,12 @@ stages:
       md5: c6698c274ec714f0fefdb16a775ead39
       size: 2048
     - path: scripts/qlfs/prepare.py
-      md5: 349ee707073fd53ae1a03b2a3f6b720a
-      size: 384
+      md5: dd705c31d6a4d575d246137adbf34789
+      size: 410
     outs:
     - path: src/_data/sources/qlfs/long_term_unemployed.csv
-      md5: 7a20c22017cd4dfcca029b2967322328
-      size: 924
+      md5: a0933385f85ac5e5bb331fa8f7b0d00a
+      size: 964
     - path: src/_data/sources/qlfs/not_in_education.csv
-      md5: c6698c274ec714f0fefdb16a775ead39
-      size: 2048
+      md5: b579cac1e532e0a6ff31dce38fe3a609
+      size: 2080

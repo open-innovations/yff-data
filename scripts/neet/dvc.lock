@@ -33,9 +33,9 @@ stages:
       md5: 7e8d11df6b0f118ea33fa59715b38cb7
       size: 3730
     - path: scripts/neet/prepare.py
-      md5: c5088974075dfc30ad73b5dd7a5894b6
-      size: 330
+      md5: f8941e23ea590ea91dab39891e6868b2
+      size: 265
     outs:
     - path: src/_data/sources/neet/neet.csv
-      md5: 7e8d11df6b0f118ea33fa59715b38cb7
-      size: 3730
+      md5: 4b48285cf8b074e4de31b49e22167f88
+      size: 3757
