@@ -9,17 +9,18 @@ raw_data:
   - /data/raw/qlfs/long_term_unemployed.csv
 ---
 
+<h2>Not in full-time education unemployment rate</h2>
+{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 <h2>Visualisation examples</h2>
-
 <h3>Dump all the visualisations</h3>
 {# Just dump out all the visualisations ------> set this vvvvv to true to debug #}
 {{ comp.viz.main({ visualisations: visualisations, test: false }) | safe }}
 
-<h3>Provide a single item array</h3>
+{# <h3>Provide a single item array</h3>
 {{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h3>Provide just one item</h3>
 {{ comp.viz.main({ visualisations: visualisations[0], test: false }) | safe }}
 
 <h3>Pick a few, and reorder, or duplicate them!</h3>
-{{ comp.viz.main({ visualisations: visualisations | pick(2, 0, 2), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations | pick(2, 0, 2), test: false }) | safe }} #}
