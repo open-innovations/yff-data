@@ -1,4 +1,58 @@
 visualisations:
+  - tab: Overall neet rate 
+    type: chart
+    config:
+      file: "/data/neet/neet.csv"
+      type: line-chart
+      legend: 
+        show: true
+        position: "top right"
+      axis:
+        x: # Horizontal axis
+          min: 0
+          max: 13
+          grid:
+            stroke: "#efefef"
+          # Explicitly define the ticks.
+          # Each tick has a numeric value and a displayed label
+          ticks:
+            - value: 1
+              label: "2020-01-01"
+            - value: 5
+              label: "2021-01-01"
+            - value: 9
+              label: "2022-01-01"
+        y: # The vertical axes
+          min: 8 # A minimum value
+          max: 14 # A maximum value
+          title:
+            label: "16-24 NEET rate"
+          dominant-baseline: text-bottom
+          # Explicitly define the ticks.
+          # Each tick has a numeric value and a displayed label
+          ticks:
+            - value: 8
+              grid: true
+              label: "8"
+            - value: 10
+              grid: true
+              label: "10"
+            - value: 12
+              grid: true
+              label: "12"
+            - value: 14
+              grid: true
+              label: "14"
+      series:
+        - title: "Men"
+          x: "quarter_index" # Column heading to use for x-value
+          y: "men_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
+          size: 10
+        - title: "Women"
+          x: "quarter_index" # Column heading to use for x-value
+          y: "women_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
+          size: 10
+
   - tab: Rates chart
     type: chart
     config:
