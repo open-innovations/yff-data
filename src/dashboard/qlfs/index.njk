@@ -8,12 +8,8 @@ raw_data:
   - /data/raw/qlfs/not_in_education.csv
   - /data/raw/qlfs/long_term_unemployed.csv
 ---
+<h3> Visualisations </h3>
+{{ comp.viz.main({ visualisations: visualisations | pick(0, 1, 2), test: false }) | safe }}
 
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
-
-{{ comp.viz.main({ visualisations: visualisations | pick(1), test: false }) | safe }}
-
-{{ comp.viz.main({ visualisations: visualisations | pick(2), test: false }) | safe }}
-
-<h3>Data Tables</h3>
+<h3>Tables</h3>
 {{ comp.viz.main({ visualisations: visualisations | pick(3, 4, 5) }) | safe }}

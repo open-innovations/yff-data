@@ -1,4 +1,5 @@
-- title: Overall unemployment rate
+- tab: Overall unemployment rate
+  title: Overall unemployment rate
   type: chart
   caption: "The unemployment rate for 16-24 year-olds who are not in full-time education."
   source: ""
@@ -58,7 +59,8 @@
         size: 10
         tooltip: "Label"
 
-- title: Economic inactivity rate
+- tab: Economic inactivity rate
+  title: Economic inactivity rate
   type: chart
   caption: "The unemployment rate for 16-24 year-olds not in full-time education who are economically inactive (neither working nor actively seeking employment)."
   source: ""
@@ -114,7 +116,8 @@
 
 
 
-- title: Long-term unemployment 
+- tab: Long-term unemployment 
+  title: Long-term unemployment 
   type: chart
   caption: Rate (%) of long-term unemployment in the 16-24 age range. Long-term unemployment is defined as someone who unemployed for more than 12 months. 
   source: ""
