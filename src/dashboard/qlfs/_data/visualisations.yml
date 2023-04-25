@@ -1,4 +1,4 @@
-- tab: Overall unemployment rate
+- title: Overall unemployment rate
   type: chart
   caption: "The unemployment rate for 16-24 year-olds who are not in full-time education."
   source: ""
@@ -58,7 +58,7 @@
         size: 10
         tooltip: "Label"
 
-- tab: Economic inactivity rate
+- title: Economic inactivity rate
   type: chart
   caption: "The unemployment rate for 16-24 year-olds not in full-time education who are economically inactive (neither working nor actively seeking employment)."
   source: ""
@@ -112,7 +112,87 @@
         size: 10
         tooltip: "Label"
 
-- tab: Not in full time education (levels)
+
+
+- title: Long-term unemployment 
+  type: chart
+  caption: Rate (%) of long-term unemployment in the 16-24 age range. Long-term unemployment is defined as someone who unemployed for more than 12 months. 
+  source: ""
+  config:
+    file: data/qlfs/long_term_unemployed.csv
+    type: line-chart
+    legend:
+      show: true     # Default to false
+      position: "top right"
+    axis:
+      x:  # Horizontal axis
+        min: 0    # A minimum value
+        max: 13    # A maximum value
+        grid:
+          stroke: "#efefef"
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+            - label: "2020-01-01"
+              value: 1
+            - label: ""
+              value: 2
+            - label: "2020-07-01"
+              value: 3
+            - label: ""
+              value: 4
+            - label: "2021-01-01"
+              value: 5
+            - label: ""
+              value: 6
+            - label: "2021-07-01"
+              value: 7
+            - label: ""
+              value: 8
+            - label: "2022-01-01"
+              value: 9
+            - label: ""
+              value: 10
+            - label: "2022-07-01"
+              value: 11
+            - label: ""
+              value: 12
+      y:             # The vertical axes
+        min: 10     # A minimum value
+        max: 21   # A maximum value
+        title: 
+          label: "Rate (%)"
+        dominant-baseline: text-bottom
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+            - value: 0
+              grid: true
+              label: "0"
+            - value: 5
+              grid: true
+              label: "5"
+            - value: 10
+              grid: true
+              label: "10"
+            - value: 15
+              grid: true
+              label: "15"
+            - value: 20
+              grid: true
+              label: "20"
+    columns:
+        - name: "Label 16-24"
+          template: "age_16_to_24_unemployed_over_12_months_rate_sa<br />{{ quarter_index }}: {{ age_16_to_24_unemployed_over_12_months_rate_sa }}"
+    series:
+      - title: "16-24"
+        x: "quarter_index"                       # Column heading to use for x-value
+        y: "age_16_to_24_unemployed_over_12_months_rate_sa"            # Column heading to use fro y-value
+        size: 50
+        tooltip: "16-24"
+
+- title: Not in full time education (levels)
+  tab: Not in full time education (levels)
   type: table
   caption: |
     This table presents seasonally adjusted population levels for young people aged 16-24 not in full-time education
