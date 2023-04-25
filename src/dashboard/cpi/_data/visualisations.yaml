@@ -29,11 +29,20 @@
         grid:
           stroke-width: 0.5
     category: "sector" # Category names come from
+    columns:
+      - name: "monthly"
+        template: "{{sector}} <br/> monthly change:  {{ monthly_pct_change | toFixed(1)}}%"
+      - name: "quarterly"
+        template: "{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%"
+      - name: "yearly"
+        template: "{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%"
     series:
       - title: "Monthly change"
         value: "monthly_pct_change"
+        tooltip: "monthly"
       - title: "Quarterly change"
         value: "quarterly_pct_change"
+        tooltip: "quarterly"
       - title: "Yearly change"
         value: "yearly_pct_change"
-      
+        tooltip: "yearly"
