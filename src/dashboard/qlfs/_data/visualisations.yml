@@ -50,11 +50,11 @@
             label: "25"
     columns:
         - name: "Label"
-          template: "16-24 not in full-time education unemployment rate: {{age_16_to_24_not_in_ft_education_unemployement_rate_sa | toFixed(1)}}%"
+          template: "16-24 not in full-time education unemployment rate: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
     series:
       - title: "16-24 not in full-time education unemployment rate"
         x: "quarter_index" # Column heading to use for x-value
-        y: "age_16_to_24_not_in_ft_education_unemployement_rate_sa" # Column heading to use fro y-value
+        y: "age_16_to_24_not_in_ft_education_unemployment_rate_sa" # Column heading to use fro y-value
         size: 10
         tooltip: "Label"
 
@@ -139,9 +139,9 @@
     columns:
       - name: quarter_start
         rename: Quarter
-      - name: age_16_to_24_not_in_ft_education_employement_rate_sa
+      - name: age_16_to_24_not_in_ft_education_employment_rate_sa
         rename: Employed rate
-      - name: age_16_to_24_not_in_ft_education_unemployement_rate_sa
+      - name: age_16_to_24_not_in_ft_education_unemployment_rate_sa
         rename: Unemployed rate
       - name: age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa
         rename: Economially inactive rate

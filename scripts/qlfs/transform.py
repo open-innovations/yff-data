@@ -16,8 +16,8 @@ column_mapper = {
     'AGNJ': 'age_16_to_24_not_in_ft_education_in_employment_sa',  # Employed level, 16-24
     'AGOL': 'age_16_to_24_not_in_ft_education_unemployed_sa',  # Unemployed level, 16-24
     'AGPM': 'age_16_to_24_not_in_ft_education_economically_inactive_sa',  # Economivally inactive level, 16-24
-    'AIWI': 'age_16_to_24_not_in_ft_education_employement_rate_sa',  # Employed rate, 16-24
-    'AIXT': 'age_16_to_24_not_in_ft_education_unemployement_rate_sa',  # Unemployed rate, 16-24
+    'AIWI': 'age_16_to_24_not_in_ft_education_employment_rate_sa',  # Employed rate, 16-24
+    'AIXT': 'age_16_to_24_not_in_ft_education_unemployment_rate_sa',  # Unemployed rate, 16-24
     'AIYU': 'age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',  # Economivally inactive rate, 16-24
     # 16-17
     'YBVH': 'age_16_to_17_unemployed_sa',

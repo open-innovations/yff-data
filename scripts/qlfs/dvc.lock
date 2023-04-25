@@ -5,23 +5,25 @@ stages:
     deps:
     - path: scripts/qlfs/extract.py
       md5: b02d93e0e95e6b65b3e5755edaef0a46
-      size: 747
+      size: 763
     outs:
     - path: working/qlfs/a06latest.xls
       md5: 8b2829344f2a39b6182e655e060345b0
       size: 1399296
+      isexec: true
     - path: working/qlfs/unem01latest.xls
       md5: 110f88d867c397305b5d1aede7715ad0
       size: 952320
+      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
-      md5: 67b5a73b2da690cd26b6e814acd5511c
-      size: 4142
+      md5: 888c335b67d71318836d4dbf395a36e8
+      size: 4252
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
-      size: 401
+      size: 416
     - path: working/lookups/lms_lookups.csv
       md5: eb12567d3b2aee1199be9d29cf92bc94
       size: 137643
@@ -35,9 +37,11 @@ stages:
     - path: data/qlfs/long_term_unemployed.csv
       md5: 7a20c22017cd4dfcca029b2967322328
       size: 924
+      isexec: true
     - path: data/qlfs/not_in_education.csv
-      md5: c6698c274ec714f0fefdb16a775ead39
-      size: 2048
+      md5: 2d9555d9aacbda50cb9cf6840bc5d457
+      size: 2046
+      isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
     deps:
@@ -45,15 +49,17 @@ stages:
       md5: 7a20c22017cd4dfcca029b2967322328
       size: 924
     - path: data/qlfs/not_in_education.csv
-      md5: c6698c274ec714f0fefdb16a775ead39
-      size: 2048
+      md5: 2d9555d9aacbda50cb9cf6840bc5d457
+      size: 2046
     - path: scripts/qlfs/prepare.py
       md5: dd705c31d6a4d575d246137adbf34789
-      size: 410
+      size: 424
     outs:
     - path: src/_data/sources/qlfs/long_term_unemployed.csv
       md5: a0933385f85ac5e5bb331fa8f7b0d00a
       size: 964
+      isexec: true
     - path: src/_data/sources/qlfs/not_in_education.csv
-      md5: b579cac1e532e0a6ff31dce38fe3a609
-      size: 2080
+      md5: a8785949d55abb98969f1bf700da9456
+      size: 2078
+      isexec: true
