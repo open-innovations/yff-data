@@ -1,10 +1,9 @@
-- title: CPI Percentage Change
+- title: CPI percentage change
   # citations:
   #   - title:
   #     link: about:blank
   type: chart
-  caption: "Percentage change was derived from index values in the CPI dataset (https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation). \
-            The most recent data is {{ fromJSON(data.cpi.stats.CPI_most_recent_month) }} "
+  caption: "CPI percentage change across 4 key metrics."
   config:
     file: /data/cpi/cpi.csv
     type: bar-chart
