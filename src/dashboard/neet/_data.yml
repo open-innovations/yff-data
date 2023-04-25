@@ -1,6 +1,7 @@
 visualisations:
   - tab: Overall neet rate 
     type: chart
+    caption: "The unemployment rate for 16-24 year-olds who are not in education, employment or training (NEET)."
     config:
       file: "/data/neet/neet.csv"
       type: line-chart
@@ -26,7 +27,7 @@ visualisations:
           min: 8 # A minimum value
           max: 14 # A maximum value
           title:
-            label: "16-24 NEET rate"
+            label: "16-24 NEET rate (%)"
           dominant-baseline: text-bottom
           # Explicitly define the ticks.
           # Each tick has a numeric value and a displayed label
@@ -43,15 +44,22 @@ visualisations:
             - value: 14
               grid: true
               label: "14"
+      columns:
+        - name: "Men"
+          template: "Men NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
+        - name: "Women"
+          template: "Women NEET rate: {{women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
       series:
         - title: "Men"
           x: "quarter_index" # Column heading to use for x-value
           y: "men_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
           size: 10
+          tooltip: "Men"
         - title: "Women"
           x: "quarter_index" # Column heading to use for x-value
           y: "women_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
           size: 10
+          tooltip: "Women"
 
   - tab: Rates chart
     type: chart

@@ -1,5 +1,6 @@
 - tab: Overall unemployment rate
   type: chart
+  caption: "The unemployment rate for 16-24 year-olds who are not in full-time education."
   source: ""
   config:
     file: "/data/qlfs/not_in_education.csv"
@@ -27,7 +28,7 @@
         min: 5 # A minimum value
         max: 20 # A maximum value
         title:
-          label: "Unemployment rate"
+          label: "Unemployment rate (%)"
         dominant-baseline: text-bottom
         # Explicitly define the ticks.
         # Each tick has a numeric value and a displayed label
@@ -47,11 +48,70 @@
           - value: 25
             grid: true
             label: "25"
+    columns:
+        - name: "Label"
+          template: "16-24 not in full-time education unemployment rate: {{age_16_to_24_not_in_ft_education_unemployement_rate_sa | toFixed(1)}}%"
     series:
       - title: "16-24 not in full-time education unemployment rate"
         x: "quarter_index" # Column heading to use for x-value
         y: "age_16_to_24_not_in_ft_education_unemployement_rate_sa" # Column heading to use fro y-value
         size: 10
+        tooltip: "Label"
+
+- tab: Economic inactivity rate
+  type: chart
+  caption: "The unemployment rate for 16-24 year-olds not in full-time education who are economically inactive (neither working nor actively seeking employment)."
+  source: ""
+  config:
+    file: "/data/qlfs/not_in_education.csv"
+    type: line-chart
+    #source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
+    legend:
+      show: true # Default to false
+      position: "top right"
+    axis:
+      x: # Horizontal axis
+        min: 0 # A minimum value
+        max: 13 # A maximum value
+        grid:
+          stroke: "#efefef"
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+          - value: 1
+            label: "2020-01-01"
+          - value: 5
+            label: "2021-01-01"
+          - value: 9
+            label: "2022-01-01"
+      y: # The vertical axes
+        min: 15 # A minimum value
+        max: 20 # A maximum value
+        title:
+          label: "Rate (%)"
+        dominant-baseline: text-bottom
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+          - value: 15
+            grid: true
+            label: "15"
+          - value: 17.5
+            grid: true
+            label: "17.5"
+          - value: 20
+            grid: true
+            label: "20"
+    columns:
+        - name: "Label"
+          template: "16-24 economically inactive unemployment rate: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+    series:
+      - title: "16-24 economically inactive unemployment rate"
+        x: "quarter_index" # Column heading to use for x-value
+        y: "age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa" # Column heading to use fro y-value
+        size: 10
+        tooltip: "Label"
+
 - tab: Not in full time education (levels)
   type: table
   caption: |
