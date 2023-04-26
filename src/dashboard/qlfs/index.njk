@@ -8,6 +8,7 @@ raw_data:
   - /data/raw/qlfs/not_in_education.csv
   - /data/raw/qlfs/long_term_unemployed.csv
 ---
+
 <h3> Visualisations </h3>
 <p>
 These visualisations are driven by data from
@@ -15,7 +16,10 @@ These visualisations are driven by data from
 and <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbyageanddurationseasonallyadjustedunem01sa">UNEM01 SA</a>
 from the Office for National Statistics. This page is a work in progress with updates added regularly.
 </p>
-{{ comp.viz.main({ visualisations: visualisations | pick(0, 1, 2), test: false }) | safe }}
+
+{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
+
+{{ comp.viz.main({ visualisations: visualisations | pick(1, 2, 3), test: false }) | safe }}
 
 <h3>Data Tables</h3>
-{{ comp.viz.main({ visualisations: visualisations | pick(3, 4, 5) }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations | pick(4, 5, 6) }) | safe }}

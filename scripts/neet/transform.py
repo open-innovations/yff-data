@@ -59,6 +59,8 @@ def summarise():
 
     latest = pd.DataFrame({
             'Latest NEET Rate' : (neet.people_age_16_to_24_neet_total_rate_sa.tail(1)).round(1),
+            'Latest NEET Rate - Men' : (neet.men_age_16_to_24_neet_total_sa.tail(1)).round(1), 
+            'Latest NEET Rate - Women' : (neet.women_age_16_to_24_neet_total_sa.tail(1)).round(1)
     }).T.reset_index()
     print(latest)
     latest = latest.rename(columns = {'index': 'Title', 11: 'Value'})
