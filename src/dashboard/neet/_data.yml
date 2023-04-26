@@ -1,4 +1,16 @@
 visualisations: 
+  - title: Headline Stats
+    type: dashboard
+    config:
+      file: /data/neet/headlines.csv
+      title: 'Title'
+      value: 'Value'
+      note: 'Note'
+      width: 1000px
+      panels:
+        - name: 'Latest NEET Rate'
+          colour: Orange-2
+
   - tab: Overall NEET rate
     title: Overall NEET rate
     type: chart

@@ -26,10 +26,10 @@ stages:
     #       cache: false
     #       persist: false
   transform:
-    cmd: PYTHONPATH=. python3 scripts/cpi/transform_v2.py
+    cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     wdir: ../..
     deps:
-      - scripts/cpi/transform_v2.py
+      - scripts/cpi/transform.py
       - scripts/util/date.py
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       - working/lookups/MM23_variable_lookup.csv

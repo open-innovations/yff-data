@@ -1,3 +1,19 @@
+- title: Headline stats
+  type: dashboard
+  config:
+    file: /data/cpi/headlines.csv
+    title: 'Title'
+    value: 'Value'
+    note: 'Note'
+    width: 333px
+    panels:
+      - name: 'Monthly change'
+        colour: Cherry-1
+      - name: 'Quarterly change'
+        colour: Orange-2
+      - name: 'Yearly change'
+        colour: Chartreuse-2
+
 - title: CPI percentage change
   # citations:
   #   - title:

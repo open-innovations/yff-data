@@ -1,3 +1,21 @@
+- title: Headline stats
+  type: dashboard
+  config:
+    file: /data/qlfs/headlines.csv
+    title: 'Title'
+    value: 'Value'
+    width: 333px
+    note: 'Note'
+    suffix: '%'
+    panels:
+      - name: 'Overall unemployment'
+        colour: Cherry-1
+        suffix: '%'
+      - name: 'Long-term unemployment'
+        colour: Orange-2
+      - name: 'Economic inactivity'
+        colour: Chartreuse-2
+
 - tab: Overall unemployment rate
   title: Overall unemployment rate
   type: chart

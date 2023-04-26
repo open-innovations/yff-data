@@ -2,8 +2,10 @@ import os
 import pandas as pd
 from extract import CPI_LATEST
 from scripts.util.date import quarter_to_date, most_recent_stats
+from scripts.util.util import slugify
 
 DATA_DIR = os.path.realpath(os.path.join('data', 'cpi'))
+HEADLINES_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'cpi'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
 def load_data(filename, sheet_name, header=None, index_col=None):
@@ -16,49 +18,82 @@ def load_data(filename, sheet_name, header=None, index_col=None):
     data.index.names = ['code']
     return data
 
+def pct_change(col1, col2):
+    return ((col1 - col2) / col2)*100
+
+def summarise(): 
+    cpi = pd.read_csv(os.path.join(DATA_DIR, 'cpi.csv'))
+
+    latest = pd.DataFrame({
+            'Monthly change' : (cpi['monthly_pct_change'].iloc[:1]),
+            'Quarterly change' : (cpi['quarterly_pct_change'].iloc[:1]),
+            'Yearly change' : (cpi['yearly_pct_change'].iloc[:1]),
+    }).T.reset_index()
+
+    latest = latest.rename(columns = {'index': 'Title', 0: 'Value'})
+    latest['Note'] = ''
+    latest.to_csv(os.path.join(HEADLINES_DIR, 'headlines.csv'), index=False)
+
 if __name__ == "__main__":
-    data = load_data(CPI_LATEST, sheet_name='Table 4', header=[4, 8, 9], index_col=1)
 
-    measures = ['D7BU', 'D7BW', 'D7BX', 'D7C4']
-    columns = [' Percentage change', 'Percentage change over 12 months']
-    
-    CPI_data = data.loc[measures]
-    CPI_data = CPI_data[columns]
+    measures = ['D7BT', 'D7BU', 'D7BW', 'D7BX', 'D7C4']
 
-    #these are the most recent (end) columns for the 12 month and 
-    # most recent month pct change data.
-    pct_change_12_months = CPI_data['Percentage change over 12 months'].iloc[:, -1:]
-    pct_change_1_month = CPI_data[' Percentage change'].iloc[:, -2:-1]
-    
-    #merge and rename the two frames
-    df = pct_change_1_month.merge(pct_change_12_months, left_index=True, right_index=True)
-    df.rename(columns={'Unnamed: 12_level_2': 'pct_change_1_month', 'Unnamed: 22_level_2': 'pct_change_12_months'}, inplace=True)
-
-    #select only the values we need.
-    month = df.columns[0][0]
-    df = df[month]
-    
-
-    #data2 = load_data(CPI_LATEST, sheet_name='Table 21', header=[5,6], index_col=2)
-    data2 = pd.read_excel(CPI_LATEST, sheet_name='Table 21', index_col=1, skiprows=4, header=[0,1])
-    table21 = data2.loc[measures]
+    data = pd.read_excel(CPI_LATEST, sheet_name='Table 21', index_col=1, skiprows=4, header=[0,1])
+    table21 = data.loc[measures]
     most_recent_month = table21.iloc[:, -1:]
+    last_month = table21.iloc[:, -2:-1]
     quarter = table21.iloc[:, -4:-3]
+    year = table21.iloc[:, -13:-12]
     
     m1 = most_recent_month.columns[0][1]
     m2 = quarter.columns[0][1]
-    
-    most_recent_month.rename(columns={m1: 'quarterly_idx_change'}, inplace=True)
-    quarter.rename(columns={m2: 'quarterly_idx_change'}, inplace=True)
-    quarterly_change = most_recent_month[most_recent_month.columns[0][0]] - quarter[quarter.columns[0][0]]
-   
-    df['quarterly_idx_change'] = quarterly_change
+    m3 = year.columns[0][1]
+    m4 = last_month.columns[0][1]
+    df = pd.DataFrame()
+    most_recent_month.rename(columns={m1: 'value'}, inplace=True)
+    last_month.rename(columns={m4: 'value'}, inplace=True)
+    quarter.rename(columns={m2: 'value'}, inplace=True)
+    year.rename(columns={m3: 'value'}, inplace=True)
+
+    #print(most_recent_month[most_recent_month.columns[0][0]], quarter[quarter.columns[0][0]], year)
+    df['monthly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], last_month[last_month.columns[0][0]])
+    df['quarterly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], quarter[quarter.columns[0][0]])
+    df['yearly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], year[year.columns[0][0]])
+    stats = pd.Series(data={'CPI_most_recent_month': m1, 'CPI_last_month': m4, 'CPI_last_quarter': m2})
+
+    #remap codes to proper names
     column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
                           usecols=['code', 'name'], index_col='code').to_dict()['name']
-    dates = pd.Series(data={'latest_month': month, 'quarterly': m2})
     df.rename(index=column_name, inplace=True)
-    df.to_csv(os.path.join(DATA_DIR, 'CPI.csv'))
-    dates.to_json(os.path.join(DATA_DIR, 'dates.json'))
+    df.rename(index=slugify, inplace=True)
+    df.index.name = 'sector'
+    df = df.round(2)
+    df.rename(index={'cpi_index_01_food_and_non_alcoholic_beverages_2015_100': "Food & Non-Alcoholic Beverages",
+                     'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & Footwear",
+                     'cpi_index_04_housing_water_and_fuels_2015_100': "Housing & Water & Fuels",
+                     'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture",
+                     'cpi_index_00_all_items_2015_100': "Total"},
+                     inplace=True)
+    
+    #the below, up to writefiles is possibly to be added in to prepare stage for tidiness.
+    minum = min(df.min())
+    maxum = max(df.max())
+    if minum > 0:
+        stats['min'] = 0
+    if minum < 0:
+        stats['min'] = minum
+    if maxum > 0:
+        stats['max'] = round(maxum, -1)
+    #I'd expect there will always be a positive pct change. 
+    
+    #write file
+    df.to_csv(os.path.join(DATA_DIR, 'cpi.csv'))
+    stats.to_json(os.path.join(DATA_DIR, 'stats.json'))
+
+    summarise()
+    
+
+    
     
     
     

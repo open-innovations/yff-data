@@ -6,6 +6,7 @@ from extract import A06_SA_LATEST, UNEM01_SA_LATEST
 from scripts.util.date import quarter_to_date, most_recent_stats
 
 DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
+SUMMARY_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
 column_name = pd.read_csv('working/lookups/lms_lookups.csv',
@@ -96,10 +97,23 @@ def transform_UNEM01():
 
     return UNEM01_data
 
+def summarise(): 
+    long_term_unemployed = pd.read_csv(os.path.join(DATA_DIR, 'long_term_unemployed.csv'))
+    not_in_education = pd.read_csv(os.path.join(DATA_DIR, 'not_in_education.csv'))
+
+    summary = pd.DataFrame({
+            'Overall unemployment' : (not_in_education.age_16_to_24_not_in_ft_education_unemployment_rate_sa.tail(1)).round(1),
+            'Long-term unemployment':(long_term_unemployed.age_16_to_24_unemployed_over_12_months_rate_sa.tail(1)).round(1),
+            'Economic inactivity':(not_in_education.age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa.tail(1)).round(1)
+    }).T.reset_index()
+    summary = summary.rename(columns = {'index': 'Title', 11: 'Value'})
+    summary['Note'] = ''
+    summary.to_csv(os.path.join(SUMMARY_DIR, 'headlines.csv'), index=False)
 
 if __name__ == "__main__":
     transform_A06()
     transform_UNEM01()
+    summarise()
 
     notes = [
         'Long-term unemoployment levels for 16-24 are derived from aggregates 16-17 and 18-24 rates',

@@ -6,6 +6,7 @@ from scripts.util.date import quarter_to_date, most_recent_stats
 from extract import NEET_RAW_LATEST
 
 DATA_DIR = os.path.join('data', 'neet')
+HEADLINES_DIR = os.path.join('src', '_data', 'sources', 'neet')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 NEET_16_24 = os.path.join(DATA_DIR, 'neet.csv')
@@ -53,6 +54,17 @@ def process_data(data, prefix='people'):
         columns=lambda c: '_'.join([prefix, c]))
     return data
 
+def summarise(): 
+    neet = pd.read_csv(NEET_16_24)
+
+    latest = pd.DataFrame({
+            'Latest NEET Rate' : (neet.people_age_16_to_24_neet_total_rate_sa.tail(1)).round(1),
+    }).T.reset_index()
+    print(latest)
+    latest = latest.rename(columns = {'index': 'Title', 11: 'Value'})
+    latest['Note'] = ''
+    latest.to_csv(os.path.join(HEADLINES_DIR, 'headlines.csv'), index=False)
+
 
 if __name__ == "__main__":
     people = process_data(load_data(sheet_name='People - SA'), prefix='people')
@@ -64,3 +76,4 @@ if __name__ == "__main__":
     ], axis=1)
 
     most_recent_stats(data).to_csv(NEET_16_24)
+    summarise()
