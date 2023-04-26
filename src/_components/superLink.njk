@@ -1,0 +1,24 @@
+{% comp 'grid.pane', { link: page.url, extra_classes: 'turquoise-bg' } %}
+<h2>{{ page.title }}</h2>
+
+{% if page.publication_date %}
+  <div class="post-date">{{ project.publication_date | date('YFF') }}</div>
+{% endif %}
+
+{% if page.visualisations and show_viz | default(true) %}
+  {% set key_visualisation = page.visualisations[featured_visualisation or 0] %}
+  {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
+{% endif %}
+
+{% if page.summary %}
+  <div class="summary">
+    {{ page.summary | first | md | striplinks | safe }}
+  </div>
+{% endif %}
+
+{% if page.topics %}
+  <div>
+    {{ comp.tagCloud({ tags: page.topics }) | safe }}
+  </div>
+{% endif %}
+{% endcomp %}

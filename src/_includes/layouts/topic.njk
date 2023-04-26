@@ -2,8 +2,12 @@
 layout: layouts/simple.njk
 ---
 
-<ul>
+<p>
+  The pages listed below are tagged with the {{ title }} topic.
+</p>
+
+{% comp 'grid.auto', {min_width: '30em'} %}
 {% for page in search.pages("topics*=\"" + title + "\"") | data %}
-  <li><a href="{{ page.url }}">{{ page.title or "UNKNOWN" }}</a></li>
+  {{ comp.superlink({ page: page }) | safe }}
 {% endfor %}
-</ul>
+{% endcomp %}
