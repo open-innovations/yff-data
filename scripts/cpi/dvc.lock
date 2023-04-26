@@ -42,8 +42,8 @@ stages:
       md5: ddbb2bec90bec16cb15f09fdaaa0eb36
       size: 244
     - path: scripts/cpi/prepare.py
-      md5: 0701b314b1886f2466ecfa26f3f57ed9
-      size: 378
+      md5: abe49a131b4f1d814cd70cdc1ec31669
+      size: 1695
     outs:
     - path: src/_data/sources/cpi/cpi.csv
       md5: ddbb2bec90bec16cb15f09fdaaa0eb36
