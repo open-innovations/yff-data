@@ -4,6 +4,7 @@ tags:
   - dashboard
 topics:
   - CPI
+  - Economic Indicators
 raw_data:
   - /data/raw/cpi/cpi.csv
 ---
@@ -15,4 +16,5 @@ Office for National Statistics
 We derive percentage change figures from index values, and our values match the monthly and yearly percentage change figures
 provided in the dataset, verifying our method. This page is a work in progress with updates added regularly.
 </p>
-{{ comp.viz.main({ visualisations: visualisations, test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations| pick(0), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations| pick(1), test: false }) | safe }}

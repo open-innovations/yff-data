@@ -115,7 +115,7 @@ visualisations:
               label: "200k"
     
   - tab: Economic inactivity levels
-    title: Econimic inactivity levels
+    title: Economic inactivity levels
     type: chart
     caption: "Economic inactivity levels for people not in education, training or employment (NEET). Economic inactivity \
               is defined as people neither working nor actively seeking employment."
@@ -158,9 +158,12 @@ visualisations:
               grid: true
               label: "300k"
 
-  - tab: Rates chart
+  - tab: Overall rates chart
     type: chart
-    caption: "This chart shows the same data as Overall unemployment rate"
+    caption: "This chart shows the same data as Overall unemployment rate but as a bar chart.
+              Either works, but typically we would represent time series data using a line chart.
+              A scatter chart could also be possible, since the data is quarterly and therefore
+              more discretised than the line chart makes it appear."
     config:
       file: /data/neet/neet.csv
       type: bar-chart
@@ -193,9 +196,9 @@ visualisations:
             - value: 20
               grid: true
               label: "20%"
-  - tab: Rates table
+  - tab: Overall rates table
     type: table
-    caption: ""
+    caption: 'The overall rates raw data in a table'
     config:
       file: /data/neet/neet.csv
       columns:
