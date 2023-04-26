@@ -1,9 +1,10 @@
 ---
 title: Topics
+url: /topics/
 ---
 
-<ul>
-  {% for topic in search.pages("topic", "title") | data %}
-    <li><a href="{{ topic.url }}">{{ topic.title }}</a></li>
-  {% endfor %}
-</ul>
+<p>
+  These are the currently defined topics.
+</p>
+
+{{ comp.tagCloud({ tags: search.pages("topic", "title") | data | getAttr('title'), live_links: true }) | safe }}

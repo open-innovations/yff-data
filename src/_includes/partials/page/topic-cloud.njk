@@ -1,6 +1,6 @@
 {% if topics -%}
 <aside>
   <p>Topics:</p>
-  {{ comp.tagCloud({ tags: topics, link_prefix: 'topic' }) | safe }}
+  {{ comp.tagCloud({ tags: topics, live_links: true }) | safe }}
 </aside>
 {%- endif %}

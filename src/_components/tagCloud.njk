@@ -16,11 +16,15 @@ css: |
     color: inherit;
   }
 ---
+{# 
+  Only works for topics at the moment
+#}
 <ul class="tag-cloud">
   {% for tag in tags %}
+    {% set link_page = search.page('topic title="'+tag+'"').data %}
     <li>
-    {%- if link_prefix -%}
-      <a href="/{{ link_prefix }}/{{ tag | slugify }}/"<>{{ tag }}</a>
+    {%- if live_links -%}
+      <a href="{{ link_page.url }}"<>{{ tag }}</a>
     {%- else -%}
       {{ tag }}
     {%- endif -%}
