@@ -31,7 +31,7 @@
             label: "Sep to Nov 2020"
       y: # The vertical axes
         min: 200 # A minimum value
-        max: 1400 # A maximum value
+        max: 1350 # A maximum value
         title:
           label: "Number of vacancies (thousands)"
         dominant-baseline: text-bottom
@@ -55,10 +55,7 @@
             label: "1000"
           - value: 1200
             grid: true
-            label: "1200"          
-          - value: 1400
-            grid: true
-            label: "1400"          
+            label: "1200"                    
     columns:
         - name: "Label"
           template: "{{Thousands | toFixed(0)}},000 Vacancies (estimated)"
