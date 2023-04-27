@@ -40,6 +40,9 @@ stages:
       - data/cpi/stats.json:
           cache: false
           persist: false
+      - src/_data/sources/cpi/headlines.csv:
+          cache: false 
+          persist: false
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     wdir: ../..

@@ -7,6 +7,8 @@
     value: 'Value'
     note: 'Note'
     width: 333px
+    units:
+      postfix: 'Suffix'
     panels:
       - name: 'Monthly change'
         colour: Orange
@@ -29,8 +31,8 @@
       position: "top right"
     axis:
       x:
-        min: -20
-        max: 20
+        min: 0
+        max: 30
         grid:
           stroke-dasharray: "6 2"
           stroke-width: 1

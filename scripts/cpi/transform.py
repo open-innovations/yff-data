@@ -25,13 +25,14 @@ def summarise():
     cpi = pd.read_csv(os.path.join(DATA_DIR, 'cpi.csv'))
 
     latest = pd.DataFrame({
-            'Monthly change' : (cpi['monthly_pct_change'].iloc[:1]),
-            'Quarterly change' : (cpi['quarterly_pct_change'].iloc[:1]),
-            'Yearly change' : (cpi['yearly_pct_change'].iloc[:1]),
+            'Monthly change' : (cpi['monthly_pct_change'].iloc[:1]).round(1),
+            'Quarterly change' : (cpi['quarterly_pct_change'].iloc[:1]).round(1),
+            'Yearly change' : (cpi['yearly_pct_change'].iloc[:1].round(1))
     }).T.reset_index()
 
     latest = latest.rename(columns = {'index': 'Title', 0: 'Value'})
     latest['Note'] = ''
+    latest['Suffix'] = '%'
     latest.to_csv(os.path.join(HEADLINES_DIR, 'headlines.csv'), index=False)
 
 if __name__ == "__main__":
