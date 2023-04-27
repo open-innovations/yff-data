@@ -1,0 +1,120 @@
+- tab: Estimated Number of Vacancies
+  title: Estimated Number of Vacancies
+  type: chart
+  caption: "Number of vacancies in the UK, seasonally adjusted, January to March 2004 to January to March 2023"
+  source: ""
+  config:
+    file: "/data/vacancies/vacancies.csv"
+    type: line-chart
+    #source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
+    legend:
+      show: false # Default to false
+      position: "top right"
+    axis:
+      x: # Horizontal axis
+        min: 0 # A minimum value
+        max: 240 # A maximum value
+        grid:
+          stroke: "#efefef"
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+          - value: 0
+            label: "Jan to Mar 2004"
+          - value: 50
+            label: "Mar to May 2008"
+          - value: 100
+            label: "May to Jul 2012"
+          - value: 150
+            label: "Jul to Sep 2016"
+          - value: 200
+            label: "Sep to Nov 2020"
+      y: # The vertical axes
+        min: 200 # A minimum value
+        max: 1400 # A maximum value
+        title:
+          label: "Number of vacancies (thousands)"
+        dominant-baseline: text-bottom
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+          - value: 200
+            grid: true
+            label: "200"         
+          - value: 400
+            grid: true
+            label: "400"
+          - value: 600
+            grid: true
+            label: "600"
+          - value: 800
+            grid: true
+            label: "800"
+          - value: 1000
+            grid: true
+            label: "1000"
+          - value: 1200
+            grid: true
+            label: "1200"          
+          - value: 1400
+            grid: true
+            label: "1400"          
+    columns:
+        - name: "Label"
+          template: "{{Thousands | toFixed(0)}},000 Vacancies (estimated)"
+    series:
+      - title: "Thousands"
+        x: "index" # Column heading to use for x-value
+        y: "Thousands" # Column heading to use fro y-value
+        size: 10
+        tooltip: "Label"
+
+
+- title: Quarterly growth by sector
+  # citations:
+  #   - title:
+  #     link: about:blank
+  type: chart
+  caption: "January to March 2023 three-month average vacancies in the UK, quarterly percentage growth from October to December 2022 and percentage growth from pre-coronavirus (COVID-19) pandemic January to March 2020."
+  config:
+    file: /data/vacancies/vacancies_by_sector.csv
+    type: bar-chart
+    legend:
+      show: true # Default to false
+      position: "top right"
+    axis:
+      x:
+        min: -20
+        max: 90
+        grid:
+          stroke-dasharray: "6 2"
+          stroke-width: 1
+        ticks:
+          - value: -20
+            label: "-20%"
+          - value: 0
+            label: "0%"
+          - value: 20
+            label: "20%"
+          - value: 40
+            label: "40%"          
+          - value: 60
+            label: "60%"          
+          - value: 80
+            label: "80%"          
+      y:
+        grid:
+          stroke-width: 0.5
+    category: "Sector" # Category names come from
+    # columns:
+    #   - name: "Growth compared with last quarter (%)"
+    #     template: "{{Sector}} <br/> {{ Growth compared with last quarter (%) | toFixed(1)}}%"
+    #   - name: "Growth compared with same quarter in 2020 (%)"
+    #     template: "{{Sector}} <br/> quarterly change:  {{ Growth compared with same quarter in 2020 (%) | toFixed(1)}}%"
+    series:
+      - title: "Growth compared with last quarter (%)"
+        value: "Growth compared with last quarter (%)"
+        tooltip: "Growth compared with last quarter (%)"
+      - title: "Growth compared with same quarter in 2020 (%)"
+        value: "Growth compared with same quarter in 2020 (%)"
+        tooltip: "Growth compared with same quarter in 2020 (%)"

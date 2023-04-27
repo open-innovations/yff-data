@@ -1,0 +1,31 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/vacancies/prepare.py
+    deps:
+    - path: scripts/vacancies/prepare.py
+      md5: 4e147f2fe1f209c5b69d186e990cfd4d
+      size: 1302
+    - path: working/vacancies/vacancies.csv
+      md5: ad0539f08cb2832e433ac2dcc03089ec
+      size: 5764
+    outs:
+    - path: src/_data/sources/vacancies/vacancies.csv
+      md5: 8da50a8bc26dfdd6ebd3292178ca85c2
+      size: 5428
+      isexec: true
+  extract:
+    cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
+    deps:
+    - path: scripts/vacancies/extract.py
+      md5: 417bbb69913c6921ee610e9bb7a3b8d5
+      size: 769
+    outs:
+    - path: working/vacancies/vacancies.csv
+      md5: ad0539f08cb2832e433ac2dcc03089ec
+      size: 5764
+      isexec: true
+    - path: working/vacancies/vacancies_by_sector.csv
+      md5: 9d9e6f35508af78c244358a65215fe62
+      size: 966
+      isexec: true
