@@ -158,9 +158,9 @@ visualisations:
               grid: true
               label: "300k"
 
-  - tab: Overall rates chart
+  - title: Overall rates chart
     type: chart
-    caption: "This chart shows the same data as Overall unemployment rate but as a bar chart.
+    caption: "This chart shows the same data as overall unemployment rate but as a bar chart.
               Either works, but typically we would represent time series data using a line chart.
               A scatter chart could also be possible, since the data is quarterly and therefore
               more discretised than the line chart makes it appear."
@@ -207,3 +207,25 @@ visualisations:
         - name: people_age_16_to_24_neet_total_rate_sa
         - name: women_age_16_to_24_neet_total_rate_sa
         - name: men_age_16_to_24_neet_total_rate_sa
+
+  - tab: Unemployment table
+    type: table
+    caption: 'Unemployment levels as a table'
+    config:
+      file: /data/neet/neet.csv
+      columns:
+        - name: quarter_start
+          rename: Quarter
+        - name: men_age_16_to_24_neet_unemployed_sa
+        - name: women_age_16_to_24_neet_unemployed_sa
+  
+  - tab: Economic inactivity table
+    type: table
+    caption: 'Economic inactivity levels as a table'
+    config:
+      file: /data/neet/neet.csv
+      columns:
+        - name: quarter_start
+          rename: Quarter
+        - name: men_age_16_to_24_neet_economically_inactive_sa
+        - name: women_age_16_to_24_neet_economically_inactive_sa

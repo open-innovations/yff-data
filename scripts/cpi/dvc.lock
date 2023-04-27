@@ -15,8 +15,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
-      md5: 6778a3570374aab82136c4e7aa361d8b
-      size: 3778
+      md5: 6d3fc7b34da882af838cbaeb16beec38
+      size: 3780
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
@@ -28,8 +28,8 @@ stages:
       size: 295471
     outs:
     - path: data/cpi/cpi.csv
-      md5: ddbb2bec90bec16cb15f09fdaaa0eb36
-      size: 244
+      md5: 829b64899fb6acfacf2fb070a53d9d72
+      size: 246
       isexec: true
     - path: data/cpi/stats.json
       md5: 716c05072b83dc5502d9904b13cb2afa
@@ -39,15 +39,15 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
     - path: data/cpi/cpi.csv
-      md5: ddbb2bec90bec16cb15f09fdaaa0eb36
-      size: 244
+      md5: 829b64899fb6acfacf2fb070a53d9d72
+      size: 246
     - path: scripts/cpi/prepare.py
       md5: abe49a131b4f1d814cd70cdc1ec31669
       size: 1695
     outs:
     - path: src/_data/sources/cpi/cpi.csv
-      md5: ddbb2bec90bec16cb15f09fdaaa0eb36
-      size: 244
+      md5: 829b64899fb6acfacf2fb070a53d9d72
+      size: 246
       isexec: true
     - path: src/_data/sources/cpi/stats.json
       md5: 716c05072b83dc5502d9904b13cb2afa

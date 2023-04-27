@@ -7,6 +7,8 @@
     value: 'Value'
     note: 'Note'
     width: 333px
+    units:
+      postfix: 'Suffix'
     panels:
       - name: 'Monthly change'
         colour: Orange
@@ -20,7 +22,7 @@
   #   - title:
   #     link: about:blank
   type: chart
-  caption: "CPI percentage change overall, and across 4 key metrics"
+  caption: "CPI percentage change"
   config:
     file: /data/cpi/cpi.csv
     type: bar-chart
@@ -29,8 +31,8 @@
       position: "top right"
     axis:
       x:
-        min: -20
-        max: 20
+        min: 0
+        max: 30
         grid:
           stroke-dasharray: "6 2"
           stroke-width: 1
@@ -67,3 +69,16 @@
         value: "yearly_pct_change"
         tooltip: "yearly"
         colour: "#F7AB3D"
+- tab: 
+  type: table
+  caption: |
+      "CPI percentage change" 
+  config:
+    file: /data/cpi/cpi.csv
+    columns:
+      - name: monthly_pct_change
+        rename: Monthly
+      - name: quarterly_pct_change
+        rename: Quarterly
+      - name: yearly_pct_change
+        rename: Yearly
