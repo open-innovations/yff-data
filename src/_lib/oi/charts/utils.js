@@ -662,6 +662,8 @@ export function Series(s,props,data,extra){
 			// Update bar position
 			if(pts[i].bar){
 				p1 = opt.getXY(Math.max(data[i].xstart||0,extra.axis.x.min),data[i].y + extra.barsize/2);
+				// To limit the bars from leaking off to the left
+				// p2 = opt.getXY(Math.max(data[i].x,extra.axis.x.min),data[i].y - extra.barsize/2);
 				p2 = opt.getXY(data[i].x,data[i].y - extra.barsize/2);
 				w = (p2.x-p1.x);
 				x = p1.x + (w < 0 ? w : 0);
