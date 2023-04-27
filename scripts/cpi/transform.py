@@ -46,6 +46,7 @@ if __name__ == "__main__":
     year = table21.iloc[:, -13:-12]
     
     m1 = most_recent_month.columns[0][1]
+    date = most_recent_month.columns[0][0]
     m2 = quarter.columns[0][1]
     m3 = year.columns[0][1]
     m4 = last_month.columns[0][1]
@@ -59,7 +60,7 @@ if __name__ == "__main__":
     df['monthly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], last_month[last_month.columns[0][0]])
     df['quarterly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], quarter[quarter.columns[0][0]])
     df['yearly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], year[year.columns[0][0]])
-    stats = pd.Series(data={'CPI_most_recent_month': m1, 'CPI_last_month': m4, 'CPI_last_quarter': m2})
+    stats = pd.Series(data={'CPI_most_recent_month': m1, 'CPI_last_month': m4, 'CPI_last_quarter': m2, 'date': date})
 
     #remap codes to proper names
     column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
@@ -74,17 +75,6 @@ if __name__ == "__main__":
                      'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture",
                      'cpi_index_00_all_items_2015_100': "Total"},
                      inplace=True)
-    
-    #the below, up to writefiles is possibly to be added in to prepare stage for tidiness.
-    minum = min(df.min())
-    maxum = max(df.max())
-    if minum > 0:
-        stats['min'] = 0
-    if minum < 0:
-        stats['min'] = minum
-    if maxum > 0:
-        stats['max'] = round(maxum, -1)
-    #I'd expect there will always be a positive pct change. 
     
     #write file
     df.to_csv(os.path.join(DATA_DIR, 'cpi.csv'))

@@ -1,5 +1,6 @@
 - title: Headline stats
   type: dashboard
+  caption: "Overall CPI latest figures"
   config:
     file: /data/cpi/headlines.csv
     title: 'Title'
@@ -8,18 +9,18 @@
     width: 333px
     panels:
       - name: 'Monthly change'
-        colour: Cherry-1
+        colour: Orange
       - name: 'Quarterly change'
-        colour: Orange-2
+        colour: Blue
       - name: 'Yearly change'
-        colour: Chartreuse-2
+        colour: Gold
 
 - title: CPI percentage change
   # citations:
   #   - title:
   #     link: about:blank
   type: chart
-  caption: "CPI percentage change across 4 key metrics."
+  caption: "CPI percentage change overall, and across 4 key metrics"
   config:
     file: /data/cpi/cpi.csv
     type: bar-chart
@@ -57,9 +58,12 @@
       - title: "Monthly change"
         value: "monthly_pct_change"
         tooltip: "monthly"
+        colour: "#E55912"
       - title: "Quarterly change"
         value: "quarterly_pct_change"
         tooltip: "quarterly"
+        colour: "#005776"
       - title: "Yearly change"
         value: "yearly_pct_change"
         tooltip: "yearly"
+        colour: "#F7AB3D"
