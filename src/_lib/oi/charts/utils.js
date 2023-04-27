@@ -527,7 +527,7 @@ export function Series(s,props,data,extra){
 	};
 
 	this.update = function(){
-		var i,pt,txt,p,r,ps,o,ax,a,b,datum,d,old,p1,p2;
+		var i,pt,txt,p,r,ps,o,ax,a,b,datum,d,old,p1,p2,x,w;
 		// Check if we need to add a line
 		if(!line.el){
 			line.el = svgEl("path");
@@ -663,7 +663,9 @@ export function Series(s,props,data,extra){
 			if(pts[i].bar){
 				p1 = opt.getXY(Math.max(data[i].xstart||0,extra.axis.x.min),data[i].y + extra.barsize/2);
 				p2 = opt.getXY(data[i].x,data[i].y - extra.barsize/2);
-				setAttr(pts[i].bar,{'x':p1.x,'y':p1.y,'width':Math.abs(p2.x-p1.x),'height':Math.abs(p2.y-p1.y)});
+				w = (p2.x-p1.x);
+				x = p1.x + (w < 0 ? w : 0);
+				setAttr(pts[i].bar,{'x':x,'y':p1.y,'width':Math.abs(w),'height':Math.abs(p2.y-p1.y)});
 			}
 
 			// Store the calculated points
