@@ -270,26 +270,36 @@ export function LineChart(config,csv){
 		'axis':{'x':{'padding':10,'grid':{'show':true,'stroke':'#B2B2B2'},'labels':{}},'y':{'padding':10,'labels':{}}},
 		'duration': '0.3s',
 		'updatePadding': function(){
-			var l,pad,len,ax,lines,align;
+			var l,pad,len,ax,lines,align,i;
 			// Work out padding
 			pad = {'l':0,'t':0,'b':0,'r':0};
 			for(ax in this.opt.axis){
+				len = 0;
 				// Work out axis padding
 				for(l in this.opt.axis[ax].labels){
-					len = 0;
 					// Split the label by any new line characters
 					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
 
-					// Length is based on the label length
-					len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
-					align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
 					if(ax=="x"){
-						if(align=="bottom") pad.b = Math.max(pad.b,len);
-						else pad.t = Math.max(pad.t,len);
-					}else{
-						if(align=="left") pad.l = Math.max(pad.l,len);
-						else pad.r = Math.max(pad.r,len);
+						// For x-axis labels "len" is related to the height of the lines
+						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+					}else if(ax=="y"){
+						// For y-axis labels "len" is calculated by the longest line of text
+						// Loop over the lines of the label
+						for(i = 0; i < lines.length; i++){
+							// Roughly calculate the length in pixels of this line
+							// If it is longer than the current "len" value we grow "len"
+							len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + textLength(lines[i],this.opt['font-size'],this.opt['font-weight'],'Century Gothic') + this.opt.tick + this.opt.axis[ax].padding);
+						}
 					}
+				}
+				align = this.opt.axis[ax].labels[l].align||(ax=="x" ? "bottom":"left");
+				if(ax=="x"){
+					if(align=="bottom") pad.b = Math.max(pad.b,len);
+					else pad.t = Math.max(pad.t,len);
+				}else{
+					if(align=="left") pad.l = Math.max(pad.l,len);
+					else pad.r = Math.max(pad.r,len);
 				}
 			}
 			this.opt.left = this.opt.padding.left + pad.l;
