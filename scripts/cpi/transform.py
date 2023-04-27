@@ -74,7 +74,7 @@ if __name__ == "__main__":
                      'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & Footwear",
                      'cpi_index_04_housing_water_and_fuels_2015_100': "Housing & Water & Fuels",
                      'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture",
-                     'cpi_index_00_all_items_2015_100': "Total"},
+                     'cpi_index_00_all_items_2015_100': "Overall"},
                      inplace=True)
     
     #write file

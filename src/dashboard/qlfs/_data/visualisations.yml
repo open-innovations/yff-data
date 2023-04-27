@@ -85,13 +85,13 @@
               label: "20"
     columns:
         - name: "Label 16-24"
-          template: "age_16_to_24_unemployed_over_12_months_rate_sa<br />{{ quarter_index }}: {{ age_16_to_24_unemployed_over_12_months_rate_sa }}"
+          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"
     series:
       - title: "16-24"
         x: "quarter_index"                       # Column heading to use for x-value
         y: "age_16_to_24_unemployed_over_12_months_rate_sa"            # Column heading to use fro y-value
         size: 50
-        tooltip: "16-24"
+        tooltip: "Label 16-24"
 
 - tab: Overall unemployment rate
   title: Overall unemployment rate
