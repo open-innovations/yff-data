@@ -111,6 +111,7 @@ site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => 
 
 site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
 site.filter('isArray', (item) => Array.isArray(item));
+site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written

@@ -1,8 +1,6 @@
-.tag-cloud {
+.tag-cloud li, .tag {
   --tag-colour: #7C2147;
   --tag-colour-text: white;
-  & li {
-    padding: 0.3rem 0.7rem;
-    text-transform: uppercase;
-  }
+  padding: 0.3rem 0.7rem;
+  text-transform: uppercase;
 }

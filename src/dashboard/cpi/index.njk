@@ -4,6 +4,7 @@ tags:
   - dashboard
 topics:
   - CPI
+  - Economic Indicators
 raw_data:
   - /data/raw/cpi/cpi.csv
 ---
@@ -11,8 +12,10 @@ raw_data:
 <p>
 These visualisations are driven by consumer price inflation (CPI) data from the 
 Office for National Statistics 
-<a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation"> available here.</a>
+<a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation"> available here.</a> The most
+recent data is {{ sources.cpi.stats.CPI_most_recent_month}} {{sources.cpi.stats.date}}.
 We derive percentage change figures from index values, and our values match the monthly and yearly percentage change figures
 provided in the dataset, verifying our method. This page is a work in progress with updates added regularly.
 </p>
-{{ comp.viz.main({ visualisations: visualisations, test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations| pick(0), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations| pick(1), test: false }) | safe }}
