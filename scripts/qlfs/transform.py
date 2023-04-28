@@ -108,6 +108,7 @@ def summarise():
     }).T.reset_index()
     summary = summary.rename(columns = {'index': 'Title', 11: 'Value'})
     summary['Note'] = ''
+    summary['Suffix'] = '%'
     summary.to_csv(os.path.join(SUMMARY_DIR, 'headlines.csv'), index=False)
 
 if __name__ == "__main__":

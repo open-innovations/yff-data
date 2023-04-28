@@ -15,8 +15,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
-      md5: 6d3fc7b34da882af838cbaeb16beec38
-      size: 3780
+      md5: 0d1a1657570bd70a073d8d0e89dc6bb9
+      size: 3834
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
@@ -34,6 +34,10 @@ stages:
     - path: data/cpi/stats.json
       md5: 716c05072b83dc5502d9904b13cb2afa
       size: 91
+      isexec: true
+    - path: src/_data/sources/cpi/headlines.csv
+      md5: 5e288354c2389f383147cab92e51fb72
+      size: 92
       isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py

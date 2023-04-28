@@ -6,7 +6,8 @@
     value: 'Value'
     width: 333px
     note: 'Note'
-    suffix: '%'
+    units:
+      postfix: 'Suffix'
     panels:
       - name: 'Overall unemployment'
         colour: Cherry-1

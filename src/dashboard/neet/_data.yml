@@ -6,6 +6,8 @@ visualisations:
       title: 'Title'
       value: 'Value'
       note: 'Note'
+      units:
+        postfix: 'Suffix'
       width: 1000px
       panels:
         - name: 'Latest NEET Rate'

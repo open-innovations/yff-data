@@ -3,7 +3,8 @@ title: Connected Futures
 layout: layouts/simple.njk
 summary:
   - |
-    PROJECT DETAILS GO HERE
+    [The Connected Futures Fund](https://youthfuturesfoundation.org/our-work/invest/connected-futures/) is a flagship £16 million fund to support young people to get good jobs through pioneering local partnerships.
+    This page will present data on regions eligible for the funds, the areas awarded and provide further information on the decision-making process.  
 ---
 
 {% comp 'flex' %}
@@ -12,18 +13,7 @@ summary:
 {% endcomp %}
 
 <section>
-  <h2>Headline statistics</h2>
   {{ comp.viz.main({ visualisations: visualisations | pick(1) }) | safe }}
-</section>
-
-<section>
-  <h2>Local Partnerships</h2>
-  {{ comp.viz.main({ visualisations: visualisations | pick(2) }) | safe }}
-</section>
-
-<section>
-  <h2>Overview of Eligible Regions</h2>
-
 </section>
 
 <section>
@@ -38,3 +28,15 @@ summary:
 
   {{ comp.viz.main({ visualisations: visualisations | pick(0) }) | safe }}
 </section>
+
+<section>
+  <h2>Overview of Eligible Regions</h2>
+</section>
+
+<section>
+  <h2>Local Partnerships</h2>
+  {{ comp.viz.main({ visualisations: visualisations | pick(2) }) | safe }}
+</section>
+
+
+
