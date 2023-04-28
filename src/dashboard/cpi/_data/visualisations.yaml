@@ -72,7 +72,7 @@
 - tab: 
   type: table
   caption: |
-      "CPI percentage change" 
+      CPI percentage change
   config:
     file: /data/cpi/cpi.csv
     columns:
