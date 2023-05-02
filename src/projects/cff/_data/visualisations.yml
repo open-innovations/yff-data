@@ -60,10 +60,8 @@
     title: 'Title'
     value: 'Value'
     note: 'Note'
-    width: 333px
+    width: 500px
     panels:
-      - name: 'Eligible Regions'
-        colour: Cherry-1
       - name: 'Applications Made'
         colour: Orange-2
       - name: 'Local Partnerships Awarded'
