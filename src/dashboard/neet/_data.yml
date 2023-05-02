@@ -39,26 +39,26 @@ visualisations:
             - value: 9
               label: "2022-01-01"
         y: # The vertical axes
-          min: 8 # A minimum value
-          max: 14 # A maximum value
+          min: 0 # A minimum value
+          max: 15 # A maximum value
           title:
             label: "Rate (%)"
           dominant-baseline: text-bottom
           # Explicitly define the ticks.
           # Each tick has a numeric value and a displayed label
           ticks:
-            - value: 8
+            - value: 0
               grid: true
-              label: "8"
+              label: "0"
+            - value: 5
+              grid: true
+              label: "5"
             - value: 10
               grid: true
               label: "10"
-            - value: 12
+            - value: 15
               grid: true
-              label: "12"
-            - value: 14
-              grid: true
-              label: "14"
+              label: "15"
       columns:
         - name: "Men"
           template: "Men NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
