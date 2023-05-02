@@ -30,7 +30,7 @@
           - value: 200
             label: "Sep to Nov 2020"
       y: # The vertical axes
-        min: 200 # A minimum value
+        min: 0 # A minimum value
         max: 1350 # A maximum value
         title:
           label: "Number of vacancies (thousands)"
@@ -38,6 +38,9 @@
         # Explicitly define the ticks.
         # Each tick has a numeric value and a displayed label
         ticks:
+          - value: 0
+            grid: true
+            label: '0'
           - value: 200
             grid: true
             label: "200"         
