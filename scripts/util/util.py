@@ -29,8 +29,8 @@ def tick_gen(data, step=5, dtype=None):
         tick_max: max value rounded up to sensible number
         ticks_labels: list of tick values and labels
     '''
-    max_val = max(data.max())
-    min_val = min(data.min())
+    max_val = max(data.max(axis=1, numeric_only=True))
+    min_val = min(data.min(axis=1, numeric_only=True))
     labels = []
 
     if dtype == 'percentage':
@@ -77,4 +77,4 @@ def tick_gen(data, step=5, dtype=None):
     if len(tick_labels) > 6:
         del tick_labels[1:-1: 2]
 
-    return tick_max, tick_min, tick_labels
+    return tick_min, tick_max, tick_labels
