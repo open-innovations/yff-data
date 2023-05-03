@@ -1,38 +1,34 @@
 stages:
-  prepare:
-    cmd: PYTHONPATH=. python3 scripts/vacancies/prepare_edd.py
+  extract:
+    cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
     always_changed: true
     wdir: ../..
     deps:
-      - scripts/vacancies/prepare_edd.py
+      - scripts/vacancies/extract.py
+    outs: 
+      - working/vacancies/vacancies_by_sector.csv:
+          cache: false
+          persist: false
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
+    always_changed: true
+    wdir: ../..
+    deps:
+      - scripts/vacancies/transform.py
       - working/LMS_variable_lookup.csv
       - working/LMS_data.csv
+    outs:
+      - data/vacancies/vacancies_edd.csv:
+          cache: false
+          persist: false
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/vacancies/prepare.py
+    always_changed: true
+    wdir: ../..
+    deps:
+      - scripts/vacancies/prepare.py
+      - working/LMS_variable_lookup.csv
+      - working/LMS_data.csv
+      - working/vacancies/vacancies_by_sector.csv
 
-
-
-
-  # extract:
-  #   cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
-  #   always_changed: true
-  #   wdir: ../..
-  #   deps:
-  #     - scripts/vacancies/extract.py
-  #   outs: 
-  #     - working/vacancies/vacancies.csv:
-  #         cache: false
-  #         persist: false
-  #     - working/vacancies/vacancies_by_sector.csv:
-  #         cache: false
-  #         persist: false
-  # prepare:
-  #   cmd: PYTHONPATH=. python3 scripts/vacancies/prepare.py
-  #   always_changed: true
-  #   wdir: ../..
-  #   deps:
-  #     - scripts/vacancies/prepare.py
-  #     - working/vacancies/vacancies.csv
-  #   outs:
-  #     - src/_data/sources/vacancies/vacancies.csv:
-  #         cache: false
-  #         persist: false
 
