@@ -159,45 +159,6 @@ visualisations:
             - value: 300000
               grid: true
               label: "300k"
-
-  - title: Overall rates chart
-    type: chart
-    caption: "This chart shows the same data as overall unemployment rate but as a bar chart.
-              Either works, but typically we would represent time series data using a line chart.
-              A scatter chart could also be possible, since the data is quarterly and therefore
-              more discretised than the line chart makes it appear."
-    config:
-      file: /data/neet/neet.csv
-      type: bar-chart
-      category: quarter_start
-      legend:
-        show: true     # Default to false
-        position: "top right"
-      series:
-        - title: 'Men'
-          value: men_age_16_to_24_neet_total_rate_sa
-        - title: 'Women'
-          value: women_age_16_to_24_neet_total_rate_sa
-      axis:
-        x:
-          min: 0
-          max: 20
-          ticks:
-            - value: 0
-              grid: true
-              label: ""
-            - value: 5
-              grid: true
-              label: "5%"
-            - value: 10
-              grid: true
-              label: "10%"
-            - value: 15
-              grid: true
-              label: "15%"
-            - value: 20
-              grid: true
-              label: "20%"
   - tab: Overall rates table
     type: table
     caption: 'The overall rates raw data in a table'
