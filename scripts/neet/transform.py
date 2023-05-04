@@ -1,9 +1,9 @@
 import os
 import pandas as pd
 
-# from scripts.util.date import quarter_to_date, most_recent_stats
+from scripts.util.date import quarter_to_date, most_recent_stats
 
-# from extract import NEET_RAW_LATEST
+from extract import NEET_RAW_LATEST
 
 DATA_DIR = os.path.join('data', 'neet')
 HEADLINES_DIR = os.path.join('src', '_data', 'sources', 'neet')
@@ -73,13 +73,13 @@ def summarise():
 
 
 if __name__ == "__main__":
-    # people = process_data(load_data(sheet_name='People - SA'), prefix='people')
-    # men = process_data(load_data(sheet_name='Men - SA'), prefix='men')
-    # women = process_data(load_data(sheet_name='Women - SA'), prefix='women')
+    people = process_data(load_data(sheet_name='People - SA'), prefix='people')
+    men = process_data(load_data(sheet_name='Men - SA'), prefix='men')
+    women = process_data(load_data(sheet_name='Women - SA'), prefix='women')
 
-    # data = pd.concat([
-    #     people, men, women
-    # ], axis=1)
+    data = pd.concat([
+        people, men, women
+    ], axis=1)
 
-    # most_recent_stats(data).to_csv(NEET_16_24)
+    most_recent_stats(data).to_csv(NEET_16_24)
     summarise()
