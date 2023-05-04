@@ -9,12 +9,12 @@
     units:
       postfix: 'Suffix'
     panels:
-      - name: 'Overall unemployment'
+      - name: 'Unemployment rate'
         colour: Cherry-1
         suffix: '%'
-      - name: 'Long-term unemployment'
+      - name: 'Long-term unemployment rate'
         colour: Orange-2
-      - name: 'Economic inactivity'
+      - name: 'Economic inactivity rate'
         colour: Chartreuse-2
 
 - tab: Long-term unemployment rate
