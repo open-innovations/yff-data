@@ -13,7 +13,7 @@ export const css = `
 .dashboard .panel h3 { color: inherit!important; font-weight: normal; font-size: 1em; }
 .panel { background: #efefef; padding: 1em; }
 .dashboard .bignum { font-size: 4em; line-height: 1.25em; font-weight: bold; text-align: center; display: block; margin-top: 0; }
-.dashboard .footnote { font-size: 0.7em; text-align: center; display: block; }
+.dashboard .footnote { font-size: 0.8em; text-align: center; display: block; }
 @media screen and (max-width: 1200px) {
 	.dashboard { grid-gap: 1.5vw; }
 	.dashboard .panel { font-size: max(10px, 1.5vw); }
