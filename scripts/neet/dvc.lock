@@ -5,17 +5,18 @@ stages:
     deps:
     - path: scripts/neet/extract.py
       md5: 8c14ab3b3e57b27998e1b9cf53e4e4be
-      size: 450
+      size: 463
     outs:
     - path: working/neet/neetlatest.xlsx
       md5: 50244a60014fad2e2622538284b235a1
       size: 183641
+      isexec: true
   transform:
     cmd: PYTHONPATH=. python scripts/neet/transform.py
     deps:
     - path: scripts/neet/transform.py
-      md5: c1f776327a7d51c8c8232000feeee1b6
-      size: 2216
+      md5: 9ae7f2bc984c8d94427a44187be45a5c
+      size: 3101
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416

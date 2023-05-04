@@ -8,10 +8,14 @@ visualisations:
       note: 'Note'
       units:
         postfix: 'Suffix'
-      width: 1000px
+      width: 333px
       panels:
         - name: 'Latest NEET Rate'
-          colour: Orange-2
+          colour: Orange-2        
+        - name: 'Latest NEET Rate - Men'
+          colour: Cherry-1        
+        - name: 'Latest NEET Rate - Women'
+          colour: Chartreuse-2
 
   - tab: Overall NEET rate
     title: Overall NEET rate
