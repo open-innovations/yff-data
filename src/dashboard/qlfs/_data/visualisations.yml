@@ -10,12 +10,12 @@
       postfix: 'Suffix'
     panels:
       - name: 'Unemployment rate'
-        colour: Cherry-1
+        colour: Orange
         suffix: '%'
       - name: 'Long-term unemployment rate'
-        colour: Orange-2
+        colour: Blue
       - name: 'Economic inactivity rate'
-        colour: Chartreuse-2
+        colour: Gold
 
 - tab: Long-term unemployment rate
   title: Long-term unemployment rate

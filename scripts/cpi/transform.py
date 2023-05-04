@@ -31,7 +31,11 @@ def summarise():
     }).T.reset_index()
 
     latest = latest.rename(columns = {'index': 'Title', 0: 'Value'})
-    latest['Note'] = ''
+    latest['Note'] = [
+        "Consumer prices index change (%) on last month",
+        "Consumer prices index change (%) on last quarter",
+        "Consumer prices index change (%) on the same month last year"
+    ]
     latest['Suffix'] = '%'
     latest.to_csv(os.path.join(HEADLINES_DIR, 'headlines.csv'), index=False)
 

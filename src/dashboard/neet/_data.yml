@@ -11,12 +11,12 @@ visualisations:
       width: 333px
       panels:
         - name: 'Latest NEET Rate'
-          colour: Orange-2        
+          colour: Orange       
         - name: 'Latest NEET Rate - Men'
-          colour: Cherry-1        
+          colour: Blue       
         - name: 'Latest NEET Rate - Women'
-          colour: Chartreuse-2
-
+          colour: Gold
+          
   - tab: Overall NEET rate
     title: Overall NEET rate
     type: chart
