@@ -2,10 +2,10 @@ name: Publish on GitHub Pages
 
 "on":
   workflow_dispatch: {}
-  # workflow_run:
-  #   workflows: ["Update data"]
-  #   types:
-  #     - completed
+  workflow_run:
+    workflows: ["Update data"]
+    types:
+      - completed
   push:
     branches: [ main ]
     paths:
