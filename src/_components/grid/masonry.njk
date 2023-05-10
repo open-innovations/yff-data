@@ -3,9 +3,12 @@ css: |
   .grid-masonry {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     gap: 1em;
     & > * {
-      flex: 1 0 auto;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: auto;
     }
     & .pane {
       &:hover, &:focus {
