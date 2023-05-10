@@ -7,6 +7,7 @@ css: |
     grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--auto-grid-min-size)), 1fr));
     grid-gap: 1rem;
   }
+  .auto-grid .pane:hover, .auto-grid .pane:focus { background: #efefef; }
 ---
 <div class="auto-grid" {% if min_width %}style="--auto-grid-min-size: {{ min_width }};"{% endif %}>
   {{ content | safe }}

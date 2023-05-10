@@ -1,0 +1,36 @@
+---
+css: |
+  .grid-block {
+    --width: 20em;
+    --padding: 1em;
+    --bg-colour: #dfdfdf;
+    width: var(--width);
+    padding: var(--padding);
+    background: var(--bg-colour);
+  }
+---
+{# 
+  Block component
+
+  usage:
+
+    {% comp "grid.block", {
+      tag: "div";
+      width: "20em";
+      padding: "1em";
+      style: undefined
+    } %}
+      Contents...
+    {% endcomp %}
+
+  Options:
+    * tag: the tag to wrap the block. Defaults to div
+    * width: the width of the block
+    * style: css style to apply inline
+#}
+<{{tag or 'div'}} style="
+  {%- if width %}--width:{{ width }};{% endif -%}
+  {%- if padding %}--padding:{{ padding }};{% endif -%}
+  {{style or ''}}" class='grid-block'>
+  {{ content | safe }}
+</{{tag or 'div'}}>
