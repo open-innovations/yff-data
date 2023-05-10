@@ -1,7 +1,7 @@
 ---
 css: |
   .grid-block {
-    --width: 20em;
+    --width: auto;
     --padding: 1em;
     --bg-colour: #dfdfdf;
     width: var(--width);
@@ -16,7 +16,7 @@ css: |
 
     {% comp "grid.block", {
       tag: "div";
-      width: "20em";
+      width: "auto";
       padding: "1em";
       style: undefined
     } %}
@@ -29,8 +29,9 @@ css: |
     * style: css style to apply inline
 #}
 <{{tag or 'div'}} style="
-  {%- if width %}--width:{{ width }};{% endif -%}
+  {%- if background %}--bg-colour:{{ background }};{% endif -%}
   {%- if padding %}--padding:{{ padding }};{% endif -%}
+  {%- if width %}--width:{{ width }};{% endif -%}
   {{style or ''}}" class='grid-block'>
   {{ content | safe }}
 </{{tag or 'div'}}>
