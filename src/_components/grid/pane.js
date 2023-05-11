@@ -1,18 +1,16 @@
 export const css = `
 .auto-grid .pane {
   --max-height: unset;
-  padding: 0rem;
+  padding: 1rem;
   display: block;
   height: 100%;
-  min-height: 10rem;
+  min-height: 20rem;
   color: inherit;
-  background: #fceee7;  
-  text-align: left;
 }
 .auto-grid .pane:hover, .auto-grid .pane:focus { background: #efefef; }
 `;
 
-export default function ({ content, link, tag = 'div', maxHeight = undefined, extra_classes = 'grey-bg', rows = undefined, columns = undefined }) {
+export default function ({ content, link, tag = 'div', maxHeight = undefined, extra_classes = 'grey-bg' }) {
   // let paneContent = content;
   // if (link) {
   //   paneContent = `<a href=${link} class='>${content}</a>`
@@ -23,13 +21,7 @@ export default function ({ content, link, tag = 'div', maxHeight = undefined, ex
 
   let style = '';
   if (maxHeight !== undefined)
-    style += `style="--max-height: ${maxHeight};"`
-
-  if (rows !== undefined)
-    style += `style="grid-row:auto/span ${ rows };"`
-
-  if (columns !== undefined)
-    style += `style="grid-column:span ${ columns };"`
+    style = `style="--max-height: ${maxHeight};"`
 
   if ( link ) {
     return `
