@@ -2,9 +2,9 @@
 # https://css-tricks.com/a-responsive-grid-layout-with-no-media-queries/
 css: |
   .grid-rigid {
-    --auto-grid-min-size: 16rem;
+    --grid-columns: 3;
     display: grid;
-    grid-template-columns: repeat(3, minmax(min(100%, var(--auto-grid-min-size)), 1fr));
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
     grid-gap: 0em;
     padding: 0em;
     & .pane {
@@ -14,9 +14,9 @@ css: |
     }
   }
 ---
-<div class="auto-grid" style="
-  {% if min_width %} --auto-grid-min-size: {{ min_width }};{% endif %}
+<div class="grid-rigid" style="
   {% if rows %}grid-row:auto/span {{ rows }};{% endif %}
-  {% if columns %}grid-template-columns: repeat( {{ columns }}, minmax(0, 1fr));{% endif %}">
+  {% if columns %}--grid-columns:{{ columns }};{% endif %}
+  ">
   {{ content | safe }}
 </div>
