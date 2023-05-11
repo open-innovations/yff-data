@@ -1,6 +1,6 @@
 ---
 title: NEET data processing
-url: /dashboard/neet/pipeline
+url: /dashboard/neet/pipeline/
 ---
 
 There are three stages to the [data processing pipeline](https://github.com/open-innovations/yff-data/tree/main/scripts/neet), each being written in Python:
