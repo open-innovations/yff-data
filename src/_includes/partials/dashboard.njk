@@ -1,5 +1,9 @@
 <h2>Rigid layout</h2>
-{% include './dashboard-rigid.njk' %}
+{% comp 'grid.rigid', {columns: 4} %}
+{% include './dashboard/content.njk' %}
+{% endcomp %}
 
 <h2>Mortar layout</h2>
-{% include './dashboard-bricks.njk' %}
+{% comp 'grid.masonry' %}
+{% include './dashboard/content.njk' %}
+{% endcomp %}

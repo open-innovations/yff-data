@@ -6,13 +6,25 @@
       font-size: 0.9em;
     }
   }
+  .grid-block {
+    width: 100%;
+  }
 }
 
 :is(.auto-grid, .grid-rigid, .grid-masonry) {
+  & > a {
+    color: inherit;
+  }
   & > :is(.pane, .grid-block) {
     border: 0;
     padding: 1.25em;
     line-height: 1.5em;
+
+    &:is(a:hover, a:focus) {
+      & h1, h2, h3 {
+        text-decoration: underline;
+      }
+    }
 
     &:hover,
     &:focus {

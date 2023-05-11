@@ -18,7 +18,7 @@ css: |
     {% comp "grid.block", {
       background: "#fceee7"
       tag: "div";
-      width: "auto";
+      block_width: "auto";
       padding: "1em";
       style: undefined
     } %}
@@ -30,11 +30,24 @@ css: |
     * width: the width of the block
     * style: css style to apply inline
 #}
-<{{tag or 'div'}} style="
+{% set styling -%}
+class="grid-block"
+style="
   {%- if background %}--bg-colour:{{ background }};{% endif -%}
   {%- if padding %}--padding:{{ padding }};{% endif -%}
   {%- if width %}--width:{{ width }};{% endif -%}
   {%- if columns %}grid-column:span {{ columns }};{% endif -%}
-  {{style or ''}}" class='grid-block'>
-  {{ content | safe }}
-</{{tag or 'div'}}>
+  {{style or '' }}"
+{%- endset -%}
+
+{% if link %}
+  <a href="{{ link }}" {{ styling | safe }}>
+    <{{tag or 'div'}}>
+      {{ content | safe }}
+    </{{tag or 'div'}}>
+  </a>
+{% else %}
+  <{{tag or 'div'}} {{ styling | safe }}>
+    {{ content | safe }}
+  </{{tag or 'div'}}>
+{% endif %}

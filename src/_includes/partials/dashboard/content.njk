@@ -1,9 +1,8 @@
-{% macro renderViz(viz) %}
+{%- macro renderViz(viz) %}
 <h3>{{ viz.title }}</h3>
 {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
-{% endmacro %}
+{% endmacro -%}
 
-{% comp 'grid.masonry' %}
 {% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
 <h3>Unemployment Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
@@ -31,5 +30,4 @@
 {% endcomp %}
 {% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/neet/' } %}
 {{ renderViz(search.data('dashboard/neet/index.njk').visualisations[1]) | safe }}
-{% endcomp %}
 {% endcomp %}
