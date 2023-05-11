@@ -1,0 +1,22 @@
+---
+css: |
+  .grid-masonry {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1em;
+    & > * {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: auto;
+    }
+    & .pane {
+      &:hover, &:focus {
+        background: #efefef;
+      }
+    }
+  }
+---
+<div class="grid-masonry" {% if min_width %}style="--auto-grid-min-size: {{ min_width }};"{% endif %}>
+  {{ content | safe }}
+</div>

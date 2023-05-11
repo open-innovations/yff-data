@@ -1,40 +1,68 @@
-{% comp 'grid.auto', { columns: 4 } %}
-  {% comp 'grid.pane' %}
-    <h3>Unemployment Rate</h3>
-    <h1>{{ sources.qlfs.headlines.columns.Value | first  }}%</h1>
-  {% endcomp %}
-  {% comp 'grid.pane' %}
-    <h3>Long-term Unemployment Rate</h3>
-    <h1>{{ sources.qlfs.headlines.columns.Value[1]  }}%</h1>
-  {% endcomp %}
-  {% comp 'grid.pane' %}
-    <h3>Economic Inactivity Rate</h3>
-    <h1>{{ sources.qlfs.headlines.columns.Value[2]  }}%</h1>
-  {% endcomp %}
-  {% comp 'grid.pane' %}
-    <h3>Latest NEET Rate</h3>
-    <h1>{{ sources.neet.headlines.columns.Value | first  }}%</h1>
-  {% endcomp %}
-
-  
-    {% comp 'grid.pane', { columns: 2 } %}
-    <p>{{ comp.viz.main({
+{% comp 'grid.auto', {columns: 4} %}
+{% comp 'grid.pane' %}
+<h3>Unemployment Rate</h3>
+<h1>{{ sources.qlfs.headlines.columns.Value | first  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane' %}
+<h3>Long-term Unemployment Rate</h3>
+<h1>{{ sources.qlfs.headlines.columns.Value[1]  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane' %}
+<h3>Economic Inactivity Rate</h3>
+<h1>{{ sources.qlfs.headlines.columns.Value[2]  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane' %}
+<h3>Latest NEET Rate</h3>
+<h1>{{ sources.neet.headlines.columns.Value | first  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
       visualisations: search.data('dashboard/qlfs/index.njk').visualisations[2]
     }) | safe }}</p>
-  {% endcomp %}
-    {% comp 'grid.pane', { columns: 2 } %}
-    <p>{{ comp.viz.main({
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
       visualisations: search.data('dashboard/qlfs/index.njk').visualisations[1]
     }) | safe }}</p>
-  {% endcomp %}
-    {% comp 'grid.pane', { columns: 2 } %}
-    <p>{{ comp.viz.main({
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
       visualisations: search.data('dashboard/qlfs/index.njk').visualisations[3]
     }) | safe }}</p>
-  {% endcomp %}
-  {% comp 'grid.pane', { columns: 2 } %}
-    <p>{{ comp.viz.main({
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
       visualisations: search.data('dashboard/neet/index.njk').visualisations[1]
     }) | safe }}</p>
-  {% endcomp %}
+{% endcomp %}
+{% endcomp %}
+
+{# Here's an alternative layout which is a bit more fluid and less regimented #}
+{% comp 'grid.masonry' %}
+{% comp 'grid.block', { width: '100%', style: 'text-align:center;' } %}
+<h2>Masonry Layout</h2>
+{% endcomp %}
+{% comp 'grid.block' %}
+<p>The most recent long-term unemployment rate is {{ sources.qlfs.long_term_unemployed.columns.age_16_to_24_unemployed_over_12_months_rate_sa | last | round(1) }}%</p>
+{% endcomp %}
+{% comp 'grid.block' %}
+<p>The most recent long-term unemployment rate is {{ sources.qlfs.long_term_unemployed.columns.age_16_to_24_unemployed_over_12_months_rate_sa | last | round(1) }}%</p>
+{% endcomp %}
+{% comp 'grid.block', {width: '10rem'} %}
+<p>The most recent long-term unemployment rate is {{ sources.qlfs.long_term_unemployed.columns.age_16_to_24_unemployed_over_12_months_rate_sa | last | round(1) }}%</p>
+{% endcomp %}
+{% comp 'grid.block', {background: '#aaf'} %}
+<p>The most recent long-term unemployment rate is {{ sources.qlfs.long_term_unemployed.columns.age_16_to_24_unemployed_over_12_months_rate_sa | last | round(1) }}%. This one has a different background colour!</p>
+{% endcomp %}
+{% comp 'grid.block' %}
+<p>The most recent long-term unemployment rate is {{ sources.qlfs.long_term_unemployed.columns.age_16_to_24_unemployed_over_12_months_rate_sa | last | round(1) }}%</p>
+{% endcomp %}
+{% comp 'grid.block', { width: '100%', style: 'text-align:center;' } %}
+<h3>More charts follow</h3>
+{% endcomp %}
+{% comp 'grid.block', {width: '20rem'} %}
+<p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/qlfs/index.njk').visualisations[1]
+    }) | safe }}</p>
+{% endcomp %}
 {% endcomp %}
