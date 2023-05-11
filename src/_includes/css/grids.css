@@ -1,16 +1,37 @@
-:is(.auto-grid, .grid-rigid) { grid-gap: 1em; --auto-grid-min-size: 500px!important; }
+:is(.auto-grid, .grid-rigid) {
+  grid-gap: 1em;
+  --auto-grid-min-size: 500px !important;
+  & .pane {
+    & p {
+      font-size: 0.9em;
+    }
+  }
+}
+
 :is(.auto-grid, .grid-rigid, .grid-masonry) {
-  & :is(.pane, .block) {
-    border: 0; padding: 1.25em; line-height: 1.5em;
-    &:hover, &:focus {
+  & > :is(.pane, .grid-block) {
+    border: 0;
+    padding: 1.25em;
+    line-height: 1.5em;
+
+    &:hover,
+    &:focus {
       background: #efefef;
       outline: 2px solid #e25b27;
+
       & h2 {
         color: #964e6d;
       }
     }
-    & h3 { font-size: 1.2em; }
-    & h2 { font-weight: bold; }
-    & p { font-size: 0.9em; }
+
+  }
+  :is(.pane, .grid-block) {
+    & h3 {
+      font-size: 1.2em;
+    }
+
+    & h2 {
+      font-weight: bold;
+    }
   }
 }

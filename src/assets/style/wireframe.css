@@ -5,8 +5,6 @@ html {
 	font-size: 16px;
 }
 
-body { margin: 0px; line-height: 1.25em; text-rendering: optimizeLegibility; }
-
 .message {
 	background: #fbf5d0;
 	color: #5f5207;

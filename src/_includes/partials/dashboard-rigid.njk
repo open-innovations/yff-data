@@ -1,0 +1,38 @@
+{% comp 'grid.rigid', {columns: 4} %}
+{% comp 'grid.pane' %}
+<h3>Unemployment Rate</h3>
+<h1>{{ sources.qlfs.headlines.columns.Value | first  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane' %}
+<h3>Long-term Unemployment Rate</h3>
+<h1>{{ sources.qlfs.headlines.columns.Value[1]  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane' %}
+<h3>Economic Inactivity Rate</h3>
+<h1>{{ sources.qlfs.headlines.columns.Value[2]  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane' %}
+<h3>Latest NEET Rate</h3>
+<h1>{{ sources.neet.headlines.columns.Value | first  }}%</h1>
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/qlfs/index.njk').visualisations[2]
+    }) | safe }}</p>
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/qlfs/index.njk').visualisations[1]
+    }) | safe }}</p>
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/qlfs/index.njk').visualisations[3]
+    }) | safe }}</p>
+{% endcomp %}
+{% comp 'grid.pane', {columns: 2} %}
+<p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/neet/index.njk').visualisations[1]
+    }) | safe }}</p>
+{% endcomp %}
+{% endcomp %}

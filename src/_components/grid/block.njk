@@ -3,8 +3,9 @@ css: |
   .grid-block {
     --width: auto;
     --padding: 1em;
-    --bg-colour: #dfdfdf;
+    --bg-colour: #fceee7;
     width: var(--width);
+    max-width: 100%;
     padding: var(--padding);
     background: var(--bg-colour);
   }
@@ -15,6 +16,7 @@ css: |
   usage:
 
     {% comp "grid.block", {
+      background: "#fceee7"
       tag: "div";
       width: "auto";
       padding: "1em";

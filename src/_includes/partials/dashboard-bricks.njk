@@ -1,0 +1,32 @@
+{% comp 'grid.masonry' %}
+{% comp 'grid.block' %}
+<h3>Unemployment Rate</h3>
+<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
+{% endcomp %}
+{% comp 'grid.block' %}
+<h3>Long-term Unemployment Rate</h3>
+<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[1]  }}%</p>
+{% endcomp %}
+{% comp 'grid.block' %}
+<h3>Economic Inactivity Rate</h3>
+<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[2]  }}%</p>
+{% endcomp %}
+{% comp 'grid.block' %}
+<h3>Latest NEET Rate</h3>
+<p class="dashboard-number">{{ sources.neet.headlines.columns.Value | first  }}%</p>
+{% endcomp %}
+{% comp 'grid.block', { width: '20rem' } %}
+{{ comp.viz.main({ visualisations: search.data('dashboard/qlfs/index.njk').visualisations[2] }) | safe }}
+{% endcomp %}
+{% comp 'grid.block', { width: '20rem' } %}
+{{ comp.viz.main({ visualisations: search.data('dashboard/qlfs/index.njk').visualisations[1] }) | safe }}</p>
+{% endcomp %}
+{% comp 'grid.block', { width: '20rem' } %}
+{{ comp.viz.main({ visualisations: search.data('dashboard/qlfs/index.njk').visualisations[3] }) | safe }}</p>
+{% endcomp %}
+{% comp 'grid.block', { width: '20rem' } %}
+<p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/neet/index.njk').visualisations[1]
+    }) | safe }}</p>
+{% endcomp %}
+{% endcomp %}
