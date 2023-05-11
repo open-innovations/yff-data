@@ -1,0 +1,19 @@
+{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+<h3>Unemployment Rate</h3>
+<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
+{% endcomp %}
+
+{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+<h3>Long-term Unemployment Rate</h3>
+<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[1] }}%</p>
+{% endcomp %}
+
+{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+<h3>Economic Inactivity Rate</h3>
+<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[2]  }}%</p>
+{% endcomp %}
+
+{% comp 'grid.block', { link: '/dashboard/neet/' } %}
+<h3>Latest NEET Rate</h3>
+<p class="dashboard-number">{{ sources.neet.headlines.columns.Value | first  }}%</p>
+{% endcomp %}
