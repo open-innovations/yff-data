@@ -34,6 +34,7 @@ css: |
   {%- if background %}--bg-colour:{{ background }};{% endif -%}
   {%- if padding %}--padding:{{ padding }};{% endif -%}
   {%- if width %}--width:{{ width }};{% endif -%}
+  {%- if columns %}grid-column:span {{ columns }};{% endif -%}
   {{style or ''}}" class='grid-block'>
   {{ content | safe }}
 </{{tag or 'div'}}>

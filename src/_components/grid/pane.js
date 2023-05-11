@@ -23,13 +23,13 @@ export default function ({ content, link, tag = 'div', maxHeight = undefined, ex
 
   let style = '';
   if (maxHeight !== undefined)
-    style = `style="--max-height: ${maxHeight};"`
+    style += `style="--max-height: ${maxHeight};"`
 
   if (rows !== undefined)
-    style = `style="grid-row:auto/span ${ rows };"`
+    style += `style="grid-row:auto/span ${ rows };"`
 
   if (columns !== undefined)
-    style = `style="grid-column:span ${ columns };"`
+    style += `style="grid-column:span ${ columns };"`
 
   if ( link ) {
     return `
