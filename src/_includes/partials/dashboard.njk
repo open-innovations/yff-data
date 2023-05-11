@@ -1,21 +1,40 @@
-<ul>
-  {% for dashboard in search.pages("dashboard", "title") | data %}
-  <li>
-    <a href="{{ dashboard.url }}">{{ dashboard.title }}</a>
-  </li>
-  {% endfor %}
-</ul>
-
-{# HEADLINES ACROSS TOP #}
-{% comp 'grid.auto' %}
+{% comp 'grid.auto', { columns: 4 } %}
   {% comp 'grid.pane' %}
-    <h3>Most recent long-term unemployed</h3>
-    <p>{{ sources.qlfs.long_term_unemployed.columns.age_16_to_24_unemployed_over_12_months_rate_sa | last }}</p>
+    <h3>Unemployment Rate</h3>
+    <h1>{{ sources.qlfs.headlines.columns.Value | first  }}%</h1>
   {% endcomp %}
   {% comp 'grid.pane' %}
-    <h3>QLFS visualisation</h3>
+    <h3>Long-term Unemployment Rate</h3>
+    <h1>{{ sources.qlfs.headlines.columns.Value[1]  }}%</h1>
+  {% endcomp %}
+  {% comp 'grid.pane' %}
+    <h3>Economic Inactivity Rate</h3>
+    <h1>{{ sources.qlfs.headlines.columns.Value[2]  }}%</h1>
+  {% endcomp %}
+  {% comp 'grid.pane' %}
+    <h3>Latest NEET Rate</h3>
+    <h1>{{ sources.neet.headlines.columns.Value | first  }}%</h1>
+  {% endcomp %}
+
+  
+    {% comp 'grid.pane', { columns: 2 } %}
+    <p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/qlfs/index.njk').visualisations[2]
+    }) | safe }}</p>
+  {% endcomp %}
+    {% comp 'grid.pane', { columns: 2 } %}
     <p>{{ comp.viz.main({
       visualisations: search.data('dashboard/qlfs/index.njk').visualisations[1]
+    }) | safe }}</p>
+  {% endcomp %}
+    {% comp 'grid.pane', { columns: 2 } %}
+    <p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/qlfs/index.njk').visualisations[3]
+    }) | safe }}</p>
+  {% endcomp %}
+  {% comp 'grid.pane', { columns: 2 } %}
+    <p>{{ comp.viz.main({
+      visualisations: search.data('dashboard/neet/index.njk').visualisations[1]
     }) | safe }}</p>
   {% endcomp %}
 {% endcomp %}

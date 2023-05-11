@@ -82,9 +82,11 @@ main section.dl { padding-top: 0; display: flex; }
 
 section, aside { margin: 1em 0; padding: 0; }
 
-.auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
+.auto-grid { grid-gap: 1em; --auto-grid-min-size: 500px!important; }
 .auto-grid .pane { border: 0; padding: 1.25em; line-height: 1.5em; }
+.pane h3 { font-size: 1.2em; }
 .pane h2 { font-weight: bold; }
+.pane p { font-size: 0.9em; }
 .auto-grid .pane:hover, .auto-grid .pane:focus { outline: 2px solid #e25b27; }
 .auto-grid .pane:hover h2 { color: #964e6d; }
 .grey { background: #efefef; }
@@ -102,7 +104,9 @@ td, th { padding: 0.25em; }
 .grid.tabs button h3 { color: inherit; }
 
 .panes .pane { background-color: #fceee7; }
-.panes .pane { border: 0; padding: 1.25em; }
+.panes .pane { border: 0; padding: 0em; }
+.panes .pane .p { font-size: 0.8em; }
+
 .pane .source { font-size: 0.8em; text-align: right; }
 figure { position: relative; }
 figure .tab-title { display: none; }
