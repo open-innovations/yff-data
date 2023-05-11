@@ -7,5 +7,4 @@ deps:
 outs:
 - md5: 96f8063bf2d258cce62c548add1c8780
   size: 16771406
-  isexec: true
   path: LMS_data.csv
