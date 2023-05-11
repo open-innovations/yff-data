@@ -29,3 +29,6 @@ stages:
       - src/_data/sources/neet/neet.csv:
           cache: false
           persist: false
+      - src/_data/sources/neet/headlines.csv:
+          cache: false
+          persist: false

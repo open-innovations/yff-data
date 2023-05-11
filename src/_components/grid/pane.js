@@ -38,8 +38,4 @@ export default function ({ content, link, tag = 'div', maxHeight = undefined, ex
       ${ content }
     </${tag}>
   `;
-
-
-
-;
 }

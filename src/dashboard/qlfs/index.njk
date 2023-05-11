@@ -26,10 +26,3 @@ from the Office for National Statistics. This page is a work in progress with up
 
 <h2>Data Tables</h2>
 {{ comp.viz.main({ visualisations: visualisations | pick(4, 5, 6) }) | safe }}
-
-<h2 id='data-processing'>Data processing</h2>
-
-{%- set processing %}
-{% include "partials/metrics/qlfs-processing.md" %}
-{% endset -%}
-{{ processing | md | safe }}

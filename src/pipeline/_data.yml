@@ -1,0 +1,2 @@
+layout: layouts/simple.njk
+templateEngine: njk,md

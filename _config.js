@@ -29,11 +29,10 @@ if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
 
 // Process all css files
 site.use(postcss());
+site.use(inline());
 
 // Also process .html files
 site.loadPages(['.html']);
-
-site.use(inline());
 
 // Setup admin
 if (Deno.env.get('EDITOR') !== undefined) site.use(
