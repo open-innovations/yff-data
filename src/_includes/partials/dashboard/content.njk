@@ -3,7 +3,7 @@
 {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
 {% endmacro -%}
 
-{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+{% comp 'grid.block', { link: '/dashboard/qlfs/', width: '20em' } %}
 <h3>Unemployment Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
 {% endcomp %}
@@ -19,6 +19,9 @@
 <h3>Latest NEET Rate</h3>
 <p class="dashboard-number">{{ sources.neet.headlines.columns.Value | first  }}%</p>
 {% endcomp %}
+
+<div style="width:100%;grid-column:span 4;"></div>
+
 {% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/qlfs/' } %}
 {{ renderViz(search.data('dashboard/qlfs/index.njk').visualisations[2]) | safe }}
 {% endcomp %}
