@@ -9,22 +9,6 @@ stages:
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx:
           cache: false
           persist: false
-      
-  #transform:
-    # cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
-    # wdir: ../..
-    # deps:
-    #   - scripts/cpi/transform.py
-    #   - scripts/util/date.py
-    #   - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-    #   - working/lookups/MM23_variable_lookup.csv
-    # outs:
-    #   - data/cpi/cpi.csv:
-    #       cache: false
-    #       persist: false
-    #   - data/cpi/dates.json:
-    #       cache: false
-    #       persist: false
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     wdir: ../..
@@ -56,3 +40,14 @@ stages:
       - src/_data/sources/cpi/stats.json:
           cache: false
           persist: false
+  vis:
+    cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
+    wdir: ../..
+    deps:
+      - scripts/cpi/vis.py
+      - data/cpi/cpi.csv
+      - scripts/util/util.py
+    # outs:
+    #   - src/dashboard/cpi/_data/visualisations.yaml:
+    #       cache: false
+    #       persist: false

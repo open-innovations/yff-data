@@ -1,84 +1,81 @@
-- title: Headline stats
-  type: dashboard
-  caption: "Overall CPI latest figures"
+- caption: Overall CPI latest figures
   config:
     file: /data/cpi/headlines.csv
-    title: 'Title'
-    value: 'Value'
-    note: 'Note'
-    width: 333px
-    units:
-      postfix: 'Suffix'
+    note: Note
     panels:
-      - name: 'Monthly change'
-        colour: Orange
-      - name: 'Quarterly change'
-        colour: Blue
-      - name: 'Yearly change'
-        colour: Gold
-
-- title: CPI percentage change
-  # citations:
-  #   - title:
-  #     link: about:blank
-  type: chart
-  caption: "CPI percentage change"
+    - colour: Orange
+      name: Monthly change
+    - colour: Blue
+      name: Quarterly change
+    - colour: Gold
+      name: Yearly change
+    title: Title
+    units:
+      postfix: Suffix
+    value: Value
+    width: 333px
+  title: Headline stats
+  type: dashboard
+- caption: CPI percentage change
   config:
-    file: /data/cpi/cpi.csv
-    type: bar-chart
-    legend:
-      show: true # Default to false
-      position: "top right"
     axis:
       x:
-        min: 0
-        max: 30
         grid:
-          stroke-dasharray: "6 2"
+          stroke-dasharray: 6 2
           stroke-width: 1
+        max: 30
+        min: 0
         ticks:
-          - value: 0
-            label: "0%"
-          - value: 10
-            label: "10%"
-          - value: 20
-            label: "20%"
-          - value: 30
-            label: "30%"
+        - label: 0.0%
+          value: '0.0'
+        - label: 10.0%
+          value: '10.0'
+        - label: 20.0%
+          value: '20.0'
+        - label: 30.0%
+          value: '30.0'
       y:
         grid:
           stroke-width: 0.5
-    category: "sector" # Category names come from
+    category: sector
     columns:
-      - name: "monthly"
-        template: "{{sector}} <br/> monthly change:  {{ monthly_pct_change | toFixed(1)}}%"
-      - name: "quarterly"
-        template: "{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%"
-      - name: "yearly"
-        template: "{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%"
-    series:
-      - title: "Monthly change"
-        value: "monthly_pct_change"
-        tooltip: "monthly"
-        colour: "#E55912"
-      - title: "Quarterly change"
-        value: "quarterly_pct_change"
-        tooltip: "quarterly"
-        colour: "#005776"
-      - title: "Yearly change"
-        value: "yearly_pct_change"
-        tooltip: "yearly"
-        colour: "#F7AB3D"
-- tab: 
-  type: table
-  caption: |
-      CPI percentage change
-  config:
+    - name: monthly
+      template: '{{sector}} <br/> monthly change:  {{ monthly_pct_change | toFixed(1)}}%'
+    - name: quarterly
+      template: '{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%'
+    - name: yearly
+      template: '{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%'
     file: /data/cpi/cpi.csv
+    legend:
+      position: top right
+      show: true
+    series:
+    - colour: '#E55912'
+      title: Monthly change
+      tooltip: monthly
+      value: monthly_pct_change
+    - colour: '#005776'
+      title: Quarterly change
+      tooltip: quarterly
+      value: quarterly_pct_change
+    - colour: '#F7AB3D'
+      title: Yearly change
+      tooltip: yearly
+      value: yearly_pct_change
+    type: bar-chart
+  title: CPI percentage change
+  type: chart
+- caption: 'CPI percentage change
+
+    '
+  config:
     columns:
-      - name: monthly_pct_change
-        rename: Monthly
-      - name: quarterly_pct_change
-        rename: Quarterly
-      - name: yearly_pct_change
-        rename: Yearly
+    - name: monthly_pct_change
+      rename: Monthly
+    - name: quarterly_pct_change
+      rename: Quarterly
+    - name: yearly_pct_change
+      rename: Yearly
+    file: /data/cpi/cpi.csv
+  tab: null
+  type: table
