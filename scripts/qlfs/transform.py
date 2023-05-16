@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import yaml
 from extract import A06_SA_LATEST, UNEM01_SA_LATEST
-from scripts.util.date import quarter_to_date, most_recent_stats
+from scripts.util.date import quarter_to_date
 
 DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -42,6 +42,9 @@ def load_data(filename):
     return data
 
 
+def force_numeric(series):
+    return pd.to_numeric(series, errors='coerce')
+
 def extract_quarters(data):
     '''
       Extracts quarterly data from a frame where the index comprises strings
@@ -67,7 +70,7 @@ def transform_A06():
     A06_data = extract_quarters(A06_data)
     A06_data.index = quarter_to_date(A06_data.index)
 
-    most_recent_stats(A06_data) \
+    A06_data \
         .rename(columns=column_mapper) \
         .to_csv(os.path.join(DATA_DIR, 'not_in_education.csv'))
 
@@ -80,7 +83,8 @@ def transform_UNEM01():
         'YBVH', 'YBXJ', 'YBXM',  # 16-17
         'YBVN', 'YBXY', 'YBYB',  # 18-24
     ]
-    UNEM01_data = UNEM01_data[measures]
+    # The data has '*' characters in it - added to_numeric
+    UNEM01_data = UNEM01_data[measures].apply(force_numeric)
     UNEM01_data = extract_quarters(UNEM01_data)
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
@@ -91,7 +95,7 @@ def transform_UNEM01():
     data_16_to_24['age_16_to_24_unemployed_over_12_months_rate_sa'] = data_16_to_24['age_16_to_24_unemployed_over_12_months_sa'] / \
         data_16_to_24['age_16_to_24_unemployed_sa'] * 100
 
-    most_recent_stats(data_16_to_24) \
+    data_16_to_24 \
         .to_csv(os.path.join(DATA_DIR, 'long_term_unemployed.csv'))
 
     return UNEM01_data
