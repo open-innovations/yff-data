@@ -1,10 +1,10 @@
-md5: 48f925672f74ddad0841832be94a611e
+md5: 168176ff030e9c93807cd9db2e3967be
 deps:
-- checksum: '"93f0e44e5c3dd2f3d0ca8910185fa089ed44d642b06c335d4527489aa9dd4565"'
-  size: 295471
+- checksum: '"1f22e2f03a59a9ebcd7eab44435d092c6123cfc043febe664618bc443c8b51ee"'
+  size: 295485
   path: https://github.com/economic-analytics/edd/raw/main/data/csv/MM23_variable_lookup.csv
 frozen: true
 outs:
-- md5: 8c5b7ddcb89c096732ba8bee10939238
-  size: 295471
+- md5: 15cf3be568092ecae4ce523f538bf946
+  size: 295485
   path: MM23_variable_lookup.csv

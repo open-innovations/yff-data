@@ -5,6 +5,7 @@ import pandas as pd
 DATA_DIR = os.path.join('src', '_data', 'sources', 'vacancies')
 RAW_DATA_DIR = os.path.realpath(os.path.join('data', 'vacancies'))
 WORK_DIR = os.path.join('working', 'vacancies')
+os.makedirs(DATA_DIR, exist_ok=True)
 
 def prepare_vacancies(): 
     vacancies = pd.read_csv(os.path.join(RAW_DATA_DIR, 'vacancies_edd.csv'), index_col= ['index'])

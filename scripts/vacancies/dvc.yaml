@@ -11,7 +11,6 @@ stages:
           persist: false
   transform:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
-    always_changed: true
     wdir: ../..
     deps:
       - scripts/vacancies/transform.py
@@ -23,12 +22,14 @@ stages:
           persist: false
   prepare:
     cmd: PYTHONPATH=. python3 scripts/vacancies/prepare.py
-    always_changed: true
     wdir: ../..
     deps:
       - scripts/vacancies/prepare.py
-      - working/LMS_variable_lookup.csv
-      - working/LMS_data.csv
       - working/vacancies/vacancies_by_sector.csv
+      - data/vacancies/vacancies_edd.csv
+    outs:
+      - src/_data/sources/vacancies/:
+          cache: false
+          persist: false
 
 
