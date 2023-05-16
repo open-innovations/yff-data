@@ -18,7 +18,7 @@
   & > :is(.pane, .grid-block) {
     border: 0;
     padding: 1.25em;
-    line-height: 1.5;
+    line-height: 1.5em;
 
     &:is(a:hover, a:focus) {
       & h1, h2, h3 {
