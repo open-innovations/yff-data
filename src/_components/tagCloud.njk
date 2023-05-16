@@ -24,7 +24,7 @@ css: |
     {% set link_page = search.page('topic title="'+tag+'"').data %}
     <li>
     {%- if live_links -%}
-      <a href="{{ link_page.url }}"<>{{ tag }}</a>
+      <a href="{{ link_page.url }}">{{ tag }}</a>
     {%- else -%}
       {{ tag }}
     {%- endif -%}

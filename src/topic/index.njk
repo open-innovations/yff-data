@@ -9,4 +9,33 @@ nav_order:
   These are the currently defined topics.
 </p>
 
+<input data-list="ul.tag-cloud" type="text"/>
+
 {{ comp.tagCloud({ tags: search.pages("topic", "title") | data | getAttr('title'), live_links: true }) | safe }}
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-list]').forEach((filter) => {
+      const theList = document.querySelector(filter.dataset.list);
+
+      const clearFilter = () => {
+        Array.from(theList.children).forEach(i => i.hidden = false);
+      }
+      const setFilter = (filter) => {
+        Array.from(theList.children).forEach(i => {
+          const matches = i.innerText.toUpperCase().match(filter.toUpperCase()) === null;
+          i.hidden = matches;
+        });
+      }
+      function updateFilter() {
+        const filter = this.value;
+        if (!filter) {
+          clearFilter();
+          return;
+        }
+        setFilter(this.value);
+      }
+      filter.addEventListener('input', updateFilter);
+    });
+  });
+</script>
