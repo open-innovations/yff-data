@@ -3,16 +3,16 @@
 {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
 {% endmacro -%}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/qlfs/' } %}
-{{ renderViz(search.data('dashboard/qlfs/index.njk').visualisations[2]) | safe }}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/index.njk').url } %}
+{{ renderViz(search.data('dashboard/labour-market/index.njk').visualisations[2]) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/qlfs/' } %}
-{{ renderViz(search.data('dashboard/qlfs/index.njk').visualisations[1]) | safe }}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/index.njk').url } %}
+{{ renderViz(search.data('dashboard/labour-market/index.njk').visualisations[1]) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/qlfs/' } %}
-{{ renderViz(search.data('dashboard/qlfs/index.njk').visualisations[3]) | safe }}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/index.njk').url } %}
+{{ renderViz(search.data('dashboard/labour-market/index.njk').visualisations[3]) | safe }}
 {% endcomp %}
 
 {% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/neet/' } %}

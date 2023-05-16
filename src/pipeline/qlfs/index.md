@@ -1,6 +1,6 @@
 ---
 title: QLFS data processing
-url: /dashboard/qlfs/pipeline/
+url: /dashboard/labour-market/pipeline/
 ---
 
 There are three stages to the [data processing pipeline](https://github.com/open-innovations/yff-data/tree/main/scripts/qlfs), each being written in Python:

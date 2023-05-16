@@ -1,14 +1,14 @@
-{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url } %}
 <h3>Unemployment Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url } %}
 <h3>Long-term Unemployment Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[1] }}%</p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: '/dashboard/qlfs/' } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url } %}
 <h3>Economic Inactivity Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[2]  }}%</p>
 {% endcomp %}
