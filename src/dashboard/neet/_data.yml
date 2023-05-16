@@ -22,7 +22,7 @@ visualisations:
     type: chart
     caption: "The rate for 16-24 year-olds who are not in education, employment or training (NEET)."
     config:
-      file: "/data/neet/neet.csv"
+      file: "/data/neet/neet_last_3_years.csv"
       type: line-chart
       legend: 
         show: true
@@ -85,7 +85,7 @@ visualisations:
     type: chart
     caption: "Unemployment levels for people not in education, training or employment (NEET)."
     config:
-      file: /data/neet/neet.csv
+      file: /data/neet/neet_last_3_years.csv
       type: bar-chart
       category: quarter_start
       legend:
@@ -126,7 +126,7 @@ visualisations:
     caption: "Economic inactivity levels for people not in education, training or employment (NEET). Economic inactivity \
               is defined as people neither working nor actively seeking employment."
     config:
-      file: /data/neet/neet.csv
+      file: /data/neet/neet_last_3_years.csv
       type: bar-chart
       category: quarter_start
       legend:
@@ -167,7 +167,7 @@ visualisations:
     type: table
     caption: 'The overall rates raw data in a table'
     config:
-      file: /data/neet/neet.csv
+      file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_start
           rename: Quarter
@@ -179,7 +179,7 @@ visualisations:
     type: table
     caption: 'Unemployment levels as a table'
     config:
-      file: /data/neet/neet.csv
+      file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_start
           rename: Quarter
@@ -190,7 +190,7 @@ visualisations:
     type: table
     caption: 'Economic inactivity levels as a table'
     config:
-      file: /data/neet/neet.csv
+      file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_start
           rename: Quarter

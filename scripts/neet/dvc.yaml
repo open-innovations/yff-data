@@ -26,7 +26,10 @@ stages:
       - scripts/neet/prepare.py
       - data/neet/neet.csv
     outs:
-      - src/_data/sources/neet/neet.csv:
+      - src/_data/sources/neet/neet_last_3_years.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/neet/neet_all_data.csv:
           cache: false
           persist: false
       - src/_data/sources/neet/headlines.csv:

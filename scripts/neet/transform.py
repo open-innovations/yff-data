@@ -63,4 +63,4 @@ if __name__ == "__main__":
         people, men, women
     ], axis=1)
 
-    most_recent_stats(data).to_csv(NEET_16_24)
+    data.to_csv(NEET_16_24)

@@ -8,3 +8,9 @@ def copy(name, from_dir, to_dir):
     data.to_csv(
         os.path.join(to_dir, name)
     )
+
+
+def add_index(data):
+    data = data.reset_index()
+    data.index = pd.Index(range(1, len(data.index) + 1), name='quarter_index')
+    return data

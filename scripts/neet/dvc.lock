@@ -14,8 +14,8 @@ stages:
     cmd: PYTHONPATH=. python scripts/neet/transform.py
     deps:
     - path: scripts/neet/transform.py
-      md5: c1f776327a7d51c8c8232000feeee1b6
-      size: 2150
+      md5: b2bdad9c17414badd5b5c0a1ce17f357
+      size: 2131
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 401
@@ -24,21 +24,24 @@ stages:
       size: 183641
     outs:
     - path: data/neet/neet.csv
-      md5: 7e8d11df6b0f118ea33fa59715b38cb7
-      size: 3730
+      md5: 0fbafb3a1a7d9b3421b44bd54fc97250
+      size: 22901
   prepare:
     cmd: PYTHONPATH=. python scripts/neet/prepare.py
     deps:
     - path: data/neet/neet.csv
-      md5: 7e8d11df6b0f118ea33fa59715b38cb7
-      size: 3730
+      md5: 0fbafb3a1a7d9b3421b44bd54fc97250
+      size: 22901
     - path: scripts/neet/prepare.py
-      md5: f2ff64b57169fe14766f22005b393e45
-      size: 1211
+      md5: ee577f9fbda7410657f53d61402fb11b
+      size: 1810
     outs:
     - path: src/_data/sources/neet/headlines.csv
       md5: c8934556e41a2efdeef48cdd9d19e236
       size: 325
-    - path: src/_data/sources/neet/neet.csv
+    - path: src/_data/sources/neet/neet_all_data.csv
+      md5: 0943931dc110521865b8077c4eb9318c
+      size: 23071
+    - path: src/_data/sources/neet/neet_last_3_years.csv
       md5: 4b48285cf8b074e4de31b49e22167f88
       size: 3757

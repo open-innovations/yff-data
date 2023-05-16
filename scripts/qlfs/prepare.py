@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from scripts.util.date import most_recent_stats
+from scripts.util.file import add_index
 
 from transform import DATA_DIR as RAW_DATA_DIR
 
@@ -39,12 +40,6 @@ def summarise(**datasets):
         ], name='Title')
     ).fillna('N/A')
     summary.to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
-
-
-def add_index(data):
-    data = data.reset_index()
-    data.index = pd.Index(range(1, len(data.index) + 1), name='quarter_index')
-    return data
 
 
 def transfer_files(filename):
