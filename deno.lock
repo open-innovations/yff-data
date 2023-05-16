@@ -855,7 +855,7 @@
     "specifiers": {
       "autoprefixer@10.4.13": "autoprefixer@10.4.13_postcss@8.4.21",
       "autoprefixer@10.4.14": "autoprefixer@10.4.14_postcss@8.4.21",
-      "date-fns": "date-fns@2.29.3",
+      "date-fns": "date-fns@2.30.0",
       "date-fns@2.29.3": "date-fns@2.29.3",
       "markdown-it-attrs@4.1.6": "markdown-it-attrs@4.1.6_markdown-it@13.0.1",
       "markdown-it-deflist@2.1.0": "markdown-it-deflist@2.1.0",
@@ -869,6 +869,12 @@
       "unidecode@0.1.8": "unidecode@0.1.8"
     },
     "packages": {
+      "@babel/runtime@7.21.5": {
+        "integrity": "sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==",
+        "dependencies": {
+          "regenerator-runtime": "regenerator-runtime@0.13.11"
+        }
+      },
       "@csstools/selector-specificity@2.2.0_postcss-selector-parser@6.0.11": {
         "integrity": "sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==",
         "dependencies": {
@@ -923,6 +929,12 @@
       "date-fns@2.29.3": {
         "integrity": "sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==",
         "dependencies": {}
+      },
+      "date-fns@2.30.0": {
+        "integrity": "sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==",
+        "dependencies": {
+          "@babel/runtime": "@babel/runtime@7.21.5"
+        }
       },
       "electron-to-chromium@1.4.340": {
         "integrity": "sha512-zx8hqumOqltKsv/MF50yvdAlPF9S/4PXbyfzJS6ZGhbddGkRegdwImmfSVqCkEziYzrIGZ/TlrzBND4FysfkDg==",
@@ -1083,6 +1095,10 @@
         "dependencies": {
           "pify": "pify@2.3.0"
         }
+      },
+      "regenerator-runtime@0.13.11": {
+        "integrity": "sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==",
+        "dependencies": {}
       },
       "resolve@1.22.1": {
         "integrity": "sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==",

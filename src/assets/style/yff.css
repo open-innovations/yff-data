@@ -1,6 +1,8 @@
 @import 'css/site-header.css';
 @import 'css/tag-cloud.css';
+@import 'css/typography.css';
 @import 'css/pane.css';
+@import 'css/grids.css';
 
 /* Youth Futures Foundation styles */
 @font-face {
@@ -82,11 +84,6 @@ main section.dl { padding-top: 0; display: flex; }
 
 section, aside { margin: 1em 0; padding: 0; }
 
-.auto-grid { grid-gap: 2.5em; --auto-grid-min-size: 500px!important; }
-.auto-grid .pane { border: 0; padding: 1.25em; line-height: 1.5em; }
-.pane h2 { font-weight: bold; }
-.auto-grid .pane:hover, .auto-grid .pane:focus { outline: 2px solid #e25b27; }
-.auto-grid .pane:hover h2 { color: #964e6d; }
 .grey { background: #efefef; }
 
 td, th { padding: 0.25em; }

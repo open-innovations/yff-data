@@ -3,10 +3,19 @@ css: |
   .grid-block {
     --width: auto;
     --padding: 1em;
-    --bg-colour: #dfdfdf;
+    --bg-colour: #fceee7;
     width: var(--width);
+    max-width: 100%;
     padding: var(--padding);
     background: var(--bg-colour);
+  }
+  .grid-block-flex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow: hidden;
   }
 ---
 {# 
@@ -15,8 +24,9 @@ css: |
   usage:
 
     {% comp "grid.block", {
+      background: "#fceee7"
       tag: "div";
-      width: "auto";
+      block_width: "auto";
       padding: "1em";
       style: undefined
     } %}
@@ -28,10 +38,23 @@ css: |
     * width: the width of the block
     * style: css style to apply inline
 #}
-<{{tag or 'div'}} style="
+{% set styling -%}
+style="
   {%- if background %}--bg-colour:{{ background }};{% endif -%}
   {%- if padding %}--padding:{{ padding }};{% endif -%}
   {%- if width %}--width:{{ width }};{% endif -%}
-  {{style or ''}}" class='grid-block'>
-  {{ content | safe }}
-</{{tag or 'div'}}>
+  {%- if columns %}grid-column:span {{ columns }};{% endif -%}
+  {{style or '' }}"
+{%- endset -%}
+
+{% if link %}
+  <a href="{{ link }}" class="grid-block" {{ styling | safe }}>
+    <{{tag or 'div'}} class="grid-block-flex">
+      {{ content | safe }}
+    </{{tag or 'div'}}>
+  </a>
+{% else %}
+  <{{tag or 'div'}} class="grid-block grid-block-flex" {{ styling | safe }}>
+    {{ content | safe }}
+  </{{tag or 'div'}}>
+{% endif %}

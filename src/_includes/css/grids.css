@@ -1,0 +1,49 @@
+:is(.auto-grid, .grid-rigid) {
+  grid-gap: 1em;
+  --auto-grid-min-size: 500px !important;
+  & .pane {
+    & p {
+      font-size: 0.9em;
+    }
+  }
+  .grid-block {
+    width: 100%;
+  }
+}
+
+:is(.auto-grid, .grid-rigid, .grid-masonry) {
+  & > a {
+    color: inherit;
+  }
+  & > :is(.pane, .grid-block) {
+    border: 0;
+    padding: 1.25em;
+    line-height: 1.5;
+
+    &:is(a:hover, a:focus) {
+      & h1, h2, h3 {
+        text-decoration: underline;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background: #efefef;
+      outline: 2px solid #e25b27;
+
+      & h2 {
+        color: #964e6d;
+      }
+    }
+
+  }
+  :is(.pane, .grid-block) {
+    & h3 {
+      font-size: 1.2em;
+    }
+
+    & h2 {
+      font-weight: bold;
+    }
+  }
+}
