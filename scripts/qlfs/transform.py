@@ -45,13 +45,14 @@ def load_data(filename):
 def force_numeric(series):
     return pd.to_numeric(series, errors='coerce')
 
-def extract_quarters(data):
+
+def extract_every_third(data):
     '''
-      Extracts quarterly data from a frame where the index comprises strings
-      which start with the months of the year.
+      Extracts quarterly data from a frame by slicing.
+      The first slice progresses backwards in 3s.
+      The second slice reverses the dataframe.
     '''
-    return data.loc[data.index.str.slice(
-        stop=3).isin(['Jan', 'Apr', 'Jul', 'Oct'])]
+    return data.iloc[::-3].iloc[::-1]
 
 
 def transform_A06():
@@ -67,7 +68,7 @@ def transform_A06():
         'AIYU',  # Economivally inactive rate, 16-24
     ]
     A06_data = A06_data[measures]
-    A06_data = extract_quarters(A06_data)
+    A06_data = A06_data.pipe(extract_every_third)
     A06_data.index = quarter_to_date(A06_data.index)
 
     A06_data \
@@ -85,7 +86,7 @@ def transform_UNEM01():
     ]
     # The data has '*' characters in it - added to_numeric
     UNEM01_data = UNEM01_data[measures].apply(force_numeric)
-    UNEM01_data = extract_quarters(UNEM01_data)
+    UNEM01_data = UNEM01_data.pipe(extract_every_third)
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
     data_16_to_24 = pd.DataFrame({
