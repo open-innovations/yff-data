@@ -48,11 +48,11 @@ stages:
       md5: 2c602c138bacc0407e62cccc4970e5e7
       size: 17613
     - path: scripts/qlfs/prepare.py
-      md5: 8fa0cc3a6c9b4e52cf2814837df063bc
-      size: 2373
+      md5: ed67e518837828a4ef512242de988344
+      size: 2265
     - path: scripts/util/file.py
-      md5: af23b0d3c236744bdb6960940be926fb
-      size: 256
+      md5: b226a4ac82b8454bfb34fac4be98f7c5
+      size: 404
     outs:
     - path: src/_data/sources/qlfs/headlines.csv
       md5: 83ad4e923ff01182c64efb7abf31bf67
