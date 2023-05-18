@@ -76,7 +76,14 @@
   #   - title:
   #     link: about:blank
   type: chart
-  caption: "January to March 2023 three-month average vacancies in the UK, quarterly percentage growth from October to December 2022 and percentage growth from pre-coronavirus (COVID-19) pandemic January to March 2020."
+  caption: |
+    Quarterly average number of job vacancies in the UK, showing percentage growth on previous quarter and growth on the same quarter pre-coronavirus pandemic. Categories were selected based on the <a href= "https://youthfuturesfoundation.org/wp-content/uploads/2021/10/Large-Employers-and-the-Youth-Labour-Market-report.pdf">Large Employers and the Youth Labour Market Report</a>, using the following criteria:
+    <ul><br>
+      <li>Hospitality, Health and Social Care are key sectors for youth employment.</li>
+      <li>Manufacturing and Construction are growth industries i.e. green jobs.</li>
+      <li>Young people want to work in Creative, Professional and Financial Services industries.</li>
+      <li>Retail, Hospitality, Arts and Entertainment were particularly impacted by the coronavirus pandemic.</li>
+    </ul>
   config:
     file: /data/vacancies/vacancies_by_sector.csv
     type: bar-chart

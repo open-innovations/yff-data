@@ -20,7 +20,12 @@ def prepare_vacancies():
     monthly.to_csv(os.path.join(DATA_DIR, 'monthly_vacancies.csv'), index=False)
 
 def prepare_vacancies_by_sector(): 
-    vacancies_by_sector = pd.read_csv(os.path.join(WORK_DIR, 'vacancies_by_sector.csv'), skiprows = 6)
+    vacancies_by_sector = pd.read_csv(os.path.join(WORK_DIR, 'vacancies_by_sector.csv'), skiprows = 6, index_col = 0)
+    vacancies_by_sector = vacancies_by_sector.drop(index = [
+        'Electricity gas steam & air conditioning supply', 
+        'Administrative & support service activities',
+        'Mining & quarrying',
+    ]).reset_index()
     vacancies_by_sector = vacancies_by_sector.rename(columns = 
         { vacancies_by_sector.columns[0]: 'Sector',
         vacancies_by_sector.columns[1]: 'Growth compared with last quarter (%)',
