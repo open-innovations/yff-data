@@ -19,8 +19,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
-      md5: 0579c4fe09af70310694eb34e4fb5439
-      size: 4350
+      md5: e8fb1d603ff25872bc14ab45a2dc6a7e
+      size: 4762
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
@@ -35,8 +35,8 @@ stages:
       size: 958976
     outs:
     - path: data/qlfs/long_term_unemployed.csv
-      md5: 2396dc6451ee33707bb49e4d6fc9cfad
-      size: 8267
+      md5: f673fee913515e38c859c6ca5c3dac8f
+      size: 12954
       isexec: true
     - path: data/qlfs/not_in_education.csv
       md5: 2c602c138bacc0407e62cccc4970e5e7
@@ -46,29 +46,29 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
     deps:
     - path: data/qlfs/long_term_unemployed.csv
-      md5: 2396dc6451ee33707bb49e4d6fc9cfad
-      size: 8267
+      md5: f673fee913515e38c859c6ca5c3dac8f
+      size: 12954
     - path: data/qlfs/not_in_education.csv
       md5: 2c602c138bacc0407e62cccc4970e5e7
       size: 17613
     - path: scripts/qlfs/prepare.py
-      md5: ed67e518837828a4ef512242de988344
-      size: 2329
+      md5: 23e235cdc15aca64d2657e8f18ba596b
+      size: 2599
     - path: scripts/util/file.py
       md5: b226a4ac82b8454bfb34fac4be98f7c5
       size: 420
     outs:
     - path: src/_data/sources/qlfs/headlines.csv
-      md5: 83ad4e923ff01182c64efb7abf31bf67
-      size: 365
+      md5: c4e3c92c7422e28b97558bf49c498199
+      size: 493
       isexec: true
     - path: src/_data/sources/qlfs/long_term_unemployed_all_data.csv
-      md5: 900c02a7295eeefa5e0d07efd13627b7
-      size: 8641
+      md5: 3fe03e74af8fafcd193eb90a113dcf49
+      size: 13309
       isexec: true
     - path: src/_data/sources/qlfs/long_term_unemployed_last_3_years.csv
-      md5: 01de9d9e2b31a41938bcfc7ce8143c8c
-      size: 929
+      md5: 7ce21789b80fbefdbe04491c7dfd9139
+      size: 1459
       isexec: true
     - path: src/_data/sources/qlfs/not_in_education_all_data.csv
       md5: 18eab3fd9e1eb6c8bab3a1c474841347

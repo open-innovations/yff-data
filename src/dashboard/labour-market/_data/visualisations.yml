@@ -4,7 +4,7 @@
     file: /data/qlfs/headlines.csv
     title: 'Title'
     value: 'Value'
-    width: 333px
+    width: 250px
     note: 'Note'
     units:
       postfix: 'Suffix'
@@ -12,15 +12,17 @@
       - name: 'Unemployment rate'
         colour: Orange
         suffix: '%'
-      - name: 'Long-term unemployment rate'
+      - name: 'Long-term unemployment rate 12 months'
         colour: Blue
+      - name: 'Long-term unemployment rate 6 months'
+        colour: Plum
       - name: 'Economic inactivity rate'
         colour: Gold
 
 - tab: Long-term unemployment, last 3 years 
   title: Long-term unemployment rate over the last 3 years
   type: chart
-  caption: The long-term unemployment rate for 16-24 year-olds, showing long-term unemployment defined as over 12 months. Derived from UNEM01.
+  caption: The long-term unemployment rate for 16-24 year-olds, showing long-term unemployment defined as over 12 months, and between 6-12 months. Derived from UNEM01.
   config:
     file: data/qlfs/long_term_unemployed_last_3_years.csv
     type: line-chart
@@ -89,19 +91,26 @@
               label: "25"
     columns:
         - name: "Label 16-24"
-          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"
+          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"        
+        - name: "Label 16-24"
+          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_6_months_rate_sa | toFixed(1)}}%"
     series:
-      - title: "16-24"
+      - title: "12 months"
         x: "quarter_index"                       # Column heading to use for x-value
         y: "age_16_to_24_unemployed_over_12_months_rate_sa"            # Column heading to use fro y-value
         size: 50
-        tooltip: "Label 16-24"
+        tooltip: "Label 12 months"
+      - title: "6 months"
+        x: "quarter_index"                       # Column heading to use for x-value
+        y: "age_16_to_24_unemployed_over_6_months_rate_sa"            # Column heading to use fro y-value
+        size: 50
+        tooltip: "Label 6 months"
 
 
 - tab: Long-term unemployment, all data 
   title: Long-term unemployment rate over all time 
   type: chart
-  caption: The long-term unemployment rate for 16-24 year-olds, showing long-term unemployment defined as over 12 months. Derived from UNEM01.
+  caption: The long-term unemployment rate for 16-24 year-olds, showing long-term unemployment defined as over 12 months, and between 6-12 months. Derived from UNEM01.
   config:
     file: data/qlfs/long_term_unemployed_all_data.csv
     type: line-chart
@@ -180,14 +189,21 @@
               grid: true
               label: "40"
     columns:
-        - name: "Label 16-24"
-          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"
+        - name: "Label 12 months"
+          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"        
+        - name: "Label 6 months"
+          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_6_months_rate_sa | toFixed(1)}}%"
     series:
-      - title: "16-24"
+      - title: "12 months"
         x: "quarter_index"                       # Column heading to use for x-value
         y: "age_16_to_24_unemployed_over_12_months_rate_sa"            # Column heading to use fro y-value
         size: 50
         tooltip: "Label 16-24"
+      - title: "6 months"
+        x: "quarter_index"                       # Column heading to use for x-value
+        y: "age_16_to_24_unemployed_over_6_months_rate_sa"            # Column heading to use fro y-value
+        size: 50
+        tooltip: "Label 6 months"
 
 
 

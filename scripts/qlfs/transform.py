@@ -22,10 +22,12 @@ column_mapper = {
     # 16-17
     'YBVH': 'age_16_to_17_unemployed_sa',
     'YBXJ': 'age_16_to_17_unemployed_over_12_months_sa',
+    'YBXG': 'age_16_to_17_unemployed_over_6_months_sa',
     'YBXM': 'age_16_to_17_unemployed_over_12_months_rate_sa',
     # 18-24
     'YBVN': 'age_18_to_24_unemployed_sa',
     'YBXY': 'age_18_to_24_unemployed_over_12_months_sa',
+    'YBXV': 'age_18_to_24_unemployed_over_6_months_sa',
     'YBYB': 'age_18_to_24_unemployed_over_12_months_rate_sa',
 
 }
@@ -81,8 +83,8 @@ def transform_A06():
 def transform_UNEM01():
     UNEM01_data = load_data(UNEM01_SA_LATEST)
     measures = [
-        'YBVH', 'YBXJ', 'YBXM',  # 16-17
-        'YBVN', 'YBXY', 'YBYB',  # 18-24
+        'YBVH', 'YBXG', 'YBXJ', 'YBXM',  # 16-17
+        'YBVN', 'YBXV', 'YBXY', 'YBYB',  # 18-24
     ]
     # The data has '*' characters in it - added to_numeric
     UNEM01_data = UNEM01_data[measures].apply(force_numeric)
@@ -91,9 +93,12 @@ def transform_UNEM01():
 
     data_16_to_24 = pd.DataFrame({
         'age_16_to_24_unemployed_sa': UNEM01_data.YBVN + UNEM01_data.YBVH,
-        'age_16_to_24_unemployed_over_12_months_sa': UNEM01_data.YBXY + UNEM01_data.YBXJ
+        'age_16_to_24_unemployed_over_12_months_sa': UNEM01_data.YBXY + UNEM01_data.YBXJ,
+        'age_16_to_24_unemployed_over_6_months_sa':  UNEM01_data.YBXV + UNEM01_data.YBXG
     })
     data_16_to_24['age_16_to_24_unemployed_over_12_months_rate_sa'] = data_16_to_24['age_16_to_24_unemployed_over_12_months_sa'] / \
+        data_16_to_24['age_16_to_24_unemployed_sa'] * 100
+    data_16_to_24['age_16_to_24_unemployed_over_6_months_rate_sa'] = data_16_to_24['age_16_to_24_unemployed_over_6_months_sa'] / \
         data_16_to_24['age_16_to_24_unemployed_sa'] * 100
 
     data_16_to_24 \
