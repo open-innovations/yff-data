@@ -17,10 +17,10 @@
       - name: 'Economic inactivity rate'
         colour: Gold
 
-- tab: Long-term unemployment rate
-  title: Long-term unemployment rate
+- tab: Long-term unemployment, last 3 years 
+  title: Long-term unemployment rate over the last 3 years
   type: chart
-  caption: The long-term unemployment rate for 16-24 year-olds. Long-term unemployment is defined as being unemployed for more than 12 months. Derived from UNEM01.
+  caption: The long-term unemployment rate for 16-24 year-olds, showing long-term unemployment defined as over 12 months. Derived from UNEM01.
   config:
     file: data/qlfs/long_term_unemployed_last_3_years.csv
     type: line-chart
@@ -96,6 +96,101 @@
         y: "age_16_to_24_unemployed_over_12_months_rate_sa"            # Column heading to use fro y-value
         size: 50
         tooltip: "Label 16-24"
+
+
+- tab: Long-term unemployment, all data 
+  title: Long-term unemployment rate over all time 
+  type: chart
+  caption: The long-term unemployment rate for 16-24 year-olds, showing long-term unemployment defined as over 12 months. Derived from UNEM01.
+  config:
+    file: data/qlfs/long_term_unemployed_all_data.csv
+    type: line-chart
+    legend:
+      show: true     # Default to false
+      position: "top right"
+    axis:
+      x:  # Horizontal axis
+        min: 0    # A minimum value
+        max: 130    # A maximum value
+        grid:
+          stroke: "#efefef"
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+            - label: "1992-04-01"
+              value: 1
+            - label: ""
+              value: 10
+            - label: "1997-01-01"
+              value: 20
+            - label: ""
+              value: 30
+            - label: "2002-01-01"
+              value: 40
+            - label: ""
+              value: 50
+            - label: "2007-01-01"
+              value: 60
+            - label: ""
+              value: 70
+            - label: "2012-01-01"
+              value: 80
+            - label: ""
+              value: 90
+            - label: "2017-01-01"
+              value: 100
+            - label: ""
+              value: 110
+            - label: "2022-01-01"
+              value: 120
+      y:             # The vertical axes
+        min: 0     # A minimum value
+        max: 40   # A maximum value
+        title: 
+          label: "Rate (%)"
+        dominant-baseline: text-bottom
+        # Explicitly define the ticks.
+        # Each tick has a numeric value and a displayed label
+        ticks:
+            - value: 0
+              grid: true
+              label: "0"
+            - value: 5
+              grid: true
+              label: "5"
+            - value: 10
+              grid: true
+              label: "10"
+            - value: 15
+              grid: true
+              label: "15"
+            - value: 20
+              grid: true
+              label: "20"
+            - value: 25
+              grid: true
+              label: "25"            
+            - value: 30
+              grid: true
+              label: "30"            
+            - value: 35
+              grid: true
+              label: "35"
+            - value: 40
+              grid: true
+              label: "40"
+    columns:
+        - name: "Label 16-24"
+          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"
+    series:
+      - title: "16-24"
+        x: "quarter_index"                       # Column heading to use for x-value
+        y: "age_16_to_24_unemployed_over_12_months_rate_sa"            # Column heading to use fro y-value
+        size: 50
+        tooltip: "Label 16-24"
+
+
+
 
 - tab: Overall unemployment rate
   title: Overall unemployment rate

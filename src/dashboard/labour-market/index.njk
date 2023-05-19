@@ -19,10 +19,10 @@ from the Office for National Statistics. This page is a work in progress with up
 {{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h3>Unemployment by age and duration (seasonally adjusted) (UNEM01 SA)</h3>
-{{ comp.viz.main({ visualisations: visualisations | pick(1), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations | pick(1, 2), test: false }) | safe }}
 
 <h3>Educational status and labour market status for people aged from 16 to 24 (seasonally adjusted) (A06 SA)</h3>
-{{ comp.viz.main({ visualisations: visualisations | pick(2, 3), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations | pick(3, 4), test: false }) | safe }}
 
 <h2>Data Tables</h2>
-{{ comp.viz.main({ visualisations: visualisations | pick(4, 5, 6) }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations | pick(5, 6, 7) }) | safe }}

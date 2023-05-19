@@ -5,23 +5,25 @@ stages:
     deps:
     - path: scripts/qlfs/extract.py
       md5: b02d93e0e95e6b65b3e5755edaef0a46
-      size: 747
+      size: 763
     outs:
     - path: working/qlfs/a06latest.xls
       md5: f15f94af6e0824d160fbe3e3fb36e76b
       size: 1406464
+      isexec: true
     - path: working/qlfs/unem01latest.xls
       md5: 587a94844b77dd8626cbcf8335d81789
       size: 958976
+      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
       md5: 0579c4fe09af70310694eb34e4fb5439
-      size: 4233
+      size: 4350
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
-      size: 401
+      size: 416
     - path: working/lookups/lms_lookups.csv
       md5: eb12567d3b2aee1199be9d29cf92bc94
       size: 137643
@@ -35,9 +37,11 @@ stages:
     - path: data/qlfs/long_term_unemployed.csv
       md5: 2396dc6451ee33707bb49e4d6fc9cfad
       size: 8267
+      isexec: true
     - path: data/qlfs/not_in_education.csv
       md5: 2c602c138bacc0407e62cccc4970e5e7
       size: 17613
+      isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
     deps:
@@ -49,23 +53,28 @@ stages:
       size: 17613
     - path: scripts/qlfs/prepare.py
       md5: ed67e518837828a4ef512242de988344
-      size: 2265
+      size: 2329
     - path: scripts/util/file.py
       md5: b226a4ac82b8454bfb34fac4be98f7c5
-      size: 404
+      size: 420
     outs:
     - path: src/_data/sources/qlfs/headlines.csv
       md5: 83ad4e923ff01182c64efb7abf31bf67
       size: 365
+      isexec: true
     - path: src/_data/sources/qlfs/long_term_unemployed_all_data.csv
       md5: 900c02a7295eeefa5e0d07efd13627b7
       size: 8641
+      isexec: true
     - path: src/_data/sources/qlfs/long_term_unemployed_last_3_years.csv
       md5: 01de9d9e2b31a41938bcfc7ce8143c8c
       size: 929
+      isexec: true
     - path: src/_data/sources/qlfs/not_in_education_all_data.csv
       md5: 18eab3fd9e1eb6c8bab3a1c474841347
       size: 17937
+      isexec: true
     - path: src/_data/sources/qlfs/not_in_education_last_3_years.csv
       md5: f7c342367e517b93d909b4bb91c0677d
       size: 2078
+      isexec: true
