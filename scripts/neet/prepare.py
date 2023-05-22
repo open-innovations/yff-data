@@ -60,6 +60,7 @@ def summarise(neet):
 def transfer_files(filename):
     data = read_source_data(filename, index_col=[
                             'quarter_start'], parse_dates=['quarter_start'])
+    data['quarter_label'] = pd.to_datetime(data.index.values).map(timestamp_to_neet_period)
 
     data.pipe(add_index).to_csv(os.path.join(
         DATA_DIR, os.path.basename(filename).replace('.', '_all_data.')))
