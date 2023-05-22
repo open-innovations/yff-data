@@ -127,10 +127,10 @@ visualisations:
           tooltip: "Women"
 
 
-  - tab: NEET rates - All People (SA)
+  - tab: NEET figures - All People (SA)
     type: table
     caption: |
-      NEET stats for all people for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      NEET figures for all people for last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
@@ -146,10 +146,10 @@ visualisations:
         - name: Economically inactive level
           template: "{{ people_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
 
-  - tab: NEET - Women (SA)
+  - tab: NEET figures - Women (SA)
     type: table
     caption: |
-      NEET stats for women for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      NEET figures for women for last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
@@ -165,10 +165,10 @@ visualisations:
         - name: Economically inactive level
           template: "{{ women_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
   
-  - tab: NEET - Men (SA)
+  - tab: NEET figures - Men (SA)
     type: table
     caption: |
-      NEET stats for men for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      NEET figures for men for last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
