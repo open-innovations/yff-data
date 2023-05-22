@@ -15,17 +15,17 @@ def read_source_data(filename, **kwargs):
 
 def summarise(**datasets):
     long_term_unemployed = datasets['long_term_unemployed']
-    not_in_education = datasets['not_in_education']
+    education_status = datasets['education_status']
 
     summary = pd.DataFrame({
         'Value': [
-            not_in_education.age_16_to_24_not_in_ft_education_unemployment_rate_sa \
+            education_status.age_16_to_24_not_in_ft_education_unemployment_rate_sa \
                 .iloc[-1].round(1),
             long_term_unemployed.age_16_to_24_unemployed_over_12_months_rate_sa \
                 .iloc[-1].round(1),
             long_term_unemployed.age_16_to_24_unemployed_over_6_months_rate_sa \
                 .iloc[-1].round(1),
-            not_in_education.age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa \
+            education_status.age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa \
                 .iloc[-1].round(1)
         ],
         'Note': [
@@ -60,9 +60,9 @@ def transfer_files(filename):
 
 if __name__ == "__main__":
     long_term_unemployed = transfer_files("long_term_unemployed.csv")
-    not_in_education = transfer_files("not_in_education.csv")
+    education_status = transfer_files("education_status.csv")
 
     summarise(
         long_term_unemployed=long_term_unemployed,
-        not_in_education=not_in_education
+        education_status=education_status
     )

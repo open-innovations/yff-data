@@ -91,7 +91,7 @@ def transform_A06():
 
     A06_data \
         .rename(columns=column_mapper) \
-        .to_csv(os.path.join(DATA_DIR, 'not_in_education.csv'))
+        .to_csv(os.path.join(DATA_DIR, 'education_status.csv'))
 
     return A06_data
 

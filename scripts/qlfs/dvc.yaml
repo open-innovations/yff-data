@@ -25,7 +25,7 @@ stages:
       - data/qlfs/long_term_unemployed.csv:
           cache: false
           persist: false
-      - data/qlfs/not_in_education.csv:
+      - data/qlfs/education_status.csv:
           cache: false
           persist: false
   prepare:
@@ -35,7 +35,7 @@ stages:
       - scripts/qlfs/prepare.py
       - scripts/util/file.py
       - data/qlfs/long_term_unemployed.csv
-      - data/qlfs/not_in_education.csv
+      - data/qlfs/education_status.csv
     outs:
       - src/_data/sources/qlfs/headlines.csv:
           cache: false
@@ -46,9 +46,9 @@ stages:
       - src/_data/sources/qlfs/long_term_unemployed_all_data.csv:
           cache: false
           persist: false
-      - src/_data/sources/qlfs/not_in_education_last_3_years.csv:
+      - src/_data/sources/qlfs/education_status_last_3_years.csv:
           cache: false
           persist: false
-      - src/_data/sources/qlfs/not_in_education_all_data.csv:
+      - src/_data/sources/qlfs/education_status_all_data.csv:
           cache: false
           persist: false
