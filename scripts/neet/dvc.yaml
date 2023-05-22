@@ -27,6 +27,8 @@ stages:
     wdir: ../..
     deps:
       - scripts/neet/prepare.py
+      - scripts/util/date.py
+      - scripts/util/file.py
       - data/neet/neet.csv
     outs:
       - src/_data/sources/neet/neet_last_3_years.csv:
