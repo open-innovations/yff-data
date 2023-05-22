@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from transform import NEET_16_24
+from transform import NEET_16_24, NEET_METADATA
 from scripts.util.date import date_to_quarter, most_recent_stats
 from scripts.util.file import add_index
 
@@ -49,6 +49,11 @@ def summarise(neet):
         latest,
         pd.Series({ 'quarter': neet_period })
       ])
+    metadata = pd.read_json(NEET_METADATA, orient='index')[0]
+    latest = pd.concat([
+        latest,
+        metadata,
+    ])
     latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'))
 
 

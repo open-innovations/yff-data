@@ -14,8 +14,8 @@ stages:
     cmd: PYTHONPATH=. python scripts/neet/transform.py
     deps:
     - path: scripts/neet/transform.py
-      md5: ca3424548d0ed3a401b798c1b1b31770
-      size: 2433
+      md5: 0460659966cb6f411e1e061bbb6a4e6c
+      size: 2847
     - path: scripts/util/date.py
       md5: 2c3f6b068d9c369911c48f79c22b452b
       size: 747
@@ -23,6 +23,9 @@ stages:
       md5: 50244a60014fad2e2622538284b235a1
       size: 183641
     outs:
+    - path: data/neet/metadata.json
+      md5: bb48a55dc78848350da422a5a890deed
+      size: 79
     - path: data/neet/neet.csv
       md5: f3bb0993cb840451d889531763e718ea
       size: 32417
@@ -33,8 +36,8 @@ stages:
       md5: f3bb0993cb840451d889531763e718ea
       size: 32417
     - path: scripts/neet/prepare.py
-      md5: e91248c739d812b62ee03fc5b23771f0
-      size: 2434
+      md5: 88d37cdcdb614b71d8f8a4b6e06a4d67
+      size: 2577
     outs:
     - path: src/_data/sources/neet/headlines.csv
       md5: f69de60d7f4468ab2ce21a8c73299b30
@@ -46,5 +49,5 @@ stages:
       md5: 5061e5d7054ada15d5713aa6bea01773
       size: 5511
     - path: src/dashboard/neet/_data/latest.json
-      md5: b9776ffbb4fdbdebd013a26f483661e3
-      size: 87
+      md5: e025750fadcaccb22abd844ab0c8736e
+      size: 165

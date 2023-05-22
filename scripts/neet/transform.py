@@ -9,6 +9,7 @@ DATA_DIR = os.path.join('data', 'neet')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 NEET_16_24 = os.path.join(DATA_DIR, 'neet.csv')
+NEET_METADATA = os.path.join(DATA_DIR, 'metadata.json')
 
 column_mapper = {
     'Young people who were NEET Total': 'age_16_to_24_neet_total_sa',
@@ -36,6 +37,17 @@ def load_data(sheet_name='People - SA'):
 
     # Return the data
     return data
+
+
+def read_meta():
+    dates = pd.read_excel(NEET_RAW_LATEST, sheet_name='People - SA', usecols=[1,8], skiprows=1, nrows=1, header=None).transpose()
+    dates.columns = ['value']
+    print(dates.dtypes)
+    dates.index = pd.Index([
+        "published",
+        "next_update",
+    ])
+    dates.value.to_json(NEET_METADATA, date_format='iso')
 
 
 def process_data(data, prefix='people'):
@@ -69,3 +81,5 @@ if __name__ == "__main__":
     ], axis=1)
 
     data.to_csv(NEET_16_24)
+
+    read_meta()
