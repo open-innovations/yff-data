@@ -127,43 +127,59 @@ visualisations:
           tooltip: "Women"
 
 
-  - tab: Overall rates table
+  - tab: NEET rates - All People (SA)
     type: table
-    caption: 'The overall rates raw data in a table'
+    caption: |
+      NEET stats for all people for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_start
           rename: Quarter
-        - name: People (SA)
+        - name: Overall NEET rate
           template: "{{ people_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
-        - name: Women (SA)
-          template: "{{ women_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
-        - name: Men (SA)
-          template: "{{ men_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
+        - name: Overall NEET level
+          template: "{{ people_age_16_to_24_neet_total_sa | toFixed(0) }}"
+        - name: Unemployed level
+          template: "{{ people_age_16_to_24_neet_unemployed_sa | toFixed(0) }}"
+        - name: Economically inactive level
+          template: "{{ people_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
 
-  - tab: Unemployment table
+  - tab: NEET - Women (SA)
     type: table
-    caption: 'Unemployment levels as a table'
+    caption: |
+      NEET stats for women for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_start
           rename: Quarter
-        - name: Women (SA)
+        - name: Overall NEET rate
+          template: "{{ women_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
+        - name: Overall NEET level
+          template: "{{ women_age_16_to_24_neet_total_sa | toFixed(0) }}"
+        - name: Unemployed level
           template: "{{ women_age_16_to_24_neet_unemployed_sa | toFixed(0) }}"
-        - name: Men (SA)
-          template: "{{ men_age_16_to_24_neet_unemployed_sa | toFixed(0) }}"
+        - name: Economically inactive level
+          template: "{{ women_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
   
-  - tab: Economic inactivity table
+  - tab: NEET - Men (SA)
     type: table
-    caption: 'Economic inactivity levels as a table'
+    caption: |
+      NEET stats for men for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_start
           rename: Quarter
-        - name: Men (SA)
+        - name: Overall NEET rate
+          template: "{{ men_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
+        - name: Overall NEET level
+          template: "{{ men_age_16_to_24_neet_total_sa | toFixed(0) }}"
+        - name: Unemployed level
+          template: "{{ men_age_16_to_24_neet_unemployed_sa | toFixed(0) }}"
+        - name: Economically inactive level
           template: "{{ men_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
-        - name: Women (SA)
-          template: "{{ women_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
