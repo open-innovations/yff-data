@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from transform import NEET_16_24
-from scripts.util.date import most_recent_stats
+from scripts.util.date import date_to_quarter, most_recent_stats
 from scripts.util.file import add_index
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'neet')
@@ -12,17 +12,10 @@ def read_source_data(filename, **kwargs):
     return pd.read_csv(filename, **kwargs)
 
 
-def timestamp_to_neet_period(date):
-    timestamp = pd.to_datetime(date)
-    return '{}-{} {}'.format(
-        timestamp.strftime('%b'),
-        (timestamp + pd.DateOffset(months=3, days=-1)).strftime('%b'),
-        timestamp.strftime('%Y')
-    )
 
 
 def summarise(neet):
-    neet_period = timestamp_to_neet_period(neet.quarter_start.iloc[-1])
+    neet_period = neet.quarter_label.iloc[-1]
 
     headlines = pd.DataFrame(
         {
@@ -60,7 +53,7 @@ def summarise(neet):
 def transfer_files(filename):
     data = read_source_data(filename, index_col=[
                             'quarter_start'], parse_dates=['quarter_start'])
-    data['quarter_label'] = pd.to_datetime(data.index.values).map(timestamp_to_neet_period)
+    data['quarter_label'] = pd.to_datetime(data.index.values).to_series().pipe(date_to_quarter)
 
     data.pipe(add_index).to_csv(os.path.join(
         DATA_DIR, os.path.basename(filename).replace('.', '_all_data.')))

@@ -17,8 +17,8 @@ stages:
       md5: ca3424548d0ed3a401b798c1b1b31770
       size: 2433
     - path: scripts/util/date.py
-      md5: 541fdb42d596b87ba93234e2815f5045
-      size: 401
+      md5: 2c3f6b068d9c369911c48f79c22b452b
+      size: 747
     - path: working/neet/neetlatest.xlsx
       md5: 50244a60014fad2e2622538284b235a1
       size: 183641
@@ -33,8 +33,8 @@ stages:
       md5: f3bb0993cb840451d889531763e718ea
       size: 32417
     - path: scripts/neet/prepare.py
-      md5: 1ec5ae033e8365dded5e24eee751cbba
-      size: 2548
+      md5: a4ad27881a2e7b31ff0467e9caaf71cb
+      size: 2296
     outs:
     - path: src/_data/sources/neet/headlines.csv
       md5: f69de60d7f4468ab2ce21a8c73299b30
