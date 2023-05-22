@@ -42,7 +42,6 @@ def load_data(sheet_name='People - SA'):
 def read_meta():
     dates = pd.read_excel(NEET_RAW_LATEST, sheet_name='People - SA', usecols=[1,8], skiprows=1, nrows=1, header=None).transpose()
     dates.columns = ['value']
-    print(dates.dtypes)
     dates.index = pd.Index([
         "published",
         "next_update",

@@ -7,6 +7,7 @@ from scripts.util.date import quarter_to_date
 
 DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
+METADATA_FILE = os.path.join(DATA_DIR, 'metadata.json')
 
 column_name = pd.read_csv('working/lookups/lms_lookups.csv',
                           usecols=['code', 'name'], index_col='code').name.to_dict()
@@ -123,9 +124,24 @@ def transform_UNEM01():
     return UNEM01_data
 
 
+def read_dates(file, key, **kwargs):
+    dates = pd.read_excel(file, sheet_name="People", skiprows=1, nrows=1, header=None, usecols=kwargs.get('usecols', [1,8])).transpose()
+    dates.columns = [key]
+    dates.index = pd.Index([
+        "published",
+        "next_update",
+    ])
+    return dates
+
+
 if __name__ == "__main__":
     transform_A06()
     transform_UNEM01()
+
+    pd.concat([
+        read_dates(A06_SA_LATEST, 'a06', usecols=[1,8]),
+        read_dates(UNEM01_SA_LATEST, 'unem01', usecols=[1,9]),
+    ], axis=1).to_json(METADATA_FILE, date_format='iso', indent=2)
 
     notes = [
         'Long-term unemoployment levels for 16-24 are derived from aggregates 16-17 and 18-24 rates',
