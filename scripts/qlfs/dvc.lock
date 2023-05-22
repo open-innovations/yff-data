@@ -5,16 +5,14 @@ stages:
     deps:
     - path: scripts/qlfs/extract.py
       md5: b02d93e0e95e6b65b3e5755edaef0a46
-      size: 763
+      size: 747
     outs:
     - path: working/qlfs/a06latest.xls
       md5: f15f94af6e0824d160fbe3e3fb36e76b
       size: 1406464
-      isexec: true
     - path: working/qlfs/unem01latest.xls
       md5: 587a94844b77dd8626cbcf8335d81789
       size: 958976
-      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
