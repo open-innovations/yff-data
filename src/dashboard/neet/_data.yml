@@ -17,10 +17,10 @@ visualisations:
         - name: 'Latest NEET Rate - Women'
           colour: Gold
           
-  - tab: Overall NEET rate
-    title: Overall NEET rate
+  - tab: NEET rates - All people (SA)
+    title: NEET rate for all people (SA)
     type: chart
-    caption: "The rate for 16-24 year-olds who are not in education, employment or training (NEET)."
+    caption: TKTKTK
     config:
       file: "/data/neet/neet_all_data.csv"
       type: line-chart
@@ -33,32 +33,25 @@ visualisations:
           grid:
             stroke: "#efefef"
         y: # The vertical axes
+          max: 20
           title:
             label: "Rate (%)"
-          dominant-baseline: text-bottom
       columns:
-        - name: "Men"
-          template: "{{quarter_start}} <br/> Men NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
-        - name: "Women"
-          template: "{{quarter_start}} <br/> Women NEET rate: {{women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
         - name: x_tick_labels
           template: "{{ quarter_start }}"
+        - name: "Total"
+          template: "{{quarter_start}} <br/> NEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
       series:
-        - title: "Men"
+        - title: "Total NEET rate"
           x: "quarter_index" # Column heading to use for x-value
-          y: "men_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
+          y: "people_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
           size: 10
-          tooltip: "Men"
-        - title: "Women"
-          x: "quarter_index" # Column heading to use for x-value
-          y: "women_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
-          size: 10
-          tooltip: "Women"
+          tooltip: "Total"
 
-  - tab: Unemployment levels
-    title: Unemployment levels
+  - tab: NEET Rates - Women (SA)
+    title: NEET rates for Women (SA)
     type: chart
-    caption: "Unemployment levels for people not in education, training or employment (NEET)."
+    caption: TKTKTK
     config:
       file: /data/neet/neet_all_data.csv
       type: line-chart
@@ -71,30 +64,25 @@ visualisations:
           grid:
             stroke: "#efefef"
         y:
+          max: 20
           title:
-            label: 'Number of people'
-      columns: 
-        - name: "Men"
-          template: "{{quarter_start}} <br/> NEET Men: {{men_age_16_to_24_neet_unemployed_sa | toFixed(0)}}"
-        - name: "Women"
-          template: "{{quarter_start}} <br/> NEET Women: {{women_age_16_to_24_neet_unemployed_sa | toFixed(0)}}"
+            label: "Rate (%)"
+      columns:
         - name: x_tick_labels
           template: "{{ quarter_start }}"
+        - name: "Total"
+          template: "{{quarter_start}} <br/> NEET rate: {{women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
       series:
-        - title: 'Men'
+        - title: "Total NEET rate"
           x: "quarter_index" # Column heading to use for x-value
-          y: men_age_16_to_24_neet_unemployed_sa
-          tooltip: "Men"
-        - title: 'Women'
-          x: "quarter_index" # Column heading to use for x-value
-          y: women_age_16_to_24_neet_unemployed_sa
-          tooltip: "Women"
+          y: "women_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
+          size: 10
+          tooltip: "Total"
 
-  - tab: Economic inactivity levels
-    title: Economic inactivity levels
+  - tab: NEET Rates - Men (SA)
+    title: NEET rates for Men (SA)
     type: chart
-    caption: "Economic inactivity levels for people not in education, training or employment (NEET). Economic inactivity \
-              is defined as people neither working nor actively seeking employment."
+    caption: TKTKTK
     config:
       file: /data/neet/neet_all_data.csv
       type: line-chart
@@ -107,24 +95,21 @@ visualisations:
           grid:
             stroke: "#efefef"
         y:
+          max: 20
           title:
-            label: 'Number of people'
-      columns: 
-        - name: "Men"
-          template: "{{quarter_start}} <br/> NEET Men: {{men_age_16_to_24_neet_economically_inactive_sa | toFixed(0)}}"
-        - name: "Women"
-          template: "{{quarter_start}} <br/> NEET Women: {{women_age_16_to_24_neet_economically_inactive_sa | toFixed(0)}}"
+            label: "Rate (%)"
+      columns:
         - name: x_tick_labels
           template: "{{ quarter_start }}"
+        - name: "Total"
+          template: "{{quarter_start}} <br/> NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
       series:
-        - title: 'Men'
+        - title: "Total NEET rate"
           x: "quarter_index" # Column heading to use for x-value
-          y: men_age_16_to_24_neet_economically_inactive_sa
-          tooltip: "Men"
-        - title: 'Women'
-          x: "quarter_index" # Column heading to use for x-value
-          y: women_age_16_to_24_neet_economically_inactive_sa
-          tooltip: "Women"
+          y: "men_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
+          size: 10
+          tooltip: "Total"
+
 
 
   - tab: NEET figures - All People (SA)

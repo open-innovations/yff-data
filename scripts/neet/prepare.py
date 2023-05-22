@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from transform import NEET_16_24, DATA_DIR as RAW_DATA_DIR
+from transform import NEET_16_24
 from scripts.util.date import most_recent_stats
 from scripts.util.file import add_index
 
@@ -9,13 +9,22 @@ os.makedirs(DATA_DIR, exist_ok=True)
 
 
 def read_source_data(filename, **kwargs):
-    return pd.read_csv(os.path.join(RAW_DATA_DIR, filename), **kwargs)
+    return pd.read_csv(filename, **kwargs)
 
 
-def summarise(): 
-    neet = pd.read_csv(NEET_16_24)
+def timestamp_to_neet_period(date):
+    timestamp = pd.to_datetime(date)
+    return '{}-{} {}'.format(
+        timestamp.strftime('%b'),
+        (timestamp + pd.DateOffset(months=3, days=-1)).strftime('%b'),
+        timestamp.strftime('%Y')
+    )
 
-    latest = pd.DataFrame(
+
+def summarise(neet):
+    neet_period = timestamp_to_neet_period(neet.quarter_start.iloc[-1])
+
+    headlines = pd.DataFrame(
         {
             'Value': [
                 neet.people_age_16_to_24_neet_total_rate_sa.iloc[-1].round(1),
@@ -30,14 +39,22 @@ def summarise():
         ], name='Title')
     )
 
-    latest['Note'] = [
-        "Percentage of young people aged 16-24 who are NEET (seasonally adjusted)", 
-        "Percentage of young men aged 16-24 who are NEET (seasonally adjusted)", 
-        "Percentage of young women aged 16-24 who are NEET (seasonally adjusted)"
+    headlines['Note'] = [
+        "Percentage of young people aged 16-24 who are NEET as at {} (seasonally adjusted)".format(neet_period), 
+        "Percentage of young men aged 16-24 who are NEET as at {} (seasonally adjusted)".format(neet_period), 
+        "Percentage of young women aged 16-24 who are NEET as at {} (seasonally adjusted)".format(neet_period)
     ]
-    latest['Suffix'] = '%'
+    headlines['Suffix'] = '%'
 
-    latest.to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
+    headlines.to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
+
+    latest = headlines.loc[:, 'Value']
+    latest.index = latest.index.str.replace(r'[\s-]+', '_', regex=True).str.lower()
+    latest = pd.concat([
+        latest,
+        pd.Series({ 'last_date': neet_period })
+      ])
+    latest.to_json(os.path.join(DATA_DIR, 'latest.json'))
 
 
 def transfer_files(filename):
@@ -45,13 +62,15 @@ def transfer_files(filename):
                             'quarter_start'], parse_dates=['quarter_start'])
 
     data.pipe(add_index).to_csv(os.path.join(
-        DATA_DIR, filename.replace('.', '_all_data.')))
+        DATA_DIR, os.path.basename(filename).replace('.', '_all_data.')))
     data.pipe(most_recent_stats).pipe(add_index).to_csv(
-        os.path.join(DATA_DIR, filename.replace('.', '_last_3_years.')))
+        os.path.join(DATA_DIR, os.path.basename(filename).replace('.', '_last_3_years.')))
 
-    return data.pipe(most_recent_stats)
+    return data.reset_index()
 
 
 if __name__ == "__main__":
-    neet = transfer_files("neet.csv")
-    summarise()
+    neet = transfer_files(NEET_16_24)
+    summarise(neet)
+
+
