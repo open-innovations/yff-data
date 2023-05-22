@@ -171,12 +171,19 @@ visualisations:
       file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_label
+          align: center
           rename: Quarter
         - name: Total NEET rate
+          align: right
+          width: 20%
           template: "{{ people_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
         - name: Unemployed rate
+          align: right
+          width: 20%
           template: "{{ people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%"
         - name: Economically inactive rate
+          align: right
+          width: 20%
           template: "{{ people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
 
   - tab: NEET rate table - Women (SA)
@@ -188,12 +195,19 @@ visualisations:
       file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_label
+          align: center
           rename: Quarter
         - name: Total NEET rate
+          align: right
+          width: 20%
           template: "{{ women_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
         - name: Unemployed rate
+          align: right
+          width: 20%
           template: "{{ women_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%"
         - name: Economically inactive rate
+          align: right
+          width: 20%
           template: "{{ women_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
   
   - tab: NEET rate table - Men (SA)
@@ -205,10 +219,17 @@ visualisations:
       file: /data/neet/neet_last_3_years.csv
       columns:
         - name: quarter_label
+          align: center
           rename: Quarter
         - name: Total NEET rate
+          align: right
+          width: 20%
           template: "{{ men_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
         - name: Unemployed rate
+          align: right
+          width: 20%
           template: "{{ men_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%"
         - name: Economically inactive rate
+          align: right
+          width: 20%
           template: "{{ men_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
