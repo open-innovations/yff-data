@@ -1,4 +1,4 @@
-quarter_index,quarter_start,age_16_to_24_unemployed_sa,age_16_to_24_unemployed_over_12_months_sa,age_16_to_24_unemployed_over_6_months_sa,age_16_to_24_unemployed_over_12_months_rate_sa,age_16_to_24_unemployed_over_6_months_rate_sa,quarter_label
+quarter_index,quarter_start,age_16_to_24_unemployed_sa,age_16_to_24_unemployed_over_12_months_sa,age_16_to_24_unemployed_6_to_12_months_sa,age_16_to_24_unemployed_over_12_months_rate_sa,age_16_to_24_unemployed_6_to_12_months_rate_sa,quarter_label
 0,2020-04-01,550253.0,62345.0,69217.0,11.3,12.6,Apr-Jun 2020
 1,2020-07-01,608836.0,103793.0,84587.0,17.0,13.9,Jul-Sep 2020
 2,2020-10-01,598065.0,90456.0,111513.0,15.1,18.6,Oct-Dec 2020

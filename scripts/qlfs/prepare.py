@@ -21,25 +21,25 @@ def summarise(**datasets):
         'Value': [
             education_status.age_16_to_24_not_in_ft_education_unemployment_rate_sa \
                 .iloc[-1].round(1),
-            long_term_unemployed.age_16_to_24_unemployed_over_12_months_rate_sa \
+            long_term_unemployed.age_16_to_24_unemployed_6_to_12_months_rate_sa \
                 .iloc[-1].round(1),
-            long_term_unemployed.age_16_to_24_unemployed_over_6_months_rate_sa \
+            long_term_unemployed.age_16_to_24_unemployed_over_12_months_rate_sa \
                 .iloc[-1].round(1),
             education_status.age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa \
                 .iloc[-1].round(1)
         ],
         'Note': [
             "Young people aged 16-24, not in full-time education (seasonally adjusted)",
+            "Young people aged 16-24, unemployed between 6 and 12 months (seasonally adjusted)",
             "Young people aged 16-24, unemployed over 12 months (seasonally adjusted)",
-            "Young people aged 16-24, unemployed over 6 months (seasonally adjusted)",
             "Young people aged 16-24, not in full-time education, economically inactive (seasonally adjusted)"
         ],
         'Suffix': '%',
     },
         index=pd.Index([
             'Unemployment rate',
+            'Long-term unemployment rate 6 to 12 months',
             'Long-term unemployment rate 12 months',
-            'Long-term unemployment rate 6 months',
             'Economic inactivity rate',
         ], name='Title')
     ).fillna('N/A')

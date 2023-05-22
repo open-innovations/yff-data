@@ -30,13 +30,13 @@ column_mapper = {
 
     # 16-17
     'YBVH': 'age_16_to_17_unemployed_sa',
+    'YBXG': 'age_16_to_17_unemployed_6_to_12_months_sa',
     'YBXJ': 'age_16_to_17_unemployed_over_12_months_sa',
-    'YBXG': 'age_16_to_17_unemployed_over_6_months_sa',
     'YBXM': 'age_16_to_17_unemployed_over_12_months_rate_sa',
     # 18-24
     'YBVN': 'age_18_to_24_unemployed_sa',
+    'YBXV': 'age_18_to_24_unemployed_6_to_12_months_sa',
     'YBXY': 'age_18_to_24_unemployed_over_12_months_sa',
-    'YBXV': 'age_18_to_24_unemployed_over_6_months_sa',
     'YBYB': 'age_18_to_24_unemployed_over_12_months_rate_sa',
 
 }
@@ -110,11 +110,11 @@ def transform_UNEM01():
     data_16_to_24 = pd.DataFrame({
         'age_16_to_24_unemployed_sa': (UNEM01_data.YBVN + UNEM01_data.YBVH).round(0),
         'age_16_to_24_unemployed_over_12_months_sa': (UNEM01_data.YBXY + UNEM01_data.YBXJ).round(0),
-        'age_16_to_24_unemployed_over_6_months_sa':  (UNEM01_data.YBXV + UNEM01_data.YBXG).round(0)
+        'age_16_to_24_unemployed_6_to_12_months_sa':  (UNEM01_data.YBXV + UNEM01_data.YBXG).round(0)
     })
     data_16_to_24['age_16_to_24_unemployed_over_12_months_rate_sa'] = (data_16_to_24['age_16_to_24_unemployed_over_12_months_sa'] / \
         data_16_to_24['age_16_to_24_unemployed_sa'] * 100).round(1)
-    data_16_to_24['age_16_to_24_unemployed_over_6_months_rate_sa'] = (data_16_to_24['age_16_to_24_unemployed_over_6_months_sa'] / \
+    data_16_to_24['age_16_to_24_unemployed_6_to_12_months_rate_sa'] = (data_16_to_24['age_16_to_24_unemployed_6_to_12_months_sa'] / \
         data_16_to_24['age_16_to_24_unemployed_sa'] * 100).round(1)
 
     data_16_to_24 \
