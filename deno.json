@@ -5,5 +5,6 @@
     "build": "deno task lume",
     "serve": "deno task lume -s",
     "validate": "deno run --allow-env --allow-read=src/_data/reports --allow-write=lib lib/validate.ts"
-  }
+  },
+  "lock": false
 }
