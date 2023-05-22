@@ -1,6 +1,32 @@
 import { CategoryChart, LineChart, BarChart, StackedBarChart } from '/src/_lib/oi/charts.js';
 import { loadDataFile } from '/src/_lib/oi/util.js'
 
+const divisor = function* () {
+  let range = 0;
+  while(true) {
+    for (const base of [1, 2, 5]) yield base * 10**range;
+    range++;
+  }
+};
+
+function calculateStep(range) {
+  const g = divisor();
+  let step;
+  do {
+    step = g.next().value;
+  } while ((range / step) >= 5);
+  return step;
+}
+
+function generateTickValues(max, min=0) {
+  const range = max - min;
+  const step = calculateStep(range);
+  const numTicks = Math.floor(range / step) + 1;
+
+  return Array.from(new Array(numTicks))
+    .map((_, i) => i * step + min);
+}
+
 // This component uses "/assets/js/chart.js" to make things interactive in the browser.
 // It will only get included in pages that need it by using the "data-dependencies" attribute.
 
@@ -36,6 +62,41 @@ export default function (context) {
 	const configcopy = clone(config);
 
   if (configcopy.type == "line-chart") {
+    // Patch the config
+    if (configcopy.axis.x.min === undefined) configcopy.axis.x.min = 0;
+    if (configcopy.axis.x.max === undefined) configcopy.axis.x.max = csv.rows.length - 1;
+    if (configcopy.axis.y.min === undefined) configcopy.axis.y.min = 0;
+    if (configcopy.axis.y.max === undefined) {
+      const max = Math.max(...configcopy.series.map(s => s.y).map(s => csv.columns[s]).flat())
+      const d = 10 ** (Math.round(max).toString().length - 2);
+      const roundedMax = Math.ceil(max / d) * d;
+      configcopy.axis.y.max = roundedMax;
+    }
+
+    if (configcopy.axis.x.ticks === undefined) {
+      const tickValues = generateTickValues(
+        configcopy.axis.x.max,
+        configcopy.axis.x.min
+      );
+      const ticks = tickValues.map(v => ({
+        value: v,
+        label: csv.columns.x_tick_labels[v]
+      }));
+      configcopy.axis.x.ticks = ticks;
+    }
+
+    if (configcopy.axis.y.ticks === undefined) {
+      const tickValues = generateTickValues(
+        configcopy.axis.y.max,
+        configcopy.axis.y.min
+      );
+      const ticks = tickValues.map(v => ({
+        value: v,
+        label: v.toString(),
+        grid: true,
+      }));
+      configcopy.axis.y.ticks = ticks;
+    }
 
     // Create a new Line Chart
     chart = new LineChart(configcopy, csv);

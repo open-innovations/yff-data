@@ -22,52 +22,27 @@ visualisations:
     type: chart
     caption: "The rate for 16-24 year-olds who are not in education, employment or training (NEET)."
     config:
-      file: "/data/neet/neet_last_3_years.csv"
+      file: "/data/neet/neet_all_data.csv"
       type: line-chart
       legend: 
         show: true
         position: "top right"
       axis:
         x: # Horizontal axis
-          min: 0
-          max: 13
+          # min, max and tick labels now auto-generated for line charts
           grid:
             stroke: "#efefef"
-          # Explicitly define the ticks.
-          # Each tick has a numeric value and a displayed label
-          ticks:
-            - value: 1
-              label: "2020-01-01"
-            - value: 5
-              label: "2021-01-01"
-            - value: 9
-              label: "2022-01-01"
         y: # The vertical axes
-          min: 0 # A minimum value
-          max: 15 # A maximum value
           title:
             label: "Rate (%)"
           dominant-baseline: text-bottom
-          # Explicitly define the ticks.
-          # Each tick has a numeric value and a displayed label
-          ticks:
-            - value: 0
-              grid: true
-              label: "0"
-            - value: 5
-              grid: true
-              label: "5"
-            - value: 10
-              grid: true
-              label: "10"
-            - value: 15
-              grid: true
-              label: "15"
       columns:
         - name: "Men"
-          template: "Men NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
+          template: "{{quarter_start}} <br/> Men NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
         - name: "Women"
-          template: "Women NEET rate: {{women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
+          template: "{{quarter_start}} <br/> Women NEET rate: {{women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
+        - name: x_tick_labels
+          template: "{{ quarter_start }}"
       series:
         - title: "Men"
           x: "quarter_index" # Column heading to use for x-value
@@ -85,84 +60,73 @@ visualisations:
     type: chart
     caption: "Unemployment levels for people not in education, training or employment (NEET)."
     config:
-      file: /data/neet/neet_last_3_years.csv
-      type: bar-chart
-      category: quarter_start
+      file: /data/neet/neet_all_data.csv
+      type: line-chart
       legend:
         show: true     # Default to false
         position: "top right"
+      axis:
+        x: # Horizontal axis
+          # min, max and tick labels now auto-generated for line charts
+          grid:
+            stroke: "#efefef"
+        y:
+          title:
+            label: 'Number of people'
       columns: 
         - name: "Men"
           template: "{{quarter_start}} <br/> NEET Men: {{men_age_16_to_24_neet_unemployed_sa | toFixed(0)}}"
         - name: "Women"
           template: "{{quarter_start}} <br/> NEET Women: {{women_age_16_to_24_neet_unemployed_sa | toFixed(0)}}"
+        - name: x_tick_labels
+          template: "{{ quarter_start }}"
       series:
         - title: 'Men'
-          value: men_age_16_to_24_neet_unemployed_sa
+          x: "quarter_index" # Column heading to use for x-value
+          y: men_age_16_to_24_neet_unemployed_sa
           tooltip: "Men"
         - title: 'Women'
-          value: women_age_16_to_24_neet_unemployed_sa
+          x: "quarter_index" # Column heading to use for x-value
+          y: women_age_16_to_24_neet_unemployed_sa
           tooltip: "Women"
-      axis:
-        x:
-          title:
-            label: 'Number of people'
-          min: 0
-          max: 250000
-          ticks:
-            - value: 0
-              grid: true
-              label: "0"
-            - value: 100000
-              grid: true
-              label: "100k"
-            - value: 200000
-              grid: true
-              label: "200k"
-    
+
   - tab: Economic inactivity levels
     title: Economic inactivity levels
     type: chart
     caption: "Economic inactivity levels for people not in education, training or employment (NEET). Economic inactivity \
               is defined as people neither working nor actively seeking employment."
     config:
-      file: /data/neet/neet_last_3_years.csv
-      type: bar-chart
+      file: /data/neet/neet_all_data.csv
+      type: line-chart
       category: quarter_start
       legend:
         show: true     # Default to false
         position: "top right"
+      axis:
+        x:
+          grid:
+            stroke: "#efefef"
+        y:
+          title:
+            label: 'Number of people'
       columns: 
         - name: "Men"
           template: "{{quarter_start}} <br/> NEET Men: {{men_age_16_to_24_neet_economically_inactive_sa | toFixed(0)}}"
         - name: "Women"
           template: "{{quarter_start}} <br/> NEET Women: {{women_age_16_to_24_neet_economically_inactive_sa | toFixed(0)}}"
+        - name: x_tick_labels
+          template: "{{ quarter_start }}"
       series:
         - title: 'Men'
-          value: men_age_16_to_24_neet_economically_inactive_sa
+          x: "quarter_index" # Column heading to use for x-value
+          y: men_age_16_to_24_neet_economically_inactive_sa
           tooltip: "Men"
         - title: 'Women'
-          value: women_age_16_to_24_neet_economically_inactive_sa
+          x: "quarter_index" # Column heading to use for x-value
+          y: women_age_16_to_24_neet_economically_inactive_sa
           tooltip: "Women"
-      axis:
-        x:
-          min: 0
-          max: 300000
-          title:
-            label: 'Number of people'
-          ticks:
-            - value: 0
-              grid: true
-              label: "0"
-            - value: 100000
-              grid: true
-              label: "100k"
-            - value: 200000
-              grid: true
-              label: "200k"
-            - value: 300000
-              grid: true
-              label: "300k"
+
+
   - tab: Overall rates table
     type: table
     caption: 'The overall rates raw data in a table'
@@ -171,9 +135,12 @@ visualisations:
       columns:
         - name: quarter_start
           rename: Quarter
-        - name: people_age_16_to_24_neet_total_rate_sa
-        - name: women_age_16_to_24_neet_total_rate_sa
-        - name: men_age_16_to_24_neet_total_rate_sa
+        - name: People (SA)
+          template: "{{ people_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
+        - name: Women (SA)
+          template: "{{ women_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
+        - name: Men (SA)
+          template: "{{ men_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%"
 
   - tab: Unemployment table
     type: table
@@ -183,8 +150,10 @@ visualisations:
       columns:
         - name: quarter_start
           rename: Quarter
-        - name: men_age_16_to_24_neet_unemployed_sa
-        - name: women_age_16_to_24_neet_unemployed_sa
+        - name: Women (SA)
+          template: "{{ women_age_16_to_24_neet_unemployed_sa | toFixed(0) }}"
+        - name: Men (SA)
+          template: "{{ men_age_16_to_24_neet_unemployed_sa | toFixed(0) }}"
   
   - tab: Economic inactivity table
     type: table
@@ -194,5 +163,7 @@ visualisations:
       columns:
         - name: quarter_start
           rename: Quarter
-        - name: men_age_16_to_24_neet_economically_inactive_sa
-        - name: women_age_16_to_24_neet_economically_inactive_sa
+        - name: Men (SA)
+          template: "{{ men_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
+        - name: Women (SA)
+          template: "{{ women_age_16_to_24_neet_economically_inactive_sa | toFixed(0) }}"
