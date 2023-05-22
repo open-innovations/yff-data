@@ -18,7 +18,16 @@ column_mapper = {
     'AGPM': 'age_16_to_24_not_in_ft_education_economically_inactive_sa',  # Economivally inactive level, 16-24
     'AIWI': 'age_16_to_24_not_in_ft_education_employment_rate_sa',  # Employed rate, 16-24
     'AIXT': 'age_16_to_24_not_in_ft_education_unemployment_rate_sa',  # Unemployed rate, 16-24
-    'AIYU': 'age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',  # Economivally inactive rate, 16-24
+    'AIYU': 'age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',  # Economically inactive rate, 16-24
+
+    'JN62': 'age_16_to_24_in_ft_education_total_sa',  # Total not in education, 16-24
+    'AGNT': 'age_16_to_24_in_ft_education_in_employment_sa',  # Employed level, 16-24
+    'AGOU': 'age_16_to_24_in_ft_education_unemployed_sa',  # Unemployed level, 16-24
+    'AGPV': 'age_16_to_24_in_ft_education_economically_inactive_sa',  # Economivally inactive level, 16-24
+    'AIXB': 'age_16_to_24_in_ft_education_employment_rate_sa',  # Employed rate, 16-24
+    'AIYC': 'age_16_to_24_in_ft_education_unemployment_rate_sa',  # Unemployed rate, 16-24
+    'AIZD': 'age_16_to_24_in_ft_education_economic_inactivity_rate_sa',  # Economically inactive rate, 16-24
+
     # 16-17
     'YBVH': 'age_16_to_17_unemployed_sa',
     'YBXJ': 'age_16_to_17_unemployed_over_12_months_sa',
@@ -61,13 +70,20 @@ def transform_A06():
     # Read the latest A06 data
     A06_data = load_data(A06_SA_LATEST)
     measures = [
-        'JN6B',  # Total not in education, 16-24
-        'AGNJ',  # Employed level, 16-24
-        'AGOL',  # Unemployed level, 16-24
-        'AGPM',  # Economivally inactive level, 16-24
-        'AIWI',  # Employed rate, 16-24
-        'AIXT',  # Unemployed rate, 16-24
-        'AIYU',  # Economivally inactive rate, 16-24
+        'JN6B',  # Not in FTE - Total not in education, 16-24
+        'AGNJ',  # Not in FTE - Employed level, 16-24
+        'AGOL',  # Not in FTE - Unemployed level, 16-24
+        'AGPM',  # Not in FTE - Economivally inactive level, 16-24
+        'AIWI',  # Not in FTE - Employed rate, 16-24
+        'AIXT',  # Not in FTE - Unemployed rate, 16-24
+        'AIYU',  # Not in FTE - Economivally inactive rate, 16-24
+        'JN62',  # In FTE - Total not in education, 16-24
+        'AGNT',  # In FTE - Employed level, 16-24
+        'AGOU',  # In FTE - Unemployed level, 16-24
+        'AGPV',  # In FTE - Economivally inactive level, 16-24
+        'AIXB',  # In FTE - Employed rate, 16-24
+        'AIYC',  # In FTE - Unemployed rate, 16-24
+        'AIZD',  # In FTE - Economically inactive rate, 16-24
     ]
     A06_data = A06_data[measures]
     A06_data = A06_data.pipe(extract_every_third)

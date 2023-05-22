@@ -17,8 +17,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
-      md5: e8fb1d603ff25872bc14ab45a2dc6a7e
-      size: 4762
+      md5: ea099e332e399a70bd98cb3678aaca6a
+      size: 5907
     - path: scripts/util/date.py
       md5: 541fdb42d596b87ba93234e2815f5045
       size: 416
@@ -37,8 +37,8 @@ stages:
       size: 12954
       isexec: true
     - path: data/qlfs/not_in_education.csv
-      md5: 2c602c138bacc0407e62cccc4970e5e7
-      size: 17613
+      md5: 8f976c615554460bd20a22e6cbef7ed9
+      size: 33935
       isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
@@ -47,8 +47,8 @@ stages:
       md5: f673fee913515e38c859c6ca5c3dac8f
       size: 12954
     - path: data/qlfs/not_in_education.csv
-      md5: 2c602c138bacc0407e62cccc4970e5e7
-      size: 17613
+      md5: 8f976c615554460bd20a22e6cbef7ed9
+      size: 34060
     - path: scripts/qlfs/prepare.py
       md5: 23e235cdc15aca64d2657e8f18ba596b
       size: 2599
@@ -69,10 +69,10 @@ stages:
       size: 1459
       isexec: true
     - path: src/_data/sources/qlfs/not_in_education_all_data.csv
-      md5: 18eab3fd9e1eb6c8bab3a1c474841347
-      size: 17937
+      md5: 9889ae651c67d0f6d86dead2f1c58cb6
+      size: 34182
       isexec: true
     - path: src/_data/sources/qlfs/not_in_education_last_3_years.csv
-      md5: f7c342367e517b93d909b4bb91c0677d
-      size: 2078
+      md5: 7e6559194726fb479934c0d006c87d07
+      size: 3955
       isexec: true
