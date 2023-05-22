@@ -14,7 +14,7 @@ column_mapper = {
     'Young people who were NEET Total': 'age_16_to_24_neet_total_sa',
     'Young people who were NEET Unemployed': 'age_16_to_24_neet_unemployed_sa',
     'Young people who were NEET Economically inactive': 'age_16_to_24_neet_economically_inactive_sa',
-    'Total people in relevant population group': 'age_16_to_24_popupation',
+    'Total people in relevant population group': 'age_16_to_24_population',
     'People who were NEET as a percentage of people in relevant population group': 'age_16_to_24_neet_total_rate_sa',
 }
 
@@ -49,7 +49,12 @@ def process_data(data, prefix='people'):
 
     data = data.loc[:, ('Aged 16-24')]
     data.columns = data.columns.map(collapse_columns)
-    data = data.rename(columns=column_mapper).rename(
+
+    data = data.rename(columns=column_mapper)
+    data['age_16_to_24_neet_unemployed_rate_sa'] = data['age_16_to_24_neet_unemployed_sa'] / data['age_16_to_24_population'] * 100
+    data['age_16_to_24_neet_economically_inactive_rate_sa'] = data['age_16_to_24_neet_economically_inactive_sa'] / data['age_16_to_24_population'] * 100
+
+    data = data.rename(
         columns=lambda c: '_'.join([prefix, c]))
     return data
 
