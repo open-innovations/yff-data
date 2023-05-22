@@ -17,7 +17,7 @@
 <h3>Latest NEET Rate</h3>
 <p class="dashboard-number">{{ search.data('dashboard/neet').latest.neet_rate }}%</p>
 <p class="dashboard-note">
+  As at {{ search.data('dashboard/neet/').latest.quarter }}.
   Published {{ search.data('dashboard/neet/').latest.published | date('HUMAN_DATE') }}.
-  Most recent data {{ search.data('dashboard/neet/').latest.quarter }}.
 </p>
 {% endcomp %}
