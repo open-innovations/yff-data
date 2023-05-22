@@ -85,7 +85,7 @@ def transform_A06():
         'AIYC',  # In FTE - Unemployed rate, 16-24
         'AIZD',  # In FTE - Economically inactive rate, 16-24
     ]
-    A06_data = A06_data[measures]
+    A06_data = A06_data[measures].round(1)
     A06_data = A06_data.pipe(extract_every_third)
     A06_data.index = quarter_to_date(A06_data.index)
 
@@ -108,14 +108,14 @@ def transform_UNEM01():
     UNEM01_data.index = quarter_to_date(UNEM01_data.index)
 
     data_16_to_24 = pd.DataFrame({
-        'age_16_to_24_unemployed_sa': UNEM01_data.YBVN + UNEM01_data.YBVH,
-        'age_16_to_24_unemployed_over_12_months_sa': UNEM01_data.YBXY + UNEM01_data.YBXJ,
-        'age_16_to_24_unemployed_over_6_months_sa':  UNEM01_data.YBXV + UNEM01_data.YBXG
+        'age_16_to_24_unemployed_sa': (UNEM01_data.YBVN + UNEM01_data.YBVH).round(0),
+        'age_16_to_24_unemployed_over_12_months_sa': (UNEM01_data.YBXY + UNEM01_data.YBXJ).round(0),
+        'age_16_to_24_unemployed_over_6_months_sa':  (UNEM01_data.YBXV + UNEM01_data.YBXG).round(0)
     })
-    data_16_to_24['age_16_to_24_unemployed_over_12_months_rate_sa'] = data_16_to_24['age_16_to_24_unemployed_over_12_months_sa'] / \
-        data_16_to_24['age_16_to_24_unemployed_sa'] * 100
-    data_16_to_24['age_16_to_24_unemployed_over_6_months_rate_sa'] = data_16_to_24['age_16_to_24_unemployed_over_6_months_sa'] / \
-        data_16_to_24['age_16_to_24_unemployed_sa'] * 100
+    data_16_to_24['age_16_to_24_unemployed_over_12_months_rate_sa'] = (data_16_to_24['age_16_to_24_unemployed_over_12_months_sa'] / \
+        data_16_to_24['age_16_to_24_unemployed_sa'] * 100).round(1)
+    data_16_to_24['age_16_to_24_unemployed_over_6_months_rate_sa'] = (data_16_to_24['age_16_to_24_unemployed_over_6_months_sa'] / \
+        data_16_to_24['age_16_to_24_unemployed_sa'] * 100).round(1)
 
     data_16_to_24 \
         .to_csv(os.path.join(DATA_DIR, 'long_term_unemployed.csv'))
