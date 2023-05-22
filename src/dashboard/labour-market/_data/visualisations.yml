@@ -31,37 +31,9 @@
       position: "top right"
     axis:
       x:  # Horizontal axis
-        min: 0    # A minimum value
-        max: 13    # A maximum value
+        min: 0
         grid:
           stroke: "#efefef"
-        # Explicitly define the ticks.
-        # Each tick has a numeric value and a displayed label
-        ticks:
-            - label: "2020-01-01"
-              value: 1
-            - label: ""
-              value: 2
-            - label: "2020-07-01"
-              value: 3
-            - label: ""
-              value: 4
-            - label: "2021-01-01"
-              value: 5
-            - label: ""
-              value: 6
-            - label: "2021-07-01"
-              value: 7
-            - label: ""
-              value: 8
-            - label: "2022-01-01"
-              value: 9
-            - label: ""
-              value: 10
-            - label: "2022-07-01"
-              value: 11
-            - label: ""
-              value: 12
       y:             # The vertical axes
         min: 0     # A minimum value
         max: 25   # A maximum value
@@ -90,10 +62,12 @@
               grid: true
               label: "25"
     columns:
-        - name: "Label 16-24"
-          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"        
-        - name: "Label 16-24"
-          template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_6_months_rate_sa | toFixed(1)}}%"
+        - name: x_tick_labels
+          template: "{{ quarter_label }}"
+        - name: "Label 12 months"
+          template: "{{quarter_label}} <br/> rate: {{age_16_to_24_unemployed_over_6_months_rate_sa | toFixed(1)}}%"
+        - name: "Label 6 months"
+          template: "{{quarter_label}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"        
     series:
       - title: "12 months"
         x: "quarter_index"                       # Column heading to use for x-value
@@ -119,39 +93,8 @@
       position: "top right"
     axis:
       x:  # Horizontal axis
-        min: 0    # A minimum value
-        max: 130    # A maximum value
         grid:
           stroke: "#efefef"
-        # Explicitly define the ticks.
-        # Each tick has a numeric value and a displayed label
-        ticks:
-            - label: "1992-04-01"
-              value: 1
-            - label: ""
-              value: 10
-            - label: "1997-01-01"
-              value: 20
-            - label: ""
-              value: 30
-            - label: "2002-01-01"
-              value: 40
-            - label: ""
-              value: 50
-            - label: "2007-01-01"
-              value: 60
-            - label: ""
-              value: 70
-            - label: "2012-01-01"
-              value: 80
-            - label: ""
-              value: 90
-            - label: "2017-01-01"
-              value: 100
-            - label: ""
-              value: 110
-            - label: "2022-01-01"
-              value: 120
       y:             # The vertical axes
         min: 0     # A minimum value
         max: 40   # A maximum value
@@ -189,6 +132,8 @@
               grid: true
               label: "40"
     columns:
+        - name: x_tick_labels
+          template: "{{ quarter_label }}"
         - name: "Label 12 months"
           template: "{{quarter_start}} <br/> rate: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1)}}%"        
         - name: "Label 6 months"
