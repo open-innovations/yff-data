@@ -29,10 +29,18 @@ For the A06 figures, the transform script extracts the following measures from t
 * `AIWI`: Employed rate not in fte, 16-24, SA
 * `AIXT`: Unemployed rate not in fte, 16-24, SA
 * `AIYU`: Economically inactive rate not in fte, 16-24, SA
+* `JN62`: Total in full-time education, 16-24, SA
+* `AGNT`: Employed level in FTE, 16-24, SA
+* `AGOU`: Unemployed level in FTE, 16-24, SA
+* `AGPV`: Economivally inactive level in FTE, 16-24, SA
+* `AIXB`: Employed rate in FTE, 16-24, SA
+* `AIYC`: Unemployed rate in FTE, 16-24, SA
+* `AIZD`: Economically inactive rate in FTE, 16-24, SA
 
-We then discard quarters that do not start with Jan, Apr, Jul and Oct. The selected quarters are based on alignment with NEET stats, but could also take the most recent months figures as a baseline and work back from there. We also convert the quarter from a string to the date representing the start of the quarter (e.g. Jan-Mar 2023 is converted to a proper datetime object at 1-Jan-2023)
+We then select every third period starting at the most recent line to avoid overlapping quarters.
+We also convert the quarter from a string to the date representing the start of the quarter (e.g. Jan-Mar 2023 is converted to a proper datetime object at 1-Jan-2023)
 
-Finally, we filter to the latest 3 years (easily configurable) values, before saving to a [CSV of unemployment for people not in full-time education](https://github.com/open-innovations/yff-data/blob/main/data/qlfs/not_in_education.csv) file for further processing.
+Finally, we save a [CSV of unemployment by education status](https://github.com/open-innovations/yff-data/blob/main/data/qlfs/education_stats.csv) for further processing.
 
 ## UNEM01 processing
 
@@ -41,12 +49,14 @@ UNEM01 processing is similar, with the following alterations:
 We extract the levels of unemployment and unemployment over 12 months as well as the rate for both ages 16-17 and age 18-24.
 
 * `YBVH`: Age 16 to 17 unemployed level, SA
+* `YBXG`: Age 16 to 17 unemployed 6 to 12 months level, SA
 * `YBXJ`: Age 16 to 17 unemployed over 12 months level, SA
 * `YBXM`: Age 16 to 17 unemployed over 12 months rate, SA
 * `YBVN`: Age 18 to 24 unemployed level, SA
+* `YBXV`: Age 18 to 24 unemployed 6 to 12 months level, SA
 * `YBXY`: Age 18 to 24 unemployed over 12 months level, SA
 * `YBYB`: Age 18 to 24 unemployed over 12 months rate, SA
 
-We extract and convert the quarters as described above, and then combine the unemployment total and over 12 months levels across the two age ranges to come up with an aggregated figure from 16-24. We then calculate the resulting rate by simple division.
+We convert the quarters as described above, and then combine the unemployment total and over 12 months levels across the two age ranges to come up with an aggregated figure from 16-24. We then calculate the resulting rate by simple division.
 
 Finally, we save the last three years to a [CSV of long-term unemployment data](https://github.com/open-innovations/yff-data/blob/main/data/qlfs/not_in_education.csv) as before.

@@ -30,8 +30,10 @@ We extract the following figures for 16-24 year olds:
 This processing is repeated for the `People - SA`, `Men - SA` and `Women - SA` sheets.
 
 In each case we
+
 * convert the quarter to a datetime object.
-* renamed the columns
+* rename the columns
+* calculate rates for the unemployed and economically inactive groups
 
-We then combine the three data sets into a single file, extract the most recent three years of data and save as a [NEET CSV file](https://github.com/open-innovations/yff-data/blob/main/data/neet/neet.csv).
-
+We then combine the three data sets into a single file and save as a [NEET CSV file](https://github.com/open-innovations/yff-data/blob/main/data/neet/neet.csv).
+Along with this we create a [metadata file](https://github.com/open-innovations/yff-data/blob/main/data/neet/metadata.json).
