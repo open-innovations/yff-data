@@ -1,23 +1,49 @@
 {% comp 'grid.block', { link: search.data('dashboard/labour-market/').url, width: '15rem' } %}
-<h3>Unemployment Rate</h3>
-<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
+<h3>Unemployment</h3>
+<p class='dashboard-number'>
+  {{ search.data('dashboard/labour-market/').latest.unemployment_rate }}%
+</p>
+<p class="dashboard-note">
+  Unemployment rate for people 16-24 not in FTE, seasonally adjusted.
+</p>
+<p class="dashboard-note">
+  For period {{ search.data('dashboard/labour-market/').latest.a06_quarter }}.
+</p>
 {% endcomp %}
 
 {% comp 'grid.block', { link: search.data('dashboard/labour-market/').url, width: '15rem' } %}
-<h3>Long-term Unemployment Rate</h3>
-<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[1] }}%</p>
+<h3>Economic inactivity</h3>
+<p class='dashboard-number'>
+  {{ search.data('dashboard/labour-market/').latest.economic_inactivity_rate }}%
+</p>
+<p class="dashboard-note">
+  Economically inactive rate for people 16-24 not in FTE, seasonally adjusted.
+</p>
+<p class="dashboard-note">
+  For period {{ search.data('dashboard/labour-market/').latest.a06_quarter }}.
+</p>
 {% endcomp %}
 
 {% comp 'grid.block', { link: search.data('dashboard/labour-market/').url, width: '15rem' } %}
-<h3>Economic Inactivity Rate</h3>
-<p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[2]  }}%</p>
+<h3>Long-term unemployed</h3>
+<p class='dashboard-number'>
+  {{ search.data('dashboard/labour-market/').latest.long_term_unemployment_rate_6_to_12_months or '--' }}%
+</p>
+<p class="dashboard-note">
+  Percentage of any unemployment lasting between 6 and 12 months.
+</p>
+<p class="dashboard-note">
+  For period {{ search.data('dashboard/labour-market/').latest.unem01_quarter }}.
+</p>
 {% endcomp %}
 
 {% comp 'grid.block', { link: '/dashboard/neet/', width: '15rem' } %}
-<h3>Latest NEET Rate</h3>
+<h3>NEET</h3>
 <p class="dashboard-number">{{ search.data('dashboard/neet').latest.neet_rate }}%</p>
 <p class="dashboard-note">
-  As at {{ search.data('dashboard/neet/').latest.quarter }}.
-  Published {{ search.data('dashboard/neet/').latest.published | date('HUMAN_DATE') }}.
+  Percentage of young people Not in Education, Employment or Training.
+</p>
+<p class="dashboard-note">
+  For period {{ search.data('dashboard/neet/').latest.quarter }}.
 </p>
 {% endcomp %}
