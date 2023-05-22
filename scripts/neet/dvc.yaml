@@ -35,6 +35,6 @@ stages:
       - src/_data/sources/neet/headlines.csv:
           cache: false
           persist: false
-      - src/_data/sources/neet/latest.json:
+      - src/dashboard/neet/_data/latest.json:
           cache: false
           persist: false

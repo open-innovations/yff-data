@@ -6,6 +6,8 @@ from scripts.util.file import add_index
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'neet')
 os.makedirs(DATA_DIR, exist_ok=True)
+DASHBOARD_DIR = os.path.join('src', 'dashboard', 'neet', '_data')
+os.makedirs(DASHBOARD_DIR, exist_ok=True)
 
 
 def read_source_data(filename, **kwargs):
@@ -42,12 +44,12 @@ def summarise(neet):
     headlines.to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
 
     latest = headlines.loc[:, 'Value']
-    latest.index = latest.index.str.replace(r'[\s-]+', '_', regex=True).str.lower()
+    latest.index = latest.index.str.replace(r'[\s-]+', '_', regex=True).str.lower().str.replace('latest_', '')
     latest = pd.concat([
         latest,
-        pd.Series({ 'last_date': neet_period })
+        pd.Series({ 'quarter': neet_period })
       ])
-    latest.to_json(os.path.join(DATA_DIR, 'latest.json'))
+    latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'))
 
 
 def transfer_files(filename):

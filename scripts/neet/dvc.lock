@@ -33,18 +33,18 @@ stages:
       md5: f3bb0993cb840451d889531763e718ea
       size: 32417
     - path: scripts/neet/prepare.py
-      md5: a4ad27881a2e7b31ff0467e9caaf71cb
-      size: 2296
+      md5: e91248c739d812b62ee03fc5b23771f0
+      size: 2434
     outs:
     - path: src/_data/sources/neet/headlines.csv
       md5: f69de60d7f4468ab2ce21a8c73299b30
       size: 382
-    - path: src/_data/sources/neet/latest.json
-      md5: f4fb1eabd343146b94c39b8d072627f8
-      size: 110
     - path: src/_data/sources/neet/neet_all_data.csv
       md5: 0782a831fee1427a74c965a9102603ed
       size: 33671
     - path: src/_data/sources/neet/neet_last_3_years.csv
       md5: 5061e5d7054ada15d5713aa6bea01773
       size: 5511
+    - path: src/dashboard/neet/_data/latest.json
+      md5: b9776ffbb4fdbdebd013a26f483661e3
+      size: 87
