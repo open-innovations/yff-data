@@ -17,8 +17,8 @@ stages:
       md5: c6cca8407b7303a30755e7ba4c743623
       size: 3946
     - path: scripts/util/date.py
-      md5: 541fdb42d596b87ba93234e2815f5045
-      size: 401
+      md5: 2c3f6b068d9c369911c48f79c22b452b
+      size: 747
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: 67e46b9a9c7fd2222de142f4b0dc94d8
       size: 2158248
