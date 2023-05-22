@@ -5,25 +5,23 @@ stages:
     deps:
     - path: scripts/qlfs/extract.py
       md5: b02d93e0e95e6b65b3e5755edaef0a46
-      size: 763
+      size: 747
     outs:
     - path: working/qlfs/a06latest.xls
       md5: f15f94af6e0824d160fbe3e3fb36e76b
       size: 1406464
-      isexec: true
     - path: working/qlfs/unem01latest.xls
       md5: 587a94844b77dd8626cbcf8335d81789
       size: 958976
-      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
       md5: fd58400228abf9636dccd4d1e3456e6a
-      size: 5971
+      size: 5833
     - path: scripts/util/date.py
-      md5: 541fdb42d596b87ba93234e2815f5045
-      size: 416
+      md5: 2c3f6b068d9c369911c48f79c22b452b
+      size: 747
     - path: working/lookups/lms_lookups.csv
       md5: eb12567d3b2aee1199be9d29cf92bc94
       size: 137643
@@ -37,11 +35,9 @@ stages:
     - path: data/qlfs/education_status.csv
       md5: f2f1b09273e337a5e059b54f9fecfebe
       size: 15216
-      isexec: true
     - path: data/qlfs/long_term_unemployed.csv
       md5: abb6fb89836c849ec1da23b257764c12
       size: 6040
-      isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
     deps:
@@ -52,29 +48,24 @@ stages:
       md5: abb6fb89836c849ec1da23b257764c12
       size: 6040
     - path: scripts/qlfs/prepare.py
-      md5: c276f3079932cc46d6ec87382e2574e6
-      size: 2599
+      md5: 5dc4f155e5132b77dd125f58eeae4fe3
+      size: 2674
     - path: scripts/util/file.py
       md5: b226a4ac82b8454bfb34fac4be98f7c5
-      size: 420
+      size: 404
     outs:
     - path: src/_data/sources/qlfs/education_status_all_data.csv
-      md5: 9ec77f026094d3744c268b4063e32eb0
-      size: 15618
-      isexec: true
+      md5: de2e211ddfd3237aa53883ebc15bcfd8
+      size: 17244
     - path: src/_data/sources/qlfs/education_status_last_3_years.csv
-      md5: 767b9984fa9bdea960694fdd3262042c
-      size: 2156
-      isexec: true
+      md5: cc1300a49077d121d30007d569da29fc
+      size: 2326
     - path: src/_data/sources/qlfs/headlines.csv
       md5: c4e3c92c7422e28b97558bf49c498199
       size: 493
-      isexec: true
     - path: src/_data/sources/qlfs/long_term_unemployed_all_data.csv
-      md5: 1de6393bb883e9337f514d182437e401
-      size: 6442
-      isexec: true
+      md5: 7f05b1fd1b6189add5f0aba65df43530
+      size: 8068
     - path: src/_data/sources/qlfs/long_term_unemployed_last_3_years.csv
-      md5: 7d19fba18fb083ba29e2b2dc25591af0
-      size: 802
-      isexec: true
+      md5: 5844782b4a9d5d9b001fd7bc920d152c
+      size: 972

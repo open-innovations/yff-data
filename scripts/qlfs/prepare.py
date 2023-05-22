@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from scripts.util.date import most_recent_stats
+from scripts.util.date import date_to_quarter, most_recent_stats
 from scripts.util.file import add_index
 
 from transform import DATA_DIR as RAW_DATA_DIR
@@ -49,6 +49,7 @@ def summarise(**datasets):
 def transfer_files(filename):
     data = read_source_data(filename, index_col=[
                             'quarter_start'], parse_dates=['quarter_start'])
+    data['quarter_label'] = pd.to_datetime(data.index.values).to_series().pipe(date_to_quarter)
 
     data.pipe(add_index).to_csv(os.path.join(
         DATA_DIR, filename.replace('.', '_all_data.')))
