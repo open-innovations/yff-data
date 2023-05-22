@@ -46,4 +46,12 @@
       font-weight: bold;
     }
   }
+  & :is(.grid-block-flex) {
+    gap: 1em;
+    justify-content: start;
+    & > * {
+      line-height: 1.5;
+      margin-top: 0;
+    }    
+  }
 }

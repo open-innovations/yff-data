@@ -1,19 +1,23 @@
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url, width: '15rem' } %}
 <h3>Unemployment Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value | first  }}%</p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url, width: '15rem' } %}
 <h3>Long-term Unemployment Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[1] }}%</p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/index.njk').url, width: '15rem' } %}
 <h3>Economic Inactivity Rate</h3>
 <p class='dashboard-number'>{{ sources.qlfs.headlines.columns.Value[2]  }}%</p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: '/dashboard/neet/' } %}
+{% comp 'grid.block', { link: '/dashboard/neet/', width: '15rem' } %}
 <h3>Latest NEET Rate</h3>
-<p class="dashboard-number">{{ sources.neet.headlines.columns.Value | first  }}%</p>
+<p class="dashboard-number">{{ search.data('dashboard/neet').latest.neet_rate }}%</p>
+<p class="dashboard-note">
+  Published {{ search.data('dashboard/neet/').latest.published | date('HUMAN_DATE') }}.
+  Most recent data {{ search.data('dashboard/neet/').latest.quarter }}.
+</p>
 {% endcomp %}
