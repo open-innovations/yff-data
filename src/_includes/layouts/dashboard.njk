@@ -6,4 +6,11 @@ layout: layouts/simple.njk
 {% include 'partials/page/topic-cloud.njk' %}
 {% endcomp %}
 
+{% set pipe_doc = search.page("url='" + url + "pipeline/'").data %}
+{% if pipe_doc %}
+<aside>
+  <p>Read the <a href="{{ pipe_doc.url }}">pipeline documentation</a> to find out how this data has been processed.</p>
+</aside>
+{% endif %}
+
 {{ content | safe }}
