@@ -8,6 +8,7 @@ raw_data:
   - /data/raw/qlfs/not_in_education.csv
   - /data/raw/qlfs/long_term_unemployed.csv
 ---
+{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h2> Visualisations </h2>
 <p>
@@ -20,8 +21,6 @@ from the Office for National Statistics.
 <p>
 The page is automatically regenerated when ONS publishes new data.
 </p>
-
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h3>Long-term unemployment for young people</h3>
 
