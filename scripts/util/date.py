@@ -15,11 +15,16 @@ def most_recent_stats(data, level=0, years=3):
     return data.loc[idx > idx.max() - pd.DateOffset(years=years)]
 
 
-def format_timestamp_as_quarter(timestamp):
+def format_timestamp_as_quarter(start):
+    '''
+    Converts a quarter period start into a period as published by the ONS
+    e.g. 2023-01-01 becomes Jan-Mar 2023. 2022-11-01 becomes Nov-Jan 2023
+    '''
+    end = start + pd.DateOffset(months=2)
     return '{}-{} {}'.format(
-        timestamp.strftime('%b'),
-        (timestamp + pd.DateOffset(months=3, days=-1)).strftime('%b'),
-        timestamp.strftime('%Y')
+        start.strftime('%b'),
+        end.strftime('%b'),
+        end.strftime('%Y')
     )
 
 
