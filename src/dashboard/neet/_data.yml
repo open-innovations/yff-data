@@ -162,10 +162,10 @@ visualisations:
 
 
 
-  - tab: NEET rate table - All People (SA)
+  - tab: NEET rate table - All Young People
     type: table
     caption: |
-      NEET rate table for all people for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Seasonally adjusted NEET rate table for all young people (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
@@ -186,10 +186,10 @@ visualisations:
           width: 20%
           template: "{{ people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
 
-  - tab: NEET rate table - Women (SA)
+  - tab: NEET rate table - Women
     type: table
     caption: |
-      NEET rate table for women for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Seasonally adjusted NEET rate table for young women (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
@@ -210,10 +210,10 @@ visualisations:
           width: 20%
           template: "{{ women_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
   
-  - tab: NEET rate table - Men (SA)
+  - tab: NEET rate table - Men
     type: table
     caption: |
-      NEET rate table for men for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Seasonally adjusted NEET rate table for young men (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
