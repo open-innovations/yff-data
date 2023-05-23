@@ -249,7 +249,7 @@
 - tab: Long term unemployment (6 to 12 months)
   type: table
   caption: |
-    This table presents seasonally adjusted long-term unemployment rates (between 6 and 12 months) for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from UNEM01.
+    Seasonally adjusted long-term unemployment figures (between 6 and 12 months) for young people aged 16-24 not in full-time education for the last 3 years.
   config:
     file: /data/qlfs/long_term_unemployed_last_3_years.csv
     columns:
@@ -273,8 +273,7 @@
 - tab: Long term unemployment (over 12 months)
   type: table
   caption: |
-    This table presents seasonally adjusted long-term unemployment rates (over 12 months) for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from the 
-    <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbyageanddurationseasonallyadjustedunem01sa">TEST</a> dataset.
+    Seasonally adjusted long-term unemployment figures (over 12 months) for young people aged 16-24 not in full-time education for the last 3 years.
     
   config:
     file: /data/qlfs/long_term_unemployed_last_3_years.csv
