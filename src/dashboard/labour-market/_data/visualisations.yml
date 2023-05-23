@@ -293,7 +293,7 @@
         width: 20%
         template: "{{ age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%"
 
-- tab: Rates of young people not in full-time education
+- tab: Labour market status of young people not in full-time education
   type: table
   caption: |
     This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from A06.
@@ -317,7 +317,7 @@
         template: "{{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%"
 
 
-- tab: Rates of young people in full-time education 
+- tab: Labour market status of young people in full-time education 
   type: table
   caption: |
     This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 who are in full-time education, over the last 3 years. This data is derived from A06. 
