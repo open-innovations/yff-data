@@ -1,4 +1,7 @@
 _site/
+_bin/
+
+
 coverage/
 design/data/
 

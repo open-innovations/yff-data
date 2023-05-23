@@ -15,6 +15,7 @@ import { walkSync } from 'std/fs/mod.ts';
 import autoDependency from '/src/_lib/oi/auto-dependency.ts';
 import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
 import { applyReplacementFilters } from '/src/_lib/oi/util.js';
+import pagefind from "lume/plugins/pagefind.ts";
 
 const site = lume({
   src: './src',
@@ -26,6 +27,9 @@ site.data('version', Deno.env.get('VERSION') || 'v1');
 
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
+
+// Set up search engine
+site.use(pagefind());
 
 // Process all css files
 site.use(postcss());
