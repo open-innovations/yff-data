@@ -246,7 +246,7 @@
         size: 10
         tooltip: employment_rate_label
 
-- tab: Long term unemployment 6 to 12 months
+- tab: Long term unemployment (6 to 12 months)
   type: table
   caption: |
     This table presents seasonally adjusted long-term unemployment rates (between 6 and 12 months) for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from UNEM01.
