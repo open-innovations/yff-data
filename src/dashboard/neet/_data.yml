@@ -17,8 +17,8 @@ visualisations:
         - name: 'Latest NEET Rate - Women'
           colour: Gold
           
-  - tab: NEET rates - All people (SA)
-    title: Seasonally adjusted NEET rate for all people
+  - tab: NEET rates - All young people
+    title: Seasonally adjusted NEET rate for all young people
     type: chart
     caption: |
       This chart shows rates of young people Not in Education, Employment or Training (NEET). 
@@ -65,8 +65,8 @@ visualisations:
           size: 10
           tooltip: economically_inactive_tooltip
 
-  - tab: NEET Rates - Women (SA)
-    title: Seasonally adjusted NEET rate for Women
+  - tab: NEET Rates - Young women 
+    title: Seasonally adjusted NEET rate for young women
     type: chart
     caption: |
       This chart shows rates of young women Not in Education, Employment or Training (NEET). 
@@ -113,8 +113,8 @@ visualisations:
           size: 10
           tooltip: economically_inactive_tooltip
 
-  - tab: NEET Rates - Men (SA)
-    title: Seasonally adjusted NEET rate for Men
+  - tab: NEET Rates - Young men
+    title: Seasonally adjusted NEET rate for young men
     type: chart
     caption: |
       This chart shows rates of young men Not in Education, Employment or Training (NEET). 
