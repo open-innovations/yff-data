@@ -162,7 +162,7 @@ visualisations:
 
 
 
-  - tab: NEET rate table - All Young People
+  - tab: NEET rate table - All young people
     type: table
     caption: |
       Seasonally adjusted NEET rate table for all young people (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
@@ -186,7 +186,7 @@ visualisations:
           width: 20%
           template: "{{ people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
 
-  - tab: NEET rate table - Young Women
+  - tab: NEET rate table - Young women
     type: table
     caption: |
       Seasonally adjusted NEET rate table for young women (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
@@ -210,7 +210,7 @@ visualisations:
           width: 20%
           template: "{{ women_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
   
-  - tab: NEET rate table - Young Men
+  - tab: NEET rate table - Young men
     type: table
     caption: |
       Seasonally adjusted NEET rate table for young men (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
