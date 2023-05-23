@@ -19,7 +19,8 @@
       - name: 'Economic inactivity rate'
         colour: Gold
 
-- tab: Long-term unemployment, last 3 years 
+- tab: Long-term unemployment rate - last 3 years
+  title: Seasonally adjusted long-term unemployment rate for young people over the last 3 years
   type: chart
   caption: |
     The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
@@ -82,8 +83,8 @@
         tooltip: label_12_months
 
 
-- tab: All time
-  title: Long-term unemployment rate since April 1992
+- tab: Long-term unemployment - since April 1992
+  title: Seasonally adjusted long-term unemployment rate for young people since April 1992
   type: chart
   caption: |
     The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
