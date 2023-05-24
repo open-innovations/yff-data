@@ -17,13 +17,13 @@ visualisations:
         - name: 'Latest NEET Rate - Women'
           colour: Gold
           
-  - tab: NEET rates - All young people
-    title: Seasonally adjusted NEET rate for all young people
+  - tab: All young people
+    title: Seasonally adjusted NEET rate for all young people (16-24)
     type: chart
-    caption: |
-      This chart shows rates of young people Not in Education, Employment or Training (NEET). 
-      In addition, the unemployment and economically inactive rates are shown.
-      These figures are based on the population in the relevant age range (16-24 years old).
+    # caption: |
+    #   This chart shows rates of young people Not in Education, Employment or Training (NEET). 
+    #   In addition, the unemployment and economically inactive rates are shown.
+    #   These figures are based on the population in the relevant age range (16-24 years old).
     config:
       file: "/data/neet/neet_all_data.csv"
       type: line-chart
@@ -65,13 +65,13 @@ visualisations:
           size: 10
           tooltip: economically_inactive_tooltip
 
-  - tab: NEET Rates - Young women 
-    title: Seasonally adjusted NEET rate for young women
+  - tab: Young women 
+    title: Seasonally adjusted NEET rate for young women (16-24)
     type: chart
-    caption: |
-      This chart shows rates of young women Not in Education, Employment or Training (NEET). 
-      In addition, the unemployment and economically inactive rates are shown.
-      These figures are based on the population in the relevant age range (16-24 years old).
+    # caption: |
+    #   This chart shows rates of young women Not in Education, Employment or Training (NEET). 
+    #   In addition, the unemployment and economically inactive rates are shown.
+    #   These figures are based on the population in the relevant age range (16-24 years old).
     config:
       file: /data/neet/neet_all_data.csv
       type: line-chart
@@ -113,13 +113,13 @@ visualisations:
           size: 10
           tooltip: economically_inactive_tooltip
 
-  - tab: NEET Rates - Young men
-    title: Seasonally adjusted NEET rate for young men
+  - tab: Young men
+    title: Seasonally adjusted NEET rate for young men (16-24)
     type: chart
-    caption: |
-      This chart shows rates of young men Not in Education, Employment or Training (NEET). 
-      In addition, the unemployment and economically inactive rates are shown.
-      These figures are based on the population in the relevant age range (16-24 years old).
+    # caption: |
+    #   This chart shows rates of young men Not in Education, Employment or Training (NEET). 
+    #   In addition, the unemployment and economically inactive rates are shown.
+    #   These figures are based on the population in the relevant age range (16-24 years old).
     config:
       file: /data/neet/neet_all_data.csv
       type: line-chart
@@ -162,7 +162,7 @@ visualisations:
 
 
 
-  - tab: NEET rate table - All young people
+  - tab: All young people
     type: table
     caption: |
       Seasonally adjusted NEET rate table for all young people (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
@@ -186,7 +186,7 @@ visualisations:
           width: 20%
           template: "{{ people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
 
-  - tab: NEET rate table - Young women
+  - tab: Young women
     type: table
     caption: |
       Seasonally adjusted NEET rate table for young women (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
@@ -210,7 +210,7 @@ visualisations:
           width: 20%
           template: "{{ women_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
   
-  - tab: NEET rate table - Young men
+  - tab: Young men
     type: table
     caption: |
       Seasonally adjusted NEET rate table for young men (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.

@@ -7,7 +7,9 @@ topics:
 raw_data:
   - /data/raw/neet/neet.csv
 ---
-<h2>Visualisations</h2>
+{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
+
+<h2>About the data on this page</h2>
 <p>
 These visualisations are driven by data on young people not in education, employment or training (NEET) from the 
 Office for National Statistics <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/youngpeoplenotineducationemploymentortrainingneettable1"> available here.</a>
@@ -18,7 +20,13 @@ The current data was published on {{ latest.published | date('HUMAN_DATE') }} an
 The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
+<h2>Rates of young people not in education, employment or training</h2>
+
+<p> 
+  This chart shows rates of young people not in education, employment or training (NEET). 
+  In addition, the unemployment and economically inactive rates are shown.
+  These figures are based on the population in the relevant age range (16-24 years old).
+</p>
 
 {{ comp.viz.main({ visualisations: visualisations | pick(1, 2, 3), test: false }) | safe }}
 
