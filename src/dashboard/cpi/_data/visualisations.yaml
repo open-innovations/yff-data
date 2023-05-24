@@ -1,5 +1,4 @@
-- caption: Overall CPI latest figures
-  config:
+- config:
     file: /data/cpi/headlines.csv
     note: Note
     panels:
@@ -14,10 +13,9 @@
       postfix: Suffix
     value: Value
     width: 333px
-  title: Headline stats
+  title: CPI Headlines
   type: dashboard
-- caption: CPI percentage change
-  config:
+- config:
     axis:
       x:
         grid:
@@ -65,9 +63,7 @@
     type: bar-chart
   title: CPI percentage change
   type: chart
-- caption: 'CPI percentage change
-
-    '
+- title: CPI percentage change
   config:
     columns:
     - name: monthly_pct_change
