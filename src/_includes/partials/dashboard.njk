@@ -1,3 +1,17 @@
+
+<p>
+  This site hosts the following dashboards
+</p>
+
+<ul class="tag-cloud">
+  {% for dashboard in search.pages('dashboard') | data %}
+    <li style="--tag-colour: #E55912;">
+      <a href="{{ dashboard.url }}">{{ dashboard.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+
 {% comp 'grid.masonry' %}
 {% include './dashboard/headlines.njk' %}
 {% include './dashboard/graphs.njk' %}

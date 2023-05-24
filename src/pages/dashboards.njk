@@ -1,0 +1,12 @@
+---
+title: Dashboards
+url: /dashboards/
+nav_order:
+  v2: 5
+---
+
+{% comp 'grid.auto', {min_width: '30em'} %}
+{% for page in search.pages("dashboard") | data %}
+  {{ comp.superlink({ page: page }) | safe }}
+{% endfor %}
+{% endcomp %}
