@@ -1,9 +1,9 @@
-tab: Long-term unemployment rate - last 3 years
-title: Seasonally adjusted long-term unemployment rate for young people over the last 3 years
+tab: Last 3 years
+title: Seasonally adjusted long-term unemployment rate for young people (16-24) over the last 3 years
 type: chart
-caption: |
-  The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
-  and the proportion who have been unemployed for more than 12 months.
+# caption: |
+#   The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
+#   and the proportion who have been unemployed for more than 12 months.
 config:
   file: data/qlfs/long_term_unemployed_last_3_years.csv
   type: line-chart

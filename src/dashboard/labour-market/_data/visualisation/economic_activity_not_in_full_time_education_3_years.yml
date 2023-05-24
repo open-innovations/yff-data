@@ -1,7 +1,7 @@
-tab: Young people not in full-time education
-title: Young people not in full-time education
+tab: Not in full-time education
+title: Labour market status for young people (16-24) not in full-time education
 type: chart
-caption: 'The unemployment rate for 16-24 year-olds who are not in full-time education.'
+# caption: The labour market status of 16-24 year-olds who are not in full-time education.
 config:
   file: '/data/qlfs/education_status_last_3_years.csv'
   type: line-chart
