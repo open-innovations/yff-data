@@ -61,6 +61,8 @@
   type: chart
 - config:
     columns:
+    - name: sector
+      rename: Sector
     - name: monthly_pct_change
       rename: Monthly
     - name: quarterly_pct_change
