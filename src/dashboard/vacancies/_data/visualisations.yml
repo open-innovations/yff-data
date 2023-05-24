@@ -1,3 +1,19 @@
+- title: Headline stats
+  type: dashboard
+  config:
+    file: /data/vacancies/headlines.csv
+    title: 'Title'
+    value: 'Value'
+    width: 500px
+    note: 'Note'
+    units:
+      postfix: 'Suffix'
+    panels:
+      - name: 'Latest monthly vacancies'
+        colour: Orange
+      - name: 'Latest quarterly vacancies'
+        colour: Plum
+
 - tab: Estimated Number of Vacancies
   title: Estimated Number of Vacancies
   type: chart

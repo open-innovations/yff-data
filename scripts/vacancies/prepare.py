@@ -15,7 +15,7 @@ def prepare_vacancies():
     quarterly = quarterly.drop(columns= ['index', 'freq'], axis = 1).reset_index()
     quarterly.to_csv(os.path.join(DATA_DIR, 'quarterly_vacancies.csv'), index=False)
 
-    monthly = vacancies.loc[vacancies['freq'] == 'q'].reset_index()
+    monthly = vacancies.loc[vacancies['freq'] == 'm'].reset_index()
     monthly = monthly.drop(columns= ['index', 'freq'], axis = 1).reset_index()
     monthly.to_csv(os.path.join(DATA_DIR, 'monthly_vacancies.csv'), index=False)
 
@@ -34,7 +34,32 @@ def prepare_vacancies_by_sector():
     vacancies_by_sector['Sector'] = vacancies_by_sector['Sector'].str.replace('<br>', '', regex=True).str.wrap(25)
     vacancies_by_sector.to_csv(os.path.join(DATA_DIR, 'vacancies_by_sector.csv'), index = False)
 
+def summarise():
+    monthly_vacancies = pd.read_csv(os.path.join(DATA_DIR, 'monthly_vacancies.csv'))
+    quarterly_vacancies = pd.read_csv(os.path.join(DATA_DIR, 'quarterly_vacancies.csv'))
+    last_monthly_date = monthly_vacancies.date.iloc[-1]
+    last_quarterly_date = quarterly_vacancies.date.iloc[-1]
+
+
+    summary = pd.DataFrame({
+    'Value': [
+        monthly_vacancies.value.iloc[-1].round(1),
+        quarterly_vacancies.value.iloc[-1].round(1),
+    ],
+    'Note': [
+        "Estimated number of open job vacancies in the last month, as at {}.".format(last_monthly_date),
+        "Estimated number of job vacancies in the last quarter, as at {}".format(last_quarterly_date),
+    ],
+    },
+    index=pd.Index([
+        'Latest monthly vacancies',
+        'Latest quarterly vacancies',
+    ], name='Title')
+    )
+    summary.fillna('N/A').to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
+
 
 if __name__ == "__main__":
     prepare_vacancies()
     prepare_vacancies_by_sector()
+    summarise()

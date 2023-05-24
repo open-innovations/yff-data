@@ -7,6 +7,8 @@ topics:
   - Employment
 ---
 
+{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
+
   <h3> Visualisations </h3>
 <p>
 These visualisations are driven by data from
@@ -14,4 +16,6 @@ These visualisations are driven by data from
 from the Office for National Statistics. This page is a work in progress with updates added regularly.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(0, 1), test: false }) | safe }}
+
+{{ comp.viz.main({ visualisations: visualisations | pick(1, 2), test: false }) | safe }}
+
