@@ -21,7 +21,7 @@ def load_data(filename, sheet_name, header=None, index_col=None):
 def pct_change(col1, col2):
     return ((col1 - col2) / col2)*100
 
-def summarise(): 
+def summarise(stats): 
     cpi = pd.read_csv(os.path.join(DATA_DIR, 'cpi.csv'))
 
     latest = pd.DataFrame({
@@ -32,9 +32,9 @@ def summarise():
 
     latest = latest.rename(columns = {'index': 'Title', 0: 'Value'})
     latest['Note'] = [
-        "Consumer prices index change (%) on last month",
-        "Consumer prices index change (%) on last quarter",
-        "Consumer prices index change (%) on the same month last year"
+        "Consumer prices index change (%) on last month, as at {} {}".format(stats.CPI_most_recent_month, stats.date),
+        "Consumer prices index change (%) on last quarter, as at {} {}".format(stats.CPI_most_recent_month, stats.date),
+        "Consumer prices index change (%) on the same month last year, as at {} {}".format(stats.CPI_most_recent_month, stats.date)
     ]
     latest['Suffix'] = '%'
     latest.to_csv(os.path.join(HEADLINES_DIR, 'headlines.csv'), index=False)
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     df.to_csv(os.path.join(DATA_DIR, 'cpi.csv'))
     stats.to_json(os.path.join(DATA_DIR, 'stats.json'))
 
-    summarise()
+    summarise(stats)
     
 
     

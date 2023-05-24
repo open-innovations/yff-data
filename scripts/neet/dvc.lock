@@ -5,11 +5,12 @@ stages:
     deps:
     - path: scripts/neet/extract.py
       md5: 8c14ab3b3e57b27998e1b9cf53e4e4be
-      size: 450
+      size: 463
     outs:
     - path: working/neet/neetlatest.xlsx
       md5: 50244a60014fad2e2622538284b235a1
       size: 183641
+      isexec: true
   transform:
     cmd: PYTHONPATH=. python scripts/neet/transform.py
     deps:
@@ -34,26 +35,30 @@ stages:
     deps:
     - path: data/neet/neet.csv
       md5: f3bb0993cb840451d889531763e718ea
-      size: 32417
+      size: 32503
     - path: scripts/neet/prepare.py
-      md5: 88d37cdcdb614b71d8f8a4b6e06a4d67
-      size: 2577
+      md5: 17d0112a00bc5b557d487f1f967fea22
+      size: 2671
     - path: scripts/util/date.py
       md5: 7620d58e82a2a331de70a888e800b317
-      size: 896
+      size: 929
     - path: scripts/util/file.py
       md5: 331fd2a96ccd35c59a6e52a65aa97e6c
-      size: 396
+      size: 412
     outs:
     - path: src/_data/sources/neet/headlines.csv
       md5: f69de60d7f4468ab2ce21a8c73299b30
       size: 382
+      isexec: true
     - path: src/_data/sources/neet/neet_all_data.csv
       md5: 809a59175b926a77aae533dcc48a14db
       size: 33670
+      isexec: true
     - path: src/_data/sources/neet/neet_last_3_years.csv
       md5: d995070a631a933f22da34b90bd93318
       size: 5510
+      isexec: true
     - path: src/dashboard/neet/_data/latest.json
       md5: e025750fadcaccb22abd844ab0c8736e
       size: 165
+      isexec: true
