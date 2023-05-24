@@ -18,12 +18,11 @@ Office for National Statistics
 <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation"> available here.</a> The most
 recent data is {{ sources.cpi.stats.CPI_most_recent_month}} {{sources.cpi.stats.date}}.
 We derive percentage change figures from index values (2015=100), and our values match the monthly and yearly percentage change figures
-provided in the dataset, verifying our method. This page is a work in progress with updates added regularly.
+provided in the dataset, verifying our method. This page is a work in progress with updates added regularly. 
 </p>
 
 {{ comp.viz.main({ visualisations: visualisations| pick(1), test: false }) | safe }}
-
 {# TODO add time series of CPI change here #}
-
+<p>*All items includes categories not shown.</p>
 <h2> Data Tables </h2>
 {{ comp.viz.main({ visualisations: visualisations| pick(2), test: false }) | safe }}
