@@ -63,9 +63,9 @@
     width: 500px
     panels:
       - name: 'Applications Made'
-        colour: Orange-2
+        colour: Plum
       - name: 'Local Partnerships Awarded'
-        colour: Chartreuse-2
+        colour: Orange
 
 - title:
   type: table
