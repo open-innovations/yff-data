@@ -53,7 +53,7 @@
         latitude: 51.46133961984077
         longitude: -0.0075300711017617225
 
-- title: Headline Statistics
+- title: Headlines
   type: dashboard
   config:
     file: /data/cff/dummy_headlines.csv

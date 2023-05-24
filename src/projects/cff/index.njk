@@ -7,16 +7,16 @@ summary:
     This page will present data on regions eligible for the funds, the areas awarded and provide further information on the funding process.  
 ---
 
+<section>
+  {{ comp.viz.main({ visualisations: visualisations | pick(1) }) | safe }}
+</section>
+
 {% comp 'flex' %}
 {% include "partials/page/summary.njk" %}
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
 
-<section>
-  {{ comp.viz.main({ visualisations: visualisations | pick(1) }) | safe }}
-</section>
-
-<section>
+{# <section> #}
   <h2>Local Partnerships by Region</h2>
 
   <p>
@@ -27,12 +27,12 @@ summary:
   </p>
 
   {{ comp.viz.main({ visualisations: visualisations | pick(0) }) | safe }}
-</section>
+{# </section>
 
-<section>
+<section> #}
   <h2>Local Partnerships</h2>
   {{ comp.viz.main({ visualisations: visualisations | pick(2) }) | safe }}
-</section>
+{# </section> #}
 
 
 
