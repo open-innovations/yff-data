@@ -1,4 +1,4 @@
-{% comp 'grid.pane', { link: page.url, extra_classes: 'turquoise-bg' } %}
+{% comp 'grid.pane', { link: page.url, extra_classes: extra_classes or 'turquoise-bg' } %}
 <h2>{{ page.title }}</h2>
 
 {% if page.publication_date %}
@@ -16,7 +16,7 @@
 {% endif %}
 
 {% if page.summary %}
-  <div class="summary">
+  <div class="summary embolden-first">
     {{ page.summary | first | md | striplinks | safe }}
   </div>
 {% endif %}

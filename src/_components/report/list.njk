@@ -1,7 +1,5 @@
 {% comp 'grid.auto', { min_width: '30em' } %}
   {% for page in search.pages('report', 'publication_date=desc') | data %}
-  {% comp 'grid.pane', { link: page.url, extra_classes: 'turquoise-bg' } %}
-    {{ comp.report.pane({ report: page }) | safe }}
-  {% endcomp %}
+    {{ comp.superLink({ page: page }) | safe }}
   {% endfor %}
 {% endcomp %}

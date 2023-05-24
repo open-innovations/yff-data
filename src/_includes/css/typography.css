@@ -2,8 +2,40 @@
   --fontstack-heading: "CenturyGothicStdBold", "Century Gothic", Helvetica, sans-serif;
 }
 
+/* Youth Futures Foundation styles */
+@font-face {
+  font-display: swap;
+  font-family: "CenturyGothicStd";
+  src: url(../fonts/CenturyGothicStd.woff2) format('woff2'), url(../fonts/CenturyGothicStd.woff) format('woff');
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-family: "CenturyGothicStd";
+  src: url(../fonts/CenturyGothicStdBold.woff2) format('woff2'), url(../fonts/CenturyGothicStdBold.woff) format('woff');
+  font-weight: 700;
+}
+@font-face {
+  font-display: swap;
+  font-family: "CenturyGothicStdBold";
+  src: url(../fonts/CenturyGothicStdBold.woff2) format('woff2'), url(../fonts/CenturyGothicStdBold.woff) format('woff');
+  font-weight: 400;
+}
+
 body {
   margin: 0px;
   line-height: 1.25;
   text-rendering: optimizeLegibility;
+}
+
+.embolden-first {
+  & p:first-of-type:not(:last-of-type) {
+    font-weight: bold;
+  }
+}
+
+.embiggen-first {
+  & p:first-of-type:not(:last-of-type) {
+    font-size: 1.2em;
+  }
 }

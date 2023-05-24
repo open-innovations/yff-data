@@ -7,20 +7,7 @@
 @import 'css/form.css';
 @import 'css/dashboard.css';
 @import 'css/search.css';
-
-/* Youth Futures Foundation styles */
-@font-face {
-  font-display: swap;
-  font-family: "CenturyGothicStd";
-  src: url(../fonts/CenturyGothicStd.woff2) format('woff2'), url(../fonts/CenturyGothicStd.woff) format('woff');
-  font-weight: 400
-}
-@font-face {
-  font-display: swap;
-  font-family: "CenturyGothicStdBold";
-  src: url(../fonts/CenturyGothicStdBold.woff2) format('woff2'), url(../fonts/CenturyGothicStdBold.woff) format('woff');
-  font-weight: 400
-}
+@import 'css/navigation.css';
 
 html { scroll-behavior: smooth; }
 body { font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
@@ -94,7 +81,6 @@ td, th { padding: 0.25em; }
 
 .summary > * { margin-bottom: 1em; }
 .summary > *:last-child { margin-bottom: 0; }
-.summary > p:first-child { font-weight: bold; font-family: 'CenturyGothicStdBold',sans-serif; }
 
 /* Tabbed figures */  
 .grid.tabs { margin-bottom: 0; }
@@ -145,29 +131,6 @@ footer .twocol:first-child { padding-bottom: 20px; }
 	footer .twocol { display: block; }
 	footer .twocol > * { margin-bottom: 1em; }
 	footer .twocol > *:last-child { text-align: left; margin-bottom: 0; }
-}
-
-/*********************/
-/* Navigation styles */
-/*********************/
-.navigation li { line-height: 30px; }
-.navigation a { text-transform: uppercase; color: inherit; font-size: 1.5em; padding-inline-end: 0.5em; }
-.navigation a:hover, .navigation a:focus { color: #e25b27; }
-.navigation button[aria-expanded] i {
-	--menu-button-colour: #e25b27;
-}
-.navigation ul li.social-icon { line-height: 0; }
-.navigation ul li.social-icon a { padding: 0; display: inline-block; }
-.navigation ul li.social-icon :is(svg,img) { height: 30px; width: 30px; float: none; }
-@media screen and (max-width: 1100px) {
-	.navigation > div { text-align: left; }
-	.navigation ul li { display: block; width: 100%; line-height: 3em; padding: 0 1em; }
-	.navigation ul li:hover { background: white; }
-	.navigation ul li:not(:last-child) { border-bottom: 1px solid rgba(0,0,0,.03);  }
-	.navigation ul li a { color: inherit; display: block; }
-	.navigation ul li.social-icon { display: inline-block; width: unset; padding: 0; }
-	.navigation ul li.social-icon.first-social { margin-left: 1.5em; }
-	.navigation ul li.social-icon a { line-height: 0; padding: 0.5em; }
 }
 
 /* Table of Contents */

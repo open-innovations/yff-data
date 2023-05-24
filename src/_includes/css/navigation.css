@@ -1,0 +1,78 @@
+/*********************/
+/* Navigation styles */
+/*********************/
+.navigation li {
+  line-height: 30px;
+}
+
+.navigation a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.5em;
+  padding-inline-end: 0.5em;
+  &:is(:hover, a:focus) {
+    color: #e25b27;
+    text-decoration: underline;
+  }
+}
+
+.navigation button[aria-expanded] i {
+  --menu-button-colour: #e25b27;
+}
+
+.navigation ul li.social-icon {
+  line-height: 0;
+}
+
+.navigation ul li.social-icon a {
+  padding: 0;
+  display: inline-block;
+}
+
+.navigation ul li.social-icon :is(svg,img) {
+  height: 30px;
+  width: 30px;
+  float: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .navigation > div {
+    text-align: left;
+  }
+
+  .navigation ul li {
+    display: block;
+    width: 100%;
+    line-height: 3em;
+    padding: 0 1em;
+  }
+
+  .navigation ul li:hover {
+    background: white;
+  }
+
+  .navigation ul li:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, .03);
+  }
+
+  .navigation ul li a {
+    color: inherit;
+    display: block;
+  }
+
+  .navigation ul li.social-icon {
+    display: inline-block;
+    width: unset;
+    padding: 0;
+  }
+
+  .navigation ul li.social-icon.first-social {
+    margin-left: 1.5em;
+  }
+
+  .navigation ul li.social-icon a {
+    line-height: 0;
+    padding: 0.5em;
+  }
+}

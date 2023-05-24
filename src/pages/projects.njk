@@ -5,4 +5,8 @@ nav_order:
   v2: 20
 ---
 
-{{ comp.project.list() | safe }}
+{% comp 'grid.auto', { min_width: '30em' } %}
+  {% for page in search.pages('project', 'publication_date=desc') | data %}
+    {{ comp.superLink({ page: page }) | safe }}
+  {% endfor %}
+{% endcomp %}

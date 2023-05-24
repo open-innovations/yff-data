@@ -1,9 +1,9 @@
-{% extends 'layouts/layout.njk' %}
+---
+layout: layouts/layout.njk
+---
 
-{% block main %}
-  {{ comp.elements.title({ title: title }) | safe }}
+{{ comp.elements.title({ title: title }) | safe }}
 
-  <div class="wrapper holder">
-    {{ content | safe }}
-  </div>
-{% endblock %}
+<div class="wrapper holder {{ content_class }}">
+  {{ content | safe }}
+</div>
