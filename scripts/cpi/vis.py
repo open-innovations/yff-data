@@ -7,7 +7,7 @@ def update_ticks(data_dir, vis_dir):
     #get the labels
     data = pd.read_csv(data_dir)
     min, max, labels = tick_gen(data, dtype='percent')
-
+    #print(min, max)
     with open(vis_dir) as f:
         viz = yaml.safe_load(f.read())
 
@@ -16,6 +16,7 @@ def update_ticks(data_dir, vis_dir):
     viz[1]['config']['axis']['x']['min'] = min
     viz[1]['config']['axis']['x']['ticks'] = labels
 
+    #print(viz[1]['config']['axis']['x']['ticks'])
     # Write config to file
     with open(vis_dir, 'w') as f:
         f.write(yaml.dump(

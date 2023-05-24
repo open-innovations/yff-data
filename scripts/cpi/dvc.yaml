@@ -47,7 +47,8 @@ stages:
       - scripts/cpi/vis.py
       - data/cpi/cpi.csv
       - scripts/util/util.py
+      - src/dashboard/cpi/_data/visualisations.yaml
     # outs:
-    #   - src/dashboard/cpi/_data/visualisations.yaml:
+    #   - src/dashboard/cpi/_data:
     #       cache: false
     #       persist: false

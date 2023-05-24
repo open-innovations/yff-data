@@ -21,17 +21,13 @@
         grid:
           stroke-dasharray: 6 2
           stroke-width: 1
-        max: 30
+        max: 20
         min: 0
         ticks:
         - label: 0.0%
           value: '0.0'
-        - label: 10.0%
-          value: '10.0'
         - label: 20.0%
           value: '20.0'
-        - label: 30.0%
-          value: '30.0'
       y:
         grid:
           stroke-width: 0.5
@@ -63,8 +59,7 @@
     type: bar-chart
   title: CPI percentage change
   type: chart
-- title: CPI percentage change
-  config:
+- config:
     columns:
     - name: monthly_pct_change
       rename: Monthly
@@ -74,4 +69,5 @@
       rename: Yearly
     file: /data/cpi/cpi.csv
   tab: null
+  title: CPI percentage change
   type: table
