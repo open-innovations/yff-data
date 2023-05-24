@@ -1,0 +1,70 @@
+tab: Long-term unemployment - since April 1992
+title: Seasonally adjusted long-term unemployment rate for young people since April 1992
+type: chart
+caption: |
+  The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
+  and the proportion who have been unemployed for more than 12 months.
+config:
+  file: data/qlfs/long_term_unemployed_all_data.csv
+  type: line-chart
+  legend:
+    show: true # Default to false
+    position: 'top right'
+  axis:
+    x: # Horizontal axis
+      grid:
+        stroke: '#efefef'
+    y: # The vertical axes
+      min: 0 # A minimum value
+      max: 40 # A maximum value
+      title:
+        label: 'Rate (%)'
+      dominant-baseline: text-bottom
+      # Explicitly define the ticks.
+      # Each tick has a numeric value and a displayed label
+      ticks:
+        - value: 0
+          grid: true
+          label: '0'
+        - value: 5
+          grid: true
+          label: '5'
+        - value: 10
+          grid: true
+          label: '10'
+        - value: 15
+          grid: true
+          label: '15'
+        - value: 20
+          grid: true
+          label: '20'
+        - value: 25
+          grid: true
+          label: '25'
+        - value: 30
+          grid: true
+          label: '30'
+        - value: 35
+          grid: true
+          label: '35'
+        - value: 40
+          grid: true
+          label: '40'
+  columns:
+    - name: x_tick_labels
+      template: '{{ quarter_label }}'
+    - name: label_6_to_12_months
+      template: '{{quarter_label}} <br/> Proportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%'
+    - name: label_12_months
+      template: '{{quarter_label}} <br/> Proportion over 12 months: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%'
+  series:
+    - title: '6 to 12 months'
+      x: 'quarter_index' # Column heading to use for x-value
+      y: 'age_16_to_24_unemployed_6_to_12_months_rate_sa' # Column heading to use fro y-value
+      size: 50
+      tooltip: label_6_to_12_months
+    - title: '12 months'
+      x: 'quarter_index' # Column heading to use for x-value
+      y: 'age_16_to_24_unemployed_over_12_months_rate_sa' # Column heading to use fro y-value
+      size: 50
+      tooltip: label_12_months

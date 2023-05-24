@@ -5,9 +5,14 @@
   <div class="post-date">{{ project.publication_date | date('YFF') }}</div>
 {% endif %}
 
-{% if page.visualisations and show_viz | default(true) %}
-  {% set key_visualisation = page.visualisations[featured_visualisation or 0] %}
-  {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
+{% if show_viz | default(true) %}
+  {% if page.visualisation %}
+    {% set key_visualisation = page.visualisation[page.featured_visualisation or 'headline'] %}
+    {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
+  {% elif page.visualisations %}
+    {% set key_visualisation = page.visualisations[page.featured_visualisation or 0] %}
+    {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
+  {% endif %}
 {% endif %}
 
 {% if page.summary %}

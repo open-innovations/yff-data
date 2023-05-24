@@ -6,6 +6,10 @@ layout: layouts/simple.njk
 {% include 'partials/page/topic-cloud.njk' %}
 {% endcomp %}
 
+{% if visualisation.headline %}
+{{- comp.viz.main({ visualisations: visualisation.headline, test: false }) | safe -}}
+{% endif %}
+
 {% set pipe_doc = search.page("url='" + url + "pipeline/'").data %}
 {% if pipe_doc %}
 <aside>

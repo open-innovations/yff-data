@@ -7,8 +7,8 @@ topics:
 raw_data:
   - /data/raw/qlfs/not_in_education.csv
   - /data/raw/qlfs/long_term_unemployed.csv
+# featured_visualisation: economic_activity_not_in_full_time_education_3_years
 ---
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h2> Visualisations </h2>
 <p>
@@ -30,10 +30,9 @@ The page is automatically regenerated when ONS publishes new data.
   This data is derived from the 
   <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbyageanddurationseasonallyadjustedunem01sa">UNEM01 SA: Unemployment by age 
   and duration (seasonally adjusted)</a> dataset.
-  
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(1, 2), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('long_term_unemployment_3_years', 'long_term_unemployment_all'), test: false }) | safe }}
 
 <h3>Educational and labour market status for young people</h3>
 
@@ -48,7 +47,7 @@ The page is automatically regenerated when ONS publishes new data.
 
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(3, 4), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('economic_activity_not_in_full_time_education_3_years', 'economic_activity_in_full_time_education_3_years'), test: false }) | safe }}
 
 <h2>Data Tables</h2>
-{{ comp.viz.main({ visualisations: visualisations | pick(5, 6, 7, 8) }) | safe }}
+{{ comp.viz.main({ visualisations: tables }) | safe }}

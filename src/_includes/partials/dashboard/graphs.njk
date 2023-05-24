@@ -4,15 +4,15 @@
 {% endmacro -%}
 
 {% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url } %}
-{{ renderViz(search.data('dashboard/labour-market/').visualisations[2]) | safe }}
+{{ renderViz(search.data('dashboard/labour-market/').visualisation.long_term_unemployment_all) | safe }}
 {% endcomp %}
 
 {% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url } %}
-{{ renderViz(search.data('dashboard/labour-market/').visualisations[1]) | safe }}
+{{ renderViz(search.data('dashboard/labour-market/').visualisation.long_term_unemployment_3_years) | safe }}
 {% endcomp %}
 
 {% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url } %}
-{{ renderViz(search.data('dashboard/labour-market/').visualisations[3]) | safe }}
+{{ renderViz(search.data('dashboard/labour-market/').visualisation.economic_activity_not_in_full_time_education_3_years) | safe }}
 {% endcomp %}
 
 {% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/neet/' } %}
