@@ -1,4 +1,4 @@
-title: Headline stats
+title: Labour Market headlines
 type: dashboard
 config:
   file: /data/qlfs/headlines.csv

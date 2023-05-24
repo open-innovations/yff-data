@@ -1,5 +1,5 @@
 visualisations: 
-  - title: Headline Stats
+  - title: NEET Headlines
     type: dashboard
     config:
       file: /data/neet/headlines.csv
