@@ -75,3 +75,5 @@
   tab: null
   title: CPI percentage change
   type: table
+  caption: |
+    Test.
