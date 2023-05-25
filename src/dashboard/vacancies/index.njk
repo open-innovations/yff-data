@@ -20,7 +20,11 @@ topics:
   The page is automatically regenerated when the latest ONS data is published.
 </p>
 
-<h2>Vacancies in the UK</h2>
+<h2>Number of vacancies in the UK</h2>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(1, 2), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations | pick(1), test: false }) | safe }}
+
+<h2>Growth by sector</h2>
+
+{{ comp.viz.main({ visualisations: visualisations | pick(2), test: false }) | safe }}
 
