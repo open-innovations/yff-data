@@ -9,9 +9,6 @@ DATA_DIR = os.path.realpath(os.path.join('data', 'qlfs'))
 os.makedirs(DATA_DIR, exist_ok=True)
 METADATA_FILE = os.path.join(DATA_DIR, 'metadata.json')
 
-column_name = pd.read_csv('working/lookups/lms_lookups.csv',
-                          usecols=['code', 'name'], index_col='code').name.to_dict()
-
 column_mapper = {
     'JN6B': 'age_16_to_24_not_in_ft_education_total_sa',  # Total not in education, 16-24
     'AGNJ': 'age_16_to_24_not_in_ft_education_in_employment_sa',  # Employed level, 16-24
