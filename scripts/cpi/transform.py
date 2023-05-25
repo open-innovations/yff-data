@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from extract import CPI_LATEST
+from extract import CPI_LATEST, CPI_TIME_SERIES
 from scripts.util.date import quarter_to_date, most_recent_stats
 from scripts.util.util import slugify
 
@@ -102,3 +102,8 @@ if __name__ == "__main__":
     #get the metadat and make headline stats
     metadata = read_meta()
     summarise(metadata)
+
+    # time_series = pd.read_csv(CPI_TIME_SERIES, names=measures, header=0)
+    # time_series.drop(labels=['PreUnit', 'Unit', 'Release Date', 'Next release', 'Important Notes'], axis=0, inplace=True)
+
+

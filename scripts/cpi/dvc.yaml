@@ -9,6 +9,9 @@ stages:
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx:
           cache: false
           persist: false
+      - working/cpi/mm23.csv:
+          cache: false
+          persist: false
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     wdir: ../..
@@ -16,6 +19,7 @@ stages:
       - scripts/cpi/transform.py
       - scripts/util/date.py
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
+      - working/cpi/mm23.csv
       - working/lookups/MM23_variable_lookup.csv
     outs:
       - data/cpi/cpi.csv:
