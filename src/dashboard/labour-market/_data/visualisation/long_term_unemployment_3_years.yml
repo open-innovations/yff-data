@@ -5,7 +5,7 @@ type: chart
 #   The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
 #   and the proportion who have been unemployed for more than 12 months.
 config:
-  file: data/qlfs/long_term_unemployed_last_3_years.csv
+  file: data/labour-market/long_term_unemployed_last_3_years.csv
   type: line-chart
   legend:
     show: true # Default to false
