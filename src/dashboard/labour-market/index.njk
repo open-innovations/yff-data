@@ -12,7 +12,8 @@ raw_data:
 
 <h2> About the data on this page </h2>
 <p>
-These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. Specific links to the data sets used are provided below.
+These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. 
+Specific links to the data sets used are provided below.
 </p>
 
 <p>
@@ -32,6 +33,11 @@ The page is automatically regenerated when ONS publishes new data.
   and duration (seasonally adjusted)</a> dataset.
 </p>
 
+<p>
+  The current data was published on {{ latest.unem01_published | date('HUMAN_DATE') }} and includes data up to the 
+  {{ latest.unem01_quarter }} quarter. The next scheduled publication is {{ latest.unem01_next_update | date('HUMAN_DATE') }}.
+</p>
+
 {{ comp.viz.main({ visualisations: visualisation | pick('long_term_unemployment_3_years', 'long_term_unemployment_all'), test: false }) | safe }}
 
 <h2>Educational and labour market status for young people</h2>
@@ -44,7 +50,11 @@ The page is automatically regenerated when ONS publishes new data.
   This data is derived from the 
   <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/educationalstatusandlabourmarketstatusforpeopleagedfrom16to24seasonallyadjusteda06sa">A06 
   SA: Educational status and labour market status for people aged from 16 to 24 (seasonally adjusted)</a> dataset.
+</p>
 
+<p>
+  The current data was published on {{ latest.a06_published | date('HUMAN_DATE') }} and includes data up to the 
+  {{ latest.a06_quarter }} quarter. The next scheduled publication is {{ latest.a06_next_update | date('HUMAN_DATE') }}.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisation | pick('economic_activity_not_in_full_time_education_3_years', 'economic_activity_in_full_time_education_3_years'), test: false }) | safe }}

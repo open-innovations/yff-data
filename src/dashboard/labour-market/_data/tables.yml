@@ -1,7 +1,7 @@
 - tab: Long term unemployment (6 to 12 months)
   type: table
   caption: |
-    Seasonally adjusted long-term unemployment figures (between 6 and 12 months) for young people aged 16-24 not in full-time education for the last 3 years.
+    Seasonally adjusted long-term unemployment figures (between 6 and 12 months) for young people aged 16-24 not in full-time education for the last 3 years. This data is derived from UNEM01 SA.
   config:
     file: /data/qlfs/long_term_unemployed_last_3_years.csv
     columns:
@@ -24,7 +24,7 @@
 - tab: Long term unemployment (over 12 months)
   type: table
   caption: |
-    Seasonally adjusted long-term unemployment figures (over 12 months) for young people aged 16-24 not in full-time education for the last 3 years.
+    Seasonally adjusted long-term unemployment figures (over 12 months) for young people aged 16-24 not in full-time education for the last 3 years. This data is derived from UNEM01 SA.
 
   config:
     file: /data/qlfs/long_term_unemployed_last_3_years.csv
@@ -45,10 +45,10 @@
         width: 20%
         template: '{{ age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%'
 
-- tab: Labour market status of young people not in full-time education
+- tab: Labour market status (not in full-time education)
   type: table
   caption: |
-    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from A06.
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from A06 SA.
   config:
     file: /data/qlfs/education_status_last_3_years.csv
     columns:
@@ -68,10 +68,10 @@
         width: 20%
         template: '{{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%'
 
-- tab: Labour market status of young people in full-time education
+- tab: Labour market status (in full-time education)
   type: table
   caption: |
-    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 who are in full-time education, over the last 3 years. This data is derived from A06.
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 who are in full-time education, over the last 3 years. This data is derived from A06 SA.
   config:
     file: /data/qlfs/education_status_last_3_years.csv
     columns:

@@ -17,14 +17,11 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
-      md5: 7903edb022f683e33e982b86211f1cc6
-      size: 6397
+      md5: 1418adf7a4f063b04667215146988aec
+      size: 6250
     - path: scripts/util/date.py
       md5: 7620d58e82a2a331de70a888e800b317
       size: 896
-    - path: working/lookups/lms_lookups.csv
-      md5: eb12567d3b2aee1199be9d29cf92bc94
-      size: 137643
     - path: working/qlfs/a06latest.xls
       md5: f15f94af6e0824d160fbe3e3fb36e76b
       size: 1406464
@@ -78,3 +75,15 @@ stages:
     - path: src/dashboard/labour-market/_data/latest.json
       md5: 8b97d71fd58888a757b2a3886d77bdd0
       size: 428
+  transform-edd:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/transform-edd.py
+    deps:
+    - path: scripts/qlfs/config.py
+      md5: 9c2c469d264ef6be21ea02b0ae92b22e
+      size: 1811
+    - path: scripts/qlfs/transform-edd.py
+      md5: fdb9c11de19fb5425deda16513787c04
+      size: 561
+    - path: working/LMS_data.csv
+      md5: 6aa1cd29bf0de08e912a2568bba5a056
+      size: 16830346

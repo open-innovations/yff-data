@@ -20,7 +20,6 @@ stages:
       - scripts/util/date.py
       - working/qlfs/a06latest.xls
       - working/qlfs/unem01latest.xls
-      - working/lookups/lms_lookups.csv
     outs:
       - data/qlfs/long_term_unemployed.csv:
           cache: false

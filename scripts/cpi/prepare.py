@@ -19,4 +19,4 @@ def copy_file(name):
 
 if __name__ == "__main__":
     copy_file("cpi.csv")
-    copy_file("stats.json")
+    copy_file("metadata.json")

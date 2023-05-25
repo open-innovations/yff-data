@@ -21,10 +21,10 @@ stages:
       - data/cpi/cpi.csv:
           cache: false
           persist: false
-      - data/cpi/stats.json:
-          cache: false
-          persist: false
       - src/_data/sources/cpi/headlines.csv:
+          cache: false 
+          persist: false
+      - data/cpi/metadata.json:
           cache: false 
           persist: false
   prepare:
@@ -33,11 +33,12 @@ stages:
     deps:
       - scripts/cpi/prepare.py
       - data/cpi/cpi.csv
+      - data/cpi/metadata.json
     outs:
       - src/_data/sources/cpi/cpi.csv:
           cache: false
           persist: false
-      - src/_data/sources/cpi/stats.json:
+      - src/_data/sources/cpi/metadata.json:
           cache: false
           persist: false
   vis:

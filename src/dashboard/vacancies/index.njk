@@ -9,13 +9,32 @@ topics:
 
 {{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
-  <h3> Visualisations </h3>
+<h2>About the data on this page</h2>
+
 <p>
-These visualisations are driven by data from
-<a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/jobsandvacanciesintheuk/april2023">Vacancies and jobs in the UK</a>
-from the Office for National Statistics. This page is a work in progress with updates added regularly.
+  These visualisations are driven by data from <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/jobsandvacanciesintheuk/april2023">Vacancies and jobs in the UK</a>
+  from the Office for National Statistics. 
 </p>
 
+<p>
+  The page is automatically regenerated when the latest ONS data is published.
+</p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(1, 2), test: false }) | safe }}
+<h2>Number of vacancies</h2>
+
+<p>
+  This chart shows the seasonally adjusted estimated number of vacancies in the UK from January 2004.
+</p>
+
+{{ comp.viz.main({ visualisations: visualisations | pick(1), test: false }) | safe }}
+
+<h2>Growth by sector</h2>
+
+<p>
+ This visualisation shows the percentage growth in quarterly average job vacancies in the UK by sector. Categories in each tab were selected based on the
+ <a href= "https://youthfuturesfoundation.org/wp-content/uploads/2021/10/Large-Employers-and-the-Youth-Labour-Market-report.pdf">Large Employers and the Youth Labour Market 
+ Report</a>.
+</p>
+
+{{ comp.viz.main({ visualisations: visualisations | pick(2), test: false }) | safe }}
 

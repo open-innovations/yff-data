@@ -15,8 +15,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
-      md5: 3c79af74c0bf23fe9a55563d22dd59c0
-      size: 4235
+      md5: 1f62920818c13b862db7e3a0f19920a1
+      size: 4861
     - path: scripts/util/date.py
       md5: 7620d58e82a2a331de70a888e800b317
       size: 929
@@ -28,41 +28,44 @@ stages:
       size: 295471
     outs:
     - path: data/cpi/cpi.csv
-      md5: 2889af6e1c48270de72ff69839a30552
-      size: 257
+      md5: 07fb6d632300c016e5a81f4989dfcbf6
+      size: 265
       isexec: true
-    - path: data/cpi/stats.json
-      md5: 532aad33bbc3ca0a205b8339cbbf9557
-      size: 91
+    - path: data/cpi/metadata.json
+      md5: 5134c59bd5cc53a322e7b0cf11f6df76
+      size: 58
       isexec: true
     - path: src/_data/sources/cpi/headlines.csv
-      md5: b924eb42088151faf13eed0d7550764a
-      size: 299
+      md5: e22685c64285c21644acc807a3f035df
+      size: 311
       isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
     - path: data/cpi/cpi.csv
-      md5: 2889af6e1c48270de72ff69839a30552
-      size: 257
+      md5: 07fb6d632300c016e5a81f4989dfcbf6
+      size: 265
+    - path: data/cpi/metadata.json
+      md5: 5134c59bd5cc53a322e7b0cf11f6df76
+      size: 58
     - path: scripts/cpi/prepare.py
-      md5: 6b795611d50045a17142796f9ac1ccaa
-      size: 438
+      md5: a8f7cf3f95ccce124aee422461471919
+      size: 441
     outs:
     - path: src/_data/sources/cpi/cpi.csv
-      md5: 2889af6e1c48270de72ff69839a30552
-      size: 257
+      md5: 07fb6d632300c016e5a81f4989dfcbf6
+      size: 265
       isexec: true
-    - path: src/_data/sources/cpi/stats.json
-      md5: 532aad33bbc3ca0a205b8339cbbf9557
-      size: 91
+    - path: src/_data/sources/cpi/metadata.json
+      md5: 5134c59bd5cc53a322e7b0cf11f6df76
+      size: 58
       isexec: true
   vis:
     cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
     deps:
     - path: data/cpi/cpi.csv
-      md5: 2889af6e1c48270de72ff69839a30552
-      size: 257
+      md5: 07fb6d632300c016e5a81f4989dfcbf6
+      size: 265
     - path: scripts/cpi/vis.py
       md5: 2a15c96561a64c9efa642f500093db90
       size: 892
@@ -70,6 +73,6 @@ stages:
       md5: d0b2b87145742883d8245920e81035b8
       size: 3807
     - path: src/dashboard/cpi/_data/visualisations.yaml
-      md5: d7187bd3da1645636dd116892379bc13
-      size: 1787
+      md5: ab32c3fdde6c361f7ee80e359691295c
+      size: 2183
       isexec: true

@@ -1,0 +1,36 @@
+stages:
+
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/labour-market/transform.py
+    wdir: ../..
+    deps:
+      - scripts/labour-market/transform.py
+      - scripts/labour-market/config.py
+      - working/LMS_data.csv
+    outs:
+      - data/labour-market/monthly-rolling.csv:
+          cache: false
+          persist: false
+
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/labour-market/prepare.py
+    wdir: ../..
+    deps:
+      - scripts/labour-market/prepare.py
+      - scripts/labour-market/config.py
+      - scripts/util/date.py
+      - scripts/util/file.py
+      - data/labour-market/monthly-rolling.csv
+    outs:
+      - src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/labour-market/long_term_unemployed_all_data.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/labour-market/education_status_last_3_years.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/labour-market/education_status_all_data.csv:
+          cache: false
+          persist: false

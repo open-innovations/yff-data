@@ -6,8 +6,22 @@ from scripts.util.util import slugify
 
 DATA_DIR = os.path.realpath(os.path.join('data', 'cpi'))
 HEADLINES_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'cpi'))
+CPI_METADATA = os.path.join(DATA_DIR, 'metadata.json')
 os.makedirs(DATA_DIR, exist_ok=True)
 
+def read_meta():
+    #read csv and make a new dataframe
+    dates = pd.read_excel(CPI_LATEST, sheet_name='Contents', names=["Consumer Price Inflation"], skiprows=1, nrows=2, header=None)
+    dates.columns = ['value']
+    dates.index = pd.Index([
+        "published",
+        "next_update",
+    ])
+    #get just the dates
+    dates.loc['published', 'value'] = dates.loc['published', 'value'].split(':')[1]
+    dates.loc['next_update', 'value'] = dates.loc['next_update', 'value'].split(':')[1]
+    dates.value.to_json(CPI_METADATA, date_format='iso')
+    return dates
 def load_data(filename, sheet_name, header=None, index_col=None):
     data = pd.read_excel(filename, 
                          sheet_name=sheet_name,
@@ -32,17 +46,19 @@ def summarise(stats):
 
     latest = latest.rename(columns = {'index': 'Title', 0: 'Value'})
     latest['Note'] = [
-        "Consumer prices index change (%) on last month, as at {} {}".format(stats.CPI_most_recent_month, stats.date),
-        "Consumer prices index change (%) on last quarter, as at {} {}".format(stats.CPI_most_recent_month, stats.date),
-        "Consumer prices index change (%) on the same month last year, as at {} {}".format(stats.CPI_most_recent_month, stats.date)
+        "Consumer prices index change (%) on last month, as at {}".format(metadata.loc["published", "value"]),
+        "Consumer prices index change (%) on last quarter, as at {}".format(metadata.loc["published", "value"]),
+        "Consumer prices index change (%) on the same month last year, as at {}".format(metadata.loc["published", "value"])
     ]
     latest['Suffix'] = '%'
     latest.to_csv(os.path.join(HEADLINES_DIR, 'headlines.csv'), index=False)
 
 if __name__ == "__main__":
 
+    #use only the measures (see lookup table)
     measures = ['D7BT', 'D7BU', 'D7BW', 'D7BX', 'D7C4']
 
+    #read the sheet, using indices as columns have no names
     data = pd.read_excel(CPI_LATEST, sheet_name='Table 21', index_col=1, skiprows=4, header=[0,1])
     table21 = data.loc[measures]
     most_recent_month = table21.iloc[:, -1:]
@@ -50,6 +66,7 @@ if __name__ == "__main__":
     quarter = table21.iloc[:, -4:-3]
     year = table21.iloc[:, -13:-12]
     
+    #getting the names of values to make a readable csv
     m1 = most_recent_month.columns[0][1]
     date = most_recent_month.columns[0][0]
     m2 = quarter.columns[0][1]
@@ -61,13 +78,12 @@ if __name__ == "__main__":
     quarter.rename(columns={m2: 'value'}, inplace=True)
     year.rename(columns={m3: 'value'}, inplace=True)
 
-    #print(most_recent_month[most_recent_month.columns[0][0]], quarter[quarter.columns[0][0]], year)
+    #create a nicely formatted dataframe for pct change figures 
     df['monthly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], last_month[last_month.columns[0][0]])
     df['quarterly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], quarter[quarter.columns[0][0]])
     df['yearly_pct_change'] = pct_change(most_recent_month[most_recent_month.columns[0][0]], year[year.columns[0][0]])
-    stats = pd.Series(data={'CPI_most_recent_month': m1, 'CPI_last_month': m4, 'CPI_last_quarter': m2, 'date': date})
 
-    #remap codes to proper names
+    #remap codes to proper names and slugify
     column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
                           usecols=['code', 'name'], index_col='code').to_dict()['name']
     df.rename(index=column_name, inplace=True)
@@ -78,17 +94,11 @@ if __name__ == "__main__":
                      'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & Footwear",
                      'cpi_index_04_housing_water_and_fuels_2015_100': "Housing, Energy, Water & Fuels",
                      'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture",
-                     'cpi_index_00_all_items_2015_100': "All Items*"},
+                     'cpi_index_00_all_items_2015_100': "All CPI Categories"},
                      inplace=True)
-    
     #write file
     df.to_csv(os.path.join(DATA_DIR, 'cpi.csv'))
-    stats.to_json(os.path.join(DATA_DIR, 'stats.json'))
 
-    summarise(stats)
-    
-
-    
-    
-    
-    
+    #get the metadat and make headline stats
+    metadata = read_meta()
+    summarise(metadata)
