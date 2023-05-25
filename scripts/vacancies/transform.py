@@ -5,7 +5,7 @@ DATA_DIR = os.path.realpath(os.path.join('data', 'vacancies'))
 dataset_name = 'UK Vacancies (thousands) - Total'
 
 def transform_vacancies():
-    lookup = pd.read_csv(os.path.join('working', 'LMS_variable_lookup.csv'), index_col=None)
+    lookup = pd.read_csv(os.path.join('working', 'lookups', 'LMS_variable_lookup.csv'), index_col=None)
     data = pd.read_csv(os.path.join('working', 'LMS_data.csv'))
 
     code = lookup.query('name == @dataset_name').code.iloc[0]
