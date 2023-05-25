@@ -15,9 +15,8 @@
         colour: Plum      
 
 - tab: Estimated Number of Vacancies
-  title: Estimated Number of Vacancies
+  title: Seasonally adjusted estimated Number of Vacancies
   type: chart
-  caption: "Number of vacancies in the UK, seasonally adjusted, January to March 2004 to January to March 2023"
   source: ""
   config:
     file: "/data/vacancies/monthly_vacancies.csv"
@@ -101,19 +100,11 @@
         tooltip: "Label"
 
 
-- title: Quarterly growth by sector
+- title: Quarterly growth in vacancies by sector
   # citations:
   #   - title:
   #     link: about:blank
   type: chart
-  caption: |
-    Quarterly average number of job vacancies in the UK, showing percentage growth on previous quarter and growth on the same quarter pre-coronavirus pandemic. Categories were selected based on the <a href= "https://youthfuturesfoundation.org/wp-content/uploads/2021/10/Large-Employers-and-the-Youth-Labour-Market-report.pdf">Large Employers and the Youth Labour Market Report</a>, using the following criteria:
-    <ul><br>
-      <li>Hospitality, Health and Social Care are key sectors for youth employment.</li>
-      <li>Manufacturing and Construction are growth industries i.e. green jobs.</li>
-      <li>Young people want to work in Creative, Professional and Financial Services industries.</li>
-      <li>Retail, Hospitality, Arts and Entertainment were particularly impacted by the coronavirus pandemic.</li>
-    </ul>
   config:
     file: /data/vacancies/vacancies_by_sector.csv
     type: bar-chart
