@@ -97,4 +97,16 @@ if __name__ == "__main__":
         'YBVH', 'YBXG', 'YBXJ', 'YBXM',
         'YBVN', 'YBXV', 'YBXY', 'YBYB',
     ])
+
+    long_term_unemployed = pd.DataFrame({
+        'age_16_to_24_unemployed_sa': (long_term_unemployed.age_18_to_24_unemployed_sa + long_term_unemployed.age_16_to_17_unemployed_sa).round(0),
+        'age_16_to_24_unemployed_6_to_12_months_sa':  (long_term_unemployed.age_18_to_24_unemployed_6_to_12_months_sa + long_term_unemployed.age_16_to_17_unemployed_6_to_12_months_sa).round(0),
+        'age_16_to_24_unemployed_over_12_months_sa': (long_term_unemployed.age_18_to_24_unemployed_over_12_months_sa + long_term_unemployed.age_16_to_17_unemployed_over_12_months_sa).round(0),
+        'quarter_label': long_term_unemployed.quarter_label,
+    })
+    long_term_unemployed['age_16_to_24_unemployed_6_to_12_months_rate_sa'] = (long_term_unemployed['age_16_to_24_unemployed_6_to_12_months_sa'] / \
+        long_term_unemployed['age_16_to_24_unemployed_sa'] * 100).round(1)
+    long_term_unemployed['age_16_to_24_unemployed_over_12_months_rate_sa'] = (long_term_unemployed['age_16_to_24_unemployed_over_12_months_sa'] / \
+        long_term_unemployed['age_16_to_24_unemployed_sa'] * 100).round(1)
+
     save_files(long_term_unemployed, 'long_term_unemployed')

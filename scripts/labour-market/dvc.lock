@@ -26,8 +26,8 @@ stages:
       md5: ba9b7565559b2e05a055a47297c09570
       size: 2098
     - path: scripts/labour-market/prepare.py
-      md5: 2139455ec6b3019c2f316a6df13fb961
-      size: 3793
+      md5: eef04e22c16d5a6831120a13b23a1a57
+      size: 4924
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
@@ -42,8 +42,8 @@ stages:
       md5: a6cbb5b4e31dcbd1ce57ca3db7a4f01b
       size: 2034
     - path: src/_data/sources/labour-market/long_term_unemployed_all_data.csv
-      md5: b6b59e1260ef5ab6dc3eb05f6bf4f5ec
-      size: 8878
+      md5: 89e36b6cce2a09967dc1ea5cb966dfaf
+      size: 6952
     - path: src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv
-      md5: 3e338a6c15d1ff0f36893f909d0f6e31
-      size: 1139
+      md5: 05078c4286f52f7ca60f5e69a3f36435
+      size: 865
