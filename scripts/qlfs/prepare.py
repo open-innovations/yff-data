@@ -71,10 +71,10 @@ def transfer_files(filename):
                             'quarter_start'], parse_dates=['quarter_start'])
     data['quarter_label'] = pd.to_datetime(data.index.values).to_series().pipe(date_to_quarter)
 
-    data.pipe(add_index).to_csv(os.path.join(
-        DATA_DIR, filename.replace('.', '_all_data.')))
-    data.pipe(most_recent_stats).pipe(add_index).to_csv(
-        os.path.join(DATA_DIR, filename.replace('.', '_last_3_years.')))
+    # data.pipe(add_index).to_csv(os.path.join(
+    #     DATA_DIR, filename.replace('.', '_all_data.')))
+    # data.pipe(most_recent_stats).pipe(add_index).to_csv(
+    #     os.path.join(DATA_DIR, filename.replace('.', '_last_3_years.')))
 
     return data.pipe(most_recent_stats)
 

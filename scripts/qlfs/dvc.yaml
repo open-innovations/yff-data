@@ -43,18 +43,6 @@ stages:
       - src/_data/sources/qlfs/headlines.csv:
           cache: false
           persist: false
-      - src/_data/sources/qlfs/long_term_unemployed_last_3_years.csv:
-          cache: false
-          persist: false
-      - src/_data/sources/qlfs/long_term_unemployed_all_data.csv:
-          cache: false
-          persist: false
-      - src/_data/sources/qlfs/education_status_last_3_years.csv:
-          cache: false
-          persist: false
-      - src/_data/sources/qlfs/education_status_all_data.csv:
-          cache: false
-          persist: false
       - src/dashboard/labour-market/_data/latest.json:
           cache: false
           persist: false

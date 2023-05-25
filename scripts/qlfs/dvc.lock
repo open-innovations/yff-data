@@ -20,8 +20,8 @@ stages:
       md5: 1418adf7a4f063b04667215146988aec
       size: 6250
     - path: scripts/util/date.py
-      md5: 7620d58e82a2a331de70a888e800b317
-      size: 896
+      md5: 2e7d9d4230f47d81d486885152d79f8c
+      size: 1564
     - path: working/qlfs/a06latest.xls
       md5: f15f94af6e0824d160fbe3e3fb36e76b
       size: 1406464
@@ -51,27 +51,15 @@ stages:
       md5: a0b698d5b1238058df0ffbeb44cf9fdf
       size: 209
     - path: scripts/qlfs/prepare.py
-      md5: 496a960e63aaef1ec6c53d50426d6264
-      size: 3615
+      md5: d8ae2c1a72a69f963559e7e0c55de02c
+      size: 3623
     - path: scripts/util/file.py
       md5: 331fd2a96ccd35c59a6e52a65aa97e6c
       size: 396
     outs:
-    - path: src/_data/sources/qlfs/education_status_all_data.csv
-      md5: 597b9705c9f41d02bf1422c66ad36dc2
-      size: 17242
-    - path: src/_data/sources/qlfs/education_status_last_3_years.csv
-      md5: b16527015f50ac81f36c7569e290fac7
-      size: 2325
     - path: src/_data/sources/qlfs/headlines.csv
       md5: ea1b573fea5c06b26fb81439b9aa1cdf
       size: 602
-    - path: src/_data/sources/qlfs/long_term_unemployed_all_data.csv
-      md5: c470fa7f8da7e55aa1d587eb30970ebc
-      size: 8068
-    - path: src/_data/sources/qlfs/long_term_unemployed_last_3_years.csv
-      md5: aaff618b0e0f3b417ce691e912122a20
-      size: 973
     - path: src/dashboard/labour-market/_data/latest.json
       md5: 8b97d71fd58888a757b2a3886d77bdd0
       size: 428
