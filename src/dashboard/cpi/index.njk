@@ -26,7 +26,8 @@ in {{ sources.cpi.stats.CPI_most_recent_month}} {{sources.cpi.stats.date}}.
 <h2>Consumer Price Index Changes</h2>
 
 <p>
-  This chart shows the monthly, quarterly and yearly percentage 
+  This chart shows the monthly, quarterly and yearly percentage changes on the three key categories which most affect young 
+  people, as well as overall CPI change, including the categories not shown here.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisations| pick(1), test: false }) | safe }}
