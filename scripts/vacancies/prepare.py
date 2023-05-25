@@ -40,22 +40,31 @@ def summarise():
     last_monthly_date = monthly_vacancies.date.iloc[-1]
     last_quarterly_date = quarterly_vacancies.date.iloc[-1]
 
+    last_quarterly_value = quarterly_vacancies.value.iloc[-1]
 
+    growth_last_quarter = ((last_quarterly_value - quarterly_vacancies.value.iloc[-2]) / last_quarterly_value ) * 100
+    
     summary = pd.DataFrame({
     'Value': [
         monthly_vacancies.value.iloc[-1].round(1),
         quarterly_vacancies.value.iloc[-1].round(1),
+        growth_last_quarter.round(1),
     ],
     'Note': [
         "Estimated number of open job vacancies in the last month, as at {}.".format(last_monthly_date),
         "Estimated number of job vacancies in the last quarter, as at {}".format(last_quarterly_date),
-    ],
+        "Estimated percentage change on last quarter, as at {}".format(last_quarterly_date),
+    ], 
+    'Suffix': '',
     },
     index=pd.Index([
         'Latest monthly vacancies',
         'Latest quarterly vacancies',
+        'Growth on previous quarter',
     ], name='Title')
     )
+    summary.loc['Growth on previous quarter', 'Suffix'] = '%'
+
     summary.fillna('N/A').to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
 
 
