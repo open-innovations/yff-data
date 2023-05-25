@@ -28,6 +28,29 @@ def format_timestamp_as_quarter(start):
     )
 
 
+def lms_period_to_quarter_label(quarter):
+    '''
+    Converts a quarter period into a period string as published by the ONS
+    e.g. 2023-02-01 becomes Jan-Mar 2023. 2022-11-01 becomes Nov-Jan 2023
+    '''
+    start = quarter - pd.DateOffset(months=1)
+    end = quarter + pd.DateOffset(months=1)
+    return '{}-{} {}'.format(
+        start.strftime('%b'),
+        end.strftime('%b'),
+        end.strftime('%Y')
+    )
+
+
 def date_to_quarter(series):
     timestamp = pd.to_datetime(series)
     return timestamp.apply(format_timestamp_as_quarter)
+
+
+def extract_every_third_from_end(data):
+    '''
+      Extracts quarterly data from a frame by slicing.
+      The first slice progresses backwards in 3s.
+      The second slice reverses the dataframe.
+    '''
+    return data.iloc[::-3].iloc[::-1]

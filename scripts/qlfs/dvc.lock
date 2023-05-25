@@ -75,3 +75,15 @@ stages:
     - path: src/dashboard/labour-market/_data/latest.json
       md5: 8b97d71fd58888a757b2a3886d77bdd0
       size: 428
+  transform-edd:
+    cmd: PYTHONPATH=. python3 scripts/qlfs/transform-edd.py
+    deps:
+    - path: scripts/qlfs/config.py
+      md5: 9c2c469d264ef6be21ea02b0ae92b22e
+      size: 1811
+    - path: scripts/qlfs/transform-edd.py
+      md5: fdb9c11de19fb5425deda16513787c04
+      size: 561
+    - path: working/LMS_data.csv
+      md5: 6aa1cd29bf0de08e912a2568bba5a056
+      size: 16830346

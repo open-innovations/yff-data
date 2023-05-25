@@ -1,5 +1,4 @@
 md5: 3e86c878373d4179eb175e9cb78a2d3e
-frozen: true
 deps:
 - checksum: '"668ae6925eab92e45bc7e024c398c8640165a0200c994cceadae8f57416e1323"'
   size: 16830346
