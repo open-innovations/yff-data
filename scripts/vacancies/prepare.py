@@ -1,5 +1,7 @@
 import os 
-import pandas as pd 
+import pandas as pd
+
+from scripts.util.date import lms_period_to_quarter_label 
 
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'vacancies')
@@ -44,18 +46,24 @@ def summarise():
 
     growth_last_quarter = ((last_quarterly_value - quarterly_vacancies.value.iloc[-2]) / last_quarterly_value ) * 100
     
+    last_period_label = lms_period_to_quarter_label(pd.to_datetime(last_monthly_date))
+
     summary = pd.DataFrame({
     'Value': [
-        monthly_vacancies.value.iloc[-1].round(1),
-        quarterly_vacancies.value.iloc[-1].round(1),
+        monthly_vacancies.value.iloc[-1].round(1) * 1000,
+        quarterly_vacancies.value.iloc[-1].round(1) * 1000,
         growth_last_quarter.round(1),
     ],
     'Note': [
-        "Estimated number of open job vacancies in the last month, as at {}.".format(last_monthly_date),
-        "Estimated number of job vacancies in the last quarter, as at {}".format(last_quarterly_date),
-        "Estimated percentage change on last quarter, as at {}".format(last_quarterly_date),
+        "Estimated number of open job vacancies in the last reported rolling quarter, {}.".format(last_period_label),
+        "Estimated number of job vacancies in the last quarter, {}".format(last_period_label),
+        "Estimated percentage change on last quarter, {}".format(last_period_label),
     ], 
-    'Suffix': '',
+    'Suffix': [
+        '',
+        '',
+        '%',
+    ],
     },
     index=pd.Index([
         'Latest monthly vacancies',
