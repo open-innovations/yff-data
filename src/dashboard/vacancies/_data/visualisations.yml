@@ -118,15 +118,15 @@
         grid:
           stroke-width: 0.5
     category: "Sector" # Category names come from
-    columns:      
-      - name: "Growth on last quarter"
+    columns:
+      - name: growth_last_quarter
         template: "{{Sector}} <br/> monthly change:  {{ Growth compared with last quarter (%) | toFixed(1)}}%"
-      - name: "Growth compared with same quarter in 2020"
+      - name: growth_compared_with_2020
         template: "{{Sector}} <br/> quarterly change:  {{ Growth compared with same quarter in 2020 (%) | toFixed(1)}}%"
     series:
       - title: "Growth compared with last quarter (%)"
         value: "Growth compared with last quarter (%)"
-        tooltip: "Growth compared with last quarter (%)"
+        tooltip: growth_last_quarter
       - title: "Growth compared with same quarter in 2020 (%)"
         value: "Growth compared with same quarter in 2020 (%)"
-        tooltip: "Growth compared with same quarter in 2020 (%)"
+        tooltip: growth_compared_with_2020
