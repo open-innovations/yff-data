@@ -46,7 +46,7 @@ if (Deno.env.get('EDITOR') !== undefined) site.use(
   })
 );
 
-site.copy(['.js']);
+// site.copy(['.js']);
 // site.copy(['.css']);
 site.copy(['.svg']);
 site.copy(['.png']);
@@ -54,7 +54,6 @@ site.copy(['.png']);
 // Process Javascript files
 site.use(
   esbuild({
-    extensions: ['.esbuild.js'],
     options: {
       bundle: true,
       format: 'iife',
@@ -66,7 +65,7 @@ site.use(
     },
   })
 );
-
+  
 // Format dates
 site.use(date({
   locales: { enGB },
