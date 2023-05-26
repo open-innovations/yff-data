@@ -39,6 +39,8 @@
       if (typeof val !== "number") {
         val = el.getAttribute("data") || el.innerHTML;
         if (val) val = parseFloat(val);
+        // Just stop processing if it's not a number
+        if (isNaN(val)) return;
         el.innerHTML = "";
       }
       start = new Date();
