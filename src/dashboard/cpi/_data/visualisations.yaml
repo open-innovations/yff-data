@@ -39,7 +39,7 @@
       template: '{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%'
     - name: yearly
       template: '{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%'
-    file: /data/cpi/cpi.csv
+    file: /data/cpi/cpi_barchart.csv
     legend:
       position: top right
       show: true
@@ -70,14 +70,14 @@
       rename: Sector
     - align: right
       name: Monthly
-      template: '{{ monthly_pct_change }}%'
+      template: '{{ monthly_pct_change | toFixed(1) }}%'
     - align: right
       name: Quarterly
-      template: '{{ quarterly_pct_change }}%'
+      template: '{{ quarterly_pct_change | toFixed(1) }}%'
     - align: right
       name: Yearly
       template: '{{ yearly_pct_change | toFixed(1) }} %'
-    file: /data/cpi/cpi.csv
+    file: /data/cpi/cpi_barchart.csv
   tab: null
   title: CPI percentage change
   type: table

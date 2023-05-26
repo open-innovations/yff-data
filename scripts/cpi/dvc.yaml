@@ -9,9 +9,6 @@ stages:
       - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx:
           cache: false
           persist: false
-      - working/cpi/mm23.csv:
-          cache: false
-          persist: false
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     wdir: ../..
@@ -22,37 +19,33 @@ stages:
       - working/cpi/mm23.csv
       - working/lookups/MM23_variable_lookup.csv
     outs:
-      - data/cpi/cpi.csv:
+      - data/cpi/transformed_cpi.csv:
           cache: false
-          persist: false
-      - src/_data/sources/cpi/headlines.csv:
-          cache: false 
-          persist: false
-      - data/cpi/metadata.json:
-          cache: false 
           persist: false
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     wdir: ../..
     deps:
       - scripts/cpi/prepare.py
-      - data/cpi/cpi.csv
-      - data/cpi/metadata.json
+      - data/cpi/transformed_cpi.csv
     outs:
-      - src/_data/sources/cpi/cpi.csv:
+      - src/_data/sources/cpi/cpi_barchart.csv:
           cache: false
           persist: false
       - src/_data/sources/cpi/metadata.json:
           cache: false
           persist: false
-  vis:
-    cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
-    wdir: ../..
-    deps:
-      - scripts/cpi/vis.py
-      - data/cpi/cpi.csv
-      - scripts/util/util.py
-      - src/dashboard/cpi/_data/visualisations.yaml
+      - src/_data/sources/cpi/headlines.csv:
+          cache: false 
+          persist: false
+  # vis:
+  #   cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
+  #   wdir: ../..
+  #   deps:
+  #     - scripts/cpi/vis.py
+  #     - data/cpi/cpi.csv
+  #     - scripts/util/util.py
+  #     - src/dashboard/cpi/_data/sources/visualisations.yaml
     # outs:
     #   - src/dashboard/cpi/_data:
     #       cache: false
