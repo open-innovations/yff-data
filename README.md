@@ -26,7 +26,7 @@ potentially indeterminate! The safest thing is to ensure no potential clashes.
 Remote data is imported using the `dvc import-url` command.
 
 ```sh
-dvc import-url <remote_url> <local_filename>
+dvc import-url <remote_url> (<local_filename>)
 ```
 
 This creates a `<local_filename>.dvc` which tracks the remote file. It can be refreshed using the command `dvc update <local_filename>.dvc`. To refresh a whole directory, run
