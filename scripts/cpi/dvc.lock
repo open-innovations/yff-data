@@ -5,43 +5,42 @@ stages:
     deps:
     - path: scripts/cpi/extract.py
       md5: 64832476bf2e209e406f263bbabc18bc
-      size: 626
+      size: 612
     outs:
-    - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-      md5: b8822e60aa5dba8f0c60cd6acc8ee083
-      size: 2161019
-      isexec: true
-  transform:
-    cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
-    deps:
-    - path: scripts/cpi/transform.py
-      md5: 2fd00ffa3111c16c4596f6598944bf0f
-      size: 5070
-    - path: scripts/util/date.py
-      md5: 7620d58e82a2a331de70a888e800b317
-      size: 929
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: b8822e60aa5dba8f0c60cd6acc8ee083
       size: 2161019
     - path: working/cpi/mm23.csv
-      md5: 96393e92f703ae71020ee75b7bc7083c
-      size: 21863059
+      md5: 9ac62d7ef5f0bc4392d70ae2a26d37e4
+      size: 19168182
+  transform:
+    cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
+    deps:
+    - path: scripts/cpi/transform.py
+      md5: d51341829bfe267a464f9acba56a73d6
+      size: 4976
+    - path: scripts/util/date.py
+      md5: 2e7d9d4230f47d81d486885152d79f8c
+      size: 1564
+    - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
+      md5: b8822e60aa5dba8f0c60cd6acc8ee083
+      size: 2161019
+    - path: working/cpi/mm23.csv
+      md5: 9ac62d7ef5f0bc4392d70ae2a26d37e4
+      size: 19168182
     - path: working/lookups/MM23_variable_lookup.csv
-      md5: 8c5b7ddcb89c096732ba8bee10939238
-      size: 295471
+      md5: 15cf3be568092ecae4ce523f538bf946
+      size: 295485
     outs:
     - path: data/cpi/cpi.csv
       md5: 07fb6d632300c016e5a81f4989dfcbf6
       size: 265
-      isexec: true
     - path: data/cpi/metadata.json
       md5: 5134c59bd5cc53a322e7b0cf11f6df76
       size: 58
-      isexec: true
     - path: src/_data/sources/cpi/headlines.csv
       md5: e22685c64285c21644acc807a3f035df
       size: 311
-      isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:

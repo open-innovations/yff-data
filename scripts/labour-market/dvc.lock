@@ -26,8 +26,8 @@ stages:
       md5: ba9b7565559b2e05a055a47297c09570
       size: 2098
     - path: scripts/labour-market/prepare.py
-      md5: eef04e22c16d5a6831120a13b23a1a57
-      size: 4924
+      md5: 928600c936e8fd2a62b7d9decce4f363
+      size: 4886
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
