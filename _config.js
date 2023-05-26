@@ -96,6 +96,8 @@ function remoteTree(source, target) {
   });
 }
 
+site.remoteFile("/assets/images/open-innovations-logo.svg", "https://open-innovations.org/resources/images/logos/oi-square-black.svg")
+
 const dataPath = '/data';
 // Mirror source data files to live site
 remoteTree('src/_data/sources', dataPath);
