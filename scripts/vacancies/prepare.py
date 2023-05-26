@@ -11,7 +11,8 @@ os.makedirs(DATA_DIR, exist_ok=True)
 
 def prepare_vacancies(): 
     vacancies = pd.read_csv(os.path.join(RAW_DATA_DIR, 'vacancies_edd.csv'), index_col= ['index'])
-    vacancies.sort_values(by='date', ascending = True, inplace = True) 
+    vacancies.sort_values(by='date', ascending = True, inplace = True)
+    vacancies['quarter_label'] = pd.to_datetime(vacancies.date).map(lms_period_to_quarter_label)
 
     quarterly = vacancies.loc[vacancies['freq'] == 'q'].reset_index()
     quarterly = quarterly.drop(columns= ['index', 'freq'], axis = 1).reset_index()
@@ -47,6 +48,7 @@ def summarise():
     growth_last_quarter = ((last_quarterly_value - quarterly_vacancies.value.iloc[-2]) / last_quarterly_value ) * 100
     
     last_period_label = lms_period_to_quarter_label(pd.to_datetime(last_monthly_date))
+    last_quarter_label = lms_period_to_quarter_label(pd.to_datetime(last_quarterly_date))
 
     summary = pd.DataFrame({
     'Value': [
@@ -56,8 +58,8 @@ def summarise():
     ],
     'Note': [
         "Estimated number of open job vacancies in the last reported rolling quarter, {}.".format(last_period_label),
-        "Estimated number of job vacancies in the last quarter, {}".format(last_period_label),
-        "Estimated percentage change on last quarter, {}".format(last_period_label),
+        "Estimated number of job vacancies in the last quarter, {}".format(last_quarter_label),
+        "Estimated percentage change on last quarter, {}".format('TBC'),
     ], 
     'Suffix': [
         '',

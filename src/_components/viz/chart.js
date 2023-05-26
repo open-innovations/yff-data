@@ -11,10 +11,10 @@ const divisor = function* () {
 
 function calculateStep(range) {
   const g = divisor();
-  let step;
-  do {
+  let step = g.next().value;
+  while ((range / step) >= 10) {
     step = g.next().value;
-  } while ((range / step) >= 5);
+  }
   return step;
 }
 

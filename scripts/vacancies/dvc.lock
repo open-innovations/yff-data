@@ -7,15 +7,15 @@ stages:
       md5: 8c38b4239f92f2a01d306e94bab95a04
       size: 10362
     - path: scripts/vacancies/prepare.py
-      md5: 03f001ac76255fbf9d54b08873dd4996
-      size: 3441
+      md5: 291c9138ab564e27dc950a59ca90e790
+      size: 3616
     - path: working/vacancies/vacancies_by_sector.csv
       md5: cf560065c870b454d8aec3c5e9cae104
       size: 974
     outs:
     - path: src/_data/sources/vacancies/
-      md5: e447616687e51553751027d32767cb0b.dir
-      size: 9733
+      md5: 790e77aa59fd3c382a65508438fba08e.dir
+      size: 14315
       nfiles: 4
   extract:
     cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py

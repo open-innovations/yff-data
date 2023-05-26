@@ -14,7 +14,7 @@
      
 
 - tab: Estimated Number of Vacancies
-  title: Seasonally adjusted estimated Number of Vacancies
+  title: Seasonally adjusted estimated number of vacancies
   type: chart
   source: ""
   config:
@@ -22,39 +22,21 @@
     type: line-chart
     #source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
     legend:
-      show: false # Default to false
+      show: true # Default to false
       position: "top right"
     axis:
       x: # Horizontal axis
         min: 0 # A minimum value
         max: 270 # A maximum value
         grid:
-          stroke: "#efefef"
-        # Explicitly define the ticks.
-        # Each tick has a numeric value and a displayed label
-        ticks:
-          - value: 0
-            label: "2001-04-01"
-          - value: 25
-            label: "2003-06-01"
-          - value: 50
-            label: "2005-07-01"
-          - value: 75
-            label: "2007-08-01"          
-          - value: 100
-            label: "2009-09-01"
-          - value: 125
-            label: "2011-10-01"          
-          - value: 150
-            label: "2013-11-01"
-          - value: 175
-            label: "2015-12-01"
-          - value: 200
-            label: "2018-01-01"          
-          - value: 225
-            label: "2020-02-01"
-          - value: 250
-            label: "2022-03-01"                      
+          stroke-dasharray: "6 2"
+          stroke-width: 1
+        title:
+          label: Rolling quarterly period
+        # Auto-generate the the ticks.
+        # ticks: []
+        # Requires a column named x_tick_labels to be defined - this one uses quarter_label
+        # Code to calculate this is in _components/viz/chart.js
       y: # The vertical axes
         min: 0 # A minimum value
         max: 1410 # A maximum value
@@ -90,7 +72,9 @@
             label: "1400"                       
     columns:
         - name: "Label"
-          template: "{{value | toFixed(0)}},000 Vacancies (estimated)"
+          template: "{{ quarter_label }} </br> {{ value | multiply(1000) | toLocaleString() }} vacancies"
+        - name: x_tick_labels
+          template: "{{ quarter_label }}"
     series:
       - title: "value"
         x: "index" # Column heading to use for x-value
