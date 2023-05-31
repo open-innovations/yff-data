@@ -14,7 +14,7 @@
      
 
 - tab: Estimated Number of Vacancies
-  title: Seasonally adjusted estimated number of vacancies
+  title: Estimated number of vacancies (seasonally adjusted)
   type: chart
   source: ""
   config:
