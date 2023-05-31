@@ -18,7 +18,7 @@ visualisations:
           colour: Gold
           
   - tab: All young people
-    title: Seasonally adjusted NEET rate for all young people (16-24)
+    title: NEET rate for all young people (16-24)
     type: chart
     # caption: |
     #   This chart shows rates of young people Not in Education, Employment or Training (NEET). 
@@ -66,7 +66,7 @@ visualisations:
           tooltip: economically_inactive_tooltip
 
   - tab: Young women 
-    title: Seasonally adjusted NEET rate for young women (16-24)
+    title: NEET rate for young women (16-24)
     type: chart
     # caption: |
     #   This chart shows rates of young women Not in Education, Employment or Training (NEET). 
@@ -114,7 +114,7 @@ visualisations:
           tooltip: economically_inactive_tooltip
 
   - tab: Young men
-    title: Seasonally adjusted NEET rate for young men (16-24)
+    title: NEET rate for young men (16-24)
     type: chart
     # caption: |
     #   This chart shows rates of young men Not in Education, Employment or Training (NEET). 
