@@ -3,9 +3,10 @@
     height: 1em;
     width: auto;
     display: inline;
-    vertical-align: top;
+    vertical-align: baseline;
   }
   .pane & {
+    padding-top: 1em;
     font-size: 0.7em;
     text-align: right;
   }
