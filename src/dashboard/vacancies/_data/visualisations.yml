@@ -83,7 +83,8 @@
         tooltip: "Label"
 
 
-- title: Quarterly growth in vacancies by sector
+- tab: Quarterly Growth by Sector
+  title: Quarterly growth in vacancies by sector
   # citations:
   #   - title:
   #     link: about:blank
