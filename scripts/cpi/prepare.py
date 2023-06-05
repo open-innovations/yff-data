@@ -69,6 +69,19 @@ def bar_chart(data, n):
                      inplace=True)
     return df
 
+def line_chart(data, n, num_years):
+    #times by 12 as the data is monthly.
+    #n is number of measures we are using
+    df = data.iloc[int(-n*12*num_years):].reset_index()
+    df = df.pivot(index='dates.date', values='value', columns='variable').reset_index()
+    df.index.rename('index', inplace=True)
+    column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
+                          usecols=['code', 'name'], index_col='code').to_dict()['name']
+    df.rename(columns=column_name, inplace=True)
+    df.rename(columns=slugify, inplace=True)
+    df['named_date'] = pd.to_datetime(df['dates.date']).dt.strftime('%b %Y')
+    return df
+
 def copy_file(name):
     shutil.copyfile(
         os.path.join(INPUTS_DIR, name),
@@ -78,16 +91,18 @@ def copy_file(name):
 if __name__ == '__main__':
 
     data = pd.read_csv(os.path.join(INPUTS_DIR, 'transformed_cpi.csv'), index_col='variable')
-    bar = bar_chart(data, n)
+    bar = bar_chart(data, n=5)
+    line = line_chart(data, n=5, num_years=10)
     
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
-
+    line.to_csv(os.path.join(INPUTS_DIR, 'cpi_linechart.csv'))
     #get the metadat and make headline stats
     metadata = read_meta()
     summarise(metadata)
 
     #copy file to other directory
     copy_file("cpi_barchart.csv")
+    copy_file("cpi_linechart.csv")
     copy_file("metadata.json")
     copy_file("headlines.csv")

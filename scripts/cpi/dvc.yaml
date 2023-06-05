@@ -32,6 +32,9 @@ stages:
       - src/_data/sources/cpi/cpi_barchart.csv:
           cache: false
           persist: false
+      - src/_data/sources/cpi/cpi_linechart.csv:
+          cache: false
+          persist: false
       - src/_data/sources/cpi/metadata.json:
           cache: false
           persist: false

@@ -32,7 +32,8 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
   those not shown here.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations| pick(1), test: false }) | safe }}
-{# TODO add time series of CPI change here #}
+{{ comp.viz.main({ visualisations: visualisations| pick(1, 2), test: false }) | safe }}
+{# {{ comp.viz.main(cpi_linechart.rows | dump()) }} #}
+{# {{ comp.viz.main({ visualisations: visualisations| pick(2), test: false }) | safe }} #}
 <h2> Data Tables </h2>
-{{ comp.viz.main({ visualisations: visualisations| pick(2), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisations| pick(3), test: false }) | safe }}
