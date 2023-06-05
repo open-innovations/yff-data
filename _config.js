@@ -46,7 +46,7 @@ if (Deno.env.get('EDITOR') !== undefined) site.use(
   })
 );
 
-// site.copy(['.js']);
+site.copy(['.min.js']);
 // site.copy(['.css']);
 site.copy(['.svg']);
 site.copy(['.png']);

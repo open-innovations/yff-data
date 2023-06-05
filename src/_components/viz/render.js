@@ -8,14 +8,16 @@ export default function ({ comp, config, tab, title, caption, type, downloadLink
     // {{ comp.viz[type]({ config: config }) | safe }}
     const rendered = comp.viz[type]( { config: config });
 
-    return `<figure data-dependencies="/assets/js/figure.js">
+    const credit = `<p class="oi-credit" hidden>Visualisation created for Youth Futures Foundation by <img src="/assets/images/open-innovations-logo.svg" inline> Open Innovations</p>`
+
+    return `<figure data-dependencies="/assets/js/vendor/dom-to-image.min.js,/assets/js/figure.js">
         <div class="figure-options"><div class="figure-option-list">${ fileLink }</div></div>
         <span class="tab-title">${ tab ? tab : title }</span>
         ${ heading }
         ${ figCaption }
         ${ rendered }
-        </figure>
-      </ul>`;
+        ${ credit }
+        </figure>`;
   } catch (e) {
     console.error(e);
     throw e;
