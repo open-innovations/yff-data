@@ -676,6 +676,8 @@ export function Series(s,props,data,extra){
 				// p2 = opt.getXY(Math.max(data[i].x,extra.axis.x.min),data[i].y - extra.barsize/2);
 				p2 = opt.getXY(data[i].x,data[i].y - extra.barsize/2);
 				w = (p2.x-p1.x);
+				// If the width is zero we set it to something narrow
+				if(w ==0) w = 0.5;
 				x = p1.x + (w < 0 ? w : 0);
 				setAttr(pts[i].bar,{'x':x,'y':p1.y,'width':Math.abs(w),'height':Math.abs(p2.y-p1.y)});
 			}
