@@ -142,13 +142,13 @@
     - name: all_categories
       template: '{{ named_date }}<br/>All Categories: {{cpi_index_00_all_items_2015_100}}'
     - name: food_and_non_alcoholic_beverages
-      template: '{{ named_date }}<br/>Food & Non-alcoholic Beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}'
+      template: '{{ named_date }}<br/>Food & non-alcoholic beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}'
     - name: clothing_and_footwear
-      template: '{{ named_date }}<br/>Clothing & Footwear: {{cpi_index_03_clothing_and_footwear_2015_100}}'
+      template: '{{ named_date }}<br/>Clothing & footwear: {{cpi_index_03_clothing_and_footwear_2015_100}}'
     - name: housing_energy
-      template: '{{ named_date }}<br/>Housing, Energy, Water & Fuels: {{cpi_index_04_housing_water_and_fuels_2015_100}}'
+      template: '{{ named_date }}<br/>Housing, water, electricity, gas & other fuels: {{cpi_index_04_housing_water_and_fuels_2015_100}}'
     - name: recreation_and_culture
-      template: '{{ named_date }}<br/>Recreation & Culture: {{cpi_index_09_recreation_&_culture_2015_100}}'
+      template: '{{ named_date }}<br/>Recreation & culture: {{cpi_index_09_recreation_&_culture_2015_100}}'
     file: data/cpi/cpi_linechart.csv
     legend:
       position: top right
@@ -160,22 +160,22 @@
       x: index
       y: cpi_index_00_all_items_2015_100
     - size: 10
-      title: Food & Non-alocholic Beverages
+      title: Food & non-alocholic beverages
       tooltip: food_and_non_alcoholic_beverages
       x: index
       y: cpi_index_01_food_and_non_alcoholic_beverages_2015_100
     - size: 10
-      title: Clothing & Footwear
+      title: Clothing & footwear
       tooltip: clothing_and_footwear
       x: index
       y: cpi_index_03_clothing_and_footwear_2015_100
     - size: 10
-      title: Housing, Energy, Water & Fuels
+      title: Housing, water, electricity, gas & other fuels
       tooltip: housing_energy
       x: index
       y: cpi_index_04_housing_water_and_fuels_2015_100
     - size: 10
-      title: Recreation & Culture
+      title: Recreation & culture
       tooltip: recreation_and_culture
       x: index
       y: cpi_index_09_recreation_&_culture_2015_100
@@ -183,8 +183,8 @@
   tab: CPI time series
   title: CPI time series
   type: chart
-- caption: "Monthly, quarterly and yearly CPI percentage changes. Also \nshown is the overall CPI change\
-    \ which includes all categories measured by CPI.\n"
+- caption: "Monthly, quarterly and yearly CPI percentage changes. Also \nshown is\
+    \ the overall CPI change which includes all categories measured by CPI.\n"
   config:
     columns:
     - align: center

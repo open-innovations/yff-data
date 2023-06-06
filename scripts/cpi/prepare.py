@@ -61,19 +61,19 @@ def bar_chart(data, n):
     df.rename(index=slugify, inplace=True)
     df.index.name = 'sector'
     df = df.round(2)
-    df.rename(index={'cpi_index_01_food_and_non_alcoholic_beverages_2015_100': "Food & Non-Alcoholic Beverages",
-                     'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & Footwear",
-                     'cpi_index_04_housing_water_and_fuels_2015_100': "Housing, Energy, Water & Fuels",
-                     'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture",
-                     'cpi_index_00_all_items_2015_100': "All CPI Categories",
-                     'cpi_index_02_alcoholic_beverages_tobacco_&_narcotics_2015_100': 'Alcoholic Beverages, Tobacco & Narcotics',
-                     'cpi_index_05_furn_hh_equip_&_routine_repair_of_house_2015_100':'Furniture, Household Equipment & Routine Repair of House',
-                     'cpi_index_06_health_2015_100':'Health',
-                     'cpi_index_07_transport_2015_100':'Transport',
-                     'cpi_index_08_communication_2015_100':'Communication',
-                     'cpi_index_10_education_2015_100':'Education',
-                     'cpi_index_11_hotels_cafes_and_restaurants_2015_100':'Hotels, Cafes & Restaurants',
-                     'cpi_index_12_miscellaneous_goods_and_services_2015_100':'Miscellaneous Goods & Services'},
+    df.rename(index={'cpi_index_00_all_items_2015_100': "All CPI Categories",
+                     'cpi_index_01_food_and_non_alcoholic_beverages_2015_100': "Food & non-alcoholic beverages",
+                     'cpi_index_02_alcoholic_beverages_tobacco_&_narcotics_2015_100': 'Alcoholic beverages & tobacco',
+                     'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & footwear",
+                     'cpi_index_04_housing_water_and_fuels_2015_100': "Housing, water, electricity, gas & other fuels",
+                     'cpi_index_05_furn_hh_equip_&_routine_repair_of_house_2015_100': 'Furniture, household equipment & maintenance',
+                     'cpi_index_06_health_2015_100': 'Health',
+                     'cpi_index_07_transport_2015_100': 'Transport',
+                     'cpi_index_08_communication_2015_100': 'Communication',
+                     'cpi_index_09_recreation_&_culture_2015_100': "Recreation & culture",
+                     'cpi_index_10_education_2015_100': 'Education',
+                     'cpi_index_11_hotels_cafes_and_restaurants_2015_100': 'Restaurants & hotels',
+                     'cpi_index_12_miscellaneous_goods_and_services_2015_100': 'Miscellaneous goods & services'},
                      inplace=True)
     return df
 
@@ -99,14 +99,14 @@ def copy_file(name):
 if __name__ == '__main__':
 
     data = pd.read_csv(os.path.join(INPUTS_DIR, 'transformed_cpi.csv'), index_col='variable')
-    bar = bar_chart(data, n).drop(index=["Furniture, Household Equipment & Routine Repair of House",
+    bar = bar_chart(data, n).drop(index=["Furniture, household equipment & maintenance",
                                           'Health',
                                           'Transport',
                                           'Communication',
-                                          'Alcoholic Beverages, Tobacco & Narcotics',
+                                          'Alcoholic beverages & tobacco',
                                           'Education',
-                                          "Hotels, Cafes & Restaurants",
-                                          'Miscellaneous Goods & Services'])
+                                          "Restaurants & hotels",
+                                          'Miscellaneous goods & services'])
     all_categories = bar_chart(data, n)
     line = line_chart(data, n, num_years=10)
     
