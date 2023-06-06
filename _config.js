@@ -106,6 +106,9 @@ remoteTree('data', dataPath + '/raw');
 // Copy /data to live site
 site.copy(dataPath);
 
+site.preprocess([".html"], (page) => {
+  page.data.srcPath = 'src' + page.src.path + page.src.ext;
+});
 site.process(['.html'], autoDependency);
 
 // Add filters
@@ -116,6 +119,32 @@ site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => 
 site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
 site.filter('isArray', (item) => Array.isArray(item));
 site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
+
+
+// TODO fix this function!
+// Timezone awareness is an issue
+function dateBetween(start, end) {
+  console.log({start, end});
+  const now = Date.now();
+  const earliest = start.getTime();
+  const latest = new Date(end);
+  latest.setUTCDate(latest.getUTCDate() + 1);
+  console.log({ 
+    now,
+    earliest,
+    pre: now < earliest
+  })
+  if (now < start.getTime()) return false;
+  if (latest.getTime() < now) return false;
+  return true;
+}
+
+site.filter('get_annotations', (object, path) => Object
+  .values(object)
+  .filter(a => a.relates_to === path)
+  .filter(a => dateBetween(a.start_date, a.end_date))
+  .sort((a, b) => new Date(a.start_date) - new Date(b.start_date))
+);
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
 // processors to be re-written

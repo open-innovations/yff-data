@@ -10,6 +10,18 @@ layout: layouts/simple.njk
 {{- comp.viz.main({ visualisations: visualisation.headline, test: false }) | safe -}}
 {% endif %}
 
+{% set my_annotations = annotations | get_annotations(srcPath) %}
+{#
+{% if my_annotations | length > 0 %}
+<h2>Annotations</h2>
+{% endif %}
+#}
+{% for annotation in my_annotations %}
+<div class='annotation'>
+{{ annotation.content | md | safe }}
+</div>
+{% endfor %}
+
 {% set pipe_doc = search.page("url='" + url + "pipeline/'").data %}
 {% if pipe_doc %}
 <aside>
