@@ -28,10 +28,6 @@
 			fn.call(data.this||this,e);
 		});
 	}
-	function addClasses(el,cl){
-		for(var i = 0; i < cl.length; i++) el.classList.add(cl[i]);
-		return el;
-	}
 	function InteractiveChart(el){
 		var svg = el.querySelector('svg');
 		var key = el.querySelector('.legend');
@@ -41,6 +37,7 @@
 		var pts = [];
 		var series = [];
 		var shapes = [];
+		var keyitems = [];
 		for(p = 0; p < pt.length; p++){
 			s = parseInt(pt[p].getAttribute('data-series'));
 			i = parseInt(pt[p].getAttribute('data-i'));
@@ -50,6 +47,7 @@
 		}
 		this.enabled = true;
 		this.selected = null;
+		this.locked = -1;
 
 		// A function for setting the x-value of a shape
 		function setX(s,r,x){
@@ -60,83 +58,83 @@
 			return this.clearSeries(e).clearTooltip(e);
 		};
 		this.setSeries = function(e){
-			this.enabled = !this.enabled;
-			if(this.enabled) e.data.s = null;
+			this.locked = (this.locked==e.data.s) ? -1 : e.data.s;
+			for(var s = 0; s < keyitems.length; s++){
+				if(s==this.locked) keyitems[s].classList.add('series-lock');
+				else keyitems[s].classList.remove('series-lock');
+			}
 			this.highlightSeries(e);
 			return this;
 		};
 		this.clearSeries = function(e){
-			if(this.enabled){
-				var ev = JSON.parse(JSON.stringify(e));
-				ev.data.s = null;
-				this.enabled = true;
-				this.highlightSeries(ev);
+			if(this.locked < 0){
+				e.data.s = null;
+				this.highlightSeries(e);
 			}
 			return this;
 		};
 		this.toggleSeries = function(e){
-			if(this.selected==null) this.highlightSeries(e);
-			else this.reset(e);
+			if(this.locked < 0) this.reset(e);
+			else this.highlightSeries(e);
 			return this;
 		};
 		this.highlightSeries = function(e){
-			var d,selected,typ,s,r,origin,x,pts,p;
-			if(this.enabled){
-				d = e.data.s;
-				this.selected = d;
-				selected = el.querySelector('.series-'+d);
-				typ = svg.getAttribute('data-type');
-				if(typ == "stacked-bar-chart"){
-					// Find the origin of the bars by just taking the x-value of the first one in the first series
-					origin = parseFloat(serieskey[0].querySelector('rect').getAttribute('x'));
-				}
-				if(typ == "stacked-bar-chart"){
-					if(shapes.length==0){
-						shapes = new Array(serieskey.length);
-						for(s = 0; s < serieskey.length; s++) shapes[s] = serieskey[s].querySelectorAll('rect');
-					}
-				}
-				for(s = 0; s < serieskey.length; s++){
-					pts = serieskey[s].querySelectorAll('circle,rect');
-					if(d){
+			var selected,typ,origin,s,r;
 
-						if(serieskey[s]==selected){
-							serieskey[s].style.opacity = 1;
-							// Simulate z-index by moving to the end
-							if(typ == "stacked-bar-chart"){
-								serieskey[s].parentNode.appendChild(serieskey[s]);
-							}
-							// Make points selectable
-							for(p = 0; p < pts.length; p++) pts[p].setAttribute('tabindex',0);
-						}else{
-							// Fade the unselected series
-							serieskey[s].style.opacity = 0.1;
-							// Make points unselectable
-							for(p = 0; p < pts.length; p++) pts[p].removeAttribute('tabindex');
-						}
+			selected = el.querySelector('.series-'+e.data.series);
+			typ = svg.getAttribute('data-type');
+			if(typ == "stacked-bar-chart"){
+				// Find the origin of the bars by just taking the x-value of the first one in the first series
+				origin = parseFloat(serieskey[0].querySelector('rect').getAttribute('x'));
+			}
+			if(typ == "stacked-bar-chart"){
+				if(shapes.length==0){
+					shapes = new Array(serieskey.length);
+					for(s = 0; s < serieskey.length; s++) shapes[s] = serieskey[s].querySelectorAll('rect');
+				}
+			}
 
-						// If it is a stacked bar chart we will change the left position and store that
-						if(typ == "stacked-bar-chart"){
-							// Find all the bars
-							for(r = 0; r < shapes[s].length; r++){
-								// Store the x-value if we haven't already done so
-								if(!shapes[s][r].hasAttribute('data-x')) shapes[s][r].setAttribute('data-x',shapes[s][r].getAttribute('x'));
-								// Update the x-value
-								setX(s,r,origin);
-							}
-						}
-					}else{
+			for(s = 0; s < serieskey.length; s++){
+				pts = serieskey[s].querySelectorAll('circle,rect');
+				// If we aren't locked we will highlight one series
+				if(this.locked < 0){
+
+					if(e.data.s==null || s==e.data.s){
 						serieskey[s].style.opacity = 1;
+						// Simulate z-index by moving to the end
+						if(typ == "stacked-bar-chart"){
+							serieskey[s].parentNode.appendChild(serieskey[s]);
+						}
 						// Make points selectable
 						for(p = 0; p < pts.length; p++) pts[p].setAttribute('tabindex',0);
-						// Reset bar positions
-						if(typ == "stacked-bar-chart"){
-							// Find all the bars
-							for(r = 0; r < shapes[s].length; r++){
-								// Get the stored x-value
-								// Update the x-values if we have them
-								if(shapes[s][r].hasAttribute('data-x')) setX(s,r,parseFloat(shapes[s][r].getAttribute('data-x')));
-							}
+					}else{
+						// Fade the unselected series
+						serieskey[s].style.opacity = 0.1;
+						// Make points unselectable
+						for(p = 0; p < pts.length; p++) pts[p].removeAttribute('tabindex');
+					}
+
+					// If it is a stacked bar chart we will change the left position and store that
+					if(typ == "stacked-bar-chart"){
+						// Find all the bars
+						for(r = 0; r < shapes[s].length; r++){
+							// Store the x-value if we haven't already done so
+							if(!shapes[s][r].hasAttribute('data-x')) shapes[s][r].setAttribute('data-x',shapes[s][r].getAttribute('x'));
+							// Update the x-value
+							setX(s,r,origin);
+						}
+					}
+				}else{
+					serieskey[s].style.opacity = (s==this.locked ? 1 : 0.1);
+					// Make points selectable
+					for(p = 0; p < pts.length; p++) pts[p].setAttribute('tabindex',0);
+					// Reset bar positions
+					if(typ == "stacked-bar-chart"){
+						// Find all the bars
+						for(r = 0; r < shapes[s].length; r++){
+							// Get the stored x-value
+							// Update the x-values if we have them
+							if(shapes[s][r].hasAttribute('data-x')) setX(s,r,parseFloat(shapes[s][r].getAttribute('data-x')));
 						}
 					}
 				}
@@ -153,29 +151,15 @@
 			if(this.tip && this.tip.parentNode) this.tip.parentNode.removeChild(this.tip);
 			return this;
 		};
-		function hsv_to_hsl(h, s, v) {
-			// both hsv and hsl values are in [0, 1]
-			var l = (2 - s) * v / 2;
-			if (l != 0) {
-				if (l == 1) {
-					s = 0;
-				} else if (l < 0.5) {
-					s = s * v / (l * 2);
-				} else {
-					s = s * v / (2 - l * 2);
-				}
-			}
-			return {'h':h,'s':s,'l':l};
-		}
 		this.showTooltip = function(s,i){
 			el.style.position = 'relative';
 
-			var txt,bb,bbo,fill,hsv,hsl,selected,off;
+			var txt,bb,bbo,fill,selected,off;
 			this.tip = el.querySelector('.tooltip');
 			if(!this.tip){
 				this.tip = document.createElement('div');
 				this.tip.innerHTML = '<div class="inner" style="background: #b2b2b2;position:relative;"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
-				addClasses(this.tip,['tooltip']);
+				this.tip.classList.add('tooltip');
 				add(this.tip,el);
 			}
 
@@ -288,10 +272,12 @@
 			newkey.appendChild(lbl);
 
 			var keyseries = key.querySelectorAll('.data-series');
-			var keyitem,icon,txt,viewBox,xscale,yscale,dx,dy,g;
+			keyitems = new Array(serieskey.length);
+			var keyitem,icon,txt;
 			for(s = 0; s < keyseries.length; s++){
 				// Create a key item <div>
 				keyitem = document.createElement('div');
+				keyitems[s] = keyitem;
 				keyitem.classList.add('legend-item');
 				add(keyitem,newkey);
 
@@ -313,16 +299,16 @@
 				setAttr(keyitem,{'data-series':keyseries[s].getAttribute('data-series'),'tabindex':0,'title':'Highlight series: '+txt.innerHTML});
 
 
-				addEv('mouseover',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
-				addEv('keydown',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},function(e){
+				addEv('mouseover',keyitem,{'this':this,'s':s,'series':keyseries[s].getAttribute('data-series')},this.highlightSeries);
+				addEv('keydown',keyitem,{'this':this,'s':s,'series':keyseries[s].getAttribute('data-series')},function(e){
 					if(e.keyCode==13){
 						e.preventDefault();
 						this.toggleSeries(e);
 					}
 				});
 				//addEv('focus',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.highlightSeries);
-				addEv('click',keyitem,{'this':this,'s':keyseries[s].getAttribute('data-series')},this.setSeries);
-				addEv('mouseout',keyitem,{'this':this,'s':null},this.highlightSeries);
+				addEv('click',keyitem,{'this':this,'s':s,'series':keyseries[s].getAttribute('data-series')},this.setSeries);
+				addEv('mouseout',keyitem,{'this':this,'s':null,'series':keyseries[s].getAttribute('data-series')},this.clearSeries);
 
 			}
 			// Hide the original key
@@ -340,12 +326,31 @@
 
 	root.OI.InteractiveChart = function(el){ return new InteractiveChart(el); };
 
+
+
+	// Convert to sRGB colorspace
+	// https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+	function sRGBToLinear(v){
+		v /= 255;
+		if (v <= 0.03928) return v/12.92;
+		else return Math.pow((v+0.055)/1.055,2.4);
+	}
 	function h2d(h) {return parseInt(h,16);}
-	function brightnessIndex(rgb){ return rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114; }
-	function brightnessDiff(a,b){ return Math.abs(brightnessIndex(a)-brightnessIndex(b)); }
-	function hueDiff(a,b){ return Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]); }
+	// https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+	function relativeLuminance(rgb){ return 0.2126 * sRGBToLinear(rgb[0]) + 0.7152 * sRGBToLinear(rgb[1]) + 0.0722 * sRGBToLinear(rgb[2]); }
+	// https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
+	function contrastRatio(a, b){
+		var L1 = relativeLuminance(a);
+		var L2 = relativeLuminance(b);
+		if(L1 < L2){
+			var temp = L2;
+			L2 = L1;
+			L1 = temp;
+		}
+		return (L1 + 0.05) / (L2 + 0.05);
+	}	
 	function contrastColour(c){
-		var col,cols,rgb = [];
+		var rgb = [];
 		if(c.indexOf('#')==0){
 			rgb = [h2d(c.substring(1,3)),h2d(c.substring(3,5)),h2d(c.substring(5,7))];
 		}else if(c.indexOf('rgb')==0){
@@ -353,21 +358,26 @@
 			if(bits.length == 4) this.alpha = parseFloat(bits[3]);
 			rgb = [parseInt(bits[0]),parseInt(bits[1]),parseInt(bits[2])];
 		}
-		// Check brightness contrast
-		cols = {'black':{'rgb':[0,0,0]},'white':{'rgb':[255,255,255]}};
-		for(col in cols){
-			cols[col].brightness = brightnessDiff(rgb,cols[col].rgb);
-			cols[col].hue = hueDiff(rgb,cols[col].rgb);
-			cols[col].ok = (cols[col].brightness > 125 && cols[col].hue >= 500);
+		var cols = {
+			"black": [0, 0, 0],
+			"white": [255, 255, 255],
+		};
+		var maxRatio = 0;
+		var contrast = "white";
+		for(var col in cols){
+			var contr = contrastRatio(rgb, cols[col]);
+			if(contr > maxRatio){
+				maxRatio = contr;
+				contrast = col;
+			}
 		}
-		for(col in cols){
-			if(cols[col].ok) return 'rgb('+cols[col].rgb.join(",")+')';
+		if(maxRatio < 4.5){
+			console.warn('Text contrast poor ('+maxRatio.toFixed(1)+') for %c'+c+'%c','background:'+c+';color:'+contrast,'background:none;color:inherit;');
+		}else if(maxRatio < 7){
+			//console.warn('Text contrast good ('+maxRatio.toFixed(1)+') for %c'+c+'%c','background:'+c+';color:'+contrast,'background:none;color:inherit;');
 		}
-		col = (cols.white.brightness > cols.black.brightness) ? "white" : "black"
-		console.warn('Text contrast not enough for %c'+c+'%c (colour contrast: '+cols[col].brightness.toFixed(1)+'/125, hue contrast: '+cols[col].hue+'/500)','background:'+c+';color:'+col,'background:none;color:inherit;');
-		return col;
+		return contrast;
 	}
-
 	if(!root.OI) root.OI = {};
 	if(!root.OI.ready){
 		OI.ready = function(fn){
