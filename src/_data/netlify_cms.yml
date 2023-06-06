@@ -5,6 +5,8 @@ backend:
 
 locale: "en-GB"
 
+show_preview_links: false
+
 # Uncomment this to enable a publication workflow (based on Github PRs)
 # If left as is, will commit directly onto main
 # publish_mode: editorial_workflow
@@ -12,48 +14,116 @@ locale: "en-GB"
 media_folder: "src/assets/images/uploads"
 
 collections:
-  - name: report
-    label: Report
+  - name: annotation
+    label: Annotations
+    label_singular: Annotation
+    folder: src/_data/annotations/
     extension: yml
-    folder: "src/_data/reports/"
     create: true
+    slug: "{{year}}{{month}}{{day}}T{{hour}}{{minute}}{{second}}"
+    summary: "{{relates_to}} - {{start_date}} to {{end_date}}"
     fields:
-      - name: title
-        label: Title
-        widget: string
-      - name: date
-        label: Publication Date
+      - label: Annotated page
+        name: relates_to
+        hint: The page the annotation refers to
+        widget: relation
+        collection: annotation_targets
+        search_fields: [ title ]
+        value_field: "{{dirname}}/{{filename}}.{{extension}}"
+        display_fields: [ '{{title}}' ]
+      - label: First day for annotation
+        name: start_date
+        hint: |
+          The first day on which the annotation should be shown
         widget: datetime
         format: YYYY-MM-DD
         date_format: D MMM YYYY
         time_format: false
+        picker_utc: false
+      - label: Last day for annotation
+        name: end_date
+        hint: |
+          The last day on which the annotation should be shown
+        widget: datetime
+        required: false
+        default: ''
+        format: YYYY-MM-DD
+        date_format: D MMM YYYY
+        time_format: false
         picker_utc: true
-      - name: summary
-        label: Summary
+      - label: Annotation content
+        name: content
+        hint: |
+          The text of the annotation  
         widget: markdown
-      - name: sections
-        label: Sections
-        widget: list
-        collapsed: true
-        summary: '{{fields.title}}'
-        fields:
-          - name: title
-            label: Section Title
-            widget: string
-          - name: summary
-            label: Section Summary
-            widget: markdown
-          - name: tags
-            label: Section Topics
-            widget: categories
-          - name: blocks
-            label: Section Blocks
-            widget: list
-            summary: '{{fields.title}}'
-            fields:
-              - name: title
-                label: Block Title
-                type: string
-              - name: summary
-                type: text
+        buttons: [bold, italic, link, bulleted-list, numbered-list]
+        editor_components: []
+        modes: [rich_text]
+        sanitize_preview: true
 
+  # These are pages that can be annotated.
+  # Only njk files are supported.
+  # The title and tags must be in the frontmatter of this file.
+  - name: annotation_targets
+    label: Annotation Targets
+    folder: src/
+    extension: njk
+    hide: true
+    delete: false
+    format: frontmatter
+    filter:
+      field: tags
+      value: annotatable
+    fields:
+      - name: title
+    nested:
+      depth: 5
+
+
+
+
+
+  # - name: report
+  #   label: Report
+  #   extension: yml
+  #   folder: "src/_data/reports/"
+  #   create: true
+  #   fields:
+  #     - name: title
+  #       label: Title
+  #       widget: string
+  #     - name: date
+  #       label: Publication Date
+  #       widget: datetime
+  #       format: YYYY-MM-DD
+  #       date_format: D MMM YYYY
+  #       time_format: false
+  #       picker_utc: true
+  #     - name: summary
+  #       label: Summary
+  #       widget: markdown
+  #     - name: sections
+  #       label: Sections
+  #       widget: list
+  #       collapsed: true
+  #       summary: '{{fields.title}}'
+  #       fields:
+  #         - name: title
+  #           label: Section Title
+  #           widget: string
+  #         - name: summary
+  #           label: Section Summary
+  #           widget: markdown
+  #         - name: tags
+  #           label: Section Topics
+  #           widget: categories
+  #         - name: blocks
+  #           label: Section Blocks
+  #           widget: list
+  #           summary: '{{fields.title}}'
+  #           fields:
+  #             - name: title
+  #               label: Block Title
+  #               type: string
+  #             - name: summary
+  #               type: text
