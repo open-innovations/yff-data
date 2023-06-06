@@ -15,42 +15,39 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
-      md5: 4233d6d86961feb980b0f295033b03b4
-      size: 700
+      md5: 44dd50f444f388eaec0bcbc19cd8a0ef
+      size: 765
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1620
-    - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-      md5: 4a7d43d958d9ff1c5f6b7fdccbd5a848
-      size: 2151501
-    - path: working/cpi/mm23.csv
-      md5: 96393e92f703ae71020ee75b7bc7083c
-      size: 21863059
+    - path: working/MM23_data.csv
+      md5: 998c59e69203f0f258b61c6963728f0e
+      size: 24173491
     - path: working/lookups/MM23_variable_lookup.csv
       md5: 15cf3be568092ecae4ce523f538bf946
       size: 295485
     outs:
     - path: data/cpi/transformed_cpi.csv
-      md5: ac4f2aba39e493edc05010bd02cc719c
-      size: 49573
+      md5: 8b7f7ba313f67e806a1dec5aed87dbc4
+      size: 128493
       isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
     - path: data/cpi/transformed_cpi.csv
-      md5: ac4f2aba39e493edc05010bd02cc719c
-      size: 49573
+      md5: 8b7f7ba313f67e806a1dec5aed87dbc4
+      size: 128493
     - path: scripts/cpi/prepare.py
-      md5: b94f45c6622bc2e79ac595a06c16cdfe
-      size: 4711
+      md5: 83507ed3d51f23a8687e492d12b80018
+      size: 6194
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       md5: 07fb6d632300c016e5a81f4989dfcbf6
       size: 265
       isexec: true
     - path: src/_data/sources/cpi/cpi_linechart.csv
-      md5: 3244331fa0e68a7464e5a462ece9aeb1
-      size: 6499
+      md5: a0bb058124f88a7de3ddf0538ccd781b
+      size: 12429
       isexec: true
     - path: src/_data/sources/cpi/headlines.csv
       md5: e22685c64285c21644acc807a3f035df
@@ -63,16 +60,15 @@ stages:
   vis:
     cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
     deps:
-    - path: data/cpi/cpi.csv
-      md5: 07fb6d632300c016e5a81f4989dfcbf6
-      size: 265
+    - path: data/cpi/cpi_all_category_bar_chart.csv
+      md5: 5213039c5d323b17ff4839445e56b597
+      size: 585
+    - path: data/cpi/cpi_barchart.csv
+      md5: db32bd822f15cb39c9967e55cb32be92
+      size: 286
     - path: scripts/cpi/vis.py
-      md5: 2a15c96561a64c9efa642f500093db90
-      size: 892
+      md5: 2a1ccf093341fbddc3e07f4e5fc2bdf1
+      size: 1043
     - path: scripts/util/util.py
       md5: d0b2b87145742883d8245920e81035b8
       size: 3807
-    - path: src/dashboard/cpi/_data/visualisations.yaml
-      md5: ab32c3fdde6c361f7ee80e359691295c
-      size: 2183
-      isexec: true

@@ -29,11 +29,11 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
 <p>
   This chart shows the monthly, quarterly and yearly percentage changes on the key categories which most affect young 
   people. Also shown is the overall CPI change, which is calculated including all categories measured by CPI, including 
-  those not shown here.
+  all those shown in the second tab.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisations| pick(1, 2), test: false }) | safe }}
 {# {{ comp.viz.main(cpi_linechart.rows | dump()) }} #}
-{# {{ comp.viz.main({ visualisations: visualisations| pick(2), test: false }) | safe }} #}
-<h2> Data Tables </h2>
 {{ comp.viz.main({ visualisations: visualisations| pick(3), test: false }) | safe }}
+<h2> Data Tables </h2>
+{{ comp.viz.main({ visualisations: visualisations| pick(4), test: false }) | safe }}

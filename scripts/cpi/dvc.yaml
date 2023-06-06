@@ -15,8 +15,7 @@ stages:
     deps:
       - scripts/cpi/transform.py
       - scripts/util/date.py
-      - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-      - working/cpi/mm23.csv
+      - working/MM23_data.csv
       - working/lookups/MM23_variable_lookup.csv
     outs:
       - data/cpi/transformed_cpi.csv:
@@ -46,10 +45,11 @@ stages:
   #   wdir: ../..
   #   deps:
   #     - scripts/cpi/vis.py
-  #     - data/cpi/cpi.csv
+  #     - data/cpi/cpi_barchart.csv
+  #     - data/cpi/cpi_all_category_bar_chart.csv
   #     - scripts/util/util.py
-  #     - src/dashboard/cpi/_data/sources/visualisations.yaml
-    # outs:
-    #   - src/dashboard/cpi/_data:
-    #       cache: false
-    #       persist: false
+  #     # - src/dashboard/cpi/_data/sources/visualisations.yaml
+  #   # outs:
+  #   #   - src/dashboard/cpi/_data:
+  #   #       cache: false
+  #   #       persist: false

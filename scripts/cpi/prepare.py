@@ -65,7 +65,15 @@ def bar_chart(data, n):
                      'cpi_index_03_clothing_and_footwear_2015_100': "Clothing & Footwear",
                      'cpi_index_04_housing_water_and_fuels_2015_100': "Housing, Energy, Water & Fuels",
                      'cpi_index_09_recreation_&_culture_2015_100': "Recreation & Culture",
-                     'cpi_index_00_all_items_2015_100': "All CPI Categories"},
+                     'cpi_index_00_all_items_2015_100': "All CPI Categories",
+                     'cpi_index_02_alcoholic_beverages_tobacco_&_narcotics_2015_100': 'Alcoholic Beverages, Tobacco & Narcotics',
+                     'cpi_index_05_furn_hh_equip_&_routine_repair_of_house_2015_100':'Furniture, Household Equipment & Routine Repair of House',
+                     'cpi_index_06_health_2015_100':'Health',
+                     'cpi_index_07_transport_2015_100':'Transport',
+                     'cpi_index_08_communication_2015_100':'Communication',
+                     'cpi_index_10_education_2015_100':'Education',
+                     'cpi_index_11_hotels_cafes_and_restaurants_2015_100':'Hotels, Cafes & Restaurants',
+                     'cpi_index_12_miscellaneous_goods_and_services_2015_100':'Miscellaneous Goods & Services'},
                      inplace=True)
     return df
 
@@ -91,11 +99,20 @@ def copy_file(name):
 if __name__ == '__main__':
 
     data = pd.read_csv(os.path.join(INPUTS_DIR, 'transformed_cpi.csv'), index_col='variable')
-    bar = bar_chart(data, n=5)
-    line = line_chart(data, n=5, num_years=10)
+    bar = bar_chart(data, n).drop(index=["Furniture, Household Equipment & Routine Repair of House",
+                                          'Health',
+                                          'Transport',
+                                          'Communication',
+                                          'Alcoholic Beverages, Tobacco & Narcotics',
+                                          'Education',
+                                          "Hotels, Cafes & Restaurants",
+                                          'Miscellaneous Goods & Services'])
+    all_categories = bar_chart(data, n)
+    line = line_chart(data, n, num_years=10)
     
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
+    all_categories.to_csv(os.path.join(INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
     line.to_csv(os.path.join(INPUTS_DIR, 'cpi_linechart.csv'))
     #get the metadat and make headline stats
     metadata = read_meta()
@@ -106,3 +123,4 @@ if __name__ == '__main__':
     copy_file("cpi_linechart.csv")
     copy_file("metadata.json")
     copy_file("headlines.csv")
+    copy_file("cpi_all_category_bar_chart.csv")
