@@ -32,16 +32,14 @@
 		var svg = el.querySelector('svg');
 		var key = el.querySelector('.legend');
 		var serieskey = el.querySelectorAll('.series');
-		console.log(serieskey);
 		var s,i,p;
 		var pt = el.querySelectorAll('.series circle, .series rect');
 		var pts = [];
 		var series = {};
-		var shapes = [];
 		for(s = 0; s < serieskey.length; s++){
 			i = serieskey[s].getAttribute('data-series');
 			if(i){
-				series[i] = {};
+				series[i] = {'shapes':[]};
 				series[i].series = serieskey[s];
 			}
 		}
@@ -49,7 +47,7 @@
 			s = parseInt(pt[p].getAttribute('data-series'));
 			i = parseInt(pt[p].getAttribute('data-i'));
 			pts[p] = {'el':pt[p],'series':s,'i':i,'tooltip':pt[p].querySelector('title').innerHTML};
-			if(!series[s]) series[s] = {};
+			if(!series[s]) series[s] = {'shapes':[]};
 			if(!series[s].pts) series[s].pts = [];
 			if(!series[s].pts[i]) series[s].pts[i] = pts[p];
 		}
@@ -57,7 +55,7 @@
 		
 		// A function for setting the x-value of a shape
 		function setX(s,r,x){
-			if(typeof x==="number") shapes[s][r].setAttribute('x',x);
+			if(typeof x==="number") series[s].shapes[r].setAttribute('x',x);
 		}
 
 		this.reset = function(e){
@@ -96,21 +94,28 @@
 				origin = parseFloat(serieskey[0].querySelector('rect').getAttribute('x'));
 			}
 			if(typ == "stacked-bar-chart"){
-				if(shapes.length==0){
-					shapes = new Array(serieskey.length);
-					for(s = 0; s < serieskey.length; s++) shapes[s] = serieskey[s].querySelectorAll('rect');
-				}
+				for(s in series) series[s].shapes = series[s].series.querySelectorAll('rect');
 			}
-
 			for(s in series){
 				points = series[s].series.querySelectorAll('circle,rect');
+
+				// If it is a stacked bar chart we will change the left position and store that
+				if(typ == "stacked-bar-chart"){
+					// Find all the bars
+					for(r = 0; r < series[s].shapes.length; r++){
+						// Store the x-value if we haven't already done so
+						if(!series[s].shapes[r].hasAttribute('data-x')) series[s].shapes[r].setAttribute('data-x',series[s].shapes[r].getAttribute('x')||0);
+					}
+				}
+
 				// If we aren't locked we will highlight one series
 				if(this.locked == 0){
+
 					if(e.data.series==null || s==e.data.series){
 						series[s].series.style.opacity = 1;
 						// Simulate z-index by moving to the end
 						if(typ == "stacked-bar-chart"){
-							series[s].series.parentNode.appendChild(serieskey[s]);
+							series[s].series.parentNode.appendChild(series[s].series);
 						}
 						// Make points selectable
 						for(p = 0; p < points.length; p++) points[p].setAttribute('tabindex',0);
@@ -121,16 +126,6 @@
 						for(p = 0; p < points.length; p++) points[p].removeAttribute('tabindex');
 					}
 
-					// If it is a stacked bar chart we will change the left position and store that
-					if(typ == "stacked-bar-chart"){
-						// Find all the bars
-						for(r = 0; r < shapes[s].length; r++){
-							// Store the x-value if we haven't already done so
-							if(!shapes[s][r].hasAttribute('data-x')) shapes[s][r].setAttribute('data-x',shapes[s][r].getAttribute('x'));
-							// Update the x-value
-							setX(s,r,origin);
-						}
-					}
 				}else{
 					if(s==this.locked){
 						series[s].series.style.opacity = 1.0;
@@ -141,16 +136,21 @@
 						// Make points unselectable
 						for(p = 0; p < points.length; p++) points[p].removeAttribute('tabindex');
 					}
-					// Reset bar positions
-					if(typ == "stacked-bar-chart"){
-						// Find all the bars
-						for(r = 0; r < shapes[s].length; r++){
+				}
+				if(typ == "stacked-bar-chart"){
+					// If it is a stacked bar chart we will change the left position and store that
+					for(r = 0; r < series[s].shapes.length; r++){
+						if(e.data.series===null){
 							// Get the stored x-value
 							// Update the x-values if we have them
-							if(shapes[s][r].hasAttribute('data-x')) setX(s,r,parseFloat(shapes[s][r].getAttribute('data-x')));
+							if(series[s].shapes[r].hasAttribute('data-x')) setX(s,r,parseFloat(series[s].shapes[r].getAttribute('data-x')));
+						}else{
+							// Update the x-value
+							setX(s,r,origin);
 						}
 					}
 				}
+
 			}
 			return this;
 		};
