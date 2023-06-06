@@ -201,7 +201,7 @@
 			off = 4;
 			if(typ=="bar-chart" || typ=="stacked-bar-chart") off = bb.height/2;
 			
-			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - '+off+'px),0);display:'+(txt ? 'block':'none')+';');
+			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - '+off+'px),0);display:'+(txt ? 'block':'none')+';z-index:10000;');
 			this.tip.querySelector('.inner').style.background = fill;
 			this.tip.querySelector('.arrow').style['border-top-color'] = fill;
 			this.tip.style.color = contrastColour(fill);
