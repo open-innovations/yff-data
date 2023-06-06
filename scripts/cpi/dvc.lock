@@ -64,8 +64,8 @@ stages:
       md5: 5213039c5d323b17ff4839445e56b597
       size: 585
     - path: data/cpi/cpi_barchart.csv
-      md5: db32bd822f15cb39c9967e55cb32be92
-      size: 286
+      md5: 07fb6d632300c016e5a81f4989dfcbf6
+      size: 265
     - path: scripts/cpi/vis.py
       md5: 2a1ccf093341fbddc3e07f4e5fc2bdf1
       size: 1043

@@ -59,7 +59,6 @@
     type: bar-chart
   title: Categories most affecting young people
   type: chart
-
 - config:
     axis:
       x:
@@ -67,10 +66,18 @@
           stroke-dasharray: 6 2
           stroke-width: 1
         max: 20
-        min: 0
+        min: -5
         ticks:
+        - label: -5.0%
+          value: '-5.0'
         - label: 0.0%
           value: '0.0'
+        - label: 5.0%
+          value: '5.0'
+        - label: 10.0%
+          value: '10.0'
+        - label: 15.0%
+          value: '15.0'
         - label: 20.0%
           value: '20.0'
       y:
@@ -104,91 +111,80 @@
     type: bar-chart
   title: All categories
   type: chart
-
-- tab: CPI time series
-  title: CPI time series
-  type: chart
-  # caption: |
-  #   The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
-  #   and the proportion who have been unemployed for more than 12 months.
-  config:
-    file: data/cpi/cpi_linechart.csv
-    type: line-chart
-    legend:
-      show: true # Default to false
-      position: 'top right'
+- config:
     axis:
-      x: # Horizontal axis
-        min: 0
+      x:
         grid:
           stroke: '#efefef'
-
-      y: # The vertical axes
-        min: 90 # A minimum value
-        max: 150 # A maximum value
-        title:
-          label: 'Index (2015=100)'
+        min: 0
+      y:
         dominant-baseline: text-bottom
-        # Explicitly define the ticks.
-        # Each tick has a numeric value and a displayed label
+        max: 150
+        min: 90
         ticks:
-          - value: 90
-            grid: true
-            label: '90'
-          - value: 110
-            grid: true
-            label: '110'
-          - value: 130
-            grid: true
-            label: '130'
-          - value: 150
-            grid: true
-            label: '150'
+        - grid: true
+          label: '90'
+          value: 90
+        - grid: true
+          label: '110'
+          value: 110
+        - grid: true
+          label: '130'
+          value: 130
+        - grid: true
+          label: '150'
+          value: 150
+        title:
+          label: Index (2015=100)
     columns:
-      - name: x_tick_labels
-        template: '{{ named_date }}'
-      - name: all_categories
-        template: "{{ named_date }}<br/>All Categories: {{cpi_index_00_all_items_2015_100}}"
-      - name: food_and_non_alcoholic_beverages
-        template: "{{ named_date }}<br/>Food & Non-alcoholic Beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
-      - name: clothing_and_footwear
-        template: "{{ named_date }}<br/>Clothing & Footwear: {{cpi_index_03_clothing_and_footwear_2015_100}}"
-      - name: housing_energy
-        template: "{{ named_date }}<br/>Housing, Energy, Water & Fuels: {{cpi_index_04_housing_water_and_fuels_2015_100}}"
-      - name: recreation_and_culture
-        template: "{{ named_date }}<br/>Recreation & Culture: {{cpi_index_09_recreation_&_culture_2015_100}}"
+    - name: x_tick_labels
+      template: '{{ named_date }}'
+    - name: all_categories
+      template: '{{ named_date }}<br/>All Categories: {{cpi_index_00_all_items_2015_100}}'
+    - name: food_and_non_alcoholic_beverages
+      template: '{{ named_date }}<br/>Food & Non-alcoholic Beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}'
+    - name: clothing_and_footwear
+      template: '{{ named_date }}<br/>Clothing & Footwear: {{cpi_index_03_clothing_and_footwear_2015_100}}'
+    - name: housing_energy
+      template: '{{ named_date }}<br/>Housing, Energy, Water & Fuels: {{cpi_index_04_housing_water_and_fuels_2015_100}}'
+    - name: recreation_and_culture
+      template: '{{ named_date }}<br/>Recreation & Culture: {{cpi_index_09_recreation_&_culture_2015_100}}'
+    file: data/cpi/cpi_linechart.csv
+    legend:
+      position: top right
+      show: true
     series:
-      - title: "All CPI categories"
-        x: index
-        y: cpi_index_00_all_items_2015_100
-        size: 10
-        tooltip: all_categories
-      - title: "Food & Non-alocholic Beverages"
-        x: index
-        y: cpi_index_01_food_and_non_alcoholic_beverages_2015_100
-        size: 10
-        tooltip: food_and_non_alcoholic_beverages
-      - title: "Clothing & Footwear"
-        x: index
-        y: cpi_index_03_clothing_and_footwear_2015_100
-        size: 10
-        tooltip: clothing_and_footwear
-      - title: "Housing, Energy, Water & Fuels"
-        x: index
-        y: cpi_index_04_housing_water_and_fuels_2015_100
-        size: 10
-        tooltip: housing_energy
-      - title: "Recreation & Culture"
-        x: index
-        y: cpi_index_09_recreation_&_culture_2015_100
-        size: 10
-        tooltip: recreation_and_culture
-      #   tooltip: label_12_months
-
-- caption: "Monthly, quarterly and yearly CPI percentage changes on the three key\
-    \ categories which most affect young people. Also \nshown is the overall CPI change\
-    \ which includes all categories measured by CPI, including categories not shown\
-    \ here.\n"
+    - size: 10
+      title: All CPI categories
+      tooltip: all_categories
+      x: index
+      y: cpi_index_00_all_items_2015_100
+    - size: 10
+      title: Food & Non-alocholic Beverages
+      tooltip: food_and_non_alcoholic_beverages
+      x: index
+      y: cpi_index_01_food_and_non_alcoholic_beverages_2015_100
+    - size: 10
+      title: Clothing & Footwear
+      tooltip: clothing_and_footwear
+      x: index
+      y: cpi_index_03_clothing_and_footwear_2015_100
+    - size: 10
+      title: Housing, Energy, Water & Fuels
+      tooltip: housing_energy
+      x: index
+      y: cpi_index_04_housing_water_and_fuels_2015_100
+    - size: 10
+      title: Recreation & Culture
+      tooltip: recreation_and_culture
+      x: index
+      y: cpi_index_09_recreation_&_culture_2015_100
+    type: line-chart
+  tab: CPI time series
+  title: CPI time series
+  type: chart
+- caption: "Monthly, quarterly and yearly CPI percentage changes. Also \nshown is the overall CPI change\
+    \ which includes all categories measured by CPI.\n"
   config:
     columns:
     - align: center
@@ -203,7 +199,7 @@
     - align: right
       name: Yearly
       template: '{{ yearly_pct_change | toFixed(1) }} %'
-    file: /data/cpi/cpi_barchart.csv
+    file: /data/cpi/cpi_all_category_bar_chart.csv
   tab: null
   title: CPI percentage change
   type: table
