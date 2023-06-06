@@ -80,7 +80,7 @@ export default function (context) {
       );
       const ticks = tickValues.map(v => ({
         value: v,
-        label: csv.columns.x_tick_labels[v]
+        label: (typeof csv.columns.x_tick_labels==="object" ? csv.columns.x_tick_labels[v] : "")
       }));
       configcopy.axis.x.ticks = ticks;
     }

@@ -561,7 +561,16 @@ export function Series(s,props,data,extra){
 			pts[i] = {'title':svgEl("title"),'old':{}};
 
 			if(!data[i].label) data[i].label = "Point "+(i+1);
-			txt = (data[i].title || data[i].label+": "+data[i].y.toFixed(2));
+			
+			if(typeof data[i].title==="string"){
+				if(data[i].title!=""){
+					txt = data[i].title;
+				}else{
+					txt = "";
+				}
+			}else{
+				txt = data[i].label+": "+data[i].y.toFixed(2);
+			}
 			if(pts[i].title) pts[i].title.innerHTML = txt;
 
 			// Do we show a bar?
@@ -611,7 +620,6 @@ export function Series(s,props,data,extra){
 
 				add(pts[i].title,pts[i].point);
 			}
-
 		}
 		if(opt.line.label){
 			label = svgEl("text");
