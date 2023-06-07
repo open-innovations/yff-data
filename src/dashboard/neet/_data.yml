@@ -2,6 +2,7 @@ visualisations:
   - title: NEET Headlines
     type: dashboard
     config:
+      id: headlines
       file: /data/neet/headlines.csv
       title: 'Title'
       value: 'Value'

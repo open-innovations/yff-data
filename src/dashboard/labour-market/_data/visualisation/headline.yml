@@ -1,6 +1,7 @@
 title: Labour Market headlines
 type: dashboard
 config:
+  id: headlines
   file: /data/qlfs/headlines.csv
   title: Title
   value: Value

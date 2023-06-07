@@ -1,4 +1,4 @@
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url, width: '15rem' } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url + '#headlines', width: '15rem' } %}
 <h3>Unemployment</h3>
 <p class='dashboard-number'>
   {{ search.data('dashboard/labour-market/').latest.unemployment_rate }}%
@@ -11,7 +11,7 @@
 </p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url, width: '15rem' } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url + '#headlines', width: '15rem' } %}
 <h3>Economic inactivity</h3>
 <p class='dashboard-number'>
   {{ search.data('dashboard/labour-market/').latest.economic_inactivity_rate }}%
@@ -24,7 +24,7 @@
 </p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url, width: '15rem' } %}
+{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url + '#headlines', width: '15rem' } %}
 <h3>Long-term unemployed</h3>
 <p class='dashboard-number'>
   {{ search.data('dashboard/labour-market/').latest.long_term_unemployment_rate_6_to_12_months or '--' }}%
@@ -37,7 +37,7 @@
 </p>
 {% endcomp %}
 
-{% comp 'grid.block', { link: '/dashboard/neet/', width: '15rem' } %}
+{% comp 'grid.block', { link: '/dashboard/neet/' + '#headlines', width: '15rem' } %}
 <h3>NEET</h3>
 <p class="dashboard-number">{{ search.data('dashboard/neet').latest.neet_rate }}%</p>
 <p class="dashboard-note">

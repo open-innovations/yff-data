@@ -3,15 +3,15 @@
 {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
 {% endmacro -%}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url } %}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url + '#long_term_unemployed_all' } %}
 {{ renderViz(search.data('dashboard/labour-market/').visualisation.long_term_unemployment_all) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url } %}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url + '#long_term_unemployment_3_years' } %}
 {{ renderViz(search.data('dashboard/labour-market/').visualisation.long_term_unemployment_3_years) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url } %}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url + '#education_status_last_3_years' } %}
 {{ renderViz(search.data('dashboard/labour-market/').visualisation.economic_activity_not_in_full_time_education_3_years) | safe }}
 {% endcomp %}
 

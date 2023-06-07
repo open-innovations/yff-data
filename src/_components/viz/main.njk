@@ -1,5 +1,5 @@
 {% macro doTheVis(visualisation) %}
-  <div class="pane">
+  <div class="pane"{% if visualisation.config.id %} id="{{ visualisation.config.id }}"{% endif %}>
     {{ comp.viz.render(visualisation) | safe }}
     {% if test %}
       <p>Built using config: </p>
