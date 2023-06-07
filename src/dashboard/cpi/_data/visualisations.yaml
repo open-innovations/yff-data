@@ -11,7 +11,7 @@
     title: sector
     units:
       postfix: Suffix
-      prefix: Prefix
+      #prefix: Prefix
     value: Value
     width: 333px
   title: CPI Headlines

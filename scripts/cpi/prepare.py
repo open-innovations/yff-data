@@ -41,6 +41,7 @@ def summarise(metadata):
         "Consumer prices index change (%) on the same month last year, as at {}".format(metadata.loc["published", "value"])
     ]
     latest['Suffix'] = '%'
+    latest = latest.round(1)
     prefix = pd.read_csv('data/cpi/prefix.csv', index_col='sector')
     merged_df = latest.join(prefix, on='sector').set_index('sector')
     merged_df = merged_df.rename(index={'monthly_pct_change': 'Monthly Change', 'quarterly_pct_change':'Quarterly Change', 'yearly_pct_change':'Yearly Change'})
