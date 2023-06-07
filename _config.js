@@ -39,12 +39,10 @@ site.use(inline());
 site.loadPages(['.html']);
 
 // Setup admin
-if (Deno.env.get('EDITOR') !== undefined) site.use(
-  netlifyCMS({
-    previewStyle: '/style/wireframe.css',
-    extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
-  })
-);
+site.use(netlifyCMS({
+  previewStyle: '/assets/style/yff.css',
+  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
+}));
 
 site.copy(['.min.js']);
 // site.copy(['.css']);
@@ -124,16 +122,9 @@ site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
 // TODO fix this function!
 // Timezone awareness is an issue
 function dateBetween(start, end) {
-  console.log({start, end});
   const now = Date.now();
-  const earliest = start.getTime();
   const latest = new Date(end);
   latest.setUTCDate(latest.getUTCDate() + 1);
-  console.log({ 
-    now,
-    earliest,
-    pre: now < earliest
-  })
   if (now < start.getTime()) return false;
   if (latest.getTime() < now) return false;
   return true;
