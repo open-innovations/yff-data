@@ -38,10 +38,8 @@ export const css = `
 .chart .legend-item svg { margin: 0.25em 0.25em 0.25em 0.5em; float: left; }
 .chart .legend-item:hover:not(.series-lock), .chart .legend-item:focus:not(.series-lock) { background: rgba(255,255,255,0.5); outline: 1px dotted #7b2347; }
 .chart .legend-item.series-lock { background: white; outline: 1px solid #7b2347;  }
-
-.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; }
+.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
 .tooltip .inner { padding: 1em; }
-.tooltip > * { filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
 circle.selected { r: 5px; }
 .chart rect { transition: 0.1s ease-in x; }
 `;
