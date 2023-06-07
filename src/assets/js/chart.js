@@ -178,7 +178,7 @@
 			this.tip = el.querySelector('.tooltip');
 			if(!this.tip){
 				this.tip = document.createElement('div');
-				this.tip.innerHTML = '<div class="inner" style="background:#b2b2b2;position:relative;transform:translate3d(50%,0,0);"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
+				this.tip.innerHTML = '<div class="inner" style="white-space:nowrap;background:#b2b2b2;position:relative;transform:translate3d(50%,0,0);"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
 				this.tip.classList.add('tooltip');
 				add(this.tip,el);
 			}
@@ -211,14 +211,22 @@
 			pad = 8;
 			if(typ=="bar-chart" || typ=="stacked-bar-chart") off = bb.height/2;
 
-			tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;display:'+(txt ? 'block':'none')+';z-index:10000;transform:translate3d(-50%,calc(-100% - '+off+'px),0);transition:all 0s;');
+			tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;display:'+(txt ? 'block':'none')+';z-index:1000;transform:translate3d(-50%,calc(-100% - '+off+'px),0);transition:all 0s;');
 			box.style.background = fill;
 			box.style.transform = 'none';
 			arr.style['border-top-color'] = fill;
 			tip.style.color = contrastColour(fill);
 
+			// Remove wrapping if the tip is wider than the page minus the padding
+			box.style.whiteSpace = (tip.offsetWidth > wide - 2*pad) ? 'none' : 'nowrap';
+
 			// Limit width of tooltip to window width - 2*pad
-			tip.style.maxWidth = (tip.offsetWidth.width > wide ? 'calc(100% - '+(2*pad)+'px)' : 'auto');
+			if(tip.offsetWidth > wide - 2*pad){
+				tip.style.width = (wide - 2*pad)+'px';
+				box.style.whiteSpace = 'normal';
+			}else{
+				tip.style.width = '';
+			}
 
 			// Find out where the tooltip is now
 			bbox = tip.getBoundingClientRect();
