@@ -171,11 +171,14 @@
 			el.style.position = 'relative';
 
 			if(this.locked > 0 && s!=this.locked) return this;
-			var txt,bb,bbo,fill,selected,off;
+			var txt,bb,bbo,bbox,fill,selected,off,pad,wide,shift,typ,tip,box,arr,typ;
+
+			wide = document.body.getBoundingClientRect().width;
+
 			this.tip = el.querySelector('.tooltip');
 			if(!this.tip){
 				this.tip = document.createElement('div');
-				this.tip.innerHTML = '<div class="inner" style="background: #b2b2b2;position:relative;"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
+				this.tip.innerHTML = '<div class="inner" style="background:#b2b2b2;position:relative;transform:translate3d(50%,0,0);"></div><div class="arrow" style="position: absolute; width: 0; height: 0; border: 0.5em solid transparent; border-bottom: 0; left: 50%; top: calc(100% - 1px); transform: translate3d(-50%,0,0); border-color: transparent; border-top-color: green;"></div>';
 				this.tip.classList.add('tooltip');
 				add(this.tip,el);
 			}
@@ -192,20 +195,44 @@
 			// Select this point
 			series[s].pts[i].el.classList.add('selected');
 
-			this.tip.querySelector('.inner').innerHTML = (txt);
+			// Set the content
+			this.tip.querySelector('.inner').innerHTML = txt;
 
 			// Position the tooltip
+
 			bb = series[s].pts[i].el.getBoundingClientRect();	// Bounding box of the element
 			bbo = el.getBoundingClientRect(); // Bounding box of SVG holder
 
-			var typ = svg.getAttribute('data-type');
+			typ = svg.getAttribute('data-type');
+			tip = this.tip;
+			box = this.tip.querySelector('.inner');
+			arr = this.tip.querySelector('.arrow');
 			off = 4;
+			pad = 8;
 			if(typ=="bar-chart" || typ=="stacked-bar-chart") off = bb.height/2;
-			
-			this.tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;transform:translate3d(-50%,calc(-100% - '+off+'px),0);display:'+(txt ? 'block':'none')+';z-index:10000;');
-			this.tip.querySelector('.inner').style.background = fill;
-			this.tip.querySelector('.arrow').style['border-top-color'] = fill;
-			this.tip.style.color = contrastColour(fill);
+
+			tip.setAttribute('style','position:absolute;left:'+(bb.left + bb.width/2 - bbo.left).toFixed(2)+'px;top:'+(bb.top + bb.height/2 - bbo.top).toFixed(2)+'px;display:'+(txt ? 'block':'none')+';z-index:10000;transform:translate3d(-50%,calc(-100% - '+off+'px),0);');
+			box.style.background = fill;
+			box.style.transform = 'none';
+			arr.style['border-top-color'] = fill;
+			tip.style.color = contrastColour(fill);
+
+			// Limit width of tooltip to window width - 2*pad
+			tip.style.maxWidth = (tip.offsetWidth.width > wide ? 'calc(100% - '+(2*pad)+'px)' : 'auto');
+
+			// Find out where the tooltip is now
+			bbox = tip.getBoundingClientRect();
+
+			// Set tooltip transform
+			// If we were to just position the overall tooltip then shift the contents, we 
+			// gain a horizontal scroll bar on the page when the tooltip is off the right-hand-side.
+			// Instead we calculate the required shift and apply it to the tooltip and the 
+			// arrow in opposite senses to keep the arrow where it needs to be
+			shift = 0;
+			if(bbox.left < pad) shift = (pad-bbox.left);
+			else if(bbox.right > wide-pad) shift = -(bbox.right-wide+pad);
+			tip.style.transform = 'translate3d('+(shift == 0 ? '-50%' : 'calc(-50% + ' + shift + 'px)')+',calc(-100% - '+off+'px),0)';
+			arr.style.transform = 'translate3d(calc(-50% - ' + shift + 'px),0,0)';
 
 			return this;
 		};
