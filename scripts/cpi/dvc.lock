@@ -61,14 +61,14 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
     deps:
     - path: data/cpi/cpi_all_category_bar_chart.csv
-      md5: 5f10a822f3d847c6c04ac86bcbe0a32b
-      size: 581
+      md5: b161b99931873d54cf787421d85f2e8a
+      size: 567
     - path: data/cpi/cpi_barchart.csv
-      md5: 4db69e2e198cf02f35850364c6d4f5dc
-      size: 287
+      md5: d74b07dc0cd5c94fb5739c24741b0afa
+      size: 281
     - path: scripts/cpi/vis.py
       md5: 2a1ccf093341fbddc3e07f4e5fc2bdf1
-      size: 1043
+      size: 1011
     - path: scripts/util/util.py
       md5: d0b2b87145742883d8245920e81035b8
-      size: 3807
+      size: 3697
