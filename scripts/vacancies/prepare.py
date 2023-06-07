@@ -6,6 +6,7 @@ from scripts.util.date import lms_period_to_quarter_label
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'vacancies')
 RAW_DATA_DIR = os.path.realpath(os.path.join('data', 'vacancies'))
+DASHBOARD_DIR = os.path.join('src', 'dashboard', 'vacancies', '_data')
 WORK_DIR = os.path.join('working', 'vacancies')
 os.makedirs(DATA_DIR, exist_ok=True)
 
@@ -76,6 +77,14 @@ def summarise():
     summary.loc['Growth on previous quarter', 'Suffix'] = '%'
 
     summary.fillna('N/A').to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
+
+    latest = pd.concat([
+      pd.Series({
+          'last_monthly_date': last_period_label,
+          'last_quarterly_date': last_quarter_label,
+      })
+    ])
+    latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'), indent=2)
 
 
 if __name__ == "__main__":

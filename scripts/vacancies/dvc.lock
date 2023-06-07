@@ -5,10 +5,10 @@ stages:
     deps:
     - path: data/vacancies/vacancies_edd.csv
       md5: 8c38b4239f92f2a01d306e94bab95a04
-      size: 10362
+      size: 10735
     - path: scripts/vacancies/prepare.py
-      md5: 291c9138ab564e27dc950a59ca90e790
-      size: 3616
+      md5: 0d8252884ff184396b864a0c14cf92ea
+      size: 4015
     - path: working/vacancies/vacancies_by_sector.csv
       md5: cf560065c870b454d8aec3c5e9cae104
       size: 974
@@ -22,11 +22,12 @@ stages:
     deps:
     - path: scripts/vacancies/extract.py
       md5: a49fc352dd8af50aa8d41b53463ec90d
-      size: 547
+      size: 563
     outs:
     - path: working/vacancies/vacancies_by_sector.csv
       md5: cf560065c870b454d8aec3c5e9cae104
       size: 974
+      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
     deps:
