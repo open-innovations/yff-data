@@ -170,6 +170,7 @@ pre code {
 }
 
 .feedback { border-top: 1px solid black; }
+.legal { border-top: 1px solid black; }
 footer { border-top: 1px solid black; padding: 2em 0; }
 footer .twocol {
 	display: grid;
