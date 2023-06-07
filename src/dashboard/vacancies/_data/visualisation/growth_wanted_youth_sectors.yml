@@ -1,0 +1,45 @@
+tab: Sectors targeted by young people
+title: Quarterly growth in vacancies in the most desirable sectors for young people
+type: chart
+config:
+  file: /data/vacancies/growth_wanted_youth_sectors.csv
+  type: bar-chart
+  legend:
+    show: true # Default to false
+    position: "top right"
+  axis:
+    x:
+      min: -23
+      max: 90
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+      ticks:
+        - value: -20
+          label: "-20%"
+        - value: 0
+          label: "0%"
+        - value: 20
+          label: "20%"
+        - value: 40
+          label: "40%"          
+        - value: 60
+          label: "60%"          
+        - value: 80
+          label: "80%"          
+    y:
+      grid:
+        stroke-width: 0.5
+  category: "Sector" # Category names come from
+  columns:
+    - name: growth_last_quarter
+      template: "{{Sector}} <br/> monthly change:  {{ Growth compared with last quarter (%) | toFixed(1)}}%"
+    - name: growth_compared_with_2020
+      template: "{{Sector}} <br/> quarterly change:  {{ Growth compared with same quarter in 2020 (%) | toFixed(1)}}%"
+  series:
+    - title: "Growth compared with last quarter (%)"
+      value: "Growth compared with last quarter (%)"
+      tooltip: growth_last_quarter
+    - title: "Growth compared with same quarter in 2020 (%)"
+      value: "Growth compared with same quarter in 2020 (%)"
+      tooltip: growth_compared_with_2020

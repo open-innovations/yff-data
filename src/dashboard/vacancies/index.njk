@@ -8,8 +8,6 @@ topics:
   - Employment
 ---
 
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
-
 <h2>About the data on this page</h2>
 
 <p>
@@ -30,7 +28,7 @@ topics:
   The figures are derived from the ONS Labour Market Survey, and show the estimated vacancies over a rolling three-month period.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(1), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('estimated_vacancies'), test: false }) | safe }}
 
 <h2>Growth by sector</h2>
 
@@ -40,5 +38,5 @@ topics:
  Report</a>.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(2), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('quarterly_growth_all_sectors', 'growth_key_youth_sectors', 'growth_wanted_youth_sectors'), test: false }) | safe }}
 

@@ -1,0 +1,15 @@
+title: Vacancy headlines
+type: dashboard
+config:
+  file: /data/vacancies/headlines.csv
+  title: 'Title'
+  value: 'Value'
+  width: 500px
+  note: 'Note'
+  units:
+    postfix: 'Suffix'
+  panels:
+    - name: 'Latest quarterly vacancies'
+      colour: Orange      
+    - name: 'Growth on previous quarter'
+      colour: Plum
