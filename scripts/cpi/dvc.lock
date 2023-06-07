@@ -1,16 +1,5 @@
 schema: '2.0'
 stages:
-  extract:
-    cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
-    deps:
-    - path: scripts/cpi/extract.py
-      md5: 27036d00c305114aa8120101a7836274
-      size: 466
-    outs:
-    - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-      md5: 4a7d43d958d9ff1c5f6b7fdccbd5a848
-      size: 2151501
-      isexec: true
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
@@ -61,26 +50,3 @@ stages:
       md5: a3e78778cda4985d06ee985628d68a8d
       size: 84
       isexec: true
-  vis:
-    cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
-    deps:
-    - path: data/cpi/cpi_all_category_bar_chart.csv
-<<<<<<< Updated upstream
-      md5: b161b99931873d54cf787421d85f2e8a
-      size: 567
-    - path: data/cpi/cpi_barchart.csv
-      md5: d74b07dc0cd5c94fb5739c24741b0afa
-      size: 281
-=======
-      md5: 00512388dc7d71f112d2c7b3081a11df
-      size: 586
-    - path: data/cpi/cpi_barchart.csv
-      md5: f1f5950b35c459ee2751e601dcefe733
-      size: 300
->>>>>>> Stashed changes
-    - path: scripts/cpi/vis.py
-      md5: 2a1ccf093341fbddc3e07f4e5fc2bdf1
-      size: 1011
-    - path: scripts/util/util.py
-      md5: d0b2b87145742883d8245920e81035b8
-      size: 3697
