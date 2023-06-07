@@ -40,14 +40,17 @@ stages:
       - src/_data/sources/cpi/headlines.csv:
           cache: false 
           persist: false
-  vis:
-    cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
-    wdir: ../..
-    deps:
-      - scripts/cpi/vis.py
-      - data/cpi/cpi_barchart.csv
-      - data/cpi/cpi_all_category_bar_chart.csv
-      - scripts/util/util.py
+      - src/_data/sources/cpi/prefix.csv:
+          cache: false
+          persist: false
+  # vis:
+  #   cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
+  #   wdir: ../..
+  #   deps:
+  #     - scripts/cpi/vis.py
+  #     - data/cpi/cpi_barchart.csv
+  #     - data/cpi/cpi_all_category_bar_chart.csv
+  #     - scripts/util/util.py
       # - src/dashboard/cpi/_data/sources/visualisations.yaml
     # outs:
     #   - src/dashboard/cpi/_data:

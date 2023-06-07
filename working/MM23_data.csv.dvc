@@ -8,4 +8,3 @@ outs:
 - md5: 998c59e69203f0f258b61c6963728f0e
   size: 24173491
   path: MM23_data.csv
-  isexec: true

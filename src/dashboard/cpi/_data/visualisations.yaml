@@ -3,14 +3,15 @@
     note: Note
     panels:
     - colour: Orange
-      name: Monthly change
+      name: Monthly Change
     - colour: Blue
-      name: Quarterly change
+      name: Quarterly Change
     - colour: Gold
-      name: Yearly change
-    title: Title
+      name: Yearly Change
+    title: sector
     units:
       postfix: Suffix
+      prefix: Prefix
     value: Value
     width: 333px
   title: CPI Headlines
@@ -146,7 +147,8 @@
     - name: clothing_and_footwear
       template: '{{ named_date }}<br/>Clothing & footwear: {{cpi_index_03_clothing_and_footwear_2015_100}}'
     - name: housing_energy
-      template: '{{ named_date }}<br/>Housing, water, electricity, gas & other fuels: {{cpi_index_04_housing_water_and_fuels_2015_100}}'
+      template: '{{ named_date }}<br/>Housing, water, electricity, gas & other fuels:
+        {{cpi_index_04_housing_water_and_fuels_2015_100}}'
     - name: recreation_and_culture
       template: '{{ named_date }}<br/>Recreation & culture: {{cpi_index_09_recreation_&_culture_2015_100}}'
     file: data/cpi/cpi_linechart.csv

@@ -8,4 +8,3 @@ outs:
 - md5: 15cf3be568092ecae4ce523f538bf946
   size: 295485
   path: MM23_variable_lookup.csv
-  isexec: true
