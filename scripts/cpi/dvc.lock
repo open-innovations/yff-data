@@ -38,8 +38,8 @@ stages:
       md5: 8b7f7ba313f67e806a1dec5aed87dbc4
       size: 128493
     - path: scripts/cpi/prepare.py
-      md5: 3151e350683f2113f47e10ee87dd70b4
-      size: 6157
+      md5: dec6496a95b0dfc3082d455e2f9b41e3
+      size: 7804
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       md5: d74b07dc0cd5c94fb5739c24741b0afa
@@ -50,22 +50,34 @@ stages:
       size: 12429
       isexec: true
     - path: src/_data/sources/cpi/headlines.csv
-      md5: e22685c64285c21644acc807a3f035df
-      size: 311
+      md5: e9ecb595b3c1446eff39851c221f354f
+      size: 334
       isexec: true
     - path: src/_data/sources/cpi/metadata.json
       md5: 5134c59bd5cc53a322e7b0cf11f6df76
       size: 58
       isexec: true
+    - path: src/_data/sources/cpi/prefix.csv
+      md5: a3e78778cda4985d06ee985628d68a8d
+      size: 84
+      isexec: true
   vis:
     cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
     deps:
     - path: data/cpi/cpi_all_category_bar_chart.csv
+<<<<<<< Updated upstream
       md5: b161b99931873d54cf787421d85f2e8a
       size: 567
     - path: data/cpi/cpi_barchart.csv
       md5: d74b07dc0cd5c94fb5739c24741b0afa
       size: 281
+=======
+      md5: 00512388dc7d71f112d2c7b3081a11df
+      size: 586
+    - path: data/cpi/cpi_barchart.csv
+      md5: f1f5950b35c459ee2751e601dcefe733
+      size: 300
+>>>>>>> Stashed changes
     - path: scripts/cpi/vis.py
       md5: 2a1ccf093341fbddc3e07f4e5fc2bdf1
       size: 1011

@@ -27,34 +27,41 @@ def pct_change(col1, col2):
 
 def summarise(metadata): 
     cpi = pd.read_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
-
+    
     latest = pd.DataFrame({
-            'Monthly change' : (cpi['monthly_pct_change'].iloc[:1]).round(1),
-            'Quarterly change' : (cpi['quarterly_pct_change'].iloc[:1]).round(1),
-            'Yearly change' : (cpi['yearly_pct_change'].iloc[:1].round(1))
+            'monthly_pct_change' : (cpi['monthly_pct_change'].iloc[:1]),
+            'quarterly_pct_change' : (cpi['quarterly_pct_change'].iloc[:1]),
+            'yearly_pct_change' : (cpi['yearly_pct_change'].iloc[:1])
     }).T.reset_index()
 
-    latest = latest.rename(columns = {'index': 'Title', 0: 'Value'})
+    latest = latest.rename(columns = {'index': 'sector', 0: 'Value'})
     latest['Note'] = [
         "Consumer prices index change (%) on last month, as at {}".format(metadata.loc["published", "value"]),
         "Consumer prices index change (%) on last quarter, as at {}".format(metadata.loc["published", "value"]),
         "Consumer prices index change (%) on the same month last year, as at {}".format(metadata.loc["published", "value"])
     ]
     latest['Suffix'] = '%'
-    latest.to_csv(os.path.join(INPUTS_DIR, 'headlines.csv'), index=False)
+    prefix = pd.read_csv('data/cpi/prefix.csv', index_col='sector')
+    merged_df = latest.join(prefix, on='sector').set_index('sector')
+    merged_df = merged_df.rename(index={'monthly_pct_change': 'Monthly Change', 'quarterly_pct_change':'Quarterly Change', 'yearly_pct_change':'Yearly Change'})
+    merged_df.to_csv(os.path.join(INPUTS_DIR, 'headlines.csv'), index=True)
 
 
-def bar_chart(data, n):
+def bar_chart(data, n, make_prefix=True):
     most_recent_month = data.iloc[-n:]
     last_month = data.iloc[int(-2*n):-n]
     last_quarter = data.iloc[int(-4*n):int(-3*n)]
     last_year = data.iloc[int(-13*n):int(-12*n)]
+
+    second_last_month = data.iloc[int(-3*n):int(-2*n)]
+    second_last_quarter = data.iloc[int(-5*n):int(-4*n)]
+    second_last_year = data.iloc[int(-14*n):int(-13*n)]
     df = pd.DataFrame()
     df['monthly_pct_change'] = pct_change(most_recent_month.value, last_month.value)
     df['quarterly_pct_change'] = pct_change(most_recent_month.value, last_quarter.value)
     df['yearly_pct_change'] = pct_change(most_recent_month.value, last_year.value)
     #print(df)
-
+    
     column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
                           usecols=['code', 'name'], index_col='code').to_dict()['name']
     df.rename(index=column_name, inplace=True)
@@ -75,6 +82,26 @@ def bar_chart(data, n):
                      'cpi_index_11_hotels_cafes_and_restaurants_2015_100': 'Restaurants & hotels',
                      'cpi_index_12_miscellaneous_goods_and_services_2015_100': 'Miscellaneous goods & services'},
                      inplace=True)
+    indicators = []
+    if pct_change(last_month.loc['D7BT'].value, second_last_month.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_month.loc['D7BT'].value):
+        indicators.append('\u2191')
+    else:
+        indicators.append('\u2193')
+
+    if pct_change(second_last_month.loc['D7BT'].value, second_last_quarter.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_quarter.loc['D7BT'].value):
+        indicators.append('\u2191')
+    else:
+        indicators.append('\u2193')
+
+    if pct_change(second_last_month.loc['D7BT'].value, second_last_year.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_year.loc['D7BT'].value):
+        indicators.append(str('\u2191'))
+    else:
+        indicators.append(str('\u2193'))
+    if make_prefix == True:
+        prefix = pd.DataFrame(data={'Prefix': indicators}, index=['monthly_pct_change', 'quarterly_pct_change', 'yearly_pct_change'])
+        prefix.index.rename('sector', inplace=True)
+        prefix.to_csv(os.path.join(INPUTS_DIR, 'prefix.csv'))
+        #print(prefix)
     return df
 
 def line_chart(data, n, num_years):
@@ -107,7 +134,7 @@ if __name__ == '__main__':
                                           'Education',
                                           "Restaurants & hotels",
                                           'Miscellaneous goods & services'])
-    all_categories = bar_chart(data, n)
+    all_categories = bar_chart(data, n, make_prefix=False)
     line = line_chart(data, n, num_years=10)
     
     #write file
@@ -124,3 +151,4 @@ if __name__ == '__main__':
     copy_file("metadata.json")
     copy_file("headlines.csv")
     copy_file("cpi_all_category_bar_chart.csv")
+    copy_file("prefix.csv")

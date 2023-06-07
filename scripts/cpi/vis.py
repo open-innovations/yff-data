@@ -6,7 +6,7 @@ from scripts.util.util import tick_gen
 def update_ticks(data_dir, vis_dir, visnum):
 
     #get the labels
-    data = pd.read_csv(data_dir)
+    data = pd.read_csv(data_dir, nrows=6)
     min, max, labels = tick_gen(data, dtype='percent')
     #print(min, max)
     with open(vis_dir) as f:
