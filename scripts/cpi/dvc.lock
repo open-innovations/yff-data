@@ -27,8 +27,8 @@ stages:
       md5: 8b7f7ba313f67e806a1dec5aed87dbc4
       size: 128493
     - path: scripts/cpi/prepare.py
-      md5: 62266bbb7fb4932e0c2a4d256c047fa2
-      size: 7834
+      md5: 7e64ac8da14fae2954d69298940bcd78
+      size: 7852
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       md5: d74b07dc0cd5c94fb5739c24741b0afa
@@ -39,14 +39,14 @@ stages:
       size: 12429
       isexec: true
     - path: src/_data/sources/cpi/headlines.csv
-      md5: cee60de98683c579401c4b2867a57316
-      size: 331
+      md5: fc7044b54c5f0ec9a089cbfb4942c442
+      size: 313
+      isexec: true
+    - path: src/_data/sources/cpi/indicator.csv
+      md5: d4ffd41ecdb637c744067fdb29db9742
+      size: 87
       isexec: true
     - path: src/_data/sources/cpi/metadata.json
       md5: 5134c59bd5cc53a322e7b0cf11f6df76
       size: 58
-      isexec: true
-    - path: src/_data/sources/cpi/prefix.csv
-      md5: a3e78778cda4985d06ee985628d68a8d
-      size: 84
       isexec: true

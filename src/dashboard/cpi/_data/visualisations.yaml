@@ -3,18 +3,18 @@
     note: Note
     panels:
     - colour: Orange
-      name: Monthly Change
+      name: Monthly
     - colour: Blue
-      name: Quarterly Change
+      name: Quarterly
     - colour: Gold
-      name: Yearly Change
+      name: Yearly
     title: sector
     units:
       postfix: Suffix
-      #prefix: Prefix
+      prefix: Prefix
     value: Value
     width: 333px
-  title: CPI Headlines
+  title: "Consumer prices index change (%)"
   type: dashboard
 - config:
     axis:

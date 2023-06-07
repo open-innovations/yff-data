@@ -40,7 +40,7 @@ stages:
       - src/_data/sources/cpi/headlines.csv:
           cache: false 
           persist: false
-      - src/_data/sources/cpi/prefix.csv:
+      - src/_data/sources/cpi/indicator.csv:
           cache: false
           persist: false
   # vis:
