@@ -76,6 +76,7 @@
 				// Set the series to null
 				e.data.series = null;
 				this.highlightSeries(e);
+				e.target.blur();
 			}
 			return this;
 		};
