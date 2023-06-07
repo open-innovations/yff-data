@@ -107,10 +107,10 @@ export function StackedBarChart(config,csv){
 				for(l in this.opt.axis[ax].labels){
 					len = 0;
 					// Split the label by any new line characters
-					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					lines = this.opt.axis[ax].labels[l].label.split(/\\n/g);
 					if(ax=="x"){
 						// Length is based on the 
-						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0));
 					}else{
 						// Work out the longest line
 						for(i = 0; i < lines.length; i++){
@@ -217,10 +217,10 @@ export function CategoryChart(config,csv){
 				for(l in this.opt.axis[ax].labels){
 					len = 0;
 					// Split the label by any new line characters
-					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					lines = this.opt.axis[ax].labels[l].label.split(/\\n/g);
 					if(ax=="x"){
 						// Length is based on the 
-						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0));
 					}else{
 						// Work out the longest line
 						for(i = 0; i < lines.length; i++){
@@ -278,11 +278,11 @@ export function LineChart(config,csv){
 				// Work out axis padding
 				for(l in this.opt.axis[ax].labels){
 					// Split the label by any new line characters
-					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					lines = this.opt.axis[ax].labels[l].label.split(/\\n/g);
 
 					if(ax=="x"){
 						// For x-axis labels "len" is related to the height of the lines
-						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0));
 					}else if(ax=="y"){
 						// For y-axis labels "len" is calculated by the longest line of text
 						// Loop over the lines of the label
@@ -306,6 +306,7 @@ export function LineChart(config,csv){
 			this.opt.right = this.opt.padding.right + pad.r;
 			this.opt.top = this.opt.padding.top + pad.t;
 			this.opt.bottom = this.opt.padding.bottom + pad.b;
+
 			return this;
 		}
 	};
@@ -449,7 +450,7 @@ export function Axis(ax,from,to,attr){
 					}
 					
 					// Split the label by any new line characters and add each as a tspan
-					lines = opt.labels[t].label.split(/\n/g);
+					lines = opt.labels[t].label.split(/\\n/g);
 					for(l = 0; l < lines.length; l++){
 						tspan = svgEl('tspan');
 						tspan.innerHTML = lines[l];
