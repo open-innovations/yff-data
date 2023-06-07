@@ -1,6 +1,6 @@
 relates_to: src/dashboard/labour-market/index.njk
 start_date: 2023-06-05
-end_date: 2023-06-23
+end_date: ""
 content: |-
   The latest ONS published data for long-term unemployment is missing,
   and is consequently shown as N/A in the headline stats.
