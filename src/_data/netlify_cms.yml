@@ -2,6 +2,7 @@ backend:
   name: github
   repo: open-innovations/yff-data
   branch: main
+  base_url: https://auth.open-innovations.org # Path to ext auth provider
 
 locale: "en-GB"
 
