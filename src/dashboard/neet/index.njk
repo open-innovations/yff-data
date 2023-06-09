@@ -8,7 +8,6 @@ topics:
 raw_data:
   - /data/raw/neet/neet.csv
 ---
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h2>About the data on this page</h2>
 <p>
@@ -29,10 +28,10 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
   These figures are based on the population in the relevant age range (16-24 years old).
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(1, 2, 3), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('all_young_people', 'all_young_women', 'all_young_men'), test: false }) | safe }}
 
 <h2>Data Tables</h2>
-{{ comp.viz.main({ visualisations: visualisations | pick(4, 5, 6), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('last_3_years_all', 'young_women_neet_last_3_years', 'young_men_neet_last_3_years'), test: false }) | safe }}
 
 
 

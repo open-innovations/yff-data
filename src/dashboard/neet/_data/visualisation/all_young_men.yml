@@ -1,0 +1,46 @@
+tab: Young men
+title: NEET rate for young men (16-24)
+type: chart
+# caption: |
+#   This chart shows rates of young men Not in Education, Employment or Training (NEET). 
+#   In addition, the unemployment and economically inactive rates are shown.
+#   These figures are based on the population in the relevant age range (16-24 years old).
+config:
+  file: /data/neet/neet_all_data.csv
+  type: line-chart
+  legend:
+    show: true     # Default to false
+    position: "top right"
+  axis:
+    x:
+      grid:
+        stroke: "#efefef"
+    y:
+      max: 20
+      title:
+        label: "Rate (%)"
+  columns:
+    - name: x_tick_labels
+      template: "{{ quarter_label }}"
+    - name: "Total"
+      template: "{{quarter_label}} <br/> NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
+    - name: unemployed_tooltip
+      template: "{{quarter_label}} <br/> Unemployed rate: {{ men_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%"
+    - name: economically_inactive_tooltip
+      template: "{{quarter_label}} <br/> Economically inactive rate: {{ men_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%"
+  series:
+    - title: "Total NEET rate"
+      x: "quarter_index" # Column heading to use for x-value
+      y: "men_age_16_to_24_neet_total_rate_sa" # Column heading to use fro y-value
+      size: 10
+      tooltip: "Total"
+    - title: "Unemployed rate"
+      x: "quarter_index" # Column heading to use for x-value
+      y: "men_age_16_to_24_neet_unemployed_rate_sa" # Column heading to use fro y-value
+      size: 10
+      tooltip: unemployed_tooltip
+    - title: "Economically inactive rate"
+      x: "quarter_index" # Column heading to use for x-value
+      y: "men_age_16_to_24_neet_economically_inactive_rate_sa" # Column heading to use fro y-value
+      size: 10
+      tooltip: economically_inactive_tooltip
