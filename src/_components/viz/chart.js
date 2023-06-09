@@ -77,10 +77,13 @@ export default function (context) {
         configcopy.axis.x.max,
         configcopy.axis.x.min
       );
-      const ticks = tickValues.map(v => ({
-        value: v,
-        label: (typeof csv.columns.x_tick_labels==="object" ? csv.columns.x_tick_labels[v] : "")
-      }));
+      const ticks = tickValues.map(v => {
+        const index = csv.rows.length - 1 - v;
+        return {
+          value: index,
+          label: (typeof csv.columns.x_tick_labels==="object" ? csv.columns.x_tick_labels[index] : "")
+        }
+      });
       configcopy.axis.x.ticks = ticks;
     }
 
