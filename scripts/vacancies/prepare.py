@@ -65,7 +65,7 @@ def summarise():
     'Note': [
         "Estimated number of open job vacancies in the last reported rolling quarter across the UK, {}.".format(last_period_label),
         "Estimated number of job vacancies in the last quarter across the UK, {}".format(last_quarter_label),
-        "Estimated percentage change on last quarter, {}".format('TBC'),
+        "Estimated percentage change on last quarter, {}".format('date TBC'),
     ], 
     'Suffix': [
         '',
