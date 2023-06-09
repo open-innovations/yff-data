@@ -9,7 +9,7 @@ config:
   units:
     postfix: 'Suffix'
   panels:
-    - name: 'Latest quarterly vacancies'
+    - name: 'Latest monthly vacancies'
       colour: Orange      
     - name: 'Growth on previous quarter'
       colour: Plum
