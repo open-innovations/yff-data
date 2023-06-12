@@ -1,6 +1,14 @@
-{% macro doTheVis(visualisation) %}
+{% macro doTheVis(visualisation, headingLevel) %}
   <div class="pane"{% if visualisation.config.id %} id="{{ visualisation.config.id }}"{% endif %}>
-    {{ comp.viz.render(visualisation) | safe }}
+    {{ comp.viz.render({
+      config: visualisation.config,
+      tab: visualisation.tab,
+      title: visualisation.title,
+      caption: visualisation.caption,
+      type: visualisation.type,
+      downloadLink: visualisation.downloadLink or true,
+      headingLevel: headingLevel
+    }) | safe }}
     {% if test %}
       <p>Built using config: </p>
       <pre><code>
@@ -13,17 +21,17 @@
 
 {% if not visualisations | isArray %}
 
-  <div class="panes">{{ doTheVis(visualisations) }}</div>
+  <div class="panes">{{ doTheVis(visualisations, headingLevel) }}</div>
 
 {% elif visualisations | length === 1 %}
 
-  <div class="panes">{{ doTheVis(visualisations[0]) }}</div>
+  <div class="panes">{{ doTheVis(visualisations[0], headingLevel) }}</div>
 
 {% elif visualisations | length > 1 %}
 
   <div class="panes tabbed" role="tabpanel" data-dependencies="/assets/js/tabbed.js">
     {% for vis in visualisations %}
-      {{ doTheVis(vis) }}
+      {{ doTheVis(vis, headingLevel) }}
     {% endfor %}
   </div>
 
