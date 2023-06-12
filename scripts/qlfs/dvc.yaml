@@ -32,13 +32,6 @@ stages:
       - scripts/util/file.py
       - data/qlfs/metadata.json
     outs:
-<<<<<<< HEAD
       - src/dashboard/labour-market/_data/dates.json:
-=======
-      - src/_data/sources/qlfs/headlines.csv:
-          cache: false
-          persist: false
-      - src/dashboard/labour-market/_data/latest.json:
->>>>>>> parent of 74cfb67 (Merge branch 'main' of https://github.com/open-innovations/yff-data)
           cache: false
           persist: false
