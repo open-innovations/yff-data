@@ -1,0 +1,18 @@
+config:
+  file: /data/cpi/headlines.csv
+  note: Note
+  panels:
+    - colour: Orange
+      name: Monthly
+    - colour: Blue
+      name: Quarterly
+    - colour: Gold
+      name: Yearly
+  title: sector
+  units:
+    postfix: Suffix
+    prefix: sign
+  value: Value
+  width: 333px
+title: "Consumer prices index change (%)"
+type: dashboard

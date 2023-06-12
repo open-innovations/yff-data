@@ -22,3 +22,7 @@
 {% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/vacancies/').url + '#estimated_vacancies' } %}
 {{ renderViz(search.data('dashboard/vacancies/').visualisation.estimated_vacancies) | safe }}
 {% endcomp %}
+
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/cpi/').url + '#young_people_barchart' } %}
+{{ renderViz(search.data('dashboard/cpi/').visualisation.young_people_barchart) | safe }}
+{% endcomp %}
