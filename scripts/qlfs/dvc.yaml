@@ -21,12 +21,6 @@ stages:
       - working/qlfs/a06latest.xls
       - working/qlfs/unem01latest.xls
     outs:
-      - data/qlfs/long_term_unemployed.csv:
-          cache: false
-          persist: false
-      - data/qlfs/education_status.csv:
-          cache: false
-          persist: false
       - data/qlfs/metadata.json:
           cache: false
           persist: false
@@ -36,10 +30,8 @@ stages:
     deps:
       - scripts/qlfs/prepare.py
       - scripts/util/file.py
-      - data/qlfs/long_term_unemployed.csv
-      - data/qlfs/education_status.csv
       - data/qlfs/metadata.json
     outs:
-      - src/dashboard/labour-market/_data/latest.json:
+      - src/dashboard/labour-market/_data/dates.json:
           cache: false
           persist: false

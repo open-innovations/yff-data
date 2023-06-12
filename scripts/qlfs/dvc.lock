@@ -17,8 +17,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
     - path: scripts/qlfs/transform.py
-      md5: 1418adf7a4f063b04667215146988aec
-      size: 6250
+      md5: 5dace1bbf8ca71d6dd726b76d94730f9
+      size: 6206
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
@@ -29,37 +29,25 @@ stages:
       md5: 587a94844b77dd8626cbcf8335d81789
       size: 958976
     outs:
-    - path: data/qlfs/education_status.csv
-      md5: f2f1b09273e337a5e059b54f9fecfebe
-      size: 15216
-    - path: data/qlfs/long_term_unemployed.csv
-      md5: 061e4bcf70aeaaf8b883068960f3021a
-      size: 6042
     - path: data/qlfs/metadata.json
       md5: a0b698d5b1238058df0ffbeb44cf9fdf
       size: 209
   prepare:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
     deps:
-    - path: data/qlfs/education_status.csv
-      md5: f2f1b09273e337a5e059b54f9fecfebe
-      size: 15216
-    - path: data/qlfs/long_term_unemployed.csv
-      md5: 061e4bcf70aeaaf8b883068960f3021a
-      size: 6042
     - path: data/qlfs/metadata.json
       md5: a0b698d5b1238058df0ffbeb44cf9fdf
       size: 209
     - path: scripts/qlfs/prepare.py
-      md5: 64a8bdf0d44300e0db61170302608155
-      size: 3549
+      md5: 6dd8b6a7bef236b2d95077b82c9ff03a
+      size: 508
     - path: scripts/util/file.py
       md5: 331fd2a96ccd35c59a6e52a65aa97e6c
       size: 396
     outs:
-    - path: src/dashboard/labour-market/_data/latest.json
-      md5: 8b97d71fd58888a757b2a3886d77bdd0
-      size: 428
+    - path: src/dashboard/labour-market/_data/dates.json
+      md5: bc08696082d3791b05135bc60ec05870
+      size: 192
   transform-edd:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform-edd.py
     deps:
