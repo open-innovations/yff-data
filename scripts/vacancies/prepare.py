@@ -33,7 +33,7 @@ def prepare_vacancies_by_sector():
         })
     vacancies_by_sector['Sector'] = vacancies_by_sector['Sector'].str.replace('<br>', '', regex=True)
 
-    vacancies_by_sector['Sector'].replace(
+    vacancies_by_sector['Sector'] = vacancies_by_sector['Sector'].replace(
         ['Electricity gas steam & air conditioning supply',
         'Administrative & support service activities', 
         'Professional scientific & technical activities', 
