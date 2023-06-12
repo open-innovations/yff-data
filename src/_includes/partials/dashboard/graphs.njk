@@ -18,3 +18,7 @@
 {% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/neet/' } %}
 {{ renderViz(search.data('dashboard/neet/').visualisations[1]) | safe }}
 {% endcomp %}
+
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/vacancies/').url + '#estimated_vacancies' } %}
+{{ renderViz(search.data('dashboard/vacancies/').visualisation.estimated_vacancies) | safe }}
+{% endcomp %}

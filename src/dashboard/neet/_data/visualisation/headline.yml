@@ -1,0 +1,18 @@
+title: NEET Headlines
+type: dashboard
+config:
+  id: headlines
+  file: /data/neet/headlines.csv
+  title: 'Title'
+  value: 'Value'
+  note: 'Note'
+  units:
+    postfix: 'Suffix'
+  width: 333px
+  panels:
+    - name: 'Latest NEET Rate'
+      colour: Orange       
+    - name: 'Latest NEET Rate - Men'
+      colour: Blue       
+    - name: 'Latest NEET Rate - Women'
+      colour: Gold
