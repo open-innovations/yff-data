@@ -39,5 +39,10 @@ topics:
  Report</a> published by the Youth Futures Foundation.
 </p>
 
+<p>
+  The current data was published on {{ latest.last_monthly_date | date('HUMAN_DATE') }} and includes data up to the 
+  {{ latest.last_quarterly_date }} quarter.
+</p>
+
 {{ comp.viz.main({ visualisations: visualisation | pick('quarterly_growth_all_sectors', 'growth_key_youth_sectors', 'growth_wanted_youth_sectors'), test: false }) | safe }}
 

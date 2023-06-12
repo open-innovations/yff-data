@@ -1,12 +1,9 @@
 {
-  "unemployment_rate":10.4,
-  "economic_inactivity_rate":17.1,
+  "unemployment_rate":11.3,
+  "economic_inactivity_rate":37.4,
+  "unemployment_rate_not_in_full_time_education":10.4,
+  "economic_inactivity_rate_not_in_full_time_education":17.1,
   "long_term_unemployment_rate_6_to_12_months":13.7,
   "long_term_unemployment_rate_over_12_months":null,
-  "a06_quarter":"Jan-Mar 2023",
-  "unem01_quarter":"Jan-Mar 2023",
-  "a06_published":"2023-05-16T00:00:00.000",
-  "a06_next_update":"2023-06-13T00:00:00.000",
-  "unem01_published":"2023-05-16T00:00:00.000",
-  "unem01_next_update":"2023-06-13T00:00:00.000"
+  "most_recent_lms_period":"Jan-Mar 2023"
 }
