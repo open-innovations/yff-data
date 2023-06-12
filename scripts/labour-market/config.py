@@ -1,6 +1,14 @@
 import os
 
 column_mapper = {
+    'JN5R': 'age_16_to_24_total_sa',
+    'MGUQ': 'age_16_to_24_in_employment_sa',
+    'MGVF': 'age_16_to_24_unemployed_sa',
+    'MGVU': 'age_16_to_24_economically_inactive_sa',
+    'AIVZ': 'age_16_to_24_employment_rate_sa',
+    'MGWY': 'age_16_to_24_unemployment_rate_sa',
+    'AIYL': 'age_16_to_24_economic_inactivity_rate_sa',
+
     'JN6B': 'age_16_to_24_not_in_ft_education_total_sa',  # Total not in education, 16-24
     'AGNJ': 'age_16_to_24_not_in_ft_education_in_employment_sa',  # Employed level, 16-24
     'AGOL': 'age_16_to_24_not_in_ft_education_unemployed_sa',  # Unemployed level, 16-24

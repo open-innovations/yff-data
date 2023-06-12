@@ -40,9 +40,6 @@ stages:
       - data/qlfs/education_status.csv
       - data/qlfs/metadata.json
     outs:
-      - src/_data/sources/qlfs/headlines.csv:
-          cache: false
-          persist: false
       - src/dashboard/labour-market/_data/latest.json:
           cache: false
           persist: false

@@ -28,9 +28,12 @@ stages:
       - src/_data/sources/labour-market/long_term_unemployed_all_data.csv:
           cache: false
           persist: false
-      - src/_data/sources/labour-market/education_status_last_3_years.csv:
+      - src/_data/sources/labour-market/labour_market_status_last_3_years.csv:
           cache: false
           persist: false
-      - src/_data/sources/labour-market/education_status_all_data.csv:
+      - src/_data/sources/labour-market/labour_market_status_all_data.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/labour-market/headlines.csv:
           cache: false
           persist: false

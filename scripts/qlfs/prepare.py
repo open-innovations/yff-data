@@ -48,7 +48,6 @@ def summarise(**datasets):
             'Long-term unemployment rate over 12 months',
         ], name='Title')
     )
-    summary.fillna('N/A').to_csv(os.path.join(DATA_DIR, 'headlines.csv'))
 
     latest = summary.loc[:, 'Value']
     latest.index = latest.index.str.replace(r'[\s-]+', '_', regex=True).str.lower()

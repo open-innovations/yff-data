@@ -26,8 +26,8 @@ stages:
       md5: d2b5cc0d0d967845db017b6131821628
       size: 2428
     - path: scripts/labour-market/prepare.py
-      md5: 928600c936e8fd2a62b7d9decce4f363
-      size: 4886
+      md5: 703250f0139a427cbc931cd7d1c23f33
+      size: 5657
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
@@ -35,12 +35,15 @@ stages:
       md5: 331fd2a96ccd35c59a6e52a65aa97e6c
       size: 396
     outs:
-    - path: src/_data/sources/labour-market/education_status_all_data.csv
-      md5: 8731d08882bd8fcb5ea4ed91131a8d23
-      size: 14264
-    - path: src/_data/sources/labour-market/education_status_last_3_years.csv
-      md5: a6cbb5b4e31dcbd1ce57ca3db7a4f01b
-      size: 2034
+    - path: src/_data/sources/labour-market/headlines.csv
+      md5: 969e242fa18c41923a1f97c2c0b68547
+      size: 886
+    - path: src/_data/sources/labour-market/labour_market_status_all_data.csv
+      md5: f06059b844c13a031777821fba3c8889
+      size: 19699
+    - path: src/_data/sources/labour-market/labour_market_status_last_3_years.csv
+      md5: d1cc9cc86f3136b10c678a0787993654
+      size: 2761
     - path: src/_data/sources/labour-market/long_term_unemployed_all_data.csv
       md5: 89e36b6cce2a09967dc1ea5cb966dfaf
       size: 6952
