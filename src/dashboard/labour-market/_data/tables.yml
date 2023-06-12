@@ -5,7 +5,7 @@
   config:
     file: /data/labour-market/long_term_unemployed_last_3_years.csv
     columns:
-      - name: Quarter
+      - name: Rolling 3-monthly period
         align: center
         template: '{{ quarter_label }}'
       - name: Population unemployed for between 6 and 12 months (000s)
@@ -29,7 +29,7 @@
   config:
     file: /data/labour-market/long_term_unemployed_last_3_years.csv
     columns:
-      - name: Quarter
+      - name: Rolling 3-monthly period
         align: center
         template: '{{ quarter_label }}'
       - name: Population unemployed for more than 12 months (000s)
@@ -52,7 +52,7 @@
   config:
     file: /data/labour-market/education_status_last_3_years.csv
     columns:
-      - name: Quarter
+      - name: Rolling 3-monthly period
         align: center
         template: '{{quarter_label}}'
       - name: Employed rate
@@ -75,7 +75,7 @@
   config:
     file: /data/labour-market/education_status_last_3_years.csv
     columns:
-      - name: Quarter
+      - name: Rolling 3-monthly period
         align: center
         template: '{{quarter_label}}'
       - name: Employed rate
