@@ -1,5 +1,5 @@
 tab: Men
-title: Labour market status for men aged 18 to 24 not in full-time education
+title: Labour market status for men aged 16 to 24 not in full-time education
 type: chart
 config:
   id: education_status_men
