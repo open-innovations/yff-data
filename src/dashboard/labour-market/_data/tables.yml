@@ -50,7 +50,7 @@
   caption: |
     This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from A06 SA.
   config:
-    file: /data/labour-market/education_status_last_3_years.csv
+    file: /data/labour-market/labour_market_status_last_3_years.csv
     columns:
       - name: Rolling 3-monthly period
         align: center
@@ -73,7 +73,7 @@
   caption: |
     This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 who are in full-time education, over the last 3 years. This data is derived from A06 SA.
   config:
-    file: /data/labour-market/education_status_last_3_years.csv
+    file: /data/labour-market/labour_market_status_last_3_years.csv
     columns:
       - name: Rolling 3-monthly period
         align: center

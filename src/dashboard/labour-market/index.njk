@@ -62,13 +62,14 @@ The page is automatically regenerated when ONS publishes new data.
 
 {{ comp.viz.main({ visualisations: visualisation | pick('economic_activity_not_in_full_time_education_3_years', 'economic_activity_in_full_time_education_3_years'), test: false }) | safe }}
 
-<code>
-To add Unemployment and Economic Inactivity.
+<p>
+The following charts compare labour market status for young people not in full-time education aged 16-17 and the group aged 18-24.
+</p>
 
-<ul>
-  <li>16-17 and 18-24 for people Not in FTE</li>
-  <li>Women and Men 16-24 Not in FTE</li>
-</ul>
+{{ comp.viz.main({ visualisations: visualisation | pick('status_16_to_17', 'status_18_to_24'), test: false }) | safe }}
+
+<code>
+To add Unemployment and Economic Inactivity Women and Men 16-24 Not in FTE
 </code>
 
 <h2>Data Tables</h2>
