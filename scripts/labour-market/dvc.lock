@@ -4,8 +4,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/labour-market/transform.py
     deps:
     - path: scripts/labour-market/config.py
-      md5: ba9b7565559b2e05a055a47297c09570
-      size: 2098
+      md5: 3bf24f08f1ee896917ecc45fc15c33ee
+      size: 4799
     - path: scripts/labour-market/transform.py
       md5: 99639237710843ceb8aa21bcbc55dada
       size: 505
@@ -14,20 +14,20 @@ stages:
       size: 16830346
     outs:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 2918f59c4d340e5ff81e1a15b15152f2
-      size: 176397
+      md5: 72493b93e9a913bb6784692d9021473e
+      size: 458646
   prepare:
     cmd: PYTHONPATH=. python3 scripts/labour-market/prepare.py
     deps:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 2918f59c4d340e5ff81e1a15b15152f2
-      size: 176397
+      md5: 72493b93e9a913bb6784692d9021473e
+      size: 458646
     - path: scripts/labour-market/config.py
-      md5: ba9b7565559b2e05a055a47297c09570
-      size: 2098
+      md5: 3bf24f08f1ee896917ecc45fc15c33ee
+      size: 4799
     - path: scripts/labour-market/prepare.py
-      md5: 928600c936e8fd2a62b7d9decce4f363
-      size: 4886
+      md5: 1f1e00a6665ce2bcf8a35c0ca31ed2b7
+      size: 5913
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
@@ -35,12 +35,15 @@ stages:
       md5: 331fd2a96ccd35c59a6e52a65aa97e6c
       size: 396
     outs:
-    - path: src/_data/sources/labour-market/education_status_all_data.csv
-      md5: 8731d08882bd8fcb5ea4ed91131a8d23
-      size: 14264
-    - path: src/_data/sources/labour-market/education_status_last_3_years.csv
-      md5: a6cbb5b4e31dcbd1ce57ca3db7a4f01b
-      size: 2034
+    - path: src/_data/sources/labour-market/headlines.csv
+      md5: 969e242fa18c41923a1f97c2c0b68547
+      size: 886
+    - path: src/_data/sources/labour-market/labour_market_status_all_data.csv
+      md5: 251f4fd0d96e1541a8dcd06da68b45fc
+      size: 40857
+    - path: src/_data/sources/labour-market/labour_market_status_last_3_years.csv
+      md5: 5cbf8c8268f459dde3fbb5efe68d9375
+      size: 6123
     - path: src/_data/sources/labour-market/long_term_unemployed_all_data.csv
       md5: 89e36b6cce2a09967dc1ea5cb966dfaf
       size: 6952

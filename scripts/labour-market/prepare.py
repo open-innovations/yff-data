@@ -19,6 +19,10 @@ def summarise(**datasets):
 
     summary = pd.DataFrame({
         'Value': [
+            education_status.age_16_to_24_unemployment_rate_sa \
+                .iloc[-1].round(1),
+            education_status.age_16_to_24_economic_inactivity_rate_sa \
+                .iloc[-1].round(1),
             education_status.age_16_to_24_not_in_ft_education_unemployment_rate_sa \
                 .iloc[-1].round(1),
             education_status.age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa \
@@ -29,6 +33,8 @@ def summarise(**datasets):
                 .iloc[-1].round(1),
         ],
         'Note': [
+            "Young people aged 16-24, unemployed as at {} (seasonally adjusted)".format(last_period_es),
+            "Young people aged 16-24, economically inactive as at {} (seasonally adjusted)".format(last_period_es),
             "Young people aged 16-24, not in full-time education, unemployed as at {} (seasonally adjusted)".format(last_period_es),
             "Young people aged 16-24, not in full-time education, economically inactive as at {} (seasonally adjusted)".format(last_period_es),
             "Young people aged 16-24, unemployed between 6 and 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
@@ -39,26 +45,28 @@ def summarise(**datasets):
         index=pd.Index([
             'Unemployment rate',
             'Economic inactivity rate',
+            'Unemployment rate (Not in full-time education)',
+            'Economic inactivity rate (Not in full-time education)',
             'Long-term unemployment rate 6 to 12 months',
             'Long-term unemployment rate over 12 months',
         ], name='Title')
     )
     summary.fillna('N/A').to_csv(os.path.join(SOURCES_DIR, 'headlines.csv'))
 
-    latest = summary.loc[:, 'Value']
-    latest.index = latest.index.str.replace(r'[\s-]+', '_', regex=True).str.lower()
+    # latest = summary.loc[:, 'Value']
+    # latest.index = latest.index.str.replace(r'[\s-]+', '_', regex=True).str.lower()
 
-    metadata = pd.read_json(METADATA_FILE).melt(ignore_index=False)
-    metadata.index = pd.Index(metadata.variable + '_' + metadata.index)
-    latest = pd.concat([
-      latest,
-      pd.Series({
-          'a06_quarter': last_period_es,
-          'unem01_quarter': last_period_ltu,
-      }),
-      metadata.drop(columns=['variable']).value,
-    ])
-    latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'), indent=2)
+    # metadata = pd.read_json(METADATA_FILE).melt(ignore_index=False)
+    # metadata.index = pd.Index(metadata.variable + '_' + metadata.index)
+    # latest = pd.concat([
+    #   latest,
+    #   pd.Series({
+    #       'a06_quarter': last_period_es,
+    #       'unem01_quarter': last_period_ltu,
+    #   }),
+    #   metadata.drop(columns=['variable']).value,
+    # ])
+    # latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'), indent=2)
 
 
 def create_table(data, columns):
@@ -88,10 +96,15 @@ if __name__ == "__main__":
     )
 
     education_status = create_table(lms_extract, [
+        'JN5R', 'MGUQ', 'MGVF', 'MGVU', 'AIVZ', 'MGWY', 'AIYL',
         'JN6B', 'AGNJ', 'AGOL', 'AGPM', 'AIWI', 'AIXT', 'AIYU',
         'JN62', 'AGNT', 'AGOU', 'AGPV', 'AIXB', 'AIYC', 'AIZD',
+        'JN69', 'AGNH', 'AGOJ', 'AGPK', 'AIWG', 'AIXR', 'AIYS',
+        'JN6A', 'AGNI', 'AGOK', 'AGPL', 'AIWH', 'AIXS', 'AIYT',
+        'JN6E', 'AGNM', 'AGOO', 'AGPP', 'AIWL', 'AIXW', 'AIYX',
+        'JN6H', 'AGNP', 'AGOR', 'AGPS', 'AIWX', 'AIXZ', 'AIZA',
     ])
-    save_files(education_status, 'education_status')
+    save_files(education_status, 'labour_market_status')
 
     long_term_unemployed = create_table(lms_extract, [
         'YBVH', 'YBXG', 'YBXJ', 'YBXM',
@@ -110,3 +123,8 @@ if __name__ == "__main__":
         long_term_unemployed['age_16_to_24_unemployed_sa'] * 100).round(1)
 
     save_files(long_term_unemployed, 'long_term_unemployed')
+
+    summarise(
+        long_term_unemployed=long_term_unemployed,
+        education_status=education_status,
+    )

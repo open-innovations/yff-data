@@ -51,15 +51,12 @@ stages:
       md5: a0b698d5b1238058df0ffbeb44cf9fdf
       size: 209
     - path: scripts/qlfs/prepare.py
-      md5: d8ae2c1a72a69f963559e7e0c55de02c
-      size: 3623
+      md5: 64a8bdf0d44300e0db61170302608155
+      size: 3549
     - path: scripts/util/file.py
       md5: 331fd2a96ccd35c59a6e52a65aa97e6c
       size: 396
     outs:
-    - path: src/_data/sources/qlfs/headlines.csv
-      md5: ea1b573fea5c06b26fb81439b9aa1cdf
-      size: 602
     - path: src/dashboard/labour-market/_data/latest.json
       md5: 8b97d71fd58888a757b2a3886d77bdd0
       size: 428

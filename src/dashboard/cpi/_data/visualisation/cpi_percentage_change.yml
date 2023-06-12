@@ -1,0 +1,20 @@
+tab: null
+title: CPI percentage change
+type: table
+caption: "Monthly, quarterly and yearly CPI percentage changes. Also \nshown is\
+    \ the overall CPI change which includes all categories measured by CPI.\n"
+config:
+    columns:
+    - align: center
+      name: sector
+      rename: Sector
+    - align: right
+      name: Monthly
+      template: '{{ monthly_pct_change | toFixed(1) }}%'
+    - align: right
+      name: Quarterly
+      template: '{{ quarterly_pct_change | toFixed(1) }}%'
+    - align: right
+      name: Yearly
+      template: '{{ yearly_pct_change | toFixed(1) }} %'
+    file: /data/cpi/cpi_all_category_bar_chart.csv

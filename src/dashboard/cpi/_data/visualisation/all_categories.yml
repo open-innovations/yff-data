@@ -1,0 +1,53 @@
+tab: All categories
+title: All categories
+type: chart
+config:
+  file: /data/cpi/cpi_all_category_bar_chart.csv
+  type: bar-chart
+  legend:
+    show: true # Default to false
+    position: "top right"
+  axis:
+    x:
+      grid:
+        stroke-dasharray: 6 2
+        stroke-width: 1
+      max: 20
+      min: -5
+      ticks:
+        - label: -5.0%
+          value: '-5.0'
+        - label: 0.0%
+          value: '0.0'
+        - label: 5.0%
+          value: '5.0'
+        - label: 10.0%
+          value: '10.0'
+        - label: 15.0%
+          value: '15.0'
+        - label: 20.0%
+          value: '20.0'
+    y:
+      grid:
+        stroke-width: 0.5
+  category: sector
+  columns:
+    - name: monthly
+      template: '{{sector}} <br/> monthly change:  {{ monthly_pct_change | toFixed(1)}}%'
+    - name: quarterly
+      template: '{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%'
+    - name: yearly
+      template: '{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%'  
+  series:
+    - colour: '#E55912'
+      title: Monthly change
+      tooltip: monthly
+      value: monthly_pct_change
+    - colour: '#005776'
+      title: Quarterly change
+      tooltip: quarterly
+      value: quarterly_pct_change
+    - colour: '#F7AB3D'
+      title: Yearly change
+      tooltip: yearly
+      value: yearly_pct_change
