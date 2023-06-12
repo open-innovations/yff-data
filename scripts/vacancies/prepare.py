@@ -32,6 +32,21 @@ def prepare_vacancies_by_sector():
         vacancies_by_sector.columns[2]: 'Growth compared with same quarter in 2020 (%)'
         })
     vacancies_by_sector['Sector'] = vacancies_by_sector['Sector'].str.replace('<br>', '', regex=True)
+
+    vacancies_by_sector['Sector'].replace(
+        ['Electricity gas steam & air conditioning supply',
+        'Administrative & support service activities', 
+        'Professional scientific & technical activities', 
+        'Human health & social work activities', 
+        'Wholesale & retail trade; repair of motor vehicles and motor cycles',
+        'Financial & insurance activities'], 
+        ['Electricity, gas & air conditioning', 
+        'Administrative & support', 
+        'Professional & technical', 
+        'Health & social work', 
+        'Wholesale & retail; motor vehicles', 
+        'Financial & insurance']
+        ) 
     vacancies_by_sector.to_csv(os.path.join(DATA_DIR, 'quarterly_growth_all_sectors.csv'), index = False)
     
     #TODO: Use sector names instead of index - order may change
