@@ -68,9 +68,11 @@ The following charts compare labour market status for young people not in full-t
 
 {{ comp.viz.main({ visualisations: visualisation | pick('status_16_to_17', 'status_18_to_24'), test: false }) | safe }}
 
-<code>
-To add Unemployment and Economic Inactivity Women and Men 16-24 Not in FTE
-</code>
+<p>
+The following charts compare labour market status for men and women aged 16 to 24 not in full-time education.
+</p>
+
+{{ comp.viz.main({ visualisations: visualisation | pick('status_women', 'status_men'), test: false }) | safe }}
 
 <h2>Data Tables</h2>
 {{ comp.viz.main({ visualisations: tables }) | safe }}

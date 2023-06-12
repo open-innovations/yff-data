@@ -4,8 +4,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/labour-market/transform.py
     deps:
     - path: scripts/labour-market/config.py
-      md5: b1293fa1667f93905d9b85e273a4bc92
-      size: 3788
+      md5: 3bf24f08f1ee896917ecc45fc15c33ee
+      size: 4799
     - path: scripts/labour-market/transform.py
       md5: 99639237710843ceb8aa21bcbc55dada
       size: 505
@@ -14,20 +14,20 @@ stages:
       size: 16830346
     outs:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 5e7964484723fdf35c1b36d215f31d1c
-      size: 345407
+      md5: 72493b93e9a913bb6784692d9021473e
+      size: 458646
   prepare:
     cmd: PYTHONPATH=. python3 scripts/labour-market/prepare.py
     deps:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 5e7964484723fdf35c1b36d215f31d1c
-      size: 345407
+      md5: 72493b93e9a913bb6784692d9021473e
+      size: 458646
     - path: scripts/labour-market/config.py
-      md5: b1293fa1667f93905d9b85e273a4bc92
-      size: 3788
+      md5: 3bf24f08f1ee896917ecc45fc15c33ee
+      size: 4799
     - path: scripts/labour-market/prepare.py
-      md5: 5540761329b698beb1953cd42021ab49
-      size: 5785
+      md5: 1f1e00a6665ce2bcf8a35c0ca31ed2b7
+      size: 5913
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
@@ -39,11 +39,11 @@ stages:
       md5: 969e242fa18c41923a1f97c2c0b68547
       size: 886
     - path: src/_data/sources/labour-market/labour_market_status_all_data.csv
-      md5: 0e918845849b434b6bfd818c7b65962c
-      size: 30041
+      md5: 251f4fd0d96e1541a8dcd06da68b45fc
+      size: 40857
     - path: src/_data/sources/labour-market/labour_market_status_last_3_years.csv
-      md5: 441bbce5831e6005631be5c7e24e8aa7
-      size: 4410
+      md5: 5cbf8c8268f459dde3fbb5efe68d9375
+      size: 6123
     - path: src/_data/sources/labour-market/long_term_unemployed_all_data.csv
       md5: 89e36b6cce2a09967dc1ea5cb966dfaf
       size: 6952

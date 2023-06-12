@@ -41,6 +41,25 @@ column_mapper = {
     'AIXS': 'age_18_to_24_not_in_ft_education_unemployment_rate_sa',  # Unemployed rate, 18-24
     'AIYT': 'age_18_to_24_not_in_ft_education_economic_inactivity_rate_sa',  # Economically inactive rate, 18-24
 
+
+    # Men 16-24 not in FTE
+    'JN6E': 'men_16_to_24_not_in_ft_education_total_sa',
+    'AGNM': 'men_16_to_24_not_in_ft_education_in_employment_sa',
+    'AGOO': 'men_16_to_24_not_in_ft_education_unemployed_sa',
+    'AGPP': 'men_16_to_24_not_in_ft_education_economically_inactive_sa',
+    'AIWL': 'men_16_to_24_not_in_ft_education_employment_rate_sa',
+    'AIXW': 'men_16_to_24_not_in_ft_education_unemployment_rate_sa',
+    'AIYX': 'men_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',
+
+    # Women 16-24 not in FTE
+    'JN6H': 'women_16_to_24_not_in_ft_education_total_sa',
+    'AGNP': 'women_16_to_24_not_in_ft_education_in_employment_sa',
+    'AGOR': 'women_16_to_24_not_in_ft_education_unemployed_sa',
+    'AGPS': 'women_16_to_24_not_in_ft_education_economically_inactive_sa',
+    'AIWX': 'women_16_to_24_not_in_ft_education_employment_rate_sa',
+    'AIXZ': 'women_16_to_24_not_in_ft_education_unemployment_rate_sa',
+    'AIZA': 'women_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',
+
     # 16-17
     'YBVH': 'age_16_to_17_unemployed_sa',
     'YBXG': 'age_16_to_17_unemployed_6_to_12_months_sa',

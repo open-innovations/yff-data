@@ -101,6 +101,8 @@ if __name__ == "__main__":
         'JN62', 'AGNT', 'AGOU', 'AGPV', 'AIXB', 'AIYC', 'AIZD',
         'JN69', 'AGNH', 'AGOJ', 'AGPK', 'AIWG', 'AIXR', 'AIYS',
         'JN6A', 'AGNI', 'AGOK', 'AGPL', 'AIWH', 'AIXS', 'AIYT',
+        'JN6E', 'AGNM', 'AGOO', 'AGPP', 'AIWL', 'AIXW', 'AIYX',
+        'JN6H', 'AGNP', 'AGOR', 'AGPS', 'AIWX', 'AIXZ', 'AIZA',
     ])
     save_files(education_status, 'labour_market_status')
 
