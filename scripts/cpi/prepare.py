@@ -35,14 +35,15 @@ def summarise(metadata):
     }).T.reset_index()
 
     latest = latest.rename(columns = {'index': 'sector', 0: 'Value'})
-    latest['Note'] = [
-        "Consumer prices index change (%) on last month, as at {}".format(metadata.loc["published", "value"]),
-        "Consumer prices index change (%) on last quarter, as at {}".format(metadata.loc["published", "value"]),
-        "Consumer prices index change (%) on the same month last year, as at {}".format(metadata.loc["published", "value"])
-    ]
     latest['Suffix'] = '%'
     latest = latest.round(1)
     indicator = pd.read_csv('data/cpi/indicator.csv', index_col='sector')
+    print(indicator)
+    latest['Note'] = [
+        "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[0,0]),
+        "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[1,0]),
+        "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[2,0])
+    ]
     merged_df = latest.join(indicator, on='sector').set_index('sector')
     merged_df = merged_df.rename(index={'monthly_pct_change': 'Monthly', 'quarterly_pct_change':'Quarterly', 'yearly_pct_change':'Yearly'})
     merged_df.to_csv(os.path.join(INPUTS_DIR, 'headlines.csv'), index=True)
@@ -84,22 +85,27 @@ def bar_chart(data, n, make_indicator=True):
                      'cpi_index_12_miscellaneous_goods_and_services_2015_100': 'Miscellaneous goods & services'},
                      inplace=True)
     indicators = []
+    sgn = []
+    index = ['monthly_pct_change', 'quarterly_pct_change', 'yearly_pct_change']
+    for i in index:
+        if df.loc['All CPI Categories', i] > 0:
+            sgn.append('+')
     if pct_change(last_month.loc['D7BT'].value, second_last_month.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_month.loc['D7BT'].value):
-        indicators.append('\u2191')
+        indicators.append('an increase')
     else:
-        indicators.append('\u2193')
+        indicators.append('a decrease')
 
     if pct_change(second_last_month.loc['D7BT'].value, second_last_quarter.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_quarter.loc['D7BT'].value):
-        indicators.append('\u2191')
+        indicators.append('an increase')
     else:
-        indicators.append('\u2193')
+        indicators.append('a decrease')
 
     if pct_change(second_last_month.loc['D7BT'].value, second_last_year.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_year.loc['D7BT'].value):
-        indicators.append(str('\u2191'))
+        indicators.append('an increase')
     else:
-        indicators.append(str('\u2193'))
+        indicators.append('a decrease')
     if make_indicator == True:
-        indicator = pd.DataFrame(data={'indicator': indicators}, index=['monthly_pct_change', 'quarterly_pct_change', 'yearly_pct_change'])
+        indicator = pd.DataFrame(data={'indicator': indicators, 'sign': sgn}, index=index)
         indicator.index.rename('sector', inplace=True)
         indicator.to_csv(os.path.join(INPUTS_DIR, 'indicator.csv'))
         #print(indicator)

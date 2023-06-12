@@ -36,7 +36,11 @@ For the CPI figures, the transform script extracts the following measures:
 * `D7C6`: Restaurants and hotels
 * `D7C7`: Miscellaneous goods and services 
 
-To calculate percentage changes we take the most recent month's index value (the last line in the file), subtract the previous month/quarter/year's value, divide by that same value, and multiply by 100. As an equation this can be written as (current-previous / previous)*100. The result is rounded to one decimal place. 
+Here, percentage change shows by how much the cosumer price index has increased relative to the price last month, quarter and year. To calculate percentage changes we take the most recent month's index value (the last line in the file), subtract the previous month/quarter/year's value, divide by that same value, and multiply by 100. As an equation this can be written as (current-previous / previous)*100. The result is rounded to one decimal place. 
+
+Separately, we also compare this to the same set of values from the previous update (usually last month) to determine whether it has increased or decreased relative to the last update.
+
+Finally, we explicitly indicate the sign to show if the percentage change is an positive or negative. A positive percentage change means the cost of goods is rising, and negative change means the cost of goods is falling.
 
 For the line chart, we take monthly data for the past 10 years from the most recent release date. 
 

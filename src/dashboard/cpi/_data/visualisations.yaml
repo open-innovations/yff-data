@@ -11,7 +11,7 @@
     title: sector
     units:
       postfix: Suffix
-      prefix: Prefix
+      prefix: sign
     value: Value
     width: 333px
   title: "Consumer prices index change (%)"
