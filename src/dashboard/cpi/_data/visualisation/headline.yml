@@ -1,0 +1,19 @@
+title: Consumer prices index change (%)
+type: dashboard
+config:
+  id: headlines
+  file: /data/cpi/headlines.csv
+  title: sector
+  value: Value
+  note: Note
+  width: 333px
+  units:
+    postfix: Suffix
+    prefix: sign
+  panels:
+    - colour: Orange
+      name: Monthly
+    - colour: Blue
+      name: Quarterly
+    - colour: Gold
+      name: Yearly
