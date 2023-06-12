@@ -45,6 +45,8 @@ def summarise(**datasets):
         index=pd.Index([
             'Unemployment rate',
             'Economic inactivity rate',
+            'Unemployment rate (Not in full-time education)',
+            'Economic inactivity rate (Not in full-time education)',
             'Long-term unemployment rate 6 to 12 months',
             'Long-term unemployment rate over 12 months',
         ], name='Title')
@@ -96,6 +98,10 @@ if __name__ == "__main__":
         'JN5R', 'MGUQ', 'MGVF', 'MGVU', 'AIVZ', 'MGWY', 'AIYL',
         'JN6B', 'AGNJ', 'AGOL', 'AGPM', 'AIWI', 'AIXT', 'AIYU',
         'JN62', 'AGNT', 'AGOU', 'AGPV', 'AIXB', 'AIYC', 'AIZD',
+        'JN69', 'AGNH', 'AGOJ', 'AGPK', 'AIWG', 'AIXR', 'AIYS',
+        'JN6A', 'AGNI', 'AGOK', 'AGPL', 'AIWH', 'AIXS', 'AIYT',
+        'JN6E', 'AGNM', 'AGOO', 'AGPP', 'AIWL', 'AIXW', 'AIYX',
+        'JN6H', 'AGNP', 'AGOR', 'AGPS', 'AIWX', 'AIXZ', 'AIZA',
     ])
     save_files(labour_market_status, 'labour_market_status')
 
