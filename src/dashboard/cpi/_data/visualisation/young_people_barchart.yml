@@ -1,0 +1,44 @@
+config:
+  axis:
+    x:
+      grid:
+        stroke-dasharray: 6 2
+        stroke-width: 1
+      max: 20
+      min: 0
+      ticks:
+      - label: 0.0%
+        value: '0.0'
+      - label: 20.0%
+        value: '20.0'
+    y:
+      grid:
+        stroke-width: 0.5
+  category: sector
+  columns:
+  - name: monthly
+    template: '{{sector}} <br/> monthly change:  {{ monthly_pct_change | toFixed(1)}}%'
+  - name: quarterly
+    template: '{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%'
+  - name: yearly
+    template: '{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%'
+  file: /data/cpi/cpi_barchart.csv
+  legend:
+    position: top right
+    show: true
+  series:
+  - colour: '#E55912'
+    title: Monthly change
+    tooltip: monthly
+    value: monthly_pct_change
+  - colour: '#005776'
+    title: Quarterly change
+    tooltip: quarterly
+    value: quarterly_pct_change
+  - colour: '#F7AB3D'
+    title: Yearly change
+    tooltip: yearly
+    value: yearly_pct_change
+  type: bar-chart
+title: Categories most affecting young people
+type: chart

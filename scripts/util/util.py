@@ -33,7 +33,8 @@ def tick_gen(data, dtype, cut_labels=True):
     
     #get the max and min values, and find which is biggest. 
     # Abs taken as may be negative
-    data = data.drop(index='Prefix')
+    # print(data)
+    # data = data.drop(index='sgn')
     data_max = max(data.max(axis=1, numeric_only=True))
     data_min = min(data.min(axis=1, numeric_only=True))
     chart_max = max(abs(data_max), abs(data_min))

@@ -37,3 +37,6 @@ stages:
       - src/_data/sources/labour-market/headlines.csv:
           cache: false
           persist: false
+      - src/dashboard/labour-market/_data/latest.json:
+          cache: false
+          persist: false

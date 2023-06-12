@@ -132,9 +132,6 @@ def read_dates(file, key, **kwargs):
 
 
 if __name__ == "__main__":
-    transform_A06()
-    transform_UNEM01()
-
     pd.concat([
         read_dates(A06_SA_LATEST, 'a06', usecols=[1,8]),
         read_dates(UNEM01_SA_LATEST, 'unem01', usecols=[1,9]),

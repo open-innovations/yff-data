@@ -38,7 +38,6 @@ def summarise(metadata):
     latest['Suffix'] = '%'
     latest = latest.round(1)
     indicator = pd.read_csv('data/cpi/indicator.csv', index_col='sector')
-    print(indicator)
     latest['Note'] = [
         "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[0,0]),
         "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[1,0]),
@@ -152,7 +151,7 @@ if __name__ == '__main__':
     metadata = read_meta()
     summarise(metadata)
 
-    #copy file to other directory
+    #copy files to other directory
     copy_file("cpi_barchart.csv")
     copy_file("cpi_linechart.csv")
     copy_file("metadata.json")

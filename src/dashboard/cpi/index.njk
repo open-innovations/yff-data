@@ -9,7 +9,6 @@ topics:
 raw_data:
   - /data/raw/cpi/cpi.csv
 ---
-
 <h2>About the data on this page </h2>
 <p>
 These visualisations are driven by consumer price inflation (CPI) data from the 
@@ -23,7 +22,7 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
 {{ sources.cpi.metadata.next_update }}.
 </p>
 
-<h2>Consumer Price Index Changes</h2>
+<h2>Consumer price index percentage changes</h2>
 
 <p>
   This chart shows the monthly, quarterly and yearly percentage changes on the key categories which most affect young 
@@ -31,12 +30,13 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
   all those shown in the second tab.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('categories_affecting_young_people', 'all_categories'), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('young_people_barchart', 'all_category_barchart'), test: false }) | safe }}
 
-{# {{ comp.viz.main(cpi_linechart.rows | dump()) }} #}
-
-{# {{ comp.viz.main({ visualisations: visualisations| pick('cpi_time_series'), test: false }) | safe }} #}
-
+<h2>Consumer price index 10 year history</h2>
+<p>The line chart below shows consumer prices index for the categories most-affecting young people over the last 10 years. 
+  The start date is 10 years ago from the most recent publication of CPI data. The data in this chart comes from the same dataset 
+  as the percentage change figures.</p>
+{{ comp.viz.main({ visualisations: visualisation | pick('time_series'), test: false }) | safe }}
 
 <h2> Data Tables </h2>
-{# {{ comp.viz.main({ visualisations: visualisations| pick('cpi_percentage_change'), test: false }) | safe }} #}
+{{ comp.viz.main({ visualisations: tables }) | safe }}

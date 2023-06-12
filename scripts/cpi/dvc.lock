@@ -27,8 +27,8 @@ stages:
       md5: 8b7f7ba313f67e806a1dec5aed87dbc4
       size: 128493
     - path: scripts/cpi/prepare.py
-      md5: 4276b721aacebdd1c9e413150ff26c7f
-      size: 8128
+      md5: 298e6c638a63a19458c2c0339c990200
+      size: 8107
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       md5: d74b07dc0cd5c94fb5739c24741b0afa
@@ -50,3 +50,18 @@ stages:
       md5: 5134c59bd5cc53a322e7b0cf11f6df76
       size: 58
       isexec: true
+  vis:
+    cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
+    deps:
+    - path: data/cpi/cpi_all_category_bar_chart.csv
+      md5: b161b99931873d54cf787421d85f2e8a
+      size: 567
+    - path: data/cpi/cpi_barchart.csv
+      md5: d74b07dc0cd5c94fb5739c24741b0afa
+      size: 281
+    - path: scripts/cpi/vis.py
+      md5: 17f4b76f6c4656223cf9a75870c0e1a1
+      size: 1094
+    - path: scripts/util/util.py
+      md5: 3bc1d304420fe88f833f8fd510f22b8a
+      size: 3863

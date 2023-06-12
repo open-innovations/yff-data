@@ -1,0 +1,45 @@
+- caption: "Monthly, quarterly and yearly CPI percentage changes. Also \nshown is\
+    \ the overall CPI change which includes all categories measured by CPI.\n"
+  config:
+    columns:
+      - align: center
+        name: sector
+        rename: Sector
+      - align: right
+        name: Monthly
+        template: "{{ monthly_pct_change | toFixed(1) }}%"
+      - align: right
+        name: Quarterly
+        template: "{{ quarterly_pct_change | toFixed(1) }}%"
+      - align: right
+        name: Yearly
+        template: "{{ yearly_pct_change | toFixed(1) }} %"
+    file: /data/cpi/cpi_all_category_bar_chart.csv
+  tab: Percentage change
+  title: Percentage change
+  type: table
+- caption: Consumer prices index for last 10 years (rolling start date)
+  config:
+    columns: 
+      - align: center
+        name: named_date
+        rename: Date
+      - align: right
+        name: All CPI categories
+        template: "{{cpi_index_00_all_items_2015_100}}"
+      - align: right
+        name: Food & non-alcoholic beverages
+        template: "{{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
+      - align: right
+        name: Clothing and Footwear
+        template: "{{cpi_index_03_clothing_and_footwear_2015_100}}"
+      - align: right
+        name: Housing, water, electricity, gas & other fuels
+        template: "{{cpi_index_04_housing_water_and_fuels_2015_100}}"
+      - align: right
+        name: Recreation & culture
+        template: "{{cpi_index_09_recreation_&_culture_2015_100}}"
+    file: /data/cpi/cpi_linechart.csv
+  tab: Time series
+  title: Time series
+  type: table
