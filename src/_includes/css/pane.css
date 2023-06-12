@@ -1,3 +1,7 @@
 .pane > * + * {
   margin-top: 1rem;
 }
+
+main.dashboard-page .pane svg {
+  max-height: 35em;
+}
