@@ -4,8 +4,8 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/labour-market/transform.py
     deps:
     - path: scripts/labour-market/config.py
-      md5: ba9b7565559b2e05a055a47297c09570
-      size: 2098
+      md5: d2b5cc0d0d967845db017b6131821628
+      size: 2428
     - path: scripts/labour-market/transform.py
       md5: 99639237710843ceb8aa21bcbc55dada
       size: 505
@@ -14,17 +14,17 @@ stages:
       size: 16830346
     outs:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 2918f59c4d340e5ff81e1a15b15152f2
-      size: 176397
+      md5: 2e19cb5c562bb8135573117d88f5df75
+      size: 233541
   prepare:
     cmd: PYTHONPATH=. python3 scripts/labour-market/prepare.py
     deps:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 2918f59c4d340e5ff81e1a15b15152f2
-      size: 176397
+      md5: 2e19cb5c562bb8135573117d88f5df75
+      size: 233541
     - path: scripts/labour-market/config.py
-      md5: ba9b7565559b2e05a055a47297c09570
-      size: 2098
+      md5: d2b5cc0d0d967845db017b6131821628
+      size: 2428
     - path: scripts/labour-market/prepare.py
       md5: 928600c936e8fd2a62b7d9decce4f363
       size: 4886

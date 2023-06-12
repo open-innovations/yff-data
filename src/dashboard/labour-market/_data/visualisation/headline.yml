@@ -5,7 +5,6 @@ config:
   file: /data/qlfs/headlines.csv
   title: Title
   value: Value
-  width: 250px
   note: Note
   units:
     postfix: Suffix
@@ -13,9 +12,5 @@ config:
     - name: Unemployment rate
       colour: Orange
       suffix: "%"
-    - name: Long-term unemployment rate 6 to 12 months
-      colour: Plum
-    - name: Long-term unemployment rate over 12 months
-      colour: Blue
     - name: Economic inactivity rate
       colour: Gold
