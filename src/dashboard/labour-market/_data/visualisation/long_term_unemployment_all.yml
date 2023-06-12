@@ -13,8 +13,6 @@ config:
     position: 'top right'
   axis:
     x: # Horizontal axis
-      title:
-        label: Rolling 3-month period
       grid:
         stroke: '#efefef'
     y: # The vertical axes

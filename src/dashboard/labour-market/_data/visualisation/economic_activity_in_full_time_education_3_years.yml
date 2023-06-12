@@ -4,7 +4,7 @@ type: chart
 # caption: The labour market status for 16-24 year-olds who are in full-time education.
 source: ''
 config:
-  file: '/data/labour-market/labour_market_status_last_3_years.csv'
+  file: '/data/labour-market/education_status_last_3_years.csv'
   type: line-chart
   #source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
   legend:
@@ -12,8 +12,6 @@ config:
     position: 'top right'
   axis:
     x: # Horizontal axis
-      title:
-        label: Rolling 3-month period
       grid:
         stroke: '#efefef'
     y: # The vertical axes
