@@ -8,11 +8,11 @@ stages:
       size: 747
     outs:
     - path: working/qlfs/a06latest.xls
-      md5: f15f94af6e0824d160fbe3e3fb36e76b
-      size: 1406464
+      md5: 2a0840dfbe0b05c002cc080d680dfcd9
+      size: 1410048
     - path: working/qlfs/unem01latest.xls
-      md5: 587a94844b77dd8626cbcf8335d81789
-      size: 958976
+      md5: 96d072fdea1c0214d6dd25ed41846515
+      size: 961536
   transform:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform.py
     deps:
@@ -23,20 +23,20 @@ stages:
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
     - path: working/qlfs/a06latest.xls
-      md5: f15f94af6e0824d160fbe3e3fb36e76b
-      size: 1406464
+      md5: 2a0840dfbe0b05c002cc080d680dfcd9
+      size: 1410048
     - path: working/qlfs/unem01latest.xls
-      md5: 587a94844b77dd8626cbcf8335d81789
-      size: 958976
+      md5: 96d072fdea1c0214d6dd25ed41846515
+      size: 961536
     outs:
     - path: data/qlfs/metadata.json
-      md5: a0b698d5b1238058df0ffbeb44cf9fdf
+      md5: 6365e7781fb8463b45837a8f86db330d
       size: 209
   prepare:
     cmd: PYTHONPATH=. python3 scripts/qlfs/prepare.py
     deps:
     - path: data/qlfs/metadata.json
-      md5: a0b698d5b1238058df0ffbeb44cf9fdf
+      md5: 6365e7781fb8463b45837a8f86db330d
       size: 209
     - path: scripts/qlfs/prepare.py
       md5: 6dd8b6a7bef236b2d95077b82c9ff03a
@@ -46,7 +46,7 @@ stages:
       size: 396
     outs:
     - path: src/dashboard/labour-market/_data/dates.json
-      md5: bc08696082d3791b05135bc60ec05870
+      md5: b9ffd924e39c8ce8bae2434e38b4b9d4
       size: 192
   transform-edd:
     cmd: PYTHONPATH=. python3 scripts/qlfs/transform-edd.py
