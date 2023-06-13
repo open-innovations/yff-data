@@ -17,7 +17,7 @@ config:
         stroke-dasharray: "6 2"
         stroke-width: 1
       title:
-        label: Rolling quarterly period
+        label: Rolling 3-month period
       # Auto-generate the the ticks.
       # ticks: []
       # Requires a column named x_tick_labels to be defined - this one uses quarter_label
