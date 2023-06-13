@@ -16,7 +16,8 @@ config:
       title:
         label: Rolling 3-month period
       grid:
-        stroke: '#efefef'
+        stroke-dasharray: "6 2"
+        stroke-width: 1
     y: # The vertical axes
       min: 0 # A minimum value
       max: 40 # A maximum value
