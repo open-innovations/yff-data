@@ -22,11 +22,6 @@ topics:
   published by the Office of National Statistics, and show the estimated vacancies over a rolling three-month period.
 </p>
 
-<p>
-  The current data was published on {{ latest.last_monthly_date | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.last_quarterly_date }} quarter.
-</p>
-
 {{ comp.viz.main({ visualisations: visualisation | pick('estimated_vacancies'), test: false }) | safe }}
 
 <h2>Growth by sector</h2>
@@ -37,11 +32,6 @@ topics:
  the Office of National Statistics. Categories in each tab were selected based on the
  <a href= "https://youthfuturesfoundation.org/wp-content/uploads/2021/10/Large-Employers-and-the-Youth-Labour-Market-report.pdf">Large Employers and the Youth Labour Market 
  Report</a> published by the Youth Futures Foundation.
-</p>
-
-<p>
-  The current data was published on {{ latest.last_monthly_date | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.last_quarterly_date }} quarter.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisation | pick('growth_key_youth_sectors', 'growth_wanted_youth_sectors', 'quarterly_growth_all_sectors'), test: false }) | safe }}
