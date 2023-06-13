@@ -37,8 +37,8 @@ The page is automatically regenerated when ONS publishes new data.
 </p>
 
 <p>
-  The current data was published on {{ latest.unem01_published | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.unem01_quarter }} quarter. The next scheduled publication is {{ latest.unem01_next_update | date('HUMAN_DATE') }}.
+  The current data was published on {{ dates.unem01_published | date('HUMAN_DATE') }} and includes data up to the 
+  {{ latest.most_recent_lms_period }} quarter. The next scheduled publication is {{ dates.unem01_next_update | date('HUMAN_DATE') }}.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisation | pick('long_term_unemployment_3_years', 'long_term_unemployment_all'), test: false }) | safe }}
@@ -56,8 +56,8 @@ The page is automatically regenerated when ONS publishes new data.
 </p>
 
 <p>
-  The current data was published on {{ latest.a06_published | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.a06_quarter }} quarter. The next scheduled publication is {{ latest.a06_next_update | date('HUMAN_DATE') }}.
+  The current data was published on {{ dates.a06_published | date('HUMAN_DATE') }} and includes data up to the 
+  {{ latest.most_recent_lms_period }} quarter. The next scheduled publication is {{ dates.a06_next_update | date('HUMAN_DATE') }}.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisation | pick('economic_activity_not_in_full_time_education_3_years', 'economic_activity_in_full_time_education_3_years'), test: false }) | safe }}
