@@ -6,6 +6,7 @@ type: chart
 #   In addition, the unemployment and economically inactive rates are shown.
 #   These figures are based on the population in the relevant age range (16-24 years old).
 config:
+  id: all_young_people
   file: "/data/neet/neet_all_data.csv"
   type: line-chart
   legend: 

@@ -15,8 +15,8 @@
 {{ renderViz(search.data('dashboard/labour-market/').visualisation.economic_activity_not_in_full_time_education_3_years) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: '/dashboard/neet/' } %}
-{{ renderViz(search.data('dashboard/neet/').visualisations[1]) | safe }}
+{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/neet/').url + '#all_young_people' } %}
+{{ renderViz(search.data('dashboard/neet/').visualisation.all_young_people) | safe }}
 {% endcomp %}
 
 {% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/vacancies/').url + '#estimated_vacancies' } %}

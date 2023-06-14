@@ -32,7 +32,3 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
 
 <h2>Data Tables</h2>
 {{ comp.viz.main({ visualisations: visualisation | pick('last_3_years_all', 'young_women_neet_last_3_years', 'young_men_neet_last_3_years'), test: false }) | safe }}
-
-
-
-
