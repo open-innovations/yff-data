@@ -125,7 +125,7 @@ def tick_gen(data, suffix, cut_labels=True):
                 top_tick = ticks[-1] + tick_size
                 tick_labels.append({'value': '{}'.format(top_tick), 'label': '{}{}'.format(top_tick, suffix)})
                 
-            elif tick[-1] < 0:
+            elif ticks[-1] < 0:
                 top_tick = ticks[-1] - tick_size
                 tick_labels.append({'value': '{}'.format(top_tick), 'label': '{}{}'.format(top_tick, suffix)})
     
