@@ -54,7 +54,7 @@ def prepare_vacancies_by_sector():
     vacancies_by_sector.to_csv(os.path.join(DATA_DIR, 'quarterly_growth_all_sectors.csv'), index = False)
     
     #TODO: Use sector names instead of index - order may change
-    key_youth_sectors = vacancies_by_sector.drop([0,1,2,4,7,8])
+    key_youth_sectors = vacancies_by_sector.drop([0,1,4,7,8])
     key_youth_sectors['Sector'] = key_youth_sectors['Sector'].str.wrap(25)
     key_youth_sectors.to_csv(os.path.join(DATA_DIR, 'growth_key_youth_sectors.csv'), index = False)
 
