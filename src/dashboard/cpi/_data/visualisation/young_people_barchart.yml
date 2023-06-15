@@ -9,6 +9,12 @@ config:
       ticks:
       - label: 0.0%
         value: '0.0'
+      - label: 5.0%
+        value: '5.0'
+      - label: 10.0%
+        value: '10.0'
+      - label: 15.0%
+        value: '15.0'
       - label: 20.0%
         value: '20.0'
     y:

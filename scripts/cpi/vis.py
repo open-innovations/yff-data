@@ -7,7 +7,7 @@ def update_ticks(data_dir, vis_dir):
 
     #get the labels
     data = pd.read_csv(data_dir, nrows=6)
-    min, max, labels = tick_gen(data, dtype='percent')
+    min, max, labels = tick_gen(data, suffix='%')
     #print(min, max)
     with open(vis_dir) as f:
         viz = yaml.safe_load(f.read())
