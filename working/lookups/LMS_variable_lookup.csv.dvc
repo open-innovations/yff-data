@@ -8,3 +8,4 @@ outs:
 - md5: faf1d16226f95f8d2448b90d1d5868a0
   size: 137661
   path: LMS_variable_lookup.csv
+  isexec: true
