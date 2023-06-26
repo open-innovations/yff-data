@@ -26,27 +26,21 @@ stages:
     - path: data/cpi/cpi_all_category_bar_chart.csv
       md5: 5658095eb9391747bf1e3859e69d658e
       size: 567
-      isexec: true
     - path: data/cpi/cpi_barchart.csv
       md5: fa027186ba7e1b14b4a99e1a7e1d625a
       size: 281
-      isexec: true
     - path: data/cpi/cpi_linechart.csv
       md5: 3147b3d8a170cfa6d5de0e6eb80e06dc
       size: 12439
-      isexec: true
     - path: data/cpi/headlines.csv
-      md5: 650a305cabb0c6ed492d25bd98f78766
-      size: 312
-      isexec: true
+      md5: 8dc90fd6b540ad39384c7ce7ba008309
+      size: 315
     - path: data/cpi/indicator.csv
       md5: 580740d0eed7cffc9e6022572e31ad89
       size: 121
-      isexec: true
     - path: data/cpi/metadata.json
-      md5: 5134c59bd5cc53a322e7b0cf11f6df76
-      size: 58
-      isexec: true
+      md5: f7e5c964bfb478a4e27e0b0871aa54a3
+      size: 59
     - path: data/cpi/prefix.csv
       md5: a3e78778cda4985d06ee985628d68a8d
       size: 84
@@ -54,29 +48,24 @@ stages:
       md5: eeca37625b8119897ceda46e96f7a359
       size: 128805
     - path: scripts/cpi/prepare.py
-      md5: 3c09bcb53675b52564b64ec6514946f2
-      size: 8138
+      md5: 298e6c638a63a19458c2c0339c990200
+      size: 7948
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       md5: fa027186ba7e1b14b4a99e1a7e1d625a
       size: 281
-      isexec: true
     - path: src/_data/sources/cpi/cpi_linechart.csv
       md5: 3147b3d8a170cfa6d5de0e6eb80e06dc
       size: 12439
-      isexec: true
     - path: src/_data/sources/cpi/headlines.csv
-      md5: 650a305cabb0c6ed492d25bd98f78766
-      size: 312
-      isexec: true
+      md5: 8dc90fd6b540ad39384c7ce7ba008309
+      size: 315
     - path: src/_data/sources/cpi/indicator.csv
       md5: 580740d0eed7cffc9e6022572e31ad89
       size: 121
-      isexec: true
     - path: src/_data/sources/cpi/metadata.json
-      md5: 5134c59bd5cc53a322e7b0cf11f6df76
-      size: 58
-      isexec: true
+      md5: f7e5c964bfb478a4e27e0b0871aa54a3
+      size: 59
   vis:
     cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
     deps:
@@ -97,9 +86,8 @@ stages:
     deps:
     - path: scripts/cpi/extract.py
       md5: 27036d00c305114aa8120101a7836274
-      size: 466
+      size: 453
     outs:
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: a0a65f14b367259b0f26de6186f918ec
       size: 2155946
-      isexec: true
