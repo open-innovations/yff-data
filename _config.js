@@ -118,6 +118,8 @@ site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
 site.filter('isArray', (item) => Array.isArray(item));
 site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
 
+site.filter('findByAttribute', (list, key, value) => list.filter(x => x[key] === value))
+
 
 // TODO fix this function!
 // Timezone awareness is an issue

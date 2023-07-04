@@ -1,13 +1,14 @@
 ---
 css: |
   .grid-block {
-    --width: auto;
     --padding: 1em;
     --bg-colour: #fceee7;
-    width: var(--width);
+    --fg-colour: inherit;
+    width: var(--width, auto);
     max-width: 100%;
     padding: var(--padding);
     background: var(--bg-colour);
+    color: var(--fg-colour);
   }
   .grid-block-flex {
     display: flex;
@@ -39,6 +40,7 @@ css: |
 #}
 {% set styling -%}
 style="
+  {%- if colour %}--fg-colour:{{ colour }};{% endif -%}
   {%- if background %}--bg-colour:{{ background }};{% endif -%}
   {%- if padding %}--padding:{{ padding }};{% endif -%}
   {%- if width %}--width:{{ width }};{% endif -%}
@@ -47,11 +49,13 @@ style="
 {%- endset -%}
 
 {% if link %}
-  <a href="{{ link }}" class="grid-block" {{ styling | safe }}>
-    <{{tag or 'div'}} class="grid-block-flex">
-      {{ content | safe }}
-    </{{tag or 'div'}}>
-  </a>
+  <{{tag or 'div'}} class="grid-block {{ classes -}}" {{ styling | safe }}>
+    <a href="{{ link }}">
+      <div class="grid-block-flex">
+        {{ content | safe }}
+      </div>
+    </a>
+  </{{ tag or 'div' }}>
 {% else %}
   <{{tag or 'div'}} class="grid-block grid-block-flex" {{ styling | safe }}>
     {{ content | safe }}

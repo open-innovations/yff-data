@@ -29,13 +29,13 @@ body {
 }
 
 .embolden-first {
-  & p:first-of-type:not(:last-of-type) {
+  & > p:first-of-type:not(:last-of-type) {
     font-weight: bold;
   }
 }
 
 .embiggen-first {
-  & p:first-of-type:not(:last-of-type) {
+  & > p:first-of-type:not(:last-of-type) {
     font-size: 1.2em;
   }
 }

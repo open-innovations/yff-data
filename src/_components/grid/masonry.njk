@@ -9,6 +9,7 @@ css: |
       flex-grow: 1;
       flex-shrink: 0;
       flex-basis: auto;
+      width: var(--masonry-block-width, auto);
     }
     & .pane {
       &:hover, &:focus {
@@ -17,6 +18,6 @@ css: |
     }
   }
 ---
-<div class="grid-masonry" {% if min_width %}style="--auto-grid-min-size: {{ min_width }};"{% endif %}>
+<div class="grid-masonry" {% if block_width %}style="--masonry-block-width: {{ block_width }};"{% endif %}>
   {{ content | safe }}
 </div>

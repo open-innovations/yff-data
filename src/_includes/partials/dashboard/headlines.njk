@@ -1,49 +1,59 @@
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url + '#labour-market-status', width: '15rem' } %}
-<h3>Unemployment</h3>
-<p class='dashboard-number'>
-  {{ search.data('dashboard/labour-market/').latest.unemployment_rate }}%
-</p>
-<p class="dashboard-note">
-  Unemployment rate for people 16-24, seasonally adjusted.
-</p>
-<p class="dashboard-note">
-  For period {{ search.data('dashboard/labour-market/').dates.most_recent_lms_period }}.
-</p>
-{% endcomp %}
+{%- macro dashboard_block(config) -%}
+  {% comp 'grid.block', {
+    link: config.link,
+    background: '#005776',
+    colour: 'white',
+    classes: 'dashboard-item'
+  } %}
+  <h3>{{ config.title }}</h3>
+  <p>{{ config.description }}</p>
+  <p class="dashboard-number">{{ config.number }}</p>
+  {% endcomp %}
+{%- endmacro -%}
 
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url + '#labour-market-status', width: '15rem' } %}
-<h3>Economic inactivity</h3>
-<p class='dashboard-number'>
-  {{ search.data('dashboard/labour-market/').latest.economic_inactivity_rate }}%
-</p>
-<p class="dashboard-note">
-  Economically inactive rate for people 16-24, seasonally adjusted.
-</p>
-<p class="dashboard-note">
-  For period {{ search.data('dashboard/labour-market/').latest.most_recent_lms_period }}.
-</p>
-{% endcomp %}
 
-{% comp 'grid.block', { link: search.data('dashboard/labour-market/').url + '#long-term-unemployment', width: '15rem' } %}
-<h3>Long-term unemployed</h3>
-<p class='dashboard-number'>
-  {{ search.data('dashboard/labour-market/').latest.long_term_unemployment_rate_6_to_12_months or '--' }}%
-</p>
-<p class="dashboard-note">
-  Percentage of any unemployment lasting between 6 and 12 months.
-</p>
-<p class="dashboard-note">
-  For period {{ search.data('dashboard/labour-market/').latest.most_recent_lms_period }}.
-</p>
-{% endcomp %}
+{# NEET stats #}
+{{ dashboard_block({
+  link: '~/dashboard/neet/index.njk' | url,
+  title: 'NEET rate',
+  description: 'Percentage of young people not in education, employment or training for period '
+    + search.data('dashboard/neet/').latest.quarter + '.',
+  number: search.data('dashboard/neet').latest.neet_rate + '%'
+}) | safe }}
 
-{% comp 'grid.block', { link: '/dashboard/neet/' + '#headlines', width: '15rem' } %}
-<h3>NEET</h3>
-<p class="dashboard-number">{{ search.data('dashboard/neet').latest.neet_rate }}%</p>
-<p class="dashboard-note">
-  Percentage of young people Not in Education, Employment or Training.
-</p>
-<p class="dashboard-note">
-  For period {{ search.data('dashboard/neet/').latest.quarter }}.
-</p>
-{% endcomp %}
+{# Labour Market stats #}
+{{ dashboard_block({
+  link: '~/dashboard/labour-market/index.njk' | url,
+  title: 'Unemployment',
+  description: 'Percentage of young people (aged 16 to 24) unemployed for period ' +
+    search.data('dashboard/labour-market/').latest.most_recent_lms_period
+    + '.',
+  number: search.data('dashboard/labour-market/').latest.unemployment_rate + '%'
+}) | safe }}
+
+{{ dashboard_block({
+  link: '~/dashboard/labour-market/index.njk' | url,
+  title: 'Economic inactivity',
+  description: 'Percentage of young people (aged 16 to 24) economically inactive for period ' +
+    search.data('dashboard/labour-market/').latest.most_recent_lms_period
+    + '.',
+  number: search.data('dashboard/labour-market/').latest.economic_inactivity_rate + '%'
+}) | safe }}
+
+{# CPI #}
+{% set cpi_monthly_headline = sources.cpi.headlines.rows | findByAttribute('sector', 'Monthly') | first %}
+{{ dashboard_block({
+  link: '~/dashboard/cpi/index.njk' | url,
+  title: 'Consumer prices',
+  description: 'Monthly change in CPI. ' + cpi_monthly_headline.Note,
+  number: cpi_monthly_headline.sign + cpi_monthly_headline.Value + '%'
+}) | safe }}
+
+{# Vacancies #}
+{% set vacancies_headline = sources.vacancies.headlines.rows | findByAttribute('Title', 'Growth on previous quarter') | first %}
+{{ dashboard_block({
+  link: '~/dashboard/vacancies/index.njk' | url,
+  title: 'Growth in vacancies',
+  description: vacancies_headline.Note,
+  number: vacancies_headline.Value + '%'
+}) | safe }}
