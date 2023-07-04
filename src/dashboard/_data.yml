@@ -1,3 +1,5 @@
 layout: layouts/dashboard.njk
 
 main_class: dashboard-page
+
+priority: 0
