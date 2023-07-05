@@ -80,6 +80,7 @@ def create_table(data, columns):
     )
 
     table['quarter_label'] = pd.to_datetime(table.index.values).to_series().apply(lms_period_to_quarter_label)
+    table['quarter_axis_label'] = table.quarter_label.str.replace(' ', '\\n')
     return table
 
 
@@ -115,6 +116,7 @@ if __name__ == "__main__":
         'age_16_to_24_unemployed_6_to_12_months_sa':  (long_term_unemployed.age_18_to_24_unemployed_6_to_12_months_sa + long_term_unemployed.age_16_to_17_unemployed_6_to_12_months_sa).round(0),
         'age_16_to_24_unemployed_over_12_months_sa': (long_term_unemployed.age_18_to_24_unemployed_over_12_months_sa + long_term_unemployed.age_16_to_17_unemployed_over_12_months_sa).round(0),
         'quarter_label': long_term_unemployed.quarter_label,
+        'quarter_axis_label': long_term_unemployed.quarter_label.str.replace(' ', '\\n'),
     })
     long_term_unemployed['age_16_to_24_unemployed_6_to_12_months_rate_sa'] = (long_term_unemployed['age_16_to_24_unemployed_6_to_12_months_sa'] / \
         long_term_unemployed['age_16_to_24_unemployed_sa'] * 100).round(1)

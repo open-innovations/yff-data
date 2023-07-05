@@ -29,7 +29,7 @@ config:
       # Each tick has a numeric value and a displayed label
   columns:
     - name: x_tick_labels
-      template: '{{ quarter_label }}'
+      template: '{{ quarter_axis_label }}'
     - name: label_6_to_12_months
       template: '{{quarter_label}} <br/> Proportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%'
     - name: label_12_months

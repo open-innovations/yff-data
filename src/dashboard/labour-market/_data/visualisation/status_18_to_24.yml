@@ -23,7 +23,7 @@ config:
         label: 'Rate (%)'
   columns:
     - name: x_tick_labels
-      template: '{{ quarter_label }}'
+      template: '{{ quarter_axis_label }}'
     - name: unemployment_rate_label
       template: '{{quarter_label}}: {{age_18_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%'
     - name: economically_inactive_rate_label
