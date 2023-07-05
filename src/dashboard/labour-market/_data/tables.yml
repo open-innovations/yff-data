@@ -90,3 +90,97 @@
         align: right
         width: 28%
         template: '{{age_16_to_24_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%'
+
+
+- tab: Labour market status (women NFTE)
+  type: table
+  caption: |
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for women not in full-time education.
+  config:
+    file: /data/labour-market/labour_market_status_last_3_years.csv
+    columns:
+      - name: Rolling 3-monthly period
+        align: center
+        template: '{{quarter_label}}'
+      - name: Employed rate
+        align: right
+        width: 28%
+        template: '{{women_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%'
+      - name: Unemployed rate
+        align: right
+        width: 28%
+        template: '{{women_16_to_24_not_in_ft_education_unemployment_rate_sa}}%'
+      - name: Economic inactivity rate
+        align: right
+        width: 28%
+        template: '{{women_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%'
+
+- tab: Labour market status (men NFTE)
+  type: table
+  caption: |
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for men not in full-time education.
+  config:
+    file: /data/labour-market/labour_market_status_last_3_years.csv
+    columns:
+      - name: Rolling 3-monthly period
+        align: center
+        template: '{{quarter_label}}'
+      - name: Employed rate
+        align: right
+        width: 28%
+        template: '{{men_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%'
+      - name: Unemployed rate
+        align: right
+        width: 28%
+        template: '{{men_16_to_24_not_in_ft_education_unemployment_rate_sa}}%'
+      - name: Economic inactivity rate
+        align: right
+        width: 28%
+        template: '{{men_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%'
+
+- tab: Labour market status (16-17 year olds NFTE)
+  type: table
+  caption: |
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for 16-17 year olds not in full-time education.
+  config:
+    file: /data/labour-market/labour_market_status_last_3_years.csv
+    columns:
+      - name: Rolling 3-monthly period
+        align: center
+        template: '{{quarter_label}}'
+      - name: Employed rate
+        align: right
+        width: 28%
+        template: '{{age_16_to_17_not_in_ft_education_employment_rate_sa | toFixed(1) }}%'
+      - name: Unemployed rate
+        align: right
+        width: 28%
+        template: '{{age_16_to_17_not_in_ft_education_unemployment_rate_sa}}%'
+      - name: Economic inactivity rate
+        align: right
+        width: 28%
+        template: '{{age_16_to_17_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%'
+
+- tab: Labour market status (18-24 year olds NFTE)
+  type: table
+  caption: |
+    This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for 18-24 year olds not in full-time education.
+  config:
+    file: /data/labour-market/labour_market_status_last_3_years.csv
+    columns:
+      - name: Rolling 3-monthly period
+        align: center
+        template: '{{quarter_label}}'
+      - name: Employed rate
+        align: right
+        width: 28%
+        template: '{{age_18_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%'
+      - name: Unemployed rate
+        align: right
+        width: 28%
+        template: '{{age_18_to_24_not_in_ft_education_unemployment_rate_sa}}%'
+      - name: Economic inactivity rate
+        align: right
+        width: 28%
+        template: '{{age_18_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%'
+
