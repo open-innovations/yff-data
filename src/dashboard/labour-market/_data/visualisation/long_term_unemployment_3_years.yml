@@ -21,31 +21,12 @@ config:
         stroke-width: 1
     y: # The vertical axes
       min: 0 # A minimum value
-      max: 25 # A maximum value
+      max: 35 # A maximum value
       title:
         label: 'Rate (%)'
       dominant-baseline: text-bottom
       # Explicitly define the ticks.
       # Each tick has a numeric value and a displayed label
-      ticks:
-        - value: 0
-          grid: true
-          label: '0'
-        - value: 5
-          grid: true
-          label: '5'
-        - value: 10
-          grid: true
-          label: '10'
-        - value: 15
-          grid: true
-          label: '15'
-        - value: 20
-          grid: true
-          label: '20'
-        - value: 25
-          grid: true
-          label: '25'
   columns:
     - name: x_tick_labels
       template: '{{ quarter_label }}'
