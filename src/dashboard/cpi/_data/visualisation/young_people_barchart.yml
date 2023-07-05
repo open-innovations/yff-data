@@ -29,6 +29,7 @@ config:
   - name: yearly
     template: '{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%'
   file: /data/cpi/cpi_barchart.csv
+  id: cpi-young-people
   legend:
     position: top right
     show: true

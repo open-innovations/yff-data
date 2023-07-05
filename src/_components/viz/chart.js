@@ -87,14 +87,14 @@ export default function (context) {
       configcopy.axis.x.ticks = ticks;
     }
 
-    if (configcopy.axis.y.ticks === undefined) {
+    if (configcopy.axis.y.ticks === undefined || configcopy.axis.y.ticks === 'unlabelled') {
       const tickValues = generateTickValues(
         configcopy.axis.y.max,
         configcopy.axis.y.min
       );
       const ticks = tickValues.map(v => ({
         value: v,
-        label: v.toString(),
+        label: configcopy.axis.y.ticks === 'unlabelled' ? '' : v.toString(),
         grid: true,
       }));
       configcopy.axis.y.ticks = ticks;

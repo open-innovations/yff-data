@@ -1,28 +1,38 @@
 {%- macro renderViz(viz) %}
 <h3>{{ viz.title }}</h3>
-{{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
+  {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
 {% endmacro -%}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url + '#long_term_unemployed_all' } %}
-{{ renderViz(search.data('dashboard/labour-market/').visualisation.long_term_unemployment_all) | safe }}
+{# NEET #}
+{% comp 'grid.block', {
+  link: '~/dashboard/neet/index.njk' | url + '#all_young_people'
+} %}
+  {{ renderViz(search.data('dashboard/neet/').visualisation.minimal.allYoungPeople) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url + '#long_term_unemployment_3_years' } %}
-{{ renderViz(search.data('dashboard/labour-market/').visualisation.long_term_unemployment_3_years) | safe }}
+{# Unemployment / Economic Inactivity #}
+{% comp 'grid.block', {
+  link: '~/dashboard/labour-market/index.njk' | url + '#education_status_last_3_years'
+} %}
+  {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.educationStatus) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/labour-market/').url + '#education_status_last_3_years' } %}
-{{ renderViz(search.data('dashboard/labour-market/').visualisation.economic_activity_not_in_full_time_education_3_years) | safe }}
+{% comp 'grid.block', {
+  link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployed_all'
+} %}
+  {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.longTermUnemployment) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/neet/').url + '#all_young_people' } %}
-{{ renderViz(search.data('dashboard/neet/').visualisation.all_young_people) | safe }}
+{# Vacancies #}
+{% comp 'grid.block', {
+  link: '~/dashboard/vacancies/index.njk' | url + '#estimated-vacancies'
+} %}
+  {{ renderViz(search.data('dashboard/vacancies/').visualisation.minimal.estimatedVacancies) | safe }}
 {% endcomp %}
 
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/vacancies/').url + '#estimated_vacancies' } %}
-{{ renderViz(search.data('dashboard/vacancies/').visualisation.estimated_vacancies) | safe }}
-{% endcomp %}
-
-{% comp 'grid.block', { columns: 2, width: '20rem', link: search.data('dashboard/cpi/').url + '#young_people_barchart' } %}
-{{ renderViz(search.data('dashboard/cpi/').visualisation.young_people_barchart) | safe }}
+{# CPI #}
+{% comp 'grid.block', {
+  link: ('~/dashboard/cpi/index.njk' | url + '#cpi-young-people')
+} %}
+  {{ renderViz(search.data('dashboard/cpi/').visualisation.minimal.cpiYoungPeople) | safe }}
 {% endcomp %}

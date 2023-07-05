@@ -1,0 +1,47 @@
+tab: Not in full-time education
+title: Labour market status for young people (16-24) not in full-time education
+type: chart
+# caption: The labour market status of 16-24 year-olds who are not in full-time education.
+config:
+  id: education_status_last_3_years
+  file: '/data/labour-market/labour_market_status_all_data.csv'
+  type: line-chart
+  #source: "Table 9: Unemployment by age and duration (seasonally adjusted) 19 July 2022 from A01: Summary of labour market statistics https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/summaryoflabourmarketstatistics"
+  legend:
+    show: true # Default to false
+    position: 'top right'
+  axis:
+    x: # Horizontal axis
+      title:
+        label: Rolling 3-month period
+      grid:
+        stroke-dasharray: "6 2"
+        stroke-width: 1
+    y: # The vertical axes
+      title:
+        label: 'Rate (%)'
+  columns:
+    - name: x_tick_labels
+      template: '{{ quarter_label }}'
+    - name: unemployment_rate_label
+      template: '{{quarter_label}}: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%'
+    - name: economically_inactive_rate_label
+      template: '{{quarter_label}}: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%'
+    - name: employment_rate_label
+      template: '{{quarter_label}}: {{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%'
+  series:
+    - title: 'Overall unemployment'
+      x: 'quarter_index' # Column heading to use for x-value
+      y: 'age_16_to_24_not_in_ft_education_unemployment_rate_sa' # Column heading to use fro y-value
+      size: 10
+      tooltip: unemployment_rate_label
+    - title: 'Economically inactive'
+      x: 'quarter_index' # Column heading to use for x-value
+      y: 'age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa' # Column heading to use fro y-value
+      size: 10
+      tooltip: economically_inactive_rate_label
+    - title: 'In employment'
+      x: 'quarter_index' # Column heading to use for x-value
+      y: 'age_16_to_24_not_in_ft_education_employment_rate_sa' # Column heading to use fro y-value
+      size: 10
+      tooltip: employment_rate_label

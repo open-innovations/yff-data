@@ -11,8 +11,6 @@ config:
     position: "top right"
   axis:
     x: # Horizontal axis
-      min: 0 # A minimum value
-      max: 270 # A maximum value
       grid:
         stroke-dasharray: "6 2"
         stroke-width: 1
@@ -23,38 +21,11 @@ config:
       # Requires a column named x_tick_labels to be defined - this one uses quarter_label
       # Code to calculate this is in _components/viz/chart.js
     y: # The vertical axes
-      min: 0 # A minimum value
-      max: 1410 # A maximum value
       title:
         label: "Number of vacancies (thousands)"
       dominant-baseline: text-bottom
       # Explicitly define the ticks.
       # Each tick has a numeric value and a displayed label
-      ticks:
-        - value: 0
-          grid: true
-          label: '0'
-        - value: 200
-          grid: true
-          label: "200"         
-        - value: 400
-          grid: true
-          label: "400"
-        - value: 600
-          grid: true
-          label: "600"
-        - value: 800
-          grid: true
-          label: "800"
-        - value: 1000
-          grid: true
-          label: "1000"
-        - value: 1200
-          grid: true
-          label: "1200"
-        - value: 1400
-          grid: true
-          label: "1400"                       
   columns:
       - name: "Label"
         template: "{{ quarter_label }} </br> {{ value | multiply(1000) | toLocaleString() }} vacancies"

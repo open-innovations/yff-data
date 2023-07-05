@@ -8,7 +8,7 @@ config:
   file: data/labour-market/long_term_unemployed_last_3_years.csv
   type: line-chart
   legend:
-    show: false # Default to false
+    show: true # Default to false
     position: 'top right'
   axis:
     x: # Horizontal axis
