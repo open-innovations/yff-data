@@ -18,7 +18,7 @@
 {% endcomp %}
 
 {% comp 'grid.block', {
-  link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployed_all'
+  link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployment_3_years'
 } %}
   {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.longTermUnemployment) | safe }}
 {% endcomp %}
