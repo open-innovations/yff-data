@@ -75,13 +75,13 @@ The page is automatically updated when ONS publishes new data.
 The following charts compare labour market status for young people not in full-time education aged 16-17 and the group aged 18-24.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('status_16_to_17', 'status_18_to_24'), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('status_16_to_17', 'status_18_to_24', 'economic_activity_not_in_full_time_education_3_years'), test: false }) | safe }}
 
 <p>
 The following charts compare labour market status for men and women aged 16 to 24 not in full-time education.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('status_women', 'status_men'), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('status_women', 'status_men', 'economic_activity_not_in_full_time_education_3_years'), test: false }) | safe }}
 
 <h2>Data Tables</h2>
 {{ comp.viz.main({ visualisations: tables }) | safe }}
