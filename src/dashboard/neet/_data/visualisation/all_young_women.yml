@@ -15,14 +15,15 @@ config:
     x: # Horizontal axis
       # min, max and tick labels now auto-generated for line charts
       grid:
-        stroke: "#efefef"
+        stroke-dasharray: "6 2"
+        stroke-width: 1
     y:
       max: 20
       title:
         label: "Rate (%)"
   columns:
     - name: x_tick_labels
-      template: "{{ quarter_label }}"
+      template: '{{ quarter_axis_label }}'
     - name: "Total"
       template: "{{quarter_label}} <br/> NEET rate: {{women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
     - name: unemployed_tooltip

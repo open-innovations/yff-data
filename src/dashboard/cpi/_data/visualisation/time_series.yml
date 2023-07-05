@@ -29,7 +29,7 @@ config:
         label: Index (2015=100)
   columns:
     - name: x_tick_labels
-      template: "{{ named_date }}"
+      template: "{{ date_axis_label }}"
     - name: all_categories
       template: "{{ named_date }}<br/>All Categories: {{cpi_index_00_all_items_2015_100}}"
     - name: food_and_non_alcoholic_beverages

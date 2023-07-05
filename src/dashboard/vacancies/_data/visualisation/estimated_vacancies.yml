@@ -30,7 +30,7 @@ config:
       - name: "Label"
         template: "{{ quarter_label }} </br> {{ value | multiply(1000) | toLocaleString() }} vacancies"
       - name: x_tick_labels
-        template: "{{ quarter_label }}"
+        template: "{{ quarter_axis_label }}"
   series:
     - title: "value"
       x: "index" # Column heading to use for x-value

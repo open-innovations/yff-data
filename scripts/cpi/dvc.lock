@@ -30,8 +30,9 @@ stages:
       md5: fa027186ba7e1b14b4a99e1a7e1d625a
       size: 281
     - path: data/cpi/cpi_linechart.csv
-      md5: 3147b3d8a170cfa6d5de0e6eb80e06dc
-      size: 12439
+      hash: md5
+      md5: e4682cce86e76e70d109953e154f7775
+      size: 13655
     - path: data/cpi/headlines.csv
       md5: 8dc90fd6b540ad39384c7ce7ba008309
       size: 315
@@ -48,15 +49,17 @@ stages:
       md5: eeca37625b8119897ceda46e96f7a359
       size: 128805
     - path: scripts/cpi/prepare.py
-      md5: 298e6c638a63a19458c2c0339c990200
-      size: 7948
+      hash: md5
+      md5: cacb5cb05b6e2b83846170cdcd361c10
+      size: 8014
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       md5: fa027186ba7e1b14b4a99e1a7e1d625a
       size: 281
     - path: src/_data/sources/cpi/cpi_linechart.csv
-      md5: 3147b3d8a170cfa6d5de0e6eb80e06dc
-      size: 12439
+      hash: md5
+      md5: e4682cce86e76e70d109953e154f7775
+      size: 13655
     - path: src/_data/sources/cpi/headlines.csv
       md5: 8dc90fd6b540ad39384c7ce7ba008309
       size: 315

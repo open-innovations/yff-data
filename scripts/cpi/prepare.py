@@ -121,6 +121,7 @@ def line_chart(data, n, num_years):
     df.rename(columns=column_name, inplace=True)
     df.rename(columns=slugify, inplace=True)
     df['named_date'] = pd.to_datetime(df['dates.date']).dt.strftime('%b %Y')
+    df['date_axis_label'] = df.named_date.str.replace(' ', '\\n')
     return df
 
 def copy_file(name):

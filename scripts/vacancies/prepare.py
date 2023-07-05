@@ -14,6 +14,7 @@ def prepare_vacancies():
     vacancies = pd.read_csv(os.path.join(RAW_DATA_DIR, 'vacancies_edd.csv'), index_col= ['index'])
     vacancies.sort_values(by='date', ascending = True, inplace = True)
     vacancies['quarter_label'] = pd.to_datetime(vacancies.date).map(lms_period_to_quarter_label)
+    vacancies['quarter_axis_label'] = vacancies.quarter_label.str.replace(' ', '\\n')
 
     quarterly = vacancies.loc[vacancies['freq'] == 'q'].reset_index()
     quarterly = quarterly.drop(columns= ['index', 'freq'], axis = 1).reset_index()

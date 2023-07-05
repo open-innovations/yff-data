@@ -14,14 +14,15 @@ config:
   axis:
     x:
       grid:
-        stroke: "#efefef"
+        stroke-dasharray: "6 2"
+        stroke-width: 1
     y:
       max: 20
       title:
         label: "Rate (%)"
   columns:
     - name: x_tick_labels
-      template: "{{ quarter_label }}"
+      template: '{{ quarter_axis_label }}'
     - name: "Total"
       template: "{{quarter_label}} <br/> NEET rate: {{men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
     - name: unemployed_tooltip

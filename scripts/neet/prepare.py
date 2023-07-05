@@ -61,6 +61,7 @@ def transfer_files(filename):
     data = read_source_data(filename, index_col=[
                             'quarter_start'], parse_dates=['quarter_start'])
     data['quarter_label'] = pd.to_datetime(data.index.values).to_series().pipe(date_to_quarter)
+    data['quarter_axis_label'] = data.quarter_label.str.replace(' ', '\\n')
 
     data.pipe(add_index).to_csv(os.path.join(
         DATA_DIR, os.path.basename(filename).replace('.', '_all_data.')))
