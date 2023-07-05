@@ -20,6 +20,8 @@
   type: table
 - caption: Consumer prices index for last 10 years (rolling start date)
   config:
+    opts:
+      reverse: true
     columns: 
       - align: center
         name: named_date

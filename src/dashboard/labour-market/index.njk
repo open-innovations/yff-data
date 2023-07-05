@@ -83,5 +83,5 @@ The following charts compare labour market status for men and women aged 16 to 2
 
 {{ comp.viz.main({ visualisations: visualisation | pick('status_women', 'status_men', 'economic_activity_not_in_full_time_education_3_years'), test: false }) | safe }}
 
-<h2>Data Tables</h2>
+<h2 data-dependencies="/assets/js/table-sorter.js">Data Tables</h2>
 {{ comp.viz.main({ visualisations: tables }) | safe }}

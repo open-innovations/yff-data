@@ -35,5 +35,5 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
 
 {{ comp.viz.main({ visualisations: visualisation | pick('all_young_people', 'all_young_women', 'all_young_men'), test: false }) | safe }}
 
-<h2>Data Tables</h2>
+<h2 data-dependencies="/assets/js/table-sorter.js">Data Tables</h2>
 {{ comp.viz.main({ visualisations: visualisation | pick('last_3_years_all', 'young_women_neet_last_3_years', 'young_men_neet_last_3_years'), test: false }) | safe }}

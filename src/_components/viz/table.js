@@ -129,7 +129,7 @@ export default (context) => {
   html.push('</thead>');
 
   // Build data part
-  html.push('<tbody>');
+  html.push(`<tbody${ config.opts?.reverse === true ? ' class="reverse"' : ''}>`);
 
 	// Find the min/max values of a column (as a fallback if none provided)
 	var min,max,bg,col,sty,txt,scale;

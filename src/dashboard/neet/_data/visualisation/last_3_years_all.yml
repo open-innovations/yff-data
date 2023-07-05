@@ -4,6 +4,8 @@ caption: |
   Seasonally adjusted NEET rate table for all young people (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
   Raw data accessible via the download link is as provided by ONS.
 config:
+  opts:
+    reverse: true
   file: /data/neet/neet_last_3_years.csv
   columns:
     - name: quarter_label

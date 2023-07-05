@@ -41,5 +41,5 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
   as the percentage change figures.</p>
 {{ comp.viz.main({ visualisations: visualisation | pick('time_series'), test: false }) | safe }}
 
-<h2> Data Tables </h2>
+<h2 data-dependencies="/assets/js/table-sorter.js"> Data Tables </h2>
 {{ comp.viz.main({ visualisations: tables }) | safe }}
