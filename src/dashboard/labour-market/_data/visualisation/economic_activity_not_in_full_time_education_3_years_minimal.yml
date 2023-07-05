@@ -14,6 +14,7 @@ config:
       grid:
         stroke: '#efefef'
     y: # The vertical axes
+      max: 80
       title:
         label: ''
       ticks:

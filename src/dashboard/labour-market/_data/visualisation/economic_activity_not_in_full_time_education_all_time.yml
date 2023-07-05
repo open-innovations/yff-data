@@ -18,6 +18,7 @@ config:
         stroke-dasharray: "6 2"
         stroke-width: 1
     y: # The vertical axes
+      max: 80
       title:
         label: 'Rate (%)'
   columns:
