@@ -28,17 +28,24 @@ stages:
       size: 567
     - path: data/cpi/cpi_barchart.csv
       hash: md5
-      md5: 34b5b74850cc4b0d931cc14f612e18b9
-      size: 332
+      md5: 33d6100e9b803ecdf158954925135496
+      size: 247
       isexec: true
     - path: data/cpi/cpi_linechart.csv
       hash: md5
       md5: e4682cce86e76e70d109953e154f7775
       size: 13655
       isexec: true
+    - path: data/cpi/cpi_summary_barchart.csv
+      hash: md5
+      md5: bbdc0c6f85902389f1db5fa827f8a4d8
+      size: 150
+      isexec: true
     - path: data/cpi/headlines.csv
-      md5: 8dc90fd6b540ad39384c7ce7ba008309
-      size: 315
+      hash: md5
+      md5: d22dcd45a1f0dfb48b11decc0e61e812
+      size: 316
+      isexec: true
     - path: data/cpi/indicator.csv
       md5: 580740d0eed7cffc9e6022572e31ad89
       size: 121
@@ -53,22 +60,29 @@ stages:
       size: 128805
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: f70f72cab12043107922a07f55c64339
-      size: 8345
+      md5: 4c647a1de34b301900e0f61b57b506c0
+      size: 8726
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       hash: md5
-      md5: 34b5b74850cc4b0d931cc14f612e18b9
-      size: 332
+      md5: 33d6100e9b803ecdf158954925135496
+      size: 247
       isexec: true
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
       md5: e4682cce86e76e70d109953e154f7775
       size: 13655
       isexec: true
+    - path: src/_data/sources/cpi/cpi_summary_barchart.csv
+      hash: md5
+      md5: bbdc0c6f85902389f1db5fa827f8a4d8
+      size: 150
+      isexec: true
     - path: src/_data/sources/cpi/headlines.csv
-      md5: 8dc90fd6b540ad39384c7ce7ba008309
-      size: 315
+      hash: md5
+      md5: d22dcd45a1f0dfb48b11decc0e61e812
+      size: 316
+      isexec: true
     - path: src/_data/sources/cpi/indicator.csv
       md5: 580740d0eed7cffc9e6022572e31ad89
       size: 121
@@ -83,11 +97,12 @@ stages:
       size: 567
     - path: data/cpi/cpi_barchart.csv
       hash: md5
-      md5: 34b5b74850cc4b0d931cc14f612e18b9
-      size: 332
+      md5: 33d6100e9b803ecdf158954925135496
+      size: 247
     - path: scripts/cpi/vis.py
-      md5: 4c38930ec172e24b9008f3d82af58da9
-      size: 1089
+      hash: md5
+      md5: aba2e0b2b4387a24efe0b7aa3cc34d6d
+      size: 1209
     - path: scripts/util/util.py
       md5: b0f2b18abbe58888850d4a8ad26c4920
       size: 5168

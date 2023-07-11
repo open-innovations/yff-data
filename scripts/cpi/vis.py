@@ -29,4 +29,5 @@ if __name__ == '__main__':
     data_dir = 'src/_data/sources/cpi/'
     vis_dir = 'src/dashboard/cpi/_data/visualisation'
     update_ticks(os.path.join(data_dir,'cpi_barchart.csv'), os.path.join(vis_dir, 'young_people_barchart.yml'))
+    update_ticks(os.path.join(data_dir,'cpi_summary_barchart.csv'), os.path.join(vis_dir, 'cpi_summary_barchart.yml'))
     update_ticks(os.path.join(data_dir, 'cpi_all_category_bar_chart.csv'), os.path.join(vis_dir, 'all_category_barchart.yml'))

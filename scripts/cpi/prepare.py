@@ -144,11 +144,14 @@ if __name__ == '__main__':
                                           "Restaurants & hotels",
                                           'Miscellaneous goods & services'])
     bar = youth_average(bar)
-    #print(bar)
+    summary_bar = bar.reindex(index=['All CPI Categories', 'Youth-focused average'])
+    bar = bar.reindex(index=['Food & non-alcoholic beverages', "Clothing & footwear",
+                             "Housing, water, electricity, gas & other fuels",'Recreation & culture'])
     all_categories = bar_chart(data, n, make_indicator=False)
     line = line_chart(data, n, num_years=10)
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
+    summary_bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_summary_barchart.csv'))
     all_categories.to_csv(os.path.join(INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
     line.to_csv(os.path.join(INPUTS_DIR, 'cpi_linechart.csv'))
     #get the metadat and make headline stats
@@ -157,6 +160,7 @@ if __name__ == '__main__':
 
     #copy files to other directory
     copy_file("cpi_barchart.csv")
+    copy_file("cpi_summary_barchart.csv")
     copy_file("cpi_linechart.csv")
     copy_file("metadata.json")
     copy_file("headlines.csv")

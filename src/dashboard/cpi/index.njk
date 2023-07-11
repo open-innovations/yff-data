@@ -28,12 +28,16 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
 <h2>Consumer price index percentage changes</h2>
 
 <p>
-  This chart shows the monthly, quarterly and yearly percentage changes on the key categories which most affect young 
-  people. Also shown is the overall CPI change, which is calculated including all categories measured by CPI, including 
-  all those shown in the second tab.
+  These charts show the monthly, quarterly and yearly percentage changes in CPI. 
+  </p>
+<p>
+  The first tab shows the overall change averaged across all 12 categories, and a 'Youth-focused average' 
+  for the 4 that most affect young people according to JRF research*. </p>
+  <p>  
+  The second tab shows the 4 individual categories affecting young people, and the final tab shows all categories measured in CPI.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('young_people_barchart', 'all_category_barchart'), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('cpi_summary_barchart', 'young_people_barchart', 'all_category_barchart'), test: false }) | safe }}
 
 <h2>Consumer price index 10 year history</h2>
 <p>The line chart below shows consumer prices index for the categories most-affecting young people over the last 10 years. 

@@ -34,6 +34,7 @@ stages:
       - data/cpi/indicator.csv
       - data/cpi/metadata.json
       - data/cpi/prefix.csv
+      - data/cpi/cpi_summary_barchart.csv
     outs:
       - src/_data/sources/cpi/cpi_barchart.csv:
           cache: false
@@ -48,6 +49,9 @@ stages:
           cache: false 
           persist: false
       - src/_data/sources/cpi/indicator.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/cpi/cpi_summary_barchart.csv:
           cache: false
           persist: false
   vis:
