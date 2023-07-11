@@ -32,6 +32,8 @@ config:
       template: "{{ date_axis_label }}"
     - name: all_categories
       template: "{{ named_date }}<br/>All Categories: {{cpi_index_00_all_items_2015_100}}"
+    - name: youth_average
+      template: "{{ named_date }}<br/>All Categories: {{Youth-focused average}}"
     - name: food_and_non_alcoholic_beverages
       template: "{{ named_date }}<br/>Food & non-alcoholic beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
     - name: clothing_and_footwear
@@ -52,6 +54,11 @@ config:
       tooltip: all_categories
       x: index
       y: cpi_index_00_all_items_2015_100
+    - size: 10
+      title: Youth-focused average
+      tooltip: youth_average
+      x: index
+      y: "Youth-focused average"
     - size: 10
       title: Food & non-alocholic beverages
       tooltip: food_and_non_alcoholic_beverages

@@ -149,6 +149,11 @@ if __name__ == '__main__':
                              "Housing, water, electricity, gas & other fuels",'Recreation & culture'])
     all_categories = bar_chart(data, n, make_indicator=False)
     line = line_chart(data, n, num_years=10)
+    line['Youth-focused average'] = line[['cpi_index_01_food_and_non_alcoholic_beverages_2015_100',
+                                         'cpi_index_03_clothing_and_footwear_2015_100',
+                                         'cpi_index_04_housing_water_and_fuels_2015_100',
+                                         'cpi_index_09_recreation_&_culture_2015_100']].mean(axis=1, numeric_only=True)
+    print(line)
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
     summary_bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_summary_barchart.csv'))
