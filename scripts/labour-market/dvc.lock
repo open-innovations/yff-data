@@ -10,18 +10,21 @@ stages:
       md5: 99639237710843ceb8aa21bcbc55dada
       size: 505
     - path: working/LMS_data.csv
-      md5: 28051d55548724651fc7550902b14d05
-      size: 16741084
+      hash: md5
+      md5: c64da769072494ace355e47f99df2c88
+      size: 16843327
     outs:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 753656ecd169f92d08a4b70dfc207c7d
-      size: 459839
+      hash: md5
+      md5: d6622910f5ba44eec6f48fdc95552ba7
+      size: 461032
   prepare:
     cmd: PYTHONPATH=. python3 scripts/labour-market/prepare.py
     deps:
     - path: data/labour-market/monthly-rolling.csv
-      md5: 753656ecd169f92d08a4b70dfc207c7d
-      size: 459839
+      hash: md5
+      md5: d6622910f5ba44eec6f48fdc95552ba7
+      size: 461032
     - path: scripts/labour-market/config.py
       md5: 3bf24f08f1ee896917ecc45fc15c33ee
       size: 4799
@@ -37,24 +40,26 @@ stages:
       size: 396
     outs:
     - path: src/_data/sources/labour-market/headlines.csv
-      md5: 573838b33515db23f0e27d5ac4545ffb
+      hash: md5
+      md5: ae71c31fecfe730ec0111b26485769f4
       size: 886
     - path: src/_data/sources/labour-market/labour_market_status_all_data.csv
       hash: md5
-      md5: ec53b448f49c29a91fe86fb2ec72b116
-      size: 42605
+      md5: ebd28d0eb8111e52062833b7bc3e251f
+      size: 42928
     - path: src/_data/sources/labour-market/labour_market_status_last_3_years.csv
       hash: md5
-      md5: 2aa13263c8e927eaf14e7842ba6b3e9f
-      size: 6308
+      md5: f6ddf90561e7a91d98c9872e144d1197
+      size: 6306
     - path: src/_data/sources/labour-market/long_term_unemployed_all_data.csv
       hash: md5
-      md5: 10c54e67f26763e2f5d7510a9f319d90
-      size: 8705
+      md5: 492360780f314b1ade9184c1acc8d1a6
+      size: 8764
     - path: src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv
       hash: md5
-      md5: b2c29c8d9050d32f69badde3e7d7ac5f
-      size: 1051
+      md5: 8f8ab21619ecf94e3b5a72e0e2f15f3d
+      size: 1043
     - path: src/dashboard/labour-market/_data/latest.json
-      md5: 2658d44ed57f3c94706ceb7d819a4bc0
+      hash: md5
+      md5: 41b7df7a955361821f0bf6a2d3aab2ae
       size: 331
