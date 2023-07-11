@@ -6,7 +6,7 @@ type: chart
 #   and the proportion who have been unemployed for more than 12 months.
 config:
   id: long_term_unemployed_all
-  file: data/labour-market/long_term_unemployed_all_data.csv
+  file: /data/labour-market/long_term_unemployed_all_data.csv
   type: line-chart
   legend:
     show: true # Default to false

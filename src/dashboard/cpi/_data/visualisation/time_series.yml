@@ -42,7 +42,7 @@ config:
         {{cpi_index_04_housing_water_and_fuels_2015_100}}"
     - name: recreation_and_culture
       template: "{{ named_date }}<br/>Recreation & culture: {{cpi_index_09_recreation_&_culture_2015_100}}"
-  file: data/cpi/cpi_linechart.csv
+  file: /data/cpi/cpi_linechart.csv
   legend:
     position: top right
     show: true
