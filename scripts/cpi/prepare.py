@@ -129,7 +129,9 @@ def copy_file(name):
         os.path.join(INPUTS_DIR, name),
         os.path.join(OUTPUTS_DIR, name)
     )
-
+def youth_average(data):
+    data.loc['Youth-focused average',:] = data.iloc[1:].mean(axis=0, numeric_only=True)
+    return data
 if __name__ == '__main__':
 
     data = pd.read_csv(os.path.join(INPUTS_DIR, 'transformed_cpi.csv'), index_col='variable')
@@ -141,9 +143,10 @@ if __name__ == '__main__':
                                           'Education',
                                           "Restaurants & hotels",
                                           'Miscellaneous goods & services'])
+    bar = youth_average(bar)
+    #print(bar)
     all_categories = bar_chart(data, n, make_indicator=False)
     line = line_chart(data, n, num_years=10)
-    
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
     all_categories.to_csv(os.path.join(INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
