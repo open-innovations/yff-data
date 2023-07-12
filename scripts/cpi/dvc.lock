@@ -30,22 +30,18 @@ stages:
       hash: md5
       md5: 33d6100e9b803ecdf158954925135496
       size: 247
-      isexec: true
     - path: data/cpi/cpi_linechart.csv
       hash: md5
       md5: 960b428dedf763d1a4afbdce911303b8
       size: 14993
-      isexec: true
     - path: data/cpi/cpi_summary_barchart.csv
       hash: md5
       md5: bbdc0c6f85902389f1db5fa827f8a4d8
       size: 150
-      isexec: true
     - path: data/cpi/headlines.csv
       hash: md5
       md5: d22dcd45a1f0dfb48b11decc0e61e812
       size: 316
-      isexec: true
     - path: data/cpi/indicator.csv
       md5: 580740d0eed7cffc9e6022572e31ad89
       size: 121
@@ -60,29 +56,25 @@ stages:
       size: 128805
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: 6259b7ee43726129b2da39667b88ffc8
-      size: 9145
+      md5: 43a4e675d54676b4dbf6b3e4a42c85e1
+      size: 8973
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       hash: md5
       md5: 33d6100e9b803ecdf158954925135496
       size: 247
-      isexec: true
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
       md5: 960b428dedf763d1a4afbdce911303b8
       size: 14993
-      isexec: true
     - path: src/_data/sources/cpi/cpi_summary_barchart.csv
       hash: md5
       md5: bbdc0c6f85902389f1db5fa827f8a4d8
       size: 150
-      isexec: true
     - path: src/_data/sources/cpi/headlines.csv
       hash: md5
       md5: d22dcd45a1f0dfb48b11decc0e61e812
       size: 316
-      isexec: true
     - path: src/_data/sources/cpi/indicator.csv
       md5: 580740d0eed7cffc9e6022572e31ad89
       size: 121
@@ -101,17 +93,17 @@ stages:
       size: 247
     - path: scripts/cpi/vis.py
       hash: md5
-      md5: aba2e0b2b4387a24efe0b7aa3cc34d6d
-      size: 1209
+      md5: 1422c0cbcc30767a544fad3d290ed1dc
+      size: 1176
     - path: scripts/util/util.py
       md5: b0f2b18abbe58888850d4a8ad26c4920
-      size: 5168
+      size: 5026
   extract:
     cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
     deps:
     - path: scripts/cpi/extract.py
       md5: 27036d00c305114aa8120101a7836274
-      size: 466
+      size: 453
     outs:
     - path: working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
       md5: a0a65f14b367259b0f26de6186f918ec
