@@ -10,20 +10,22 @@ CPI_METADATA = os.path.join(INPUTS_DIR, 'metadata.json')
 
 def read_meta():
     #read csv and make a new dataframe
-    dates = pd.read_excel(CPI_LATEST, sheet_name='Contents', names=["Consumer Price Inflation"], skiprows=1, nrows=2, header=None)
-    dates.columns = ['value']
-    dates.index = pd.Index([
-        "published",
-        "next_update",
-    ])
-    #get just the dates
-    dates.loc['published', 'value'] = dates.loc['published', 'value'].split(':')[1]
-    dates.loc['next_update', 'value'] = dates.loc['next_update', 'value'].split(':')[1]
-    dates.value.to_json(CPI_METADATA, date_format='iso')
+    metadata = pd.read_csv('working/metadata.csv')
+    metadata = metadata[metadata.id == 'MM23'].reset_index()
+    next_update = iso_to_named_date(metadata['next_update'].iloc[0])
+    published = iso_to_named_date(metadata['last_update'].iloc[0])
+    dates = pd.Series(data={'published': published, 'next_update': next_update}, index=['published', 'next_update'])
+    dates.to_json(CPI_METADATA, date_format='iso')
     return dates
 
 def pct_change(col1, col2):
     return ((col1 - col2) / col2)*100
+
+def iso_to_named_date(date):
+    stamp = pd.Timestamp(f'{date}')
+    text = [f'{stamp.day}', stamp.month_name(), f'{stamp.year}']
+    sep = ' ' 
+    return sep.join(text)
 
 def summarise(metadata): 
     cpi = pd.read_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
@@ -38,10 +40,11 @@ def summarise(metadata):
     latest['Suffix'] = '%'
     latest = latest.round(1)
     indicator = pd.read_csv('data/cpi/indicator.csv', index_col='sector')
+    d = metadata.loc['published']
     latest['Note'] = [
-        "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[0,0]),
-        "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[1,0]),
-        "As at {date}. This is {indicator} since the last update.".format(date=metadata.loc["published", "value"], indicator=indicator.iloc[2,0])
+        "As at {date}. This is {indicator} since the last update.".format(date=d, indicator=indicator.iloc[0,0]),
+        "As at {date}. This is {indicator} since the last update.".format(date=d, indicator=indicator.iloc[1,0]),
+        "As at {date}. This is {indicator} since the last update.".format(date=d, indicator=indicator.iloc[2,0])
     ]
     merged_df = latest.join(indicator, on='sector').set_index('sector')
     merged_df = merged_df.rename(index={'monthly_pct_change': 'Monthly', 'quarterly_pct_change':'Quarterly', 'yearly_pct_change':'Yearly'})
@@ -153,7 +156,7 @@ if __name__ == '__main__':
                                          'cpi_index_03_clothing_and_footwear_2015_100',
                                          'cpi_index_04_housing_water_and_fuels_2015_100',
                                          'cpi_index_09_recreation_&_culture_2015_100']].mean(axis=1, numeric_only=True)
-    print(line)
+    #print(line)
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
     summary_bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_summary_barchart.csv'))
