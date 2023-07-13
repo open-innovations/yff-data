@@ -50,29 +50,29 @@ config:
     show: true
   series:
     - size: 10
-      title: All CPI categories
-      tooltip: all_categories
-      x: index
-      y: cpi_index_00_all_items_2015_100
-      colour: "#7D2248"
-    - size: 10
       title: Youth-focused average
       tooltip: youth_average
       x: index
       y: "Youth-focused average"
-      colour: "#75b8d3"
+      colour: "#274b57"
+    - size: 10
+      title: All CPI categories
+      tooltip: all_categories
+      x: index
+      y: cpi_index_00_all_items_2015_100
+      colour: "#fe9400"
     - size: 10
       title: Food & non-alocholic beverages
       tooltip: food_and_non_alcoholic_beverages
       x: index
       y: cpi_index_01_food_and_non_alcoholic_beverages_2015_100
-      colour: "#fe9400"
+      colour: "#7D2248"
     - size: 10
       title: Clothing & footwear
       tooltip: clothing_and_footwear
       x: index
       y: cpi_index_03_clothing_and_footwear_2015_100
-      colour: "#274b57"
+      colour: "#75b8d3"
     - size: 10
       title: Housing, water, electricity, gas & other fuels
       tooltip: housing_energy
@@ -84,7 +84,7 @@ config:
       tooltip: recreation_and_culture
       x: index
       y: cpi_index_09_recreation_&_culture_2015_100
-      colour: "#0685cc"
+      colour: "#39c2b0"
   type: line-chart
 tab: CPI time series
 title: CPI time series
