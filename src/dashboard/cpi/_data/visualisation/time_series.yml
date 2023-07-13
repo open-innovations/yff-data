@@ -50,12 +50,6 @@ config:
     show: true
   series:
     - size: 10
-      title: Youth-focused average
-      tooltip: youth_average
-      x: index
-      y: "Youth-focused average"
-      colour: "#274b57"
-    - size: 10
       title: All CPI categories
       tooltip: all_categories
       x: index
@@ -85,6 +79,12 @@ config:
       x: index
       y: cpi_index_09_recreation_&_culture_2015_100
       colour: "#39c2b0"
+    - size: 10
+      title: Youth-focused average
+      tooltip: youth_average
+      x: index
+      y: "Youth-focused average"
+      colour: "#274b57"
   type: line-chart
 tab: CPI time series
 title: CPI time series
