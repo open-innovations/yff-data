@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import shutil
-from extract import CPI_LATEST
 from scripts.util.util import slugify
 from transform import DATA_DIR as INPUTS_DIR
 from transform import n
