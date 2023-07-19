@@ -1,7 +1,7 @@
 import re
 import numpy as np
 import math
-
+import pandas as pd
 
 def slugify(s):
     # TODO try replace '\W+'
@@ -140,3 +140,8 @@ def tick_gen(data, suffix, cut_labels=True):
     
     return tick_min, tick_max, tick_labels
 
+def iso_to_named_date(date):
+    stamp = pd.Timestamp(f'{date}')
+    text = [f'{stamp.day}', stamp.month_name(), f'{stamp.year}']
+    sep = ' ' 
+    return sep.join(text)

@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 from scripts.util.date import lms_period_to_quarter_label 
-
+from scripts.util.util import iso_to_named_date
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'vacancies')
 RAW_DATA_DIR = os.path.realpath(os.path.join('data', 'vacancies'))
@@ -111,8 +111,18 @@ def summarise():
     ])
     latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'), indent=2)
 
+def read_meta():
+    #read csv and make a new dataframe
+    metadata = pd.read_csv('working/metadata.csv')
+    metadata = metadata[metadata.id == 'LMS'].reset_index()
+    next_update = iso_to_named_date(metadata['next_update'].iloc[0])
+    published = iso_to_named_date(metadata['last_update'].iloc[0])
+    dates = pd.Series(data={'published': published, 'next_update': next_update}, index=['published', 'next_update'])
+    dates.to_json(os.path.join(DATA_DIR, 'metadata.json'), date_format='iso')
+    return dates
 
 if __name__ == "__main__":
     prepare_vacancies()
     prepare_vacancies_by_sector()
     summarise()
+    read_meta()
