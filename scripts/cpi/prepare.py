@@ -60,7 +60,6 @@ def bar_chart(data, n, make_indicator=True):
     second_last_quarter = data.iloc[int(-6*n):int(-5*n)]
     second_last_year = data.iloc[int(-15*n):int(-14*n)]
 
-    print(second_last_year)
     df = pd.DataFrame()
     df['monthly_pct_change'] = pct_change(most_recent_month.value, last_month.value)
     df['quarterly_pct_change'] = pct_change(most_recent_month.value, last_quarter.value)
@@ -141,7 +140,7 @@ if __name__ == '__main__':
     data = pd.read_csv(os.path.join(INPUTS_DIR, 'transformed_cpi.csv'), index_col='variable')
     bar = bar_chart(data, n).drop(index=["Furniture, household equipment & maintenance",
                                           'Health',
-                                          'Transport',
+                                          'Clothing & footwear',
                                           'Communication',
                                           'Alcoholic beverages & tobacco',
                                           'Education',
@@ -149,14 +148,14 @@ if __name__ == '__main__':
                                           'Miscellaneous goods & services'])
     bar = youth_average(bar)
     summary_bar = bar.reindex(index=['All CPI Categories', 'Youth-focused average'])
-    bar = bar.reindex(index=['Food & non-alcoholic beverages', "Clothing & footwear",
+    bar = bar.reindex(index=['Food & non-alcoholic beverages', "Transport",
                              "Housing, water, electricity, gas & other fuels",'Recreation & culture'])
     all_categories = bar_chart(data, n, make_indicator=False)
     line = line_chart(data, n, num_years=10)
     line['Youth-focused average'] = line[['cpi_index_01_food_and_non_alcoholic_beverages_2015_100',
                                          'cpi_index_03_clothing_and_footwear_2015_100',
                                          'cpi_index_04_housing_water_and_fuels_2015_100',
-                                         'cpi_index_09_recreation_&_culture_2015_100']].mean(axis=1, numeric_only=True)
+                                         'cpi_index_07_transport_2015_100']].mean(axis=1, numeric_only=True)
     #print(line)
     #write file
     bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))

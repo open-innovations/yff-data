@@ -36,8 +36,8 @@ config:
       template: "{{ named_date }}<br/>All Categories: {{Youth-focused average}}"
     - name: food_and_non_alcoholic_beverages
       template: "{{ named_date }}<br/>Food & non-alcoholic beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
-    - name: clothing_and_footwear
-      template: "{{ named_date }}<br/>Clothing & footwear: {{cpi_index_03_clothing_and_footwear_2015_100}}"
+    - name: transport
+      template: "{{ named_date }}<br/>Clothing & footwear: {{cpi_index_07_transport_2015_100}}"
     - name: housing_energy
       template:
         "{{ named_date }}<br/>Housing, water, electricity, gas & other fuels:
@@ -62,10 +62,10 @@ config:
       y: cpi_index_01_food_and_non_alcoholic_beverages_2015_100
       colour: "#7D2248"
     - size: 10
-      title: Clothing & footwear
-      tooltip: clothing_and_footwear
+      title: Transport
+      tooltip: transport
       x: index
-      y: cpi_index_03_clothing_and_footwear_2015_100
+      y: cpi_index_07_transport_2015_100
       colour: "#75b8d3"
     - size: 10
       title: Housing, water, electricity, gas & other fuels

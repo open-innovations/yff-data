@@ -5,8 +5,10 @@ config:
         stroke-dasharray: 6 2
         stroke-width: 1
       max: 20
-      min: 0
+      min: -5
       ticks:
+      - label: -5.0%
+        value: '-5.0'
       - label: 0.0%
         value: '0.0'
       - label: 5.0%

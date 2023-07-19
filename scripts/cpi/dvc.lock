@@ -9,8 +9,8 @@ stages:
       size: 571
     - path: data/cpi/cpi_barchart.csv
       hash: md5
-      md5: cd297fb1cc6894d02b5f690c301c8ead
-      size: 248
+      md5: aa6383423507ae33231aa91c1b0d222e
+      size: 240
     - path: scripts/cpi/vis.py
       hash: md5
       md5: aba2e0b2b4387a24efe0b7aa3cc34d6d
@@ -54,18 +54,18 @@ stages:
       isexec: true
     - path: data/cpi/cpi_barchart.csv
       hash: md5
-      md5: cd297fb1cc6894d02b5f690c301c8ead
-      size: 248
+      md5: aa6383423507ae33231aa91c1b0d222e
+      size: 240
       isexec: true
     - path: data/cpi/cpi_linechart.csv
       hash: md5
-      md5: e80dd12360075020a7bb078218a0eb4e
-      size: 15005
+      md5: c8b3028d1ff1bcc456cfca84e743dff7
+      size: 15097
       isexec: true
     - path: data/cpi/cpi_summary_barchart.csv
       hash: md5
-      md5: 14547e495eb8b6bfea8df507fd5f92cd
-      size: 154
+      md5: 970f83b40f7b0154a0cfe7340fb2d8ee
+      size: 167
       isexec: true
     - path: data/cpi/headlines.csv
       hash: md5
@@ -92,8 +92,8 @@ stages:
       size: 129117
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: 333b5f3d15935feb4877eae7ec0f3fa8
-      size: 9191
+      md5: 14671293af16950f11cb1cb45159f324
+      size: 9151
     - path: working/metadata.csv
       hash: md5
       md5: 9b78f7794199a16cbde55255362573a0
@@ -101,18 +101,18 @@ stages:
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       hash: md5
-      md5: cd297fb1cc6894d02b5f690c301c8ead
-      size: 248
+      md5: aa6383423507ae33231aa91c1b0d222e
+      size: 240
       isexec: true
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
-      md5: e80dd12360075020a7bb078218a0eb4e
-      size: 15005
+      md5: c8b3028d1ff1bcc456cfca84e743dff7
+      size: 15097
       isexec: true
     - path: src/_data/sources/cpi/cpi_summary_barchart.csv
       hash: md5
-      md5: 14547e495eb8b6bfea8df507fd5f92cd
-      size: 154
+      md5: 970f83b40f7b0154a0cfe7340fb2d8ee
+      size: 167
       isexec: true
     - path: src/_data/sources/cpi/headlines.csv
       hash: md5
