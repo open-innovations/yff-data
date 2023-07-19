@@ -11,3 +11,4 @@ outs:
   size: 24341034
   path: MM23_data.csv
   hash: md5
+  isexec: true

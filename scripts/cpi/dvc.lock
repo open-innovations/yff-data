@@ -13,23 +13,23 @@ stages:
       size: 248
     - path: scripts/cpi/vis.py
       hash: md5
-      md5: 1422c0cbcc30767a544fad3d290ed1dc
-      size: 1176
+      md5: aba2e0b2b4387a24efe0b7aa3cc34d6d
+      size: 1209
     - path: scripts/util/util.py
       hash: md5
-      md5: b0f2b18abbe58888850d4a8ad26c4920
-      size: 5026
+      md5: 5714874a113bd6bd28d0c8343a00ae28
+      size: 5168
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
     - path: scripts/cpi/transform.py
       hash: md5
-      md5: 44dd50f444f388eaec0bcbc19cd8a0ef
-      size: 743
+      md5: c87a3e82054eb8376c19b608bb67e975
+      size: 765
     - path: scripts/util/date.py
       hash: md5
-      md5: 2e7d9d4230f47d81d486885152d79f8c
-      size: 1564
+      md5: e884912063355f6a4fc771f37f921859
+      size: 1620
     - path: working/MM23_data.csv
       hash: md5
       md5: d74cbdc023ea237e4eded21be2096941
@@ -43,6 +43,7 @@ stages:
       hash: md5
       md5: 3c3e30c5d120f9086a6c5a16d81055c8
       size: 129117
+      isexec: true
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
@@ -50,30 +51,37 @@ stages:
       hash: md5
       md5: a31e298cf1d11085cac27428cb11d8b9
       size: 571
+      isexec: true
     - path: data/cpi/cpi_barchart.csv
       hash: md5
       md5: cd297fb1cc6894d02b5f690c301c8ead
       size: 248
+      isexec: true
     - path: data/cpi/cpi_linechart.csv
       hash: md5
       md5: e80dd12360075020a7bb078218a0eb4e
       size: 15005
+      isexec: true
     - path: data/cpi/cpi_summary_barchart.csv
       hash: md5
       md5: 14547e495eb8b6bfea8df507fd5f92cd
       size: 154
+      isexec: true
     - path: data/cpi/headlines.csv
       hash: md5
-      md5: 318955ff2eda8bfd76e0089564976a2b
-      size: 313
+      md5: ef90d8d2343e52a71fd77d6457c9cc07
+      size: 308
+      isexec: true
     - path: data/cpi/indicator.csv
       hash: md5
-      md5: 580740d0eed7cffc9e6022572e31ad89
-      size: 121
+      md5: e53ba9153fb33a888ee9609efdadf473
+      size: 119
+      isexec: true
     - path: data/cpi/metadata.json
       hash: md5
       md5: 8dd14aa1fdaddc84a771de3f0078d6ac
       size: 59
+      isexec: true
     - path: data/cpi/prefix.csv
       hash: md5
       md5: a3e78778cda4985d06ee985628d68a8d
@@ -84,8 +92,8 @@ stages:
       size: 129117
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: 6452c4f0a012dae314e0eae9246b9846
-      size: 8972
+      md5: 333b5f3d15935feb4877eae7ec0f3fa8
+      size: 9191
     - path: working/metadata.csv
       hash: md5
       md5: 9b78f7794199a16cbde55255362573a0
@@ -95,26 +103,32 @@ stages:
       hash: md5
       md5: cd297fb1cc6894d02b5f690c301c8ead
       size: 248
+      isexec: true
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
       md5: e80dd12360075020a7bb078218a0eb4e
       size: 15005
+      isexec: true
     - path: src/_data/sources/cpi/cpi_summary_barchart.csv
       hash: md5
       md5: 14547e495eb8b6bfea8df507fd5f92cd
       size: 154
+      isexec: true
     - path: src/_data/sources/cpi/headlines.csv
       hash: md5
-      md5: 318955ff2eda8bfd76e0089564976a2b
-      size: 313
+      md5: ef90d8d2343e52a71fd77d6457c9cc07
+      size: 308
+      isexec: true
     - path: src/_data/sources/cpi/indicator.csv
       hash: md5
-      md5: 580740d0eed7cffc9e6022572e31ad89
-      size: 121
+      md5: e53ba9153fb33a888ee9609efdadf473
+      size: 119
+      isexec: true
     - path: src/_data/sources/cpi/metadata.json
       hash: md5
       md5: 8dd14aa1fdaddc84a771de3f0078d6ac
       size: 59
+      isexec: true
   extract:
     cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
     deps:

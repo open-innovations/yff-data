@@ -27,7 +27,7 @@ def iso_to_named_date(date):
     return sep.join(text)
 
 def summarise(metadata): 
-    cpi = pd.read_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
+    cpi = pd.read_csv(os.path.join(INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
     
     latest = pd.DataFrame({
             'monthly_pct_change' : (cpi['monthly_pct_change'].iloc[:1]),
@@ -57,8 +57,10 @@ def bar_chart(data, n, make_indicator=True):
     last_year = data.iloc[int(-13*n):int(-12*n)]
 
     second_last_month = data.iloc[int(-3*n):int(-2*n)]
-    second_last_quarter = data.iloc[int(-5*n):int(-4*n)]
-    second_last_year = data.iloc[int(-14*n):int(-13*n)]
+    second_last_quarter = data.iloc[int(-6*n):int(-5*n)]
+    second_last_year = data.iloc[int(-15*n):int(-14*n)]
+
+    print(second_last_year)
     df = pd.DataFrame()
     df['monthly_pct_change'] = pct_change(most_recent_month.value, last_month.value)
     df['quarterly_pct_change'] = pct_change(most_recent_month.value, last_quarter.value)

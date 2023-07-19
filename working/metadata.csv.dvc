@@ -1,5 +1,5 @@
 md5: f69fa4f5a626f3d616ffc72907afa6b9
-frozen: true
+# frozen: true
 deps:
 - checksum: '"33c4429accf9d68d50d46e3bb0b070ed4e8f9df45e5c86a28ca094abda45a174"'
   size: 7563
@@ -11,3 +11,4 @@ outs:
   size: 7563
   hash: md5
   path: metadata.csv
+  isexec: true
