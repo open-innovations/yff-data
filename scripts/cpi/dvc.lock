@@ -17,8 +17,8 @@ stages:
       size: 1209
     - path: scripts/util/util.py
       hash: md5
-      md5: 5714874a113bd6bd28d0c8343a00ae28
-      size: 5168
+      md5: ed5531342082029f15a826b13977807f
+      size: 5361
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     deps:
@@ -92,8 +92,8 @@ stages:
       size: 129117
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: 14671293af16950f11cb1cb45159f324
-      size: 9151
+      md5: 2681f18ca485e47d2c83c4e197123493
+      size: 9022
     - path: working/metadata.csv
       hash: md5
       md5: 9b78f7794199a16cbde55255362573a0

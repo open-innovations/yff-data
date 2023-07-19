@@ -4,6 +4,7 @@ import shutil
 from scripts.util.util import slugify
 from transform import DATA_DIR as INPUTS_DIR
 from transform import n
+from scripts.util.util import iso_to_named_date
 OUTPUTS_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'cpi'))
 CPI_METADATA = os.path.join(INPUTS_DIR, 'metadata.json')
 
@@ -19,12 +20,6 @@ def read_meta():
 
 def pct_change(col1, col2):
     return ((col1 - col2) / col2)*100
-
-def iso_to_named_date(date):
-    stamp = pd.Timestamp(f'{date}')
-    text = [f'{stamp.day}', stamp.month_name(), f'{stamp.year}']
-    sep = ' ' 
-    return sep.join(text)
 
 def summarise(metadata): 
     cpi = pd.read_csv(os.path.join(INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
