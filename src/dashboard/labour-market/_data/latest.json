@@ -1,6 +1,8 @@
 {
-  "unemployment_rate":11.4,
-  "economic_inactivity_rate":38.0,
+  "unemployment_rate_all_working_age":4.1,
+  "economic_inactivity_rate_all_working_age":20.8,
+  "unemployment_rate_young_people":11.4,
+  "economic_inactivity_rate_young_people":38.0,
   "unemployment_rate_not_in_full_time_education":10.6,
   "economic_inactivity_rate_not_in_full_time_education":17.8,
   "long_term_unemployment_rate_6_to_12_months":19.5,

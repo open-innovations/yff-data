@@ -45,11 +45,6 @@ The page is automatically updated when ONS publishes new data.
   and duration (seasonally adjusted)</a> dataset.
 </p>
 
-<p>
-  The current data was published on {{ dates.unem01_published | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.most_recent_lms_period }} quarter. The next scheduled publication is {{ dates.unem01_next_update | date('HUMAN_DATE') }}.
-</p>
-
 {{ comp.viz.main({ visualisations: visualisation | pick('long_term_unemployment_3_years', 'long_term_unemployment_all'), test: false }) | safe }}
 
 <h2 id="labour-market-status">Labour market status (seasonally adjusted)</h2>
@@ -62,11 +57,6 @@ The page is automatically updated when ONS publishes new data.
   This data is derived from the 
   <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/educationalstatusandlabourmarketstatusforpeopleagedfrom16to24seasonallyadjusteda06sa">A06 
   SA: Educational status and labour market status for people aged from 16 to 24 (seasonally adjusted)</a> dataset.
-</p>
-
-<p>
-  The current data was published on {{ dates.a06_published | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.most_recent_lms_period }} quarter. The next scheduled publication is {{ dates.a06_next_update | date('HUMAN_DATE') }}.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisation | pick(

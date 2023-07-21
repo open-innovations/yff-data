@@ -15,5 +15,6 @@ if __name__ == '__main__':
     ]
 
     extract = extract.drop(columns=['dates.freq']).rename(columns={'dates.date': 'lms_period'})
+    extract.lms_period = pd.to_datetime(extract.lms_period)
 
-    extract.to_csv(LMS_EXTRACT, index=False)
+    extract.loc[extract.lms_period >= '2000-01-01', :].to_csv(LMS_EXTRACT, index=False)

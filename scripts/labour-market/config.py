@@ -1,6 +1,10 @@
 import os
 
 column_mapper = {
+    # Overall rates
+    'LF2Q': 'unemployment_rate_sa', # LFS: ILO Unemployment rate: UK: All: Aged 16-64: %: SA,%,NA
+    'LF2S': 'economic_inactivity_rate_sa', # LFS: Economic inactivity rate: UK: All: Aged 16-64: %: SA,%,NA
+
     'JN5R': 'age_16_to_24_total_sa',
     'MGUQ': 'age_16_to_24_in_employment_sa',
     'MGVF': 'age_16_to_24_unemployed_sa',

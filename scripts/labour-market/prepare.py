@@ -10,6 +10,24 @@ os.makedirs(SOURCES_DIR, exist_ok=True)
 os.makedirs(DASHBOARD_DIR, exist_ok=True)
 
 
+labour_market_status_variables = [
+    'LF2Q', 'LF2S',
+    'JN5R', 'MGUQ', 'MGVF', 'MGVU', 'AIVZ', 'MGWY', 'AIYL',
+    'JN6B', 'AGNJ', 'AGOL', 'AGPM', 'AIWI', 'AIXT', 'AIYU',
+    'JN62', 'AGNT', 'AGOU', 'AGPV', 'AIXB', 'AIYC', 'AIZD',
+    'JN69', 'AGNH', 'AGOJ', 'AGPK', 'AIWG', 'AIXR', 'AIYS',
+    'JN6A', 'AGNI', 'AGOK', 'AGPL', 'AIWH', 'AIXS', 'AIYT',
+    'JN6E', 'AGNM', 'AGOO', 'AGPP', 'AIWL', 'AIXW', 'AIYX',
+    'JN6H', 'AGNP', 'AGOR', 'AGPS', 'AIWX', 'AIXZ', 'AIZA',
+]
+
+long_term_unemployed_variables = [
+    'YBVH', 'YBXG', 'YBXJ', 'YBXM',
+    'YBVN', 'YBXV', 'YBXY', 'YBYB',
+]
+
+
+
 def summarise(**datasets):
     long_term_unemployed = datasets['long_term_unemployed']
     labour_market_status = datasets['labour_market_status']
@@ -17,40 +35,46 @@ def summarise(**datasets):
     last_period_ltu = long_term_unemployed.quarter_label.iloc[-1]
     most_recent_lms_period = labour_market_status.quarter_label.iloc[-1]
 
-    summary = pd.DataFrame({
-        'Value': [
-            labour_market_status.age_16_to_24_unemployment_rate_sa \
-                .iloc[-1].round(1),
-            labour_market_status.age_16_to_24_economic_inactivity_rate_sa \
-                .iloc[-1].round(1),
-            labour_market_status.age_16_to_24_not_in_ft_education_unemployment_rate_sa \
-                .iloc[-1].round(1),
-            labour_market_status.age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa \
-                .iloc[-1].round(1),
-            long_term_unemployed.age_16_to_24_unemployed_6_to_12_months_rate_sa \
-                .iloc[-1].round(1),
-            long_term_unemployed.age_16_to_24_unemployed_over_12_months_rate_sa \
-                .iloc[-1].round(1),
-        ],
-        'Note': [
-            "Young people aged 16-24, unemployed as at {} (seasonally adjusted)".format(most_recent_lms_period),
-            "Young people aged 16-24, economically inactive as at {} (seasonally adjusted)".format(most_recent_lms_period),
-            "Young people aged 16-24, not in full-time education, unemployed as at {} (seasonally adjusted)".format(most_recent_lms_period),
-            "Young people aged 16-24, not in full-time education, economically inactive as at {} (seasonally adjusted)".format(most_recent_lms_period),
-            "Young people aged 16-24, unemployed between 6 and 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
-            "Young people aged 16-24, unemployed over 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
-        ],
-        'Suffix': '%',
-    },
-        index=pd.Index([
-            'Unemployment rate',
-            'Economic inactivity rate',
-            'Unemployment rate (Not in full-time education)',
-            'Economic inactivity rate (Not in full-time education)',
-            'Long-term unemployment rate 6 to 12 months',
-            'Long-term unemployment rate over 12 months',
-        ], name='Title')
-    )
+    summary = pd.concat([
+        labour_market_status.loc[:, [
+            'unemployment_rate_sa',
+            'economic_inactivity_rate_sa',
+            'age_16_to_24_unemployment_rate_sa',
+            'age_16_to_24_economic_inactivity_rate_sa',
+            'age_16_to_24_not_in_ft_education_unemployment_rate_sa',
+            'age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa',
+        ]],
+        long_term_unemployed.loc[:, [
+            'age_16_to_24_unemployed_6_to_12_months_rate_sa',
+            'age_16_to_24_unemployed_over_12_months_sa',
+        ]]
+    ], axis=1).iloc[-1].round(1).to_frame()
+
+    summary.columns = ['Value']
+
+    summary.index = pd.Index([
+        'Unemployment rate (all working age)',
+        'Economic inactivity rate (all working age)',
+        'Unemployment rate (young people)',
+        'Economic inactivity rate (young people)',
+        'Unemployment rate (Not in full-time education)',
+        'Economic inactivity rate (Not in full-time education)',
+        'Long-term unemployment rate 6 to 12 months',
+        'Long-term unemployment rate over 12 months',
+    ], name="Title")
+
+    summary['Note'] = [       
+        "People aged 16-64, unemployed as at {} (seasonally adjusted)".format(most_recent_lms_period),
+        "People aged 16-64, economically inactive as at {} (seasonally adjusted)".format(most_recent_lms_period),
+        "Young people aged 16-24, unemployed as at {} (seasonally adjusted)".format(most_recent_lms_period),
+        "Young people aged 16-24, economically inactive as at {} (seasonally adjusted)".format(most_recent_lms_period),
+        "Young people aged 16-24, not in full-time education, unemployed as at {} (seasonally adjusted)".format(most_recent_lms_period),
+        "Young people aged 16-24, not in full-time education, economically inactive as at {} (seasonally adjusted)".format(most_recent_lms_period),
+        "Young people aged 16-24, unemployed between 6 and 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
+        "Young people aged 16-24, unemployed over 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
+    ]
+
+    summary['Suffix'] = '%'
     summary.fillna('N/A').to_csv(os.path.join(SOURCES_DIR, 'headlines.csv'))
 
     latest = summary.loc[:, 'Value']
@@ -96,21 +120,10 @@ if __name__ == "__main__":
         parse_dates=['lms_period']
     )
 
-    labour_market_status = create_table(lms_extract, [
-        'JN5R', 'MGUQ', 'MGVF', 'MGVU', 'AIVZ', 'MGWY', 'AIYL',
-        'JN6B', 'AGNJ', 'AGOL', 'AGPM', 'AIWI', 'AIXT', 'AIYU',
-        'JN62', 'AGNT', 'AGOU', 'AGPV', 'AIXB', 'AIYC', 'AIZD',
-        'JN69', 'AGNH', 'AGOJ', 'AGPK', 'AIWG', 'AIXR', 'AIYS',
-        'JN6A', 'AGNI', 'AGOK', 'AGPL', 'AIWH', 'AIXS', 'AIYT',
-        'JN6E', 'AGNM', 'AGOO', 'AGPP', 'AIWL', 'AIXW', 'AIYX',
-        'JN6H', 'AGNP', 'AGOR', 'AGPS', 'AIWX', 'AIXZ', 'AIZA',
-    ])
+    labour_market_status = create_table(lms_extract, labour_market_status_variables)
     save_files(labour_market_status, 'labour_market_status')
 
-    long_term_unemployed = create_table(lms_extract, [
-        'YBVH', 'YBXG', 'YBXJ', 'YBXM',
-        'YBVN', 'YBXV', 'YBXY', 'YBYB',
-    ])
+    long_term_unemployed = create_table(lms_extract, long_term_unemployed_variables)
 
     long_term_unemployed = pd.DataFrame({
         'age_16_to_24_unemployed_sa': (long_term_unemployed.age_18_to_24_unemployed_sa + long_term_unemployed.age_16_to_17_unemployed_sa).round(0),

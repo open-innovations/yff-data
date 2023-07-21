@@ -9,8 +9,11 @@ config:
   units:
     postfix: Suffix
   panels:
-    - name: Unemployment rate
-      colour: Orange
-      suffix: "%"
-    - name: Economic inactivity rate
+    - name: Unemployment rate (young people)
       colour: Gold
+    - name: Economic inactivity rate (young people)
+      colour: Blue
+    - name: Unemployment rate (all working age)
+      colour: Orange
+    - name: Economic inactivity rate (all working age)
+      colour: Plum
