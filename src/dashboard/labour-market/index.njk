@@ -96,4 +96,25 @@ The following charts compare labour market status for men and women aged 16 to 2
 ), tab_override: [null, null, 'All young people'], test: false }) | safe }}
 
 <h2 data-dependencies="/assets/js/table-sorter.js">Data Tables</h2>
-{{ comp.viz.main({ visualisations: tables }) | safe }}
+
+<h3>Long term unemployment</h3>
+{{ comp.viz.main({ visualisations: tables | pick(0, 1), tab_override: [
+  '6 to 12 months',
+  'over 12 months'
+] }) | safe }}
+
+<h3>Labour market status</h3>
+{{ comp.viz.main({ visualisations: tables | pick(2, 3), tab_override: [
+  'Not in full-time education',
+  'In full-time education'
+]  }) | safe }}
+
+{{ comp.viz.main({ visualisations: tables | pick(4, 5), tab_override: [
+  'Women NFTE',
+  'Men NFTE'
+]  }) | safe }}
+
+{{ comp.viz.main({ visualisations: tables | pick(6, 7), tab_override: [
+  '16-17 year olds NFTE',
+  '18-24 year olds NFTE'
+]  }) | safe }}

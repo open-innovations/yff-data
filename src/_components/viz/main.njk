@@ -28,11 +28,11 @@
   <div class="panes">{{ doTheVis(visualisations[0], headingLevel) }}</div>
 
 {% elif visualisations | length > 1 %}
-
+  <div style="--tab-count: {{ visualisations | length }};">
   <div class="panes tabbed" role="tabpanel" data-dependencies="/assets/js/tabbed.js">
     {% for vis in visualisations %}
       {{ doTheVis(vis, headingLevel, tab_override[loop.index0]) }}
     {% endfor %}
   </div>
-
+  </div>
 {% endif %}
