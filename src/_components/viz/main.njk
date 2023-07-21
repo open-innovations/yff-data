@@ -1,8 +1,8 @@
-{% macro doTheVis(visualisation, headingLevel) %}
+{% macro doTheVis(visualisation, headingLevel, tab_override) %}
   <div class="pane"{% if visualisation.config.id %} id="{{ visualisation.config.id }}"{% endif %}>
     {{ comp.viz.render({
       config: visualisation.config,
-      tab: visualisation.tab,
+      tab: tab_override or visualisation.tab,
       title: visualisation.title,
       caption: visualisation.caption,
       type: visualisation.type,
@@ -31,7 +31,7 @@
 
   <div class="panes tabbed" role="tabpanel" data-dependencies="/assets/js/tabbed.js">
     {% for vis in visualisations %}
-      {{ doTheVis(vis, headingLevel) }}
+      {{ doTheVis(vis, headingLevel, tab_override[loop.index0]) }}
     {% endfor %}
   </div>
 
