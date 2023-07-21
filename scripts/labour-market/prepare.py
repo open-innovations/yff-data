@@ -33,7 +33,9 @@ def summarise(**datasets):
     labour_market_status = datasets['labour_market_status']
 
     last_period_ltu = long_term_unemployed.quarter_label.iloc[-1]
+    ltu_12_month_data_missing = long_term_unemployed.missing_over_12_months_data.iloc[-1]
     most_recent_lms_period = labour_market_status.quarter_label.iloc[-1]
+
 
     summary = pd.concat([
         labour_market_status.loc[:, [
@@ -71,7 +73,7 @@ def summarise(**datasets):
         "Young people aged 16-24, not in full-time education, unemployed as at {} (seasonally adjusted)".format(most_recent_lms_period),
         "Young people aged 16-24, not in full-time education, economically inactive as at {} (seasonally adjusted)".format(most_recent_lms_period),
         "Young people aged 16-24, unemployed between 6 and 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
-        "Young people aged 16-24, unemployed over 12 months as at {} (seasonally adjusted)".format(last_period_ltu),
+        "Young people aged {}, unemployed over 12 months as at {} (seasonally adjusted)".format('18-24' if ltu_12_month_data_missing else '16-24', last_period_ltu),
     ]
 
     summary['Suffix'] = '%'
