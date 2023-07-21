@@ -65,11 +65,12 @@ def summarise(**datasets):
       }),
       # metadata.drop(columns=['variable']).value,
     ])
+    return latest
     latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'), indent=2)
 
 
 def create_table(data, columns):
-    table = data[lms_extract.variable.isin(columns)].pivot(
+    table = data[data.variable.isin(columns)].pivot(
         index='lms_period',
         columns='variable',
         values='value'
@@ -87,6 +88,7 @@ def create_table(data, columns):
 def save_files(data, prefix):
     data.pipe(add_index).to_csv(os.path.join(SOURCES_DIR, prefix + '_all_data.csv'))
     data.pipe(most_recent_stats).pipe(add_index).to_csv(os.path.join(SOURCES_DIR, prefix + '_last_3_years.csv'))
+    return data
     
 
 if __name__ == "__main__":

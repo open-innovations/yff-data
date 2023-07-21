@@ -72,8 +72,10 @@ column_mapper = {
     'YBYB': 'age_18_to_24_unemployed_over_12_months_rate_sa',
 }
 
-DATA_DIR = os.path.join('data', 'labour-market')
+TOP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+
+DATA_DIR = os.path.join(TOP_DIR, 'data', 'labour-market')
 LMS_EXTRACT = os.path.join(DATA_DIR, 'monthly-rolling.csv')
 
-SOURCES_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'labour-market'))
-DASHBOARD_DIR = os.path.join('src', 'dashboard', 'labour-market', '_data')
+SOURCES_DIR = os.path.realpath(os.path.join(TOP_DIR, 'src', '_data', 'sources', 'labour-market'))
+DASHBOARD_DIR = os.path.join(TOP_DIR, 'src', 'dashboard', 'labour-market', '_data')
