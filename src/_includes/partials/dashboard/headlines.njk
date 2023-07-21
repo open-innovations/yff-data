@@ -40,6 +40,15 @@
   number: search.data('dashboard/labour-market/').latest.economic_inactivity_rate + '%'
 }) | safe }}
 
+{{ dashboard_block({
+  link: '~/dashboard/labour-market/index.njk' | url,
+  title: 'Long-term unemployment',
+  description: 'Percentage of young people (aged 16 to 24) unemployed for between 6 and 12 months for period ' +
+    search.data('dashboard/labour-market/').latest.most_recent_lms_period
+    + '.',
+  number: search.data('dashboard/labour-market/').latest.long_term_unemployment_rate_6_to_12_months + '%'
+}) | safe }}
+
 {# CPI #}
 {% set cpi_monthly_headline = sources.cpi.headlines.rows | findByAttribute('sector', 'Monthly') | first %}
 {{ dashboard_block({
