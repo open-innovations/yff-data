@@ -66,7 +66,6 @@ def summarise(**datasets):
       # metadata.drop(columns=['variable']).value,
     ])
     return latest
-    latest.to_json(os.path.join(DASHBOARD_DIR, 'latest.json'), indent=2)
 
 
 def create_table(data, columns):
