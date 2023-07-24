@@ -41,7 +41,7 @@ stages:
     deps:
     - path: scripts/vacancies/transform.py
       md5: 49234177ab64c8129538417a04d7b5ca
-      size: 844
+      size: 822
     - path: working/LMS_data.csv
       hash: md5
       md5: c64da769072494ace355e47f99df2c88
@@ -54,4 +54,3 @@ stages:
       hash: md5
       md5: 55b7cab60096af4e1180cef5e3ef0608
       size: 10449
-      isexec: true
