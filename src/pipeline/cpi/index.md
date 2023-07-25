@@ -42,7 +42,7 @@ Separately, we also compare this to the same set of values from the previous upd
 
 We explicitly indicate the sign to show if the percentage change is an positive or negative. A positive percentage change means the cost of goods is rising, and negative change means the cost of goods is falling.
 
-&dagger;The youth-focused average is a mean average of the index for four categories most-affecting young people: Food and Non-Alcoholic Beverages (D7BU), Housing and fuels (D7BX), Transport (D7C2), and Recreation and Culture (D7C4). These are the top 4 categories which people under 30 spend their money on weekly, calculated from the ONS dataset <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/datasets/familyspendingworkbook1detailedexpenditureandtrends">Family spending workbook 1: detailed expenditure and trends</a>. 
+&dagger;<span id='dagger'>The youth-focused average</span> is a mean average of the index for four categories most-affecting young people: Food and Non-Alcoholic Beverages (D7BU), Housing and fuels (D7BX), Transport (D7C2), and Recreation and Culture (D7C4). These are the top 4 categories which people under 30 spend their money on weekly, calculated from the ONS dataset <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/datasets/familyspendingworkbook1detailedexpenditureandtrends">Family spending workbook 1: detailed expenditure and trends</a>. 
 
 For the line chart, we take monthly data for the past 10 years from the most recent release date. 
 
