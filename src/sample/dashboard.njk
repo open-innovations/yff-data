@@ -25,6 +25,30 @@ visualisations:
           class: "gold"
         - name: "Thing 4"
           class: "turquoise"
+  -
+    type: dashboard
+    tab: Precision
+    config:
+      file: /data/example/dummy_dashboard.csv
+      type: dashboard
+      title: "Title"	# Column heading for title
+      value: "Value"	# Column heading for value
+      note: "Note"		# Column heading for note
+      width: 250px		# Min width of column (default: 250px)
+      units:
+        prefix: "Units→Pre"
+        postfix: "Units→Post"
+      panels:
+        - name: "Thing 5"
+          class: "gold"
+        - name: "Thing 5"
+          class: "gold"
+          precision: 0.1
+          note: "Rounded to nearest 0.1"
+        - name: "Thing 5"
+          class: "gold"
+          precision: 2.5
+          note: "Rounded to nearest 2.5"
 ---
 
 
