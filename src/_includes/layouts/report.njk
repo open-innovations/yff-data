@@ -9,6 +9,8 @@
 
   <div class="wrapper holder">
 
+	{% include 'partials/page/topic-cloud.njk' %}
+	
 	  <section>
 		{{ comp.viz.main({ visualisations: visualisations }) | safe }}
 	  </section>
