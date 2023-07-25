@@ -11,9 +11,12 @@ config:
   panels:
     - name: Unemployment rate (young people)
       colour: Gold
+      precision: 0.1
     - name: Economic inactivity rate (young people)
       colour: Blue
+      precision: 0.1
     - name: Unemployment rate (all working age)
       colour: Orange
     - name: Economic inactivity rate (all working age)
       colour: Plum
+      precision: 0.1

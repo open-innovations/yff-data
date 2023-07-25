@@ -4,10 +4,13 @@ config:
   panels:
     - colour: Orange
       name: Monthly
+      precision: 0.1
     - colour: Blue
       name: Quarterly
+      precision: 0.1
     - colour: Gold
       name: Yearly
+      precision: 0.1
   title: sector
   units:
     postfix: Suffix

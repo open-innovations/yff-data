@@ -10,6 +10,7 @@ config:
     postfix: 'Suffix'
   panels:
     - name: 'Latest monthly vacancies'
-      colour: Orange      
+      colour: Orange
+      precision: 0   
     - name: 'Growth on previous quarter'
       colour: Plum
