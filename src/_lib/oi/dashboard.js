@@ -67,6 +67,7 @@ export function Dashboard(config,csv){
 				panel += '<h3>'+config.panels[p].name+'</h3>';
 				if(config.value && csv.columns[config.value]){
 					panel += '<span class="bignum" data="'+csv.rows[idx][config.value]+'"';
+					if(config.panels[p].precision) panel += ' data-precision="'+config.panels[p].precision+'"';
 					if(config.units){
 						if(config.units.prefix && csv.rows[idx][config.units.prefix]) panel += ' data-prefix="'+csv.rows[idx][config.units.prefix]+'"';
 						if(config.units.postfix && csv.rows[idx][config.units.postfix]) panel += ' data-postfix="'+csv.rows[idx][config.units.postfix]+'"';
@@ -78,7 +79,11 @@ export function Dashboard(config,csv){
 					console.error('WARNING: No column named "'+config.value+'" in panel '+p+' ('+config.file+')');
 				}
 
-				if(config.note && csv.columns[config.note]) panel += '<span class="footnote">'+csv.rows[idx][config.note]+'</span>';
+				var note = config.panels[p].note || config.note;
+				if(note){
+					if(csv.columns[note]) panel += '<span class="footnote">'+csv.rows[idx][config.note]+'</span>';
+					else panel += '<span class="footnote">'+note+'</span>';
+				}
 				panel += '</div>';
 
 				html.push(panel);
