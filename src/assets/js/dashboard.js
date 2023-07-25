@@ -54,7 +54,7 @@
 		// Set the current time in milliseconds
 		f = (now - start) / duration;
 		if (f < 1) {
-			v = formatNumber(Math.round(val * f));
+			v = formatNumber(Math.round(val * f),prec);
 			el.innerHTML = pre + v + post;
 			window.requestAnimFrame(frame);
 		} else {
@@ -77,22 +77,21 @@
 		return 0;
 	}
 	function toPrecision(v,prec){
-		if(prec){
-			var s = (v < 0 ? -1 : 1);
-			v = Math.abs(v);
-			var n = Math.round(v/prec);
-			var dp = countDecimals(prec);
-			// Rebuild the number
-			v = prec*n;
-			if(prec < 1) v = v.toFixed(dp);
-		}
+		if(typeof prec!=="number") return v;
+		var n = Math.round(v/prec);
+		var dp = countDecimals(prec);
+		// Rebuild the number
+		v = prec*n;
+		if(prec < 1) v = v.toFixed(dp);
 		return v;
 	}
 	// Shorten big numbers
 	function formatNumber(v,precision) {
 		if (typeof v !== "number") return v;
-		if (v > 1e6) return toPrecision(v / 1e6,precision*1e6) + "M";
-		if (v > 1e4) return toPrecision(v / 1e3,precision*1e3) + "k";
+		if (v > 1e7) return toPrecision(v / 1e6,(precision ? precision/1e6 : 1)) + "M";
+		if (v > 1e6) return toPrecision(v / 1e6,(precision ? precision/1e6 : 0.1)) + "M";
+		if (v > 1e4) return toPrecision(v / 1e3,(precision ? precision/1e3 : 1)) + "k";
+		if (v > 1e3) return toPrecision(v / 1e3,(precision ? precision/1e3 : 0.1)) + "k";
 		return toPrecision(v,precision);
 	}
 	// Check if the element is within the viewport
