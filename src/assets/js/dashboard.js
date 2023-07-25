@@ -46,20 +46,20 @@
 		start = new Date();
 		pre = el.getAttribute("data-prefix") || "";
 		post = el.getAttribute("data-postfix") || "";
-		prec = el.getAttribute("data-precision") || "";
+		prec = el.getAttribute("data-precision") ? parseFloat(el.getAttribute("data-precision")) : "";
 		if (typeof duration !== "number") duration = 500;
 		function frame() {
-		var now, f;
-		now = new Date();
-		// Set the current time in milliseconds
-		f = (now - start) / duration;
-		if (f < 1) {
-			v = formatNumber(Math.round(val * f),prec);
-			el.innerHTML = pre + v + post;
-			window.requestAnimFrame(frame);
-		} else {
-			el.innerHTML = (pre || "") + formatNumber(val,prec) + (post || "");
-		}
+			var now, f;
+			now = new Date();
+			// Set the current time in milliseconds
+			f = (now - start) / duration;
+			if (f < 1) {
+				v = formatNumber(Math.round(val * f),prec);
+				el.innerHTML = pre + v + post;
+				window.requestAnimFrame(frame);
+			} else {
+				el.innerHTML = (pre || "") + formatNumber(val,prec) + (post || "");
+			}
 		}
 		// If the value is a number we animate it
 		if (typeof val === "number") frame();
