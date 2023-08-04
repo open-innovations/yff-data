@@ -49,5 +49,5 @@ config:
     tooltip: yearly
     value: yearly_pct_change
   type: bar-chart
-title: CPI Summary
+title: CPI summary
 type: chart

@@ -32,18 +32,18 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
   </p>
 <p>
   The first tab shows the overall change averaged across all 12 categories, and a <a href="/dashboard/cpi/pipeline/#dagger">Youth-focused average{{ "&dagger;" | safe}}</a> 
-  for the 4 categories that most affect young people according to YFF research.</p>
+  for the four categories that most affect young people according to YFF research.</p>
   <p>  
-  The second tab shows the 4 individual categories affecting young people, and the final tab shows all categories measured in CPI.
+  The second tab shows the four individual categories affecting young people, and the final tab shows all categories measured in CPI.
 </p>
 
 {{ comp.viz.main({ visualisations: visualisation | pick('cpi_summary_barchart', 'young_people_barchart', 'all_category_barchart'), test: false }) | safe }}
 
 <h2>Consumer price index 10 year history</h2>
-<p>The line chart below shows consumer prices index for the categories most-affecting young people over the last 10 years. 
+<p>The line chart below shows consumer price index for the categories most-affecting young people over the last 10 years. 
   The start date is 10 years ago from the most recent publication of CPI data. The data in this chart comes from the same dataset 
   as the percentage change figures.</p>
 {{ comp.viz.main({ visualisations: visualisation | pick('time_series'), test: false }) | safe }}
 
-<h2 data-dependencies="/assets/js/table-sorter.js"> Data Tables </h2>
+<h2 data-dependencies="/assets/js/table-sorter.js"> Data tables </h2>
 {{ comp.viz.main({ visualisations: tables }) | safe }}
