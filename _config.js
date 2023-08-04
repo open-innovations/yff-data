@@ -75,6 +75,7 @@ site.use(date({
 // Add csv loader
 site.loadData(['.csv'], csvLoader);
 site.loadData(['.geojson', '.hexjson'], jsonLoader);
+site.loadData(['.md']);
 
 /**
  * Descend into a folder tree and remotely map each file to the Lume build

@@ -11,6 +11,7 @@ export default function*({ search }) {
     const slug = topic.replace(/\W+/g, '-').toLowerCase();
 
     yield {
+      id: slug,
       url: `/topic/${slug}/`,
       title: topic,
       tags: 'topic',
