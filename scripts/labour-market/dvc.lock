@@ -34,8 +34,8 @@ stages:
       nfiles: 6
     - path: ../../working/metadata.csv
       hash: md5
-      md5: 19720e723abe9d5df5bdd65934d6590e
-      size: 7563
+      md5: 6c563a2c96e110788c90a69ea3a013b6
+      size: 7571
     - path: config.py
       hash: md5
       md5: c9187b99fb9c48a24be707561d15eaa2
