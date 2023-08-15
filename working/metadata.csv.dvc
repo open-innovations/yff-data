@@ -1,13 +1,13 @@
-md5: c1c2e10a6efad0fd0dc4bcbf1951e5bc
+md5: 2882f68af145cfae34deceb4d2884601
 # frozen: true
 deps:
-- checksum: '"15c5f7d33341c8be678c1eb7d825c8c0228837783c062bbacc441bd856c7f408"'
+- checksum: '"72c6d4ecc77dec5effd41fb9959900d8a77e925d7a39f526d743ca34117a877f"'
   size: 7571
   hash: md5
   path: 
     https://raw.githubusercontent.com/economic-analytics/edd/main/data-raw/edd_dict.csv
 outs:
-- md5: 6c563a2c96e110788c90a69ea3a013b6
+- md5: 0591e9c767a90b3733a4222c1eec2daa
   size: 7571
   hash: md5
   path: metadata.csv

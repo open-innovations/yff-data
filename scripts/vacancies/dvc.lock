@@ -5,25 +5,25 @@ stages:
     deps:
     - path: data/vacancies/vacancies_edd.csv
       hash: md5
-      md5: 55b7cab60096af4e1180cef5e3ef0608
-      size: 10449
+      md5: 47c059ded3dd8c3afebef655675a8493
+      size: 10478
     - path: scripts/vacancies/prepare.py
       hash: md5
       md5: 520a4d8030f09be13ebe57153d0923b2
       size: 5733
     - path: working/metadata.csv
       hash: md5
-      md5: 6c563a2c96e110788c90a69ea3a013b6
+      md5: 0591e9c767a90b3733a4222c1eec2daa
       size: 7571
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5
-      md5: f3f56e5bdf899ea1c3cf5b35ceff3412
-      size: 830
+      md5: f3f76d71ac7669d6c4ad04b2cfaf01a5
+      size: 883
     outs:
     - path: src/_data/sources/vacancies/
       hash: md5
-      md5: a33d62f91030ad0de0c845cac1253a8f.dir
-      size: 19936
+      md5: 60cfb5ee679c1d639893015f826f21cb.dir
+      size: 19997
       nfiles: 7
   extract:
     cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
@@ -34,8 +34,8 @@ stages:
     outs:
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5
-      md5: f3f56e5bdf899ea1c3cf5b35ceff3412
-      size: 830
+      md5: f3f76d71ac7669d6c4ad04b2cfaf01a5
+      size: 883
   transform:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
     deps:
@@ -44,13 +44,13 @@ stages:
       size: 822
     - path: working/LMS_data.csv
       hash: md5
-      md5: c64da769072494ace355e47f99df2c88
-      size: 16843327
+      md5: 646d23aecde612fc8c4fa1284505a7e3
+      size: 16902390
     - path: working/lookups/LMS_variable_lookup.csv
       md5: faf1d16226f95f8d2448b90d1d5868a0
       size: 137661
     outs:
     - path: data/vacancies/vacancies_edd.csv
       hash: md5
-      md5: 55b7cab60096af4e1180cef5e3ef0608
-      size: 10449
+      md5: 47c059ded3dd8c3afebef655675a8493
+      size: 10478

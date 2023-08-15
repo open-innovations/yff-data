@@ -88,7 +88,7 @@ stages:
       size: 8852
     - path: working/metadata.csv
       hash: md5
-      md5: 6c563a2c96e110788c90a69ea3a013b6
+      md5: 0591e9c767a90b3733a4222c1eec2daa
       size: 7571
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
