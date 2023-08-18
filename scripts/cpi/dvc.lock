@@ -5,11 +5,11 @@ stages:
     deps:
     - path: data/cpi/cpi_all_category_bar_chart.csv
       hash: md5
-      md5: a31e298cf1d11085cac27428cb11d8b9
-      size: 571
+      md5: 98f0909295accee748b6222d6f12808b
+      size: 576
     - path: data/cpi/cpi_barchart.csv
       hash: md5
-      md5: aa6383423507ae33231aa91c1b0d222e
+      md5: aafdf0068408777099baa18108f8a7b5
       size: 240
     - path: scripts/cpi/vis.py
       hash: md5
@@ -32,8 +32,8 @@ stages:
       size: 1564
     - path: working/MM23_data.csv
       hash: md5
-      md5: d74cbdc023ea237e4eded21be2096941
-      size: 24341034
+      md5: 93eaa2a29660ac755abbc58a4295cc78
+      size: 24404521
     - path: working/lookups/MM23_variable_lookup.csv
       hash: md5
       md5: 15cf3be568092ecae4ce523f538bf946
@@ -41,80 +41,80 @@ stages:
     outs:
     - path: data/cpi/transformed_cpi.csv
       hash: md5
-      md5: 3c3e30c5d120f9086a6c5a16d81055c8
-      size: 129117
+      md5: 399726a7786357f7c8368bd6d5a9d6f3
+      size: 129429
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
     - path: data/cpi/cpi_all_category_bar_chart.csv
       hash: md5
-      md5: a31e298cf1d11085cac27428cb11d8b9
-      size: 571
+      md5: 98f0909295accee748b6222d6f12808b
+      size: 576
     - path: data/cpi/cpi_barchart.csv
       hash: md5
-      md5: aa6383423507ae33231aa91c1b0d222e
+      md5: aafdf0068408777099baa18108f8a7b5
       size: 240
     - path: data/cpi/cpi_linechart.csv
       hash: md5
-      md5: c8b3028d1ff1bcc456cfca84e743dff7
-      size: 15097
+      md5: 152036a2722e1271a50e89bd63055931
+      size: 15096
     - path: data/cpi/cpi_summary_barchart.csv
       hash: md5
-      md5: 970f83b40f7b0154a0cfe7340fb2d8ee
-      size: 167
+      md5: 1cdba3098a6367fe7c315f7189053706
+      size: 166
     - path: data/cpi/headlines.csv
       hash: md5
-      md5: ef90d8d2343e52a71fd77d6457c9cc07
-      size: 308
+      md5: 67ce753218a112e36b736738351698ca
+      size: 314
     - path: data/cpi/indicator.csv
       hash: md5
-      md5: e53ba9153fb33a888ee9609efdadf473
-      size: 119
+      md5: 66d919ee204a7f65ed75b4e809bde1d8
+      size: 118
     - path: data/cpi/metadata.json
       hash: md5
-      md5: 8dd14aa1fdaddc84a771de3f0078d6ac
-      size: 59
+      md5: 2d7be3516de97105425f6e8f00d4d0a0
+      size: 64
     - path: data/cpi/prefix.csv
       hash: md5
       md5: a3e78778cda4985d06ee985628d68a8d
       size: 84
     - path: data/cpi/transformed_cpi.csv
       hash: md5
-      md5: 3c3e30c5d120f9086a6c5a16d81055c8
-      size: 129117
+      md5: 399726a7786357f7c8368bd6d5a9d6f3
+      size: 129429
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: d46035d6483bea2255875f82de82d6f5
-      size: 8852
+      md5: 96d3d6b4c764862b0eee0d642c346e3f
+      size: 8893
     - path: working/metadata.csv
       hash: md5
-      md5: 0591e9c767a90b3733a4222c1eec2daa
+      md5: 40bf2e9ee4da4151132e14ea776600ef
       size: 7571
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       hash: md5
-      md5: aa6383423507ae33231aa91c1b0d222e
+      md5: aafdf0068408777099baa18108f8a7b5
       size: 240
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
-      md5: c8b3028d1ff1bcc456cfca84e743dff7
-      size: 15097
+      md5: 152036a2722e1271a50e89bd63055931
+      size: 15096
     - path: src/_data/sources/cpi/cpi_summary_barchart.csv
       hash: md5
-      md5: 970f83b40f7b0154a0cfe7340fb2d8ee
-      size: 167
+      md5: 1cdba3098a6367fe7c315f7189053706
+      size: 166
     - path: src/_data/sources/cpi/headlines.csv
       hash: md5
-      md5: ef90d8d2343e52a71fd77d6457c9cc07
-      size: 308
+      md5: 67ce753218a112e36b736738351698ca
+      size: 314
     - path: src/_data/sources/cpi/indicator.csv
       hash: md5
-      md5: e53ba9153fb33a888ee9609efdadf473
-      size: 119
+      md5: 66d919ee204a7f65ed75b4e809bde1d8
+      size: 118
     - path: src/_data/sources/cpi/metadata.json
       hash: md5
-      md5: 8dd14aa1fdaddc84a771de3f0078d6ac
-      size: 59
+      md5: 2d7be3516de97105425f6e8f00d4d0a0
+      size: 64
   extract:
     cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
     deps:

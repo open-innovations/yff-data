@@ -13,7 +13,7 @@ stages:
       size: 5733
     - path: working/metadata.csv
       hash: md5
-      md5: 0591e9c767a90b3733a4222c1eec2daa
+      md5: 40bf2e9ee4da4151132e14ea776600ef
       size: 7571
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5

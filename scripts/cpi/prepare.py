@@ -87,6 +87,8 @@ def bar_chart(data, n, make_indicator=True):
     for i in index:
         if df.loc['All CPI Categories', i] > 0:
             sgn.append('+')
+        else:
+            sgn.append('')
     if pct_change(last_month.loc['D7BT'].value, second_last_month.loc['D7BT'].value) < pct_change(most_recent_month.loc['D7BT'].value, last_month.loc['D7BT'].value):
         indicators.append('an increase')
     else:
