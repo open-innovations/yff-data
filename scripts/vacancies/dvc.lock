@@ -17,13 +17,13 @@ stages:
       size: 7650
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5
-      md5: f3f76d71ac7669d6c4ad04b2cfaf01a5
-      size: 883
+      md5: d87aa1a94f87db2274f2b87c9ee0d9ab
+      size: 848
     outs:
     - path: src/_data/sources/vacancies/
       hash: md5
-      md5: 60cfb5ee679c1d639893015f826f21cb.dir
-      size: 19997
+      md5: b5aed889cfaedf13972272b5af94ec2f.dir
+      size: 19945
       nfiles: 7
   extract:
     cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
@@ -34,8 +34,8 @@ stages:
     outs:
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5
-      md5: f3f76d71ac7669d6c4ad04b2cfaf01a5
-      size: 883
+      md5: d87aa1a94f87db2274f2b87c9ee0d9ab
+      size: 848
   transform:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
     deps:
