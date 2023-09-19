@@ -1,8 +1,7 @@
-from urllib.request import build_opener, install_opener, urlretrieve
+import requests
 
 
 def download_file(url, filename, headers=[]):
-    opener = build_opener()
-    opener.addheaders = headers
-    install_opener(opener)
-    urlretrieve(url, filename)
+    response = requests.get(url)
+    with open(filename, 'wb') as file:
+        file.write(response.content)

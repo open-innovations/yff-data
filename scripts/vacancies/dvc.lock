@@ -13,8 +13,8 @@ stages:
       size: 5733
     - path: working/metadata.csv
       hash: md5
-      md5: 4ec0da4994782d25aca721561815e260
-      size: 7650
+      md5: 0da329f21f3d8a08af2216103729f224
+      size: 7642
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5
       md5: d87aa1a94f87db2274f2b87c9ee0d9ab
@@ -44,8 +44,8 @@ stages:
       size: 822
     - path: working/LMS_data.csv
       hash: md5
-      md5: 87e8d61a9a784f9db2a56b1a67bccb8f
-      size: 16991591
+      md5: 0fa1500fa1ad5467cf0710943f012825
+      size: 16991592
     - path: working/lookups/LMS_variable_lookup.csv
       md5: faf1d16226f95f8d2448b90d1d5868a0
       size: 137661
