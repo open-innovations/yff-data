@@ -1,0 +1,23 @@
+---
+title: Employment maps
+---
+
+{{ comp.oi.map.hex_cartogram({
+  config: {
+    hexjson: {
+      layout: 'odd-r',
+      hexes: {
+        E08000032: {
+          n: 'Bradford',
+          q: -1,
+          r: 0
+        },
+        E08000033: {
+          n: 'Calderdale',
+          q: -2,
+          r: -1
+        }
+      }
+    }
+  }
+}) | safe }}

@@ -17,6 +17,8 @@ import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
 import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.0/mod.ts";
+
 const site = lume({
   src: './src',
   location: new URL('https://yff-wireframe.open-innovations.org/'),
@@ -43,6 +45,8 @@ site.use(netlifyCMS({
   previewStyle: '/assets/style/yff.css',
   extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
 }));
+
+site.use(oiLumeViz());
 
 site.copy(['.min.js']);
 // site.copy(['.css']);
