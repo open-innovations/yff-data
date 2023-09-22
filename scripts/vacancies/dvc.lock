@@ -13,7 +13,7 @@ stages:
       size: 5733
     - path: working/metadata.csv
       hash: md5
-      md5: 43186523cee2c0f416d9c3e15d7490b6
+      md5: 27d2f594278049f816b0f08a7fb87d5b
       size: 7642
     - path: working/vacancies/vacancies_by_sector.csv
       hash: md5
@@ -30,12 +30,12 @@ stages:
     deps:
     - path: scripts/vacancies/extract.py
       md5: a49fc352dd8af50aa8d41b53463ec90d
-      size: 563
+      size: 547
     outs:
     - path: working/vacancies/vacancies_by_sector.csv
-      md5: cf560065c870b454d8aec3c5e9cae104
-      size: 974
-      isexec: true
+      hash: md5
+      md5: d87aa1a94f87db2274f2b87c9ee0d9ab
+      size: 848
   transform:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
     deps:
