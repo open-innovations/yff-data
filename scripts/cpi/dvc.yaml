@@ -1,22 +1,11 @@
 stages:
-  extract:
-    cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
-    always_changed: true
-    wdir: ../..
-    deps:
-      - scripts/cpi/extract.py
-    outs:
-      - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx:
-          cache: false
-          persist: false
   transform:
     cmd: PYTHONPATH=. python3 scripts/cpi/transform.py
     wdir: ../..
     deps:
       - scripts/cpi/transform.py
       - scripts/util/date.py
-      - working/cpi/consumerpriceinflationdetailedreferencetables.xlsx
-      - working/cpi/mm23.csv
+      - working/MM23_data.csv
       - working/lookups/MM23_variable_lookup.csv
     outs:
       - data/cpi/transformed_cpi.csv:
@@ -28,8 +17,20 @@ stages:
     deps:
       - scripts/cpi/prepare.py
       - data/cpi/transformed_cpi.csv
+      - data/cpi/cpi_all_category_bar_chart.csv
+      - data/cpi/cpi_barchart.csv
+      - data/cpi/cpi_linechart.csv
+      - data/cpi/headlines.csv
+      - data/cpi/indicator.csv
+      - data/cpi/metadata.json
+      - data/cpi/prefix.csv
+      - data/cpi/cpi_summary_barchart.csv
+      - working/metadata.csv
     outs:
       - src/_data/sources/cpi/cpi_barchart.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/cpi/cpi_linechart.csv:
           cache: false
           persist: false
       - src/_data/sources/cpi/metadata.json:
@@ -38,15 +39,21 @@ stages:
       - src/_data/sources/cpi/headlines.csv:
           cache: false 
           persist: false
-  # vis:
-  #   cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
-  #   wdir: ../..
-  #   deps:
-  #     - scripts/cpi/vis.py
-  #     - data/cpi/cpi.csv
-  #     - scripts/util/util.py
-  #     - src/dashboard/cpi/_data/sources/visualisations.yaml
+      - src/_data/sources/cpi/indicator.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/cpi/cpi_summary_barchart.csv:
+          cache: false
+          persist: false
+  vis:
+    cmd: PYTHONPATH=. python3 scripts/cpi/vis.py
+    wdir: ../..
+    deps:
+      - scripts/cpi/vis.py
+      - data/cpi/cpi_barchart.csv
+      - data/cpi/cpi_all_category_bar_chart.csv
+      - scripts/util/util.py
     # outs:
-    #   - src/dashboard/cpi/_data:
+    #   - src/dashboard/cpi/_data/visualisation:
     #       cache: false
     #       persist: false

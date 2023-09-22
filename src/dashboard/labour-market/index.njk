@@ -1,9 +1,19 @@
 ---
 title: Labour Market
+priority: 50
 tags:
   - dashboard
+  - annotatable
 topics:
+  - Employment
+  - Unemployment
+  - Economic inactivity
+  - Long-term unemployment
   - Gender
+  - Aged 16-17
+  - Aged 18-24
+  - FTE
+  - NFTE
 raw_data:
   - /data/raw/qlfs/not_in_education.csv
   - /data/raw/qlfs/long_term_unemployed.csv
@@ -14,16 +24,18 @@ raw_data:
 <p>
 These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. 
 Specific links to the data sets used are provided below.
+The charts include the most recent 3-monthly rolling data from the LFS published on {{ latest.last_update | date('HUMAN_DATE') }}.
+The next data publication is due on {{ latest.next_update | date('HUMAN_DATE') }}.
 </p>
 
 <p>
-The page is automatically regenerated when ONS publishes new data.
+The page is automatically updated when ONS publishes new data.
 </p>
 
-<h2>Long-term unemployment for young people (seasonally adjusted)</h2>
+<h2 id='long-term-unemployment'>Long-term unemployment for young people (seasonally adjusted)</h2>
 
 <p>
-  The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months, and the proportion who have been 
+  The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between six and 12 months, and the proportion who have been 
   unemployed for more than 12 months.
 </p>
 
@@ -33,17 +45,12 @@ The page is automatically regenerated when ONS publishes new data.
   and duration (seasonally adjusted)</a> dataset.
 </p>
 
-<p>
-  The current data was published on {{ latest.unem01_published | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.unem01_quarter }} quarter. The next scheduled publication is {{ latest.unem01_next_update | date('HUMAN_DATE') }}.
-</p>
-
 {{ comp.viz.main({ visualisations: visualisation | pick('long_term_unemployment_3_years', 'long_term_unemployment_all'), test: false }) | safe }}
 
-<h2>Educational and labour market status for young people (seasonally adjusted)</h2>
+<h2 id="labour-market-status">Labour market status (seasonally adjusted)</h2>
 
 <p> 
-  These visualisations show the labour market status of young people aged 16-24. 
+  These visualisations show the labour market status of young people aged 16-24.
 </p>
 
 <p>
@@ -52,12 +59,52 @@ The page is automatically regenerated when ONS publishes new data.
   SA: Educational status and labour market status for people aged from 16 to 24 (seasonally adjusted)</a> dataset.
 </p>
 
+{{ comp.viz.main({ visualisations: visualisation | pick(
+  'economic_activity_not_in_full_time_education_3_years',
+  'economic_activity_in_full_time_education_3_years',
+  'economic_activity_3_years'
+), test: false }) | safe }}
+
 <p>
-  The current data was published on {{ latest.a06_published | date('HUMAN_DATE') }} and includes data up to the 
-  {{ latest.a06_quarter }} quarter. The next scheduled publication is {{ latest.a06_next_update | date('HUMAN_DATE') }}.
+The following charts compare labour market status for young people not in full-time education aged 16-17 and the group aged 18-24.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('economic_activity_not_in_full_time_education_3_years', 'economic_activity_in_full_time_education_3_years'), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick(
+  'status_16_to_17',
+  'status_18_to_24',
+  'economic_activity_not_in_full_time_education_3_years'
+), tab_override: [null, null, '16-24'], test: false }) | safe }}
 
-<h2>Data Tables</h2>
-{{ comp.viz.main({ visualisations: tables }) | safe }}
+<p>
+The following charts compare labour market status for men and women aged 16 to 24 not in full-time education.
+</p>
+
+{{ comp.viz.main({ visualisations: visualisation | pick(
+  'status_women',
+  'status_men',
+  'economic_activity_not_in_full_time_education_3_years'
+), tab_override: [null, null, 'All young people'], test: false }) | safe }}
+
+<h2 data-dependencies="/assets/js/table-sorter.js">Data tables</h2>
+
+<h3>Long term unemployment</h3>
+{{ comp.viz.main({ visualisations: tables | pick(0, 1), tab_override: [
+  '6 to 12 months',
+  'over 12 months'
+] }) | safe }}
+
+<h3>Labour market status</h3>
+{{ comp.viz.main({ visualisations: tables | pick(2, 3), tab_override: [
+  'Not in full-time education',
+  'In full-time education'
+]  }) | safe }}
+
+{{ comp.viz.main({ visualisations: tables | pick(4, 5), tab_override: [
+  'Women NFTE',
+  'Men NFTE'
+]  }) | safe }}
+
+{{ comp.viz.main({ visualisations: tables | pick(6, 7), tab_override: [
+  '16-17 year olds NFTE',
+  '18-24 year olds NFTE'
+]  }) | safe }}

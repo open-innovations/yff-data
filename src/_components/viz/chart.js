@@ -34,13 +34,12 @@ export const css = `
 .chart .series path.line { stroke-width: 4px; }
 .chart .legend span { font-family: CenturyGothicStd, 'Century Gothic', sans-serif; font-weight: bold; }
 .chart .legend { display: inline-block; text-align: center; padding: 0.5em; margin-bottom: 1em; max-width: calc(100% - 3em); }
-.chart .legend-item { display: inline-block; padding-right: 0.5em; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; line-height: 1.5em; }
+.chart .legend-item { margin-left: 4px; display: inline-block; padding-right: 0.5em; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; line-height: 1.5em; }
 .chart .legend-item svg { margin: 0.25em 0.25em 0.25em 0.5em; float: left; }
-.chart .legend-item:hover { background: white; }
-
-.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; white-space: nowrap; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; }
-.tooltip .inner { padding: 1em; }
-.tooltip > * { filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
+.chart .legend-item:hover:not(.series-lock), .chart .legend-item:focus:not(.series-lock) { background: rgba(255,255,255,0.5); outline: 1px dotted #7b2347; }
+.chart .legend-item.series-lock { background: white; outline: 1px solid #7b2347;  }
+.tooltip { color: black; margin-top: -0.75em; transition: left 0.03s linear, top 0.03s linear; font-family: CenturyGothicStd, 'Century Gothic', sans-serif; filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7)); }
+.tooltip .inner { padding: 1em; width: 100%; }
 circle.selected { r: 5px; }
 .chart rect { transition: 0.1s ease-in x; }
 `;
@@ -78,21 +77,24 @@ export default function (context) {
         configcopy.axis.x.max,
         configcopy.axis.x.min
       );
-      const ticks = tickValues.map(v => ({
-        value: v,
-        label: csv.columns.x_tick_labels[v]
-      }));
+      const ticks = tickValues.map(v => {
+        const index = csv.rows.length - 1 - v;
+        return {
+          value: index,
+          label: (typeof csv.columns.x_tick_labels==="object" ? csv.columns.x_tick_labels[index] : "")
+        }
+      });
       configcopy.axis.x.ticks = ticks;
     }
 
-    if (configcopy.axis.y.ticks === undefined) {
+    if (configcopy.axis.y.ticks === undefined || configcopy.axis.y.ticks === 'unlabelled') {
       const tickValues = generateTickValues(
         configcopy.axis.y.max,
         configcopy.axis.y.min
       );
       const ticks = tickValues.map(v => ({
         value: v,
-        label: v.toString(),
+        label: configcopy.axis.y.ticks === 'unlabelled' ? '' : v.toString(),
         grid: true,
       }));
       configcopy.axis.y.ticks = ticks;

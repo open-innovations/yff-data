@@ -1,6 +1,14 @@
-{% macro doTheVis(visualisation) %}
-  <div class="pane">
-    {{ comp.viz.render(visualisation) | safe }}
+{% macro doTheVis(visualisation, headingLevel, tab_override) %}
+  <div class="pane"{% if visualisation.config.id %} id="{{ visualisation.config.id }}"{% endif %}>
+    {{ comp.viz.render({
+      config: visualisation.config,
+      tab: tab_override or visualisation.tab,
+      title: visualisation.title,
+      caption: visualisation.caption,
+      type: visualisation.type,
+      downloadLink: visualisation.downloadLink or true,
+      headingLevel: headingLevel
+    }) | safe }}
     {% if test %}
       <p>Built using config: </p>
       <pre><code>
@@ -8,32 +16,23 @@
 		  </code></pre>
       <a href="{{ visualisation.config.file }}">Data file</a>
     {% endif %}
-    {% if add_oi_credit %}
-    <p class="oi-credit">
-      Visualisaion created for Youth Futures Foundation by 
-      <img src="/assets/images/open-innovations-logo.svg" inline>
-      <a href="//open-innovations.org/">
-      Open Innovations
-      </a>
-    </p>
-    {% endif %}
   </div>
 {% endmacro %}
 
 {% if not visualisations | isArray %}
 
-  <div class="panes">{{ doTheVis(visualisations) }}</div>
+  <div class="panes">{{ doTheVis(visualisations, headingLevel) }}</div>
 
 {% elif visualisations | length === 1 %}
 
-  <div class="panes">{{ doTheVis(visualisations[0]) }}</div>
+  <div class="panes">{{ doTheVis(visualisations[0], headingLevel) }}</div>
 
 {% elif visualisations | length > 1 %}
-
+  <div style="--tab-count: {{ visualisations | length }};">
   <div class="panes tabbed" role="tabpanel" data-dependencies="/assets/js/tabbed.js">
     {% for vis in visualisations %}
-      {{ doTheVis(vis) }}
+      {{ doTheVis(vis, headingLevel, tab_override[loop.index0]) }}
     {% endfor %}
   </div>
-
+  </div>
 {% endif %}

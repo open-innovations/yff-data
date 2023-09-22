@@ -6,7 +6,7 @@ nav_order:
 ---
 
 {% comp 'grid.auto', {min_width: '30em'} %}
-{% for page in search.pages("dashboard", "title=asc") | data %}
+{% for page in search.pages("dashboard", "priority=desc title=asc") | data %}
   {{ comp.superlink({ page: page }) | safe }}
 {% endfor %}
 {% endcomp %}

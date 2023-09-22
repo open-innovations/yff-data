@@ -6,6 +6,8 @@ layout: layouts/simple.njk
   The pages listed below are tagged with the <span class="tag">{{ title }}</span> topic.
 </p>
 
+{{ topic_text[id] | md | safe }}
+
 {% comp 'grid.auto', {min_width: '30em'} %}
 {% for page in search.pages("topics*=\"" + title + "\"") | data %}
   {{ comp.superlink({ page: page }) | safe }}

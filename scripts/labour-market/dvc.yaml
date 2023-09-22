@@ -1,3 +1,5 @@
+vars:
+  - top: ../..
 stages:
 
   transform:
@@ -13,24 +15,30 @@ stages:
           persist: false
 
   prepare:
-    cmd: PYTHONPATH=. python3 scripts/labour-market/prepare.py
-    wdir: ../..
+    cmd: papermill prepare.ipynb ${top}/working/output/labour-market-prepare.ipynb
     deps:
-      - scripts/labour-market/prepare.py
-      - scripts/labour-market/config.py
-      - scripts/util/date.py
-      - scripts/util/file.py
-      - data/labour-market/monthly-rolling.csv
+      - prepare.ipynb
+      - prepare.py
+      - config.py
+      - ${top}/scripts/util/
+      - ${top}/data/labour-market/monthly-rolling.csv
+      - ${top}/working/metadata.csv
     outs:
-      - src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv:
+      - ${top}/src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv:
           cache: false
           persist: false
-      - src/_data/sources/labour-market/long_term_unemployed_all_data.csv:
+      - ${top}/src/_data/sources/labour-market/long_term_unemployed_all_data.csv:
           cache: false
           persist: false
-      - src/_data/sources/labour-market/education_status_last_3_years.csv:
+      - ${top}/src/_data/sources/labour-market/labour_market_status_last_3_years.csv:
           cache: false
           persist: false
-      - src/_data/sources/labour-market/education_status_all_data.csv:
+      - ${top}/src/_data/sources/labour-market/labour_market_status_all_data.csv:
+          cache: false
+          persist: false
+      - ${top}/src/_data/sources/labour-market/headlines.csv:
+          cache: false
+          persist: false
+      - ${top}/src/dashboard/labour-market/_data/latest.json:
           cache: false
           persist: false

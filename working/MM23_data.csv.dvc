@@ -1,10 +1,13 @@
-md5: 88960daaeb9a2821df447cd189b64703
+md5: e4a3731d3cfbf07e2cd5530474234aed
 frozen: true
 deps:
-- checksum: '"062bca8e7f5e4c5ad964c715c5d0303f7c2a85ac7a249ebbf37b4347cfc3801d"'
-  size: 24173491
-  path: https://raw.githubusercontent.com/economic-analytics/edd/main/data/csv/MM23_data.csv
+- checksum: '"7e5f2b3e5b6065f23b118a5b684ad28871b7658af55a8aab46012090c3ca5435"'
+  size: 24467752
+  path: 
+    https://raw.githubusercontent.com/economic-analytics/edd/main/data/csv/MM23_data.csv
+  hash: md5
 outs:
-- md5: 998c59e69203f0f258b61c6963728f0e
-  size: 24173491
+- md5: 28c3e679530d599b7a9e4fc170f4fdc4
+  size: 24467752
   path: MM23_data.csv
+  hash: md5

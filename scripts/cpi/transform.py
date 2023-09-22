@@ -6,7 +6,7 @@ DATA_DIR = os.path.realpath(os.path.join('data', 'cpi'))
 CPI_DATA = 'working/MM23_data.csv'
 os.makedirs(DATA_DIR, exist_ok=True)
 
-measures = ['D7BT', 'D7BU', 'D7BW', 'D7BX', 'D7C4']
+measures = ['D7BT', 'D7BU', 'D7BV', 'D7BW', 'D7BX', 'D7BY', 'D7BZ', 'D7C2', 'D7C3', 'D7C4', 'D7C5', 'D7C6', 'D7C7'] 
 n = int(len(measures))
 
 def load_data(filepath):

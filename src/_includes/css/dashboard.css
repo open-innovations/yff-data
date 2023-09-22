@@ -1,15 +1,13 @@
+.dashboard-item {
+  text-align: center;
+}
 .dashboard-number {
   text-align: center;
-  color: #e25b27;
   font-family: var(--fontstack-heading);
-  font-size: 2.5rem;
+  font-size: 5em;
   font-weight: 500;
-  flex-grow: 1;
-  vertical-align: middle;
 }
 
 .dashboard-note {
-  font-size: 0.9em;
-  font-style: italic;
   text-align: center;
 }

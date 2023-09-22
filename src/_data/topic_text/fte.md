@@ -1,0 +1,1 @@
+**FTE** refers to young people in **full-time education**.

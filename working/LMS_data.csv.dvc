@@ -1,9 +1,12 @@
-md5: 3e86c878373d4179eb175e9cb78a2d3e
+md5: d7f482f9d61f988b2c308c01a34be96a
 deps:
-- checksum: '"668ae6925eab92e45bc7e024c398c8640165a0200c994cceadae8f57416e1323"'
-  size: 16830346
-  path: https://github.com/economic-analytics/edd/blob/main/data/csv/LMS_data.csv?raw=true
+- checksum: '"c699a3037cbb8a20a37a025397a3d530eaa8ff7be0578333bcd51f2d3355404d"'
+  size: 16991592
+  path: 
+    https://github.com/economic-analytics/edd/blob/main/data/csv/LMS_data.csv?raw=true
+  hash: md5
 outs:
-- md5: 6aa1cd29bf0de08e912a2568bba5a056
-  size: 16830346
+- md5: 0fa1500fa1ad5467cf0710943f012825
+  size: 16991592
   path: LMS_data.csv
+  hash: md5

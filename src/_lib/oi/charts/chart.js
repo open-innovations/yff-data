@@ -107,10 +107,14 @@ export function Chart(config, csv) {
           if(csv.columns[this.opt.series[s].x][i] >= this.opt.axis.x.min && csv.columns[this.opt.series[s].x][i] <= this.opt.axis.x.max) {
             categoryoffset = csv.rows.length - i - 1;
             seriesoffset = (this.opt.series.length - s - 1.5) * (0.8 / this.opt.series.length);
-            label = this.opt.series[s].title + "\n" + csv.columns[this.opt.series[s].x][i] + ': ' + (csv.columns[this.opt.series[s].y][i] || "");
-            if(this.opt.series[s].tooltip && csv.columns[this.opt.series[s].tooltip])
-              label = csv.columns[this.opt.series[s].tooltip][i];
-            datum = { 'x': csv.columns[this.opt.series[s].x][i], 'y': csv.columns[this.opt.series[s].y][i], 'title': label };
+			label = "";
+            if(typeof this.opt.series[s].tooltip==="string"){
+				if(csv.columns[this.opt.series[s].tooltip]) label = csv.columns[this.opt.series[s].tooltip][i];
+				else label = "";
+			}else{
+				label = this.opt.series[s].title + "\n" + csv.columns[this.opt.series[s].x][i] + ': ' + (csv.columns[this.opt.series[s].y][i] || "");
+			}
+			datum = { 'x': csv.columns[this.opt.series[s].x][i], 'y': csv.columns[this.opt.series[s].y][i], 'title': label };
             datum.data = { 'series': this.opt.series[s].title };
             data.push(datum);
           }

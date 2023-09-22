@@ -2,6 +2,7 @@ visualisations:
   - title: NEET Headlines
     type: dashboard
     config:
+      id: headlines
       file: /data/neet/headlines.csv
       title: 'Title'
       value: 'Value'
@@ -165,8 +166,8 @@ visualisations:
   - tab: All young people
     type: table
     caption: |
-      Seasonally adjusted NEET rate table for all young people (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
-      Raw data accessible via the download link is as provided by ONS.
+      Seasonally adjusted NEET rate table for all young people (aged 16-24) for the last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Raw data accessible via the download link is provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
       columns:
@@ -189,8 +190,8 @@ visualisations:
   - tab: Young women
     type: table
     caption: |
-      Seasonally adjusted NEET rate table for young women (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
-      Raw data accessible via the download link is as provided by ONS.
+      Seasonally adjusted NEET rate table for young women (aged 16-24) for the last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Raw data accessible via the download link is provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv
       columns:
@@ -213,7 +214,7 @@ visualisations:
   - tab: Young men
     type: table
     caption: |
-      Seasonally adjusted NEET rate table for young men (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up.
+      Seasonally adjusted NEET rate table for young men (aged 16-24) for the last three years. Values are rounded from the ONS provided figures, and may not add up.
       Raw data accessible via the download link is as provided by ONS.
     config:
       file: /data/neet/neet_last_3_years.csv

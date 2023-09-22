@@ -20,7 +20,7 @@
 	</div>
   </div>
   {% include 'partials/site-header.njk' %}
-  <main id="main" role="main" class="container">
+  <main id="main" role="main" class="container {{ main_class or '' }}">
     {% block main %}
     {{ content | safe }}
     {% endblock %}

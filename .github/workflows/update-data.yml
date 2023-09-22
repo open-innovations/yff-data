@@ -22,10 +22,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pipenv
-          pipenv install
+          # pipenv install
+          pipenv sync
 
       - name: Run DVC pipelines
         run: |
+          pipenv run dvc --version
           pipenv run dvc update -R working
           pipenv run dvc repro -R scripts
 

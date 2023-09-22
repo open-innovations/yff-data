@@ -4,15 +4,17 @@
 </p>
 
 <ul class="tag-cloud">
-  {% for dashboard in search.pages('dashboard') | data %}
+  {% for dashboard in search.pages('dashboard', 'priority=desc title=asc') | data %}
     <li style="--tag-colour: #E55912;">
       <a href="{{ dashboard.url }}">{{ dashboard.title }}</a>
     </li>
   {% endfor %}
 </ul>
 
-
-{% comp 'grid.masonry' %}
+{% comp 'grid.masonry', { block_width: '20rem' } %}
 {% include './dashboard/headlines.njk' %}
+{% endcomp %}
+
+{% comp 'grid.masonry', { block_width: '30rem' } %}
 {% include './dashboard/graphs.njk' %}
 {% endcomp %}

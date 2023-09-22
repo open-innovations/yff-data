@@ -1,3 +1,2 @@
 layout: layouts/simple.njk
-
-add_oi_credit: false
+main_class: ''

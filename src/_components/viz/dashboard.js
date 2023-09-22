@@ -14,11 +14,6 @@ export const css = `
 .panel { background: #efefef; padding: 1em; }
 .dashboard .bignum { font-size: 4em; line-height: 1.25em; font-weight: bold; text-align: center; display: block; margin-top: 0; }
 .dashboard .footnote { font-size: 0.8em; text-align: center; display: block; }
-@media screen and (max-width: 1200px) {
-	.dashboard { grid-gap: 1.5vw; }
-	.dashboard .panel { font-size: max(10px, 1.5vw); }
-	.dashboard .footnote { font-size: max(10px, 0.7em); }
-}
 `;
 
 function clone(a){ return JSON.parse(JSON.stringify(a)); }

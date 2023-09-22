@@ -1,20 +1,22 @@
 title: Labour Market headlines
 type: dashboard
 config:
-  file: /data/qlfs/headlines.csv
+  id: headlines
+  file: /data/labour-market/headlines.csv
   title: Title
   value: Value
-  width: 250px
   note: Note
   units:
     postfix: Suffix
   panels:
-    - name: Unemployment rate
-      colour: Orange
-      suffix: "%"
-    - name: Long-term unemployment rate 6 to 12 months
-      colour: Plum
-    - name: Long-term unemployment rate over 12 months
-      colour: Blue
-    - name: Economic inactivity rate
+    - name: Unemployment rate (young people)
       colour: Gold
+      precision: 0.1
+    - name: Economic inactivity rate (young people)
+      colour: Blue
+      precision: 0.1
+    - name: Unemployment rate (all working age)
+      colour: Orange
+    - name: Economic inactivity rate (all working age)
+      colour: Plum
+      precision: 0.1

@@ -11,3 +11,9 @@
   --pagefind-ui-image-box-ratio: 3 / 2;
   --pagefind-ui-font: unset;
 }
+
+.boxed {
+  border: 1px solid var(--pagefind-ui-border);
+  padding: 1em;
+  padding-top: 1em !important;
+}

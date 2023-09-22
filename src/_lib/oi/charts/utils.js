@@ -107,10 +107,10 @@ export function StackedBarChart(config,csv){
 				for(l in this.opt.axis[ax].labels){
 					len = 0;
 					// Split the label by any new line characters
-					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					lines = this.opt.axis[ax].labels[l].label.split(/\\n/g);
 					if(ax=="x"){
 						// Length is based on the 
-						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0));
 					}else{
 						// Work out the longest line
 						for(i = 0; i < lines.length; i++){
@@ -217,10 +217,10 @@ export function CategoryChart(config,csv){
 				for(l in this.opt.axis[ax].labels){
 					len = 0;
 					// Split the label by any new line characters
-					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					lines = this.opt.axis[ax].labels[l].label.split(/\\n/g);
 					if(ax=="x"){
 						// Length is based on the 
-						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*1.5 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0));
 					}else{
 						// Work out the longest line
 						for(i = 0; i < lines.length; i++){
@@ -278,11 +278,11 @@ export function LineChart(config,csv){
 				// Work out axis padding
 				for(l in this.opt.axis[ax].labels){
 					// Split the label by any new line characters
-					lines = this.opt.axis[ax].labels[l].label.split(/\n/g);
+					lines = this.opt.axis[ax].labels[l].label.split(/\\n/g);
 
 					if(ax=="x"){
 						// For x-axis labels "len" is related to the height of the lines
-						len = (this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0);
+						len = Math.max(len,(this.opt.axis[ax].title && this.opt.axis[ax].title.label!="" ? this.opt['font-size']*2 : 0) + (this.opt['font-size']*lines.length) + this.opt.tick + (this.opt.axis[ax].labels[l].offset||this.opt.axis[ax].padding||0));
 					}else if(ax=="y"){
 						// For y-axis labels "len" is calculated by the longest line of text
 						// Loop over the lines of the label
@@ -306,6 +306,7 @@ export function LineChart(config,csv){
 			this.opt.right = this.opt.padding.right + pad.r;
 			this.opt.top = this.opt.padding.top + pad.t;
 			this.opt.bottom = this.opt.padding.bottom + pad.b;
+
 			return this;
 		}
 	};
@@ -449,7 +450,7 @@ export function Axis(ax,from,to,attr){
 					}
 					
 					// Split the label by any new line characters and add each as a tspan
-					lines = opt.labels[t].label.split(/\n/g);
+					lines = opt.labels[t].label.split(/\\n/g);
 					for(l = 0; l < lines.length; l++){
 						tspan = svgEl('tspan');
 						tspan.innerHTML = lines[l];
@@ -561,7 +562,16 @@ export function Series(s,props,data,extra){
 			pts[i] = {'title':svgEl("title"),'old':{}};
 
 			if(!data[i].label) data[i].label = "Point "+(i+1);
-			txt = (data[i].title || data[i].label+": "+data[i].y.toFixed(2));
+			
+			if(typeof data[i].title==="string"){
+				if(data[i].title!=""){
+					txt = data[i].title;
+				}else{
+					txt = "";
+				}
+			}else{
+				txt = data[i].label+": "+data[i].y.toFixed(2);
+			}
 			if(pts[i].title) pts[i].title.innerHTML = txt;
 
 			// Do we show a bar?
@@ -611,7 +621,6 @@ export function Series(s,props,data,extra){
 
 				add(pts[i].title,pts[i].point);
 			}
-
 		}
 		if(opt.line.label){
 			label = svgEl("text");
@@ -676,6 +685,8 @@ export function Series(s,props,data,extra){
 				// p2 = opt.getXY(Math.max(data[i].x,extra.axis.x.min),data[i].y - extra.barsize/2);
 				p2 = opt.getXY(data[i].x,data[i].y - extra.barsize/2);
 				w = (p2.x-p1.x);
+				// If the width is zero we set it to something narrow
+				if(w ==0) w = 0.5;
 				x = p1.x + (w < 0 ? w : 0);
 				setAttr(pts[i].bar,{'x':x,'y':p1.y,'width':Math.abs(w),'height':Math.abs(p2.y-p1.y)});
 			}

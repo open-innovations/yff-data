@@ -5,7 +5,8 @@ type: chart
 #   The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between 6 and 12 months,
 #   and the proportion who have been unemployed for more than 12 months.
 config:
-  file: data/labour-market/long_term_unemployed_last_3_years.csv
+  id: long_term_unemployment_3_years
+  file: /data/labour-market/long_term_unemployed_last_3_years.csv
   type: line-chart
   legend:
     show: true # Default to false
@@ -13,38 +14,22 @@ config:
   axis:
     x: # Horizontal axis
       min: 0
+      title:
+        label: Rolling 3-month period
       grid:
-        stroke: '#efefef'
+        stroke-dasharray: "6 2"
+        stroke-width: 1
     y: # The vertical axes
       min: 0 # A minimum value
-      max: 25 # A maximum value
+      max: 35 # A maximum value
       title:
         label: 'Rate (%)'
       dominant-baseline: text-bottom
       # Explicitly define the ticks.
       # Each tick has a numeric value and a displayed label
-      ticks:
-        - value: 0
-          grid: true
-          label: '0'
-        - value: 5
-          grid: true
-          label: '5'
-        - value: 10
-          grid: true
-          label: '10'
-        - value: 15
-          grid: true
-          label: '15'
-        - value: 20
-          grid: true
-          label: '20'
-        - value: 25
-          grid: true
-          label: '25'
   columns:
     - name: x_tick_labels
-      template: '{{ quarter_label }}'
+      template: '{{ quarter_axis_label }}'
     - name: label_6_to_12_months
       template: '{{quarter_label}} <br/> Proportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%'
     - name: label_12_months

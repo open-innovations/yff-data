@@ -1,3 +1,7 @@
 .pane > * + * {
   margin-top: 1rem;
 }
+
+main.dashboard-page :is(.chart) svg {
+  max-height: 35em;
+}

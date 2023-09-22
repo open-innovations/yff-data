@@ -2,18 +2,22 @@
 title: Vacancies
 tags:
   - dashboard
+  - annotatable
 topics:
   - Economic indicators 
   - Employment
+  - Vacancies
+  - Employers
+  - Trends
+  - Sectors
 ---
-
-{{ comp.viz.main({ visualisations: visualisations | pick(0), test: false }) | safe }}
 
 <h2>About the data on this page</h2>
 
 <p>
-  These visualisations are driven by data from <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/jobsandvacanciesintheuk/april2023">Vacancies and jobs in the UK</a>
-  from the Office for National Statistics. 
+  These visualisations are driven by data from from the Office for National Statistics. Specific links to the data sets used are provided below.
+  The page is automatically updated when the latest LMS data is published. The current data was published 
+  on {{ sources.vacancies.metadata.published }}. The next scheduled publication is {{ sources.vacancies.metadata.next_update }}.
 </p>
 
 <p>
@@ -24,18 +28,21 @@ topics:
 
 <p>
   This chart shows the seasonally adjusted estimated number of vacancies in the UK.
-  The figures are derived from the ONS Labour Market Survey, and show the estimated vacancies over a rolling three-month period.
+  The figures are derived from <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/vacanciesandunemploymentvacs01">Vacancies and Unemployment (VACS01)</a> data
+  published by the Office of National Statistics, and show the estimated vacancies over a rolling three-month period.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(1), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('estimated_vacancies'), test: false }) | safe }}
 
 <h2>Growth by sector</h2>
 
 <p>
- This visualisation shows the percentage growth in quarterly average job vacancies in the UK by sector. Categories in each tab were selected based on the
+ This visualisation shows the percentage growth in quarterly average job vacancies in the UK by sector. 
+ The figures are derived from <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/vacanciesbyindustryvacs02">Vacancies by industry (VACS02)</a> data published
+ the Office of National Statistics. Categories in each tab were selected based on the
  <a href= "https://youthfuturesfoundation.org/wp-content/uploads/2021/10/Large-Employers-and-the-Youth-Labour-Market-report.pdf">Large Employers and the Youth Labour Market 
- Report</a>.
+ Report</a> published by the Youth Futures Foundation.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisations | pick(2), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('growth_key_youth_sectors', 'growth_wanted_youth_sectors', 'quarterly_growth_all_sectors'), test: false }) | safe }}
 

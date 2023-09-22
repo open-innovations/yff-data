@@ -27,6 +27,7 @@ stages:
       - scripts/vacancies/prepare.py
       - working/vacancies/vacancies_by_sector.csv
       - data/vacancies/vacancies_edd.csv
+      - working/metadata.csv
     outs:
       - src/_data/sources/vacancies/:
           cache: false

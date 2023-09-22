@@ -18,24 +18,22 @@
   & :is(.pane, .grid-block) {
     border: 0;
     padding: 1.25em;
-    line-height: 1.5em;
-    &:is(a) {
+    line-height: 1.5;
+    &:is(a), & > a {
       text-decoration: none;
-    }
-    &:is(a:hover, a:focus) {
-      & h1, h2, h3 {
-        text-decoration: underline;
+      color: inherit;
+      &:is(:hover, :focus) {
+        & h1, h2, h3 {
+          text-decoration: underline;
+        }
       }
     }
 
     &:hover,
     &:focus {
       background: #efefef;
+      color: #964e6d;
       outline: 2px solid #e25b27;
-
-      & h2 {
-        color: #964e6d;
-      }
     }
 
   }
@@ -51,7 +49,6 @@
   & :is(.grid-block-flex) {
     gap: 1em;
     & > * {
-      line-height: 1.5;
       margin-top: 0;
     }    
   }

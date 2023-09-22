@@ -9,6 +9,9 @@ pandas = "*"
 xlrd = "*"
 dvc = "*"
 openpyxl = "*"
+papermill = "*"
+ipykernel = "*"
+requests = "*"
 
 [dev-packages]
 
