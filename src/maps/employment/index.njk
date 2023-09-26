@@ -15,6 +15,13 @@ tags:
 
 <h2>Youth Employment by Constituency</h2>
 
+<p>
+  These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. Specific links to the data sets used are provided below. The charts include the most recent labour market data at parliamentary consituency, published in March 2023.
+</p>
+<p>
+The page will be automatically updated when ONS publishes new data.
+</p>
+
 <section>
 <h3>Employment rate (%) aged 16-24</h3>
 
@@ -37,14 +44,6 @@ tags:
 </section>
 
 
-
-
-{# <pre>
-{{ constituencies | dump(2) }}
-{{ youth.rows | dump(2) }}
-</pre> #}
-
-
 <section>
 <h3>Unemployment rate (%) - aged 16-64</h3>
 
@@ -63,19 +62,6 @@ tags:
 {% endcomp %}
 
 
-
-{# 
-<h3>Unemployment rate (%) - aged 16-24</h3>
-
- {{ comp.oi.map.hex_cartogram({
-	config: {
-		hexjson: constituencies,
-		data: unemployment_rate_16_24.rows,
-		matchKey: 'geography_code',
-		value: 'value', 
-    scale: 'Inferno'
-	}
-  }) | safe }} #}
 
 
 
