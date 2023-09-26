@@ -1,23 +1,83 @@
 ---
-title: Employment maps
+title: Employment
+layout: layouts/simple.njk
+topics:
+  - Employment
+  - Constituency
+tags:
+  - maps
 ---
 
+{% comp 'flex' %}
+{% include "partials/page/topic-cloud.njk" %}
+{% endcomp %}
+
+
+<h2>Youth Employment by Constituency</h2>
+
+<section>
+<h3>Employment rate (%) aged 16-24</h3>
+
+{# {{ comp.oi.map.hex_cartogram({ visualisations: visualisations | pick(0) }) | safe }} #}
+
+{% comp 'flex' %}
+
+<div class="pane">
+  {{ comp.oi.map.hex_cartogram({
+	  config: {
+		hexjson: constituencies,
+		data: employment_rate_16_24.rows,
+		matchKey: 'geography_code',
+		value: 'value',
+    scale: 'Inferno',
+		tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+	}
+  }) | safe }}
+</div>
+</section>
+
+
+
+
+{# <pre>
+{{ constituencies | dump(2) }}
+{{ youth.rows | dump(2) }}
+</pre> #}
+
+
+<section>
+<h3>Unemployment rate (%) - aged 16-64</h3>
+
 {{ comp.oi.map.hex_cartogram({
-  config: {
-    hexjson: {
-      layout: 'odd-r',
-      hexes: {
-        E08000032: {
-          n: 'Bradford',
-          q: -1,
-          r: 0
-        },
-        E08000033: {
-          n: 'Calderdale',
-          q: -2,
-          r: -1
-        }
-      }
-    }
-  }
-}) | safe }}
+	config: {
+		hexjson: constituencies,
+		data: unemployment_rate_16_64.rows,
+		matchKey: 'geography_code',
+		value: 'value', 
+    scale: 'Inferno',
+    height: 300
+	}
+  }) | safe }}
+</section>
+
+{% endcomp %}
+
+
+
+{# 
+<h3>Unemployment rate (%) - aged 16-24</h3>
+
+ {{ comp.oi.map.hex_cartogram({
+	config: {
+		hexjson: constituencies,
+		data: unemployment_rate_16_24.rows,
+		matchKey: 'geography_code',
+		value: 'value', 
+    scale: 'Inferno'
+	}
+  }) | safe }} #}
+
+
+
+
+

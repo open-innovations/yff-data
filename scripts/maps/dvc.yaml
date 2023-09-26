@@ -1,0 +1,7 @@
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/maps/transform.py
+    wdir: ../..
+    deps:
+      - scripts/maps/transform.py
+      - working/upstream/labour-market_latest_by_pcon_2010.csv

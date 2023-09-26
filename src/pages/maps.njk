@@ -1,0 +1,12 @@
+---
+title: Maps
+url: /maps/
+nav_order:
+  v2: 40   
+---
+
+{% comp 'grid.auto', {min_width: '30em'} %}
+{% for page in search.pages("maps", "priority=desc title=asc") | data %}
+  {{ comp.superlink({ page: page }) | safe }}
+{% endfor %}
+{% endcomp %}
