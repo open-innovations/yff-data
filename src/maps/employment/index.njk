@@ -4,8 +4,17 @@ layout: layouts/simple.njk
 topics:
   - Employment
   - Constituency
+  - Maps
 tags:
   - maps
+
+css: |
+  .figure {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
 ---
 
 {% comp 'flex' %}
@@ -19,17 +28,19 @@ tags:
   These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. Specific links to the data sets used are provided below. The charts include the most recent labour market data at parliamentary consituency, published in March 2023.
 </p>
 <p>
-The page will be automatically updated when ONS publishes new data.
+The page will be automatically updated when ONS publishes new data at this geography.
 </p>
+
+{# {{ comp.oi.map.hex_cartogram({ visualisations: visualisations | pick(0) }) | safe }} #}
 
 <section>
 <h3>Employment rate (%) aged 16-24</h3>
 
-{# {{ comp.oi.map.hex_cartogram({ visualisations: visualisations | pick(0) }) | safe }} #}
+<p>
+  These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. Specific links to the data sets used are provided below. The charts include the most recent labour market data at parliamentary consituency, published in March 2023.
+</p>
 
-{% comp 'flex' %}
-
-<div class="pane">
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
   {{ comp.oi.map.hex_cartogram({
 	  config: {
 		hexjson: constituencies,
@@ -45,8 +56,13 @@ The page will be automatically updated when ONS publishes new data.
 
 
 <section>
-<h3>Unemployment rate (%) - aged 16-64</h3>
+<h3>Unemployment rate (%) aged 16-64</h3>
 
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
 {{ comp.oi.map.hex_cartogram({
 	config: {
 		hexjson: constituencies,
@@ -57,9 +73,9 @@ The page will be automatically updated when ONS publishes new data.
     height: 300
 	}
   }) | safe }}
+</div>
 </section>
 
-{% endcomp %}
 
 
 
