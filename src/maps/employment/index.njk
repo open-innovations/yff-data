@@ -18,7 +18,7 @@ data_url: https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?geography=
   These visualisations are driven by data from the ONS Annual Population Survey, published by the Office for National Statistics. Specific links to the data sets used are provided below. The hexmaps include the most recent labour market data on unemployment rate at 2010 parliamentary consituency, published in March 2023.
 </p>
 <p>
-The page will be automatically updated when ONS publishes new data at this geography, expected to be on 17th October. 
+The page will be updated when ONS publishes new data at this geography, expected 17th October. 
 </p>
 <p>You can <a href={{ data_url }}>download the raw data here</a>.</p>
 
@@ -26,7 +26,7 @@ The page will be automatically updated when ONS publishes new data at this geogr
 
 <section>
 <h3>Unemployment rate (%) aged 16-64</h3>
-
+<p>The visualisation below presents unemployment data from the most recent Annual Population Survey covering April 2022 - March 2023.<p>
 
 <div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
   {{ comp.oi.map.hex_cartogram({
@@ -45,6 +45,8 @@ The page will be automatically updated when ONS publishes new data at this geogr
 
 <section>
 <h3>Unemployment rate (%) aged 16-19</h3>
+<p>The visualisation below presents unemployment data from the most recent Annual Population Survey covering April 2022 - March 2023.<p>
+<p>Unemployment data is sparse for younger age groups.
 
 
 <div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
@@ -80,6 +82,72 @@ The page will be automatically updated when ONS publishes new data at this geogr
 </div>
 </section>
 
+
+<h2>Combined data</h2>
+
+<section>
+<h3>Unemployment rate (%) aged 16-64</h3>
+<p>The visualisation below presents unemployment data from the most recent Annual Population Survey covering April 2022 - March 2023.<p>
+
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
+  {{ comp.oi.map.hex_cartogram({
+	  config: {
+		hexjson: constituencies,
+		data: unemployment_rate_16_64_combined.rows,
+		matchKey: 'geography_code',
+		value: 'value',
+    scale: 'Inferno',
+		tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+	}
+  }) | safe }}
+</div>
+</section>
+
+
+<section>
+<h3>Unemployment rate (%) aged 16-19</h3>
+<p>The visualisation below presents unemployment data from the most recent Annual Population Survey covering April 2022 - March 2023.<p>
+<p>Unemployment data is sparse for younger age groups.
+
+
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
+{{ comp.oi.map.hex_cartogram({
+	config: {
+		hexjson: constituencies,
+		data: unemployment_rate_16_19_combined.rows,
+		matchKey: 'geography_code',
+		value: 'value', 
+    scale: 'Inferno',
+		tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+	}
+  }) | safe }}
+</div>
+</section>
+
+
+<section>
+<h3>Unemployment rate (%) aged 20-24</h3>
+
+
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
+{{ comp.oi.map.hex_cartogram({
+	config: {
+		hexjson: constituencies,
+		data: unemployment_rate_20_24_combined.rows,
+		matchKey: 'geography_code',
+		value: 'value', 
+    scale: 'Inferno',
+		tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+	}
+  }) | safe }}
+</div>
+</section>
+
+
+
+
+
+
 {# <h2>Youth Employment by Local Authority</h2>
 
 <section>
@@ -97,10 +165,10 @@ The page will be automatically updated when ONS publishes new data at this geogr
 	}
   }) | safe }}
 </div>
-</section>
+</section> #}
 
 
-
+{#}
 <section>
 <h3>Unemployment rate (%) aged 16-19</h3>
 
