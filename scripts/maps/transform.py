@@ -15,11 +15,14 @@ def filter_data(data, variable):
     ]
 
 if __name__ == '__main__':
-  employment_rate_16_24 = filter_data(all_data, 'Employment rate - aged 16-24')
-  employment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'employment_rate_16_24.csv'), index=False)
 
-  unemployment_rate_16_64 = filter_data(all_data, 'Unemployment rate - aged 16-64 ')
-  unemployment_rate_16_64.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64.csv'), index=False)
 
-  unemployment_rate_16_24 = filter_data(all_data, 'Unemployment rate - aged 16-24')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_24.csv'), index=False)
+# TODO: Update variable names
+  employment_rate_16_24 = filter_data(all_data, 'Unemployment rate - aged 16-64')
+  employment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64.csv'), index=False)
+
+  unemployment_rate_16_64 = filter_data(all_data, 'Unemployment rate - aged 16-19')
+  unemployment_rate_16_64.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19.csv'), index=False)
+
+  unemployment_rate_16_24 = filter_data(all_data, 'Unemployment rate - aged 20-24')
+  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24.csv'), index=False)
