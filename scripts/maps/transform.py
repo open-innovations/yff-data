@@ -15,7 +15,7 @@ combined_data = pd.read_csv(COMBINED_DATA)
 def filter_data(data, variable):
     return data.loc[
         data.variable_name == variable, 
-        ['geography_code', 'value', 'notes']
+        ['geography_code', 'date', 'value', 'notes']
     ]
 
 if __name__ == '__main__':
