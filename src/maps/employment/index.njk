@@ -116,3 +116,42 @@ The page will be updated when ONS publishes new data at this geography, expected
 </div>
 </section>
 
+<h2>Claimant count</h2>
+
+<p>
+DESCRIPTION TKTKTK
+</p>
+
+<section>
+<h3>Claimants per capita aged 16-24</h3>
+
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
+  {{ comp.oi.map.hex_cartogram({
+    config: {
+      hexjson: constituencies,
+      data: claimants_16_24.rows,
+      matchKey: 'geography_code',
+      value: 'Claimants percentage',
+      scale: 'Inferno',
+      tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
+    }
+  }) | safe }}
+</div>
+</section>
+
+<section>
+<h3>Claimants per capita aged 16+</h3>
+
+<div class="figure" style="width:60%; margin-right:auto; margin-left:auto;">
+  {{ comp.oi.map.hex_cartogram({
+    config: {
+      hexjson: constituencies,
+      data: claimants_16_plus.rows,
+      matchKey: 'geography_code',
+      value: 'Claimants percentage',
+      scale: 'Inferno',
+      tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
+    }
+  }) | safe }}
+</div>
+</section>
