@@ -29,12 +29,12 @@ stages:
       size: 359985
     - path: ../../scripts/util/
       hash: md5
-      md5: 8b6cedb3e68500af4d07c0b1deed75d5.dir
-      size: 9646
-      nfiles: 6
+      md5: bbd9c17bdb21207e9126ae17bc04e2fc.dir
+      size: 13118
+      nfiles: 9
     - path: ../../working/metadata.csv
       hash: md5
-      md5: 27d2f594278049f816b0f08a7fb87d5b
+      md5: 7defe14d9feeeb75a286d8ecd0ac24b4
       size: 7642
     - path: config.py
       hash: md5

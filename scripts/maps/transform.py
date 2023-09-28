@@ -41,6 +41,35 @@ if __name__ == '__main__':
   unemployment_rate_20_24 = filter_data(combined_data, 'Unemployment rate - aged 20-24')
   unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_combined.csv'), index=False)
 
+  combined_data.pipe(
+      filter_data, 'Unemployment rate - aged 16+'
+  ).fillna(0).to_csv(
+      os.path.join(DATA_DIR, 'unemployment_rate_16_plus_combined.csv'), index=False
+  )
+
+  combined_data.pipe(
+      filter_data, 'Unemployment rate - aged 16-24'
+  ).fillna(0).to_csv(
+      os.path.join(DATA_DIR, 'unemployment_rate_16_24_combined.csv'), index=False
+  )
+  
+  combined_data.pipe(
+      filter_data, '% who are economically inactive - aged 16+'
+  ).fillna(0).to_csv(
+      os.path.join(DATA_DIR, 'economic_inactivity_rate_16_plus_combined.csv'), index=False
+  )
+
+  combined_data.pipe(
+      filter_data, '% who are economically inactive - aged 16-24'
+  ).fillna(0).to_csv(
+      os.path.join(DATA_DIR, 'economic_inactivity_rate_16_24_combined.csv'), index=False
+  )
+
+  combined_data.pipe(
+      filter_data, '% of economically inactive student'
+  ).fillna(0).to_csv(
+      os.path.join(DATA_DIR, 'economic_inactivity_students_combined.csv'), index=False
+  )
 
 # Local authority
   unemployment_rate_16_24 = filter_data(local_authority_data, 'Unemployment rate - aged 16-64')
