@@ -1,5 +1,7 @@
 ---
 title: Employment
+summary: |
+  Hexmaps showing regional comparison of economic statistics relating to employment for young people.
 layout: layouts/simple.njk
 tags:
   - maps
@@ -35,6 +37,7 @@ The page will be updated when ONS publishes new data at this geography, expected
 
 <section>
 <h3>Unemployment rate (%) aged 16-24</h3>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({
@@ -64,6 +67,7 @@ The page will be updated when ONS publishes new data at this geography, expected
 
 <section>
 <h3>Unemployment rate (%) aged 16+</h3>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({
@@ -81,6 +85,8 @@ The page will be updated when ONS publishes new data at this geography, expected
 
 <section>
 <h3>Economic inactivity rate (%) aged 16-24</h3>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({
@@ -98,6 +104,8 @@ The page will be updated when ONS publishes new data at this geography, expected
 
 <section>
 <h3>Economic inactivity rate (%) aged 16+</h3>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({
@@ -116,6 +124,7 @@ The page will be updated when ONS publishes new data at this geography, expected
 <section>
 <h3>Economic inactivity proportion who are students</h3>
 <p>The hexmap below shows the percentage of people who are economically inactive because they are students. This data also comes from the Annual Population Survey.</p>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({
@@ -142,6 +151,8 @@ This data reflects the actual claimant figures and is not collected through a su
 
 <section>
 <h3>Claimants per capita aged 16-24</h3>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({
@@ -159,6 +170,8 @@ This data reflects the actual claimant figures and is not collected through a su
 
 <section>
 <h3>Claimants per capita aged 16+</h3>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
 
 <div class="figure" style="{{ map_style }}">
   {{ comp.oi.map.hex_cartogram({

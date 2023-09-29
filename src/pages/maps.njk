@@ -27,7 +27,7 @@ nav_order:
 
     {% if page.summary %}
     <div class="summary embolden-first">
-        {{ page.summary | first | md | striplinks | safe }}
+        {{ page.summary  | md | striplinks | safe }}
     </div>
     {% endif %}
 
