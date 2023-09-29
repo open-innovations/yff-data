@@ -1,0 +1,17 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/maps/transform.py
+    deps:
+    - path: scripts/maps/transform.py
+      hash: md5
+      md5: 0dcdef3fd2e068d9f3dd107f7a155fda
+      size: 4204
+    - path: working/upstream/labour-market_latest_by_pcon_2010.csv
+      hash: md5
+      md5: 91acf422a1d81bf27f6937c8648d4fe3
+      size: 858704
+    - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
+      hash: md5
+      md5: 8fc25443a0abd19116f82c922fbfc534
+      size: 1152838
