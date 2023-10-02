@@ -33,8 +33,6 @@ The page will be updated when ONS publishes new data at this geography, expected
 </p>
 <p>You can <a href={{ raw_data_url }}>download the raw data here</a>.</p>
 
-{# {{ comp.oi.map.hex_cartogram({ visualisations: visualisations | pick(0) }) | safe }} #}
-
 <section>
 <h3>Unemployment rate (%) aged 16-24</h3>
 <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
@@ -121,25 +119,6 @@ The page will be updated when ONS publishes new data at this geography, expected
 </div>
 </section>
 
-<section>
-<h3>Economic inactivity proportion who are students</h3>
-<p>The hexmap below shows the percentage of people who are economically inactive because they are students. This data also comes from the Annual Population Survey.</p>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
-    config: {
-      hexjson: constituencies,
-      data: economic_inactivity_students_combined.rows,
-      matchKey: 'geography_code',
-      value: 'value',
-      scale: 'Inferno',
-      tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    }
-  }) | safe }}
-</div>
-</section>
-
 <h2>Claimant count</h2>
 
 <p>
@@ -186,3 +165,23 @@ This data reflects the actual claimant figures and is not collected through a su
   }) | safe }}
 </div>
 </section>
+
+
+{# <section>
+<h3>Economic inactivity proportion who are students</h3>
+<p>The hexmap below shows the percentage of people who are economically inactive because they are students. This data also comes from the Annual Population Survey.</p>
+<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+<div class="figure" style="{{ map_style }}">
+  {{ comp.oi.map.hex_cartogram({
+    config: {
+      hexjson: constituencies,
+      data: economic_inactivity_students_combined.rows,
+      matchKey: 'geography_code',
+      value: 'value',
+      scale: 'Inferno',
+      tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
+    }
+  }) | safe }}
+</div>
+</section> #}
