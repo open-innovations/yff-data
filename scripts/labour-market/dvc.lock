@@ -29,9 +29,9 @@ stages:
       size: 359985
     - path: ../../scripts/util/
       hash: md5
-      md5: bbd9c17bdb21207e9126ae17bc04e2fc.dir
-      size: 13118
-      nfiles: 9
+      md5: 8b6cedb3e68500af4d07c0b1deed75d5.dir
+      size: 9646
+      nfiles: 6
     - path: ../../working/metadata.csv
       hash: md5
       md5: 72d41d85411154a5147d0232ec2b6d3e
