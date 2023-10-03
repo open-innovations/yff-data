@@ -9,6 +9,11 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron:  '45 9 * * 1-5'
 
+# Cancel any in-flight jobs
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
