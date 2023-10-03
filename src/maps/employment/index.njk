@@ -6,39 +6,29 @@ layout: layouts/simple.njk
 tags:
   - maps
 
-raw_data_url: https://github.com/open-innovations/yff-data-pipelines/blob/main/data/processed/labour-market/most_recent_by_pcon_2010.csv
 # https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?geography=1811939329...1811939332,1811939334...1811939336,1811939338...1811939428,1811939436...1811939442,1811939768,1811939769,1811939443...1811939497,1811939499...1811939501,1811939503,1811939505...1811939507,1811939509...1811939517,1811939519,1811939520,1811939524...1811939570,1811939575...1811939599,1811939601...1811939628,1811939630...1811939634,1811939636...1811939647,1811939649,1811939655...1811939664,1811939667...1811939680,1811939682,1811939683,1811939685,1811939687...1811939704,1811939707,1811939708,1811939710,1811939712...1811939717,1811939719,1811939720,1811939722...1811939730&date=latest&variable=84...86,45...47,18...20&measures=20599,21001,21002,21003
-map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
+aps_url: https://github.com/open-innovations/yff-data-pipelines/blob/main/data/processed/labour-market/most_recent_by_pcon_2010.csv
 claimant_url: https://www.nomisweb.co.uk/datasets/ucjsa
+
+map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
 ---
 
 {% comp 'flex' %}
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
 
+<div class='selector'
+    data-dependencies='/assets/js/selector.js'
+    data-label='Chose the visualisation layer'
+    data-heading-level='h2'
+    data-id='map-selector'>
 
-<h2>Youth Employment by Constituency</h2>
+  <article id='youth-unemployment' class='selector-block'>
+    <h2>Unemployment rate (%) aged 16-24</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
-<p>
-  These visualisations are driven by data from the ONS Annual Population Survey, published by the Office for National Statistics. Specific links to the data sets used are provided below. The hexmaps include the most recent labour market data on unemployment rate at 2010 parliamentary consituency, published in March 2023.
-</p>
-<p>
-  As the APS data is a survey, there are often surpressed values which fail to meet statistical significance tests due
-  to small or disclosive sample sizes. To address this, we have attempted to provide a composite view combining available data from the most recent 9 releases of the data. Consequently, the values shown could date from
-  {{ unemployment_rate_16_24_combined.columns.date | sort | first | date('YFF') }} to
-  {{ unemployment_rate_16_24_combined.columns.date | sort | last | date('YFF') }}.
-</p>
-<p>
-The page will be updated when ONS publishes new data at this geography, expected 17th October. 
-</p>
-<p>You can <a href={{ raw_data_url }}>download the raw data here</a>.</p>
-
-<section>
-<h3>Unemployment rate (%) aged 16-24</h3>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
       data: unemployment_rate_16_24_combined.rows,
@@ -48,10 +38,10 @@ The page will be updated when ONS publishes new data at this geography, expected
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     }
   }) | safe }}
-</div>
-</section>
+    </div>
+  </article>
 
-{# 
+  {# 
 , legend: {
         position: 'top right',
         items: [
@@ -62,13 +52,12 @@ The page will be updated when ONS publishes new data at this geography, expected
 
 #}
 
+  <article id='all-unemployment' class='selector-block'>
+    <h2>Unemployment rate (%) aged 16+</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
-<section>
-<h3>Unemployment rate (%) aged 16+</h3>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
       data: unemployment_rate_16_plus_combined.rows,
@@ -78,16 +67,15 @@ The page will be updated when ONS publishes new data at this geography, expected
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     }
   }) | safe }}
-</div>
-</section>
+    </div>
+  </article>
 
-<section>
-<h3>Economic inactivity rate (%) aged 16-24</h3>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+  <article id='youth-economic-inactivity' class='selector-block'>
+    <h2>Economic inactivity rate (%) aged 16-24</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
       data: economic_inactivity_rate_16_24_combined.rows,
@@ -97,16 +85,15 @@ The page will be updated when ONS publishes new data at this geography, expected
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     }
   }) | safe }}
-</div>
-</section>
+    </div>
+  </article>
 
-<section>
-<h3>Economic inactivity rate (%) aged 16+</h3>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+  <article id='all-economic-inactivity' class='selector-block'>
+    <h2>Economic inactivity rate (%) aged 16+</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
       data: economic_inactivity_rate_16_plus_combined.rows,
@@ -116,25 +103,15 @@ The page will be updated when ONS publishes new data at this geography, expected
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     }
   }) | safe }}
-</div>
-</section>
+    </div>
+  </article>
 
-<h2>Claimant count</h2>
+  <article id='youth-claimants' class='selector-block'>
+    <h2>Claimants per capita aged 16-24</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
-<p>
-Claimant count is the number of people claiming Universal Credit and Job Seekers' Allowance, broken down by age group. 
-This data reflects the actual claimant figures and is not collected through a survey. It can therefore be used as a proxy for inferring levels of unemployment.
-</p>
-
-<p><a href={{ claimant_url }}>You can download the raw data here</a>.</p>
-
-<section>
-<h3>Claimants per capita aged 16-24</h3>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
       data: claimants_16_24.rows,
@@ -144,16 +121,15 @@ This data reflects the actual claimant figures and is not collected through a su
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
     }
   }) | safe }}
-</div>
-</section>
+    </div>
+  </article>
 
-<section>
-<h3>Claimants per capita aged 16+</h3>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+  <article id='all-claimants' class='selector-block'>
+    <h2>Claimants per capita aged 16+</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
-
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
       data: claimants_16_plus.rows,
@@ -163,25 +139,65 @@ This data reflects the actual claimant figures and is not collected through a su
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
     }
   }) | safe }}
+    </div>
+  </article>
+
+  {#
+  <article id='econonomic-inactivity-students' class='selector-block'>
+    <h2>Economic inactivity proportion who are students</h2>
+    <p>The hexmap below shows the percentage of people who are economically inactive because they are students. This data also comes from the Annual Population Survey.</p>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: economic_inactivity_students_combined.rows,
+          matchKey: 'geography_code',
+          value: 'value',
+          scale: 'Inferno',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
+        }
+      }) | safe }}
+    </div>
+  </article>
+  #}
+
 </div>
-</section>
 
+<h2>About this data</h2>
 
-{# <section>
-<h3>Economic inactivity proportion who are students</h3>
-<p>The hexmap below shows the percentage of people who are economically inactive because they are students. This data also comes from the Annual Population Survey.</p>
-<p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+<h3>Annual Population Survey</h3>
 
-<div class="figure" style="{{ map_style }}">
-  {{ comp.oi.map.hex_cartogram({
-    config: {
-      hexjson: constituencies,
-      data: economic_inactivity_students_combined.rows,
-      matchKey: 'geography_code',
-      value: 'value',
-      scale: 'Inferno',
-      tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    }
-  }) | safe }}
-</div>
-</section> #}
+<p>
+  Visualisations of Unemployment and Economic Inactivity are driven by data from the ONS Annual Population Survey, published by the Office for National Statistics.
+  Specific links to the data sets used are provided below. The hexmaps include the most recent labour market data on unemployment rate at 2010 parliamentary consituency, published in
+  {{ unemployment_rate_16_24_combined.columns.date | sort | first | date('YFF') }}.
+</p>
+
+<p>
+  As the APS data is a survey, there are often surpressed values which fail to meet statistical significance tests due
+  to small or disclosive sample sizes. To address this, we have attempted to provide a composite view combining available data from the most recent 9 releases of the data. Consequently, the values shown could date from
+  {{ unemployment_rate_16_24_combined.columns.date | sort | first | date('YFF') }} to
+  {{ unemployment_rate_16_24_combined.columns.date | sort | last | date('YFF') }}.
+</p>
+
+<p>
+  The page will be updated when ONS publishes new data at this geography, expected 17th October. 
+</p>
+
+<p>
+  You can <a href={{ aps_url }}>download the raw data here</a>.
+</p>
+
+<h3>Claimant counts</h3>
+
+<p>
+  Claimant count is the number of people claiming Universal Credit and Job Seekers' Allowance, broken down by age group. 
+  This data reflects the actual claimant figures and is not collected through a survey.
+  It can therefore be used as a proxy for inferring levels of unemployment.
+</p>
+
+<p>
+  <a href={{ claimant_url }}>You can download the raw data here</a>.
+</p>
