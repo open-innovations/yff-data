@@ -20,57 +20,60 @@ def filter_data(data, variable):
         data.variable_name == variable, 
         ['geography_code', 'date', 'date_name', 'value', 'notes']
     ]
+    
+def filter_to_england(data):
+    return data.loc[data.geography_code.str.startswith('E')]
 
 if __name__ == '__main__':
 
 
 # Consituencies
   unemployment_rate_16_24 = filter_data(constituency_data, 'Unemployment rate - aged 16-64')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64.csv'), index=False)
+  unemployment_rate_16_24.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64.csv'), index=False)
 
   unemployment_rate_16_19 = filter_data(constituency_data, 'Unemployment rate - aged 16-19')
-  unemployment_rate_16_19.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19.csv'), index=False)
+  unemployment_rate_16_19.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19.csv'), index=False)
 
   unemployment_rate_20_24 = filter_data(constituency_data, 'Unemployment rate - aged 20-24')
-  unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24.csv'), index=False)
+  unemployment_rate_20_24.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24.csv'), index=False)
 
 # Combined dates
   unemployment_rate_16_24 = filter_data(combined_data, 'Unemployment rate - aged 16-64')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64_combined.csv'), index=False)
+  unemployment_rate_16_24.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64_combined.csv'), index=False)
 
   unemployment_rate_16_19 = filter_data(combined_data, 'Unemployment rate - aged 16-19')
-  unemployment_rate_16_19.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19_combined.csv'), index=False)
+  unemployment_rate_16_19.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19_combined.csv'), index=False)
 
   unemployment_rate_20_24 = filter_data(combined_data, 'Unemployment rate - aged 20-24')
-  unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_combined.csv'), index=False)
+  unemployment_rate_20_24.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_combined.csv'), index=False)
 
   combined_data.pipe(
       filter_data, 'Unemployment rate - aged 16+'
-  ).fillna(0).to_csv(
+  ).dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'unemployment_rate_16_plus_combined.csv'), index=False
   )
 
   combined_data.pipe(
       filter_data, 'Unemployment rate - aged 16-24'
-  ).fillna(0).to_csv(
+  ).dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'unemployment_rate_16_24_combined.csv'), index=False
   )
   
   combined_data.pipe(
       filter_data, '% who are economically inactive - aged 16+'
-  ).fillna(0).to_csv(
+  ).dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'economic_inactivity_rate_16_plus_combined.csv'), index=False
   )
 
   combined_data.pipe(
       filter_data, '% who are economically inactive - aged 16-24'
-  ).fillna(0).to_csv(
+  ).dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'economic_inactivity_rate_16_24_combined.csv'), index=False
   )
 
   combined_data.pipe(
       filter_data, '% of economically inactive student'
-  ).fillna(0).to_csv(
+  ).dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'economic_inactivity_students_combined.csv'), index=False
   )
 
@@ -80,26 +83,26 @@ if __name__ == '__main__':
   claimant_data.loc[
       claimant_data.age == 'Aged 16+',
       ['geography_code', 'Claimants percentage']
-  ].fillna(0).to_csv(
+  ].dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'claimants_16_plus.csv'), index=False
   )
 
   claimant_data.loc[
       claimant_data.age == 'Aged 16-24',
       ['geography_code', 'Claimants percentage']
-  ].fillna(0).to_csv(
+  ].dropna().pipe(filter_to_england).to_csv(
       os.path.join(DATA_DIR, 'claimants_16_24.csv'), index=False
   )
 
 # Local authority
   unemployment_rate_16_24 = filter_data(local_authority_data, 'Unemployment rate - aged 16-64')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64_LA.csv'), index=False)
+  unemployment_rate_16_24.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64_LA.csv'), index=False)
 
   unemployment_rate_16_19 = filter_data(local_authority_data, 'Unemployment rate - aged 16-19')
-  unemployment_rate_16_19.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19_LA.csv'), index=False)
+  unemployment_rate_16_19.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19_LA.csv'), index=False)
 
   unemployment_rate_20_24 = filter_data(local_authority_data, 'Unemployment rate - aged 20-24')
-  unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_LA.csv'), index=False)
+  unemployment_rate_20_24.dropna().pipe(filter_to_england).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_LA.csv'), index=False)
 
 
 
