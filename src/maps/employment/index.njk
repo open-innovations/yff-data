@@ -31,7 +31,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: unemployment_rate_16_24_combined.rows,
+      data: view.unemployment_rate_16_24_combined.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -60,7 +60,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: unemployment_rate_16_plus_combined.rows,
+      data: view.unemployment_rate_16_plus_combined.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -78,7 +78,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: economic_inactivity_rate_16_24_combined.rows,
+      data: view.economic_inactivity_rate_16_24_combined.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -96,7 +96,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: economic_inactivity_rate_16_plus_combined.rows,
+      data: view.economic_inactivity_rate_16_plus_combined.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -114,7 +114,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: claimants_16_24.rows,
+      data: view.claimants_16_24.rows,
       matchKey: 'geography_code',
       value: 'Claimants percentage',
       scale: 'Inferno',
@@ -132,7 +132,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: claimants_16_plus.rows,
+      data: view.claimants_16_plus.rows,
       matchKey: 'geography_code',
       value: 'Claimants percentage',
       scale: 'Inferno',
@@ -152,7 +152,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
       {{ comp.oi.map.hex_cartogram({
         config: {
           hexjson: constituencies,
-          data: economic_inactivity_students_combined.rows,
+          data: view.economic_inactivity_students_combined.rows,
           matchKey: 'geography_code',
           value: 'value',
           scale: 'Inferno',
