@@ -2,6 +2,9 @@ name: Update data
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - update_data
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '45 9 * * 1-5'
