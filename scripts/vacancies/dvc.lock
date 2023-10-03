@@ -41,11 +41,12 @@ stages:
     deps:
     - path: scripts/vacancies/transform.py
       hash: md5
-      md5: 8f2e7bf2fe395036f0cdd070c1408106
-      size: 801
-    - path: working/lookups/LMS_variable_lookup.csv
-      md5: faf1d16226f95f8d2448b90d1d5868a0
-      size: 137661
+      md5: 2e9667b3d21fd43a334148a1322e85c5
+      size: 793
+    - path: working/upstream/lms-codes.csv
+      hash: md5
+      md5: 1ab28b2730305c82dcdb124ce296a66b
+      size: 181882
     - path: working/upstream/lms.csv
       hash: md5
       md5: 72d52598a0ba79effd075f9f66180a4d
