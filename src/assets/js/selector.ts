@@ -16,12 +16,25 @@ function attachSelector() {
     );
     const options = Array.from(selector.options).map((opt) => opt.value);
 
+    // Block scoped to mask selected
+    {
+      const selected = new URLSearchParams(location.search).get(selector.id);
+      if (selected && options.includes(selected)) {
+        selector.value = selected;
+      }
+    }
+
     function setVisible() {
       container.querySelectorAll<HTMLElement>(".selector-block").forEach((b) =>
         b.hidden = true
       );
       container.querySelector<HTMLElement>("#" + selector.value)!.hidden =
         false;
+    }
+    function updateState() {
+      const url = new URL(location.toString());
+      url.searchParams.set(selector.id, selector.value);
+      history.pushState("", "", url.pathname + url.search);
     }
 
     setVisible();
@@ -37,6 +50,7 @@ function attachSelector() {
     container.append(form);
 
     selector.addEventListener("change", setVisible);
+    selector.addEventListener("change", updateState);
   });
 }
 document.addEventListener("DOMContentLoaded", attachSelector);
