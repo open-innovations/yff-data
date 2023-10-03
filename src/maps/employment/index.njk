@@ -24,14 +24,14 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
     data-id='map-selector'>
 
   <article id='youth-unemployment' class='selector-block'>
-    <h2>Unemployment rate (%) aged 16-24</h2>
+    <h2>Youth unemployment rate (aged 16-24)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
     <div class="figure" style="{{ map_style }}">
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: view.unemployment_rate_16_24_combined.rows,
+      data: view.unemployment_rate_youth.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -53,14 +53,14 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
 #}
 
   <article id='all-unemployment' class='selector-block'>
-    <h2>Unemployment rate (%) aged 16+</h2>
+    <h2>Working age unemployment rate (aged 16-64)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
     <div class="figure" style="{{ map_style }}">
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: view.unemployment_rate_16_plus_combined.rows,
+      data: view.unemployment_rate_all_working_age.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -71,14 +71,14 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
   </article>
 
   <article id='youth-economic-inactivity' class='selector-block'>
-    <h2>Economic inactivity rate (%) aged 16-24</h2>
+    <h2>Youth economic inactivity rate (aged 16-24)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
     <div class="figure" style="{{ map_style }}">
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: view.economic_inactivity_rate_16_24_combined.rows,
+      data: view.economic_inactivity_rate_youth.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',
@@ -89,14 +89,14 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
   </article>
 
   <article id='all-economic-inactivity' class='selector-block'>
-    <h2>Economic inactivity rate (%) aged 16+</h2>
+    <h2>Working age economic inactivity rate (aged 16-64)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
     <div class="figure" style="{{ map_style }}">
       {{ comp.oi.map.hex_cartogram({
     config: {
       hexjson: constituencies,
-      data: view.economic_inactivity_rate_16_plus_combined.rows,
+      data: view.economic_inactivity_rate_all_working_age.rows,
       matchKey: 'geography_code',
       value: 'value',
       scale: 'Inferno',

@@ -38,27 +38,27 @@ def save_to_file(data, filename):
 if __name__ == '__main__':
 
     combined_data.pipe(
-        filter_data, 'Unemployment rate - aged 16+', aps_fields
+        filter_data, 'Unemployment rate - aged 16-64', aps_fields
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'unemployment_rate_16_plus_combined.csv'
+        save_to_file, 'unemployment_rate_all_working_age.csv'
     )
 
     combined_data.pipe(
         filter_data, 'Unemployment rate - aged 16-24', aps_fields
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'unemployment_rate_16_24_combined.csv'
+        save_to_file, 'unemployment_rate_youth.csv'
     )
 
     combined_data.pipe(
-        filter_data, '% who are economically inactive - aged 16+', aps_fields
+        filter_data, '% who are economically inactive - aged 16-64', aps_fields
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'economic_inactivity_rate_16_plus_combined.csv'
+        save_to_file, 'economic_inactivity_rate_all_working_age.csv'
     )
 
     combined_data.pipe(
         filter_data, '% who are economically inactive - aged 16-24', aps_fields
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'economic_inactivity_rate_16_24_combined.csv'
+        save_to_file, 'economic_inactivity_rate_youth.csv'
     )
 
     combined_data.pipe(
