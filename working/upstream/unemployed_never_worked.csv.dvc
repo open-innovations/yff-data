@@ -1,0 +1,13 @@
+md5: 919f76a584ff6469d2b5b001bb880d84
+frozen: true
+deps:
+- path: data/processed/census/unemployed_never_worked.csv
+  repo:
+    url: https://github.com/open-innovations/yff-data-pipelines
+    rev_lock: a84cbd3dad416f60a4300f669c8bb6c3cf731515
+outs:
+- md5: 6a1d5a2c57132f14553e0801ba2ebf66
+  size: 496597
+  hash: md5
+  path: unemployed_never_worked.csv
+  isexec: true

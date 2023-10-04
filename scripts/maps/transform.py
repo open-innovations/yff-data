@@ -8,14 +8,19 @@ COMBINED_DATA = os.path.join(
 CLAIMANT_DATA = os.path.join(
     WORKING_DIR, 'claimants-per-population-latest.csv')
 
+CENSUS_DATA = os.path.join(
+    WORKING_DIR, 'unemployed_never_worked.csv')
+
 DATA_DIR = os.path.join('src', 'maps', 'employment', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 combined_data = pd.read_csv(COMBINED_DATA)
 claimant_data = pd.read_csv(CLAIMANT_DATA)
+census_data = pd.read_csv(CENSUS_DATA)
 
 aps_fields = ['geography_code', 'date', 'date_name', 'value', 'notes']
 claimants_fields = ['geography_code', 'Claimants percentage']
+census_fields = ['geography_code', 'rate']
 
 def filter_data(data, variable, fields, filter_field='variable_name'):
     return data.loc[data[filter_field] == variable, fields]
@@ -81,4 +86,13 @@ if __name__ == '__main__':
         claimants_fields
     ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
         os.path.join(DATA_DIR, 'claimants_16_24.csv'), index=False
+    )
+
+    #Census 
+
+    census_data.loc[
+        census_data.age == 'Aged 16 to 24 years',
+        census_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'census_16_24.csv'), index=False
     )
