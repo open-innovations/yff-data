@@ -105,3 +105,11 @@ if __name__ == '__main__':
     ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
         os.path.join(DATA_DIR, 'census_economically_inactive_youth.csv'), index=False
     )
+
+    census_data.loc[
+        (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.variable_name == 'Unemployed or economically inactive and not in full-time education'),
+        census_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'census_unemployed_or_economically_inactive_and_not_in_fte_youth.csv'), index=False
+    )

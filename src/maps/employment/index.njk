@@ -143,6 +143,24 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
     </div>
   </article>
 
+  <article id='census-youth-unemployed-economically-inactive' class='selector-block'>
+    <h2>Census 2021: Unemployed or economically inactive (excluding students) (age 16-24)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    <div class="figure" style="{{ map_style }}">
+      {{ comp.oi.map.hex_cartogram({
+    config: {
+      hexjson: constituencies,
+      data: view.census_unemployed_or_economically_inactive_and_not_in_fte_youth.rows,
+      matchKey: 'geography_code',
+      value: 'rate',
+      scale: 'Inferno',
+      tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
+    }
+  }) | safe }}
+    </div>
+  </article>
+
   <article id='census-youth-unemployed' class='selector-block'>
     <h2>Census 2021: Unemployed (excluding students) (age 16-24)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
@@ -178,27 +196,6 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
   }) | safe }}
     </div>
   </article>
-
-  {#
-  <article id='econonomic-inactivity-students' class='selector-block'>
-    <h2>Economic inactivity proportion who are students</h2>
-    <p>The hexmap below shows the percentage of people who are economically inactive because they are students. This data also comes from the Annual Population Survey.</p>
-    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-    <div class="figure" style="{{ map_style }}">
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.economic_inactivity_students_combined.rows,
-          matchKey: 'geography_code',
-          value: 'value',
-          scale: 'Inferno',
-          tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-        }
-      }) | safe }}
-    </div>
-  </article>
-  #}
 
 </div>
 
