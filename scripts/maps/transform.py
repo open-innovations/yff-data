@@ -9,7 +9,7 @@ CLAIMANT_DATA = os.path.join(
     WORKING_DIR, 'claimants-per-population-latest.csv')
 
 CENSUS_DATA = os.path.join(
-    WORKING_DIR, 'unemployed_never_worked.csv')
+    WORKING_DIR, 'census-employment-status.csv')
 
 DATA_DIR = os.path.join('src', 'maps', 'employment', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -91,8 +91,17 @@ if __name__ == '__main__':
     #Census 
 
     census_data.loc[
-        census_data.age == 'Aged 16 to 24 years',
+        (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.variable_name == 'Economically active (excluding full-time students): Unemployed'),
         census_fields
     ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
-        os.path.join(DATA_DIR, 'census_16_24.csv'), index=False
+        os.path.join(DATA_DIR, 'census_unemployed_youth.csv'), index=False
+    )
+
+    census_data.loc[
+        (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.variable_name == 'Economically inactive (excluding full-time students)'),
+        census_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'census_economically_inactive_youth.csv'), index=False
     )
