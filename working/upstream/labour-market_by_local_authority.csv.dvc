@@ -1,10 +1,10 @@
-md5: 95c01eb8e4192d62d17f93cbf7b9cdf4
+md5: f97b43f6274f46587347344a6a8b4f0f
 frozen: true
 deps:
 - path: data/processed/labour-market/latest_by_LA_2021.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: ac376e7c13a496719dd7c0773d3271035d7abce5
+    rev_lock: 53a57edf677cb772c2861d1cb90be3f884e6f3a9
 outs:
 - md5: 03f87165144200970c1ae1cf888307f1
   size: 431462
