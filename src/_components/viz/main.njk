@@ -1,22 +1,17 @@
 {% macro doTheVis(visualisation, headingLevel, tab_override) %}
-  <div class="pane"{% if visualisation.config.id %} id="{{ visualisation.config.id }}"{% endif %}>
+  {% comp 'display.figure', {
+    id: visualisation.config.id,
+    source_file: visualisation.config.file
+  } %}
     {{ comp.viz.render({
       config: visualisation.config,
       tab: tab_override or visualisation.tab,
       title: visualisation.title,
       caption: visualisation.caption,
       type: visualisation.type,
-      downloadLink: visualisation.downloadLink or true,
       headingLevel: headingLevel
     }) | safe }}
-    {% if test %}
-      <p>Built using config: </p>
-      <pre><code>
-		    {{- visualisation | yaml -}}
-		  </code></pre>
-      <a href="{{ visualisation.config.file }}">Data file</a>
-    {% endif %}
-  </div>
+  {% endcomp %}
 {% endmacro %}
 
 {% if not visualisations | isArray %}
