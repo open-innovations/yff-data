@@ -12,8 +12,8 @@ import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { walkSync } from 'std/fs/mod.ts';
-import autoDependency from '/src/_lib/oi/auto-dependency.ts';
 import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
+import autoDependency from 'oi-lume-utils/processors/auto-dependency.ts';
 import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
