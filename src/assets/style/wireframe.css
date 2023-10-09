@@ -90,7 +90,7 @@ figure .figure-options .figure-option:hover, figure .figure-options .figure-opti
 .navigation ul li.social-icon a { padding: 0; display: inline-block; }
 .navigation ul li.social-icon svg { height: 30px; width: 30px; float: none; }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1250px) {
   .navigation > div {
     background: initial;
     position: relative;
