@@ -1,3 +1,5 @@
+@import 'css/reset/minireset.css';
+@import 'css/wireframe.css';
 @import 'css/base.css';
 @import 'css/site-header.css';
 @import 'css/tag-cloud.css';
