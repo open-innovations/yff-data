@@ -46,7 +46,9 @@ site.use(netlifyCMS({
   extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
 }));
 
-site.use(oiLumeViz());
+site.use(oiLumeViz({
+  assetPath: '/assets/oi'
+}));
 
 site.copy(['.min.js']);
 // site.copy(['.css']);
