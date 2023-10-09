@@ -15,6 +15,7 @@ import { walkSync } from 'std/fs/mod.ts';
 import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
 import autoDependency from 'oi-lume-utils/processors/auto-dependency.ts';
 import { applyReplacementFilters } from '/src/_lib/oi/util.js';
+import injector from '/src/_lib/oi/processor/injector.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
 import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.0/mod.ts";
@@ -115,6 +116,7 @@ site.preprocess([".html"], (page) => {
   page.data.srcPath = 'src' + page.src.path + page.src.ext;
 });
 site.process(['.html'], autoDependency);
+site.process(['.html'], injector);
 
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
