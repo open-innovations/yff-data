@@ -15,6 +15,8 @@ process_census_url: https://github.com/open-innovations/yff-data-pipelines/blob/
 
 
 map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
+
+featured: .featured
 ---
 
 {% comp 'flex' %}
@@ -32,7 +34,7 @@ map_style: "max-width:30em; margin-right:auto; margin-left:auto;"
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
 
     {% comp 'display.figure', { source_file: aps_url } %}
-    <div class="figure" style="{{ map_style }}">
+    <div class="figure featured" style="{{ map_style }}">
       {{ comp.oi.map.hex_cartogram({
         config: {
           hexjson: constituencies,
