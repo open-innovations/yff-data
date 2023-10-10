@@ -115,8 +115,11 @@ site.copy(dataPath);
 site.preprocess([".html"], (page) => {
   page.data.srcPath = 'src' + page.src.path + page.src.ext;
 });
-site.process(['.html'], autoDependency);
+
+// Processor to extract content from a page and insert it into the body of another page
 site.process(['.html'], injector);
+// Processor which adds dependencies into the page head
+site.process(['.html'], autoDependency);
 
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
