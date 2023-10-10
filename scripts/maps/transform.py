@@ -92,6 +92,7 @@ if __name__ == '__main__':
 
     census_data.loc[
         (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.gender == 'All persons') &
         (census_data.variable_name == 'Economically active (excluding full-time students): Unemployed'),
         census_fields
     ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
@@ -100,6 +101,7 @@ if __name__ == '__main__':
 
     census_data.loc[
         (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.gender == 'All persons') &
         (census_data.variable_name == 'Economically inactive (excluding full-time students)'),
         census_fields
     ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
@@ -108,6 +110,7 @@ if __name__ == '__main__':
 
     census_data.loc[
         (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.gender == 'All persons') &
         (census_data.variable_name == 'Unemployed or economically inactive and not in full-time education'),
         census_fields
     ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
