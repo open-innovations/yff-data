@@ -81,7 +81,7 @@ figure .figure-menu { position: relative; height: 1.5em; width: 1.5em; opacity: 
 figure .added .figure-menu:checked ~ .figure-option-list { display: block; position: absolute; z-index: 500; right: 0; }
 figure .figure-options .figure-option-list { list-style: none; margin: unset; background: white; }
 figure .figure-options.added .figure-option-list { display: none; }
-figure .figure-options .figure-option { position: relative; display: block; background-image: unset!important; font-family: inherit; font-size: inherit; text-align: left; padding: 0 1em; line-height: 2.5em; border: 0; width: 100%; white-space: nowrap; cursor: pointer; }
+figure .figure-options .figure-option { position: relative; display: block; background-image: unset!important; font-family: inherit; font-size: inherit; text-align: left; text-decoration: none; padding: 0 1em; line-height: 2.5em; border: 0; width: 100%; white-space: nowrap; cursor: pointer; }
 figure .figure-options .figure-option:hover, figure .figure-options .figure-option:focus { z-index: 520; }
 
 .navigation ul li.social-icon { line-height: 0; }
