@@ -47,7 +47,7 @@ featured: .featured
           data: view.unemployment_rate_youth.rows,
           matchKey: 'geography_code',
           value: 'value',
-          scale: 'Inferno',
+          scale: 'YFF',
           tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
         } | autoLegend
       }) | safe }}
@@ -78,7 +78,7 @@ featured: .featured
       data: view.unemployment_rate_all_working_age.rows,
       matchKey: 'geography_code',
       value: 'value',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     } | autoLegend
   }) | safe }}
@@ -98,7 +98,7 @@ featured: .featured
       data: view.economic_inactivity_rate_youth.rows,
       matchKey: 'geography_code',
       value: 'value',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     } | autoLegend
   }) | safe }}
@@ -118,7 +118,7 @@ featured: .featured
       data: view.economic_inactivity_rate_all_working_age.rows,
       matchKey: 'geography_code',
       value: 'value',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
     } | autoLegend
   }) | safe }}
@@ -138,7 +138,7 @@ featured: .featured
       data: view.claimants_16_24.rows,
       matchKey: 'geography_code',
       value: 'Claimants percentage',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
     } | autoLegend
   }) | safe }}
@@ -158,7 +158,7 @@ featured: .featured
       data: view.claimants_16_plus.rows,
       matchKey: 'geography_code',
       value: 'Claimants percentage',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
     } | autoLegend
   }) | safe }}
@@ -178,7 +178,7 @@ featured: .featured
       data: view.census_unemployed_or_economically_inactive_and_not_in_fte_youth.rows,
       matchKey: 'geography_code',
       value: 'rate',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
     } | autoLegend
   }) | safe }}
@@ -198,7 +198,7 @@ featured: .featured
       data: view.census_unemployed_youth.rows,
       matchKey: 'geography_code',
       value: 'rate',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
     } | autoLegend
   }) | safe }}
@@ -218,7 +218,7 @@ featured: .featured
       data: view.census_economically_inactive_youth.rows,
       matchKey: 'geography_code',
       value: 'rate',
-      scale: 'Inferno',
+      scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
     } | autoLegend
   }) | safe }}
