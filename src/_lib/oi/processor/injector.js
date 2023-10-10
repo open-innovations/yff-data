@@ -17,6 +17,7 @@ export default function injector(page) {
     if (!featuredContent) return;
 
     // Remove any links
+    // TODO maybe make this optional
     featuredContent.querySelectorAll('a').forEach(a => a.parentNode.removeChild(a));
 
     // Set the content of the insertion point
