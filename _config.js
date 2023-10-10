@@ -18,7 +18,7 @@ import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 import injector from '/src/_lib/oi/processor/injector.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.0/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.2/mod.ts";
 
 const site = lume({
   src: './src',
