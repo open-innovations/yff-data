@@ -130,6 +130,30 @@ site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
 site.filter('isArray', (item) => Array.isArray(item));
 site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
 
+site.filter('max', (list) => Math.max(...list));
+
+site.filter('autoLegend', (config, labelFormatter=(x) => `${x}%`) => {
+  const values = config.data.map(x => x[config.value]);
+  // Max rounded to nearest 5
+  const max = Math.ceil(Math.max(...values)/5)*5;
+  const steps = 5;
+  const legendValues = Array.from(Array(steps).keys()).map(x => x * max / (steps-1)).reverse();
+  const legend = {
+    position: 'top right',
+    items: legendValues.map(x => ({ value: x, label: labelFormatter(x) }))
+  }
+  // Construct config
+  return {
+    min: 0,
+    max: max,
+    ...config,
+    legend: {
+      ...legend,
+      ...config.legend,
+    },
+  }
+})
+
 site.filter('findByAttribute', (list, key, value) => list.filter(x => x[key] === value))
 
 // TODO fix this function!
