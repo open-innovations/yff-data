@@ -6,7 +6,9 @@
 {% endif %}
 
 {% if show_viz | default(true) %}
-  {% if page.visualisation %}
+  {% if page.featured %}
+    <div data-injector-url="{{ page.url }}" data-injector-selector="{{ page.featured }}"></div>
+  {% elif page.visualisation %}
     {% set key_visualisation = page.visualisation[page.featured_visualisation or 'headline'] %}
     {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
   {% elif page.visualisations %}
@@ -16,8 +18,13 @@
 {% endif %}
 
 {% if page.summary %}
+  {% if page.summary | isArray %}
+    {% set summary = page.summary | first %}
+  {% else %}
+    {% set summary = page.summary %}
+  {% endif %}
   <div class="summary embolden-first">
-    {{ page.summary | first | md | striplinks | safe }}
+    {{ summary | md | striplinks | safe }}
   </div>
 {% endif %}
 

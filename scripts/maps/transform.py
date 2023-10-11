@@ -1,105 +1,118 @@
-import os 
-import pandas as pd 
+import os
+import pandas as pd
 
 WORKING_DIR = os.path.join('working', 'upstream')
-CONSTITUENCY_DATA = os.path.join(WORKING_DIR, 'labour-market_latest_by_pcon_2010.csv')
-COMBINED_DATA = os.path.join(WORKING_DIR, 'labour-market_most_recent_by_pcon_2010.csv')
-LOCAL_AUTHORITY_DATA = os.path.join(WORKING_DIR, 'labour-market_by_local_authority.csv')
+COMBINED_DATA = os.path.join(
+    WORKING_DIR, 'labour-market_most_recent_by_pcon_2010.csv')
 
-CLAIMANT_DATA = os.path.join(WORKING_DIR, 'claimants-per-population-latest.csv')
+CLAIMANT_DATA = os.path.join(
+    WORKING_DIR, 'claimants-per-population-latest.csv')
 
-DATA_DIR = os.path.join('src', 'maps', 'employment', '_data')
+CENSUS_DATA = os.path.join(
+    WORKING_DIR, 'census-employment-status.csv')
 
-constituency_data = pd.read_csv(CONSTITUENCY_DATA)
-local_authority_data = pd.read_csv(LOCAL_AUTHORITY_DATA)
+DATA_DIR = os.path.join('src', 'maps', 'employment', '_data', 'view')
+os.makedirs(DATA_DIR, exist_ok=True)
+
 combined_data = pd.read_csv(COMBINED_DATA)
 claimant_data = pd.read_csv(CLAIMANT_DATA)
+census_data = pd.read_csv(CENSUS_DATA)
 
-def filter_data(data, variable):
-    return data.loc[
-        data.variable_name == variable, 
-        ['geography_code', 'date', 'date_name', 'value', 'notes']
-    ]
+aps_fields = ['geography_code', 'date', 'date_name', 'value', 'notes']
+claimants_fields = ['geography_code', 'Claimants percentage']
+census_fields = ['geography_code', 'rate']
+
+def filter_data(data, variable, fields, filter_field='variable_name'):
+    return data.loc[data[filter_field] == variable, fields]
+
+
+def limit_to_england(data):
+    return data.loc[data.geography_code.str.startswith('E')]
+
+
+def clean_nulls(data):
+    return data.dropna()
+
+
+def save_to_file(data, filename):
+    full_filename = os.path.join(DATA_DIR, filename)
+    data.to_csv(full_filename, index=False)
+    return data
+
 
 if __name__ == '__main__':
 
+    combined_data.pipe(
+        filter_data, 'Unemployment rate - aged 16-64', aps_fields
+    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
+        save_to_file, 'unemployment_rate_all_working_age.csv'
+    )
 
-# Consituencies
-  unemployment_rate_16_24 = filter_data(constituency_data, 'Unemployment rate - aged 16-64')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64.csv'), index=False)
+    combined_data.pipe(
+        filter_data, 'Unemployment rate - aged 16-24', aps_fields
+    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
+        save_to_file, 'unemployment_rate_youth.csv'
+    )
 
-  unemployment_rate_16_19 = filter_data(constituency_data, 'Unemployment rate - aged 16-19')
-  unemployment_rate_16_19.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19.csv'), index=False)
+    combined_data.pipe(
+        filter_data, '% who are economically inactive - aged 16-64', aps_fields
+    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
+        save_to_file, 'economic_inactivity_rate_all_working_age.csv'
+    )
 
-  unemployment_rate_20_24 = filter_data(constituency_data, 'Unemployment rate - aged 20-24')
-  unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24.csv'), index=False)
+    combined_data.pipe(
+        filter_data, '% who are economically inactive - aged 16-24', aps_fields
+    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
+        save_to_file, 'economic_inactivity_rate_youth.csv'
+    )
 
-# Combined dates
-  unemployment_rate_16_24 = filter_data(combined_data, 'Unemployment rate - aged 16-64')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64_combined.csv'), index=False)
+    combined_data.pipe(
+        filter_data, '% of economically inactive student', aps_fields
+    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
+        save_to_file, 'economic_inactivity_students_combined.csv'
+    )
 
-  unemployment_rate_16_19 = filter_data(combined_data, 'Unemployment rate - aged 16-19')
-  unemployment_rate_16_19.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19_combined.csv'), index=False)
+    # Claimants
 
-  unemployment_rate_20_24 = filter_data(combined_data, 'Unemployment rate - aged 20-24')
-  unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_combined.csv'), index=False)
+    claimant_data.loc[
+        claimant_data.age == 'Aged 16+',
+        claimants_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'claimants_16_plus.csv'), index=False
+    )
 
-  combined_data.pipe(
-      filter_data, 'Unemployment rate - aged 16+'
-  ).fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'unemployment_rate_16_plus_combined.csv'), index=False
-  )
+    claimant_data.loc[
+        claimant_data.age == 'Aged 16-24',
+        claimants_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'claimants_16_24.csv'), index=False
+    )
 
-  combined_data.pipe(
-      filter_data, 'Unemployment rate - aged 16-24'
-  ).fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'unemployment_rate_16_24_combined.csv'), index=False
-  )
-  
-  combined_data.pipe(
-      filter_data, '% who are economically inactive - aged 16+'
-  ).fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'economic_inactivity_rate_16_plus_combined.csv'), index=False
-  )
+    #Census 
 
-  combined_data.pipe(
-      filter_data, '% who are economically inactive - aged 16-24'
-  ).fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'economic_inactivity_rate_16_24_combined.csv'), index=False
-  )
+    census_data.loc[
+        (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.gender == 'All persons') &
+        (census_data.variable_name == 'Economically active (excluding full-time students): Unemployed'),
+        census_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'census_unemployed_youth.csv'), index=False
+    )
 
-  combined_data.pipe(
-      filter_data, '% of economically inactive student'
-  ).fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'economic_inactivity_students_combined.csv'), index=False
-  )
+    census_data.loc[
+        (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.gender == 'All persons') &
+        (census_data.variable_name == 'Economically inactive (excluding full-time students)'),
+        census_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'census_economically_inactive_youth.csv'), index=False
+    )
 
-
-# Claimants
-
-  claimant_data.loc[
-      claimant_data.age == 'Aged 16+',
-      ['geography_code', 'Claimants percentage']
-  ].fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'claimants_16_plus.csv'), index=False
-  )
-
-  claimant_data.loc[
-      claimant_data.age == 'Aged 16-24',
-      ['geography_code', 'Claimants percentage']
-  ].fillna(0).to_csv(
-      os.path.join(DATA_DIR, 'claimants_16_24.csv'), index=False
-  )
-
-# Local authority
-  unemployment_rate_16_24 = filter_data(local_authority_data, 'Unemployment rate - aged 16-64')
-  unemployment_rate_16_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_64_LA.csv'), index=False)
-
-  unemployment_rate_16_19 = filter_data(local_authority_data, 'Unemployment rate - aged 16-19')
-  unemployment_rate_16_19.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_16_19_LA.csv'), index=False)
-
-  unemployment_rate_20_24 = filter_data(local_authority_data, 'Unemployment rate - aged 20-24')
-  unemployment_rate_20_24.fillna(0).to_csv(os.path.join(DATA_DIR, 'unemployment_rate_20_24_LA.csv'), index=False)
-
-
-
+    census_data.loc[
+        (census_data.age == 'Aged 16 to 24 years') &
+        (census_data.gender == 'All persons') &
+        (census_data.variable_name == 'Unemployed or economically inactive and not in full-time education'),
+        census_fields
+    ].pipe(clean_nulls).pipe(limit_to_england).to_csv(
+        os.path.join(DATA_DIR, 'census_unemployed_or_economically_inactive_and_not_in_fte_youth.csv'), index=False
+    )

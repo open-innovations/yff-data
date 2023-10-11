@@ -1,3 +1,5 @@
+@import 'css/reset/minireset.css';
+@import 'css/wireframe.css';
 @import 'css/base.css';
 @import 'css/site-header.css';
 @import 'css/tag-cloud.css';
@@ -9,6 +11,7 @@
 @import 'css/search.css';
 @import 'css/navigation.css';
 @import 'css/oi.css';
+@import 'css/figure-menu.css';
 
 html { scroll-behavior: smooth; }
 body { font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
@@ -132,8 +135,6 @@ figcaption { margin-bottom: 1em; }
 cite { font-size: 0.8em; }
 
 a:focus, button:focus, figure .figure-menu:focus + label { outline: 2px solid #E55912; border-radius: 2px; }
-
-figure .figure-menu:focus + label, figure .figure-options ul li > *:hover, figure .figure-options ul li > *:focus { color: white; background: #9d4f64; }
 
 .feedback { text-align: center; background: #e0e0e0; border: 0; }
 .feedback a { color: #7d2248; font-weight: bold; }

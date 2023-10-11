@@ -1,6 +1,8 @@
 {%- macro renderViz(viz) %}
+<figure>
 <h3>{{ viz.title }}</h3>
   {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
+</figure>
 {% endmacro -%}
 
 {# NEET #}

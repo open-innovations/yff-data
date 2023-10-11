@@ -1,0 +1,92 @@
+figure {
+  & .figure-options {
+    float: right;
+    text-align: right;
+    line-height: 0;
+
+    & .figure-option {
+      position: relative;
+      background-image: unset !important;
+      font-family: inherit;
+      font-size: inherit;
+      text-align: left;
+      padding: 0 1em;
+      line-height: 2.5em;
+      border: 0;
+      width: 100%;
+      white-space: nowrap;
+      cursor: pointer;
+
+      display: flex;
+      gap: 1em;
+      align-items: normal;
+
+      text-decoration: none;
+
+      &>* {
+        display: block;
+      }
+
+      &:hover,
+      &:focus {
+        z-index: 520;
+        text-decoration: underline;
+      }
+
+      & svg {
+        width: 1.2em;
+      }
+    }
+  }
+
+  & .figure-menu,
+  & .figure-menu+label {
+    font-size: 1.33em;
+  }
+
+  & .figure-options label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.5em;
+    min-width: 1.5em;
+    z-index: 500;
+  }
+
+  & .figure-menu {
+    position: relative;
+    height: 1.5em;
+    width: 1.5em;
+    opacity: 0.01;
+    z-index: 510;
+    cursor: pointer;
+  }
+
+  & .added .figure-menu:checked~.figure-option-list {
+    display: block;
+    position: absolute;
+    z-index: 500;
+    right: 0;
+  }
+
+  & .figure-options .figure-option-list {
+    list-style: none;
+    margin: unset;
+    background: white;
+  }
+
+  & .figure-options.added .figure-option-list {
+    display: none;
+  }
+
+
+  & .figure-menu:focus+label,
+  & .figure-options ul li>*:hover,
+  & .figure-options ul li>*:focus {
+    color: white;
+    background: #9d4f64;
+  }
+}

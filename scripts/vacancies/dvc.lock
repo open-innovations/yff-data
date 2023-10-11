@@ -5,7 +5,7 @@ stages:
     deps:
     - path: data/vacancies/vacancies_edd.csv
       hash: md5
-      md5: 644f7966618c5c99af1e7c629587ab15
+      md5: 67ddc10dc25e809c28324e7a8eaa4407
       size: 10506
     - path: scripts/vacancies/prepare.py
       hash: md5
@@ -40,17 +40,19 @@ stages:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
     deps:
     - path: scripts/vacancies/transform.py
-      md5: 49234177ab64c8129538417a04d7b5ca
-      size: 822
-    - path: working/LMS_data.csv
       hash: md5
-      md5: 0fa1500fa1ad5467cf0710943f012825
-      size: 16991592
-    - path: working/lookups/LMS_variable_lookup.csv
-      md5: faf1d16226f95f8d2448b90d1d5868a0
-      size: 137661
+      md5: 2e9667b3d21fd43a334148a1322e85c5
+      size: 793
+    - path: working/upstream/lms-codes.csv
+      hash: md5
+      md5: 1ab28b2730305c82dcdb124ce296a66b
+      size: 181882
+    - path: working/upstream/lms.csv
+      hash: md5
+      md5: 72d52598a0ba79effd075f9f66180a4d
+      size: 17934704
     outs:
     - path: data/vacancies/vacancies_edd.csv
       hash: md5
-      md5: 644f7966618c5c99af1e7c629587ab15
+      md5: 67ddc10dc25e809c28324e7a8eaa4407
       size: 10506

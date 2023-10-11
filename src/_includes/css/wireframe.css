@@ -1,5 +1,3 @@
-@import "css/reset/minireset.css";
-
 html {
 	font-family: monospace;
 	font-size: 16px;
@@ -76,21 +74,11 @@ iframe { width: 100%; aspect-ratio: 16 / 9; }
 	margin-left: -1em;
 }
 
-figure .figure-options { float: right; text-align: right; line-height: 0; }
-figure .figure-menu, figure .figure-menu + label { font-size: 1.33em; }
-figure .figure-options label { position: absolute; top: 0; right: 0; display: inline-block; text-align: center; font-weight: bold; line-height: 1.5em; min-width: 1.5em; z-index: 500; }
-figure .figure-menu { position: relative; height: 1.5em; width: 1.5em; opacity: 0.01; z-index: 510; cursor: pointer; }
-figure .added .figure-menu:checked ~ .figure-option-list { display: block; position: absolute; z-index: 500; right: 0; }
-figure .figure-options .figure-option-list { list-style: none; margin: unset; background: white; }
-figure .figure-options.added .figure-option-list { display: none; }
-figure .figure-options .figure-option { position: relative; display: block; background-image: unset!important; font-family: inherit; font-size: inherit; text-align: left; padding: 0 1em; line-height: 2.5em; border: 0; width: 100%; white-space: nowrap; cursor: pointer; }
-figure .figure-options .figure-option:hover, figure .figure-options .figure-option:focus { z-index: 520; }
-
 .navigation ul li.social-icon { line-height: 0; }
 .navigation ul li.social-icon a { padding: 0; display: inline-block; }
 .navigation ul li.social-icon svg { height: 30px; width: 30px; float: none; }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1250px) {
   .navigation > div {
     background: initial;
     position: relative;

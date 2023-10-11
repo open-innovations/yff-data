@@ -11,7 +11,7 @@ There are three stages to the [data processing pipeline](https://github.com/open
 
 ## Data sources
 
-The sources for this data is the Labour Market Survey. These are pulled from NOMIS, via the [LMS extract in the EDD repository](https://github.com/economic-analytics/edd/blob/main/data/csv/LMS_data.csv).
+The sources for this data is the Labour Market Survey. These are pulled from NOMIS, via the [LMS extract in the YFF Data Pipelines repository](https://github.com/open-innovations/yff-data-pipelines/blob/main/data/processed/labour-market/lms.csv).
 
 We extract the data of interest to a [monthly rolling file](https://github.com/open-innovations/yff-data/blob/main/data/labour-market/monthly-rolling.csv).
 

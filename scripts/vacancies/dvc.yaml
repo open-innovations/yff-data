@@ -14,8 +14,8 @@ stages:
     wdir: ../..
     deps:
       - scripts/vacancies/transform.py
-      - working/lookups/LMS_variable_lookup.csv
-      - working/LMS_data.csv
+      - working/upstream/lms.csv
+      - working/upstream/lms-codes.csv
     outs:
       - data/vacancies/vacancies_edd.csv:
           cache: false

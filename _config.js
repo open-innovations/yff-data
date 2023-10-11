@@ -12,12 +12,13 @@ import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { walkSync } from 'std/fs/mod.ts';
-import autoDependency from '/src/_lib/oi/auto-dependency.ts';
 import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
+import autoDependency from 'oi-lume-utils/processors/auto-dependency.ts';
 import { applyReplacementFilters } from '/src/_lib/oi/util.js';
+import injector from '/src/_lib/oi/processor/injector.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.0/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.2/mod.ts";
 
 const site = lume({
   src: './src',
@@ -46,7 +47,14 @@ site.use(netlifyCMS({
   extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
 }));
 
-site.use(oiLumeViz());
+site.use(oiLumeViz({
+	'assetPath': '/assets/oi',
+	'colour': {
+		'scales': {
+			'YFF': '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%',
+		}
+	}
+}));
 
 site.copy(['.min.js']);
 // site.copy(['.css']);
@@ -112,6 +120,10 @@ site.copy(dataPath);
 site.preprocess([".html"], (page) => {
   page.data.srcPath = 'src' + page.src.path + page.src.ext;
 });
+
+// Processor to extract content from a page and insert it into the body of another page
+site.process(['.html'], injector);
+// Processor which adds dependencies into the page head
 site.process(['.html'], autoDependency);
 
 // Add filters
@@ -122,6 +134,30 @@ site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => 
 site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
 site.filter('isArray', (item) => Array.isArray(item));
 site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
+
+site.filter('max', (list) => Math.max(...list));
+
+site.filter('autoLegend', (config, labelFormatter=(x) => `${x}%`) => {
+  const values = config.data.map(x => x[config.value]);
+  // Max rounded to nearest 5
+  const max = Math.ceil(Math.max(...values)/5)*5;
+  const steps = 5;
+  const legendValues = Array.from(Array(steps).keys()).map(x => x * max / (steps-1)).reverse();
+  const legend = {
+    position: 'top right',
+    items: legendValues.map(x => ({ value: x, label: labelFormatter(x) }))
+  }
+  // Construct config
+  return {
+    min: 0,
+    max: max,
+    ...config,
+    legend: {
+      ...legend,
+      ...config.legend,
+    },
+  }
+})
 
 site.filter('findByAttribute', (list, key, value) => list.filter(x => x[key] === value))
 

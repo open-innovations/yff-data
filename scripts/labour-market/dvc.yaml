@@ -8,7 +8,7 @@ stages:
     deps:
       - scripts/labour-market/transform.py
       - scripts/labour-market/config.py
-      - working/LMS_data.csv
+      - working/upstream/lms.csv
     outs:
       - data/labour-market/monthly-rolling.csv:
           cache: false
