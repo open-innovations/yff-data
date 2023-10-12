@@ -9,8 +9,8 @@ stages:
       size: 10506
     - path: scripts/util/metadata.py
       hash: md5
-      md5: 0b8a89232411298d711fb437327810bc
-      size: 902
+      md5: 4c10007d68898289db269e5da494a0f5
+      size: 911
     - path: scripts/vacancies/prepare.py
       hash: md5
       md5: 612ecb35280882729350a4668a49e8c0

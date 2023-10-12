@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 TOP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
-METADATA_FILE = os.path.join(TOP_DIR, 'working/metadata.csv')
+METADATA_FILE = os.path.join(TOP_DIR, 'working/upstream/metadata.csv')
 
 
 def read_meta():
