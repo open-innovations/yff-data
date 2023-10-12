@@ -16,17 +16,14 @@ stages:
     deps:
       - scripts/cpi/prepare.py
       - data/cpi/transformed_cpi.csv
-      - data/cpi/cpi_all_category_bar_chart.csv
-      - data/cpi/cpi_barchart.csv
-      - data/cpi/cpi_linechart.csv
-      - data/cpi/headlines.csv
-      - data/cpi/indicator.csv
-      - data/cpi/metadata.json
-      - data/cpi/prefix.csv
-      - data/cpi/cpi_summary_barchart.csv
-      - working/metadata.csv
       - working/upstream/mm23-codes.csv
     outs:
+      - data/cpi/indicator.csv:
+          cache: false
+          persist: false
+      - src/_data/sources/cpi/cpi_all_category_bar_chart.csv:
+          cache: false
+          persist: false
       - src/_data/sources/cpi/cpi_barchart.csv:
           cache: false
           persist: false
@@ -39,9 +36,6 @@ stages:
       - src/_data/sources/cpi/headlines.csv:
           cache: false 
           persist: false
-      - src/_data/sources/cpi/indicator.csv:
-          cache: false
-          persist: false
       - src/_data/sources/cpi/cpi_summary_barchart.csv:
           cache: false
           persist: false
@@ -50,8 +44,8 @@ stages:
     wdir: ../..
     deps:
       - scripts/cpi/vis.py
-      - data/cpi/cpi_barchart.csv
-      - data/cpi/cpi_all_category_bar_chart.csv
+      - src/_data/sources/cpi/cpi_barchart.csv
+      - src/_data/sources/cpi/cpi_all_category_bar_chart.csv
       - scripts/util/util.py
     # outs:
     #   - src/dashboard/cpi/_data/visualisation:

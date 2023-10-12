@@ -7,6 +7,14 @@ stages:
       hash: md5
       md5: 2f0aa2b9c9ea4cd6b1306aca9e40619d
       size: 3965
+    - path: working/upstream/census-employment-status.csv
+      hash: md5
+      md5: aa01ca494c03e7332df9264cbb1a3527
+      size: 2565260
+    - path: working/upstream/claimants-per-population-latest.csv
+      hash: md5
+      md5: 228603218411824d513e0774f6429760
+      size: 93676
     - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
       hash: md5
       md5: 8fc25443a0abd19116f82c922fbfc534

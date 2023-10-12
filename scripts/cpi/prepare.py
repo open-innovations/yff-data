@@ -1,22 +1,27 @@
 import os
 import pandas as pd
-import shutil
 from scripts.util.util import slugify
 from transform import DATA_DIR as INPUTS_DIR
 from transform import n
 from scripts.util.util import iso_to_named_date
+from scripts.util.metadata import read_meta, filter_for_dataset
+
 OUTPUTS_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'cpi'))
-CPI_METADATA = os.path.join(INPUTS_DIR, 'metadata.json')
+CPI_METADATA = os.path.join(OUTPUTS_DIR, 'metadata.json')
 
 
-def read_meta():
+def get_dates():
     # read csv and make a new dataframe
-    metadata = pd.read_csv('working/metadata.csv')
-    metadata = metadata[metadata.id == 'MM23'].reset_index()
+    metadata = read_meta().pipe(filter_for_dataset, 'MM23')
     next_update = iso_to_named_date(metadata['next_update'].iloc[0])
     published = iso_to_named_date(metadata['last_update'].iloc[0])
-    dates = pd.Series(data={'published': published, 'next_update': next_update}, index=[
-                      'published', 'next_update'])
+    dates = pd.Series(
+        data={
+            'published': published,
+            'next_update': next_update
+        },
+        index=['published', 'next_update']
+    )
     dates.to_json(CPI_METADATA, date_format='iso')
     return dates
 
@@ -27,7 +32,7 @@ def pct_change(col1, col2):
 
 def summarise(metadata):
     cpi = pd.read_csv(os.path.join(
-        INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
+        OUTPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
 
     latest = pd.DataFrame({
         'monthly_pct_change': (cpi['monthly_pct_change'].iloc[:1]),
@@ -51,12 +56,12 @@ def summarise(metadata):
     merged_df = latest.join(indicator, on='sector').set_index('sector')
     merged_df = merged_df.rename(index={'monthly_pct_change': 'Monthly',
                                  'quarterly_pct_change': 'Quarterly', 'yearly_pct_change': 'Yearly'})
-    merged_df.to_csv(os.path.join(INPUTS_DIR, 'headlines.csv'), index=True)
+    merged_df.to_csv(os.path.join(OUTPUTS_DIR, 'headlines.csv'), index=True)
 
 
 def column_renamer_factory():
     return pd.read_csv('working/upstream/mm23-codes.csv',
-                              usecols=['CDID', 'Title'], index_col='CDID').to_dict()['Title']
+                       usecols=['CDID', 'Title'], index_col='CDID').to_dict()['Title']
 
 
 def bar_chart(data, n, make_indicator=True):
@@ -136,19 +141,12 @@ def line_chart(data, n, num_years):
                   columns='variable').reset_index()
     df.index.rename('index', inplace=True)
     column_name = column_renamer_factory()
-    
+
     df.rename(columns=column_name, inplace=True)
     df.rename(columns=slugify, inplace=True)
     df['named_date'] = pd.to_datetime(df['date']).dt.strftime('%b %Y')
     df['date_axis_label'] = df.named_date.str.replace(' ', '\\n')
     return df
-
-
-def copy_file(name):
-    shutil.copyfile(
-        os.path.join(INPUTS_DIR, name),
-        os.path.join(OUTPUTS_DIR, name)
-    )
 
 
 def youth_average(data):
@@ -182,20 +180,11 @@ if __name__ == '__main__':
                                           'cpi_index_07_transport_2015_100']].mean(axis=1, numeric_only=True)
     # print(line)
     # write file
-    bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_barchart.csv'))
-    summary_bar.to_csv(os.path.join(INPUTS_DIR, 'cpi_summary_barchart.csv'))
+    bar.to_csv(os.path.join(OUTPUTS_DIR, 'cpi_barchart.csv'))
+    summary_bar.to_csv(os.path.join(OUTPUTS_DIR, 'cpi_summary_barchart.csv'))
     all_categories.to_csv(os.path.join(
-        INPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
-    line.to_csv(os.path.join(INPUTS_DIR, 'cpi_linechart.csv'))
+        OUTPUTS_DIR, 'cpi_all_category_bar_chart.csv'))
+    line.to_csv(os.path.join(OUTPUTS_DIR, 'cpi_linechart.csv'))
     # get the metadat and make headline stats
-    metadata = read_meta()
+    metadata = get_dates()
     summarise(metadata)
-
-    # copy files to other directory
-    copy_file("cpi_barchart.csv")
-    copy_file("cpi_summary_barchart.csv")
-    copy_file("cpi_linechart.csv")
-    copy_file("metadata.json")
-    copy_file("headlines.csv")
-    copy_file("cpi_all_category_bar_chart.csv")
-    copy_file("indicator.csv")
