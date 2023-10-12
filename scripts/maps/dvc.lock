@@ -7,10 +7,6 @@ stages:
       hash: md5
       md5: 2f0aa2b9c9ea4cd6b1306aca9e40619d
       size: 3965
-    - path: working/upstream/labour-market_latest_by_pcon_2010.csv
-      hash: md5
-      md5: 91acf422a1d81bf27f6937c8648d4fe3
-      size: 858704
     - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
       hash: md5
       md5: 8fc25443a0abd19116f82c922fbfc534
