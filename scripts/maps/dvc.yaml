@@ -5,6 +5,8 @@ stages:
     deps:
       - scripts/maps/transform.py
       - working/upstream/labour-market_most_recent_by_pcon_2010.csv
+      - working/upstream/claimants-per-population-latest.csv
+      - working/upstream/census-employment-status.csv
     outs:
       - src/maps/employment/_data/view:
           cache: false
