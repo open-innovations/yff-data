@@ -17,7 +17,7 @@ stages:
       - working/upstream/lms.csv
       - working/upstream/lms-codes.csv
     outs:
-      - data/vacancies/vacancies_edd.csv:
+      - data/vacancies/vacancies_by_date.csv:
           cache: false
           persist: false
   prepare:
@@ -25,9 +25,9 @@ stages:
     wdir: ../..
     deps:
       - scripts/vacancies/prepare.py
+      - scripts/util/metadata.py
+      - data/vacancies/vacancies_by_date.csv
       - working/vacancies/vacancies_by_sector.csv
-      - data/vacancies/vacancies_edd.csv
-      - working/metadata.csv
     outs:
       - src/_data/sources/vacancies/:
           cache: false
