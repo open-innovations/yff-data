@@ -5,7 +5,7 @@ stages:
     deps:
       - scripts/cpi/transform.py
       - scripts/util/date.py
-      - working/MM23_data.csv
+      - working/upstream/mm23.csv
       - working/lookups/MM23_variable_lookup.csv
     outs:
       - data/cpi/transformed_cpi.csv:

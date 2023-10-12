@@ -1,12 +1,12 @@
-md5: 3e5ebdd51b0a75958f2efaad68ea97e7
+md5: ce0bb19a0b8fcba3398e6c771812294b
 frozen: true
 deps:
-- path: data/processed/labour-market/lms.csv
+- path: data/processed/cpi/mm23.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
     rev_lock: a5c0a845b456345fae7cdc969d512c617c479bc3
 outs:
-- md5: 72d52598a0ba79effd075f9f66180a4d
-  size: 17934704
+- md5: f005c73dc7d1dd709d3e78544e2253d4
+  size: 24858672
   hash: md5
-  path: lms.csv
+  path: mm23.csv

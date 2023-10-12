@@ -24,25 +24,25 @@ stages:
     deps:
     - path: scripts/cpi/transform.py
       hash: md5
-      md5: 44dd50f444f388eaec0bcbc19cd8a0ef
-      size: 743
+      md5: 878b727488c1ea7f88e6d37cfb0775cb
+      size: 784
     - path: scripts/util/date.py
       hash: md5
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
-    - path: working/MM23_data.csv
-      hash: md5
-      md5: 28c3e679530d599b7a9e4fc170f4fdc4
-      size: 24467752
     - path: working/lookups/MM23_variable_lookup.csv
       hash: md5
       md5: 15cf3be568092ecae4ce523f538bf946
       size: 295485
+    - path: working/upstream/mm23.csv
+      hash: md5
+      md5: f005c73dc7d1dd709d3e78544e2253d4
+      size: 24858672
     outs:
     - path: data/cpi/transformed_cpi.csv
       hash: md5
-      md5: f3b3343cd823034981f830d5b99ac494
-      size: 129741
+      md5: b58cf4caa2bf7368e554ac47346ef84d
+      size: 129729
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
@@ -56,8 +56,8 @@ stages:
       size: 239
     - path: data/cpi/cpi_linechart.csv
       hash: md5
-      md5: 6ed048d6d97def46f0db889d0f0e1961
-      size: 15107
+      md5: ae90df87c7120e5708ff4353438ae750
+      size: 15101
     - path: data/cpi/cpi_summary_barchart.csv
       hash: md5
       md5: 968f9e67f3ea808756518e92ff6d05b0
@@ -80,12 +80,12 @@ stages:
       size: 84
     - path: data/cpi/transformed_cpi.csv
       hash: md5
-      md5: f3b3343cd823034981f830d5b99ac494
-      size: 129741
+      md5: b58cf4caa2bf7368e554ac47346ef84d
+      size: 129729
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: 96d3d6b4c764862b0eee0d642c346e3f
-      size: 8893
+      md5: b080dafec3139109829a8518d73a6616
+      size: 8881
     - path: working/metadata.csv
       hash: md5
       md5: 1cba7127d3fd375c3a10ef95b256b2b1
@@ -97,8 +97,8 @@ stages:
       size: 239
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
-      md5: 6ed048d6d97def46f0db889d0f0e1961
-      size: 15107
+      md5: ae90df87c7120e5708ff4353438ae750
+      size: 15101
     - path: src/_data/sources/cpi/cpi_summary_barchart.csv
       hash: md5
       md5: 968f9e67f3ea808756518e92ff6d05b0
