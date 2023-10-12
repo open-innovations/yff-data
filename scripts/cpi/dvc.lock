@@ -30,10 +30,6 @@ stages:
       hash: md5
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
-    - path: working/lookups/MM23_variable_lookup.csv
-      hash: md5
-      md5: 15cf3be568092ecae4ce523f538bf946
-      size: 295485
     - path: working/upstream/mm23.csv
       hash: md5
       md5: f005c73dc7d1dd709d3e78544e2253d4
@@ -84,12 +80,16 @@ stages:
       size: 129729
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: b080dafec3139109829a8518d73a6616
-      size: 8881
+      md5: cf1f436694a422c2efecf153a43d100b
+      size: 9022
     - path: working/metadata.csv
       hash: md5
       md5: 1cba7127d3fd375c3a10ef95b256b2b1
       size: 7650
+    - path: working/upstream/mm23-codes.csv
+      hash: md5
+      md5: 83bd378b2ba90ee84ca2546ff6f51dc9
+      size: 398026
     outs:
     - path: src/_data/sources/cpi/cpi_barchart.csv
       hash: md5

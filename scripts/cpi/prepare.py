@@ -54,6 +54,11 @@ def summarise(metadata):
     merged_df.to_csv(os.path.join(INPUTS_DIR, 'headlines.csv'), index=True)
 
 
+def column_renamer_factory():
+    return pd.read_csv('working/upstream/mm23-codes.csv',
+                              usecols=['CDID', 'Title'], index_col='CDID').to_dict()['Title']
+
+
 def bar_chart(data, n, make_indicator=True):
     most_recent_month = data.iloc[-n:]
     last_month = data.iloc[int(-2*n):-n]
@@ -73,8 +78,7 @@ def bar_chart(data, n, make_indicator=True):
         most_recent_month.value, last_year.value)
     # print(df)
 
-    column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
-                              usecols=['code', 'name'], index_col='code').to_dict()['name']
+    column_name = column_renamer_factory()
     df.rename(index=column_name, inplace=True)
     df.rename(index=slugify, inplace=True)
     df.index.name = 'sector'
@@ -131,8 +135,8 @@ def line_chart(data, n, num_years):
     df = df.pivot(index='date', values='value',
                   columns='variable').reset_index()
     df.index.rename('index', inplace=True)
-    column_name = pd.read_csv('working/lookups/MM23_variable_lookup.csv',
-                              usecols=['code', 'name'], index_col='code').to_dict()['name']
+    column_name = column_renamer_factory()
+    
     df.rename(columns=column_name, inplace=True)
     df.rename(columns=slugify, inplace=True)
     df['named_date'] = pd.to_datetime(df['date']).dt.strftime('%b %Y')

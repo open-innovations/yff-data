@@ -6,7 +6,6 @@ stages:
       - scripts/cpi/transform.py
       - scripts/util/date.py
       - working/upstream/mm23.csv
-      - working/lookups/MM23_variable_lookup.csv
     outs:
       - data/cpi/transformed_cpi.csv:
           cache: false
@@ -26,6 +25,7 @@ stages:
       - data/cpi/prefix.csv
       - data/cpi/cpi_summary_barchart.csv
       - working/metadata.csv
+      - working/upstream/mm23-codes.csv
     outs:
       - src/_data/sources/cpi/cpi_barchart.csv:
           cache: false
