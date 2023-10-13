@@ -1,14 +1,4 @@
 stages:
-  extract:
-    cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
-    always_changed: true
-    wdir: ../..
-    deps:
-      - scripts/vacancies/extract.py
-    outs: 
-      - working/vacancies/vacancies_by_sector.csv:
-          cache: false
-          persist: false
   transform:
     cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
     wdir: ../..
@@ -27,7 +17,7 @@ stages:
       - scripts/vacancies/prepare.py
       - scripts/util/metadata.py
       - data/vacancies/vacancies_by_date.csv
-      - working/vacancies/vacancies_by_sector.csv
+      - working/upstream/vacancies-growth-by-sector.csv
     outs:
       - src/_data/sources/vacancies/:
           cache: false

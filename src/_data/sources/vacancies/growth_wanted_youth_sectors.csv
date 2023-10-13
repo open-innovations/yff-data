@@ -1,3 +1,5 @@
-Sector,Growth compared with last quarter (%),Growth compared with same quarter in 2020 (%)
-Health & social work,-4.9,33.1
-Administrative & support,-15.7,7.6
+date,Sector,key_youth_sectors,wanted_youth_sectors,Growth since pre-coronavirus January to March 2020 (%),Growth since previous quarter (%)
+2023-06-01,"Arts entertainment &
+recreation",False,True,22.3,5.5
+2023-06-01,Financial & insurance,False,True,22.8,-7.9
+2023-06-01,Professional & technical,False,True,28.3,-12.1

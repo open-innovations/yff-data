@@ -8,7 +8,7 @@ from scripts.util.metadata import read_meta, filter_for_dataset
 DATA_DIR = os.path.join('src', '_data', 'sources', 'vacancies')
 RAW_DATA_DIR = os.path.realpath(os.path.join('data', 'vacancies'))
 DASHBOARD_DIR = os.path.join('src', 'dashboard', 'vacancies', '_data')
-WORK_DIR = os.path.join('working', 'vacancies')
+VACANCIES_GROWTH_CSV = os.path.join('working', 'upstream', 'vacancies-growth-by-sector.csv')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 
@@ -33,16 +33,11 @@ def prepare_vacancies():
 
 
 def prepare_vacancies_by_sector():
-    vacancies_by_sector = pd.read_csv(os.path.join(
-        WORK_DIR, 'vacancies_by_sector.csv'), skiprows=6)
-
-    vacancies_by_sector = vacancies_by_sector.rename(columns={vacancies_by_sector.columns[0]: 'Sector',
-                                                              vacancies_by_sector.columns[1]: 'Growth compared with last quarter (%)',
-                                                              vacancies_by_sector.columns[
-                                                                  2]: 'Growth compared with same quarter in 2020 (%)'
-                                                              })
-    vacancies_by_sector['Sector'] = vacancies_by_sector['Sector'].str.replace(
-        '<br>', '', regex=True)
+    vacancies_by_sector = pd.read_csv(VACANCIES_GROWTH_CSV).pivot(
+        index=['date', 'Sector', 'key_youth_sectors', 'wanted_youth_sectors'],
+        columns='variable',
+        values='value'
+    ).reset_index()
 
     vacancies_by_sector['Sector'] = vacancies_by_sector['Sector'].replace(
         ['Electricity gas steam & air conditioning supply',
@@ -66,13 +61,13 @@ def prepare_vacancies_by_sector():
         DATA_DIR, 'quarterly_growth_all_sectors.csv'), index=False)
 
     # TODO: Use sector names instead of index - order may change
-    key_youth_sectors = vacancies_by_sector.drop([0, 1, 4, 7, 8])
-    key_youth_sectors['Sector'] = key_youth_sectors['Sector'].str.wrap(25)
+    key_youth_sectors = vacancies_by_sector.loc[vacancies_by_sector.key_youth_sectors == True]
+    key_youth_sectors.loc[:, 'Sector'] = key_youth_sectors['Sector'].str.wrap(25)
     key_youth_sectors.to_csv(os.path.join(
         DATA_DIR, 'growth_key_youth_sectors.csv'), index=False)
 
-    wanted_youth_sectors = vacancies_by_sector.drop([0, 1, 2, 3, 5, 6, 7])
-    wanted_youth_sectors['Sector'] = wanted_youth_sectors['Sector'].str.wrap(
+    wanted_youth_sectors = vacancies_by_sector.loc[vacancies_by_sector.wanted_youth_sectors == True]
+    wanted_youth_sectors.loc[:, 'Sector'] = wanted_youth_sectors['Sector'].str.wrap(
         25)
     wanted_youth_sectors.to_csv(os.path.join(
         DATA_DIR, 'growth_wanted_youth_sectors.csv'), index=False)
