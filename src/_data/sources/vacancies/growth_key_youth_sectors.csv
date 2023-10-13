@@ -1,6 +1,4 @@
-Sector,Growth compared with last quarter (%),Growth compared with same quarter in 2020 (%)
-Transport & storage,2.6,6.0
-Education,-2.6,35.1
-Financial & insurance,-7.9,22.8
-"Accommodation & food
-service",-9.3,33.1
+date,Sector,key_youth_sectors,wanted_youth_sectors,Growth since pre-coronavirus January to March 2020 (%),Growth since previous quarter (%)
+2023-06-01,"Accommodation & food
+service",True,False,33.1,-9.3
+2023-06-01,Health & social work,True,False,33.1,-4.9

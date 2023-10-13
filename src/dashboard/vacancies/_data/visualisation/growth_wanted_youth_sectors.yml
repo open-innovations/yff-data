@@ -33,13 +33,13 @@ config:
   category: "Sector" # Category names come from
   columns:
     - name: growth_last_quarter
-      template: "{{Sector}} <br/> monthly change:  {{ Growth compared with last quarter (%) | toFixed(1)}}%"
+      template: "{{Sector}} <br/> monthly change:  {{ Growth since previous quarter (%) | toFixed(1)}}%"
     - name: growth_compared_with_2020
-      template: "{{Sector}} <br/> quarterly change:  {{ Growth compared with same quarter in 2020 (%) | toFixed(1)}}%"
+      template: "{{Sector}} <br/> quarterly change:  {{ Growth since pre-coronavirus January to March 2020 (%) | toFixed(1)}}%"
   series:
-    - title: "Growth compared with last quarter (%)"
-      value: "Growth compared with last quarter (%)"
+    - title: "Growth since previous quarter (%)"
+      value: "Growth since previous quarter (%)"
       tooltip: growth_last_quarter
-    - title: "Growth compared with same quarter in 2020 (%)"
-      value: "Growth compared with same quarter in 2020 (%)"
+    - title: "Growth since pre-coronavirus January to March 2020 (%)"
+      value: "Growth since pre-coronavirus January to March 2020 (%)"
       tooltip: growth_compared_with_2020
