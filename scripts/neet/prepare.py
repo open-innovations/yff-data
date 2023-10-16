@@ -1,8 +1,11 @@
 import os
 import pandas as pd
-from transform import NEET_16_24, NEET_METADATA
 from scripts.util.date import date_to_quarter, most_recent_stats
 from scripts.util.file import add_index
+
+DATA_DIR = os.path.join('data', 'neet')
+NEET_16_24 = os.path.join(DATA_DIR, 'neet.csv')
+NEET_METADATA = os.path.join(DATA_DIR, 'metadata.json')
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'neet')
 os.makedirs(DATA_DIR, exist_ok=True)

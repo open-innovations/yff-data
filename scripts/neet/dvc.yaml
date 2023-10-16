@@ -1,25 +1,16 @@
+vars:
+  - top: ../..
 stages:
-  extract:
-    cmd: PYTHONPATH=. python scripts/neet/extract.py
-    always_changed: true
-    wdir: ../..
-    deps:
-      - scripts/neet/extract.py
-    outs:
-      - working/neet/neetlatest.xlsx:
-          cache: false
   transform:
-    cmd: PYTHONPATH=. python scripts/neet/transform.py
-    wdir: ../..
+    cmd: papermill transform.ipynb ${top}/working/output/neet-transform.ipynb
     deps:
-      - scripts/neet/transform.py
-      - scripts/util/date.py
-      - working/neet/neetlatest.xlsx
+      - transform.ipynb
+      - ${top}/working/upstream/neet.csv
     outs:
-      - data/neet/neet.csv:
+      - ${top}/data/neet/neet.csv:
           cache: false
           persist: false
-      - data/neet/metadata.json:
+      - ${top}/data/neet/metadata.json:
           cache: false
           persist: false
   prepare:
