@@ -7,7 +7,7 @@ on:
       - update_data
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '45 9 * * 1-5'
+    - cron:  '40 7 * * 1-5'
 
 # Cancel any in-flight jobs
 concurrency:
