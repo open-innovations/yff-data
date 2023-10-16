@@ -12,38 +12,36 @@ stages:
       md5: 16447fab0074639df68b1ca13d4f36e3
       size: 195066
   transform:
-    cmd: PYTHONPATH=. python scripts/neet/transform.py
+    cmd: papermill transform.ipynb ../../working/output/neet-transform.ipynb
     deps:
-    - path: scripts/neet/transform.py
-      md5: 2a6a2c1d313b3c926d5d2a8bfa921e4a
-      size: 2823
-    - path: scripts/util/date.py
-      md5: 2e7d9d4230f47d81d486885152d79f8c
-      size: 1564
-    - path: working/neet/neetlatest.xlsx
+    - path: ../../working/upstream/neet.csv
       hash: md5
-      md5: 16447fab0074639df68b1ca13d4f36e3
-      size: 195066
+      md5: a6d894c2cdc326e9b9d803c8149457c8
+      size: 355240
+    - path: transform.ipynb
+      hash: md5
+      md5: ce905af2b8ca8a4f5db6b9c54878006b
+      size: 5828
     outs:
-    - path: data/neet/metadata.json
+    - path: ../../data/neet/metadata.json
       hash: md5
       md5: 4cb361f5f08073df906fd93d950b3c03
       size: 79
-    - path: data/neet/neet.csv
+    - path: ../../data/neet/neet.csv
       hash: md5
-      md5: 67aa07c47b3467d910ccc03149d62b46
-      size: 33159
+      md5: 6f2824b862225c1015a227b197f37bc1
+      size: 22694
   prepare:
     cmd: PYTHONPATH=. python scripts/neet/prepare.py
     deps:
     - path: data/neet/neet.csv
       hash: md5
-      md5: 67aa07c47b3467d910ccc03149d62b46
-      size: 33159
+      md5: 6f2824b862225c1015a227b197f37bc1
+      size: 22694
     - path: scripts/neet/prepare.py
       hash: md5
-      md5: db17626b0bca90186e52f97895c5ecb9
-      size: 2653
+      md5: 8ffcfc4c6f9f5ad209859c3dd7897d14
+      size: 2750
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
@@ -57,12 +55,12 @@ stages:
       size: 382
     - path: src/_data/sources/neet/neet_all_data.csv
       hash: md5
-      md5: e2f71b9713b78f1d4fa96ff01d4ba778
-      size: 35677
+      md5: 7c77221946e7ec633d4ed5597302f987
+      size: 25310
     - path: src/_data/sources/neet/neet_last_3_years.csv
       hash: md5
-      md5: 70739166d5398e826e67991fd17bd35e
-      size: 5697
+      md5: 13240be638a17be32632dad656e42374
+      size: 4256
     - path: src/dashboard/neet/_data/latest.json
       hash: md5
       md5: cccff9dead5d819ae1794e0cf81ad453
