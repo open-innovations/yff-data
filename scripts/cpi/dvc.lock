@@ -48,8 +48,12 @@ stages:
       size: 129729
     - path: scripts/cpi/prepare.py
       hash: md5
-      md5: eae0eadf2582f5c6398273d08614a390
-      size: 8631
+      md5: baa430f643d94e5596d409b15e943900
+      size: 8605
+    - path: working/upstream/metadata.csv
+      hash: md5
+      md5: e8f918d67dad983a618a80d2185527dc
+      size: 134
     - path: working/upstream/mm23-codes.csv
       hash: md5
       md5: 83bd378b2ba90ee84ca2546ff6f51dc9

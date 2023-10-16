@@ -29,17 +29,21 @@ stages:
       size: 359985
     - path: ../../scripts/util/
       hash: md5
-      md5: c7bb69be54b1e9f9ce79d49e29ead857.dir
-      size: 9655
+      md5: 3727a82e6b3317df98198097a7646dc0.dir
+      size: 9441
       nfiles: 6
+    - path: ../../working/upstream/metadata.csv
+      hash: md5
+      md5: e8f918d67dad983a618a80d2185527dc
+      size: 134
     - path: config.py
       hash: md5
       md5: c9187b99fb9c48a24be707561d15eaa2
       size: 5131
     - path: prepare.ipynb
       hash: md5
-      md5: 8e26694a5328022c4ef105c1eb274952
-      size: 55354
+      md5: a169583bbac0a6b21b631a4f25058bf1
+      size: 55309
     - path: prepare.py
       hash: md5
       md5: 09def7c536dd2fc8644c8100908aaebc

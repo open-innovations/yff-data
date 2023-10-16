@@ -14,6 +14,10 @@ stages:
   transform:
     cmd: papermill transform.ipynb ../../working/output/neet-transform.ipynb
     deps:
+    - path: ../../working/upstream/metadata.csv
+      hash: md5
+      md5: e8f918d67dad983a618a80d2185527dc
+      size: 134
     - path: ../../working/upstream/neet.csv
       hash: md5
       md5: a6d894c2cdc326e9b9d803c8149457c8

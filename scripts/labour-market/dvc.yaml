@@ -22,6 +22,7 @@ stages:
       - config.py
       - ${top}/scripts/util/
       - ${top}/data/labour-market/monthly-rolling.csv
+      - ${top}/working/upstream/metadata.csv
     outs:
       - ${top}/src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv:
           cache: false

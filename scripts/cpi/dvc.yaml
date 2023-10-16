@@ -17,6 +17,7 @@ stages:
       - scripts/cpi/prepare.py
       - data/cpi/transformed_cpi.csv
       - working/upstream/mm23-codes.csv
+      - working/upstream/metadata.csv
     outs:
       - data/cpi/indicator.csv:
           cache: false

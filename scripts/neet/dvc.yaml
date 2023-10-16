@@ -6,6 +6,7 @@ stages:
     deps:
       - transform.ipynb
       - ${top}/working/upstream/neet.csv
+      - ${top}/working/upstream/metadata.csv
     outs:
       - ${top}/data/neet/neet.csv:
           cache: false

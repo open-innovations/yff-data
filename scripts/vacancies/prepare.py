@@ -3,7 +3,7 @@ import pandas as pd
 
 from scripts.util.date import lms_period_to_quarter_label
 from scripts.util.util import iso_to_named_date
-from scripts.util.metadata import read_meta, filter_for_dataset
+from scripts.util.metadata import read_meta, extract_dates
 
 DATA_DIR = os.path.join('src', '_data', 'sources', 'vacancies')
 RAW_DATA_DIR = os.path.realpath(os.path.join('data', 'vacancies'))
@@ -132,9 +132,9 @@ def summarise():
 
 def get_dates():
     # read csv and make a new dataframe
-    metadata = read_meta().pipe(filter_for_dataset, 'LMS')
-    next_update = iso_to_named_date(metadata['next_update'].iloc[0])
-    published = iso_to_named_date(metadata['last_update'].iloc[0])
+    metadata = read_meta().pipe(extract_dates, 'LMS')
+    next_update = iso_to_named_date(metadata['next_update'])
+    published = iso_to_named_date(metadata['last_update'])
     dates = pd.Series(data={'published': published, 'next_update': next_update}, index=[
                       'published', 'next_update'])
     dates.to_json(os.path.join(DATA_DIR, 'metadata.json'), date_format='iso')

@@ -4,7 +4,7 @@ from scripts.util.util import slugify
 from transform import DATA_DIR as INPUTS_DIR
 from transform import n
 from scripts.util.util import iso_to_named_date
-from scripts.util.metadata import read_meta, filter_for_dataset
+from scripts.util.metadata import read_meta, extract_dates
 
 OUTPUTS_DIR = os.path.realpath(os.path.join('src', '_data', 'sources', 'cpi'))
 CPI_METADATA = os.path.join(OUTPUTS_DIR, 'metadata.json')
@@ -12,9 +12,9 @@ CPI_METADATA = os.path.join(OUTPUTS_DIR, 'metadata.json')
 
 def get_dates():
     # read csv and make a new dataframe
-    metadata = read_meta().pipe(filter_for_dataset, 'MM23')
-    next_update = iso_to_named_date(metadata['next_update'].iloc[0])
-    published = iso_to_named_date(metadata['last_update'].iloc[0])
+    metadata = read_meta().pipe(extract_dates, 'MM23')
+    next_update = iso_to_named_date(metadata['next_update'])
+    published = iso_to_named_date(metadata['last_update'])
     dates = pd.Series(
         data={
             'published': published,

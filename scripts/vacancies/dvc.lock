@@ -9,12 +9,16 @@ stages:
       size: 10506
     - path: scripts/util/metadata.py
       hash: md5
-      md5: 4c10007d68898289db269e5da494a0f5
-      size: 911
+      md5: cfc702d76a3920af615dbbf1a9408cfd
+      size: 697
     - path: scripts/vacancies/prepare.py
       hash: md5
-      md5: 714220570380a26716ec2053a008c262
-      size: 5849
+      md5: 3cf43cb424b9c3af8c5b362f36b36325
+      size: 5823
+    - path: working/upstream/metadata.csv
+      hash: md5
+      md5: e8f918d67dad983a618a80d2185527dc
+      size: 134
     - path: working/upstream/vacancies-growth-by-sector.csv
       hash: md5
       md5: 8696accdcce4286973199b89da179271

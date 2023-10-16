@@ -7,19 +7,12 @@ METADATA_FILE = os.path.join(TOP_DIR, 'working/upstream/metadata.csv')
 
 def read_meta():
     # read csv and make a new dataframe
-    metadata = pd.read_csv(METADATA_FILE)
-    metadata.last_update = pd.to_datetime(metadata.last_update, format='ISO8601')
-    metadata.next_update = pd.to_datetime(metadata.next_update, format='ISO8601')
+    metadata = pd.read_csv(METADATA_FILE, parse_dates=['last_update', 'next_update'], index_col=['id'])
     return metadata
 
 
-def filter_for_dataset(metadata, id):
-    metadata = metadata[metadata.id == id].reset_index()
-    return metadata
-
-
-def extract_dates(metadata):
-    return metadata.loc[0, ['last_update', 'next_update']]
+def extract_dates(metadata, id):
+    return metadata.loc[id, ['last_update', 'next_update']]
     # next_update = metadata['next_update'].iloc[0]
     # published = metadata['last_update'].iloc[0]
     # dates = pd.Series(data={'published': published, 'next_update': next_update}, index=['published', 'next_update'])

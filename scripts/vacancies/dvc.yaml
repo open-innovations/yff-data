@@ -18,6 +18,7 @@ stages:
       - scripts/util/metadata.py
       - data/vacancies/vacancies_by_date.csv
       - working/upstream/vacancies-growth-by-sector.csv
+      - working/upstream/metadata.csv
     outs:
       - src/_data/sources/vacancies/:
           cache: false
