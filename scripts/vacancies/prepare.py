@@ -22,14 +22,16 @@ def prepare_vacancies():
         ' ', '\\n')
 
     quarterly = vacancies.loc[vacancies['freq'] == 'q']
-    quarterly = quarterly.drop(columns=['freq'], axis=1)
+    quarterly = quarterly.drop(columns=['freq'], axis=1).reset_index(drop=True)
+    quarterly.index.name = 'row'
     quarterly.to_csv(os.path.join(
-        DATA_DIR, 'quarterly_vacancies.csv'), index=False)
+        DATA_DIR, 'quarterly_vacancies.csv'), index=True)
 
     monthly = vacancies.loc[vacancies['freq'] == 'm']
-    monthly = monthly.drop(columns=['freq'], axis=1)
+    monthly = monthly.drop(columns=['freq'], axis=1).reset_index(drop=True)
+    monthly.index.name = 'row'
     monthly.to_csv(os.path.join(
-        DATA_DIR, 'monthly_vacancies.csv'), index=False)
+        DATA_DIR, 'monthly_vacancies.csv'), index=True)
 
 
 def prepare_vacancies_by_sector():

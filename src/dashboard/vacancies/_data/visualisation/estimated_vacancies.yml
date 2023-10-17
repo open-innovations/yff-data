@@ -33,7 +33,7 @@ config:
         template: "{{ quarter_axis_label }}"
   series:
     - title: "value"
-      x: "index" # Column heading to use for x-value
+      x: "row" # Column heading to use for x-value
       y: "value" # Column heading to use fro y-value
       size: 10
       tooltip: "Label"
