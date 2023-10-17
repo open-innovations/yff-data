@@ -44,5 +44,5 @@ topics:
  Report</a> published by the Youth Futures Foundation.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('growth_key_youth_sectors', 'growth_wanted_youth_sectors', 'quarterly_growth_all_sectors'), test: false }) | safe }}
+{{ comp.viz.main({ visualisations: visualisation | pick('quarterly_growth_all_sectors', 'growth_key_youth_sectors', 'growth_wanted_youth_sectors'), test: false }) | safe }}
 

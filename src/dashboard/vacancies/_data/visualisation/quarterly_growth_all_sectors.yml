@@ -9,8 +9,8 @@ config:
     position: "top right"
   axis:
     x:
-      min: -23
-      max: 90
+      min: -40
+      max: 80
       grid:
         stroke-dasharray: "6 2"
         stroke-width: 1
