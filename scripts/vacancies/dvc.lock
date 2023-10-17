@@ -21,13 +21,13 @@ stages:
       size: 134
     - path: working/upstream/vacancies-growth-by-sector.csv
       hash: md5
-      md5: 8696accdcce4286973199b89da179271
-      size: 1924
+      md5: 575abea84733e2c724958f2c8771fcf0
+      size: 1999
     outs:
     - path: src/_data/sources/vacancies/
       hash: md5
-      md5: b8bff0987eb294f197c57a9a32f65fa4.dir
-      size: 20453
+      md5: 9c94b63389a90d514b7bb98333dc2832.dir
+      size: 20314
       nfiles: 7
   extract:
     cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
