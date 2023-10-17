@@ -14,20 +14,20 @@ os.makedirs(DATA_DIR, exist_ok=True)
 
 def prepare_vacancies():
     vacancies = pd.read_csv(os.path.join(
-        RAW_DATA_DIR, 'vacancies_by_date.csv'), index_col=['index'])
+        RAW_DATA_DIR, 'vacancies_by_date.csv'))
     vacancies.sort_values(by='date', ascending=True, inplace=True)
     vacancies['quarter_label'] = pd.to_datetime(
         vacancies.date).map(lms_period_to_quarter_label)
     vacancies['quarter_axis_label'] = vacancies.quarter_label.str.replace(
         ' ', '\\n')
 
-    quarterly = vacancies.loc[vacancies['freq'] == 'q'].reset_index()
-    quarterly = quarterly.drop(columns=['index', 'freq'], axis=1).reset_index()
+    quarterly = vacancies.loc[vacancies['freq'] == 'q']
+    quarterly = quarterly.drop(columns=['freq'], axis=1)
     quarterly.to_csv(os.path.join(
         DATA_DIR, 'quarterly_vacancies.csv'), index=False)
 
-    monthly = vacancies.loc[vacancies['freq'] == 'm'].reset_index()
-    monthly = monthly.drop(columns=['index', 'freq'], axis=1).reset_index()
+    monthly = vacancies.loc[vacancies['freq'] == 'm']
+    monthly = monthly.drop(columns=['freq'], axis=1)
     monthly.to_csv(os.path.join(
         DATA_DIR, 'monthly_vacancies.csv'), index=False)
 

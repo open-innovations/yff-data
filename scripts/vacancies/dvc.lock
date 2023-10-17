@@ -5,16 +5,16 @@ stages:
     deps:
     - path: data/vacancies/vacancies_by_date.csv
       hash: md5
-      md5: 67ddc10dc25e809c28324e7a8eaa4407
-      size: 10506
+      md5: c46743c18e82087bb902fd660b2d5ada
+      size: 9102
     - path: scripts/util/metadata.py
       hash: md5
       md5: cfc702d76a3920af615dbbf1a9408cfd
       size: 697
     - path: scripts/vacancies/prepare.py
       hash: md5
-      md5: 3cf43cb424b9c3af8c5b362f36b36325
-      size: 5823
+      md5: 2a696208a31565f6efa28a7379646b55
+      size: 5728
     - path: working/upstream/metadata.csv
       hash: md5
       md5: e8f918d67dad983a618a80d2185527dc
@@ -26,8 +26,8 @@ stages:
     outs:
     - path: src/_data/sources/vacancies/
       hash: md5
-      md5: 9c94b63389a90d514b7bb98333dc2832.dir
-      size: 20314
+      md5: 6a30a4c5286c32ba322f297e711d02fa.dir
+      size: 19087
       nfiles: 7
   extract:
     cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
@@ -41,22 +41,22 @@ stages:
       md5: d87aa1a94f87db2274f2b87c9ee0d9ab
       size: 848
   transform:
-    cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
+    cmd: papermill --no-progress-bar transform.ipynb ../../working/output/vacancies-transform.ipynb
     deps:
-    - path: scripts/vacancies/transform.py
+    - path: ../../working/upstream/unem-codes.csv
       hash: md5
-      md5: 6888ce0bde0789ebac0ea8f0fd849d53
-      size: 788
-    - path: working/upstream/lms-codes.csv
+      md5: b08d4dba89fdbe5271e40f25178cd7e3
+      size: 35427
+    - path: ../../working/upstream/unem.csv
       hash: md5
-      md5: 1ab28b2730305c82dcdb124ce296a66b
-      size: 181882
-    - path: working/upstream/lms.csv
+      md5: 985ee5bc4ee9d4458b321d5790ccac5c
+      size: 3641836
+    - path: transform.ipynb
       hash: md5
-      md5: 72d52598a0ba79effd075f9f66180a4d
-      size: 17934704
+      md5: 9ad3d7e68c06102c0196aa068faabfc2
+      size: 2209
     outs:
-    - path: data/vacancies/vacancies_by_date.csv
+    - path: ../../data/vacancies/vacancies_by_date.csv
       hash: md5
-      md5: 67ddc10dc25e809c28324e7a8eaa4407
-      size: 10506
+      md5: c46743c18e82087bb902fd660b2d5ada
+      size: 9102

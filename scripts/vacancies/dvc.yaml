@@ -1,13 +1,14 @@
+vars:
+  - top: ../..
 stages:
   transform:
-    cmd: PYTHONPATH=. python3 scripts/vacancies/transform.py
-    wdir: ../..
+    cmd: papermill --no-progress-bar transform.ipynb ${top}/working/output/vacancies-transform.ipynb
     deps:
-      - scripts/vacancies/transform.py
-      - working/upstream/lms.csv
-      - working/upstream/lms-codes.csv
+      - transform.ipynb
+      - ${top}/working/upstream/unem.csv
+      - ${top}/working/upstream/unem-codes.csv
     outs:
-      - data/vacancies/vacancies_by_date.csv:
+      - ${top}/data/vacancies/vacancies_by_date.csv:
           cache: false
           persist: false
   prepare:
