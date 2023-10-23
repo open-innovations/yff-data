@@ -50,9 +50,9 @@ config:
           label: ''
   columns:
     - name: label_6_to_12_months
-      template: '{{quarter_label}} <br> Proportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%'
+      template: '{{quarter_label}} <br/> Proportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%'
     - name: label_12_months
-      template: '{{quarter_label}} <br> Proportion over 12 months: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%'
+      template: '{{quarter_label}} <br/> Proportion over 12 months: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%'
   series:
     - title: '6 to 12 months'
       x: 'quarter_index' # Column heading to use for x-value
