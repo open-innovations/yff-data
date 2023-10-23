@@ -26,11 +26,11 @@ config:
     - name: x_tick_labels
       template: '{{ quarter_axis_label }}'
     - name: "Total"
-      template: "{{quarter_label}} <br/> NEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
+      template: "{{quarter_label}}\\nNEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%"
     - name: unemployed_tooltip
-      template: "{{quarter_label}} <br/> Unemployed rate: {{people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%"
+      template: "{{quarter_label}}\\nUnemployed rate: {{people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%"
     - name: economically_inactive_tooltip
-      template: "{{quarter_label}} <br/> Economically inactive rate: {{people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%"
+      template: "{{quarter_label}}\\nEconomically inactive rate: {{people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%"
   series:
     - title: "Total NEET rate"
       x: "quarter_index" # Column heading to use for x-value

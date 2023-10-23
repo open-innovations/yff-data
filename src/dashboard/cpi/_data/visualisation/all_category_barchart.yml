@@ -23,11 +23,11 @@ config:
   category: sector
   columns:
   - name: monthly
-    template: '{{sector}} <br/> monthly change:  {{ monthly_pct_change | toFixed(1)}}%'
+    template: '{{sector}}\nmonthly change:  {{ monthly_pct_change | toFixed(1)}}%'
   - name: quarterly
-    template: '{{sector}} <br/> quarterly change:  {{ quarterly_pct_change | toFixed(1)}}%'
+    template: '{{sector}}\nquarterly change:  {{ quarterly_pct_change | toFixed(1)}}%'
   - name: yearly
-    template: '{{sector}} <br/> yearly change:  {{ yearly_pct_change | toFixed(1)}}%'
+    template: '{{sector}}\nyearly change:  {{ yearly_pct_change | toFixed(1)}}%'
   file: /data/cpi/cpi_all_category_bar_chart.csv
   legend:
     position: top right
