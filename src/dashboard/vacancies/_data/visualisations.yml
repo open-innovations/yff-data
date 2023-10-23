@@ -121,9 +121,9 @@
     category: "Sector" # Category names come from
     columns:
       - name: growth_last_quarter
-        template: "{{Sector}} <br/> monthly change:  {{ Growth since previous quarter (%) | toFixed(1)}}%"
+        template: "{{Sector}} <br> monthly change:  {{ Growth since previous quarter (%) | toFixed(1)}}%"
       - name: growth_compared_with_2020
-        template: "{{Sector}} <br/> quarterly change:  {{ Growth since pre-coronavirus January to March 2020 (%) | toFixed(1)}}%"
+        template: "{{Sector}} <br> quarterly change:  {{ Growth since pre-coronavirus January to March 2020 (%) | toFixed(1)}}%"
     series:
       - title: "Growth since previous quarter (%)"
         value: "Growth since previous quarter (%)"

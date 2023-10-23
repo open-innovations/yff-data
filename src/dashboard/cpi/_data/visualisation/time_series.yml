@@ -31,19 +31,19 @@ config:
     - name: x_tick_labels
       template: "{{ date_axis_label }}"
     - name: all_categories
-      template: "{{ named_date }}<br/>All Categories: {{cpi_index_00_all_items_2015_100}}"
+      template: "{{ named_date }}<br>All Categories: {{cpi_index_00_all_items_2015_100}}"
     - name: youth_average
-      template: "{{ named_date }}<br/>All Categories: {{Youth-focused average}}"
+      template: "{{ named_date }}<br>All Categories: {{Youth-focused average}}"
     - name: food_and_non_alcoholic_beverages
-      template: "{{ named_date }}<br/>Food & non-alcoholic beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
+      template: "{{ named_date }}<br>Food & non-alcoholic beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
     - name: transport
-      template: "{{ named_date }}<br/>Clothing & footwear: {{cpi_index_07_transport_2015_100}}"
+      template: "{{ named_date }}<br>Clothing & footwear: {{cpi_index_07_transport_2015_100}}"
     - name: housing_energy
       template:
-        "{{ named_date }}<br/>Housing, water, electricity, gas & other fuels:
+        "{{ named_date }}<br>Housing, water, electricity, gas & other fuels:
         {{cpi_index_04_housing_water_and_fuels_2015_100}}"
     - name: recreation_and_culture
-      template: "{{ named_date }}<br/>Recreation & culture: {{cpi_index_09_recreation_&_culture_2015_100}}"
+      template: "{{ named_date }}<br>Recreation & culture: {{cpi_index_09_recreation_&_culture_2015_100}}"
   file: /data/cpi/cpi_linechart.csv
   legend:
     position: top right
