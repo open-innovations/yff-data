@@ -12,6 +12,7 @@
 @import 'css/navigation.css';
 @import 'css/oi.css';
 @import 'css/figure-menu.css';
+@import 'css/annotation.css';
 
 html { scroll-behavior: smooth; }
 body { font-family: "CenturyGothicStd", "Century Gothic", Helvetica, sans-serif; color: #565655; font-size: 17px; }
