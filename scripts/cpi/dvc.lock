@@ -52,8 +52,8 @@ stages:
       size: 8605
     - path: working/upstream/metadata.csv
       hash: md5
-      md5: 0d530c03509423588c8f819d9ace0592
-      size: 134
+      md5: e422fe1a3a9f3c565d25d36ebbac87ed
+      size: 160
     - path: working/upstream/mm23-codes.csv
       hash: md5
       md5: bbba48be64a41a9f3f9118c0c9e875d5
