@@ -1,4 +1,4 @@
-.oi-legend-inner {
+/* .oi-legend-inner {
   box-sizing: border-box;
   border: 1px solid black;
   padding: 0.5em;
@@ -8,6 +8,11 @@
 }
 .oi-legend-item {
   gap: 0.5em;
+} */
+.oi-legend-inner::before { content: 'Key: '; }
+.oi-legend .oi-legend-inner .oi-legend-item svg.oi-legend-icon {
+  /* TODO - maybe remove this from lume charts */
+  display: unset;
 }
 .oi-chart > svg {
   height: auto;
