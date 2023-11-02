@@ -14,7 +14,7 @@
 	text-align: left;
 }
 .oi-legend.oi-legend-top .oi-legend-inner::before { content: 'Key:'; font-weight: bold; padding: 0.125em 0; }
-.oi-legend.oi-legend-top .oi-legend-inner { 	display: flex; }
+.oi-legend.oi-legend-top .oi-legend-inner, .oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item { display: flex; }
 .oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item svg.oi-legend-icon {
   /* TODO - maybe remove this from lume charts */
   display: unset;
