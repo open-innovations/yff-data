@@ -20,7 +20,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.2/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.4/mod.ts";
 
 const site = lume({
   src: './src',
