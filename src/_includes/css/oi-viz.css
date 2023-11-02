@@ -9,11 +9,22 @@
 .oi-legend-item {
   gap: 0.5em;
 } */
-.oi-legend-inner::before { content: 'Key: '; }
-.oi-legend .oi-legend-inner .oi-legend-item svg.oi-legend-icon {
+.oi-legend.oi-legend-top {
+	margin-bottom: 1em;
+	text-align: left;
+}
+.oi-legend.oi-legend-top .oi-legend-inner::before { content: 'Key:'; font-weight: bold; padding: 0.25em 0; }
+.oi-legend.oi-legend-top .oi-legend-inner { 	display: flex; }
+.oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item svg.oi-legend-icon {
   /* TODO - maybe remove this from lume charts */
   display: unset;
 }
+.oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item.oi-series-lock, .oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item:hover {
+  background: rgba(255,255,255,0.5);
+  outline: 1px dotted #7b2347;
+}
+.oi-legend.oi-legend-top .oi-legend-item { margin-left: 4px; margin-right: 4px; padding: 0.25em; font-weight: bold; }
+.oi-legend.oi-legend-top .oi-legend-icon { aspect-ratio: 1 / 1!important; }
 .oi-chart > svg {
   height: auto;
 }
