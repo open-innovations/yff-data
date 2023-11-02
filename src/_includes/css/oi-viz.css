@@ -1,0 +1,22 @@
+.oi-legend-inner {
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 0.5em;
+  margin: 1em;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+.oi-legend-item {
+  gap: 0.5em;
+}
+.oi-chart > svg {
+  height: auto;
+}
+.oi-chart {
+  & .axis-grid-x text {
+    font-weight: bold;
+  }
+  & .axis-grid-y text {
+    font-weight: bold;
+  }
+}

@@ -2,6 +2,6 @@
   margin-top: 1rem;
 }
 
-main.dashboard-page :is(.chart) svg {
+main.dashboard-page :is(.chart,.oi-chart) svg {
   max-height: 35em;
 }
