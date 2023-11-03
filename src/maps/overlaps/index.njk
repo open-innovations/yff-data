@@ -326,6 +326,24 @@ featured: "#children-in-poverty figure"
       }) | safe }}
     {% endcomp %}
     </article>
+
+    <article id='socially-renting-households' class='selector-block'>
+    <h2>Socially Renting Households</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.socially_renting_households.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
         
     <article id='unpaid-carer-aged-16-24' class='selector-block'>
     <h2>Unpaid Carer (aged 16-24)</h2>

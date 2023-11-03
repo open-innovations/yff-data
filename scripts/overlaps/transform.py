@@ -162,7 +162,7 @@ if __name__ == '__main__':
 
     
     socially_renting_households = factors_data.pipe(
-        filter_data, 'Socially Renting Households', fields
+        filter_data, 'Socially renting households', fields
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
         save_to_file, 'socially_renting_households.csv'
     )
