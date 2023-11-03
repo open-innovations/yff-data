@@ -404,29 +404,6 @@ featured: "#children-in-poverty figure"
 
 </div>
 
-{# 
-    <article id='fertility-rates-20-24' class='selector-block'>
-    <h2>Fertility Rates (aged 20-24)</h2>
-    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.fertility_rates_aged_20_24.rows,
-          matchKey: 'local_authority_code',
-          value: 'value',
-          scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
-        } | autoLegend
-      }) | safe }}
-    {% endcomp %}
-    </article> #}
-
-
-
-
-
 <h2>About this data</h2>
 
 
