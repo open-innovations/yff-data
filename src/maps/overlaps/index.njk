@@ -126,6 +126,281 @@ featured: "#children-in-poverty figure"
     {% endcomp %}
     </article>
 
+    <article id='fertility-rates-20-24' class='selector-block'>
+    <h2>Fertility Rates (aged 20-24)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.fertility_rates_aged_20_24.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='fertility-rates-under-20' class='selector-block'>
+    <h2>Fertility Rates (under 20)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.fertility_rates_under_20.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='imd-crime' class='selector-block'>
+    <h2>Fertility Rates (under 20)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.imd_crime.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='imd-health' class='selector-block'>
+    <h2>Fertility Rates (under 20)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.imd_health.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='lone-parent-households' class='selector-block'>
+    <h2>Lone Parent Households</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.lone_parent_households.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='pupils-with-sen-support' class='selector-block'>
+    <h2>Lone Parent Households</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.pupils_with_sen_support.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    
+    <article id='qualification-below-level-2-aged-16-24' class='selector-block'>
+    <h2>Qualification Below Level 2 (aged 16-24)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.qualification_below_level_2_aged_16_24.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='qualification-below-level-2-all' class='selector-block'>
+    <h2>Qualification Below Level 2 (all)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.qualification_below_level_2_all.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+    <article id='school-absences' class='selector-block'>
+    <h2>School Absences</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.school_absences.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='school-exclusions' class='selector-block'>
+    <h2>School Exclusions</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.school_exclusions.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    
+    <article id='school-suspensions' class='selector-block'>
+    <h2>School Suspensions</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.school_suspensions.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+        
+    <article id='unpaid-carer-aged-16-24' class='selector-block'>
+    <h2>Unpaid Carer (aged 16-24)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.unpaid_carer_aged_16_24.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='total-score' class='selector-block'>
+    <h2>Total Score</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.total_score.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='weighted-scores-double' class='selector-block'>
+    <h2>Weighted Scores (double)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.weighted_scores_double.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='weighted-scores-triple' class='selector-block'>
+    <h2>Weighted Scores (triple)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.weighted_scores_triple.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value }}%</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+
 
 </div>
 
