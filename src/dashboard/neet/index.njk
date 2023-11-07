@@ -35,8 +35,6 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
   These figures are based on the population in the relevant age range (16-24 years old).
 </p>
 
-{# OLD STYLE VISUALISATIONS LEFT FOR COMPARISON #}
-{# {{ comp.viz.main({ visualisations: visualisation | pick('all_young_people', 'all_young_women', 'all_young_men'), test: false }) | safe }} #}
 
 {% comp 'tabbed', { tab_count: 3 } %}
 
