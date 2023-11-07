@@ -416,19 +416,29 @@ featured: "#children-in-poverty figure"
       }) | safe }}
     {% endcomp %}
     </article>
-
-
-
-
 </div>
 
 <h2>About this data</h2>
-
-
 <p>
-  You can <a href="">download the raw data here</a>.
+  You can <a href="https://github.com/open-innovations/yff-data-pipelines/tree/main/data/processed/yff">download the raw data here</a>.
 </p>
 
-<p><a href="">You can view the processing pipeline here</a>.</p>
+<p><a href="https://github.com/open-innovations/yff-data-pipelines/blob/main/pipelines/neet-factors/prepare.ipynb">You can view the processing pipeline here</a>.</p>
 
-<p><a href="">You can download the raw data here</a>.</p>
+<h3>Local Authority Scores</h3>
+
+<p>
+  For each data source, a standard score is calculated. The standard score is 0 for values that are equal to the mean, 1 for values that are one standard deviation above the mean, and 2 for values that are two standard deviations above the mean. Values below the mean have negative standard scores.
+</p>
+<p>
+  Weighted scores represent analysis performed by Youth Futures Foundation. Either double or triple weightings are given to the data sources listed below, and a weighted average is calculated.
+</p>
+<ul>
+  <li>Qualification below level 2 (age 16-24)</li>
+  <li>Pupils with SEN support</li>
+  <li>Disability (aged under 25)</li>
+  <li>IMD Health</li>
+  <li>Economic inactivity (NEET)</li>
+</ul>
+
+
