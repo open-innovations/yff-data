@@ -137,27 +137,47 @@ site.filter('getAttr', (object, attr) => object.map(x => x[attr]));
 
 site.filter('max', (list) => Math.max(...list));
 
-site.filter('autoLegend', (config, labelFormatter=(x) => `${x}%`) => {
-  const values = config.data.map(x => x[config.value]);
-  // Max rounded to nearest 5
-  const max = Math.ceil(Math.max(...values)/5)*5;
+site.filter('autoLegend', (config, options) => {
+  const defaultOptions = {
+    formatter: (x) => x,
+    roundTo: 1,
+  };
+
+  const { formatter, roundTo } = {
+    ...defaultOptions,
+    ...options,
+  };
+
+  const values = config.data.map((x) => x[config.value]);
+
+  const max =
+    config.max ||
+    Math.max(0, Math.ceil(Math.max(...values) / roundTo) * roundTo);
+  const min =
+    config.min ||
+    Math.min(0, Math.floor(Math.min(...values) / roundTo) * roundTo);
+  const range = max - min;
+
   const steps = 5;
-  const legendValues = Array.from(Array(steps).keys()).map(x => x * max / (steps-1)).reverse();
+  const legendValues = Array.from(Array(steps).keys())
+    .map((x) => (x * range) / (steps - 1) + min)
+    .reverse();
+
   const legend = {
     position: 'top right',
-    items: legendValues.map(x => ({ value: x, label: labelFormatter(x) }))
-  }
+    items: legendValues.map((x) => ({ value: x, label: formatter(x) })),
+  };
   // Construct config
   return {
-    min: 0,
+    min: min,
     max: max,
     ...config,
     legend: {
       ...legend,
       ...config.legend,
     },
-  }
-})
+  };
+});
 
 site.filter('findByAttribute', (list, key, value) => list.filter(x => x[key] === value))
 

@@ -28,6 +28,8 @@ css: |
 
 featured: "#census-youth-unemployed-economically-inactive figure"
 ---
+{#- Formatter for autoLegend -#}
+{%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
 
 {% comp 'flex' %}
 {% include "partials/page/topic-cloud.njk" %}
@@ -52,7 +54,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
           value: 'value',
           scale: 'YFF',
           tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-        } | autoLegend
+        } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
       }) | safe }}
     {% endcomp %}
   </article>
@@ -70,7 +72,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -88,7 +90,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -106,7 +108,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -124,7 +126,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -142,7 +144,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -160,7 +162,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -178,7 +180,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -196,7 +198,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend
+    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
   }) | safe }}
     {% endcomp %}
   </article>
