@@ -1,8 +1,9 @@
 title: NEET Headlines
-type: dashboard
+type: "oi.dashboard"
+source_file: /data/neet/headlines.csv
+id: headlines
 config:
-  id: headlines
-  file: /data/neet/headlines.csv
+  data: sources.neet.headlines
   title: 'Title'
   value: 'Value'
   note: 'Note'

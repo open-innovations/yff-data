@@ -20,7 +20,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.4/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.5/mod.ts";
 
 const site = lume({
   src: './src',
@@ -161,6 +161,7 @@ site.process(['.html'], autoDependency);
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
 site.filter('striplinks', (value) => value.replace(/<a\b[^>]*>([^\<]*)<\/a>/gi, function (m, p1) { return p1; }));
+site.filter('simpleviz', (value) => value.replace(/<a\b[^>]*>[^\<]*<\/a>/gi, "").replace(/ tabindex="0"/gi, ""));
 site.filter('applyReplacementFilters', (value, options = { 'filter': true }) => applyReplacementFilters(value, options));
 
 site.filter('pick', (list, ...keys) => keys.map(i => list[i] || null));
