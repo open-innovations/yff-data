@@ -1,40 +1,83 @@
 {%- macro renderViz(viz) %}
 <figure>
 <h3>{{ viz.title }}</h3>
-  {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
+{{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
 </figure>
 {% endmacro -%}
 
 {# NEET #}
 {% comp 'grid.block', {
-  link: '~/dashboard/neet/index.njk' | url + '#all_young_people'
+	link: '~/dashboard/neet/index.njk' | url + '#all_young_people'
 } %}
-  {{ renderViz(search.data('dashboard/neet/').visualisation.minimal.allYoungPeople) | safe }}
+	<h3>NEET trends since 2001</h3>
+	{{ comp.oi.chart.line({
+		config: {
+			data: "sources.neet.neet_all_data",
+			legend: { "show": true, "position": "top" },
+			width: 540,
+			height: 300,
+			axis: {
+				x: {
+					min: 0,
+					max: sources.neet.neet_all_data.rows | length,
+					grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
+				}
+				| autoTicks(sources.neet.neet_all_data, {indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)}),
+				y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, ticks: [] }
+				| autoTicks(sources.neet.neet_all_data, {})
+			},
+			columns: [
+				{ "name": "Total", "template": "{{quarter_label}}\nNEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%" },
+				{ "name": "unemployed_tooltip", "template": "{{quarter_label}}\nUnemployed rate: {{people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%" },
+				{ "name": "economically_inactive_tooltip", "template": "{{quarter_label}}\nEconomically inactive rate: {{people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%" }
+			],
+			"series": [
+				{
+					"title": "Total NEET rate",
+					"x": "quarter_index",
+					"y": "people_age_16_to_24_neet_total_rate_sa",
+					"tooltip": "Total"
+				},
+				{
+					"title": "Unemployed rate",
+					"x": "quarter_index",
+					"y": "people_age_16_to_24_neet_unemployed_rate_sa",
+					"tooltip": "unemployed_tooltip"
+				},
+				{
+					"title": "Economically inactive rate",
+					"x": "quarter_index",
+					"y": "people_age_16_to_24_neet_economically_inactive_rate_sa",
+					"tooltip": "economically_inactive_tooltip"
+				}
+			]
+		}
+	}) | simpleviz | safe }}
 {% endcomp %}
 
 {# Unemployment / Economic Inactivity #}
 {% comp 'grid.block', {
-  link: '~/dashboard/labour-market/index.njk' | url + '#education_status_last_3_years'
+	link: '~/dashboard/labour-market/index.njk' | url + '#education_status_last_3_years'
 } %}
-  {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.educationStatus) | safe }}
+	{{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.educationStatus) | safe }}
 {% endcomp %}
 
 {% comp 'grid.block', {
-  link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployment_3_years'
+	link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployment_3_years'
 } %}
-  {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.longTermUnemployment) | safe }}
+	{{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.longTermUnemployment) | safe }}
 {% endcomp %}
 
 {# Vacancies #}
 {% comp 'grid.block', {
-  link: '~/dashboard/vacancies/index.njk' | url + '#estimated-vacancies'
+	link: '~/dashboard/vacancies/index.njk' | url + '#estimated-vacancies'
 } %}
-  {{ renderViz(search.data('dashboard/vacancies/').visualisation.minimal.estimatedVacancies) | safe }}
+	{{ renderViz(search.data('dashboard/vacancies/').visualisation.minimal.estimatedVacancies) | safe }}
 {% endcomp %}
 
 {# CPI #}
 {% comp 'grid.block', {
-  link: ('~/dashboard/cpi/index.njk' | url + '#cpi-young-people')
+	link: ('~/dashboard/cpi/index.njk' | url + '#cpi-young-people')
 } %}
-  {{ renderViz(search.data('dashboard/cpi/').visualisation.minimal.cpiYoungPeople) | safe }}
+	{{ renderViz(search.data('dashboard/cpi/').visualisation.minimal.cpiYoungPeople) | safe }}
 {% endcomp %}
