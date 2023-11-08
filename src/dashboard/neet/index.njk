@@ -52,7 +52,10 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
         min: 0,
         max: sources.neet.neet_all_data.rows | length,
         grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-        } | autoTicks(sources.neet.neet_all_data, "quarter_axis_label"),
+        } | autoTicks(sources.neet.neet_all_data, {
+          labelColumn: "quarter_axis_label",
+          indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)
+        }),
         y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
       },
       columns: [
@@ -104,7 +107,10 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
         min: 0,
         max: sources.neet.neet_all_data.rows | length,
         grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-        } | autoTicks(sources.neet.neet_all_data, "quarter_axis_label"),
+        } | autoTicks(sources.neet.neet_all_data, {
+          labelColumn: "quarter_axis_label",
+          indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)
+        }),
         y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
       },
       columns: [
@@ -157,7 +163,10 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
         min: 0,
         max: sources.neet.neet_all_data.rows | length,
         grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-        } | autoTicks(sources.neet.neet_all_data, "quarter_axis_label"),
+        } | autoTicks(sources.neet.neet_all_data, {
+          labelColumn: "quarter_axis_label",
+          indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)
+        }),
         y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
       },
       columns: [

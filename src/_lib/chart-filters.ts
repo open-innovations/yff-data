@@ -25,13 +25,26 @@ export function generateTickValues(max: number, min=0) {
 }
 
 
-export function generateTickArray(axisConfig, data, labelColumn) {
+interface generateTickArrayOptions {
+  indexFn: (v: number) => number;
+  labelColumn?: string;
+}
+
+export function generateTickArray(axisConfig, data, options: Partial<generateTickArrayOptions> = {}) {
+  const {
+    indexFn,
+    labelColumn
+  }: generateTickArrayOptions = {
+    indexFn: (v: number) => v,
+    ...options
+  };
+
   const tickValues = generateTickValues(axisConfig.max, axisConfig.min);
   const ticks = tickValues.map(v => {
-    const index = data.rows.length - 1 - v;
+    const index = indexFn(v);
     return {
       value: index,
-      label: (typeof data.columns[labelColumn]==="object" ? data.columns[labelColumn][index].replace(/\\n/g, '\n') : "")
+      label: (labelColumn && typeof data.columns[labelColumn]==="object" ? data.columns[labelColumn][index].replace(/\\n/g, '\n') : "")
     }
   });
   return {
