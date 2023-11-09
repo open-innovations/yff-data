@@ -19,12 +19,10 @@
 			axis: {
 				x: {
 					min: 0,
-					max: sources.neet.neet_all_data.rows | length,
-					grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-				}
-				| autoTicks(sources.neet.neet_all_data, {indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)}),
-				y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, ticks: [] }
-				| autoTicks(sources.neet.neet_all_data, {})
+					grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+					tick: { labels: "", align: "end" }
+				},
+				y: { max: 20, tick: { spacing: 5, labels: "" }, grid: { show: true } }
 			},
 			columns: [
 				{ "name": "Total", "template": "{{quarter_label}}\nNEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%" },
@@ -57,9 +55,69 @@
 
 {# Unemployment / Economic Inactivity #}
 {% comp 'grid.block', {
-	link: '~/dashboard/labour-market/index.njk' | url + '#education_status_last_3_years'
+	link: '~/dashboard/labour-market/index.njk' | url + '#economic_activity_not_in_full_time_education_3_years'
 } %}
-	{{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.educationStatus) | safe }}
+	<h3>NFTE employment status trends last three years</h3>
+	{{ comp.oi.chart.line({
+		"config": {
+		   "width": 540,
+		   "height": 300,
+		   "data": "sources.labour-market.labour_market_status_last_3_years",
+		   "legend": { "show": true, "position": "top" },
+		   "axis": {
+			  "x": {
+				 "grid": { "show": true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+				"tick": {
+					"labels": "",
+					"align": "end",
+					"n": 5,
+					"options": {"font-size":14}
+				}
+			  },
+			  "y": { max: 80, tick: { spacing: 10, labels: "" }, grid: { show: true } }
+		   },
+		   "columns": [
+			  {
+				 "name": "x_tick_labels",
+				 "template": "{{ quarter_axis_label }}"
+			  },
+			  {
+				 "name": "unemployment_rate_label",
+				 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+			  },
+			  {
+				 "name": "economically_inactive_rate_label",
+				 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+			  },
+			  {
+				 "name": "employment_rate_label",
+				 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+			  }
+		   ],
+		   "series": [
+			  {
+				 "title": "Overall unemployment",
+				 "x": "quarter_index",
+				 "y": "age_16_to_24_not_in_ft_education_unemployment_rate_sa",
+				 "tooltip": "unemployment_rate_label"
+			  },
+			  {
+				 "title": "Economically inactive",
+				 "x": "quarter_index",
+				 "y": "age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa",
+				 "tooltip": "economically_inactive_rate_label"
+			  },
+			  {
+				 "title": "In employment",
+				 "x": "quarter_index",
+				 "y": "age_16_to_24_not_in_ft_education_employment_rate_sa",
+				 "tooltip": "employment_rate_label"
+			  }
+		   ]
+		}
+	}) | simpleviz | safe }}
+
+
 {% endcomp %}
 
 {% comp 'grid.block', {

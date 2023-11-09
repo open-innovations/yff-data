@@ -43,19 +43,17 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
     <h3>NEET rate for all young people (16-24)</h3>
     {{ comp.oi.chart.line({
     config: {
-      data: "sources.neet.neet_all_data",
-      legend: { "show": true, "position": "top" },
       width: 1120,
       height: 600,
+      data: "sources.neet.neet_all_data",
+      legend: { "show": true, "position": "top" },
       axis: {
         x: {
-        min: 0,
-        max: sources.neet.neet_all_data.rows | length,
-        grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-        } | autoTicks(sources.neet.neet_all_data, {
-          labelColumn: "quarter_axis_label",
-          indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)
-        }),
+			min: 0,
+			max: sources.neet.neet_all_data.rows.length-1,
+			grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			tick: { align: "end", labels: "quarter_axis_label" }
+        },
         y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
       },
       columns: [
@@ -101,13 +99,11 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
       height: 600,
       axis: {
         x: {
-        min: 0,
-        max: sources.neet.neet_all_data.rows | length,
-        grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-        } | autoTicks(sources.neet.neet_all_data, {
-          labelColumn: "quarter_axis_label",
-          indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)
-        }),
+			min: 0,
+			max: sources.neet.neet_all_data.rows.length-1,
+			grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			tick: { align: "end", labels: "quarter_axis_label" }
+        },
         y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
       },
       columns: [
@@ -123,21 +119,18 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
           "title": "Total NEET rate",
           "x": "quarter_index",
           "y": "women_age_16_to_24_neet_total_rate_sa",
-          "size": 10,
           "tooltip": "Total"
         },
         {
           "title": "Unemployed rate",
           "x": "quarter_index",
           "y": "women_age_16_to_24_neet_unemployed_rate_sa",
-          "size": 10,
           "tooltip": "unemployed_tooltip"
         },
         {
           "title": "Economically inactive rate",
           "x": "quarter_index",
           "y": "women_age_16_to_24_neet_economically_inactive_rate_sa",
-          "size": 10,
           "tooltip": "economically_inactive_tooltip"
         }
       ]
@@ -157,13 +150,11 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
       height: 600,
       axis: {
         x: {
-        min: 0,
-        max: sources.neet.neet_all_data.rows | length,
-        grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 }
-        } | autoTicks(sources.neet.neet_all_data, {
-          labelColumn: "quarter_axis_label",
-          indexFn: indexFns.fromRight(sources.neet.neet_all_data.rows.length)
-        }),
+			min: 0,
+			max: sources.neet.neet_all_data.rows.length-1,
+			grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			tick: { align: "end", labels: "quarter_axis_label" }
+        },
         y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
       },
       columns: [
@@ -179,21 +170,18 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
           "title": "Total NEET rate",
           "x": "quarter_index",
           "y": "men_age_16_to_24_neet_total_rate_sa",
-          "size": 10,
           "tooltip": "Total"
         },
         {
           "title": "Unemployed rate",
           "x": "quarter_index",
           "y": "men_age_16_to_24_neet_unemployed_rate_sa",
-          "size": 10,
           "tooltip": "unemployed_tooltip"
         },
         {
           "title": "Economically inactive rate",
           "x": "quarter_index",
           "y": "men_age_16_to_24_neet_economically_inactive_rate_sa",
-          "size": 10,
           "tooltip": "economically_inactive_tooltip"
         }
       ]

@@ -31,22 +31,22 @@ interface generateTickArrayOptions {
 }
 
 export function generateTickArray(axisConfig, data, options: Partial<generateTickArrayOptions> = {}) {
-  const {
-    indexFn,
-    labelColumn
-  }: generateTickArrayOptions = {
+  const allOptions: generateTickArrayOptions = {
     indexFn: (v: number) => v,
     ...options
   };
 
   const tickValues = generateTickValues(axisConfig.max, axisConfig.min);
   const ticks = tickValues.map(v => {
-    const index = indexFn(v);
-    return {
+    const index = allOptions.indexFn(v);
+	let rtn = {
       value: index,
-      label: (labelColumn && typeof data.columns[labelColumn]==="object" ? data.columns[labelColumn][index].replace(/\\n/g, '\n') : "")
-    }
+      label: (allOptions.labelColumn && typeof data.columns[allOptions.labelColumn]==="object" ? data.columns[allOptions.labelColumn][index].replace(/\\n/g, '\n') : "")
+    };
+	if(allOptions.fontSize) rtn['font-size'] = allOptions.fontSize;
+	return rtn;
   });
+
   return {
     ...axisConfig,
     ticks,
