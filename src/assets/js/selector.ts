@@ -3,6 +3,25 @@ function attachSelector() {
     const selector = document.createElement("select");
     selector.id = container.dataset.id!;
 
+    const optionGroupNames: string[] = [];
+    container
+      .querySelectorAll<HTMLElement>(".selector-block[data-selector-group]")
+      .forEach((item) => {
+        optionGroupNames.push(item.dataset.selectorGroup!);
+      });
+
+    // Get a unique list of elements, in the order they were added
+    // and create an option group for each
+    const optionGroups = optionGroupNames
+      .filter((current, index, list) => index === list.indexOf(current))
+      .map((name) => {
+        const optionGroup = document.createElement("optgroup");
+        optionGroup.label = name;
+        return optionGroup;
+      });
+    // Append each optionGroup to the selector
+    optionGroups.forEach((optionGroup) => selector.append(optionGroup));
+
     container.querySelectorAll<HTMLElement>(".selector-block").forEach(
       (block) => {
         block.hidden = true;
@@ -11,7 +30,12 @@ function attachSelector() {
         opt.textContent = block.querySelector<HTMLElement>(
           container.dataset.headingLevel || "h2",
         )!.textContent;
-        selector.append(opt);
+
+        // Get the optionGroup that this is to be added to. Default to the root selector;
+        const optionGroup = optionGroups.find((x) =>
+          x.label === block.dataset.selectorGroup
+        ) || selector;
+        optionGroup.append(opt);
       },
     );
     const options = Array.from(selector.options).map((opt) => opt.value);
