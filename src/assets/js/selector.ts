@@ -73,7 +73,12 @@ function attachSelector() {
     form.append(selector);
     form.insertBefore(label, selector);
 
-    container.append(form);
+    container.insertBefore(
+      form,
+      container.dataset.selectorPosition === "top"
+        ? container.firstChild
+        : null,
+    );
 
     selector.addEventListener("change", setVisible);
     selector.addEventListener("change", updateState);
