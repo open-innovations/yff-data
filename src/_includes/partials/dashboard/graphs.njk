@@ -127,7 +127,7 @@
 	{{ comp.oi.chart.line({
 		"config": {
 			"width": 540,
-			   "height": 300,
+			"height": 300,
 			"data": "sources.labour-market.long_term_unemployed_last_3_years",
 			legend: { "show": true, "position": "top" },
 			"axis": {
@@ -167,12 +167,133 @@
 {% comp 'grid.block', {
 	link: '~/dashboard/vacancies/index.njk' | url + '#estimated-vacancies'
 } %}
-	{{ renderViz(search.data('dashboard/vacancies/').visualisation.minimal.estimatedVacancies) | safe }}
+
+	<h3>Estimated number of vacancies (seasonally adjusted)</h3>
+	{{ comp.oi.chart.line({
+		"config": {
+		"width": 540,
+		"height": 300,
+		"axis": {
+			"x": {
+				"grid": {
+					"show": true,
+					"stroke-dasharray": "6 2",
+					"stroke-width": "1"
+				},
+				"tick": {
+					"align": "end",
+					"labels": "",
+					"options": {
+						"font-size": 14
+					}
+				}
+			},
+			"y": {
+				"min": 0,
+				"max": 1400,
+				"dominant-baseline": "text-bottom",
+				"grid": {
+					"show": true
+				},
+				"tick": { "labels": "" }
+			}
+		},
+		"columns": [
+			{
+				"name": "Label",
+				"template": "{{ quarter_label }} </br> {{ value | multiply(1000) | toLocaleString() }} vacancies"
+			}
+		],
+		"data": "sources.vacancies.monthly_vacancies",
+		"legend": {
+			"position": "top",
+			"show": false
+		},
+		"series": [
+			{
+				"title": "value",
+				"tooltip": "Label",
+				"x": "row",
+				"y": "value"
+			}
+		]
+	}
+	}) | simpleviz | safe }}
+
 {% endcomp %}
 
 {# CPI #}
 {% comp 'grid.block', {
 	link: ('~/dashboard/cpi/index.njk' | url + '#cpi-young-people')
 } %}
-	{{ renderViz(search.data('dashboard/cpi/').visualisation.minimal.cpiYoungPeople) | safe }}
+
+	<h3>Monthly change in CPI most affecting young people</h3>
+	{{ comp.oi.chart.bar({
+		"config": {
+		"axis": {
+			"x": {
+				"grid": {
+					"show": true,
+					"stroke-dasharray": "6 2",
+					"stroke-width": "1"
+				},
+				"max": 15,
+				"min": -5,
+				"ticks": [
+					{
+						"label": "-5.0%",
+						"value": -5
+					},
+					{
+						"label": "0.0%",
+						"value": 0
+					},
+					{
+						"label": "5.0%",
+						"value": 5
+					},
+					{
+						"label": "10.0%",
+						"value": 10
+					},
+					{
+						"label": "15.0%",
+						"value": 15
+					}
+				]
+			},
+			"y": {
+				"grid": {
+					"show": true,
+					"stroke-width": "0.5"
+				}
+			}
+		},
+		"category": "sector",
+		"columns": [
+			{
+				"name": "monthly",
+				"template": "{{sector}}\nmonthly change:  {{ monthly_pct_change | toFixed(1)}}%"
+			}
+		],
+		"data": "sources.cpi.cpi_barchart",
+		"legend": {
+			"position": "top",
+			"show": true
+		},
+		"series": [
+			{
+				"colour": "#E55912",
+				"title": "Monthly change",
+				"tooltip": "monthly",
+				"value": "monthly_pct_change"
+			}
+		],
+		"height": 600,
+		"width": 1120
+	}
+
+	}) | simpleviz | safe }}
+
 {% endcomp %}
+
