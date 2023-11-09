@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/neet-factors/transform.py
+    deps:
+    - path: scripts/neet-factors/transform.py
+      hash: md5
+      md5: ce5405147592722e8aa6bffd49ccd015
+      size: 7135
+    - path: working/upstream/neet-factors.csv
+      hash: md5
+      md5: 7335083d5c50b867eb0ff321b0a71459
+      size: 555225
+    outs:
+    - path: src/maps/neet-factors/_data/view
+      hash: md5
+      md5: 28e3aa215bfa1b22f7d82ecbfb70f7c7.dir
+      size: 229339
+      nfiles: 22

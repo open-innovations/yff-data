@@ -1,11 +1,11 @@
 stages:
   transform:
-    cmd: PYTHONPATH=. python scripts/overlaps/transform.py
+    cmd: PYTHONPATH=. python scripts/neet-factors/transform.py
     wdir: ../..
     deps:
-      - scripts/overlaps/transform.py
+      - scripts/neet-factors/transform.py
       - working/upstream/neet-factors.csv
     outs:
-      - src/maps/overlaps/_data/view:
+      - src/maps/neet-factors/_data/view:
           cache: false
           persist: false

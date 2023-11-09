@@ -1,5 +1,5 @@
 ---
-title: NEET Overlaps Statistics
+title: NEET Factors Statistics
 summary: |
     Data on factors that contribute to likelihood of NEET
 layout: layouts/simple.njk
@@ -35,6 +35,42 @@ featured: "#children-in-poverty figure"
     data-label='Choose the visualisation layer'
     data-heading-level='h2'
     data-id='map-selector'>
+
+    <article id='total-score' class='selector-block'>
+    <h2>Total Score</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.total_score.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='weighted-scores-double' class='selector-block'>
+    <h2>Weighted Scores (double)</h2>
+    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: uk_local_authority_districts_2021,
+          data: view.weighted_scores_double.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
+        } | autoLegend
+      }) | safe }}
+    {% endcomp %}
+    </article>
 
     <article id='children-in-poverty' class='selector-block'>
     <h2>Children in Poverty</h2>
@@ -363,65 +399,24 @@ featured: "#children-in-poverty figure"
     {% endcomp %}
     </article>
 
-    <article id='total-score' class='selector-block'>
-    <h2>Total Score</h2>
-    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.total_score.rows,
-          matchKey: 'local_authority_code',
-          value: 'value',
-          scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
-      }) | safe }}
-    {% endcomp %}
-    </article>
-
-    <article id='weighted-scores-double' class='selector-block'>
-    <h2>Weighted Scores (double)</h2>
-    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.weighted_scores_double.rows,
-          matchKey: 'local_authority_code',
-          value: 'value',
-          scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
-      }) | safe }}
-    {% endcomp %}
-    </article>
-
-    <article id='weighted-scores-triple' class='selector-block'>
-    <h2>Weighted Scores (triple)</h2>
-    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.weighted_scores_triple.rows,
-          matchKey: 'local_authority_code',
-          value: 'value',
-          scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
-      }) | safe }}
-    {% endcomp %}
-    </article>
-</div>
+  </div>
 
 <h2>About this data</h2>
+
+<p>
+  Each data source represents a risk indicator for a young person being NEET (not in education, employment or training).
+</p>
+
+<h3>Census</h3>
+<p>
+  Visualisations of 'Disability', 'Economic Inactivity', 'Qualification below level 2', 'Socially renting households' and 'Unpaid carers' are driven by data from the Census, published by the Office of National Statistics in 2021.
+</p>
+
 <p>
   You can <a href="https://github.com/open-innovations/yff-data-pipelines/tree/main/data/processed/yff">download the raw data here</a>.
 </p>
+
+<h3>Department for Education</h3>
 
 <p><a href="https://github.com/open-innovations/yff-data-pipelines/blob/main/pipelines/neet-factors/prepare.ipynb">You can view the processing pipeline here</a>.</p>
 
