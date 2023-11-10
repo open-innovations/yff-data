@@ -1,15 +1,17 @@
+import { Page } from "lume/core.ts";
+
 export function createSelectorElements(page: Document) {
   page.querySelectorAll<HTMLElement>(".selector").forEach((container) => {
     // Create the selector
     const selector = page.createElement("select");
-    selector.id = container.dataset.id!;
+    selector.id = container.getAttribute('data-id')!;
 
     // Get the list of option group names requested
     const optionGroupNames: string[] = [];
     container
       .querySelectorAll<HTMLElement>(".selector-block[data-selector-group]")
       .forEach((item) => {
-        optionGroupNames.push(item.dataset.selectorGroup!);
+        optionGroupNames.push(item.getAttribute('data-selector-group')!);
       });
 
     optionGroupNames
@@ -18,7 +20,7 @@ export function createSelectorElements(page: Document) {
       .forEach((name) => {
         // and create an option group for each
         const optionGroup = page.createElement("optgroup");
-        optionGroup.label = name;
+        optionGroup.setAttribute('label', name);
         // Append each optionGroup to the selector
         selector.append(optionGroup);
       });
@@ -26,15 +28,16 @@ export function createSelectorElements(page: Document) {
     container.querySelectorAll<HTMLElement>(".selector-block").forEach(
       (block) => {
         const opt = page.createElement("option");
-        opt.value = block.id;
+        opt.setAttribute('value', block.getAttribute('id')!);
         opt.textContent = block.querySelector<HTMLElement>(
-          container.dataset.headingLevel || "h2",
+          container.getAttribute('data-heading-level') || "h2"
         )!.textContent;
 
         // Get the optionGroup that this is to be added to. Default to the root selector;
-        const optionGroup = block.dataset.selectorGroup
+        const selectorGroup = block.getAttribute('data-selector-group')
+        const optionGroup = selectorGroup
           ? selector.querySelector(
-            `optgroup[label="${block.dataset.selectorGroup}"]`,
+              `optgroup[label="${selectorGroup}"]`
           )!
           : selector;
         optionGroup.append(opt);
@@ -42,17 +45,17 @@ export function createSelectorElements(page: Document) {
     );
 
     const label = page.createElement("label");
-    label.textContent = container.dataset.label!;
+    label.textContent = container.getAttribute('data-label')!;
     label.setAttribute("for", selector.id);
 
     const form = page.createElement("form");
-    form.style.display = 'none';
+    form.setAttribute('style', 'display:none');
     form.append(selector);
     form.insertBefore(label, selector);
 
     container.insertBefore(
       form,
-      container.dataset.selectorPosition === "top"
+      container.getAttribute('data-selector-position') === "top"
         ? container.firstChild
         : null,
     );
@@ -60,9 +63,16 @@ export function createSelectorElements(page: Document) {
   });
 }
 
+export function selectorProcessor(page) {
+  createSelectorElements(page.document);
+}
+
 export function hydrateSelectorElements() {
-  document.querySelectorAll<HTMLElement>(".selector").forEach((container) => {
-    const selector = container.querySelector('select')!;
+  document.querySelectorAll<HTMLSelectElement>(".selector select").forEach((selector) => {
+    const form = selector.parentElement as HTMLFormElement;
+    if (form === null) return;
+    const container = form.parentElement;
+    if (container === null) return;
 
     // Block scoped to mask options and selected
     {
@@ -74,14 +84,14 @@ export function hydrateSelectorElements() {
     }
 
     function setVisible() {
-      container.querySelectorAll<HTMLElement>(".selector-block").forEach((b) =>
+      container!.querySelectorAll<HTMLElement>(".selector-block").forEach((b) =>
         b.hidden = true
       );
-      container.querySelector<HTMLElement>("#" + selector.value)!.hidden =
+      container!.querySelector<HTMLElement>("#" + selector.value)!.hidden =
         false;
     }
     setVisible();
-    selector.parentElement.style.display = null;
+    form.style.display = '';
 
     function updateState() {
       const url = new URL(location.toString());

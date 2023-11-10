@@ -18,6 +18,8 @@ import { applyReplacementFilters } from '/src/_lib/oi/util.js';
 import injector from '/src/_lib/oi/processor/injector.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
+import { selectorProcessor } from "./src/_lib/ui/selector.ts";
+
 import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.2/mod.ts";
 
 const site = lume({
@@ -121,6 +123,8 @@ site.preprocess([".html"], (page) => {
   page.data.srcPath = 'src' + page.src.path + page.src.ext;
 });
 
+// Processor to add selector content - hidden pre-hydration
+site.process(['.html'], selectorProcessor);
 // Processor to extract content from a page and insert it into the body of another page
 site.process(['.html'], injector);
 // Processor which adds dependencies into the page head

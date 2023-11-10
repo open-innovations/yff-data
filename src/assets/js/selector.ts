@@ -1,6 +1,5 @@
-import { createSelectorElements, hydrateSelectorElements } from "../../_lib/ui/selector.ts";
+import { hydrateSelectorElements } from "../../_lib/ui/selector.ts";
 
 document.addEventListener("DOMContentLoaded", () => {
-  createSelectorElements(document);
   hydrateSelectorElements();
 });
