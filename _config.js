@@ -165,7 +165,7 @@ site.filter('autoLegend', (config, options) => {
 
   const legend = {
     position: 'top right',
-    items: legendValues.map((x) => ({ value: x, label: formatter(x) })),
+    items: legendValues.map((x, i) => ({ value: x, label: formatter(x, i) })),
   };
   // Construct config
   return {

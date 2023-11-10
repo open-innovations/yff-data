@@ -23,7 +23,11 @@ css: |
   }
 
 featured: "#children-in-poverty figure"
-
+chart_description: |
+  The map shows the likelihood of young people ending up not in employment, education or training.
+  The values are standardised to show divergence from the average, with lighter colours being higher and darker colours being lower.
+  Higher scores are indicative of a higher chance of a NEET outcome.
+  Hover over the hexes to see the standardised score.
 ---
 
 {% comp 'flex' %}
@@ -39,7 +43,7 @@ featured: "#children-in-poverty figure"
 
     <article id='total-score' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Total Score</h2>
-    <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {{ chart_description | md | safe }}
 
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
@@ -50,9 +54,10 @@ featured: "#children-in-poverty figure"
           value: 'value',
           scale: 'YFF',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
+
     </article>
 
     <article id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
