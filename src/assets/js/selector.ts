@@ -1,5 +1,6 @@
-function attachSelector() {
+function createSelectorElements() {
   document.querySelectorAll<HTMLElement>(".selector").forEach((container) => {
+    // Create the selector
     const selector = document.createElement("select");
     selector.id = container.dataset.id!;
 
@@ -24,7 +25,6 @@ function attachSelector() {
 
     container.querySelectorAll<HTMLElement>(".selector-block").forEach(
       (block) => {
-        block.hidden = true;
         const opt = document.createElement("option");
         opt.value = block.id;
         opt.textContent = block.querySelector<HTMLElement>(
@@ -40,10 +40,33 @@ function attachSelector() {
         optionGroup.append(opt);
       },
     );
-    const options = Array.from(selector.options).map((opt) => opt.value);
 
-    // Block scoped to mask selected
+    const label = document.createElement("label");
+    label.textContent = container.dataset.label!;
+    label.setAttribute("for", selector.id);
+
+    const form = document.createElement("form");
+    form.style.display = 'none';
+    form.append(selector);
+    form.insertBefore(label, selector);
+
+    container.insertBefore(
+      form,
+      container.dataset.selectorPosition === "top"
+        ? container.firstChild
+        : null,
+    );
+
+  });
+}
+
+function hydrateSelectorElements() {
+  document.querySelectorAll<HTMLElement>(".selector").forEach((container) => {
+    const selector = container.querySelector('select')!;
+
+    // Block scoped to mask options and selected
     {
+      const options = Array.from(selector.options).map((opt) => opt.value);
       const selected = new URLSearchParams(location.search).get(selector.id);
       if (selected && options.includes(selected)) {
         selector.value = selected;
@@ -57,31 +80,21 @@ function attachSelector() {
       container.querySelector<HTMLElement>("#" + selector.value)!.hidden =
         false;
     }
+    setVisible();
+    selector.parentElement.style.display = null;
+
     function updateState() {
       const url = new URL(location.toString());
       url.searchParams.set(selector.id, selector.value);
       history.pushState("", "", url.pathname + url.search);
     }
 
-    setVisible();
-
-    const label = document.createElement("label");
-    label.textContent = container.dataset.label!;
-    label.setAttribute("for", selector.id);
-
-    const form = document.createElement("form");
-    form.append(selector);
-    form.insertBefore(label, selector);
-
-    container.insertBefore(
-      form,
-      container.dataset.selectorPosition === "top"
-        ? container.firstChild
-        : null,
-    );
-
     selector.addEventListener("change", setVisible);
     selector.addEventListener("change", updateState);
   });
 }
-document.addEventListener("DOMContentLoaded", attachSelector);
+
+document.addEventListener("DOMContentLoaded", () => {
+  createSelectorElements();
+  hydrateSelectorElements();
+});
