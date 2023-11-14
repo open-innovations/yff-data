@@ -68,6 +68,12 @@ if __name__ == '__main__':
         save_to_file, 'children_in_poverty.csv'
     )
 
+    children_in_poverty_barchart = factors_data.pipe(filter_data, 'Weighted scores (double)', fields=['local_authority_name', 'local_authority_code', 'value']
+    ).pipe(clean_nulls).pipe(limit_to_england)
+    children_in_poverty_barchart = children_in_poverty_barchart.sort_values(by=['value']).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'local_authority_code':'Local Authority Code', 'value':'Weighted Score'}).pipe(
+        save_to_file, 'children_in_poverty_barchart.csv'
+    )
+
     children_looked_after = factors_data.pipe(
         filter_data, 'Children looked after', fields
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
@@ -187,11 +193,10 @@ if __name__ == '__main__':
     ).pipe(clean_nulls).pipe(limit_to_england).pipe(
         save_to_file, 'weighted_scores_double.csv'
     )
-
-    weighted_scores_triple = factors_data.pipe(
-        filter_data, 'Weighted scores (triple)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'weighted_scores_triple.csv'
+    scores_table = factors_data.pipe(filter_data, 'Weighted scores (double)', fields=['local_authority_name', 'local_authority_code', 'value']
+    ).pipe(clean_nulls).pipe(limit_to_england)
+    scores_table = scores_table.sort_values(by=['value']).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'local_authority_code':'Local Authority Code', 'value':'Weighted Score'}).pipe(
+        save_to_file, 'weighted_scores_table.csv'
     )
 
     factors_data = factors_data.pivot(
@@ -200,5 +205,7 @@ if __name__ == '__main__':
             clean_nulls).pipe(
                 limit_to_england).pipe(
                         save_to_file, 'neet_factors_table.csv')
+
+
 
     

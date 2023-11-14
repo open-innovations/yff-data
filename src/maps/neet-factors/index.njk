@@ -44,7 +44,7 @@ chart_description: |
     <article id='total-score' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Total Score</h2>
     {{ chart_description | md | safe }}
-
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -406,6 +406,28 @@ chart_description: |
     </article>
 
   </div>
+
+
+  <section style = "padding-top:5rem;">
+    <h3>Highest Scoring Local Authorities</h3>
+    <p>
+      The table below shows the local authorities that scored the highest weighted average of NEET factors. Higher values indicate regions where young people have a higher likelihood of being NEET.
+    </p>
+
+    {% comp 'display.figure', style='width: 60rem; padding-top: 2rem;' %}
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Local Authority'},
+            {'name':'Local Authority Code'},
+            {'name':'Weighted Score', 'scale': 'Heat_r', 'min': 0 }
+          ],
+          data: view.weighted_scores_table.rows 
+        } }
+      ) | safe }}
+    {% endcomp %}
+  </section>
+
 
 <h2>About this data</h2>
 
