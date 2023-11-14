@@ -68,7 +68,7 @@ figure {
   & .added .figure-menu:checked~.figure-option-list {
     display: block;
     position: absolute;
-    z-index: 500;
+    z-index: 1500;
     right: 0;
   }
 

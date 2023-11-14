@@ -1,4 +1,5 @@
 /*
+	ORIGINAL STYLE CHARTS
 	Open Innovations Chart Interactivity v0.2
 	Helper function that find ".chart" elements 
 	makes a new HTML legend, and adds tooltips.
@@ -28,7 +29,7 @@
 			fn.call(data.this||this,e);
 		});
 	}
-	function InteractiveChart(el){
+	function InteractiveChartOld(el){
 		var svg = el.querySelector('svg');
 		var key = el.querySelector('.legend');
 		var serieskey = el.querySelectorAll('.series');
@@ -370,7 +371,7 @@
 		return this;
 	}
 
-	root.OI.InteractiveChart = function(el){ return new InteractiveChart(el); };
+	root.OI.InteractiveChartOld = function(el){ return new InteractiveChartOld(el); };
 
 
 
@@ -437,6 +438,6 @@
 OI.ready(function(){
 	var charts = document.querySelectorAll('.chart');
 	for(var i = 0; i < charts.length; i++){
-		OI.InteractiveChart(charts[i]);
+		OI.InteractiveChartOld(charts[i]);
 	}
 });

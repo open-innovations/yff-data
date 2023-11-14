@@ -37,13 +37,562 @@ on {{ sources.cpi.metadata.published }}. The next scheduled publication is
   The second tab shows the four individual categories affecting young people, and the final tab shows all categories measured in CPI.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('cpi_summary_barchart', 'young_people_barchart', 'all_category_barchart'), test: false }) | safe }}
+
+{% comp 'tabbed', { tab_count: 3 } %}
+
+		{% comp 'display.figure', { id: 'cpi_summary', source_file: '/data/cpi/cpi_summary_barchart.csv' } %}
+			<span class="tab-title">CPI summary</span>
+			<h3>CPI summary</h3>
+			{{ comp.oi.chart.bar({
+				"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"max": 7,
+						"min": -0.5,
+						"ticks": [
+							{
+								"label": "-0.5%",
+								"value": -0.5
+							},
+							{
+								"label": "0.5%",
+								"value": 0.5
+							},
+							{
+								"label": "1.5%",
+								"value": 1.5
+							},
+							{
+								"label": "2.5%",
+								"value": 2.5
+							},
+							{
+								"label": "3.5%",
+								"value": 3.5
+							},
+							{
+								"label": "4.5%",
+								"value": 4.5
+							},
+							{
+								"label": "5.5%",
+								"value": 5.5
+							},
+							{
+								"label": "6.5%",
+								"value": 6.5
+							},
+							{
+								"label": "7.5%",
+								"value": 7.5
+							},
+							{
+								"label": "0.0%",
+								"value": 0
+							}
+						]
+					},
+					"y": {
+						"grid": {
+							"show": true,
+							"stroke-width": "0.5"
+						}
+					}
+				},
+				"category": "sector",
+				"columns": [
+					{
+						"name": "monthly",
+						"template": "{{sector}}\nmonthly change:  {{ monthly_pct_change | toFixed(1)}}%"
+					},
+					{
+						"name": "quarterly",
+						"template": "{{sector}}\nquarterly change:  {{ quarterly_pct_change | toFixed(1)}}%"
+					},
+					{
+						"name": "yearly",
+						"template": "{{sector}}\nyearly change:  {{ yearly_pct_change | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.cpi.cpi_summary_barchart",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": true
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"colour": "#E55912",
+						"title": "Monthly change",
+						"tooltip": "monthly",
+						"value": "monthly_pct_change"
+					},
+					{
+						"colour": "#005776",
+						"title": "Quarterly change",
+						"tooltip": "quarterly",
+						"value": "quarterly_pct_change"
+					},
+					{
+						"colour": "#F7AB3D",
+						"title": "Yearly change",
+						"tooltip": "yearly",
+						"value": "yearly_pct_change"
+					}
+				],
+				"width": 1120
+			}
+			}) | safe }}
+		{% endcomp %}
+
+		{% comp 'display.figure', { id: 'cpi-young-people', source_file: '/data/cpi/cpi_barchart.csv' } %}
+			<span class="tab-title">Categories most affecting young people</span>
+			<h3>Categories most affecting young people</h3>
+			{{ comp.oi.chart.bar({
+				"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"max": 15,
+						"min": -5,
+						"ticks": [
+							{
+								"label": "-5.0%",
+								"value": -5
+							},
+							{
+								"label": "0.0%",
+								"value": 0
+							},
+							{
+								"label": "5.0%",
+								"value": 5
+							},
+							{
+								"label": "10.0%",
+								"value": 10
+							},
+							{
+								"label": "15.0%",
+								"value": 15
+							}
+						]
+					},
+					"y": {
+						"grid": {
+							"show": true,
+							"stroke-width": "0.5"
+						}
+					}
+				},
+				"category": "sector",
+				"columns": [
+					{
+						"name": "monthly",
+						"template": "{{sector}}\nmonthly change:  {{ monthly_pct_change | toFixed(1)}}%"
+					},
+					{
+						"name": "quarterly",
+						"template": "{{sector}}\nquarterly change:  {{ quarterly_pct_change | toFixed(1)}}%"
+					},
+					{
+						"name": "yearly",
+						"template": "{{sector}}\nyearly change:  {{ yearly_pct_change | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.cpi.cpi_barchart",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": true
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"colour": "#E55912",
+						"title": "Monthly change",
+						"tooltip": "monthly",
+						"value": "monthly_pct_change"
+					},
+					{
+						"colour": "#005776",
+						"title": "Quarterly change",
+						"tooltip": "quarterly",
+						"value": "quarterly_pct_change"
+					},
+					{
+						"colour": "#F7AB3D",
+						"title": "Yearly change",
+						"tooltip": "yearly",
+						"value": "yearly_pct_change"
+					}
+				],
+				"width": 1120
+			}
+			}) | safe }}
+		{% endcomp %}
+
+		{% comp 'display.figure', { id: '', source_file: '/data/cpi/cpi_all_category_bar_chart.csv' } %}
+			<span class="tab-title">All categories</span>
+			<h3>All categories</h3>
+			{{ comp.oi.chart.bar({
+				"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"max": 15,
+						"min": -5,
+						"ticks": [
+							{
+								"label": "-5.0%",
+								"value": -5
+							},
+							{
+								"label": "0.0%",
+								"value": 0
+							},
+							{
+								"label": "5.0%",
+								"value": 5
+							},
+							{
+								"label": "10.0%",
+								"value": 10
+							},
+							{
+								"label": "15.0%",
+								"value": 15
+							}
+						]
+					},
+					"y": {
+						"grid": {
+							"show": true,
+							"stroke-width": "0.5"
+						}
+					}
+				},
+				"category": "sector",
+				"columns": [
+					{
+						"name": "monthly",
+						"template": "{{sector}}\nmonthly change:  {{ monthly_pct_change | toFixed(1)}}%"
+					},
+					{
+						"name": "quarterly",
+						"template": "{{sector}}\nquarterly change:  {{ quarterly_pct_change | toFixed(1)}}%"
+					},
+					{
+						"name": "yearly",
+						"template": "{{sector}}\nyearly change:  {{ yearly_pct_change | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.cpi.cpi_all_category_bar_chart",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": true
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"colour": "#E55912",
+						"title": "Monthly change",
+						"tooltip": "monthly",
+						"value": "monthly_pct_change"
+					},
+					{
+						"colour": "#005776",
+						"title": "Quarterly change",
+						"tooltip": "quarterly",
+						"value": "quarterly_pct_change"
+					},
+					{
+						"colour": "#F7AB3D",
+						"title": "Yearly change",
+						"tooltip": "yearly",
+						"value": "yearly_pct_change"
+					}
+				],
+				"width": 1120
+			}
+			}) | safe }}
+		{% endcomp %}
+
+
+{% endcomp %} {# tabbed #}
+
+
 
 <h2>Consumer price index 10 year history</h2>
 <p>The line chart below shows consumer price index for the categories most-affecting young people over the last 10 years. 
   The start date is 10 years ago from the most recent publication of CPI data. The data in this chart comes from the same dataset 
   as the percentage change figures.</p>
-{{ comp.viz.main({ visualisations: visualisation | pick('time_series'), test: false }) | safe }}
+
+<div class="panes">
+
+	{% comp 'display.figure', { id: '', source_file: '/data/cpi/cpi_linechart.csv' } %}
+		<span class="tab-title">CPI time series</span>
+		<h3>CPI time series</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+			"axis": {
+				"x": {
+					"grid": {
+						"show": true,
+						"stroke-dasharray": "6 2",
+						"stroke-width": "1"
+					},
+					"min": "0",
+					"tick": {
+						"align": "end",
+						"labels": "date_axis_label",
+						"options": {
+							"font-size": 14
+						}
+					}
+				},
+				"y": {
+					"dominant-baseline": "text-bottom",
+					"grid": {
+						"show": true
+					},
+					"max": 160,
+					"min": 80,
+					"ticks": [
+						{
+							"grid": "1",
+							"label": "80",
+							"value": 80
+						},
+						{
+							"grid": "1",
+							"label": "100",
+							"value": 100
+						},
+						{
+							"grid": "1",
+							"label": "120",
+							"value": 120
+						},
+						{
+							"grid": "1",
+							"label": "140",
+							"value": 140
+						},
+						{
+							"grid": "1",
+							"label": "160",
+							"value": 160
+						}
+					],
+					"title": {
+						"label": "Index (2015=100)"
+					}
+				}
+			},
+			"columns": [
+				{
+					"name": "all_categories",
+					"template": "{{ named_date }}\nAll Categories: {{cpi_index_00_all_items_2015_100}}"
+				},
+				{
+					"name": "youth_average",
+					"template": "{{ named_date }}\nAll Categories: {{Youth-focused average}}"
+				},
+				{
+					"name": "food_and_non_alcoholic_beverages",
+					"template": "{{ named_date }}\nFood & non-alcoholic beverages: {{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}"
+				},
+				{
+					"name": "transport",
+					"template": "{{ named_date }}\nClothing & footwear: {{cpi_index_07_transport_2015_100}}"
+				},
+				{
+					"name": "housing_energy",
+					"template": "{{ named_date }}\nHousing, water, electricity, gas & other fuels: {{cpi_index_04_housing_water_and_fuels_2015_100}}"
+				},
+				{
+					"name": "recreation_and_culture",
+					"template": "{{ named_date }}\nRecreation & culture: {{cpi_index_09_recreation_&_culture_2015_100}}"
+				}
+			],
+			"data": "sources.cpi.cpi_linechart",
+			"height": 600,
+			"legend": {
+				"position": "top",
+				"show": true
+			},
+			"padding": {
+				"right": 16
+			},
+			"series": [
+				{
+					"colour": "#fe9400",
+					"title": "All CPI categories",
+					"tooltip": "all_categories",
+					"x": "index",
+					"y": "cpi_index_00_all_items_2015_100"
+				},
+				{
+					"colour": "#7D2248",
+					"title": "Food & non-alocholic beverages",
+					"tooltip": "food_and_non_alcoholic_beverages",
+					"x": "index",
+					"y": "cpi_index_01_food_and_non_alcoholic_beverages_2015_100"
+				},
+				{
+					"colour": "#75b8d3",
+					"title": "Transport",
+					"tooltip": "transport",
+					"x": "index",
+					"y": "cpi_index_07_transport_2015_100"
+				},
+				{
+					"colour": "#E55912",
+					"title": "Housing, water, electricity, gas & other fuels",
+					"tooltip": "housing_energy",
+					"x": "index",
+					"y": "cpi_index_04_housing_water_and_fuels_2015_100"
+				},
+				{
+					"colour": "#39c2b0",
+					"title": "Recreation & culture",
+					"tooltip": "recreation_and_culture",
+					"x": "index",
+					"y": "cpi_index_09_recreation_&_culture_2015_100"
+				},
+				{
+					"colour": "#274b57",
+					"title": "Youth-focused average",
+					"tooltip": "youth_average",
+					"x": "index",
+					"y": "Youth-focused average"
+				}
+			],
+			"width": 1120
+		}
+		}) | safe }}
+	{% endcomp %}
+</div>
+
 
 <h2 data-dependencies="/assets/js/table-sorter.js"> Data tables </h2>
-{{ comp.viz.main({ visualisations: tables }) | safe }}
+{% comp 'tabbed', { tab_count: 2 } %}
+
+		{% comp 'display.figure', { id: '', source_file: '/data/cpi/cpi_all_category_bar_chart.csv' } %}
+			<span class="tab-title">Percentage change</span>
+			<p>Monthly, quarterly and yearly CPI percentage changes. Also 
+shown is the overall CPI change which includes all categories measured by CPI.</p>
+			{{ comp.oi.table({
+				"config": {
+				"axis": {
+					"x": {},
+					"y": {}
+				},
+				"columns": [
+					{
+						"align": "center",
+						"name": "sector",
+						"rename": "Sector"
+					},
+					{
+						"align": "right",
+						"name": "Monthly",
+						"template": "{{ monthly_pct_change | toFixed(1) }}%",
+						"width": "15%"
+					},
+					{
+						"align": "right",
+						"name": "Quarterly",
+						"template": "{{ quarterly_pct_change | toFixed(1) }}%",
+						"width": "15%"
+					},
+					{
+						"align": "right",
+						"name": "Yearly",
+						"template": "{{ yearly_pct_change | toFixed(1) }} %",
+						"width": "15%"
+					}
+				],
+				"data": "sources.cpi.cpi_all_category_bar_chart",
+				"legend": {},
+				"opts": {}
+			}
+			}) | safe }}
+		{% endcomp %}
+		{% comp 'display.figure', { id: '', source_file: '/data/cpi/cpi_linechart.csv' } %}
+			<span class="tab-title">Time series</span>
+			<p>Consumer prices index for last 10 years (rolling start date)</p>
+			{{ comp.oi.table({
+				"config": {
+				"axis": {
+					"x": {},
+					"y": {}
+				},
+				"columns": [
+					{
+						"align": "center",
+						"name": "Date",
+						"template": "{{ named_date }}",
+						"width": "10%"
+					},
+					{
+						"align": "right",
+						"name": "All CPI categories",
+						"template": "{{cpi_index_00_all_items_2015_100}}",
+						"width": "18%"
+					},
+					{
+						"align": "right",
+						"name": "Food & non-alcoholic beverages",
+						"template": "{{cpi_index_01_food_and_non_alcoholic_beverages_2015_100}}",
+						"width": "18%"
+					},
+					{
+						"align": "right",
+						"name": "Clothing and Footwear",
+						"template": "{{cpi_index_03_clothing_and_footwear_2015_100}}",
+						"width": "18%"
+					},
+					{
+						"align": "right",
+						"name": "Housing, water, electricity, gas & other fuels",
+						"template": "{{cpi_index_04_housing_water_and_fuels_2015_100}}",
+						"width": "18%"
+					},
+					{
+						"align": "right",
+						"name": "Recreation & culture",
+						"template": "{{cpi_index_09_recreation_&_culture_2015_100}}",
+						"width": "18%"
+					}
+				],
+				"data": "sources.cpi.cpi_linechart",
+				"legend": {},
+				"order": "reverse"
+			}
+			}) | safe }}
+		{% endcomp %}
+
+{% endcomp %} {# tabbed #}

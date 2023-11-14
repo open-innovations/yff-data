@@ -10,7 +10,11 @@
     <div data-injector-url="{{ page.url }}" data-injector-selector="{{ page.featured }}"></div>
   {% elif page.visualisation %}
     {% set key_visualisation = page.visualisation[page.featured_visualisation or 'headline'] %}
-    {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
+	{% if key_visualisation.type == "oi.dashboard" %}
+		{{ comp.oi.dashboard ({ config: key_visualisation.config }) | simpleviz | safe }}
+	{% else %}
+		{{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
+	{% endif %}
   {% elif page.visualisations %}
     {% set key_visualisation = page.visualisations[page.featured_visualisation or 0] %}
     {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}

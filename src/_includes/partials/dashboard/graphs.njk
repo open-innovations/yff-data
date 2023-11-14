@@ -1,40 +1,299 @@
 {%- macro renderViz(viz) %}
 <figure>
 <h3>{{ viz.title }}</h3>
-  {{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
+{{ comp.viz.render({ config: viz.config, type: viz.type, downloadLink: false }) | safe }}
 </figure>
 {% endmacro -%}
 
 {# NEET #}
 {% comp 'grid.block', {
-  link: '~/dashboard/neet/index.njk' | url + '#all_young_people'
+	link: '~/dashboard/neet/index.njk' | url + '#all_young_people'
 } %}
-  {{ renderViz(search.data('dashboard/neet/').visualisation.minimal.allYoungPeople) | safe }}
+	<h3>NEET trends since 2001</h3>
+	{{ comp.oi.chart.line({
+		config: {
+			data: "sources.neet.neet_all_data",
+			legend: { "show": true, "position": "top" },
+			width: 540,
+			height: 300,
+			axis: {
+				x: {
+					min: 0,
+					grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+					tick: { labels: "", align: "end" }
+				},
+				y: { max: 20, tick: { spacing: 5, labels: "" }, grid: { show: true } }
+			},
+			columns: [
+				{ "name": "Total", "template": "{{quarter_label}}\nNEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%" },
+				{ "name": "unemployed_tooltip", "template": "{{quarter_label}}\nUnemployed rate: {{people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%" },
+				{ "name": "economically_inactive_tooltip", "template": "{{quarter_label}}\nEconomically inactive rate: {{people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%" }
+			],
+			"series": [
+				{
+					"title": "Total NEET rate",
+					"x": "quarter_index",
+					"y": "people_age_16_to_24_neet_total_rate_sa",
+					"tooltip": "Total"
+				},
+				{
+					"title": "Unemployed rate",
+					"x": "quarter_index",
+					"y": "people_age_16_to_24_neet_unemployed_rate_sa",
+					"tooltip": "unemployed_tooltip"
+				},
+				{
+					"title": "Economically inactive rate",
+					"x": "quarter_index",
+					"y": "people_age_16_to_24_neet_economically_inactive_rate_sa",
+					"tooltip": "economically_inactive_tooltip"
+				}
+			]
+		}
+	}) | simpleviz | safe }}
 {% endcomp %}
 
 {# Unemployment / Economic Inactivity #}
 {% comp 'grid.block', {
-  link: '~/dashboard/labour-market/index.njk' | url + '#education_status_last_3_years'
+	link: '~/dashboard/labour-market/index.njk' | url + '#economic_activity_not_in_full_time_education_3_years'
 } %}
-  {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.educationStatus) | safe }}
+	<h3>NFTE employment status trends last three years</h3>
+	{{ comp.oi.chart.line({
+		"config": {
+		   "width": 540,
+		   "height": 300,
+		   "data": "sources.labour-market.labour_market_status_last_3_years",
+		   "legend": { "show": true, "position": "top" },
+		   "axis": {
+			  "x": {
+				 "grid": { "show": true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+				"tick": {
+					"labels": "",
+					"align": "end",
+					"n": 5
+				}
+			  },
+			  "y": { max: 80, tick: { spacing: 10, labels: "" }, grid: { show: true } }
+		   },
+		   "columns": [
+			  {
+				 "name": "x_tick_labels",
+				 "template": "{{ quarter_axis_label }}"
+			  },
+			  {
+				 "name": "unemployment_rate_label",
+				 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+			  },
+			  {
+				 "name": "economically_inactive_rate_label",
+				 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+			  },
+			  {
+				 "name": "employment_rate_label",
+				 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+			  }
+		   ],
+		   "series": [
+			  {
+				 "title": "Overall unemployment",
+				 "x": "quarter_index",
+				 "y": "age_16_to_24_not_in_ft_education_unemployment_rate_sa",
+				 "tooltip": "unemployment_rate_label"
+			  },
+			  {
+				 "title": "Economically inactive",
+				 "x": "quarter_index",
+				 "y": "age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa",
+				 "tooltip": "economically_inactive_rate_label"
+			  },
+			  {
+				 "title": "In employment",
+				 "x": "quarter_index",
+				 "y": "age_16_to_24_not_in_ft_education_employment_rate_sa",
+				 "tooltip": "employment_rate_label"
+			  }
+		   ]
+		}
+	}) | simpleviz | safe }}
+
+
 {% endcomp %}
 
 {% comp 'grid.block', {
-  link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployment_3_years'
+	link: '~/dashboard/labour-market/index.njk' | url + '#long_term_unemployment_3_years'
 } %}
-  {{ renderViz(search.data('dashboard/labour-market/').visualisation.minimal.longTermUnemployment) | safe }}
+
+    <h3>Long-term unemployment trends last three years</h3>
+	{{ comp.oi.chart.line({
+		"config": {
+			"width": 540,
+			"height": 300,
+			"data": "sources.labour-market.long_term_unemployed_last_3_years",
+			legend: { "show": true, "position": "top" },
+			"axis": {
+				"x": { "min": 0, "grid": { "show": true, "stroke-dasharray": "6 2", "stroke-width": 1 }, "tick": { "labels": "", "align": "end" } },
+				"y": { "min": 0, "max": 35, tick: { spacing: 5, "labels": "" }, grid: { show: true } }
+			},
+			"columns": [
+				{
+					"name": "label_6_to_12_months",
+					"template": "{{quarter_label}}\nProportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%"
+				},
+				{
+					"name": "label_12_months",
+					"template": "{{quarter_label}}\nProportion over 12 months: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%"
+				}
+			],
+			"series": [
+				{
+					"title": "6 to 12 months",
+					"x": "quarter_index",
+					"y": "age_16_to_24_unemployed_6_to_12_months_rate_sa",
+					"tooltip": "label_6_to_12_months"
+				},
+				{
+					"title": "12 months",
+					"x": "quarter_index",
+					"y": "age_16_to_24_unemployed_over_12_months_rate_sa",
+					"tooltip": "label_12_months"
+				}
+			]
+		 }
+	 }) | simpleviz | safe }}
+
 {% endcomp %}
 
 {# Vacancies #}
 {% comp 'grid.block', {
-  link: '~/dashboard/vacancies/index.njk' | url + '#estimated-vacancies'
+	link: '~/dashboard/vacancies/index.njk' | url + '#estimated-vacancies'
 } %}
-  {{ renderViz(search.data('dashboard/vacancies/').visualisation.minimal.estimatedVacancies) | safe }}
+
+	<h3>Estimated number of vacancies (seasonally adjusted)</h3>
+	{{ comp.oi.chart.line({
+		"config": {
+		"width": 540,
+		"height": 300,
+		"axis": {
+			"x": {
+				"grid": {
+					"show": true,
+					"stroke-dasharray": "6 2",
+					"stroke-width": "1"
+				},
+				"tick": {
+					"align": "end",
+					"labels": "",
+					"options": {
+						"font-size": 14
+					}
+				}
+			},
+			"y": {
+				"min": 0,
+				"max": 1400,
+				"dominant-baseline": "text-bottom",
+				"grid": {
+					"show": true
+				},
+				"tick": { "labels": "" }
+			}
+		},
+		"columns": [
+			{
+				"name": "Label",
+				"template": "{{ quarter_label }} </br> {{ value | multiply(1000) | toLocaleString() }} vacancies"
+			}
+		],
+		"data": "sources.vacancies.monthly_vacancies",
+		"legend": {
+			"position": "top",
+			"show": false
+		},
+		"series": [
+			{
+				"title": "value",
+				"tooltip": "Label",
+				"x": "row",
+				"y": "value"
+			}
+		]
+	}
+	}) | simpleviz | safe }}
+
 {% endcomp %}
 
 {# CPI #}
 {% comp 'grid.block', {
-  link: ('~/dashboard/cpi/index.njk' | url + '#cpi-young-people')
+	link: ('~/dashboard/cpi/index.njk' | url + '#cpi-young-people')
 } %}
-  {{ renderViz(search.data('dashboard/cpi/').visualisation.minimal.cpiYoungPeople) | safe }}
+
+	<h3>Monthly change in CPI most affecting young people</h3>
+	{{ comp.oi.chart.bar({
+		"config": {
+		"axis": {
+			"x": {
+				"grid": {
+					"show": true,
+					"stroke-dasharray": "6 2",
+					"stroke-width": "1"
+				},
+				"max": 15,
+				"min": -5,
+				"ticks": [
+					{
+						"label": "-5.0%",
+						"value": -5
+					},
+					{
+						"label": "0.0%",
+						"value": 0
+					},
+					{
+						"label": "5.0%",
+						"value": 5
+					},
+					{
+						"label": "10.0%",
+						"value": 10
+					},
+					{
+						"label": "15.0%",
+						"value": 15
+					}
+				]
+			},
+			"y": {
+				"grid": {
+					"show": true,
+					"stroke-width": "0.5"
+				}
+			}
+		},
+		"category": "sector",
+		"columns": [
+			{
+				"name": "monthly",
+				"template": "{{sector}}\nmonthly change:  {{ monthly_pct_change | toFixed(1)}}%"
+			}
+		],
+		"data": "sources.cpi.cpi_barchart",
+		"legend": {
+			"position": "top",
+			"show": true
+		},
+		"series": [
+			{
+				"colour": "#E55912",
+				"title": "Monthly change",
+				"tooltip": "monthly",
+				"value": "monthly_pct_change"
+			}
+		],
+		"height": 600,
+		"width": 1120
+	}
+
+	}) | simpleviz | safe }}
+
 {% endcomp %}
+

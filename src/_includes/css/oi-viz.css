@@ -1,0 +1,40 @@
+/* .oi-legend-inner {
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 0.5em;
+  margin: 1em;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+.oi-legend-item {
+  gap: 0.5em;
+} */
+.oi-legend.oi-legend-top {
+	margin-bottom: 1.5em;
+	text-align: left;
+}
+.oi-legend.oi-legend-top .oi-legend-inner::before { content: 'Key:'; font-weight: bold; padding: 0.125em 0; margin-right: 0.25em; }
+.oi-legend.oi-legend-top .oi-legend-inner { display: block; }
+ .oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item  { display: inline-block; }
+.oi-legend.oi-legend-top .oi-legend-item { margin-right: 8px; padding: 0.125em 0.25em; font-weight: bold; }
+.oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item svg.oi-legend-icon {
+  /* TODO - maybe remove this from lume charts */
+  display: unset;
+  float: left;
+}
+.oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item.oi-series-lock, .oi-legend.oi-legend-top .oi-legend-inner .oi-legend-item:hover {
+  background: rgba(255,255,255,0.5);
+  outline: 1px dotted #7b2347;
+}
+.oi-legend.oi-legend-top .oi-legend-icon { aspect-ratio: 1 / 1!important; }
+.oi-chart > svg {
+  height: auto;
+}
+.oi-chart {
+  & .axis-grid-x text {
+    font-weight: bold;
+  }
+  & .axis-grid-y text {
+    font-weight: bold;
+  }
+}

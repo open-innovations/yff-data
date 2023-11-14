@@ -1,6 +1,8 @@
 ---
 title: NEET
 priority: 100
+layout: layouts/dashboard.njk
+
 tags:
   - dashboard
   - annotatable
@@ -33,7 +35,217 @@ The next scheduled publication is {{ latest.next_update | date('HUMAN_DATE') }}.
   These figures are based on the population in the relevant age range (16-24 years old).
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('all_young_people', 'all_young_women', 'all_young_men'), test: false }) | safe }}
+
+{% comp 'tabbed', { tab_count: 3 } %}
+
+  {% comp 'display.figure', { id: 'all_young_people', source_file: '/data/neet/neet_all_data.csv' } %}
+    <span class="tab-title">All young people</span>
+    <h3>NEET rate for all young people (16-24)</h3>
+    {{ comp.oi.chart.line({
+    config: {
+      width: 1120,
+      height: 600,
+      data: "sources.neet.neet_all_data",
+      legend: { "show": true, "position": "top" },
+      axis: {
+        x: {
+			min: 0,
+			max: sources.neet.neet_all_data.rows.length-1,
+			grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			tick: { align: "end", labels: "quarter_axis_label" }
+        },
+        y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
+      },
+      columns: [
+        { "name": "Total", "template": "{{quarter_label}}\nNEET rate: {{people_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%" },
+        { "name": "unemployed_tooltip", "template": "{{quarter_label}}\nUnemployed rate: {{people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%" },
+        {
+          "name": "economically_inactive_tooltip",
+          "template": "{{quarter_label}}\nEconomically inactive rate: {{people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%"
+        }
+      ],
+      "series": [
+        {
+          "title": "Total NEET rate",
+          "x": "quarter_index",
+          "y": "people_age_16_to_24_neet_total_rate_sa",
+          "tooltip": "Total"
+        },
+        {
+          "title": "Unemployed rate",
+          "x": "quarter_index",
+          "y": "people_age_16_to_24_neet_unemployed_rate_sa",
+          "tooltip": "unemployed_tooltip"
+        },
+        {
+          "title": "Economically inactive rate",
+          "x": "quarter_index",
+          "y": "people_age_16_to_24_neet_economically_inactive_rate_sa",
+          "tooltip": "economically_inactive_tooltip"
+        }
+      ]
+    }
+    }) | safe }}
+  {% endcomp %}
+
+  {% comp 'display.figure', { id: 'young_women', source_file: '/data/neet/neet_all_data.csv' } %}
+    <span class="tab-title">Young women</span>
+    <h3>NEET rate for young women (16-24)</h3>
+    {{ comp.oi.chart.line({
+    config: {
+      data: "sources.neet.neet_all_data",
+      legend: { "show": true, "position": "top" },
+      width: 1120,
+      height: 600,
+      axis: {
+        x: {
+			min: 0,
+			max: sources.neet.neet_all_data.rows.length-1,
+			grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			tick: { align: "end", labels: "quarter_axis_label" }
+        },
+        y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
+      },
+      columns: [
+        { "name": "Total", "template": "{{quarter_label}}\nNEET rate: {{ women_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%" },
+        { "name": "unemployed_tooltip", "template": "{{quarter_label}}\nUnemployed rate: {{women_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%" },
+        {
+          "name": "economically_inactive_tooltip",
+          "template": "{{quarter_label}}\nEconomically inactive rate: {{women_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%"
+        }
+      ],
+      "series": [
+        {
+          "title": "Total NEET rate",
+          "x": "quarter_index",
+          "y": "women_age_16_to_24_neet_total_rate_sa",
+          "tooltip": "Total"
+        },
+        {
+          "title": "Unemployed rate",
+          "x": "quarter_index",
+          "y": "women_age_16_to_24_neet_unemployed_rate_sa",
+          "tooltip": "unemployed_tooltip"
+        },
+        {
+          "title": "Economically inactive rate",
+          "x": "quarter_index",
+          "y": "women_age_16_to_24_neet_economically_inactive_rate_sa",
+          "tooltip": "economically_inactive_tooltip"
+        }
+      ]
+    }
+    }) | safe }}
+
+  {% endcomp %}
+
+  {% comp 'display.figure', { id: 'young_men', source_file: '/data/neet/neet_all_data.csv' } %}
+    <span class="tab-title">Young men</span>
+    <h3>NEET rate for young men (16-24)</h3>
+    {{ comp.oi.chart.line({
+    config: {
+      data: "sources.neet.neet_all_data",
+      legend: { "show": true, "position": "top" },
+      width: 1120,
+      height: 600,
+      axis: {
+        x: {
+			min: 0,
+			max: sources.neet.neet_all_data.rows.length-1,
+			grid: { show: true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			tick: { align: "end", labels: "quarter_axis_label" }
+        },
+        y: { max: 20, tick: { spacing: 5 }, grid: { show: true }, title: { label: "Rate (%)" } }
+      },
+      columns: [
+        { "name": "Total", "template": "{{quarter_label}}\nNEET rate: {{ men_age_16_to_24_neet_total_rate_sa | toFixed(1)}}%" },
+        { "name": "unemployed_tooltip", "template": "{{quarter_label}}\nUnemployed rate: {{men_age_16_to_24_neet_unemployed_rate_sa | toFixed(1)}}%" },
+        {
+          "name": "economically_inactive_tooltip",
+          "template": "{{quarter_label}}\nEconomically inactive rate: {{men_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1)}}%"
+        }
+      ],
+      "series": [
+        {
+          "title": "Total NEET rate",
+          "x": "quarter_index",
+          "y": "men_age_16_to_24_neet_total_rate_sa",
+          "tooltip": "Total"
+        },
+        {
+          "title": "Unemployed rate",
+          "x": "quarter_index",
+          "y": "men_age_16_to_24_neet_unemployed_rate_sa",
+          "tooltip": "unemployed_tooltip"
+        },
+        {
+          "title": "Economically inactive rate",
+          "x": "quarter_index",
+          "y": "men_age_16_to_24_neet_economically_inactive_rate_sa",
+          "tooltip": "economically_inactive_tooltip"
+        }
+      ]
+    }
+    }) | safe }}
+
+  {% endcomp %}
+
+{% endcomp %} {# tabbed #}
 
 <h2 data-dependencies="/assets/js/table-sorter.js">Data tables</h2>
-{{ comp.viz.main({ visualisations: visualisation | pick('last_3_years_all', 'young_women_neet_last_3_years', 'young_men_neet_last_3_years'), test: false }) | safe }}
+
+{% comp 'tabbed', { tab_count: 3 } %}
+
+  {% comp 'display.figure', { id: 'last_3_years_all', source_file: '/data/neet/neet_last_3_years.csv' } %}
+    <span class="tab-title">All young people</span>
+    <p>Seasonally adjusted NEET rate table for all young people (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up. Raw data accessible via the download link is as provided by ONS.</p>
+    {{ comp.oi.table({
+      "config": {
+        "data": "sources.neet.neet_last_3_years",
+        "order": "reverse",
+        "columns": [
+          { "name": "Quarter", "align": "center", "template": "{{ quarter_label }}" },
+          { "name": "Total NEET rate", "width": "20%", "align": "right", "template": "{{ people_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%" },
+          { "name": "Unemployed rate", "width": "20%", "align": "right", "template": "{{ people_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%" },
+          { "name": "Economically inactive rate", "width": "20%", "align": "right", "template": "{{ people_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%" }
+        ]
+      }
+    }) | safe }}
+  {% endcomp %}
+    
+  {% comp 'display.figure', { id: 'young_women_neet_last_3_years', source_file: '/data/neet/neet_last_3_years.csv' } %}
+    <span class="tab-title">Young women</span>
+    <p>Seasonally adjusted NEET rate table for young women (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up. Raw data accessible via the download link is as provided by ONS.</p>
+    {{ comp.oi.table({
+      "config": {
+        "data": "sources.neet.neet_last_3_years",
+        "order": "reverse",
+        "columns": [
+          { "name": "Quarter", "align": "center", "template": "{{ quarter_label }}" },
+          { "name": "Total NEET rate", "width": "20%", "align": "right", "template": "{{ women_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%" },
+          { "name": "Unemployed rate", "width": "20%", "align": "right", "template": "{{ women_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%" },
+          { "name": "Economically inactive rate", "width": "20%", "align": "right", "template": "{{ women_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%" }
+        ]
+      }
+    }) | safe }}
+  {% endcomp %}
+
+  {% comp 'display.figure', { id: 'young_men_neet_last_3_years', source_file: '/data/neet/neet_last_3_years.csv' } %}
+    <span class="tab-title">Young men</span>
+    <p>Seasonally adjusted NEET rate table for young men (aged 16-24) for last three years. Values are rounded from the ONS provided figures, and may not add up. Raw data accessible via the download link is as provided by ONS.</p>
+    {{ comp.oi.table({
+      "config": {
+        "data": "sources.neet.neet_last_3_years",
+        "order": "reverse",
+        "columns": [
+          { "name": "Quarter", "align": "center", "template": "{{ quarter_label }}" },
+          { "name": "Total NEET rate", "width": "20%", "align": "right", "template": "{{ men_age_16_to_24_neet_total_rate_sa | toFixed(1) }}%" },
+          { "name": "Unemployed rate", "width": "20%", "align": "right", "template": "{{ men_age_16_to_24_neet_unemployed_rate_sa | toFixed(1) }}%" },
+          { "name": "Economically inactive rate", "width": "20%", "align": "right", "template": "{{ men_age_16_to_24_neet_economically_inactive_rate_sa | toFixed(1) }}%" }
+        ]
+      }
+    }) | safe }}
+  {% endcomp %}
+
+{% endcomp %} {# tabbed #}
+
