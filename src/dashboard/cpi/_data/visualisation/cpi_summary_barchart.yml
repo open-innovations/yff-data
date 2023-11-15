@@ -4,7 +4,7 @@ config:
       grid:
         stroke-dasharray: 6 2
         stroke-width: 1
-      max: 7.0
+      max: 5.0
       min: -0.5
       ticks:
       - label: -0.5%
@@ -21,10 +21,6 @@ config:
         value: '4.5'
       - label: 5.5%
         value: '5.5'
-      - label: 6.5%
-        value: '6.5'
-      - label: 7.5%
-        value: '7.5'
       - label: 0.0%
         value: '0.0'
     y:
