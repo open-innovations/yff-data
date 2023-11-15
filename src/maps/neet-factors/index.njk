@@ -22,7 +22,7 @@ css: |
     margin-left:auto;
   }
 
-featured: "#children-in-poverty figure"
+# featured: "#children-in-poverty figure"
 chart_description: |
   The map shows the likelihood of young people ending up not in employment, education or training.
   The values are standardised to show divergence from the average, with lighter colours being higher and darker colours being lower.
@@ -33,6 +33,7 @@ chart_description: |
 {% comp 'flex' %}
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
+
 
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
@@ -58,6 +59,38 @@ chart_description: |
       }) | safe }}
     {% endcomp %}
 
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.total_score_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -30,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
@@ -76,6 +109,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.weighted_scores_double_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='children-in-poverty' class='selector-block' data-selector-group="Standardised layers">
@@ -94,6 +161,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.children_in_poverty_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='children-looked-after' class='selector-block' data-selector-group="Standardised layers (incomplete)">
@@ -112,12 +213,47 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
-    </article>
+x
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.children_looked_after_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
+    </article>    
+
 
     <article id='disability-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (all ages)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
-
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -130,6 +266,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.disability_all_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='disability-under-25' class='selector-block' data-selector-group="Standardised layers">
@@ -148,6 +318,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.disability_under_25_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='economic-inactivity-neet' class='selector-block' data-selector-group="Standardised layers">
@@ -166,6 +370,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.economic_inactivity_neet_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='fertility-rates-20-24' class='selector-block' data-selector-group="Standardised layers">
@@ -176,7 +414,7 @@ chart_description: |
       {{ comp.oi.map.hex_cartogram({
         config: {
           hexjson: uk_local_authority_districts_2021,
-          data: view.fertility_rates_aged_20_24.rows,
+          data: view.fertility_rates_20_to_24.rows,
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
@@ -184,6 +422,41 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.fertility_rates_20_to_24_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='fertility-rates-under-20' class='selector-block' data-selector-group="Standardised layers">
@@ -202,6 +475,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.fertility_rates_under_20_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='imd-crime' class='selector-block' data-selector-group="Standardised layers">
@@ -220,6 +527,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.imd_crime_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='imd-health' class='selector-block' data-selector-group="Standardised layers">
@@ -238,6 +579,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.imd_health_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -4,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='lone-parent-households' class='selector-block' data-selector-group="Standardised layers">
@@ -256,6 +631,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.lone_parent_households_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='pupils-with-sen-support' class='selector-block' data-selector-group="Standardised layers (incomplete)">
@@ -274,8 +683,41 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
-    </article>
 
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.pupils_with_sen_support_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
+    </article>
     
     <article id='qualification-below-level-2-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (aged 16-24)</h2>
@@ -293,6 +735,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.qualification_below_level_2_aged_16_24_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='qualification-below-level-2-all' class='selector-block' data-selector-group="Standardised layers">
@@ -311,8 +787,41 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
-    </article>
 
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.qualification_below_level_2_all_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -3.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
+    </article>
 
     <article id='school-absences' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>School Absences</h2>
@@ -330,6 +839,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.school_absences_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='school-exclusions' class='selector-block' data-selector-group="Standardised layers">
@@ -348,8 +891,41 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
-    </article>
 
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.school_exclusions_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -1.8,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
+    </article>
     
     <article id='school-suspensions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Suspensions</h2>
@@ -367,6 +943,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.school_suspensions_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
     <article id='socially-renting-households' class='selector-block' data-selector-group="Standardised layers">
@@ -385,6 +995,40 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.socially_renting_households_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
         
     <article id='unpaid-carer-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
@@ -403,11 +1047,44 @@ chart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
+
+    <section style = "padding-top:3rem;">
+    <h3>Ranked Local Authorities</h3>
+    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.chart.bar({ config: {
+          data: view.unpaid_carer_aged_16_24_barchart.rows,
+          category: 'local_authority_name',
+          width: 1200,
+          series: [
+            { title: 'Weighted Score', value: 'value' }
+          ],
+          legend: {
+            show: true,
+            position: "top"
+          },
+          axis: {
+            x: {
+              min: -2.5,
+              max: 0,
+              title: {
+                label: ""
+              },
+              tickSpacing: 10
+            },
+            y: {
+              title: {
+                label: ""
+              }
+            }
+          }
+        } }) | safe }}
+    {% endcomp %}
+    </section>
     </article>
 
+
   </div>
-
-
   <section style = "padding-top:5rem;">
     <h3>Highest Scoring Local Authorities</h3>
     <p>
@@ -419,8 +1096,8 @@ chart_description: |
         config: {
           columns: [
             {'name':'Local Authority'},
-            {'name':'Local Authority Code'},
-            {'name':'Weighted Score', 'scale': 'Heat_r', 'min': 0 }
+            {'name':'local_authority_code'},
+            {'name':'Weighted Score', 'scale': 'YFF', 'min': 0, 'value' : '{{ Weighted Score | toFixed(2) }}' }
           ],
           data: view.weighted_scores_table.rows 
         } }
@@ -461,5 +1138,3 @@ chart_description: |
   <li>IMD Health</li>
   <li>Economic inactivity (NEET)</li>
 </ul>
-
-
