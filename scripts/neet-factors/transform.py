@@ -7,7 +7,7 @@ NEET_FACTORS_DATA = os.path.join(
 
 factors_data = pd.read_csv(NEET_FACTORS_DATA)
 
-fields = ['local_authority_code', 'value']
+fields = ['local_authority_code', 'local_authority_name', 'value']
 
 DATA_DIR = os.path.join('src', 'maps', 'neet-factors', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -56,155 +56,164 @@ def save_to_file(data, filename):
     data.to_csv(full_filename, index=False)
     return data
 
+def prepare_hexmap(data, variable, filter_field):
+    filter_data(data, ).pipe(clean_nulls).pipe(limit_to_england)
+    return data 
+
+def prepare_barchart(data, filename):
+    data.drop(columns=['Local Authority Code']).sort_values(by=['Weighted Score']).head(20).pipe(
+        save_to_file, filename
+    )
+
 
 if __name__ == '__main__':
 
     factors_data = factors_data.rename(
             columns=column_name_mapper)
     
-    children_in_poverty = factors_data.pipe(
-        filter_data, 'Children in poverty', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'children_in_poverty.csv'
-    )
-
-    children_in_poverty_barchart = factors_data.pipe(filter_data, 'Weighted scores (double)', fields=['local_authority_name', 'local_authority_code', 'value']
-    ).pipe(clean_nulls).pipe(limit_to_england)
-    children_in_poverty_barchart = children_in_poverty_barchart.sort_values(by=['value']).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'local_authority_code':'Local Authority Code', 'value':'Weighted Score'}).pipe(
-        save_to_file, 'children_in_poverty_barchart.csv'
-    )
-
-    children_looked_after = factors_data.pipe(
-        filter_data, 'Children looked after', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'children_looked_after.csv'
-    )
-
-    disability_under_25 = factors_data.pipe(
-        filter_data, 'Disability (age < 25)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'disability_under_25.csv'
-    )
-
-    disability_all = factors_data.pipe(
-        filter_data, 'Disability (all)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'disability_all.csv'
-    )
-
-    economic_inactivity_neet = factors_data.pipe(
-        filter_data, 'Economic inactivity (NEET)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'economic_inactivity_neet.csv'
-    )
-
-    fertility_rates_aged_20_24 = factors_data.pipe(
-        filter_data, 'Fertility rates (age 20-24)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'fertility_rates_aged_20_24.csv'
-    )
-
-    fertility_rates_under_20 = factors_data.pipe(
-        filter_data, 'Fertility rates (age < 20)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'fertility_rates_under_20.csv'
-    )
-
-    imd_crime = factors_data.pipe(
-        filter_data, 'IMD Crime', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'imd_crime.csv'
-    )
-
-    imd_health = factors_data.pipe(
-        filter_data, 'IMD Health', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'imd_health.csv'
-    )
-
-
-    lone_parent_households = factors_data.pipe(
-        filter_data, 'Lone parent households', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'lone_parent_households.csv'
-    )
-
-
-    pupils_with_sen_support = factors_data.pipe(
-        filter_data, 'Pupils with SEN support', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'pupils_with_sen_support.csv'
-    )
-
-    qualification_below_level_2_aged_16_24 = factors_data.pipe(
-        filter_data, 'Qualification below level 2 (age 16-24)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'qualification_below_level_2_aged_16_24.csv'
-    )
-
-    qualification_below_level_2_all = factors_data.pipe(
-        filter_data, 'Qualification below level 2 (all)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'qualification_below_level_2_all.csv'
-    )
-
-    school_absences = factors_data.pipe(
-        filter_data, 'School Absences', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'school_absences.csv'
-    )
-
-    school_exclusions = factors_data.pipe(
-        filter_data, 'School Exclusions', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'school_exclusions.csv'
-    )
-
-    school_suspensions = factors_data.pipe(
-        filter_data, 'School Suspensions', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'school_suspensions.csv'
-    )
-
+    children_in_poverty = filter_data(factors_data, 'Children in poverty', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'children_in_poverty.csv')
     
-    socially_renting_households = factors_data.pipe(
-        filter_data, 'Socially renting households', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'socially_renting_households.csv'
-    )
+    prepare_barchart(children_in_poverty, 'children_in_poverty_barchart.csv')
 
-        
-    total_score = factors_data.pipe(
-        filter_data, 'Total Score', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'total_score.csv'
-    )
+    children_looked_after = filter_data(factors_data, 'Children looked after', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'children_looked_after.csv')
+    
+    prepare_barchart(children_looked_after, 'children_looked_after_barchart.csv')
 
-        
-    unpaid_carer_aged_16_24 = factors_data.pipe(
-        filter_data, 'Unpaid carer (age 16-24)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'unpaid_carer_aged_16_24.csv'
-    )
+    disability_under_25 = filter_data(factors_data, 'Disability (age < 25)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'disability_under_25.csv')
+    
+    prepare_barchart(disability_under_25, 'disability_under_25_barchart.csv')
 
-        
-    weighted_scores_double = factors_data.pipe(
-        filter_data, 'Weighted scores (double)', fields
-    ).pipe(clean_nulls).pipe(limit_to_england).pipe(
-        save_to_file, 'weighted_scores_double.csv'
-    )
-    scores_table = factors_data.pipe(filter_data, 'Weighted scores (double)', fields=['local_authority_name', 'local_authority_code', 'value']
-    ).pipe(clean_nulls).pipe(limit_to_england)
-    scores_table = scores_table.sort_values(by=['value']).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'local_authority_code':'Local Authority Code', 'value':'Weighted Score'}).pipe(
+    disability_all = filter_data(factors_data, 'Disability (all)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'disability_all.csv')
+    
+    prepare_barchart(disability_all, 'disability_all_barchart.csv')
+
+    economic_inactivity_neet = filter_data(factors_data, 'Economic inactivity (NEET)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'economic_inactivity_neet.csv')
+    
+    prepare_barchart(economic_inactivity_neet, 'economic_inactivity_neet_barchart.csv')
+
+    fertility_rates_under_20 = filter_data(factors_data, 'Fertility rates (age < 20)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'fertility_rates_under_20.csv')
+    
+    prepare_barchart(fertility_rates_under_20, 'fertility_rates_under_20_barchart.csv')
+
+    imd_crime = filter_data(factors_data, 'IMD Crime', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'imd_crime.csv')
+    
+    prepare_barchart(imd_crime, 'imd_crime_barchart.csv')
+
+    imd_health = filter_data(factors_data, 'IMD Health', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'imd_health.csv')
+    
+    prepare_barchart(imd_health, 'imd_health_barchart.csv')
+
+    lone_parent_households = filter_data(factors_data, 'Lone parent households', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'lone_parent_households.csv')
+    
+    prepare_barchart(lone_parent_households, 'lone_parent_households_barchart.csv')
+
+    pupils_with_sen_support = filter_data(factors_data, 'Pupils with SEN support', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'pupils_with_sen_support.csv')
+    
+    prepare_barchart(pupils_with_sen_support, 'pupils_with_sen_support_barchart.csv')
+
+    qualification_below_level_2_aged_16_24 = filter_data(factors_data, 'Qualification below level 2 (age 16-24)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'qualification_below_level_2_aged_16_24.csv')
+    
+    prepare_barchart(qualification_below_level_2_aged_16_24, 'qualification_below_level_2_aged_16_24_barchart.csv')
+
+    qualification_below_level_2_all = filter_data(factors_data, 'Qualification below level 2 (all)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'qualification_below_level_2_all.csv')
+    
+    prepare_barchart(qualification_below_level_2_all, 'qualification_below_level_2_all_barchart.csv')
+
+    school_absences = filter_data(factors_data, 'School Absences', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'school_absences.csv')
+    
+    prepare_barchart(school_absences, 'school_absences_barchart.csv')
+
+    school_exclusions = filter_data(factors_data, 'School Exclusions', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'school_exclusions.csv')
+    
+    prepare_barchart(school_exclusions, 'school_exclusions_barchart.csv')
+
+    school_suspensions = filter_data(factors_data, 'School Suspensions', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'school_suspensions.csv')
+    
+    prepare_barchart(school_suspensions, 'school_suspensions_barchart.csv')
+
+    socially_renting_households = filter_data(factors_data, 'Socially renting households', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'socially_renting_households.csv')
+    
+    prepare_barchart(socially_renting_households, 'socially_renting_households_barchart.csv')
+
+    unpaid_carer_aged_16_24 = filter_data(factors_data, 'Unpaid carer (age 16-24)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'unpaid_carer_aged_16_24.csv')
+    
+    prepare_barchart(unpaid_carer_aged_16_24, 'unpaid_carer_aged_16_24_barchart.csv')
+
+    total_score = filter_data(factors_data, 'Total Score', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'total_score.csv')
+    
+    prepare_barchart(total_score, 'total_score_barchart.csv')
+
+    unpaid_carer_aged_16_24 = filter_data(factors_data, 'Unpaid carer (age 16-24)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'unpaid_carer_aged_16_24.csv')
+    
+    prepare_barchart(unpaid_carer_aged_16_24, 'unpaid_carer_aged_16_24_barchart.csv')
+
+    weighted_scores_double = filter_data(factors_data, 'Weighted scores (double)', fields=fields).pipe(
+        clean_nulls).pipe(limit_to_england).rename(columns={ 'local_authority_code': 'Local Authority Code', 
+                                                            'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+                                                            save_to_file, 'weighted_scores_double.csv')
+    
+    prepare_barchart(weighted_scores_double, 'weighted_scores_double_barchart.csv')
+
+    scores_table = weighted_scores_double.sort_values(by=['Weighted Score']).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
         save_to_file, 'weighted_scores_table.csv'
     )
-
-    factors_data = factors_data.pivot(
-        index=['local_authority_code', 'local_authority_name', 'group'], columns='variable', values='value').reset_index().rename(
-            columns=column_name_mapper).pipe(
-            clean_nulls).pipe(
-                limit_to_england).pipe(
-                        save_to_file, 'neet_factors_table.csv')
 
 
 
