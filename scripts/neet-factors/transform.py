@@ -61,7 +61,7 @@ def prepare_hexmap(data, variable, filter_field):
     return data 
 
 def prepare_barchart(data, filename):
-    data.drop(columns=['local_authority_code']).sort_values(by=['value']).head(20).pipe(
+    data.drop(columns=['local_authority_code']).sort_values(by=['value'], ascending=False).head(20).pipe(
         save_to_file, filename
     )
 
