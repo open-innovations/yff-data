@@ -16,10 +16,24 @@ aps_raw_url: https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?geograp
 claimant_url: https://github.com/open-innovations/yff-data-pipelines/blob/main/data/processed/claimants/claimants-per-population-latest.csv
 
 css: |
-  .pane .oi-viz {
+  .pane .oi-map-hex {
     max-width:30em;
     margin-right:auto;
     margin-left:auto;
+  }
+
+  .pane .oi-chart-bar svg {
+    width: auto!important;
+  }
+
+  .pane .oi-chart-bar {
+    text-align: center;
+  }
+
+  .pane .oi-table {
+    max-width: 60rem;
+    text-align: center;
+    margin: auto;
   }
 
 # featured: "#children-in-poverty figure"
@@ -60,13 +74,13 @@ chart_description: |
     {% endcomp %}
 
     <section style = "padding-top:3rem;">
-    <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
+    <h3>Ranked Local Authorities for this Dataset</h3>
+    <p>The chart below shows the local authorities with the lowest ranking scores for this dataset.</p>
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
           data: view.total_score_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -117,7 +131,7 @@ chart_description: |
       {{ comp.oi.chart.bar({ config: {
           data: view.weighted_scores_double_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -169,7 +183,7 @@ chart_description: |
       {{ comp.oi.chart.bar({ config: {
           data: view.children_in_poverty_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -222,7 +236,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.children_looked_after_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -274,7 +288,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.disability_all_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -326,7 +340,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.disability_under_25_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -378,7 +392,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.economic_inactivity_neet_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -431,7 +445,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.fertility_rates_20_to_24_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -483,7 +497,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.fertility_rates_under_20_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -535,7 +549,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.imd_crime_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -587,7 +601,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.imd_health_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -639,7 +653,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.lone_parent_households_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -691,7 +705,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.pupils_with_sen_support_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -743,7 +757,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.qualification_below_level_2_aged_16_24_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -795,7 +809,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.qualification_below_level_2_all_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -847,7 +861,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.school_absences_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -899,7 +913,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.school_exclusions_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -951,7 +965,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.school_suspensions_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -1003,7 +1017,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.socially_renting_households_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -1055,7 +1069,7 @@ x
       {{ comp.oi.chart.bar({ config: {
           data: view.unpaid_carer_aged_16_24_barchart.rows,
           category: 'local_authority_name',
-          width: 1200,
+          width: 900,
           series: [
             { title: 'Weighted Score', value: 'value' }
           ],
@@ -1091,13 +1105,12 @@ x
       The table below shows the local authorities that scored the highest weighted average of NEET factors. Higher values indicate regions where young people have a higher likelihood of being NEET.
     </p>
 
-    {% comp 'display.figure', style='width: 60rem; padding-top: 2rem;' %}
+    {% comp 'display.figure'%}
       {{ comp.oi.table({
         config: {
           columns: [
             {'name':'Local Authority'},
-            {'name':'local_authority_code'},
-            {'name':'Weighted Score', 'scale': 'YFF', 'min': 0, 'value' : '{{ Weighted Score | toFixed(2) }}' }
+            {'name':'Weighted Score', 'scale': 'YFF', 'template': '{{ Weighted Score | toFixed(2) }}', 'align': 'center' }
           ],
           data: view.weighted_scores_table.rows 
         } }
