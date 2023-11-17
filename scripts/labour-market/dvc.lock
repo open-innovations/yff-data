@@ -13,8 +13,8 @@ stages:
       size: 628
     - path: working/upstream/lms.csv
       hash: md5
-      md5: 72d52598a0ba79effd075f9f66180a4d
-      size: 17934704
+      md5: 3b11cff5eba3e1ccf4cbcf47903ab5b6
+      size: 18260347
     outs:
     - path: data/labour-market/monthly-rolling.csv
       hash: md5
@@ -34,7 +34,7 @@ stages:
       nfiles: 6
     - path: ../../working/upstream/metadata.csv
       hash: md5
-      md5: e422fe1a3a9f3c565d25d36ebbac87ed
+      md5: 0a4ec3182c92e88a897711ff9f023660
       size: 160
     - path: config.py
       hash: md5
@@ -71,5 +71,5 @@ stages:
       size: 1942
     - path: ../../src/dashboard/labour-market/_data/latest.json
       hash: md5
-      md5: a923981e1bb1ee513b7a1639a3ffca23
+      md5: 2c884ea3c6ccfb0cfe7439d1020461a2
       size: 537
