@@ -55,7 +55,7 @@
     });
 
     // Save a copy of the SVG if it exists
-    svg = el.querySelector(".chart > svg, .svg-map > svg, .hex-map > svg, .oi-map-inner > svg");
+    svg = el.querySelector(".chart > svg, .svg-map > svg, .hex-map > svg, .oi-chart > svg, .oi-map-inner > svg");
     if (svg) {
       // Add "Download SVG" option
       btn = document.createElement("button");

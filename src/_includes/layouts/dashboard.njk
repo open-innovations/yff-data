@@ -7,7 +7,17 @@ layout: layouts/simple.njk
 {% endcomp %}
 
 {% if visualisation.headline %}
-{{- comp.viz.main({ visualisations: visualisation.headline, test: false, headingLevel: 2 }) | safe -}}
+
+	{% if visualisation.headline.type == "oi.dashboard" %}
+		<div class="panes">
+			{% comp 'display.figure', visualisation.headline %}
+				<h2>{{ visualisation.headline.title }}</h2>
+				{{- comp.oi.dashboard ({ config: visualisation.headline.config }) | safe -}}
+			{% endcomp %}
+		</div>
+	{% else %}
+		{{- comp.viz.main({ visualisations: visualisation.headline, test: false, headingLevel: 2 }) | safe -}}
+	{% endif %}
 {% endif %}
 
 {% set my_annotations = annotations | get_annotations(srcPath) %}

@@ -32,7 +32,74 @@ topics:
   published by the Office of National Statistics, and show the estimated vacancies over a rolling three-month period.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('estimated_vacancies'), test: false }) | safe }}
+
+<div class="panes">
+
+	{% comp 'display.figure', { id: 'estimated-vacancies', source_file: '/data/vacancies/monthly_vacancies.csv' } %}
+		<span class="tab-title">Estimated Number of Vacancies</span>
+		<h3>Estimated number of vacancies (seasonally adjusted)</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+			"axis": {
+				"x": {
+					"grid": {
+						"show": true,
+						"stroke-dasharray": "6 2",
+						"stroke-width": "1"
+					},
+					"tick": {
+						"align": "end",
+						"labels": "quarter_axis_label",
+						"options": {
+							"font-size": 14
+						}
+					},
+					"title": {
+						"label": "Rolling 3-month period"
+					}
+				},
+				"y": {
+					"min": 0,
+					"max": 1400,
+					"dominant-baseline": "text-bottom",
+					"grid": {
+						"show": true
+					},
+					"title": {
+						"label": "Number of vacancies (thousands)"
+					}
+				}
+			},
+			"columns": [
+				{
+					"name": "Label",
+					"template": "{{ quarter_label }} </br> {{ value | multiply(1000) | toLocaleString() }} vacancies"
+				}
+			],
+			"data": "sources.vacancies.monthly_vacancies",
+			"height": 600,
+			"legend": {
+				"position": "top",
+				"show": false
+			},
+			"padding": {
+				"right": 16
+			},
+			"series": [
+				{
+					"title": "value",
+					"tooltip": "Label",
+					"x": "row",
+					"y": "value"
+				}
+			],
+			"width": 1120
+		}
+		}) | safe }}
+	{% endcomp %}
+
+</div>
+
 
 <h2>Growth by sector</h2>
 
@@ -44,5 +111,262 @@ topics:
  Report</a> published by the Youth Futures Foundation.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('quarterly_growth_all_sectors', 'growth_key_youth_sectors', 'growth_wanted_youth_sectors'), test: false }) | safe }}
+{% comp 'tabbed', { tab_count: 3 } %}
+
+		{% comp 'display.figure', { id: '', source_file: '/data/vacancies/quarterly_growth_all_sectors.csv' } %}
+			<span class="tab-title">All sectors</span>
+			<h3>Quarterly growth in vacancies by sector</h3>
+			{{ comp.oi.chart.bar({
+				"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"max": 80,
+						"min": -40,
+						"ticks": [
+							{
+								"label": "-20%",
+								"value": -20
+							},
+							{
+								"label": "0%",
+								"value": 0
+							},
+							{
+								"label": "20%",
+								"value": 20
+							},
+							{
+								"label": "40%",
+								"value": 40
+							},
+							{
+								"label": "60%",
+								"value": 60
+							},
+							{
+								"label": "80%",
+								"value": 80
+							}
+						]
+					},
+					"y": {
+						"grid": {
+							"show": true,
+							"stroke-width": "0.5"
+						}
+					}
+				},
+				"category": "Sector",
+				"columns": [
+					{
+						"name": "growth_last_quarter",
+						"template": "{{Sector}}\nmonthly change:  {{ Growth since previous quarter (%) | toFixed(1)}}%"
+					},
+					{
+						"name": "growth_compared_with_2020",
+						"template": "{{Sector}}\nquarterly change:  {{ Growth since pre-coronavirus January to March 2020 (%) | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.vacancies.quarterly_growth_all_sectors",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": true
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"title": "Growth since previous quarter (%)",
+						"tooltip": "growth_last_quarter",
+						"value": "Growth since previous quarter (%)"
+					},
+					{
+						"title": "Growth since pre-coronavirus January to March 2020 (%)",
+						"tooltip": "growth_compared_with_2020",
+						"value": "Growth since pre-coronavirus January to March 2020 (%)"
+					}
+				],
+				"width": 1120
+			}
+			}) | safe }}
+		{% endcomp %}
+
+		{% comp 'display.figure', { id: '', source_file: '/data/vacancies/growth_key_youth_sectors.csv' } %}
+			<span class="tab-title">Key sectors for youth employment</span>
+			<h3>Quarterly growth in vacancies by key sectors for young people</h3>
+			{{ comp.oi.chart.bar({
+				"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"max": 90,
+						"min": -23,
+						"ticks": [
+							{
+								"label": "-20%",
+								"value": -20
+							},
+							{
+								"label": "0%",
+								"value": 0
+							},
+							{
+								"label": "20%",
+								"value": 20
+							},
+							{
+								"label": "40%",
+								"value": 40
+							},
+							{
+								"label": "60%",
+								"value": 60
+							},
+							{
+								"label": "80%",
+								"value": 80
+							}
+						]
+					},
+					"y": {
+						"grid": {
+							"show": true,
+							"stroke-width": "0.5"
+						}
+					}
+				},
+				"category": "Sector",
+				"columns": [
+					{
+						"name": "growth_last_quarter",
+						"template": "{{Sector}}\nquarterly change:  {{ Growth since previous quarter (%) | toFixed(1)}}%"
+					},
+					{
+						"name": "growth_compared_with_2020",
+						"template": "{{Sector}}\ngrowth since pre-coronavirus:  {{ Growth since pre-coronavirus January to March 2020 (%) | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.vacancies.growth_key_youth_sectors",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": true
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"title": "Growth since previous quarter (%)",
+						"tooltip": "growth_last_quarter",
+						"value": "Growth since previous quarter (%)"
+					},
+					{
+						"title": "Growth since pre-coronavirus January to March 2020 (%)",
+						"tooltip": "growth_compared_with_2020",
+						"value": "Growth since pre-coronavirus January to March 2020 (%)"
+					}
+				],
+				"width": 1120
+			}
+			}) | safe }}
+		{% endcomp %}
+
+		{% comp 'display.figure', { id: '', source_file: '/data/vacancies/growth_wanted_youth_sectors.csv' } %}
+			<span class="tab-title">Sectors targeted by young people</span>
+			<h3>Quarterly growth in vacancies in the most desirable sectors for young people</h3>
+			{{ comp.oi.chart.bar({
+				"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"max": 90,
+						"min": -23,
+						"ticks": [
+							{
+								"label": "-20%",
+								"value": -20
+							},
+							{
+								"label": "0%",
+								"value": 0
+							},
+							{
+								"label": "20%",
+								"value": 20
+							},
+							{
+								"label": "40%",
+								"value": 40
+							},
+							{
+								"label": "60%",
+								"value": 60
+							},
+							{
+								"label": "80%",
+								"value": 80
+							}
+						]
+					},
+					"y": {
+						"grid": {
+							"show": true,
+							"stroke-width": "0.5"
+						}
+					}
+				},
+				"category": "Sector",
+				"columns": [
+					{
+						"name": "growth_last_quarter",
+						"template": "{{Sector}}\nmonthly change:  {{ Growth since previous quarter (%) | toFixed(1)}}%"
+					},
+					{
+						"name": "growth_compared_with_2020",
+						"template": "{{Sector}}\nquarterly change:  {{ Growth since pre-coronavirus January to March 2020 (%) | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.vacancies.growth_wanted_youth_sectors",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": true
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"title": "Growth since previous quarter (%)",
+						"tooltip": "growth_last_quarter",
+						"value": "Growth since previous quarter (%)"
+					},
+					{
+						"title": "Growth since pre-coronavirus January to March 2020 (%)",
+						"tooltip": "growth_compared_with_2020",
+						"value": "Growth since pre-coronavirus January to March 2020 (%)"
+					}
+				],
+				"width": 1120
+			}
+			}) | safe }}
+		{% endcomp %}
+
+{% endcomp %} {# tabbed #}
 

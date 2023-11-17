@@ -1,5 +1,9 @@
+title: "Consumer prices index change (%)"
+type: "oi.dashboard"
+source_file: /data/cpi/headlines.csv
+id: headlines
 config:
-  file: /data/cpi/headlines.csv
+  data: "sources.cpi.headlines"
   note: Note
   panels:
     - colour: Orange
@@ -17,5 +21,3 @@ config:
     prefix: sign
   value: Value
   width: 333px
-title: "Consumer prices index change (%)"
-type: dashboard

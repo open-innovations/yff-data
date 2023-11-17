@@ -1,7 +1,8 @@
 title: Vacancy headlines
-type: dashboard
+type: "oi.dashboard"
+source_file: /data/vacancies/headlines.csv
 config:
-  file: /data/vacancies/headlines.csv
+  data: "sources.vacancies.headlines"
   title: 'Title'
   value: 'Value'
   width: 500px

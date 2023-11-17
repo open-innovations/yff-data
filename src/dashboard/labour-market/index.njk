@@ -1,6 +1,7 @@
 ---
 title: Labour Market
 priority: 50
+layout: layouts/dashboard.njk
 tags:
   - dashboard
   - annotatable
@@ -45,7 +46,122 @@ The page is automatically updated when ONS publishes new data.
   and duration (seasonally adjusted)</a> dataset.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick('long_term_unemployment_3_years', 'long_term_unemployment_all'), test: false }) | safe }}
+{% comp 'tabbed', { tab_count: 2 } %}
+
+  {% comp 'display.figure', { id: 'long_term_unemployment_3_years', source_file: '/data/labour-market/long_term_unemployed_last_3_years.csv' } %}
+	 <span class="tab-title">Last 3 years</span>
+	 <h3>Long-term unemployment rate for young people (16-24) over the last 3 years</h3>
+	{{ comp.oi.chart.line({
+		"config": {
+		"padding": {"right": 16},
+		"width": 1120,
+		"height": 600,
+		"data": "sources.labour-market.long_term_unemployed_last_3_years",
+		legend: { "show": true, "position": "top" },
+		"axis": {
+			"x": {
+				"min": 0,
+				"title": {
+					"label": "Rolling 3-month period"
+				},
+				"grid": {
+					"show": true,
+					"stroke-dasharray": "6 2",
+					"stroke-width": 1
+				},
+			"tick": {
+				"labels": "quarter_axis_label",
+				"align": "end",
+				"options": {"font-size":14}
+			}
+			},
+			"y": { "min": 0, "max": 35, tick: { spacing: 5 }, grid: { show: true }, "title": { "label": "Rate (%)" }, "dominant-baseline": "text-bottom" }
+		},
+		"columns": [
+			{
+				"name": "label_6_to_12_months",
+				"template": "{{quarter_label}}\nProportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%"
+			},
+			{
+				"name": "label_12_months",
+				"template": "{{quarter_label}}\nProportion over 12 months: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%"
+			}
+		],
+		"series": [
+			{
+				"title": "6 to 12 months",
+				"x": "quarter_index",
+				"y": "age_16_to_24_unemployed_6_to_12_months_rate_sa",
+				"tooltip": "label_6_to_12_months"
+			},
+			{
+				"title": "12 months",
+				"x": "quarter_index",
+				"y": "age_16_to_24_unemployed_over_12_months_rate_sa",
+				"tooltip": "label_12_months"
+			}
+		]
+	 }
+	 }) | safe }}
+  {% endcomp %}
+
+
+
+  {% comp 'display.figure', { id: 'long_term_unemployment_all', source_file: '/data/labour-market/long_term_unemployed_all_data.csv' } %}
+	 <span class="tab-title">Since 2000</span>
+	 <h3>Long-term unemployment rate for young people (16-24) since 2000</h3>
+	{{ comp.oi.chart.line({
+	 "config": {
+		"padding": {"right": 16},
+		"width": 1120,
+		"height": 600,
+		"data": "sources.labour-market.long_term_unemployed_all_data",
+		"legend": {
+			"show": true,
+			"position": "top"
+		},
+		"axis": {
+			"x": {
+				"title": { "label": "Rolling 3-month period" },
+				"grid": { "show": true, "stroke-dasharray": "6 2", "stroke-width": 1 },
+			"min": 0,
+			"tick": {
+				"labels": "quarter_axis_label",
+				"align": "end",
+				"options": {"font-size":14}
+			}
+			},
+			"y": { "min": 0, tick: { spacing: 5 }, grid: { show: true }, "title": { "label": "Rate (%)" }, "dominant-baseline": "text-bottom" }
+		},
+		"columns": [
+			{
+				"name": "label_6_to_12_months",
+				"template": "{{quarter_label}}\nProportion between 6 and 12 months: {{age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%"
+			},
+			{
+				"name": "label_12_months",
+				"template": "{{quarter_label}}\nProportion over 12 months: {{age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%"
+			}
+		],
+		"series": [
+			{
+				"title": "6 to 12 months",
+				"x": "quarter_index",
+				"y": "age_16_to_24_unemployed_6_to_12_months_rate_sa",
+				"tooltip": "label_6_to_12_months"
+			},
+			{
+				"title": "12 months",
+				"x": "quarter_index",
+				"y": "age_16_to_24_unemployed_over_12_months_rate_sa",
+				"tooltip": "label_12_months"
+			}
+		]
+	 }
+	 }) | safe }}
+  {% endcomp %}
+
+{% endcomp %}
 
 <h2 id="labour-market-status">Labour market status (seasonally adjusted)</h2>
 
@@ -59,52 +175,1015 @@ The page is automatically updated when ONS publishes new data.
   SA: Educational status and labour market status for people aged from 16 to 24 (seasonally adjusted)</a> dataset.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick(
-  'economic_activity_not_in_full_time_education_3_years',
-  'economic_activity_in_full_time_education_3_years',
-  'economic_activity_3_years'
-), test: false }) | safe }}
+
+
+
+{% comp 'tabbed', { tab_count: 3 } %}
+
+  {% comp 'display.figure', { id: 'economic_activity_not_in_full_time_education_3_years', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+	 <span class="tab-title">Not in full-time education</span>
+	 <h3>Labour market status for young people (16-24) not in full-time education</h3>
+	{{ comp.oi.chart.line({
+	 "config": {
+		"padding": {"right": 16},
+		"width": 1120,
+		"height": 600,
+	  	"data": "sources.labour-market.labour_market_status_last_3_years",
+		"legend": {
+		  "show": true,
+		  "position": "top"
+		},
+		"axis": {
+		  "x": {
+			 "title": {
+				"label": "Rolling 3-month period"
+			 },
+			 "grid": { "show": true },
+			"tick": {
+				"labels": "quarter_axis_label",
+				"align": "end",
+				"options": {"font-size":14}
+			}
+		  },
+		  "y": { "min": 0, "max": 80, tick: { spacing: 10 }, grid: { show: true }, "title": { "label": "Rate (%)" } }
+		},
+		"columns": [
+		  {
+			 "name": "x_tick_labels",
+			 "template": "{{ quarter_axis_label }}"
+		  },
+		  {
+			 "name": "unemployment_rate_label",
+			 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+		  },
+		  {
+			 "name": "economically_inactive_rate_label",
+			 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+		  },
+		  {
+			 "name": "employment_rate_label",
+			 "template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+		  }
+		],
+		"series": [
+		  {
+			 "title": "Overall unemployment",
+			 "x": "quarter_index",
+			 "y": "age_16_to_24_not_in_ft_education_unemployment_rate_sa",
+			 "tooltip": "unemployment_rate_label"
+		  },
+		  {
+			 "title": "Economically inactive",
+			 "x": "quarter_index",
+			 "y": "age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa",
+			 "tooltip": "economically_inactive_rate_label"
+		  },
+		  {
+			 "title": "In employment",
+			 "x": "quarter_index",
+			 "y": "age_16_to_24_not_in_ft_education_employment_rate_sa",
+			 "tooltip": "employment_rate_label"
+		  }
+		]
+	}
+	 }) | safe }}
+  {% endcomp %}
+
+  {% comp 'display.figure', { id: 'economic_activity_not_in_full_time_education_3_years', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+	 <span class="tab-title">In full-time education</span>
+	 <h3>Labour market status for young people (16-24) in full-time education</h3>
+	{{ comp.oi.chart.line({
+	 "config": {
+		"padding": {"right": 16},
+		"width": 1120,
+		"height": 600,
+	  "data": "sources.labour-market.labour_market_status_last_3_years",
+		"legend": {
+		  "show": true,
+		  "position": "top"
+		},
+		"axis": {
+		  "x": {
+			 "title": {
+				"label": "Rolling 3-month period"
+			 },
+			 "grid": { "show": true },
+			"tick": {
+				"labels": "quarter_axis_label",
+				"align": "end",
+				"options": {"font-size":14}
+			}
+		  },
+		  "y": { "min": 0, "max": 80, tick: { spacing: 10 }, grid: { show: true }, "title": { "label": "Rate (%)" } }
+		},
+		 "columns": [
+			{
+				"name": "unemployment_rate_label",
+				"template": "{{quarter_label}}: {{age_16_to_24_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+			},
+			{
+				"name": "economically_inactive_rate_label",
+				"template": "{{quarter_label}}: {{age_16_to_24_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+			},
+			{
+				"name": "employment_rate_label",
+				"template": "{{quarter_label}}: {{age_16_to_24_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+			}
+		],
+		"series": [
+			{
+				"title": "Overall unemployment",
+				"x": "quarter_index",
+				"y": "age_16_to_24_in_ft_education_unemployment_rate_sa",
+				"tooltip": "unemployment_rate_label"
+			},
+			{
+				"title": "Economically inactive",
+				"x": "quarter_index",
+				"y": "age_16_to_24_in_ft_education_economic_inactivity_rate_sa",
+				"tooltip": "economically_inactive_rate_label"
+			},
+			{
+				"title": "In employment",
+				"x": "quarter_index",
+				"y": "age_16_to_24_in_ft_education_employment_rate_sa",
+				"tooltip": "employment_rate_label"
+			}
+		]
+	}
+	 }) | safe }}
+  {% endcomp %}
+
+  {% comp 'display.figure', { id: 'economic_activity_3_years', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+	 <span class="tab-title">All young people</span>
+	 <h3>Labour market status for young people (16-24)</h3>
+	{{ comp.oi.chart.line({
+	 "config": {
+		"padding": {"right": 16},
+		"width": 1120,
+		"height": 600,
+	  "data": "sources.labour-market.labour_market_status_last_3_years",
+		"legend": {
+		  "show": true,
+		  "position": "top"
+		},
+		"axis": {
+		  "x": {
+			 "title": {
+				"label": "Rolling 3-month period"
+			 },
+			 "grid": { "show": true },
+			"tick": {
+				"labels": "quarter_axis_label",
+				"align": "end",
+				"options": {"font-size":14}
+			}
+		  },
+		  "y": { "min": 0, "max": 80, tick: { spacing: 10 }, grid: { show: true }, "title": { "label": "Rate (%)" } }
+		},
+		 "columns": [
+			{
+				"name": "unemployment_rate_label",
+				"template": "{{quarter_label}}: {{age_16_to_24_unemployment_rate_sa | toFixed(1)}}%"
+			},
+			{
+				"name": "economically_inactive_rate_label",
+				"template": "{{quarter_label}}: {{age_16_to_24_economic_inactivity_rate_sa | toFixed(1)}}%"
+			},
+			{
+				"name": "employment_rate_label",
+				"template": "{{quarter_label}}: {{age_16_to_24_employment_rate_sa | toFixed(1)}}%"
+			}
+		],
+		"series": [
+			{
+				"title": "Overall unemployment",
+				"x": "quarter_index",
+				"y": "age_16_to_24_unemployment_rate_sa",
+				"tooltip": "unemployment_rate_label"
+			},
+			{
+				"title": "Economically inactive",
+				"x": "quarter_index",
+				"y": "age_16_to_24_economic_inactivity_rate_sa",
+				"tooltip": "economically_inactive_rate_label"
+			},
+			{
+				"title": "In employment",
+				"x": "quarter_index",
+				"y": "age_16_to_24_employment_rate_sa",
+				"tooltip": "employment_rate_label"
+			}
+		]
+	}
+	 }) | safe }}
+  {% endcomp %}
+
+{% endcomp %}
+
 
 <p>
 The following charts compare labour market status for young people not in full-time education aged 16-17 and the group aged 18-24.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick(
-  'status_16_to_17',
-  'status_18_to_24',
-  'economic_activity_not_in_full_time_education_3_years'
-), tab_override: [null, null, '16-24'], test: false }) | safe }}
+{% comp 'tabbed', { tab_count: 3 } %}
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">16-17</span>
+		<h3>Labour market status for young people not in full-time education aged 16 to 17</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+				"padding": {"right": 16},
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"labels": "quarter_axis_label",
+							"align": "end",
+							"options": {"font-size":14}
+						},
+						"title": {
+							"label": "Rolling 3-month period"
+						}
+					},
+					"y": {
+						"grid": {
+							"show": true
+						},
+					 "min": 0,
+						"max": 80,
+						"title": {
+							"label": "Rate (%)"
+						}
+					}
+				},
+				"columns": [
+					{
+						"name": "unemployment_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_17_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "economically_inactive_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_17_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "employment_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_17_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.labour-market.labour_market_status_last_3_years",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": "1"
+				},
+				"series": [
+					{
+						"title": "Overall unemployment",
+						"tooltip": "unemployment_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_17_not_in_ft_education_unemployment_rate_sa"
+					},
+					{
+						"title": "Economically inactive",
+						"tooltip": "economically_inactive_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_17_not_in_ft_education_economic_inactivity_rate_sa"
+					},
+					{
+						"title": "In employment",
+						"tooltip": "employment_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_17_not_in_ft_education_employment_rate_sa"
+					}
+				],
+				"width": 1120
+			}
+		}) | safe }}
+	{% endcomp %}
+
+	{% comp 'display.figure', { id: 'education_status_last_3_years', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">18-24</span>
+		<h3>Labour market status for young people not in full-time education aged 18 to 24</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+				"padding": {"right": 16},
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"labels": "quarter_axis_label",
+							"align": "end",
+							"options": {"font-size":14}
+						},
+						"title": {
+							"label": "Rolling 3-month period"
+						}
+					},
+					"y": {
+						"grid": {
+							"show": true
+						},
+					 "min": 0,
+						"max": 80,
+						"title": {
+							"label": "Rate (%)"
+						}
+					}
+				},
+				"columns": [
+					{
+						"name": "unemployment_rate_label",
+						"template": "{{quarter_label}}: {{age_18_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "economically_inactive_rate_label",
+						"template": "{{quarter_label}}: {{age_18_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "employment_rate_label",
+						"template": "{{quarter_label}}: {{age_18_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.labour-market.labour_market_status_last_3_years",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": "1"
+				},
+				"series": [
+					{
+						"title": "Overall unemployment",
+						"tooltip": "unemployment_rate_label",
+						"x": "quarter_index",
+						"y": "age_18_to_24_not_in_ft_education_unemployment_rate_sa"
+					},
+					{
+						"title": "Economically inactive",
+						"tooltip": "economically_inactive_rate_label",
+						"x": "quarter_index",
+						"y": "age_18_to_24_not_in_ft_education_economic_inactivity_rate_sa"
+					},
+					{
+						"title": "In employment",
+						"tooltip": "employment_rate_label",
+						"x": "quarter_index",
+						"y": "age_18_to_24_not_in_ft_education_employment_rate_sa"
+					}
+				],
+				"width": 1120
+			}
+		}) | safe }}
+	{% endcomp %}
+
+	{% comp 'display.figure', { id: 'education_status_last_3_years', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">16-24</span>
+		<h3>Labour market status for young people (16-24) not in full-time education</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+				"padding": {"right": 16},
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"labels": "quarter_axis_label",
+							"align": "end",
+							"options": {"font-size":14}
+						},
+						"title": {
+							"label": "Rolling 3-month period"
+						}
+					},
+					"y": {
+						"grid": {
+							"show": true
+						},
+						"min": 0,
+						"max": 80,
+						"title": {
+							"label": "Rate (%)"
+						}
+					}
+				},
+				"columns": [
+					{
+						"name": "unemployment_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "economically_inactive_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "employment_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.labour-market.labour_market_status_last_3_years",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": "1"
+				},
+				"series": [
+					{
+						"title": "Overall unemployment",
+						"tooltip": "unemployment_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_24_not_in_ft_education_unemployment_rate_sa"
+					},
+					{
+						"title": "Economically inactive",
+						"tooltip": "economically_inactive_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa"
+					},
+					{
+						"title": "In employment",
+						"tooltip": "employment_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_24_not_in_ft_education_employment_rate_sa"
+					}
+				],
+				"width": 1120
+			}
+		}) | safe }}
+	{% endcomp %}
+
+
+{% endcomp %}
 
 <p>
 The following charts compare labour market status for men and women aged 16 to 24 not in full-time education.
 </p>
 
-{{ comp.viz.main({ visualisations: visualisation | pick(
-  'status_women',
-  'status_men',
-  'economic_activity_not_in_full_time_education_3_years'
-), tab_override: [null, null, 'All young people'], test: false }) | safe }}
+{% comp 'tabbed', { tab_count: 3 } %}
+
+	{% comp 'display.figure', { id: 'education_status_women', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">Women</span>
+		<h3>Labour market status for women aged 16 to 24 not in full-time education</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"align": "end",
+							"labels": "quarter_axis_label",
+							"options": {
+								"font-size": 14
+							}
+						},
+						"title": {
+							"label": "Rolling 3-month period"
+						}
+					},
+					"y": {
+						"grid": {
+							"show": true
+						},
+					"min": 0,
+					"max": 80,
+						"title": {
+							"label": "Rate (%)"
+						}
+					}
+				},
+				"columns": [
+					{
+						"name": "unemployment_rate_label",
+						"template": "{{quarter_label}}: {{women_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "economically_inactive_rate_label",
+						"template": "{{quarter_label}}: {{women_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "employment_rate_label",
+						"template": "{{quarter_label}}: {{women_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.labour-market.labour_market_status_last_3_years",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": "1"
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"title": "Overall unemployment",
+						"tooltip": "unemployment_rate_label",
+						"x": "quarter_index",
+						"y": "women_16_to_24_not_in_ft_education_unemployment_rate_sa"
+					},
+					{
+						"title": "Economically inactive",
+						"tooltip": "economically_inactive_rate_label",
+						"x": "quarter_index",
+						"y": "women_16_to_24_not_in_ft_education_economic_inactivity_rate_sa"
+					},
+					{
+						"title": "In employment",
+						"tooltip": "employment_rate_label",
+						"x": "quarter_index",
+						"y": "women_16_to_24_not_in_ft_education_employment_rate_sa"
+					}
+				],
+				"width": 1120
+			}
+		}) | safe }}
+	{% endcomp %}
+
+	{% comp 'display.figure', { id: 'education_status_men', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">Men</span>
+		<h3>Labour market status for men aged 16 to 24 not in full-time education</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"align": "end",
+							"labels": "quarter_axis_label",
+							"options": {
+								"font-size": 14
+							}
+						},
+						"title": {
+							"label": "Rolling 3-month period"
+						}
+					},
+					"y": {
+						"grid": {
+							"show": true
+						},
+						"min": 0,
+						"max": 80,
+						"title": {
+							"label": "Rate (%)"
+						}
+					}
+				},
+				"columns": [
+					{
+						"name": "unemployment_rate_label",
+						"template": "{{quarter_label}}: {{men_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "economically_inactive_rate_label",
+						"template": "{{quarter_label}}: {{men_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "employment_rate_label",
+						"template": "{{quarter_label}}: {{men_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.labour-market.labour_market_status_last_3_years",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": "1"
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"title": "Overall unemployment",
+						"tooltip": "unemployment_rate_label",
+						"x": "quarter_index",
+						"y": "men_16_to_24_not_in_ft_education_unemployment_rate_sa"
+					},
+					{
+						"title": "Economically inactive",
+						"tooltip": "economically_inactive_rate_label",
+						"x": "quarter_index",
+						"y": "men_16_to_24_not_in_ft_education_economic_inactivity_rate_sa"
+					},
+					{
+						"title": "In employment",
+						"tooltip": "employment_rate_label",
+						"x": "quarter_index",
+						"y": "men_16_to_24_not_in_ft_education_employment_rate_sa"
+					}
+				],
+				"width": 1120
+			}
+		}) | safe }}
+	{% endcomp %}
+
+	{% comp 'display.figure', { id: 'education_status_last_3_years', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">All young people</span>
+		<h3>Labour market status for young people (16-24) not in full-time education</h3>
+		{{ comp.oi.chart.line({
+			"config": {
+				"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"align": "end",
+							"labels": "quarter_axis_label",
+							"options": {
+								"font-size": 14
+							}
+						},
+						"title": {
+							"label": "Rolling 3-month period"
+						}
+					},
+					"y": {
+						"grid": {
+							"show": true
+						},
+						"min": 0,
+						"max": 80,
+						"title": {
+							"label": "Rate (%)"
+						}
+					}
+				},
+				"columns": [
+					{
+						"name": "unemployment_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_unemployment_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "economically_inactive_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1)}}%"
+					},
+					{
+						"name": "employment_rate_label",
+						"template": "{{quarter_label}}: {{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1)}}%"
+					}
+				],
+				"data": "sources.labour-market.labour_market_status_last_3_years",
+				"height": 600,
+				"legend": {
+					"position": "top",
+					"show": "1"
+				},
+				"padding": {
+					"right": 16
+				},
+				"series": [
+					{
+						"title": "Overall unemployment",
+						"tooltip": "unemployment_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_24_not_in_ft_education_unemployment_rate_sa"
+					},
+					{
+						"title": "Economically inactive",
+						"tooltip": "economically_inactive_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa"
+					},
+					{
+						"title": "In employment",
+						"tooltip": "employment_rate_label",
+						"x": "quarter_index",
+						"y": "age_16_to_24_not_in_ft_education_employment_rate_sa"
+					}
+				],
+				"width": 1120
+			}
+		}) | safe }}
+	{% endcomp %}
+
+{% endcomp %}
+
 
 <h2 data-dependencies="/assets/js/table-sorter.js">Data tables</h2>
 
 <h3>Long term unemployment</h3>
-{{ comp.viz.main({ visualisations: tables | pick(0, 1), tab_override: [
-  '6 to 12 months',
-  'over 12 months'
-] }) | safe }}
+{% comp 'tabbed', { tab_count: 2 } %}
+
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/long_term_unemployed_last_3_years.csv' } %}
+		<span class="tab-title">6 to 12 months</span>
+		<p>Seasonally adjusted long-term unemployment figures (between 6 and 12 months) for young people aged 16-24 not in full-time education for the last 3 years. This data is derived from UNEM01 SA.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{ quarter_label }}"
+				},
+				{
+					"align": "right",
+					"name": "Population unemployed for between 6 and 12 months (000s)",
+					"template": "{{ age_16_to_24_unemployed_6_to_12_months_sa | toFixed(0) }}",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Population unemployed (000s)",
+					"template": "{{ age_16_to_24_unemployed_sa | toFixed(0) }}",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Proportion of unemployment between 6 and 12 months",
+					"template": "{{ age_16_to_24_unemployed_6_to_12_months_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.long_term_unemployed_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/long_term_unemployed_last_3_years.csv' } %}
+		<span class="tab-title">over 12 months</span>
+		<p>Seasonally adjusted long-term unemployment figures (over 12 months) for young people aged 16-24 not in full-time education for the last 3 years. This data is derived from UNEM01 SA.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{ quarter_label }}"
+				},
+				{
+					"align": "right",
+					"name": "Population unemployed for more than 12 months (000s)",
+					"template": "{{ age_16_to_24_unemployed_over_12_months_sa | toFixed(0) }}",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Population unemployed (000s)",
+					"template": "{{ age_16_to_24_unemployed_sa | toFixed(0) }}",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Proportion of unemployment over 12 months",
+					"template": "{{ age_16_to_24_unemployed_over_12_months_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.long_term_unemployed_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+
+{% endcomp %}
+
 
 <h3>Labour market status</h3>
-{{ comp.viz.main({ visualisations: tables | pick(2, 3), tab_override: [
-  'Not in full-time education',
-  'In full-time education'
-]  }) | safe }}
+{% comp 'tabbed', { tab_count: 2 } %}
 
-{{ comp.viz.main({ visualisations: tables | pick(4, 5), tab_override: [
-  'Women NFTE',
-  'Men NFTE'
-]  }) | safe }}
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">Not in full-time education</span>
+		<p>This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 not in full-time education, over the last 3 years. This data is derived from A06 SA.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{quarter_label}}"
+				},
+				{
+					"align": "right",
+					"name": "Employed rate",
+					"template": "{{age_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Unemployed rate",
+					"template": "{{age_16_to_24_not_in_ft_education_unemployment_rate_sa}}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Economic inactivity rate",
+					"template": "{{age_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.labour_market_status_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">In full-time education</span>
+		<p>This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for young people aged 16-24 who are in full-time education, over the last 3 years. This data is derived from A06 SA.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{quarter_label}}"
+				},
+				{
+					"align": "right",
+					"name": "Employed rate",
+					"template": "{{age_16_to_24_in_ft_education_employment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Unemployed rate",
+					"template": "{{age_16_to_24_in_ft_education_unemployment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Economic inactivity rate",
+					"template": "{{age_16_to_24_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.labour_market_status_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
 
-{{ comp.viz.main({ visualisations: tables | pick(6, 7), tab_override: [
-  '16-17 year olds NFTE',
-  '18-24 year olds NFTE'
-]  }) | safe }}
+{% endcomp %}
+
+
+
+{% comp 'tabbed', { tab_count: 2 } %}
+
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">Women NFTE</span>
+		<p>This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for women not in full-time education.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{quarter_label}}"
+				},
+				{
+					"align": "right",
+					"name": "Employed rate",
+					"template": "{{women_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Unemployed rate",
+					"template": "{{women_16_to_24_not_in_ft_education_unemployment_rate_sa}}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Economic inactivity rate",
+					"template": "{{women_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.labour_market_status_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">Men NFTE</span>
+		<p>This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for men not in full-time education.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{quarter_label}}"
+				},
+				{
+					"align": "right",
+					"name": "Employed rate",
+					"template": "{{men_16_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Unemployed rate",
+					"template": "{{men_16_to_24_not_in_ft_education_unemployment_rate_sa}}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Economic inactivity rate",
+					"template": "{{men_16_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.labour_market_status_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+
+{% endcomp %}
+
+
+
+{% comp 'tabbed', { tab_count: 2 } %}
+
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">16-17 year olds NFTE</span>
+		<p>This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for 16-17 year olds not in full-time education.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{quarter_label}}"
+				},
+				{
+					"align": "right",
+					"name": "Employed rate",
+					"template": "{{age_16_to_17_not_in_ft_education_employment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Unemployed rate",
+					"template": "{{age_16_to_17_not_in_ft_education_unemployment_rate_sa}}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Economic inactivity rate",
+					"template": "{{age_16_to_17_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.labour_market_status_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+	{% comp 'display.figure', { id: '', source_file: '/data/labour-market/labour_market_status_last_3_years.csv' } %}
+		<span class="tab-title">18-24 year olds NFTE</span>
+		<p>This table presents seasonally adjusted rates of employment, unemployment and economic inactivity for 18-24 year olds not in full-time education.</p>
+		{{ comp.oi.table({
+			"config": {
+			"columns": [
+				{
+					"align": "center",
+					"name": "Rolling 3-monthly period",
+					"template": "{{quarter_label}}"
+				},
+				{
+					"align": "right",
+					"name": "Employed rate",
+					"template": "{{age_18_to_24_not_in_ft_education_employment_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Unemployed rate",
+					"template": "{{age_18_to_24_not_in_ft_education_unemployment_rate_sa}}%",
+					"width": "28%"
+				},
+				{
+					"align": "right",
+					"name": "Economic inactivity rate",
+					"template": "{{age_18_to_24_not_in_ft_education_economic_inactivity_rate_sa | toFixed(1) }}%",
+					"width": "28%"
+				}
+			],
+			"data": "sources.labour-market.labour_market_status_last_3_years",
+			"order": "reverse"
+		}
+		}) | safe }}
+	{% endcomp %}
+
+{% endcomp %}

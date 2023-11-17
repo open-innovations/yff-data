@@ -1,13 +1,15 @@
 title: Labour Market headlines
-type: dashboard
+type: "oi.dashboard"
+source_file: /data/labour-market/headlines.csv
+id: headlines
 config:
-  id: headlines
-  file: /data/labour-market/headlines.csv
+  data: "sources.labour-market.headlines"
   title: Title
   value: Value
   note: Note
   units:
     postfix: Suffix
+  width: 250px
   panels:
     - name: Unemployment rate (young people)
       colour: Gold
