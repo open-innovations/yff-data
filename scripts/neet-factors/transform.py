@@ -177,9 +177,11 @@ if __name__ == '__main__':
     
     prepare_barchart(weighted_scores_double, 'weighted_scores_double_barchart.csv')
 
-    scores_table = weighted_scores_double.sort_values(by=['value']).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
+    scores_table = weighted_scores_double.sort_values(by=['value'], ascending=False).head(20).rename(columns= { 'local_authority_name': 'Local Authority', 'value':'Weighted Score'}).pipe(
         save_to_file, 'weighted_scores_table.csv'
     )
+
+    print(scores_table)
 
 
 
