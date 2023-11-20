@@ -1,5 +1,5 @@
 ---
-title: NEET Factors Statistics
+title: NEET Factors
 summary: |
     Data on factors that contribute to likelihood of NEET
 layout: layouts/simple.njk
@@ -34,6 +34,19 @@ css: |
     max-width: 60rem;
     text-align: center;
     margin: auto;
+  }
+
+  h2 { 
+    padding-top:1em!important;
+  }
+
+  ul {
+    margin-left: 3em!important;
+  }
+
+  section { 
+    line-height: 1.25em!important;
+    padding-top:2em!important;
   }
 
 featured: "#children-in-poverty figure"
@@ -79,7 +92,7 @@ barchart_description: |
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities for this Dataset</h3>
     {{ barchart_description | md | safe }}
     </br>
@@ -118,6 +131,7 @@ barchart_description: |
     <article id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Weighted Scores (double)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -131,10 +145,8 @@ barchart_description: |
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset. 
-    </p>
     {{ barchart_description | md | safe }}
     </br>
     {% comp 'display.figure' %}
@@ -172,6 +184,7 @@ barchart_description: |
     <article id='children-in-poverty' class='selector-block' data-selector-group="Standardised layers">
     <h2>Children in Poverty</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -185,9 +198,8 @@ barchart_description: |
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -226,6 +238,7 @@ barchart_description: |
     <article id='children-looked-after' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>Children Looked After</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -240,9 +253,8 @@ barchart_description: |
     {% endcomp %}
 x
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -282,6 +294,7 @@ x
     <article id='disability-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (all ages)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -295,9 +308,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -336,6 +348,7 @@ x
     <article id='disability-under-25' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (under 25)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -349,9 +362,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -390,6 +402,7 @@ x
     <article id='economic-inactivity-neet' class='selector-block' data-selector-group="Standardised layers">
     <h2>Economic Inactivity (NEET)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -403,9 +416,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -444,6 +456,7 @@ x
     <article id='fertility-rates-20-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Fertility Rates (aged 20-24)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -458,9 +471,8 @@ x
     {% endcomp %}
 
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
 
     {% comp 'display.figure' %}
@@ -498,6 +510,7 @@ x
     <article id='fertility-rates-under-20' class='selector-block' data-selector-group="Standardised layers">
     <h2>Fertility Rates (under 20)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -511,9 +524,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
     {% comp 'display.figure' %}
@@ -551,6 +563,7 @@ x
     <article id='imd-crime' class='selector-block' data-selector-group="Standardised layers">
     <h2>IMD Crime</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -564,9 +577,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -605,6 +617,7 @@ x
     <article id='imd-health' class='selector-block' data-selector-group="Standardised layers">
     <h2>IMD Health</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -618,9 +631,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -659,6 +671,7 @@ x
     <article id='lone-parent-households' class='selector-block' data-selector-group="Standardised layers">
     <h2>Lone Parent Households</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -672,9 +685,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -713,6 +725,7 @@ x
     <article id='pupils-with-sen-support' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>Pupils with SEN Support</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -726,9 +739,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -767,6 +779,7 @@ x
     <article id='qualification-below-level-2-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (aged 16-24)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -780,9 +793,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -821,6 +833,7 @@ x
     <article id='qualification-below-level-2-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (all)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -834,9 +847,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -875,6 +887,7 @@ x
     <article id='school-absences' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>School Absences</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -888,9 +901,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -929,6 +941,7 @@ x
     <article id='school-exclusions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Exclusions</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -942,9 +955,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -983,6 +995,7 @@ x
     <article id='school-suspensions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Suspensions</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -996,9 +1009,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -1037,6 +1049,7 @@ x
     <article id='socially-renting-households' class='selector-block' data-selector-group="Standardised layers">
     <h2>Socially Renting Households</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -1050,9 +1063,8 @@ x
       }) | safe }}
     {% endcomp %}
 
-    <section style = "padding-top:3rem;">
+    <section>
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -1091,6 +1103,7 @@ x
     <article id='unpaid-carer-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Unpaid Carer (aged 16-24)</h2>
     {{ chart_description | md | safe }}
+    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -1106,7 +1119,6 @@ x
 
     <section style = "padding-top:3rem;">
     <h3>Ranked Local Authorities</h3>
-    <p>The chart below shows the local authorities with the highest scores for this dataset.</p>
     {{ barchart_description | md | safe }}
     </br>
 
@@ -1164,12 +1176,28 @@ x
 <h2>About this data</h2>
 
 <p>
-  Each data source represents a risk indicator for a young person being NEET (not in education, employment or training).
+  The data visualised on this page is from analysis commissioned by Youth Futures Foundation, with The National Centre for Social Research (NatCen). Their report explores the extent and degree of overlap between different forms of marginalisation among young people (aged 13 to 25), and how experiencing multiple types of marginalisation may increase the risk of young people not being in employment, education or training (NEET).
 </p>
-
-<h3>Census</h3>
 <p>
-  Visualisations of 'Disability', 'Economic Inactivity', 'Qualification below level 2', 'Socially renting households' and 'Unpaid carers' are driven by data from the Census, published by the Office of National Statistics in 2021.
+  Each of the data sources in the visualisations above represents a risk factor for a young person becoming NEET. Five domains of marginalisation were explored - education, family circumstances, health, living standards and risky behaviour - making up 19 NEET factors.
+</p>
+<p>
+  A standard score is calculated for each data source per local authority. The standard score is 0 for values that are equal to the mean, 1 for values that are one standard deviation above the mean, and 2 for values that are two standard deviations above the mean. Values below the mean have negative standard scores.
+</p>
+<p>
+  Each risk factor was associated with a higher likelihood of a young person becoming NEET. This likelihood increased with a higher number of overlapping risk factors. Six factors were found to be most strongly associated with NEET status:
+</p>
+</br>
+<ul>
+  <li>Qualification below level 2 (age 16-24)</li>
+  <li>Pupils with SEN support</li>
+  <li>Disability (aged under 25)</li>
+  <li>IMD Health</li>
+  <li>Economic inactivity (NEET)</li>
+</ul>
+</br>
+<p>
+  Either double or triple weightings are given to those data sources, and a weighted average is calculated.
 </p>
 
 <p>
@@ -1178,18 +1206,4 @@ x
 
 <p><a href="https://github.com/open-innovations/yff-data-pipelines/blob/main/pipelines/neet-factors/prepare.ipynb">You can view the processing pipeline here</a>.</p>
 
-<h3>Local Authority Scores</h3>
 
-<p>
-  For each data source, a standard score is calculated. The standard score is 0 for values that are equal to the mean, 1 for values that are one standard deviation above the mean, and 2 for values that are two standard deviations above the mean. Values below the mean have negative standard scores.
-</p>
-<p>
-  Weighted scores represent analysis performed by Youth Futures Foundation. Either double or triple weightings are given to the data sources listed below, and a weighted average is calculated.
-</p>
-<ul>
-  <li>Qualification below level 2 (age 16-24)</li>
-  <li>Pupils with SEN support</li>
-  <li>Disability (aged under 25)</li>
-  <li>IMD Health</li>
-  <li>Economic inactivity (NEET)</li>
-</ul>
