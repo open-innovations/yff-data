@@ -1,0 +1,53 @@
+{% set background = "#005776" %}
+
+{% comp 'grid.block', {
+	link: '~/maps/neet-factors/index.njk' | url + '?map-selector=total-score',
+  background: background,
+  colour: 'white'
+} %}
+
+	<h3>NEET factors</h3>
+
+  <p>
+    Likelihood of NEET outcome modelled on multiple factors by Local Authority.
+  </p>
+
+  <div class="dashboard-viz">
+  {{ comp.oi.map.hex_cartogram({
+    config: {
+      hexjson: search.data('/maps').uk_local_authority_districts_2021,
+      data: search.data('/maps/neet-factors').view.total_score.rows,
+      matchKey: 'local_authority_code',
+      value: 'value',
+      scale: 'YFF',
+      tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
+    }
+  }) | simpleviz | safe }}
+  </div>
+{% endcomp %}
+
+{% comp 'grid.block', {
+	link: '~/maps/employment/index.njk' | url + '?map-selector=census-youth-unemployed-economically-inactive',
+  background: background,
+  colour: 'white'
+} %}
+	<h3>Employment</h3>
+
+  <p>
+    Propoprtion of young people unemployed, economically inactive and not in full-time education by parliamentary consituency.
+  </p>
+
+  <div class="dashboard-viz">
+  {{ comp.oi.map.hex_cartogram({
+    config: {
+      hexjson: search.data('/maps').constituencies,
+      data: search.data('/maps/employment').view.census_unemployed_or_economically_inactive_and_not_in_fte_youth.rows,      
+      matchKey: 'geography_code',
+      value: 'rate',
+      scale: 'YFF',
+      tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
+    }
+  }) | simpleviz | safe }}
+  </div>
+
+{% endcomp %}
