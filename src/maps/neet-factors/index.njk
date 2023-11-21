@@ -5,6 +5,7 @@ summary: |
 layout: layouts/simple.njk
 tags:
   - maps
+priority: 10
 
 topics:
   - Employment
@@ -23,7 +24,7 @@ css: |
   }
 
   .pane .oi-chart-bar svg {
-    width: auto!important;
+    width: auto;
   }
 
   .pane .oi-chart-bar {
@@ -36,17 +37,13 @@ css: |
     margin: auto;
   }
 
-  h2 { 
-    padding-top:1em!important;
+  .selector-block { 
+    padding-top: 1.5rem;
   }
 
-  ul {
-    margin-left: 3em!important;
-  }
 
-  section { 
-    line-height: 1.25em!important;
-    padding-top:2em!important;
+  ul.spaced {
+    margin-left: 3em;
   }
 
 featured: "#children-in-poverty figure"
@@ -251,7 +248,6 @@ barchart_description: |
         } | autoLegend
       }) | safe }}
     {% endcomp %}
-x
 
     <section>
     <h3>Ranked Local Authorities</h3>
@@ -1173,6 +1169,7 @@ x
   </section>
 
 
+<section>
 <h2>About this data</h2>
 
 <p>
@@ -1187,8 +1184,7 @@ x
 <p>
   Each risk factor was associated with a higher likelihood of a young person becoming NEET. This likelihood increased with a higher number of overlapping risk factors. Six factors were found to be most strongly associated with NEET status:
 </p>
-</br>
-<ul>
+<ul class="spaced">
   <li>Qualification below level 2 (age 16-24)</li>
   <li>Pupils with SEN support</li>
   <li>Disability (aged under 25)</li>
@@ -1204,5 +1200,5 @@ x
 </p>
 
 <p><a href="https://github.com/open-innovations/yff-data-pipelines/blob/main/pipelines/neet-factors/prepare.ipynb">You can view the processing pipeline here</a>.</p>
-
+</section>
 
