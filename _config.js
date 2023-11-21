@@ -61,7 +61,7 @@ site.use(
     },
     colour: {
       scales: {
-        YFF: '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%',
+        YFF: '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%'
       },
       names: yff.namedColours,
       series: ['#E55912', '#005776', '#F7AB3D', '#4A783C'],

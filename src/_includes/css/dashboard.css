@@ -12,6 +12,12 @@
   text-align: center;
 }
 
+.dashboard-viz {
+  & svg {
+    height: min(40em, 30vh);
+  }
+}
+
 .auto-grid .oi-dashboard .panel h3 { font-size: 1.2em; }
 /* OI dashboard component */
 .oi-dashboard .oi-dashboard-inner { --auto-dashboard-min-size: 200px; width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--auto-dashboard-min-size)), 1fr)); grid-gap: 1em; }
