@@ -41,9 +41,11 @@ css: |
     padding-top: 1.5rem;
   }
 
-
   ul.spaced {
     margin-left: 3em;
+  }
+  article .pane {
+    margin-top: 1.5em;
   }
 
 featured: "#children-in-poverty figure"
@@ -75,7 +77,6 @@ barchart_description: |
     <article id='total-score' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Total Score</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -84,7 +85,10 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
         } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
@@ -92,33 +96,20 @@ barchart_description: |
     <section>
     <h3>Ranked Local Authorities for this Dataset</h3>
     {{ barchart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
           data: view.total_score_barchart.rows,
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Total score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Total score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 35,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 5 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -128,7 +119,6 @@ barchart_description: |
     <article id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Weighted Scores (double)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -137,41 +127,29 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
           data: view.weighted_scores_double_barchart.rows,
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Weighted score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Weighted score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -181,7 +159,6 @@ barchart_description: |
     <article id='children-in-poverty' class='selector-block' data-selector-group="Standardised layers">
     <h2>Children in Poverty</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -190,15 +167,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -206,26 +183,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -235,7 +200,6 @@ barchart_description: |
     <article id='children-looked-after' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>Children Looked After</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -244,15 +208,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -260,26 +224,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -290,7 +242,6 @@ barchart_description: |
     <article id='disability-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (all ages)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -299,15 +250,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -315,26 +266,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -344,7 +283,6 @@ barchart_description: |
     <article id='disability-under-25' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (under 25)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -353,15 +291,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -369,26 +307,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -398,7 +324,6 @@ barchart_description: |
     <article id='economic-inactivity-neet' class='selector-block' data-selector-group="Standardised layers">
     <h2>Economic Inactivity (NEET)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -407,15 +332,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -423,26 +348,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -452,7 +365,6 @@ barchart_description: |
     <article id='fertility-rates-20-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Fertility Rates (aged 20-24)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -461,8 +373,9 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
@@ -477,26 +390,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -506,7 +407,6 @@ barchart_description: |
     <article id='fertility-rates-under-20' class='selector-block' data-selector-group="Standardised layers">
     <h2>Fertility Rates (under 20)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -515,41 +415,29 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
           data: view.fertility_rates_under_20_barchart.rows,
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -559,7 +447,6 @@ barchart_description: |
     <article id='imd-crime' class='selector-block' data-selector-group="Standardised layers">
     <h2>IMD Crime</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -568,15 +455,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -584,26 +471,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -613,7 +488,6 @@ barchart_description: |
     <article id='imd-health' class='selector-block' data-selector-group="Standardised layers">
     <h2>IMD Health</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -622,15 +496,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -638,26 +512,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -667,7 +529,6 @@ barchart_description: |
     <article id='lone-parent-households' class='selector-block' data-selector-group="Standardised layers">
     <h2>Lone Parent Households</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -676,15 +537,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -692,26 +553,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -721,7 +570,6 @@ barchart_description: |
     <article id='pupils-with-sen-support' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>Pupils with SEN Support</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -730,15 +578,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -746,26 +594,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -775,7 +611,6 @@ barchart_description: |
     <article id='qualification-below-level-2-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (aged 16-24)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -784,15 +619,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -800,26 +635,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -829,7 +652,6 @@ barchart_description: |
     <article id='qualification-below-level-2-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (all)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -838,15 +660,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -854,26 +676,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -883,7 +693,6 @@ barchart_description: |
     <article id='school-absences' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>School Absences</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -892,15 +701,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -908,26 +717,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -937,7 +734,6 @@ barchart_description: |
     <article id='school-exclusions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Exclusions</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -946,15 +742,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -962,26 +758,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -991,7 +775,6 @@ barchart_description: |
     <article id='school-suspensions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Suspensions</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -1000,15 +783,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -1016,26 +799,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -1045,7 +816,6 @@ barchart_description: |
     <article id='socially-renting-households' class='selector-block' data-selector-group="Standardised layers">
     <h2>Socially Renting Households</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -1054,15 +824,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section>
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -1070,26 +840,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -1099,7 +857,6 @@ barchart_description: |
     <article id='unpaid-carer-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Unpaid Carer (aged 16-24)</h2>
     {{ chart_description | md | safe }}
-    </br>
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
         config: {
@@ -1108,15 +865,15 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
-        } | autoLegend
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: { position: 'top left' }
+        } | autoLegend({ formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 
     <section style = "padding-top:3rem;">
     <h3>Ranked Local Authorities</h3>
     {{ barchart_description | md | safe }}
-    </br>
 
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
@@ -1124,26 +881,14 @@ barchart_description: |
           category: 'local_authority_name',
           width: 800,
           series: [
-            { title: 'Weighted Score', value: 'value' }
+            { title: 'Standardised score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Standardised score {{ value | toFixed(1) }}' }
           ],
           legend: {
             show: true,
             position: "top"
           },
           axis: {
-            x: {
-                min: 0,
-                max: 5,
-              title: {
-                label: ""
-              },
-              tickSpacing: 10
-            },
-            y: {
-              title: {
-                label: ""
-              }
-            }
+            x: { tick: { spacing: 1 } }
           }
         } }) | safe }}
     {% endcomp %}
@@ -1160,7 +905,9 @@ barchart_description: |
         config: {
           columns: [
             {'name':'Local Authority'},
-            {'name':'Weighted Score', 'scale': 'YFF', 'template': '{{ Weighted Score | toFixed(2) }}', 'align': 'center' }
+            {'name':'Weighted Score', 'scale': 'YFF', 'template': '{{ Weighted Score | toFixed(2) }}', 'align': 'center',
+              min: view.weighted_scores_double.range.value.min, max: view.weighted_scores_double.range.value.max
+            }
           ],
           data: view.weighted_scores_table.rows 
         } }
