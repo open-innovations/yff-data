@@ -24,13 +24,19 @@ raw_data:
 <h2> About the data on this page </h2>
 <p>
 These visualisations are driven by data from the ONS Labour Force Survey, published by the Office for National Statistics. 
-Specific links to the data sets used are provided below.
-The charts include the most recent 3-monthly rolling data from the LFS published on {{ latest.last_update | date('HUMAN_DATE') }}.
-The next data publication is due on {{ latest.next_update | date('HUMAN_DATE') }}.
 </p>
 
 <p>
-The page is automatically updated when ONS publishes new data.
+  This data is derived from the 
+  <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics">Labour Market Statistics time series</a> dataset.
+</p>
+
+<p>
+	The Office for National Statistics has paused the regular publication of this data, therefore the most recent release of this publication covers up until the 1st June 2023. The data on this page
+	will update once the ONS resumes publication of the Labour Force Survey. 
+
+{# The charts include the most recent 3-monthly rolling data from the LFS published on {{ latest.last_update | date('HUMAN_DATE') }}.
+The next data publication is due on {{ latest.next_update | date('HUMAN_DATE') }}. #}
 </p>
 
 <h2 id='long-term-unemployment'>Long-term unemployment for young people (seasonally adjusted)</h2>
@@ -38,12 +44,6 @@ The page is automatically updated when ONS publishes new data.
 <p>
   The long-term unemployment rate for 16-24 year-olds, showing the proportion of unemployed people who have been unemployed for between six and 12 months, and the proportion who have been 
   unemployed for more than 12 months.
-</p>
-
-<p>
-  This data is derived from the 
-  <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbyageanddurationseasonallyadjustedunem01sa">UNEM01 SA: Unemployment by age 
-  and duration (seasonally adjusted)</a> dataset.
 </p>
 
 {% comp 'tabbed', { tab_count: 2 } %}
@@ -168,14 +168,6 @@ The page is automatically updated when ONS publishes new data.
 <p> 
   These visualisations show the labour market status of young people aged 16-24.
 </p>
-
-<p>
-  This data is derived from the 
-  <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/educationalstatusandlabourmarketstatusforpeopleagedfrom16to24seasonallyadjusteda06sa">A06 
-  SA: Educational status and labour market status for people aged from 16 to 24 (seasonally adjusted)</a> dataset.
-</p>
-
-
 
 
 {% comp 'tabbed', { tab_count: 3 } %}
