@@ -125,7 +125,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -143,7 +143,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
