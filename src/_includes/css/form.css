@@ -13,5 +13,8 @@ label + select {
     gap: 1em;
     align-items: baseline;
     justify-content: center;
+    background: #dff3f4;
+    padding: 1em;
+    font-weight: 700;
   }
 }

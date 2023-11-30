@@ -25,6 +25,10 @@ css: |
     margin-left:auto;
   }
 
+  .selector article {
+    margin-top: 2rem;
+  }
+  
 featured: "#census-youth-unemployed-economically-inactive figure"
 ---
 {#- Formatter for autoLegend -#}
@@ -38,7 +42,8 @@ featured: "#census-youth-unemployed-economically-inactive figure"
     data-dependencies='/assets/js/selector.js'
     data-label='Choose the visualisation layer'
     data-heading-level='h2'
-    data-id='map-selector'>
+    data-id='map-selector'
+    data-selector-position='top'>
 
   <article id='youth-unemployment' class='selector-block'>
     <h2>Youth unemployment rate (aged 16-24)</h2>
