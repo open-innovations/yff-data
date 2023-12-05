@@ -25,6 +25,10 @@ css: |
     margin-left:auto;
   }
 
+  .selector article {
+    margin-top: 2rem;
+  }
+  
 featured: "#census-youth-unemployed-economically-inactive figure"
 ---
 {#- Formatter for autoLegend -#}
@@ -38,7 +42,8 @@ featured: "#census-youth-unemployed-economically-inactive figure"
     data-dependencies='/assets/js/selector.js'
     data-label='Choose the visualisation layer'
     data-heading-level='h2'
-    data-id='map-selector'>
+    data-id='map-selector'
+    data-selector-position='top'>
 
   <article id='youth-unemployment' class='selector-block'>
     <h2>Youth unemployment rate (aged 16-24)</h2>
@@ -53,7 +58,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
           value: 'value',
           scale: 'YFF',
           tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-        } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+        } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
       }) | safe }}
     {% endcomp %}
   </article>
@@ -71,7 +76,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -89,7 +94,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -107,7 +112,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -125,7 +130,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -143,7 +148,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -161,7 +166,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -179,7 +184,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -197,7 +202,7 @@ featured: "#census-youth-unemployed-economically-inactive figure"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 5 })
+    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>

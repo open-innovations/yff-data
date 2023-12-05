@@ -1,5 +1,5 @@
 ---
-title: NEET Factors
+title: Risk of NEET Factors
 summary: |
     Data on factors that contribute to likelihood of NEET
 layout: layouts/simple.njk
@@ -66,6 +66,13 @@ barchart_description: |
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
 
+<p>
+  This data comes from our recent report exploring the extent and degree of overlap between different forms of marginalisation among young people (aged 13 to 25), and how experiencing multiple types of marginalisation may increase the risk of young people not being in employment, education or training (NEET). Each of the data sources in the visualisation below represents a risk factor for a young person becoming NEET.
+</p>
+<p>
+  A standard score is calculated for each data source per local authority. The standard score is 0 for values that are equal to the mean, 1 for values that are one standard deviation above the mean, and 2 for values that are two standard deviations above the mean. Values below the mean have negative standard scores.
+</p>
+
 
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
@@ -85,6 +92,8 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
+          min: 30,
+          max: -35,
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: {
             position: 'top left'
@@ -920,7 +929,7 @@ barchart_description: |
 <h2>About this data</h2>
 
 <p>
-  The data visualised on this page is from analysis commissioned by <a href="https://youthfuturesfoundation.org/">Youth Futures Foundation</a>, with <a href="https://natcen.ac.uk/">The National Centre for Social Research (NatCen)</a>. Their report explores the extent and degree of overlap between different forms of marginalisation among young people (aged 13 to 25), and how experiencing multiple types of marginalisation may increase the risk of young people not being in employment, education or training (NEET).
+  The data visualised on this page is from analysis by <a href="https://youthfuturesfoundation.org/">Youth Futures Foundation</a>, with <a href="https://natcen.ac.uk/">The National Centre for Social Research (NatCen)</a>. Our report explores the extent and degree of overlap between different forms of marginalisation among young people (aged 13 to 25), and how experiencing multiple types of marginalisation may increase the risk of young people not being in employment, education or training (NEET).
 </p>
 <p>
   Each of the data sources in the visualisations above represents a risk factor for a young person becoming NEET. Five domains of marginalisation were explored - education, family circumstances, health, living standards and risky behaviour - making up 19 NEET factors.
