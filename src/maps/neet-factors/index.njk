@@ -1,5 +1,5 @@
 ---
-title: NEET Factors
+title: Risk of NEET Factors
 summary: |
     Data on factors that contribute to likelihood of NEET
 layout: layouts/simple.njk
@@ -66,6 +66,26 @@ barchart_description: |
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
 
+<p>
+  This data comes from our recent report exploring the extent and degree of overlap between different forms of marginalisation among young people (aged 13 to 25), and how experiencing multiple types of marginalisation may increase the risk of young people not being in employment, education or training (NEET). Each of the data sources in the visualisations above represents a risk factor for a young person becoming NEET. Five domains of marginalisation were explored - education, family circumstances, health, living standards and risky behaviour - making up 19 NEET factors.
+</p>
+<p>
+  A standard score is calculated for each data source per local authority. The standard score is 0 for values that are equal to the mean, 1 for values that are one standard deviation above the mean, and 2 for values that are two standard deviations above the mean. Values below the mean have negative standard scores.
+</p>
+<p>
+Each risk factor was associated with a higher likelihood of a young person becoming NEET. This likelihood increased with a higher number of overlapping risk factors. Six factors were found to be most strongly associated with NEET status:
+</p>
+<ul>
+  <li>Qualification below level 2 (age 16-24)</li>
+  <li>Pupils with SEN support</li>
+  <li>Disability (aged under 25)</li>
+  <li>IMD Health</li>
+  <li>Economic inactivity (NEET)</li>
+</ul>
+<p>
+Double weightings are given to those data sources, and a weighted average is calculated per local authority. Total Scores are calculated as the sum of all individual scores.
+</p>
+
 
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
@@ -85,6 +105,8 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF',
+          min: 30,
+          max: -35,
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: {
             position: 'top left'
