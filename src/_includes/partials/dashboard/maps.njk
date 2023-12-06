@@ -20,7 +20,7 @@
       data: search.data('/maps/neet-factors').view.total_score.rows,
       matchKey: 'local_authority_code',
       value: 'value',
-      scale: 'YFF',
+      scale: 'YFF_r',
       tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
     }
   }) | simpleviz | safe }}
