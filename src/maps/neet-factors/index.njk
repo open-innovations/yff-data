@@ -48,7 +48,8 @@ css: |
     margin-top: 1.5em;
   }
 
-featured: "#children-in-poverty figure"
+featured: "#total-score figure"
+
 chart_description: |
   The map shows the likelihood of young people ending up not in employment, education or training.
   The values are standardised to show divergence from the average, with lighter colours being higher and darker colours being lower.
@@ -91,9 +92,7 @@ barchart_description: |
           data: view.total_score.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
-          min: 30,
-          max: -35,
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: {
             position: 'top left'
@@ -135,7 +134,7 @@ barchart_description: |
           data: view.weighted_scores_double.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -175,7 +174,7 @@ barchart_description: |
           data: view.children_in_poverty.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -216,7 +215,7 @@ barchart_description: |
           data: view.children_looked_after.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -258,7 +257,7 @@ barchart_description: |
           data: view.disability_all.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -299,7 +298,7 @@ barchart_description: |
           data: view.disability_under_25.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -340,7 +339,7 @@ barchart_description: |
           data: view.economic_inactivity_neet.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -381,7 +380,7 @@ barchart_description: |
           data: view.fertility_rates_20_to_24.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -423,7 +422,7 @@ barchart_description: |
           data: view.fertility_rates_under_20.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -463,7 +462,7 @@ barchart_description: |
           data: view.imd_crime.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -504,7 +503,7 @@ barchart_description: |
           data: view.imd_health.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -545,7 +544,7 @@ barchart_description: |
           data: view.lone_parent_households.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -586,7 +585,7 @@ barchart_description: |
           data: view.pupils_with_sen_support.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -627,7 +626,7 @@ barchart_description: |
           data: view.qualification_below_level_2_aged_16_24.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -668,7 +667,7 @@ barchart_description: |
           data: view.qualification_below_level_2_all.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -709,7 +708,7 @@ barchart_description: |
           data: view.school_absences.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -750,7 +749,7 @@ barchart_description: |
           data: view.school_exclusions.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -791,7 +790,7 @@ barchart_description: |
           data: view.school_suspensions.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -832,7 +831,7 @@ barchart_description: |
           data: view.socially_renting_households.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -873,7 +872,7 @@ barchart_description: |
           data: view.unpaid_carer_aged_16_24.rows,
           matchKey: 'local_authority_code',
           value: 'value',
-          scale: 'YFF',
+          scale: 'YFF_r',
           tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
           legend: { position: 'top left' }
         } | autoLegend({ formatter: legendKey })
@@ -914,7 +913,7 @@ barchart_description: |
         config: {
           columns: [
             {'name':'Local Authority'},
-            {'name':'Weighted Score', 'scale': 'YFF', 'template': '{{ Weighted Score | toFixed(2) }}', 'align': 'center',
+            {'name':'Weighted Score', 'scale': 'YFF_r', 'template': '{{ Weighted Score | toFixed(2) }}', 'align': 'center',
               min: view.weighted_scores_double.range.value.min, max: view.weighted_scores_double.range.value.max
             }
           ],
