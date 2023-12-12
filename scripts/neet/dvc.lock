@@ -16,7 +16,7 @@ stages:
     deps:
     - path: ../../working/upstream/metadata.csv
       hash: md5
-      md5: 7220abd216b61fcd044ad7cf7de00bef
+      md5: 96781ef0e8c41ae16d79ab66177a67f5
       size: 160
     - path: ../../working/upstream/neet.csv
       hash: md5
