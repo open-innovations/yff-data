@@ -14,6 +14,22 @@
     };
   }
   var counter = { "item": 0, "menu": 0 };
+
+  function findTitle(el){
+    var titleText = el.closest('figure').getAttribute('data-title');
+    if (titleText) return titleText;
+
+    // Step up through parents until one has a heading
+    p = el.parentNode;
+    while(!p.querySelector('h1,h2,h3,h4,h5,h6')){
+      p = p.parentNode;
+    }
+    hs = p.querySelector('h1,h2,h3,h4,h5,h6');
+    if (hs) return hs.innerText;
+
+    return null;
+  }
+
   function FigureMenu(el) {
     var opts, opt, menuitems, inp, lbl, svg, li, btn;
     opts = el.querySelector(".figure-options");
@@ -21,6 +37,19 @@
     opt = opts.querySelector(".figure-option-list");
     opt.setAttribute("role", "menu");
     opt.setAttribute("id", "menu-" + counter.menu);
+
+    // Calculate title for element
+    const title = findTitle(el);
+
+    // Add logging to download link if it exists
+    const downloadLink = el.querySelector('a');
+    if (downloadLink) {
+      downloadLink.addEventListener('click', () => {
+        if (root.OI.log) {
+          root.OI.log.add('action=click&content=Download data: ' + (title || '(untitled dataset)'));
+        }
+      })
+    }
 
     // Add screenshot function
     btn = document.createElement("button");
@@ -52,6 +81,9 @@
           credit.hidden = true;
         },
       });
+      if (root.OI.log) {
+        root.OI.log.add('action=click&content=Download image: ' + (title || '(untitled figure)'));
+      }
     });
 
     // Save a copy of the SVG if it exists
@@ -69,6 +101,9 @@
         svg.setAttribute("width", svg.clientWidth + "px");
         svg.setAttribute("height", svg.clientHeight + "px");
         saveSVG(svg);
+        if (root.OI.log) {
+          root.OI.log.add('action=click&content=Save vector image: ' + (title || '(untitled figure)'));
+        }
       });
     }
 
