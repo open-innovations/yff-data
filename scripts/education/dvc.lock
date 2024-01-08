@@ -17,3 +17,14 @@ stages:
       md5: 045ad70475845f1cc5c38a84739719bd.dir
       size: 196414
       nfiles: 12
+  transform_census:
+    cmd: PYTHONPATH=. python scripts/education/transform_census.py
+    deps:
+    - path: scripts/education/transform.py
+      hash: md5
+      md5: 8407fc4321d1fee0ef7651cae295dc93
+      size: 4347
+    - path: working/upstream/census_qualifications.csv
+      hash: md5
+      md5: 17e750e233f9134fb4ca889ff784dfb6
+      size: 361199
