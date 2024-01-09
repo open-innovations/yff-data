@@ -1,0 +1,30 @@
+---
+title: International Comparisons
+layout: layouts/simple.njk
+tags:
+  - maps
+topics:
+  - Employment
+  - Unemployment
+
+css: |
+  .pane .oi-viz {
+    max-width:30em;
+    margin-right:auto;
+    margin-left:auto;
+  }
+
+  .selector article {
+    margin-top: 2rem;
+  }
+  
+---
+{#- Formatter for autoLegend -#}
+{%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
+
+{% comp 'flex' %}
+{% include "partials/page/topic-cloud.njk" %}
+{% endcomp %}
+
+<p>This page will present international data on employment and education.</p>
+
