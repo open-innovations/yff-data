@@ -8,12 +8,6 @@ topics:
   - Unemployment
 
 css: |
-  .pane .oi-viz {
-    max-width:30em;
-    margin-right:auto;
-    margin-left:auto;
-  }
-
   .selector article {
     margin-top: 2rem;
   }
@@ -27,4 +21,40 @@ css: |
 {% endcomp %}
 
 <p>This page will present international data on employment and education.</p>
+
+<div class='selector'
+    data-dependencies='/assets/js/selector.js'
+    data-label='Choose the visualisation layer'
+    data-selector-position='top'
+    data-heading-level='h2'
+    data-id='map-selector'>
+
+    <article id='unemployment-all-15-24' class='selector-block' data-selector-group="Unemployment">
+    <h2>Unemployment for all people, aged 15-24</h2>
+    <p>The visualisation below presents OECD data on the number of Unemployed young people aged 15-24.</p>
+    {% comp 'display.figure' %}
+    {{ comp.oi.map.svg({ 
+        config: {
+            geojson: {
+                data: sources.maps.world,
+                key: 'ADM0_A3'
+            }, 
+            projection: {
+                name: 'equirectangular'
+            },
+            data: view.unemployment_all_15_24.rows,
+            key:'country_code',
+            value: 'value',
+            min: 0,
+            width: 600,
+            height:500,
+            tooltip: 'tooltip',
+            columns: [{
+                name: 'tooltip',
+                template: '{{ view.unemployment_all_15_24.country }}: {{ value }} people'
+            }]          
+        }
+      }) | safe }}
+    {% endcomp %} 
+    </article>
 

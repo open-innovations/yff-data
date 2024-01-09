@@ -1,0 +1,10 @@
+vars:
+  - top: ../..
+stages:
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/international/prepare.py
+    wdir: ../..
+    deps:
+      - scripts/international/prepare.py
+      - scripts/labour-market/config.py
+      - working/upstream/international.csv

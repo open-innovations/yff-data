@@ -1,0 +1,17 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/international/prepare.py
+    deps:
+    - path: scripts/international/prepare.py
+      hash: md5
+      md5: b382df7cb66fefa43342045eb2e2de27
+      size: 1107
+    - path: scripts/labour-market/config.py
+      hash: md5
+      md5: 5cfbfb101cdcd817c3fa488dd72606a2
+      size: 5216
+    - path: working/upstream/international.csv
+      hash: md5
+      md5: fa813ce32aa79e1ba9e3093b2b96eeb7
+      size: 10833024
