@@ -4,7 +4,7 @@ id: map
 config:
   data: "sources.cff.apps_awarded_all_itl"
   geojson:
-    data: "sources.maps.International_Territorial_Level_1_(January_2021)_UK_BUC"
+    data: "sources.maps.International_Territorial_Level_1_(January_2021)_UK_BUC_simplified"
     key: ITL121CD
   bounds:
     lat:
