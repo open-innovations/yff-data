@@ -1,0 +1,40 @@
+country,country_code,sex,age,series,frequency,time,powercode,value
+Australia,AUS,All persons,15 to 24,Employment,Annual,2022,Thousands,2082.3
+Austria,AUT,All persons,15 to 24,Employment,Annual,2022,Thousands,467.61
+Belgium,BEL,All persons,15 to 24,Employment,Annual,2022,Thousands,344.7400055
+Canada,CAN,All persons,15 to 24,Employment,Annual,2022,Thousands,2628.0
+Czechia,CZE,All persons,15 to 24,Employment,Annual,2022,Thousands,254.26
+Denmark,DNK,All persons,15 to 24,Employment,Annual,2022,Thousands,396.5895004
+Finland,FIN,All persons,15 to 24,Employment,Annual,2022,Thousands,292.346
+France,FRA,All persons,15 to 24,Employment,Annual,2022,Thousands,2739.80159
+Germany,DEU,All persons,15 to 24,Employment,Annual,2022,Thousands,4202.403198
+Greece,GRC,All persons,15 to 24,Employment,Annual,2022,Thousands,168.6370015
+Hungary,HUN,All persons,15 to 24,Employment,Annual,2022,Thousands,270.9800081
+Iceland,ISL,All persons,15 to 24,Employment,Annual,2022,Thousands,29.5
+Ireland,IRL,All persons,15 to 24,Employment,Annual,2022,Thousands,310.8137474
+Italy,ITA,All persons,15 to 24,Employment,Annual,2022,Thousands,1145.847778
+Japan,JPN,All persons,15 to 24,Employment,Annual,2022,Thousands,5470.0
+Korea,KOR,All persons,15 to 24,Employment,Annual,2022,Thousands,1433.9
+Luxembourg,LUX,All persons,15 to 24,Employment,Annual,2022,Thousands,19.50600004
+Mexico,MEX,All persons,15 to 24,Employment,Annual,2022,Thousands,9084.95
+Netherlands,NLD,All persons,15 to 24,Employment,Annual,2022,Thousands,1621.28
+New Zealand,NZL,All persons,15 to 24,Employment,Annual,2022,Thousands,391.2
+Norway,NOR,All persons,15 to 24,Employment,Annual,2022,Thousands,372.2580032
+Poland,POL,All persons,15 to 24,Employment,Annual,2022,Thousands,937.5100079
+Portugal,PRT,All persons,15 to 24,Employment,Annual,2022,Thousands,273.3
+Slovak Republic,SVK,All persons,15 to 24,Employment,Annual,2022,Thousands,113.56
+Spain,ESP,All persons,15 to 24,Employment,Annual,2022,Thousands,1139.78
+Sweden,SWE,All persons,15 to 24,Employment,Annual,2022,Thousands,519.7
+Switzerland,CHE,All persons,15 to 24,Employment,Annual,2022,Thousands,530.65
+Türkiye,TUR,All persons,15 to 24,Employment,Annual,2022,Thousands,4240.0
+United Kingdom,GBR,All persons,15 to 24,Employment,Annual,2022,Thousands,3665.49
+United States,USA,All persons,15 to 24,Employment,Annual,2022,Thousands,19378.0
+OECD countries,OECD,All persons,15 to 24,Employment,Annual,2022,Thousands,69095.66109
+Israel,ISR,All persons,15 to 24,Employment,Annual,2022,Thousands,603.26
+Chile,CHL,All persons,15 to 24,Employment,Annual,2022,Thousands,630.83
+Slovenia,SVN,All persons,15 to 24,Employment,Annual,2022,Thousands,65.83899927
+Estonia,EST,All persons,15 to 24,Employment,Annual,2022,Thousands,45.56875038
+Lithuania,LTU,All persons,15 to 24,Employment,Annual,2022,Thousands,86.39625072
+Latvia,LVA,All persons,15 to 24,Employment,Annual,2022,Thousands,54.61424923
+Colombia,COL,All persons,15 to 24,Employment,Annual,2022,Thousands,2852.67
+Costa Rica,CRI,All persons,15 to 24,Employment,Annual,2022,Thousands,231.57

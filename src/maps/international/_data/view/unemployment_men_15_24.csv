@@ -1,0 +1,40 @@
+country,country_code,sex,age,series,frequency,time,powercode,value
+Australia,AUS,Men,15 to 24,Unemployment,Annual,2022,Thousands,104.3
+Austria,AUT,Men,15 to 24,Unemployment,Annual,2022,Thousands,26.37
+Belgium,BEL,Men,15 to 24,Unemployment,Annual,2022,Thousands,39.70800018
+Canada,CAN,Men,15 to 24,Unemployment,Annual,2022,Thousands,166.2
+Czechia,CZE,Men,15 to 24,Unemployment,Annual,2022,Thousands,10.26
+Denmark,DNK,Men,15 to 24,Unemployment,Annual,2022,Thousands,24.07050037
+Finland,FIN,Men,15 to 24,Unemployment,Annual,2022,Thousands,22.703
+France,FRA,Men,15 to 24,Unemployment,Annual,2022,Thousands,327.8915024
+Germany,DEU,Men,15 to 24,Unemployment,Annual,2022,Thousands,153.7577477
+Greece,GRC,Men,15 to 24,Unemployment,Annual,2022,Thousands,33.66024971
+Hungary,HUN,Men,15 to 24,Unemployment,Annual,2022,Thousands,19.43999958
+Iceland,ISL,Men,15 to 24,Unemployment,Annual,2022,Thousands,1.85
+Ireland,IRL,Men,15 to 24,Unemployment,Annual,2022,Thousands,17.99800014
+Italy,ITA,Men,15 to 24,Unemployment,Annual,2022,Thousands,200.8825035
+Japan,JPN,Men,15 to 24,Unemployment,Annual,2022,Thousands,140.0
+Korea,KOR,Men,15 to 24,Unemployment,Annual,2022,Thousands,47.7
+Luxembourg,LUX,Men,15 to 24,Unemployment,Annual,2022,Thousands,1.9375
+Mexico,MEX,Men,15 to 24,Unemployment,Annual,2022,Thousands,369.64
+Netherlands,NLD,Men,15 to 24,Unemployment,Annual,2022,Thousands,65.18
+New Zealand,NZL,Men,15 to 24,Unemployment,Annual,2022,Thousands,21.4
+Norway,NOR,Men,15 to 24,Unemployment,Annual,2022,Thousands,23.42849922
+Poland,POL,Men,15 to 24,Unemployment,Annual,2022,Thousands,64.35425091
+Portugal,PRT,Men,15 to 24,Unemployment,Annual,2022,Thousands,32.6
+Slovak Republic,SVK,Men,15 to 24,Unemployment,Annual,2022,Thousands,16.77
+Spain,ESP,Men,15 to 24,Unemployment,Annual,2022,Thousands,254.81
+Sweden,SWE,Men,15 to 24,Unemployment,Annual,2022,Thousands,69.9
+Switzerland,CHE,Men,15 to 24,Unemployment,Annual,2022,Thousands,22.581
+Türkiye,TUR,Men,15 to 24,Unemployment,Annual,2022,Thousands,565.0
+United Kingdom,GBR,Men,15 to 24,Unemployment,Annual,2022,Thousands,247.2
+United States,USA,Men,15 to 24,Unemployment,Annual,2022,Thousands,944.0
+OECD countries,OECD,Men,15 to 24,Unemployment,Annual,2022,Thousands,4584.248754
+Israel,ISR,Men,15 to 24,Unemployment,Annual,2022,Thousands,23.18
+Chile,CHL,Men,15 to 24,Unemployment,Annual,2022,Thousands,72.24
+Slovenia,SVN,Men,15 to 24,Unemployment,Annual,2022,Thousands,3.548750043
+Estonia,EST,Men,15 to 24,Unemployment,Annual,2022,Thousands,5.430999994
+Latvia,LVA,Men,15 to 24,Unemployment,Annual,2022,Thousands,6.906749845
+Lithuania,LTU,Men,15 to 24,Unemployment,Annual,2022,Thousands,6.739500046
+Colombia,COL,Men,15 to 24,Unemployment,Annual,2022,Thousands,376.59
+Costa Rica,CRI,Men,15 to 24,Unemployment,Annual,2022,Thousands,54.02

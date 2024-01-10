@@ -1,0 +1,20 @@
+Country,country_code,sex,age,series,frequency,time,powercode,Number of people (thousands)
+United States,USA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,1714.0
+Türkiye,TUR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,1023.0
+Colombia,COL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,799.35
+Mexico,MEX,All persons,15 to 24,Unemployment,Annual,2022,Thousands,634.59
+France,FRA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,574.4129944
+Spain,ESP,All persons,15 to 24,Unemployment,Annual,2022,Thousands,482.93
+United Kingdom,GBR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,425.71
+Italy,ITA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,355.9780045
+Canada,CAN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,294.2
+Germany,DEU,All persons,15 to 24,Unemployment,Annual,2022,Thousands,265.9479942
+Japan,JPN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,240.0
+Australia,AUS,All persons,15 to 24,Unemployment,Annual,2022,Thousands,184.8
+Sweden,SWE,All persons,15 to 24,Unemployment,Annual,2022,Thousands,144.3
+Chile,CHL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,136.36
+Netherlands,NLD,All persons,15 to 24,Unemployment,Annual,2022,Thousands,133.97
+Poland,POL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,113.4867511
+Korea,KOR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,108.9
+Costa Rica,CRI,All persons,15 to 24,Unemployment,Annual,2022,Thousands,103.85
+Greece,GRC,All persons,15 to 24,Unemployment,Annual,2022,Thousands,77.09025049

@@ -1,0 +1,40 @@
+country,country_code,sex,age,series,frequency,time,powercode,value
+Australia,AUS,Women,15 to 24,Employment,Annual,2022,Thousands,1034.7
+Austria,AUT,Women,15 to 24,Employment,Annual,2022,Thousands,215.45
+Belgium,BEL,Women,15 to 24,Employment,Annual,2022,Thousands,165.28125
+Canada,CAN,Women,15 to 24,Employment,Annual,2022,Thousands,1307.4
+Czechia,CZE,Women,15 to 24,Employment,Annual,2022,Thousands,102.98
+Denmark,DNK,Women,15 to 24,Employment,Annual,2022,Thousands,194.605751
+Finland,FIN,Women,15 to 24,Employment,Annual,2022,Thousands,138.823
+France,FRA,Women,15 to 24,Employment,Annual,2022,Thousands,1294.536301
+Germany,DEU,Women,15 to 24,Employment,Annual,2022,Thousands,1935.87793
+Greece,GRC,Women,15 to 24,Employment,Annual,2022,Thousands,68.4360013
+Hungary,HUN,Women,15 to 24,Employment,Annual,2022,Thousands,119.1200018
+Iceland,ISL,Women,15 to 24,Employment,Annual,2022,Thousands,14.86
+Ireland,IRL,Women,15 to 24,Employment,Annual,2022,Thousands,151.6527481
+Italy,ITA,Women,15 to 24,Employment,Annual,2022,Thousands,445.7057495
+Japan,JPN,Women,15 to 24,Employment,Annual,2022,Thousands,2740.0
+Korea,KOR,Women,15 to 24,Employment,Annual,2022,Thousands,850.7
+Luxembourg,LUX,Women,15 to 24,Employment,Annual,2022,Thousands,9.832250118
+Mexico,MEX,Women,15 to 24,Employment,Annual,2022,Thousands,3317.11
+Netherlands,NLD,Women,15 to 24,Employment,Annual,2022,Thousands,795.54
+New Zealand,NZL,Women,15 to 24,Employment,Annual,2022,Thousands,190.1
+Norway,NOR,Women,15 to 24,Employment,Annual,2022,Thousands,186.5415039
+Poland,POL,Women,15 to 24,Employment,Annual,2022,Thousands,383.5475063
+Portugal,PRT,Women,15 to 24,Employment,Annual,2022,Thousands,123.2
+Slovak Republic,SVK,Women,15 to 24,Employment,Annual,2022,Thousands,41.21
+Spain,ESP,Women,15 to 24,Employment,Annual,2022,Thousands,513.45
+Sweden,SWE,Women,15 to 24,Employment,Annual,2022,Thousands,242.3
+Switzerland,CHE,Women,15 to 24,Employment,Annual,2022,Thousands,251.398
+Türkiye,TUR,Women,15 to 24,Employment,Annual,2022,Thousands,1359.0
+United Kingdom,GBR,Women,15 to 24,Employment,Annual,2022,Thousands,1837.74
+United States,USA,Women,15 to 24,Employment,Annual,2022,Thousands,9552.0
+OECD countries,OECD,Women,15 to 24,Employment,Annual,2022,Thousands,31452.78149
+Israel,ISR,Women,15 to 24,Employment,Annual,2022,Thousands,303.16
+Chile,CHL,Women,15 to 24,Employment,Annual,2022,Thousands,265.62
+Slovenia,SVN,Women,15 to 24,Employment,Annual,2022,Thousands,28.12774897
+Estonia,EST,Women,15 to 24,Employment,Annual,2022,Thousands,25.10925055
+Lithuania,LTU,Women,15 to 24,Employment,Annual,2022,Thousands,42.73499918
+Latvia,LVA,Women,15 to 24,Employment,Annual,2022,Thousands,25.96149945
+Colombia,COL,Women,15 to 24,Employment,Annual,2022,Thousands,1099.01
+Costa Rica,CRI,Women,15 to 24,Employment,Annual,2022,Thousands,79.96
