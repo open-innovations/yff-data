@@ -52,7 +52,7 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ view.unemployment_all_15_24.country }}: {{ value | toFixed(1) }} thousand people'
+                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
             }]          
         }
       }) | safe }}
@@ -65,7 +65,7 @@ css: |
         config: {
           columns: [
             {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(2) }}', 'align': 'center',
+            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(1) }}', 'align': 'center',
               min: view.unemployment_all_15_24.range.value.min, max: view.unemployment_all_15_24.range.value.max
             }
           ],
@@ -100,7 +100,7 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ view.unemployment_women_15_24.country }}: {{ value | toFixed(1) }} thousand people'
+                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
             }]          
         }
       }) | safe }}
@@ -148,7 +148,7 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ view.unemployment_men_15_24.country }}: {{ value | toFixed(1) }} thousand people'
+                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
             }]          
         }
       }) | safe }}
@@ -199,7 +199,7 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ view.employment_all_15_24.country }}: {{ value | toFixed(1) }} thousand people'
+                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
             }]          
         }
       }) | safe }}
@@ -247,7 +247,7 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ view.employment_women_15_24.country }}: {{ value | toFixed(1) }} thousand people'
+                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
             }]          
         }
       }) | safe }}
@@ -295,7 +295,7 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ view.employment_men_15_24.country }}: {{ value | toFixed(1) }} thousand people'
+                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
             }]          
         }
       }) | safe }}
