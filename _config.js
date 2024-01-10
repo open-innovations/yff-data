@@ -14,7 +14,7 @@ import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { walkSync } from 'std/fs/mod.ts';
 import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
 import autoDependency from 'oi-lume-utils/processors/auto-dependency.ts';
-import { applyReplacementFilters } from '/src/_lib/oi/util.js';
+import { applyReplacementFilters, decimalSafeMath } from '/src/_lib/oi/util.js';
 import injector from '/src/_lib/oi/processor/injector.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
@@ -177,7 +177,7 @@ site.filter('autoLegend', (config, options) => {
 
   const steps = 5;
   const legendValues = Array.from(Array(steps).keys())
-    .map((x) => (x * range) / (steps - 1) + min)
+    .map((x) => decimalSafeMath(decimalSafeMath(x,'*',range),'/',(steps - 1)) + min)
     .reverse();
 
   const legend = {
