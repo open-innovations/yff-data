@@ -1,6 +1,7 @@
 figure {
   & .figure-options {
-    float: right;
+	position: absolute;
+	right: 0;
     text-align: right;
     line-height: 0;
 

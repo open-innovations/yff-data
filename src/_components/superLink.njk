@@ -10,15 +10,19 @@
     <div data-injector-url="{{ page.url }}" data-injector-selector="{{ page.featured }}"></div>
   {% elif page.visualisation %}
     {% set key_visualisation = page.visualisation[page.featured_visualisation or 'headline'] %}
+  {% elif page.visualisations %}
+    {% set key_visualisation = page.visualisations[page.featured_visualisation or 0] %}
+  {% endif %}
+  {% if key_visualisation %}
 	{% if key_visualisation.type == "oi.dashboard" %}
 		{{ comp.oi.dashboard ({ config: key_visualisation.config }) | simpleviz | safe }}
+	{% elif key_visualisation.type == "oi.map.svg" %}
+		{{ comp.oi.map.svg ({ config: key_visualisation.config }) | simpleviz | safe }}
 	{% else %}
 		{{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
 	{% endif %}
-  {% elif page.visualisations %}
-    {% set key_visualisation = page.visualisations[page.featured_visualisation or 0] %}
-    {{ comp.viz[key_visualisation.type]({ config: key_visualisation.config }) | safe }}
   {% endif %}
+
 {% endif %}
 
 {% if page.summary %}

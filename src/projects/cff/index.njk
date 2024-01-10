@@ -8,7 +8,28 @@ summary:
 ---
 
 <section>
-  {{ comp.viz.main({ visualisations: visualisations | pick(1) }) | safe }}
+    <div class="panes">
+        {% comp 'display.figure', { id: 'headlines', source_file: '/data/cff/dummy_headlines.csv' } %}
+            <h3>Headlines</h3>
+            {{ comp.oi.dashboard({ 
+                config: {
+                    data: "sources.cff.dummy_headlines",
+                    title: "Title",
+                    value: "Value",
+                    note: "Note",
+                    width: "45%",
+                    panels: [{
+                        name: "Applications Made",
+                        colour: "Plum"
+                    },{
+                        name: "Local Partnerships Awarded",
+                        colour: "Orange"
+                    }]
+                }
+            }) | safe }}
+        {% endcomp %}
+    </div>
+
 </section>
 
 {% comp 'flex' %}
@@ -26,7 +47,15 @@ summary:
     <a href = "https://youthfuturesfoundation.org/our-work/invest/connected-futures/">Youth Futures Foundation website</a>.
   </p>
 
-  {{ comp.viz.main({ visualisations: visualisations | pick(0) }) | safe }}
+
+  <div class="panes">
+    {% comp 'display.figure', { id: 'map', source_file: '/data/cff/apps_awarded_all_itl.csv' } %}
+      {{ comp.oi.map.svg({ 
+        config: visualisation.headline.config
+      }) | safe }}
+    {% endcomp %}
+  </div>
+
 {# </section>
 
 <section> #}
@@ -40,8 +69,23 @@ summary:
   <p>
     Links will be provided to datasets about each location when these become available.
   </p>
-  
-  {{ comp.viz.main({ visualisations: visualisations | pick(2) }) | safe }}
+
+  <div class="panes">
+    {% comp 'display.figure', { id: 'local-partnerships', source_file: '/data/cff/awarded_table.csv' } %}
+   
+      {{ comp.oi.table({
+          "config": {
+            "data": "sources.cff.awarded_table",
+            "columns": [
+              { "name": "Local partner", "mergerows": true, "align": "left" },
+              { "name": "Led by", "mergerows": true, "align": "left" }
+            ]
+          }
+      }) | safe }}
+
+    {% endcomp %}
+  </div>
+
 {# </section> #}
 
 
