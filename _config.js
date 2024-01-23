@@ -14,14 +14,14 @@ import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { walkSync } from 'std/fs/mod.ts';
 import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
 import autoDependency from 'oi-lume-utils/processors/auto-dependency.ts';
-import { applyReplacementFilters } from '/src/_lib/oi/util.js';
+import { applyReplacementFilters, decimalSafeMath } from '/src/_lib/oi/util.js';
 import injector from '/src/_lib/oi/processor/injector.js';
 import pagefind from "lume/plugins/pagefind.ts";
 
 import { selectorProcessor } from "./src/_lib/ui/selector.ts";
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.8/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.10/mod.ts";
 
 import * as yff from './yff-config.ts';
 
@@ -61,7 +61,8 @@ site.use(
     },
     colour: {
       scales: {
-        YFF: '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%'
+        "YFF": '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%',
+        "YFF-orange": yff.namedColours['Orange-3']+' 0%, '+yff.namedColours['Orange-2']+' 33%'+yff.namedColours['Orange-1']+' 67%'+yff.namedColours['Orange']+' 100%'
       },
       names: yff.namedColours,
       series: ['#E55912', '#005776', '#F7AB3D', '#4A783C'],
@@ -176,7 +177,7 @@ site.filter('autoLegend', (config, options) => {
 
   const steps = 5;
   const legendValues = Array.from(Array(steps).keys())
-    .map((x) => (x * range) / (steps - 1) + min)
+    .map((x) => decimalSafeMath(decimalSafeMath(x,'*',range),'/',(steps - 1)) + min)
     .reverse();
 
   const legend = {

@@ -24,3 +24,7 @@
 		font-weight: bold;
 	}
 }
+
+.oi-map svg { 
+	background: #efefef;
+}
