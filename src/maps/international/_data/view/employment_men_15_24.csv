@@ -1,40 +1,40 @@
 country,country_code,sex,age,series,frequency,time,powercode,value
 Australia,AUS,Men,15 to 24,Employment,Annual,2022,Thousands,1047.6
-Austria,AUT,Men,15 to 24,Employment,Annual,2022,Thousands,252.16
-Belgium,BEL,Men,15 to 24,Employment,Annual,2022,Thousands,179.4587555
+Austria,AUT,Men,15 to 24,Employment,Annual,2022,Thousands,252.2
+Belgium,BEL,Men,15 to 24,Employment,Annual,2022,Thousands,179.5
 Canada,CAN,Men,15 to 24,Employment,Annual,2022,Thousands,1320.6
-Czechia,CZE,Men,15 to 24,Employment,Annual,2022,Thousands,151.28
-Denmark,DNK,Men,15 to 24,Employment,Annual,2022,Thousands,201.9837494
-Finland,FIN,Men,15 to 24,Employment,Annual,2022,Thousands,153.523
-France,FRA,Men,15 to 24,Employment,Annual,2022,Thousands,1445.265289
-Germany,DEU,Men,15 to 24,Employment,Annual,2022,Thousands,2266.525269
-Greece,GRC,Men,15 to 24,Employment,Annual,2022,Thousands,100.2010002
-Hungary,HUN,Men,15 to 24,Employment,Annual,2022,Thousands,151.8600063
-Iceland,ISL,Men,15 to 24,Employment,Annual,2022,Thousands,14.64
-Ireland,IRL,Men,15 to 24,Employment,Annual,2022,Thousands,159.1609993
-Italy,ITA,Men,15 to 24,Employment,Annual,2022,Thousands,700.1420288
+Czechia,CZE,Men,15 to 24,Employment,Annual,2022,Thousands,151.3
+Denmark,DNK,Men,15 to 24,Employment,Annual,2022,Thousands,202.0
+Finland,FIN,Men,15 to 24,Employment,Annual,2022,Thousands,153.5
+France,FRA,Men,15 to 24,Employment,Annual,2022,Thousands,1445.3
+Germany,DEU,Men,15 to 24,Employment,Annual,2022,Thousands,2266.5
+Greece,GRC,Men,15 to 24,Employment,Annual,2022,Thousands,100.2
+Hungary,HUN,Men,15 to 24,Employment,Annual,2022,Thousands,151.9
+Iceland,ISL,Men,15 to 24,Employment,Annual,2022,Thousands,14.6
+Ireland,IRL,Men,15 to 24,Employment,Annual,2022,Thousands,159.2
+Italy,ITA,Men,15 to 24,Employment,Annual,2022,Thousands,700.1
 Japan,JPN,Men,15 to 24,Employment,Annual,2022,Thousands,2730.0
 Korea,KOR,Men,15 to 24,Employment,Annual,2022,Thousands,583.2
-Luxembourg,LUX,Men,15 to 24,Employment,Annual,2022,Thousands,9.673749924
-Mexico,MEX,Men,15 to 24,Employment,Annual,2022,Thousands,5767.84
-Netherlands,NLD,Men,15 to 24,Employment,Annual,2022,Thousands,825.74
+Luxembourg,LUX,Men,15 to 24,Employment,Annual,2022,Thousands,9.7
+Mexico,MEX,Men,15 to 24,Employment,Annual,2022,Thousands,5767.8
+Netherlands,NLD,Men,15 to 24,Employment,Annual,2022,Thousands,825.7
 New Zealand,NZL,Men,15 to 24,Employment,Annual,2022,Thousands,201.1
-Norway,NOR,Men,15 to 24,Employment,Annual,2022,Thousands,185.7164993
-Poland,POL,Men,15 to 24,Employment,Annual,2022,Thousands,553.9625015
+Norway,NOR,Men,15 to 24,Employment,Annual,2022,Thousands,185.7
+Poland,POL,Men,15 to 24,Employment,Annual,2022,Thousands,554.0
 Portugal,PRT,Men,15 to 24,Employment,Annual,2022,Thousands,150.1
-Slovak Republic,SVK,Men,15 to 24,Employment,Annual,2022,Thousands,72.35
-Spain,ESP,Men,15 to 24,Employment,Annual,2022,Thousands,626.33
+Slovak Republic,SVK,Men,15 to 24,Employment,Annual,2022,Thousands,72.4
+Spain,ESP,Men,15 to 24,Employment,Annual,2022,Thousands,626.3
 Sweden,SWE,Men,15 to 24,Employment,Annual,2022,Thousands,277.4
-Switzerland,CHE,Men,15 to 24,Employment,Annual,2022,Thousands,279.252
+Switzerland,CHE,Men,15 to 24,Employment,Annual,2022,Thousands,279.3
 Türkiye,TUR,Men,15 to 24,Employment,Annual,2022,Thousands,2881.0
-United Kingdom,GBR,Men,15 to 24,Employment,Annual,2022,Thousands,1827.75
+United Kingdom,GBR,Men,15 to 24,Employment,Annual,2022,Thousands,1827.8
 United States,USA,Men,15 to 24,Employment,Annual,2022,Thousands,9826.0
-OECD countries,OECD,Men,15 to 24,Employment,Annual,2022,Thousands,37642.8796
+OECD countries,OECD,Men,15 to 24,Employment,Annual,2022,Thousands,37642.9
 Israel,ISR,Men,15 to 24,Employment,Annual,2022,Thousands,300.1
-Chile,CHL,Men,15 to 24,Employment,Annual,2022,Thousands,365.21
-Slovenia,SVN,Men,15 to 24,Employment,Annual,2022,Thousands,37.71125031
-Estonia,EST,Men,15 to 24,Employment,Annual,2022,Thousands,20.45949984
-Latvia,LVA,Men,15 to 24,Employment,Annual,2022,Thousands,28.65274978
-Lithuania,LTU,Men,15 to 24,Employment,Annual,2022,Thousands,43.66125154
-Colombia,COL,Men,15 to 24,Employment,Annual,2022,Thousands,1753.66
-Costa Rica,CRI,Men,15 to 24,Employment,Annual,2022,Thousands,151.61
+Chile,CHL,Men,15 to 24,Employment,Annual,2022,Thousands,365.2
+Slovenia,SVN,Men,15 to 24,Employment,Annual,2022,Thousands,37.7
+Estonia,EST,Men,15 to 24,Employment,Annual,2022,Thousands,20.5
+Latvia,LVA,Men,15 to 24,Employment,Annual,2022,Thousands,28.7
+Lithuania,LTU,Men,15 to 24,Employment,Annual,2022,Thousands,43.7
+Colombia,COL,Men,15 to 24,Employment,Annual,2022,Thousands,1753.7
+Costa Rica,CRI,Men,15 to 24,Employment,Annual,2022,Thousands,151.6

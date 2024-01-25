@@ -1,40 +1,40 @@
 country,country_code,sex,age,series,frequency,time,powercode,value
 Australia,AUS,All persons,15 to 24,Unemployment,Annual,2022,Thousands,184.8
-Austria,AUT,All persons,15 to 24,Unemployment,Annual,2022,Thousands,48.94
-Belgium,BEL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,67.6117506
+Austria,AUT,All persons,15 to 24,Unemployment,Annual,2022,Thousands,48.9
+Belgium,BEL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,67.6
 Canada,CAN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,294.2
-Czechia,CZE,All persons,15 to 24,Unemployment,Annual,2022,Thousands,19.65
-Denmark,DNK,All persons,15 to 24,Unemployment,Annual,2022,Thousands,46.88950062
-Finland,FIN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,45.098
-France,FRA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,574.4129944
-Germany,DEU,All persons,15 to 24,Unemployment,Annual,2022,Thousands,265.9479942
-Greece,GRC,All persons,15 to 24,Unemployment,Annual,2022,Thousands,77.09025049
-Hungary,HUN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,32.01999927
-Iceland,ISL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,2.72
-Ireland,IRL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,33.66725016
-Italy,ITA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,355.9780045
+Czechia,CZE,All persons,15 to 24,Unemployment,Annual,2022,Thousands,19.6
+Denmark,DNK,All persons,15 to 24,Unemployment,Annual,2022,Thousands,46.9
+Finland,FIN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,45.1
+France,FRA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,574.4
+Germany,DEU,All persons,15 to 24,Unemployment,Annual,2022,Thousands,265.9
+Greece,GRC,All persons,15 to 24,Unemployment,Annual,2022,Thousands,77.1
+Hungary,HUN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,32.0
+Iceland,ISL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,2.7
+Ireland,IRL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,33.7
+Italy,ITA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,356.0
 Japan,JPN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,240.0
 Korea,KOR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,108.9
-Luxembourg,LUX,All persons,15 to 24,Unemployment,Annual,2022,Thousands,4.166749954
-Mexico,MEX,All persons,15 to 24,Unemployment,Annual,2022,Thousands,634.59
-Netherlands,NLD,All persons,15 to 24,Unemployment,Annual,2022,Thousands,133.97
+Luxembourg,LUX,All persons,15 to 24,Unemployment,Annual,2022,Thousands,4.2
+Mexico,MEX,All persons,15 to 24,Unemployment,Annual,2022,Thousands,634.6
+Netherlands,NLD,All persons,15 to 24,Unemployment,Annual,2022,Thousands,134.0
 New Zealand,NZL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,40.4
-Norway,NOR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,41.45574903
-Poland,POL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,113.4867511
+Norway,NOR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,41.5
+Poland,POL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,113.5
 Portugal,PRT,All persons,15 to 24,Unemployment,Annual,2022,Thousands,64.3
-Slovak Republic,SVK,All persons,15 to 24,Unemployment,Annual,2022,Thousands,28.22
-Spain,ESP,All persons,15 to 24,Unemployment,Annual,2022,Thousands,482.93
+Slovak Republic,SVK,All persons,15 to 24,Unemployment,Annual,2022,Thousands,28.2
+Spain,ESP,All persons,15 to 24,Unemployment,Annual,2022,Thousands,482.9
 Sweden,SWE,All persons,15 to 24,Unemployment,Annual,2022,Thousands,144.3
-Switzerland,CHE,All persons,15 to 24,Unemployment,Annual,2022,Thousands,43.019
+Switzerland,CHE,All persons,15 to 24,Unemployment,Annual,2022,Thousands,43.0
 Türkiye,TUR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,1023.0
-United Kingdom,GBR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,425.71
+United Kingdom,GBR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,425.7
 United States,USA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,1714.0
-OECD countries,OECD,All persons,15 to 24,Unemployment,Annual,2022,Thousands,8414.976994
-Israel,ISR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,44.63
-Chile,CHL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,136.36
-Slovenia,SVN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,7.380749941
-Estonia,EST,All persons,15 to 24,Unemployment,Annual,2022,Thousands,10.38524997
-Lithuania,LTU,All persons,15 to 24,Unemployment,Annual,2022,Thousands,11.70075011
-Latvia,LVA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,9.846249908
-Colombia,COL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,799.35
-Costa Rica,CRI,All persons,15 to 24,Unemployment,Annual,2022,Thousands,103.85
+OECD countries,OECD,All persons,15 to 24,Unemployment,Annual,2022,Thousands,8415.0
+Israel,ISR,All persons,15 to 24,Unemployment,Annual,2022,Thousands,44.6
+Chile,CHL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,136.4
+Slovenia,SVN,All persons,15 to 24,Unemployment,Annual,2022,Thousands,7.4
+Estonia,EST,All persons,15 to 24,Unemployment,Annual,2022,Thousands,10.4
+Lithuania,LTU,All persons,15 to 24,Unemployment,Annual,2022,Thousands,11.7
+Latvia,LVA,All persons,15 to 24,Unemployment,Annual,2022,Thousands,9.8
+Colombia,COL,All persons,15 to 24,Unemployment,Annual,2022,Thousands,799.4
+Costa Rica,CRI,All persons,15 to 24,Unemployment,Annual,2022,Thousands,103.8

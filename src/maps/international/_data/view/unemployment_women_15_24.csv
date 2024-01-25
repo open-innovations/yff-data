@@ -1,40 +1,40 @@
 country,country_code,sex,age,series,frequency,time,powercode,value
 Australia,AUS,Women,15 to 24,Unemployment,Annual,2022,Thousands,80.5
-Austria,AUT,Women,15 to 24,Unemployment,Annual,2022,Thousands,22.57
-Belgium,BEL,Women,15 to 24,Unemployment,Annual,2022,Thousands,27.90375042
+Austria,AUT,Women,15 to 24,Unemployment,Annual,2022,Thousands,22.6
+Belgium,BEL,Women,15 to 24,Unemployment,Annual,2022,Thousands,27.9
 Canada,CAN,Women,15 to 24,Unemployment,Annual,2022,Thousands,128.0
-Czechia,CZE,Women,15 to 24,Unemployment,Annual,2022,Thousands,9.39
-Denmark,DNK,Women,15 to 24,Unemployment,Annual,2022,Thousands,22.81900024
-Finland,FIN,Women,15 to 24,Unemployment,Annual,2022,Thousands,22.395
-France,FRA,Women,15 to 24,Unemployment,Annual,2022,Thousands,246.521492
-Germany,DEU,Women,15 to 24,Unemployment,Annual,2022,Thousands,112.1902466
-Greece,GRC,Women,15 to 24,Unemployment,Annual,2022,Thousands,43.43000078
-Hungary,HUN,Women,15 to 24,Unemployment,Annual,2022,Thousands,12.57999969
-Iceland,ISL,Women,15 to 24,Unemployment,Annual,2022,Thousands,0.87
-Ireland,IRL,Women,15 to 24,Unemployment,Annual,2022,Thousands,15.66925001
-Italy,ITA,Women,15 to 24,Unemployment,Annual,2022,Thousands,155.0955009
+Czechia,CZE,Women,15 to 24,Unemployment,Annual,2022,Thousands,9.4
+Denmark,DNK,Women,15 to 24,Unemployment,Annual,2022,Thousands,22.8
+Finland,FIN,Women,15 to 24,Unemployment,Annual,2022,Thousands,22.4
+France,FRA,Women,15 to 24,Unemployment,Annual,2022,Thousands,246.5
+Germany,DEU,Women,15 to 24,Unemployment,Annual,2022,Thousands,112.2
+Greece,GRC,Women,15 to 24,Unemployment,Annual,2022,Thousands,43.4
+Hungary,HUN,Women,15 to 24,Unemployment,Annual,2022,Thousands,12.6
+Iceland,ISL,Women,15 to 24,Unemployment,Annual,2022,Thousands,0.9
+Ireland,IRL,Women,15 to 24,Unemployment,Annual,2022,Thousands,15.7
+Italy,ITA,Women,15 to 24,Unemployment,Annual,2022,Thousands,155.1
 Japan,JPN,Women,15 to 24,Unemployment,Annual,2022,Thousands,100.0
 Korea,KOR,Women,15 to 24,Unemployment,Annual,2022,Thousands,61.2
-Luxembourg,LUX,Women,15 to 24,Unemployment,Annual,2022,Thousands,2.229249954
-Mexico,MEX,Women,15 to 24,Unemployment,Annual,2022,Thousands,264.95
-Netherlands,NLD,Women,15 to 24,Unemployment,Annual,2022,Thousands,68.79
+Luxembourg,LUX,Women,15 to 24,Unemployment,Annual,2022,Thousands,2.2
+Mexico,MEX,Women,15 to 24,Unemployment,Annual,2022,Thousands,265.0
+Netherlands,NLD,Women,15 to 24,Unemployment,Annual,2022,Thousands,68.8
 New Zealand,NZL,Women,15 to 24,Unemployment,Annual,2022,Thousands,19.0
-Norway,NOR,Women,15 to 24,Unemployment,Annual,2022,Thousands,18.02724981
-Poland,POL,Women,15 to 24,Unemployment,Annual,2022,Thousands,49.13250017
+Norway,NOR,Women,15 to 24,Unemployment,Annual,2022,Thousands,18.0
+Poland,POL,Women,15 to 24,Unemployment,Annual,2022,Thousands,49.1
 Portugal,PRT,Women,15 to 24,Unemployment,Annual,2022,Thousands,31.7
-Slovak Republic,SVK,Women,15 to 24,Unemployment,Annual,2022,Thousands,11.45
-Spain,ESP,Women,15 to 24,Unemployment,Annual,2022,Thousands,228.12
+Slovak Republic,SVK,Women,15 to 24,Unemployment,Annual,2022,Thousands,11.4
+Spain,ESP,Women,15 to 24,Unemployment,Annual,2022,Thousands,228.1
 Sweden,SWE,Women,15 to 24,Unemployment,Annual,2022,Thousands,74.4
-Switzerland,CHE,Women,15 to 24,Unemployment,Annual,2022,Thousands,20.438
+Switzerland,CHE,Women,15 to 24,Unemployment,Annual,2022,Thousands,20.4
 Türkiye,TUR,Women,15 to 24,Unemployment,Annual,2022,Thousands,458.0
-United Kingdom,GBR,Women,15 to 24,Unemployment,Annual,2022,Thousands,178.51
+United Kingdom,GBR,Women,15 to 24,Unemployment,Annual,2022,Thousands,178.5
 United States,USA,Women,15 to 24,Unemployment,Annual,2022,Thousands,770.0
-OECD countries,OECD,Women,15 to 24,Unemployment,Annual,2022,Thousands,3830.728241
-Israel,ISR,Women,15 to 24,Unemployment,Annual,2022,Thousands,21.45
-Chile,CHL,Women,15 to 24,Unemployment,Annual,2022,Thousands,64.12
-Slovenia,SVN,Women,15 to 24,Unemployment,Annual,2022,Thousands,3.831999898
-Estonia,EST,Women,15 to 24,Unemployment,Annual,2022,Thousands,4.954249978
-Lithuania,LTU,Women,15 to 24,Unemployment,Annual,2022,Thousands,4.961250067
-Latvia,LVA,Women,15 to 24,Unemployment,Annual,2022,Thousands,2.939500064
-Colombia,COL,Women,15 to 24,Unemployment,Annual,2022,Thousands,422.76
-Costa Rica,CRI,Women,15 to 24,Unemployment,Annual,2022,Thousands,49.83
+OECD countries,OECD,Women,15 to 24,Unemployment,Annual,2022,Thousands,3830.7
+Israel,ISR,Women,15 to 24,Unemployment,Annual,2022,Thousands,21.4
+Chile,CHL,Women,15 to 24,Unemployment,Annual,2022,Thousands,64.1
+Slovenia,SVN,Women,15 to 24,Unemployment,Annual,2022,Thousands,3.8
+Estonia,EST,Women,15 to 24,Unemployment,Annual,2022,Thousands,5.0
+Lithuania,LTU,Women,15 to 24,Unemployment,Annual,2022,Thousands,5.0
+Latvia,LVA,Women,15 to 24,Unemployment,Annual,2022,Thousands,2.9
+Colombia,COL,Women,15 to 24,Unemployment,Annual,2022,Thousands,422.8
+Costa Rica,CRI,Women,15 to 24,Unemployment,Annual,2022,Thousands,49.8

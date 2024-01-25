@@ -7,4 +7,7 @@ stages:
     deps:
       - scripts/international/prepare.py
       - scripts/labour-market/config.py
-      - working/upstream/international.csv
+      - working/upstream/oecd_lfs_by_sex_and_age.csv
+    outs:
+      - src/maps/international/_data/view:
+          cache: false

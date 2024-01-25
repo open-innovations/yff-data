@@ -5,13 +5,19 @@ stages:
     deps:
     - path: scripts/international/prepare.py
       hash: md5
-      md5: 78a7812cf2a38bb8155ffbde7a2ffcb2
-      size: 4468
+      md5: 6f3b09bb3a70473d73b4ad0f4e8af98b
+      size: 4338
     - path: scripts/labour-market/config.py
       hash: md5
-      md5: 5cfbfb101cdcd817c3fa488dd72606a2
-      size: 5216
-    - path: working/upstream/international.csv
+      md5: c9187b99fb9c48a24be707561d15eaa2
+      size: 5131
+    - path: working/upstream/oecd_lfs_by_sex_and_age.csv
       hash: md5
-      md5: fa813ce32aa79e1ba9e3093b2b96eeb7
-      size: 10833024
+      md5: c2ee041bc5098fe579d5efcbbd1cca37
+      size: 11362509
+    outs:
+    - path: src/maps/international/_data/view
+      hash: md5
+      md5: 1f9d51f00fc9f0fa31685072a1edbe74.dir
+      size: 24943
+      nfiles: 12
