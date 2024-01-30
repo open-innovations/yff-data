@@ -11,3 +11,11 @@ stages:
     outs:
       - src/maps/international/_data/view:
           cache: false
+  transform:
+    cmd: perl scripts/international/transform.pl
+    deps:
+      - scripts/international/transform.pl
+      - working/upstream/oecd_lfs_by_sex_and_age.csv
+    outs:
+      - src/maps/international/_data/view/oecd_lfs_grouped.csv:
+          cache: false
