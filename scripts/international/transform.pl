@@ -100,7 +100,7 @@ sub getProperty {
 sub buildCSV {
 	my ($file,$ofile,$conf) = @_;
 
-	my (@csvrows,@rows,@cols,@datacols,$i,$p,$n,$r,$c,$k,$data,$rowlist,$collist,$row,%out,@headers,$head,$body,@parts,@csvrow,@keep);
+	my (@csvrows,@rows,@cols,@datacols,$i,$p,$n,$r,$c,$k,$data,$rowlist,$collist,$row,%out,@headers,$head,$body,$spacer,@parts,@csvrow,@keep);
 
 	@csvrows = LoadCSV($file);
 
@@ -135,6 +135,7 @@ sub buildCSV {
 
 	$body = "";
 	$head = "";
+	$spacer = "";
 	@keep = @{$conf->{'keep'}};
 	@headers = ();
 	for($c = 0; $c < @datacols; $c++){
@@ -145,19 +146,25 @@ sub buildCSV {
 	}
 	# Add the row name as the first column header
 	$head .= $conf->{'row'}{'value'};
+	$spacer .= "---";
 	for($i = 0; $i < @headers; $i++){
 		
 		# Add any "keep" columns
 		if(@keep > 0){
 			if($i == 0){
 				$head .= ",".join(",",@keep);
+				$spacer .= (",---" x @keep);
 			}else{
 				$head .= ("," x @keep);
 			}
 		}
 
 		$head .= ",".join(",",@{$headers[$i]})."\n";
-
+		
+		
+		if($i==0){
+			$spacer .= (",---" x @{$headers[$i]})."\n";
+		}
 	}
 
 	$body = "";
@@ -180,9 +187,9 @@ sub buildCSV {
 	
 	msg("Saving to <cyan>$ofile<none>\n");
 	open(FILE,">",$ofile);
-	print FILE $head.$body;
+	print FILE $head.$spacer.$body;
 	close(FILE);
-	return $head.$body;
+	return $head.$spacer.$body;
 }
 
 sub groupData {
