@@ -1,13 +1,13 @@
-md5: 0a4a25cef3b399e7aa24e37e5eb52348
+md5: c2ab0693a87705d697de3ea12d59d22b
 frozen: true
 deps:
-- path: data/metadata/codes/lms-codes.csv
+- path: data/processed/dfe/ks4_outcomes.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
     rev_lock: 7e1cd7f5a44d027a3988e71702772cfff7f51db6
 outs:
-- md5: cd2ed01676c0af8abaa0c22b477c951b
-  size: 187837
+- md5: 3d80a0f448b28b75e4c092b8ec1e39e0
+  size: 477470
   hash: md5
-  path: lms-codes.csv
+  path: ks4_outcomes.csv
   isexec: true

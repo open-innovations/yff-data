@@ -1,12 +1,13 @@
-md5: 4e53eaaa22f3834899cc3ae2148df25c
+md5: 3c56816239fb4fd9985c22b23659c73e
 frozen: true
 deps:
 - path: data/processed/mm23.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: b5de6de579269d2891bc9a1829800325ca979ab2
+    rev_lock: 7e1cd7f5a44d027a3988e71702772cfff7f51db6
 outs:
-- md5: 4a07fea3c200feb3e79ad36bf740d5bf
-  size: 25092324
+- md5: 52c6e8ce7f12ac05c53679adb29178c3
+  size: 25241343
   hash: md5
   path: mm23.csv
+  isexec: true

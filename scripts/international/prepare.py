@@ -25,68 +25,79 @@ def calculate_rates(data):
 
 if __name__ == '__main__':
 
-    oecd_lfs_data = oecd_lfs_data.rename(columns={
-        'COUNTRY': 'country_code'
-    })
-    oecd_lfs_data.columns = oecd_lfs_data.columns.str.lower()
 
-    unemployment_all_15_24 = filter_data(oecd_lfs_data, 2022, 'time').pipe(
-        filter_data, 'Unemployment', 'series').pipe(
-            filter_data, 'All persons', 'sex').pipe(
-                filter_data, '15 to 24', 'age').pipe(
-                    save_to_file, 'unemployment_all_15_24.csv') 
+    employment_rate_total = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Employment rate', 'measure').pipe(
+            filter_data, 'Total', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'employment_rate_total_15_over.csv') 
     
-    unemployment_all_15_24_table = unemployment_all_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-        save_to_file, 'unemployment_all_15_24_table.csv'
-    )
+    #     unemployment_all_15_24_table = unemployment_all_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
+    #     save_to_file, 'unemployment_all_15_24_table.csv'
+    # )
     
-    unemployment_women_15_24 = filter_data(oecd_lfs_data, 2022, 'time').pipe(
-        filter_data, 'Unemployment', 'series').pipe(
-            filter_data, 'Women', 'sex').pipe(
-                filter_data, '15 to 24', 'age').pipe(
-                    save_to_file, 'unemployment_women_15_24.csv') 
+    employment_rate_female = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Employment rate', 'measure').pipe(
+            filter_data, 'Female', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'employment_rate_female_15_over.csv') 
     
-    unemployment_women_15_24_table = unemployment_women_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-        save_to_file, 'unemployment_women_15_24_table.csv')
-    
-    unemployment_men_15_24 = filter_data(oecd_lfs_data, 2022, 'time').pipe(
-        filter_data, 'Unemployment', 'series').pipe(
-            filter_data, 'Men', 'sex').pipe(
-                filter_data, '15 to 24', 'age').pipe(
-                    save_to_file, 'unemployment_men_15_24.csv') 
-    
-    unemployment_men_15_24_table = unemployment_men_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-    save_to_file, 'unemployment_men_15_24_table.csv')
 
-    #Employment 
+    employment_rate_male = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Employment rate', 'measure').pipe(
+            filter_data, 'Male', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'employment_rate_male_15_over.csv') 
+    
 
-    employment_all_15_24 = filter_data(oecd_lfs_data, 2022, 'time').pipe(
-        filter_data, 'Employment', 'series').pipe(
-            filter_data, 'All persons', 'sex').pipe(
-                filter_data, '15 to 24', 'age').pipe(
-                    save_to_file, 'employment_all_15_24.csv') 
+
+    # Unemployment
+
+    umemployment_rate_total = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Unemployment rate', 'measure').pipe(
+            filter_data, 'Total', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'unemployment_rate_total_15_over.csv') 
     
-    employment_all_15_24_table = employment_all_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-        save_to_file, 'employment_all_15_24_table.csv'
-    )
+    unemployment_rate_female = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Unemployment rate', 'measure').pipe(
+            filter_data, 'Female', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'unemployment_rate_female_15_over.csv') 
     
-    employment_women_15_24 = filter_data(oecd_lfs_data, 2022, 'time').pipe(
-        filter_data, 'Employment', 'series').pipe(
-            filter_data, 'Women', 'sex').pipe(
-                filter_data, '15 to 24', 'age').pipe(
-                    save_to_file, 'employment_women_15_24.csv') 
+
+    unemployment_rate_male = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Unemployment rate', 'measure').pipe(
+            filter_data, 'Male', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'unemployment_rate_male_15_over.csv') 
     
-    employment_women_15_24_table = employment_women_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-        save_to_file, 'employment_women_15_24_table.csv')
+
     
-    employment_men_15_24 = filter_data(oecd_lfs_data, 2022, 'time').pipe(
-        filter_data, 'Employment', 'series').pipe(
-            filter_data, 'Men', 'sex').pipe(
-                filter_data, '15 to 24', 'age').pipe(
-                    save_to_file, 'employment_men_15_24.csv') 
+    # Economic Inactivity rate
+
+    economic_inactivity_rate_total = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Inactivity rate', 'measure').pipe(
+            filter_data, 'Total', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'economic_inactivity_rate_total.csv') 
     
-    employment_men_15_24_table = employment_men_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-    save_to_file, 'employment_men_15_24_table.csv')
+    economic_inactivity_rate_female = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Inactivity rate', 'measure').pipe(
+            filter_data, 'Female', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'economic_inactivity_rate_female.csv') 
+    
+
+    economic_inactivity_rate_male = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
+        filter_data, 'Inactivity rate', 'measure').pipe(
+            filter_data, 'Male', 'sex').pipe(
+                filter_data, '15 years or over', 'age').pipe(
+                    save_to_file, 'economic_inactivity_rate_male.csv') 
+
+
+    
+
 
     
     

@@ -22,6 +22,8 @@ css: |
 
 <p>This page will present international data on employment and education.</p>
 
+{# TO DO: Legend and date #}
+
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
     data-label='Choose the visualisation layer'
@@ -29,9 +31,9 @@ css: |
     data-heading-level='h2'
     data-id='map-selector'>
 
-    <article id='unemployment-all-15-24' class='selector-block' data-selector-group="Unemployment">
-    <h2>Unemployment for all people, aged 15-24</h2>
-    <p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of Unemployed young people aged 15-24.</p>
+    <article id='employment-rate-total-15-over' class='selector-block' data-selector-group="Employment">
+    <h2>Employment rate for all people, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of employed people aged 15 and over.</p>
     {% comp 'display.figure' %}
     {{ comp.oi.map.svg({ 
         config: {
@@ -42,7 +44,7 @@ css: |
             projection: {
                 name: 'equirectangular'
             },
-            data: view.unemployment_all_15_24.rows,
+            data: view.employment_rate_total_15_over.rows,
             key:'country_code',
             value: 'value',
             min: 0,
@@ -52,12 +54,12 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
+                template: '{{ country }} \n{{ value | toFixed(2) | toLocaleString() }}%'
             }]          
         }
       }) | safe }}
     {% endcomp %} 
-
+{# 
     <section style = "padding-top:5rem;">
     <h3>Highest Scoring Countries</h3>
     {% comp 'display.figure'%}
@@ -73,13 +75,12 @@ css: |
         } }
       ) | safe }}
     {% endcomp %}
-    </section>
+    </section> #}
 
     </article>
-
-    <article id='unemployment-women-15-24' class='selector-block' data-selector-group="Unemployment">
-    <h2>Unemployment for women, aged 15-24</h2>
-    <p>The visualisation below presents OECD data on the number of Unemployed young people aged 15-24.</p>
+    <article id='employment-rate-female-15-over' class='selector-block' data-selector-group="Employment">
+    <h2>Employment rate for women, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are in employment.</p>
     {% comp 'display.figure' %}
     {{ comp.oi.map.svg({ 
         config: {
@@ -90,7 +91,7 @@ css: |
             projection: {
                 name: 'equirectangular'
             },
-            data: view.unemployment_women_15_24.rows,
+            data: view.employment_rate_female_15_over.rows,
             key:'country_code',
             value: 'value',
             min: 0,
@@ -100,34 +101,16 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
             }]          
         }
       }) | safe }}
     {% endcomp %} 
-
-    <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Countries</h3>
-    <p>The table below shows the countries with the highest levels of Unemployment. Higher values indicate regions where young people have a higher chance of being unemployed.</p>
-    {% comp 'display.figure'%}
-      {{ comp.oi.table({
-        config: {
-          columns: [
-            {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(2) }}', 'align': 'center',
-              min: view.unemployment_women_15_24.range.value.min, max: view.unemployment_women_15_24.range.value.max
-            }
-          ],
-          data: view.unemployment_women_15_24_table.rows 
-        } }
-      ) | safe }}
-    {% endcomp %}
-    </section>
     </article>
 
-    <article id='unemployment-men-15-24' class='selector-block' data-selector-group="Unemployment">
-    <h2>Unemployment for men, aged 15-24</h2>
-    <p>The visualisation below presents OECD data on the number of Unemployed young people aged 15-24.</p>
+    <article id='employment-rate-female-15-over' class='selector-block' data-selector-group="Employment">
+    <h2>Employment rate for women, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are in employment.</p>
     {% comp 'display.figure' %}
     {{ comp.oi.map.svg({ 
         config: {
@@ -138,7 +121,7 @@ css: |
             projection: {
                 name: 'equirectangular'
             },
-            data: view.unemployment_men_15_24.rows,
+            data: view.employment_rate_female_15_over.rows,
             key:'country_code',
             value: 'value',
             min: 0,
@@ -148,37 +131,16 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
             }]          
         }
       }) | safe }}
     {% endcomp %} 
-
-    <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Countries</h3>
-    <p>The table below shows the countries with the highest levels of Unemployment. Higher values indicate regions where young people have a higher chance of being unemployed.</p>
-    {% comp 'display.figure'%}
-      {{ comp.oi.table({
-        config: {
-          columns: [
-            {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(2) }}', 'align': 'center',
-              min: view.unemployment_men_15_24.range.value.min, max: view.unemployment_men_15_24.range.value.max
-            }
-          ],
-          data: view.unemployment_men_15_24_table.rows 
-        } }
-      ) | safe }}
-    {% endcomp %}
-    </section>
     </article>
 
-
-    {# EMPLOYMENT #}
-
-    <article id='employment-all-15-24' class='selector-block' data-selector-group="Employment">
-    <h2>Employment for all people, aged 15-24</h2>
-    <p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of Unemployed young people aged 15-24.</p>
+    <article id='unemployment-rate-total-15-over' class='selector-block' data-selector-group="Unemployment">
+    <h2>Unemployment rate for all people, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of people aged 15 and over who are unemployed.</p>
     {% comp 'display.figure' %}
     {{ comp.oi.map.svg({ 
         config: {
@@ -189,7 +151,7 @@ css: |
             projection: {
                 name: 'equirectangular'
             },
-            data: view.employment_all_15_24.rows,
+            data: view.unemployment_rate_total_15_over.rows,
             key:'country_code',
             value: 'value',
             min: 0,
@@ -199,34 +161,16 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
             }]          
         }
       }) | safe }}
     {% endcomp %} 
-
-    <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Countries</h3>
-    {% comp 'display.figure'%}
-      {{ comp.oi.table({
-        config: {
-          columns: [
-            {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(2) }}', 'align': 'center',
-              min: view.employment_all_15_24.range.value.min, max: view.employment_all_15_24.range.value.max
-            }
-          ],
-          data: view.employment_all_15_24_table.rows 
-        } }
-      ) | safe }}
-    {% endcomp %}
-    </section>
-
     </article>
 
-    <article id='employment-women-15-24' class='selector-block' data-selector-group="Employment">
-    <h2>Employment for women, aged 15-24</h2>
-    <p>The visualisation below presents OECD data on the number of Unemployed young people aged 15-24.</p>
+    <article id='unemployment-rate-female-15-over' class='selector-block' data-selector-group="Unemployment">
+    <h2>Unemployment rate for women, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are unemployed.</p>
     {% comp 'display.figure' %}
     {{ comp.oi.map.svg({ 
         config: {
@@ -237,7 +181,7 @@ css: |
             projection: {
                 name: 'equirectangular'
             },
-            data: view.employment_women_15_24.rows,
+            data: view.unemployment_rate_female_15_over.rows,
             key:'country_code',
             value: 'value',
             min: 0,
@@ -247,34 +191,16 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
             }]          
         }
       }) | safe }}
     {% endcomp %} 
-
-    <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Countries</h3>
-    <p>The table below shows the countries with the highest levels of employment. Higher values indicate regions where young people have a higher chance of being unemployed.</p>
-    {% comp 'display.figure'%}
-      {{ comp.oi.table({
-        config: {
-          columns: [
-            {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(2) }}', 'align': 'center',
-              min: view.employment_women_15_24.range.value.min, max: view.employment_women_15_24.range.value.max
-            }
-          ],
-          data: view.employment_women_15_24_table.rows 
-        } }
-      ) | safe }}
-    {% endcomp %}
-    </section>
     </article>
 
-    <article id='employment-men-15-24' class='selector-block' data-selector-group="Employment">
-    <h2>Employment for men, aged 15-24</h2>
-    <p>The visualisation below presents OECD data on the number of Unemployed young people aged 15-24.</p>
+    <article id='unemployment-rate-male-15-over' class='selector-block' data-selector-group="Unemployment">
+    <h2>Unemployment rate for men, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of men aged 15 and over who are unemployed.</p>
     {% comp 'display.figure' %}
     {{ comp.oi.map.svg({ 
         config: {
@@ -285,7 +211,7 @@ css: |
             projection: {
                 name: 'equirectangular'
             },
-            data: view.employment_men_15_24.rows,
+            data: view.unemployment_rate_male_15_over.rows,
             key:'country_code',
             value: 'value',
             min: 0,
@@ -295,11 +221,105 @@ css: |
             tooltip: 'tooltip',
             columns: [{
                 name: 'tooltip',
-                template: '{{ country }} \n{{ value | multiply(1000) | toFixed(0) | toLocaleString() }} people'
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
             }]          
         }
       }) | safe }}
     {% endcomp %} 
+    </article>
+
+    <article id='inactivity-rate-total-15-over' class='selector-block' data-selector-group="Economic Inactivity">
+    <h2>Economic inactivity rate for all people, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of all people aged 15 and over who are economically inactive.</p>
+    {% comp 'display.figure' %}
+    {{ comp.oi.map.svg({ 
+        config: {
+            geojson: {
+                data: sources.maps.world,
+                key: 'ADM0_A3'
+            }, 
+            projection: {
+                name: 'equirectangular'
+            },
+            data: view.economic_inactivity_rate_total.rows,
+            key:'country_code',
+            value: 'value',
+            min: 0,
+            width: 600,
+            height:500,
+            scale: 'YFF_r',
+            tooltip: 'tooltip',
+            columns: [{
+                name: 'tooltip',
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+            }]          
+        }
+      }) | safe }}
+    {% endcomp %} 
+    </article>
+
+    <article id='inactivity-rate-female-15-over' class='selector-block' data-selector-group="Economic Inactivity">
+    <h2>Economic inactivity rate for women, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are economically inactive.</p>
+    {% comp 'display.figure' %}
+    {{ comp.oi.map.svg({ 
+        config: {
+            geojson: {
+                data: sources.maps.world,
+                key: 'ADM0_A3'
+            }, 
+            projection: {
+                name: 'equirectangular'
+            },
+            data: view.economic_inactivity_rate_female.rows,
+            key:'country_code',
+            value: 'value',
+            min: 0,
+            width: 600,
+            height:500,
+            scale: 'YFF_r',
+            tooltip: 'tooltip',
+            columns: [{
+                name: 'tooltip',
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+            }]          
+        }
+      }) | safe }}
+    {% endcomp %} 
+    </article>
+
+    <article id='inactivity-rate-male-15-over' class='selector-block' data-selector-group="Economic Inactivity">
+    <h2>Economic inactivity rate for men, aged 15 and over</h2>
+    <p>The visualisation below presents OECD data on the number of men aged 15 and over who are economically inactive.</p>
+    {% comp 'display.figure' %}
+    {{ comp.oi.map.svg({ 
+        config: {
+            geojson: {
+                data: sources.maps.world,
+                key: 'ADM0_A3'
+            }, 
+            projection: {
+                name: 'equirectangular'
+            },
+            data: view.economic_inactivity_rate_male.rows,
+            key:'country_code',
+            value: 'value',
+            min: 0,
+            width: 600,
+            height:500,
+            scale: 'YFF_r',
+            tooltip: 'tooltip',
+            columns: [{
+                name: 'tooltip',
+                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+            }]          
+        }
+      }) | safe }}
+    {% endcomp %} 
+    </article>
+
+
+{#
 
     <section style = "padding-top:5rem;">
     <h3>Highest Scoring Countries</h3>
@@ -317,4 +337,4 @@ css: |
         } }
       ) | safe }}
     {% endcomp %}
-    </section>
+    </section> #}
