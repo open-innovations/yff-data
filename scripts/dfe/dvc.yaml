@@ -1,0 +1,11 @@
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/dfe/transform.py
+    wdir: ../..
+    deps:
+      - scripts/dfe/transform.py
+      - working/upstream/ks4_outcomes.csv
+    outs:
+      - src/maps/education/_data/view:
+          cache: false
+          persist: false

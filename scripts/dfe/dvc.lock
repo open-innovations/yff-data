@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/dfe/transform.py
+    deps:
+    - path: scripts/dfe/transform.py
+      hash: md5
+      md5: bef0514306ccc9f032e99e1146398ca8
+      size: 3308
+    - path: working/upstream/ks4_outcomes.csv
+      hash: md5
+      md5: ec15396dd6d9b780f03a0860f96a3137
+      size: 473820
+    outs:
+    - path: src/maps/education/_data/view
+      hash: md5
+      md5: 6237642700ad794758333167056dc2f2.dir
+      size: 42627
+      nfiles: 6
