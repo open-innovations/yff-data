@@ -5,8 +5,8 @@ stages:
     deps:
     - path: scripts/education/transform.py
       hash: md5
-      md5: 8407fc4321d1fee0ef7651cae295dc93
-      size: 4347
+      md5: f56d189ffb3ee24d71f90e4cc41cc582
+      size: 4255
     - path: working/upstream/education.csv
       hash: md5
       md5: 024f9ba2bfd92786a18a6298a8a06d9d
@@ -22,8 +22,8 @@ stages:
     deps:
     - path: scripts/education/transform.py
       hash: md5
-      md5: 8407fc4321d1fee0ef7651cae295dc93
-      size: 4347
+      md5: f56d189ffb3ee24d71f90e4cc41cc582
+      size: 4255
     - path: working/upstream/census_qualifications.csv
       hash: md5
       md5: 17e750e233f9134fb4ca889ff784dfb6

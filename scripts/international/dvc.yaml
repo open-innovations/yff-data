@@ -3,16 +3,33 @@ vars:
 stages:
   prepare:
     cmd: PYTHONPATH=. python3 scripts/international/prepare.py
-    wdir: ../..
+    wdir: ${top}
     deps:
       - scripts/international/prepare.py
       - scripts/labour-market/config.py
       - working/upstream/oecd_lfs_by_sex_and_age.csv
     outs:
-      - src/maps/international/_data/view:
+      - src/maps/international/_data/view/economic_inactivity_rate_female.csv:
+          cache: false
+      - src/maps/international/_data/view/economic_inactivity_rate_male.csv:
+          cache: false
+      - src/maps/international/_data/view/economic_inactivity_rate_total.csv:
+          cache: false
+      - src/maps/international/_data/view/employment_rate_female_15_over.csv:
+          cache: false
+      - src/maps/international/_data/view/employment_rate_male_15_over.csv:
+          cache: false
+      - src/maps/international/_data/view/employment_rate_total_15_over.csv:
+          cache: false
+      - src/maps/international/_data/view/unemployment_rate_female_15_over.csv:
+          cache: false
+      - src/maps/international/_data/view/unemployment_rate_male_15_over.csv:
+          cache: false
+      - src/maps/international/_data/view/unemployment_rate_total_15_over.csv:
           cache: false
   transform:
     cmd: perl scripts/international/transform.pl
+    wdir: ${top}
     deps:
       - scripts/international/transform.pl
       - working/upstream/oecd_lfs_by_sex_and_age.csv
