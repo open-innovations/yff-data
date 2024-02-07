@@ -1,22 +1,15 @@
 stages:
   transform:
-    cmd: PYTHONPATH=. python scripts/education/transform.py
+    cmd:
+      - PYTHONPATH=. python scripts/education/transform.py
+      - PYTHONPATH=. python scripts/education/transform_census.py
     wdir: ../..
     deps:
       - scripts/education/transform.py
+      - scripts/education/transform_census.py
       - working/upstream/education.csv
+      - working/upstream/census_qualifications.csv
     outs:
       - src/maps/education/_data/view:
           cache: false
           persist: false
-  transform_census:
-    cmd: PYTHONPATH=. python scripts/education/transform_census.py
-    wdir: ../..
-    deps:
-      - scripts/education/transform.py
-      - working/upstream/census_qualifications.csv
-    # outs:
-    #   - src/maps/education/_data/view:
-    #       cache: false
-    #       persist: false
-    

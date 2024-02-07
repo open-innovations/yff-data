@@ -1,12 +1,22 @@
 schema: '2.0'
 stages:
   transform:
-    cmd: PYTHONPATH=. python scripts/education/transform.py
+    cmd:
+    - PYTHONPATH=. python scripts/education/transform.py
+    - PYTHONPATH=. python scripts/education/transform_census.py
     deps:
     - path: scripts/education/transform.py
       hash: md5
       md5: f56d189ffb3ee24d71f90e4cc41cc582
       size: 4255
+    - path: scripts/education/transform_census.py
+      hash: md5
+      md5: 9fbad047a091ee6c7553ecc328d6b2d1
+      size: 1969
+    - path: working/upstream/census_qualifications.csv
+      hash: md5
+      md5: 17e750e233f9134fb4ca889ff784dfb6
+      size: 361199
     - path: working/upstream/education.csv
       hash: md5
       md5: 024f9ba2bfd92786a18a6298a8a06d9d
@@ -14,9 +24,9 @@ stages:
     outs:
     - path: src/maps/education/_data/view
       hash: md5
-      md5: 045ad70475845f1cc5c38a84739719bd.dir
-      size: 196414
-      nfiles: 12
+      md5: 9ae9d7345b79087824e02eb2800c1d89.dir
+      size: 382497
+      nfiles: 19
   transform_census:
     cmd: PYTHONPATH=. python scripts/education/transform_census.py
     deps:
