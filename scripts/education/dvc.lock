@@ -3,12 +3,68 @@ stages:
   transform:
     cmd:
     - PYTHONPATH=. python scripts/education/transform.py
-    - PYTHONPATH=. python scripts/education/transform_census.py
     deps:
     - path: scripts/education/transform.py
       hash: md5
       md5: f56d189ffb3ee24d71f90e4cc41cc582
       size: 4255
+    - path: working/upstream/education.csv
+      hash: md5
+      md5: 024f9ba2bfd92786a18a6298a8a06d9d
+      size: 3294609
+    outs:
+    - path: src/maps/education/_data/view/KS2_expected_standard.csv
+      hash: md5
+      md5: f39362c917b24c8d783ab0375c9969eb
+      size: 15486
+    - path: src/maps/education/_data/view/KS2_higher_standard.csv
+      hash: md5
+      md5: d6b83827475c3ad41ba7382253b37620
+      size: 15066
+    - path: src/maps/education/_data/view/achievement_A_to_C.csv
+      hash: md5
+      md5: f6a9e5d055b43d6876466065aa97c5ea
+      size: 18841
+    - path: src/maps/education/_data/view/attainment_8_score.csv
+      hash: md5
+      md5: 23caa14d20488c3536b755c9b5307591
+      size: 16552
+    - path: src/maps/education/_data/view/good_primary_school.csv
+      hash: md5
+      md5: 9056bdf95a26daafce224174a22d41d8
+      size: 16553
+    - path: src/maps/education/_data/view/good_secondary_school.csv
+      hash: md5
+      md5: e39e7b11235fc99827254a69b239a4f2
+      size: 16597
+    - path: src/maps/education/_data/view/inadequate_primary_school.csv
+      hash: md5
+      md5: 8e5cf60b9c43b67a77e8a6b2b0c7cb2c
+      size: 16030
+    - path: src/maps/education/_data/view/inadequate_secondary_school.csv
+      hash: md5
+      md5: 7466175f056291c7a05bc290b7eb7ce7
+      size: 16149
+    - path: src/maps/education/_data/view/needs_improvement_primary_school.csv
+      hash: md5
+      md5: ce5ead8ac10bf1ef18956b8f93a4eb08
+      size: 16169
+    - path: src/maps/education/_data/view/needs_improvement_secondary_school.csv
+      hash: md5
+      md5: 9f188481c78b5178034afed094d6dc3f
+      size: 16262
+    - path: src/maps/education/_data/view/outstanding_primary_school.csv
+      hash: md5
+      md5: 446ccc6c6dd8ea67d865489edad9b8af
+      size: 16386
+    - path: src/maps/education/_data/view/outstanding_secondary_school.csv
+      hash: md5
+      md5: 675f5ccf7e3c478575500fae3a1badd0
+      size: 16323
+  transform_census:
+    cmd:
+    - PYTHONPATH=. python scripts/education/transform_census.py
+    deps:
     - path: scripts/education/transform_census.py
       hash: md5
       md5: 9fbad047a091ee6c7553ecc328d6b2d1
@@ -17,24 +73,32 @@ stages:
       hash: md5
       md5: 17e750e233f9134fb4ca889ff784dfb6
       size: 361199
-    - path: working/upstream/education.csv
-      hash: md5
-      md5: 024f9ba2bfd92786a18a6298a8a06d9d
-      size: 3294609
     outs:
-    - path: src/maps/education/_data/view
+    - path: src/maps/education/_data/view/census_apprenticeship.csv
       hash: md5
-      md5: 9ae9d7345b79087824e02eb2800c1d89.dir
-      size: 382497
-      nfiles: 19
-  transform_census:
-    cmd: PYTHONPATH=. python scripts/education/transform_census.py
-    deps:
-    - path: scripts/education/transform.py
+      md5: 74b108583c07bc6d72d38cf7298999e2
+      size: 26624
+    - path: src/maps/education/_data/view/census_five_or_more_gcses.csv
       hash: md5
-      md5: f56d189ffb3ee24d71f90e4cc41cc582
-      size: 4255
-    - path: working/upstream/census_qualifications.csv
+      md5: bd671a4602e733cea82a2ee33d5eed5a
+      size: 26570
+    - path: src/maps/education/_data/view/census_higher_education_qualifications.csv
       hash: md5
-      md5: 17e750e233f9134fb4ca889ff784dfb6
-      size: 361199
+      md5: 2f12749beba6e72ee80a0abb130b66aa
+      size: 26620
+    - path: src/maps/education/_data/view/census_no_qualifications.csv
+      hash: md5
+      md5: 3629ae64b6e2971d85848a36aa6d1514
+      size: 26586
+    - path: src/maps/education/_data/view/census_one_to_four_gcses.csv
+      hash: md5
+      md5: 721baef811948d51a9a09dd87c2e42db
+      size: 26447
+    - path: src/maps/education/_data/view/census_other_qualifications.csv
+      hash: md5
+      md5: 7018bc58369827dc94b7e9ae276a7ee4
+      size: 26633
+    - path: src/maps/education/_data/view/census_two_or_more_a_levels.csv
+      hash: md5
+      md5: 0ac1acc3d43ad1c5de042c74b060e887
+      size: 26603

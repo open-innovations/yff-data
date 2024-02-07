@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/dfe/transform.py
+    deps:
+    - path: scripts/dfe/transform.py
+      hash: md5
+      md5: f852ca347ce2812dfc12117a6c4cb7e5
+      size: 3244
+    - path: working/upstream/ks4_outcomes.csv
+      hash: md5
+      md5: ec15396dd6d9b780f03a0860f96a3137
+      size: 473820
+    outs:
+    - path: src/maps/education/_data/view/avg_att8_boys.csv
+      hash: md5
+      md5: 39f7107733d349997f0a8648894cd4fb
+      size: 6742
+    - path: src/maps/education/_data/view/avg_att8_girls.csv
+      hash: md5
+      md5: 7294ee5ea0f91825d2a5768358626150
+      size: 6894
+    - path: src/maps/education/_data/view/avg_att8_total.csv
+      hash: md5
+      md5: 9dc7a45d3d7d4d0e3ce6e35b8335c8b1
+      size: 6894
+    - path: src/maps/education/_data/view/avg_p8score_boys.csv
+      hash: md5
+      md5: 2a85d814c4f577c3ff3f4a51ac5467d4
+      size: 7295
+    - path: src/maps/education/_data/view/avg_p8score_girls.csv
+      hash: md5
+      md5: bf9d81c0869e076b42e5b3716a4a5a0f
+      size: 7379
+    - path: src/maps/education/_data/view/avg_p8score_total.csv
+      hash: md5
+      md5: 8de872ce1eba5bc7e42f686891460afe
+      size: 7423

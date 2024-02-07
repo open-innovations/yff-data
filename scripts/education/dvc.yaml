@@ -1,15 +1,76 @@
+vars:
+  - target: src/maps/education/_data/view
 stages:
   transform:
     cmd:
       - PYTHONPATH=. python scripts/education/transform.py
-      - PYTHONPATH=. python scripts/education/transform_census.py
     wdir: ../..
     deps:
       - scripts/education/transform.py
-      - scripts/education/transform_census.py
       - working/upstream/education.csv
+    outs:
+      - ${target}/achievement_A_to_C.csv:
+          cache: false
+          persist: true
+      - ${target}/attainment_8_score.csv:
+          cache: false
+          persist: true
+      - ${target}/outstanding_secondary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/good_secondary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/needs_improvement_secondary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/inadequate_secondary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/outstanding_primary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/good_primary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/needs_improvement_primary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/inadequate_primary_school.csv:
+          cache: false
+          persist: true
+      - ${target}/KS2_expected_standard.csv:
+          cache: false
+          persist: true
+      - ${target}/KS2_higher_standard.csv:
+          cache: false
+          persist: true
+  transform_census:
+    cmd:
+      - PYTHONPATH=. python scripts/education/transform_census.py
+    wdir: ../..
+    deps:
+      - scripts/education/transform_census.py
       - working/upstream/census_qualifications.csv
     outs:
-      - src/maps/education/_data/view:
+      - ${target}/census_no_qualifications.csv:
+          cache: false
+          persist: false
+      - ${target}/census_one_to_four_gcses.csv:
+          cache: false
+          persist: false
+      - ${target}/census_five_or_more_gcses.csv:
+          cache: false
+          persist: false
+      - ${target}/census_apprenticeship.csv:
+          cache: false
+          persist: false
+      - ${target}/census_two_or_more_a_levels.csv:
+          cache: false
+          persist: false
+      - ${target}/census_higher_education_qualifications.csv:
+          cache: false
+          persist: false
+      - ${target}/census_other_qualifications.csv:
           cache: false
           persist: false
