@@ -1,0 +1,22 @@
+stages:
+  transform:
+    cmd: PYTHONPATH=. python scripts/education/transform.py
+    wdir: ../..
+    deps:
+      - scripts/education/transform.py
+      - working/upstream/education.csv
+    outs:
+      - src/maps/education/_data/view:
+          cache: false
+          persist: false
+  transform_census:
+    cmd: PYTHONPATH=. python scripts/education/transform_census.py
+    wdir: ../..
+    deps:
+      - scripts/education/transform.py
+      - working/upstream/census_qualifications.csv
+    # outs:
+    #   - src/maps/education/_data/view:
+    #       cache: false
+    #       persist: false
+    

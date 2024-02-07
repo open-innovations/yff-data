@@ -1,0 +1,54 @@
+type: "oi.map.svg"
+source_file: /data/cpi/headlines.csv
+id: map
+config:
+  data: "sources.cff.apps_awarded_all_itl"
+  geojson:
+    data: "sources.maps.International_Territorial_Level_1_(January_2021)_UK_BUC_simplified"
+    key: ITL121CD
+  bounds:
+    lat:
+      min: 49.8
+      max: 55.9
+    lon:
+      min: -8.4
+      max: 2.5
+  key: ITL1 Code
+  value: Status
+  width: 1080
+  height: 600
+  scale: YFF-orange
+  min: 0
+  tooltip: Tooltip label
+  columns:
+    - name: Tooltip label
+      template: "{{ ITL1 Name }}<br />Awarded: {{ Status | toLocaleString() }}"
+  markers:
+    - icon: geo-alt
+      tooltip: Hull
+      latitude: 53.76939409716048
+      longitude: -0.32615083886031454
+    - icon: geo-alt
+      tooltip: Hastings
+      latitude: 50.8543806475805
+      longitude: 0.5723701253057497
+    - icon: geo-alt
+      tooltip: Blackpool
+      latitude: 53.81667368931173
+      longitude: -3.0375935104367113
+    - icon: geo-alt
+      tooltip: Burnley
+      latitude: 53.78894116918683
+      longitude: -2.240599271024268
+    - icon: geo-alt
+      tooltip: Derby and Nottingham
+      latitude: 52.95648378748908
+      longitude: -1.1556437966000024
+    - icon: geo-alt
+      tooltip: Brent
+      latitude: 51.56142070032231
+      longitude: -0.2706574302371995
+    - icon: geo-alt
+      tooltip: Lewisham
+      latitude: 51.46133961984077
+      longitude: -0.0075300711017617225

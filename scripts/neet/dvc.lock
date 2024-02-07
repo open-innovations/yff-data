@@ -67,5 +67,5 @@ stages:
       size: 4256
     - path: src/dashboard/neet/_data/latest.json
       hash: md5
-      md5: cccff9dead5d819ae1794e0cf81ad453
-      size: 165
+      md5: ead618ac323c755ccbdcd0b6807485fe
+      size: 161

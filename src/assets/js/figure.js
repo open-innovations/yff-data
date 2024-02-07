@@ -5,212 +5,212 @@
 */
 
 (function (root) {
-  if (!root.OI) root.OI = {};
-  if (!root.OI.ready) {
-    root.OI.ready = function (fn) {
-      // Version 1.1
-      if (document.readyState != "loading") fn();
-      else document.addEventListener("DOMContentLoaded", fn);
-    };
-  }
-  var counter = { "item": 0, "menu": 0 };
+	if (!root.OI) root.OI = {};
+	if (!root.OI.ready) {
+		root.OI.ready = function (fn) {
+			// Version 1.1
+			if (document.readyState != "loading") fn();
+			else document.addEventListener("DOMContentLoaded", fn);
+		};
+	}
+	var counter = { "item": 0, "menu": 0 };
 
-  function findTitle(el){
-    var titleText = el.closest('figure').getAttribute('data-title');
-    if (titleText) return titleText;
+	function findTitle(el){
+		var titleText = el.closest('figure').getAttribute('data-title');
+		if (titleText) return titleText;
 
-    // Step up through parents until one has a heading
-    p = el.parentNode;
-    while(!p.querySelector('h1,h2,h3,h4,h5,h6')){
-      p = p.parentNode;
-    }
-    hs = p.querySelector('h1,h2,h3,h4,h5,h6');
-    if (hs) return hs.innerText;
+		// Step up through parents until one has a heading
+		p = el.parentNode;
+		while(!p.querySelector('h1,h2,h3,h4,h5,h6')){
+			p = p.parentNode;
+		}
+		hs = p.querySelector('h1,h2,h3,h4,h5,h6');
+		if (hs) return hs.innerText;
 
-    return null;
-  }
+		return null;
+	}
 
-  function FigureMenu(el) {
-    var opts, opt, menuitems, inp, lbl, svg, li, btn;
-    opts = el.querySelector(".figure-options");
-    opts.classList.add("added");
-    opt = opts.querySelector(".figure-option-list");
-    opt.setAttribute("role", "menu");
-    opt.setAttribute("id", "menu-" + counter.menu);
+	function FigureMenu(el) {
+		var opts, opt, menuitems, inp, lbl, svg, li, btn;
+		opts = el.querySelector(".figure-options");
+		opts.classList.add("added");
+		opt = opts.querySelector(".figure-option-list");
+		opt.setAttribute("role", "menu");
+		opt.setAttribute("id", "menu-" + counter.menu);
 
-    // Calculate title for element
-    const title = findTitle(el);
+		// Calculate title for element
+		const title = findTitle(el);
 
-    // Add logging to download link if it exists
-    const downloadLink = el.querySelector('a');
-    if (downloadLink) {
-      downloadLink.addEventListener('click', () => {
-        if (root.OI.log) {
-          root.OI.log.add('action=click&content=Download data: ' + (title || '(untitled dataset)'));
-        }
-      })
-    }
+		// Add logging to download link if it exists
+		const downloadLink = el.querySelector('a');
+		if (downloadLink) {
+			downloadLink.addEventListener('click', () => {
+				if (root.OI.log) {
+					root.OI.log.add('action=click&content=Download data: ' + (title || '(untitled dataset)'));
+				}
+			})
+		}
 
-    // Add screenshot function
-    btn = document.createElement("button");
-    btn.classList.add("orange-bg", "figure-option");
-    btn.setAttribute("role", "menuitem");
-    btn.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16"><path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg><span>Save figure</span>';
-    opt.appendChild(btn);
-    btn.addEventListener("click", function (e) {
-      var i, ignore, nts, hide;
-      // Add menu button
-      hide = [opts];
-      // Add other elements in the parent
-      ignore = el.parentNode.children;
-      for (i = 0; i < ignore.length; i++) {
-        if (ignore[i] != el) hide.push(ignore[i]);
-      }
-      nts = el.querySelectorAll(".note");
-      for (i = 0; i < nts.length; i++) hide.push(nts[i]);
+		// Add screenshot function
+		btn = document.createElement("button");
+		btn.classList.add("orange-bg", "figure-option");
+		btn.setAttribute("role", "menuitem");
+		btn.innerHTML =
+			'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16"><path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg><span>Save figure</span>';
+		opt.appendChild(btn);
+		btn.addEventListener("click", function (e) {
+			var i, ignore, nts, hide;
+			// Add menu button
+			hide = [opts];
+			// Add other elements in the parent
+			ignore = el.parentNode.children;
+			for (i = 0; i < ignore.length; i++) {
+				if (ignore[i] != el) hide.push(ignore[i]);
+			}
+			nts = el.querySelectorAll(".note");
+			for (i = 0; i < nts.length; i++) hide.push(nts[i]);
 
-      // Hide hideable items
-      for (i = 0; i < hide.length; i++) hide[i].style.display = "none";
-      saveDOMImage(el.parentNode, {
-        "file": "figure.png",
-        "callback": function (e) {
-          // Show hidden items
-          for (i = 0; i < hide.length; i++) hide[i].style.display = "";
-          // Hide credit
-          credit.hidden = true;
-        },
-      });
-      if (root.OI.log) {
-        root.OI.log.add('action=click&content=Download image: ' + (title || '(untitled figure)'));
-      }
-    });
+			// Hide hideable items
+			for (i = 0; i < hide.length; i++) hide[i].style.display = "none";
+			saveDOMImage(el.parentNode, {
+				"file": "figure.png",
+				"callback": function (e) {
+					// Show hidden items
+					for (i = 0; i < hide.length; i++) hide[i].style.display = "";
+					// Hide credit
+					credit.hidden = true;
+				},
+			});
+			if (root.OI.log) {
+				root.OI.log.add('action=click&content=Download image: ' + (title || '(untitled figure)'));
+			}
+		});
 
-    // Save a copy of the SVG if it exists
-    svg = el.querySelector(".chart > svg, .svg-map > svg, .hex-map > svg, .oi-chart > svg, .oi-map-inner > svg");
-    if (svg) {
-      // Add "Download SVG" option
-      btn = document.createElement("button");
-      btn.classList.add("orange-bg", "figure-option");
-      btn.setAttribute("role", "menuitem");
-      btn.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-image-fill" viewBox="0 0 16 16"><path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/><path d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z"/></svg><span>Save .svg</span>';
-      opt.appendChild(btn);
-      btn.addEventListener("click", function (e) {
-        // Add width/height to SVG
-        svg.setAttribute("width", svg.clientWidth + "px");
-        svg.setAttribute("height", svg.clientHeight + "px");
-        saveSVG(svg);
-        if (root.OI.log) {
-          root.OI.log.add('action=click&content=Save vector image: ' + (title || '(untitled figure)'));
-        }
-      });
-    }
+		// Save a copy of the SVG if it exists
+		svg = el.querySelector(".chart > svg, .svg-map > svg, .hex-map > svg, .oi-chart > svg, .oi-map-inner > svg");
+		if (svg) {
+			// Add "Download SVG" option
+			btn = document.createElement("button");
+			btn.classList.add("orange-bg", "figure-option");
+			btn.setAttribute("role", "menuitem");
+			btn.innerHTML =
+				'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-image-fill" viewBox="0 0 16 16"><path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/><path d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z"/></svg><span>Save .svg</span>';
+			opt.appendChild(btn);
+			btn.addEventListener("click", function (e) {
+				// Add width/height to SVG
+				svg.setAttribute("width", svg.clientWidth + "px");
+				svg.setAttribute("height", svg.clientHeight + "px");
+				saveSVG(svg);
+				if (root.OI.log) {
+					root.OI.log.add('action=click&content=Save vector image: ' + (title || '(untitled figure)'));
+				}
+			});
+		}
 
-    menuitems = opts.querySelectorAll(".figure-option");
+		menuitems = opts.querySelectorAll(".figure-option");
 
-    // Add the menu selector
-    if (menuitems.length > 0) {
-      // Make the menu selector
-      inp = document.createElement("input");
-      inp.setAttribute("type", "checkbox");
-      inp.classList.add("figure-menu");
-      inp.setAttribute("id", "menu-" + counter.menu + "-item-" + counter.item);
-      opt.insertAdjacentElement("beforebegin", inp);
+		// Add the menu selector
+		if (menuitems.length > 0) {
+			// Make the menu selector
+			inp = document.createElement("input");
+			inp.setAttribute("type", "checkbox");
+			inp.classList.add("figure-menu");
+			inp.setAttribute("id", "menu-" + counter.menu + "-item-" + counter.item);
+			opt.insertAdjacentElement("beforebegin", inp);
 
-      lbl = document.createElement("label");
-      lbl.setAttribute("title", "Toggle figure menu");
-      lbl.setAttribute("for", "menu-" + counter.menu + "-item-" + counter.item);
-      lbl.setAttribute("aria-label", "Open menu");
-      lbl.setAttribute("aria-controls", "menu-" + counter.menu);
-      lbl.setAttribute("id", "menu-button-" + counter.menu);
-      lbl.classList.add("orange-bg");
-      lbl.innerHTML = "&#8801;";
-      opt.insertAdjacentElement("beforebegin", lbl);
+			lbl = document.createElement("label");
+			lbl.setAttribute("title", "Toggle figure menu");
+			lbl.setAttribute("for", "menu-" + counter.menu + "-item-" + counter.item);
+			lbl.setAttribute("aria-label", "Open menu");
+			lbl.setAttribute("aria-controls", "menu-" + counter.menu);
+			lbl.setAttribute("id", "menu-button-" + counter.menu);
+			lbl.classList.add("orange-bg");
+			lbl.innerHTML = "&#8801;";
+			opt.insertAdjacentElement("beforebegin", lbl);
 
-      // Update the menu toggle aria-labelledby value
-      opt.setAttribute("aria-labelledby", "menu-button-" + counter.menu);
+			// Update the menu toggle aria-labelledby value
+			opt.setAttribute("aria-labelledby", "menu-button-" + counter.menu);
 
-      //menuitems[menuitems.length-1].addEventListener('blur',function(e){ inp.checked = false; });
+			//menuitems[menuitems.length-1].addEventListener('blur',function(e){ inp.checked = false; });
 
-      counter.item++;
-    }
-    return this;
-  }
-  function saveSVG(el, opt) {
-    if (!opt) opt = {};
-    var str = el.outerHTML;
-    str = str.replace(/<br>/g, " ");
+			counter.item++;
+		}
+		return this;
+	}
+	function saveSVG(el, opt) {
+		if (!opt) opt = {};
+		var str = el.outerHTML;
+		str = '<?xml version="1.0"?>\n'+str.replace(/<br>/g, " ");
 
-    var textFileAsBlob = new Blob([str], { type: "text/application/svg+xml" });
-    var fileNameToSaveAs = opt.file || "figure.svg";
+		var textFileAsBlob = new Blob([str], { type: "text/application/svg+xml" });
+		var fileNameToSaveAs = opt.file || "figure.svg";
 
-    function destroyClickedElement(event) {
-      document.body.removeChild(event.target);
-    }
-    var dl = document.createElement("a");
-    dl.download = fileNameToSaveAs;
-    dl.innerHTML = "Download File";
-    if (window.webkitURL != null) {
-      // Chrome allows the link to be clicked
-      // without actually adding it to the DOM.
-      dl.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    } else {
-      // Firefox requires the link to be added to the DOM
-      // before it can be clicked.
-      dl.href = window.URL.createObjectURL(textFileAsBlob);
-      dl.onclick = destroyClickedElement;
-      dl.style.display = "none";
-      document.body.appendChild(dl);
-    }
-    dl.click();
-    return this;
-  }
-  function saveDOMImage(el, opt) {
-    var w, h, src, d;
-    if (!opt) opt = {};
-    if (!opt.file) opt.file = "figure.png";
-    if (opt.scale) {
-      if (!opt.height) opt.height = el.offsetHeight * 2;
-      if (!opt.width) opt.width = el.offsetWidth * 2;
-      // Force bigger size for element
-      w = el.style.getPropertyValue("width");
-      h = el.style.getPropertyValue("height");
-      el.style.setProperty("width", (opt.width) + "px");
-      el.style.setProperty("height", (opt.height) + "px");
-    }
-    el.classList.add("capture");
-    d = new Date();
-    src = document.createElement("p");
-    src.classList.add("source");
-    // TODO Maybe add OI credit here in some way
-    src.innerHTML = '&copy; Youth Futures Foundation ' + d.getFullYear() + ' / Visualisation by Open Innovations  <svg width="1em" height="1em" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="black"><circle r="32" mask="url(#oi-person)"></circle></g></svg>';
-    el.appendChild(src);
+		function destroyClickedElement(event) {
+			document.body.removeChild(event.target);
+		}
+		var dl = document.createElement("a");
+		dl.download = fileNameToSaveAs;
+		dl.innerHTML = "Download File";
+		if (window.webkitURL != null) {
+			// Chrome allows the link to be clicked
+			// without actually adding it to the DOM.
+			dl.href = window.webkitURL.createObjectURL(textFileAsBlob);
+		} else {
+			// Firefox requires the link to be added to the DOM
+			// before it can be clicked.
+			dl.href = window.URL.createObjectURL(textFileAsBlob);
+			dl.onclick = destroyClickedElement;
+			dl.style.display = "none";
+			document.body.appendChild(dl);
+		}
+		dl.click();
+		return this;
+	}
+	function saveDOMImage(el, opt) {
+		var w, h, src, d;
+		if (!opt) opt = {};
+		if (!opt.file) opt.file = "figure.png";
+		if (opt.scale) {
+			if (!opt.height) opt.height = el.offsetHeight * 2;
+			if (!opt.width) opt.width = el.offsetWidth * 2;
+			// Force bigger size for element
+			w = el.style.getPropertyValue("width");
+			h = el.style.getPropertyValue("height");
+			el.style.setProperty("width", (opt.width) + "px");
+			el.style.setProperty("height", (opt.height) + "px");
+		}
+		el.classList.add("capture");
+		d = new Date();
+		src = document.createElement("p");
+		src.classList.add("source");
+		// TODO Maybe add OI credit here in some way
+		src.innerHTML = '&copy; Youth Futures Foundation ' + d.getFullYear() + ' / Visualisation by Open Innovations	<svg width="1em" height="1em" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="black"><circle r="32" mask="url(#oi-person)"></circle></g></svg>';
+		el.appendChild(src);
 
-    domtoimage.toPng(el, opt).then(function (dataUrl) {
-      var link = document.createElement("a");
-      link.download = opt.file;
-      link.href = dataUrl;
-      link.click();
-      // Reset element
-      if (opt.scale) {
-        el.style.setProperty("width", w);
-        el.style.setProperty("height", h);
-      }
-      el.classList.remove("capture");
-      el.removeChild(src);
-      if (typeof opt.callback === "function") opt.callback.call();
-    });
-  }
+		domtoimage.toPng(el, opt).then(function (dataUrl) {
+			var link = document.createElement("a");
+			link.download = opt.file;
+			link.href = dataUrl;
+			link.click();
+			// Reset element
+			if (opt.scale) {
+				el.style.setProperty("width", w);
+				el.style.setProperty("height", h);
+			}
+			el.classList.remove("capture");
+			el.removeChild(src);
+			if (typeof opt.callback === "function") opt.callback.call();
+		});
+	}
 
-  OI.FigureMenu = function (el) {
-    return new FigureMenu(el);
-  };
+	OI.FigureMenu = function (el) {
+		return new FigureMenu(el);
+	};
 })(window || this);
 
 OI.ready(function () {
-  var figs = document.querySelectorAll(".pane figure");
-  for (var i = 0; i < figs.length; i++) OI.FigureMenu(figs[i]);
+	var figs = document.querySelectorAll(".pane figure");
+	for (var i = 0; i < figs.length; i++) OI.FigureMenu(figs[i]);
 });
 
 // dom-to-image now separately required.

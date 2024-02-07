@@ -1,0 +1,447 @@
+---
+title: Education by UK Constituency
+summary: |
+    Data on Education and skills for young people by parliamentary constituency.
+layout: layouts/simple.njk
+tags:
+  - maps
+priority: 10
+
+topics:
+  - Education
+
+css: |
+  .pane .oi-map-hex {
+    max-width:30em;
+    margin-right:auto;
+    margin-left:auto;
+  }
+
+  .pane .oi-chart-bar svg {
+    width: auto;
+  }
+
+  .pane .oi-chart-bar {
+    text-align: center;
+  }
+
+  .pane .oi-table {
+    max-width: 60rem;
+    text-align: center;
+    margin: auto;
+  }
+
+  .selector-block { 
+    padding-top: 1.5rem;
+  }
+
+  ul.spaced {
+    margin-left: 3em;
+  }
+  article .pane {
+    margin-top: 1.5em;
+  }
+
+featured: "#KS2-expected-standard figure"
+
+
+---
+
+{%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
+
+<p>This page presents data on education and skills for young people in the UK.</p>
+
+{% comp 'flex' %}
+{% include "partials/page/topic-cloud.njk" %}
+{% endcomp %}
+
+<div class='selector'
+    data-dependencies='/assets/js/selector.js'
+    data-label='Choose the visualisation layer'
+    data-selector-position='top'
+    data-heading-level='h2'
+    data-id='map-selector'>
+
+    <article id='achievement' class='selector-block' data-selector-group="Education attainment">
+    <h2>Achievement A to C</h2>
+    <p>Proportion of pupils attending schools in the constituency achieving A*-C or 9-4 grades in English and Maths. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.achievement_A_to_C.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='attainment-8-score' class='selector-block' data-selector-group="Education attainment">
+    <h2>Attainment 8 Score</h2>
+    <p>Average Attainment 8 score for pupils attending schools in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.attainment_8_score.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='KS2-expected-standard' class='selector-block' data-selector-group="Education attainment">
+    <h2>KS2 Expected Standard</h2>
+    <p>Proportion of pupils attending schools in the constituency achieving the expected standard at the end of Key Stage 2. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.KS2_expected_standard.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='KS2-higher-standard' class='selector-block' data-selector-group="Education attainment">
+    <h2>KS2 Higher Standard</h2>
+    <p>Proportion of pupils attending schools in the constituency achieving the higher standard at the end of Key Stage 2. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.KS2_higher_standard.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+    <article id='outstanding-primary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Outstanding Primary School</h2>
+    <p>Proportion of pupils attending primary schools rated outstanding in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.outstanding_primary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='good-primary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Good Primary School</h2>
+    <p>Proportion of pupils attending Primary schools rated Good in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.good_primary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='needs-improvement-primary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Needs Improvement Primary School</h2>
+    <p>Proportion of pupils attending Primary schools rated Needs Improvement in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.needs_improvement_primary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='inadequate-primary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Inadequate Primary School</h2>
+    <p>Proportion of pupils attending Primary schools rated Inadequate in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.inadequate_primary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='outstanding-secondary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Outstanding Secondary School</h2>
+    <p>Proportion of pupils attending secondary schools rated outstanding in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.outstanding_secondary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+    <article id='good-secondary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Good Secondary School</h2>
+    <p>Proportion of pupils attending Secondary schools rated Good in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.good_secondary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='needs-improvement-secondary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Needs Improvement Secondary School</h2>
+    <p>Proportion of pupils attending Secondary schools rated Needs Improvement in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.needs_improvement_secondary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='inadequate-secondary-school' class='selector-block' data-selector-group="Ofsted Ratings">
+    <h2>Inadequate Secondary School</h2>
+    <p>Proportion of pupils attending Secondary schools rated Inadequate in the constituency. Darker colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.inadequate_secondary_school.rows,
+          matchKey: 'constituency_code',
+          value: 'value',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 1 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='census-apprenticeships' class='selector-block' data-selector-group="Census data">
+    <h2>Apprenticeships</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_apprenticeship.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+    <article id='census-five-or-more-gcses' class='selector-block' data-selector-group="Census data">
+    <h2>5 or more GCSEs</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_five_or_more_gcses.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.2 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+    <article id='census-higher-education-qualifications' class='selector-block' data-selector-group="Census data">
+    <h2>Higher Education Qualifications</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_higher_education_qualifications.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+
+    <article id='census-no-qualifications' class='selector-block' data-selector-group="Census data">
+    <h2>No Qualifications</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_no_qualifications.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='census-one-to-four-gcses' class='selector-block' data-selector-group="Census data">
+    <h2>1 - 4 GCSEs</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_one_to_four_gcses.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.2 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    
+
+    <article id='other-qualifications' class='selector-block' data-selector-group="Census data">
+    <h2>Other Qualifications</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_other_qualifications.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.05 })
+      }) | safe }}
+    {% endcomp %}
+    </article>
+
+    <article id='census-two-or-more-a-levels' class='selector-block' data-selector-group="Census data">
+    <h2>Two or more A Levels</h2>
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: constituencies,
+          data: view.census_two_or_more_a_levels.rows,
+          matchKey: 'constituency_code',
+          value: 'percent',
+          scale: 'YFF_r',
+          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+          legend: {
+            position: 'top left'
+          }
+        } | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
+      }) | safe }}
+    {% endcomp %}
+    </article> 
+
+
+    </div>
+

@@ -1,0 +1,70 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: PYTHONPATH=. python3 scripts/international/prepare.py
+    deps:
+    - path: scripts/international/prepare.py
+      hash: md5
+      md5: 748112fecc4a2f08f8946f2e8438e519
+      size: 4090
+    - path: scripts/labour-market/config.py
+      hash: md5
+      md5: c9187b99fb9c48a24be707561d15eaa2
+      size: 5131
+    - path: working/upstream/oecd_lfs_by_sex_and_age.csv
+      hash: md5
+      md5: 5624b6341578c0cbb5970f58db16e0d6
+      size: 3245556
+    outs:
+    - path: src/maps/international/_data/view/economic_inactivity_rate_female.csv
+      hash: md5
+      md5: 7b6d6421c29b9f8e866e751cca03ff2c
+      size: 3234
+    - path: src/maps/international/_data/view/economic_inactivity_rate_male.csv
+      hash: md5
+      md5: cd2c66e9cea4dbd383f19af7bf45ebcf
+      size: 3152
+    - path: src/maps/international/_data/view/economic_inactivity_rate_total.csv
+      hash: md5
+      md5: fb3ee26f765202947b5cea16b7b4c2a6
+      size: 3193
+    - path: src/maps/international/_data/view/employment_rate_female_15_over.csv
+      hash: md5
+      md5: 37afbdfeedacfe97c710a97610eaeb34
+      size: 3303
+    - path: src/maps/international/_data/view/employment_rate_male_15_over.csv
+      hash: md5
+      md5: fc4307fa52311ce58163e029ee03d68f
+      size: 3219
+    - path: src/maps/international/_data/view/employment_rate_total_15_over.csv
+      hash: md5
+      md5: dfa7ac84c5bbd01b0372bd9ea7a9fd55
+      size: 3184
+    - path: src/maps/international/_data/view/unemployment_rate_female_15_over.csv
+      hash: md5
+      md5: a1ba05017dcaa7286acdf1ad0e048b18
+      size: 3362
+    - path: src/maps/international/_data/view/unemployment_rate_male_15_over.csv
+      hash: md5
+      md5: b27adaab680eb195000ee69f4a77fa4e
+      size: 3274
+    - path: src/maps/international/_data/view/unemployment_rate_total_15_over.csv
+      hash: md5
+      md5: 1932da695e4637c1d8895409cb5a9f86
+      size: 3320
+  transform:
+    cmd: perl scripts/international/transform.pl
+    deps:
+    - path: scripts/international/transform.pl
+      hash: md5
+      md5: 5f6ad1d011ea340bb9dcec6a7a5e79e9
+      size: 6988
+    - path: working/upstream/oecd_lfs_by_sex_and_age.csv
+      hash: md5
+      md5: 5624b6341578c0cbb5970f58db16e0d6
+      size: 3245556
+    outs:
+    - path: src/maps/international/_data/view/oecd_lfs_grouped.csv
+      hash: md5
+      md5: fd4c34eb19eef846cff73f18acf5d2d6
+      size: 267944
