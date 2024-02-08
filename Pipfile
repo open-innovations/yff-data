@@ -12,6 +12,8 @@ openpyxl = "*"
 papermill = "*"
 ipykernel = "*"
 requests = "*"
+geopandas = "*"
+pyogrio = "*"
 
 [dev-packages]
 

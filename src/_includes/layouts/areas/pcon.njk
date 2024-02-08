@@ -9,6 +9,15 @@ This is the page for {{ title }} ({{ area.code }}),
 which is a Westminster Parliamentary Constituency ({{ area.type }}).
 </p>
 
+{{ comp.oi.map.svg({
+  config: {
+    geojson: {
+      key: 'PCON22CD',
+      data: areas.data[area.code].map
+    }
+  }
+}) | safe}}
+
 <code>
 Edit this in `src/_includes/layouts/areas/pcon.njk`
 </code>
