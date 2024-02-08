@@ -25,6 +25,9 @@
 	}
 }
 
-.oi-map svg { 
+.oi-map .oi-map-inner svg { 
 	background: #efefef;
 }
+
+.oi-filter-button { --filter-padding: 0.5em; border: 0; }
+.oi-filter-results button { border: 0; font-size: 1rem; }

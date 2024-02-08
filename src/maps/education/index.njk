@@ -11,7 +11,7 @@ topics:
   - Education
 
 css: |
-  .pane .oi-map-hex {
+  .pane .oi-map-hex .oi-map-holder {
     max-width:30em;
     margin-right:auto;
     margin-left:auto;
@@ -71,25 +71,13 @@ css: |
           scale: 'YFF_r',
 		  min: 30,
 		  max: 60,
-		  legend: {
-			position: 'top left',
-			show: true,
-			items:[{
-				value: 60,
-				label: ">60"
-			},{
-				value: 50,
-				label: "50"
-			},{
-				value: 40,
-				label: "40"
-			},{
-				value: 30,
-				label: "<30"
-			}]
-		  },
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nTotal: <strong>{{ avg_att8→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>'
-        } 
+          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nTotal: <strong>{{ avg_att8→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>',
+		  tools:{
+			filter: {
+				label: 'n'
+			}
+		  }
+        }  | autoLegend({ steps: 4, position: "top left" })
       }) | safe }}
     {% endcomp %}
     </article>
@@ -108,25 +96,13 @@ css: |
           scale: 'YFF_r',
 		  min: 30,
 		  max: 60,
-		  legend: {
-			position: 'top left',
-			show: true,
-			items:[{
-				value: 60,
-				label: ">60"
-			},{
-				value: 50,
-				label: "50"
-			},{
-				value: 40,
-				label: "40"
-			},{
-				value: 30,
-				label: "<30"
-			}]
-		  },
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>'
-        } 
+          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>',
+		  tools:{
+			filter: {
+				label: 'n'
+			}
+		  }
+        } | autoLegend({ steps: 4, position: "top left" })
       }) | safe }}
     {% endcomp %}
     </article>
@@ -143,25 +119,13 @@ css: |
           scale: 'YFF_r',
 		  min: 30,
 		  max: 60,
-		  legend: {
-			position: 'top left',
-			show: true,
-			items:[{
-				value: 60,
-				label: ">60"
-			},{
-				value: 50,
-				label: "50"
-			},{
-				value: 40,
-				label: "40"
-			},{
-				value: 30,
-				label: "<30"
-			}]
-		  },
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>'
-        } 
+          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>',
+		  tools:{
+			filter: {
+				label: 'n'
+			}
+		  }
+        } | autoLegend({ steps: 4, position: "top left" })
       }) | safe }}
     {% endcomp %}
     </article>
@@ -186,32 +150,31 @@ css: |
 				value: 1,
 				label: ">1.0"
 			},{
-				value: 0.75,
+				value: 0.66,
 				label: ""
 			},{
-				value: 0.5,
-				label: ""
-			},{
-				value: 0.25,
+				value: 0.33,
 				label: ""
 			},{
 				value: 0,
 				label: "0"
 			},{
-				value: -0.25,
+				value: -0.33,
 				label: ""
 			},{
-				value: -0.5,
-				label: ""
-			},{
-				value: -0.75,
+				value: -0.66,
 				label: ""
 			},{
 				value: -1,
 				label: "<-1.0"
 			}]
 		  },
-          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nTotal: <strong>{{ avg_p8score→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>'
+          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nTotal: <strong>{{ avg_p8score→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>',
+		  tools:{
+			filter: {
+				label: 'n'
+			}
+		  }
         } 
       }) | safe }}
     {% endcomp %}
@@ -237,32 +200,31 @@ css: |
 				value: 1,
 				label: ">1.0"
 			},{
-				value: 0.75,
+				value: 0.66,
 				label: ""
 			},{
-				value: 0.5,
-				label: ""
-			},{
-				value: 0.25,
+				value: 0.33,
 				label: ""
 			},{
 				value: 0,
 				label: "0"
 			},{
-				value: -0.25,
+				value: -0.33,
 				label: ""
 			},{
-				value: -0.5,
-				label: ""
-			},{
-				value: -0.75,
+				value: -0.66,
 				label: ""
 			},{
 				value: -1,
 				label: "<-1.0"
 			}]
 		  },
-          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>'
+          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>',
+		  tools:{
+			filter: {
+				label: 'n'
+			}
+		  }
         } 
       }) | safe }}
     {% endcomp %}
@@ -288,32 +250,31 @@ css: |
 				value: 1,
 				label: ">1.0"
 			},{
-				value: 0.75,
+				value: 0.66,
 				label: ""
 			},{
-				value: 0.5,
-				label: ""
-			},{
-				value: 0.25,
+				value: 0.33,
 				label: ""
 			},{
 				value: 0,
 				label: "0"
 			},{
-				value: -0.25,
+				value: -0.33,
 				label: ""
 			},{
-				value: -0.5,
-				label: ""
-			},{
-				value: -0.75,
+				value: -0.66,
 				label: ""
 			},{
 				value: -1,
 				label: "<-1.0"
 			}]
 		  },
-          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>'
+          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>',
+		  tools:{
+			filter: {
+				label: 'n'
+			}
+		  }
         } 
       }) | safe }}
     {% endcomp %}

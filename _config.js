@@ -22,7 +22,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import { selectorProcessor } from "./src/_lib/ui/selector.ts";
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.15/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.14.0/mod.ts";
 
 import * as yff from './yff-config.ts';
 
@@ -165,9 +165,11 @@ site.filter('autoLegend', (config, options) => {
   const defaultOptions = {
     formatter: (x) => x,
     roundTo: 1,
+	balanced: false,
+	steps: 5
   };
 
-  const { formatter, roundTo } = {
+  const { formatter, roundTo, balanced, steps } = {
     ...defaultOptions,
     ...options,
   };
@@ -180,15 +182,21 @@ site.filter('autoLegend', (config, options) => {
   const min =
     config.min ||
     Math.min(0, Math.floor(Math.min(...values) / roundTo) * roundTo);
+  // If we have a positive/negative numbers we can make sure the range is equal in both directions
+  if(balanced){
+	  let n = Math.max(Math.abs(min),Math.abs(max));
+	  min = -n;
+	  max = n;
+  }
   const range = max - min;
+  
 
-  const steps = 5;
   const legendValues = Array.from(Array(steps).keys())
     .map((x) => decimalSafeMath(decimalSafeMath(x,'*',range),'/',(steps - 1)) + min)
     .reverse();
 
   const legend = {
-    position: 'top right',
+    position: options.position||'top right',
     items: legendValues.map((x, i) => ({ value: x, label: formatter(x, i) })),
   };
   // Construct config
