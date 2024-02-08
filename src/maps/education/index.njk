@@ -1,7 +1,7 @@
 ---
-title: Education by UK Constituency
+title: Education by English local authority
 summary: |
-    Data on Education and skills for young people by parliamentary constituency.
+    Data on Education and skills for young people by local authority.
 layout: layouts/simple.njk
 tags:
   - maps
@@ -69,7 +69,26 @@ css: |
           matchKey: 'LADCD',
           value: 'avg_att8→Total',
           scale: 'YFF_r',
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8 total: <strong>{{ value }}</strong>'
+		  min: 30,
+		  max: 60,
+		  legend: {
+			position: 'top left',
+			show: true,
+			items:[{
+				value: 60,
+				label: ">60"
+			},{
+				value: 50,
+				label: "50"
+			},{
+				value: 40,
+				label: "40"
+			},{
+				value: 30,
+				label: "<30"
+			}]
+		  },
+          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nTotal: <strong>{{ avg_att8→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>'
         } 
       }) | safe }}
     {% endcomp %}
@@ -87,7 +106,26 @@ css: |
           matchKey: 'LADCD',
           value: 'avg_att8→Girls',
           scale: 'YFF_r',
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8 girls: <strong>{{ value }}</strong>'
+		  min: 30,
+		  max: 60,
+		  legend: {
+			position: 'top left',
+			show: true,
+			items:[{
+				value: 60,
+				label: ">60"
+			},{
+				value: 50,
+				label: "50"
+			},{
+				value: 40,
+				label: "40"
+			},{
+				value: 30,
+				label: "<30"
+			}]
+		  },
+          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>'
         } 
       }) | safe }}
     {% endcomp %}
@@ -103,7 +141,26 @@ css: |
           matchKey: 'LADCD',
           value: 'avg_att8→Boys',
           scale: 'YFF_r',
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8 boys: <strong>{{ value }}</strong></strong>'
+		  min: 30,
+		  max: 60,
+		  legend: {
+			position: 'top left',
+			show: true,
+			items:[{
+				value: 60,
+				label: ">60"
+			},{
+				value: 50,
+				label: "50"
+			},{
+				value: 40,
+				label: "40"
+			},{
+				value: 30,
+				label: "<30"
+			}]
+		  },
+          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>'
         } 
       }) | safe }}
     {% endcomp %}
@@ -119,8 +176,42 @@ css: |
           data: view.ks4_outcomes.rows,
           matchKey: 'LADCD',
           value: 'avg_p8score→Total',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
+          scale: 'YFF-diverging_r',
+		  min: -1,
+		  max: 1,
+		  legend: {
+			position: 'top left',
+			show: true,
+			items:[{
+				value: 1,
+				label: ">1.0"
+			},{
+				value: 0.75,
+				label: ""
+			},{
+				value: 0.5,
+				label: ""
+			},{
+				value: 0.25,
+				label: ""
+			},{
+				value: 0,
+				label: "0"
+			},{
+				value: -0.25,
+				label: ""
+			},{
+				value: -0.5,
+				label: ""
+			},{
+				value: -0.75,
+				label: ""
+			},{
+				value: -1,
+				label: "<-1.0"
+			}]
+		  },
+          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nTotal: <strong>{{ avg_p8score→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>'
         } 
       }) | safe }}
     {% endcomp %}
@@ -136,8 +227,42 @@ css: |
           data: view.ks4_outcomes.rows,
           matchKey: 'LADCD',
           value: 'avg_p8score→Girls',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
+          scale: 'YFF-diverging_r',
+		  min: -1,
+		  max: 1,
+		  legend: {
+			position: 'top left',
+			show: true,
+			items:[{
+				value: 1,
+				label: ">1.0"
+			},{
+				value: 0.75,
+				label: ""
+			},{
+				value: 0.5,
+				label: ""
+			},{
+				value: 0.25,
+				label: ""
+			},{
+				value: 0,
+				label: "0"
+			},{
+				value: -0.25,
+				label: ""
+			},{
+				value: -0.5,
+				label: ""
+			},{
+				value: -0.75,
+				label: ""
+			},{
+				value: -1,
+				label: "<-1.0"
+			}]
+		  },
+          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>'
         } 
       }) | safe }}
     {% endcomp %}
@@ -153,8 +278,42 @@ css: |
           data: view.ks4_outcomes.rows,
           matchKey: 'LADCD',
           value: 'avg_p8score→Boys',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
+          scale: 'YFF-diverging_r',
+		  min: -1,
+		  max: 1,
+		  legend: {
+			position: 'top left',
+			show: true,
+			items:[{
+				value: 1,
+				label: ">1.0"
+			},{
+				value: 0.75,
+				label: ""
+			},{
+				value: 0.5,
+				label: "0.5"
+			},{
+				value: 0.25,
+				label: ""
+			},{
+				value: 0,
+				label: "0"
+			},{
+				value: -0.25,
+				label: ""
+			},{
+				value: -0.5,
+				label: "-0.5"
+			},{
+				value: -0.75,
+				label: ""
+			},{
+				value: -1,
+				label: "<-1.0"
+			}]
+		  },
+          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>'
         } 
       }) | safe }}
     {% endcomp %}
@@ -163,12 +322,14 @@ css: |
 	<h2>Notes</h2>
 	<p><a href="https://www.gov.uk/government/publications/progress-8-school-performance-measure">Attainment 8 and Progress 8 are based on a calculation</a> of pupils’ performance across 8 qualifications. These qualifications are:</p>
 	<blockquote>
-	<ol>
-	<li>a double weighted maths bucket that will contain the point score of the pupil’s English Baccalaureate (EBacc) maths qualification.</li>
-	<li>an English bucket based on the higher point score of a pupils’ EBacc English language or English literature qualification. This will be double weighted provided a pupil has taken both qualifications.</li>
-	<li>a bucket which can include the three highest point scores from any of the EBacc qualifications in science subjects, computer science, history, geography, and languages. For more information see the list of qualifications that count in the EBacc. The qualifications can count in any combination and there is no requirement to take qualifications in each of the ‘pillars’ of the EBacc.</li>
-	<li>the open bucket contains the three highest point scores in any three other subjects, including English language or literature (if not counted in the English slot), further GCSE qualifications (including EBacc subjects) or any other technical awards from the DfE approved list: Performance measures: technical and vocational qualifications. For more information, see the list of qualifications included in the KS4 performance measures: Key Stage 4 qualifications discount codes and point-scores.</p>
-	</ol>
+		<ol>
+		<li>a double weighted maths bucket that will contain the point score of the pupil’s English Baccalaureate (EBacc) maths qualification.</li>
+		<li>an English bucket based on the higher point score of a pupils’ EBacc English language or English literature qualification. This will be double weighted provided a pupil has taken both qualifications.</li>
+		<li>a bucket which can include the three highest point scores from any of the EBacc qualifications in science subjects, computer science, history, geography, and languages. For more information see the list of qualifications that count in the EBacc. The qualifications can count in any combination and there is no requirement to take qualifications in each of the ‘pillars’ of the EBacc.</li>
+		<li>the open bucket contains the three highest point scores in any three other subjects, including English language or literature (if not counted in the English slot), further GCSE qualifications (including EBacc subjects) or any other technical awards from the DfE approved list: Performance measures: technical and vocational qualifications. For more information, see the list of qualifications included in the KS4 performance measures: Key Stage 4 qualifications discount codes and point-scores.</p>
+		</ol>
     </blockquote>
+	<p>The greater the Progress 8 score, the greater the progress made by the pupil compared to the average for pupils with similar prior attainment. A score of zero means pupils did as well at KS4 as other pupils across England who got similar results at the end of KS2. A negative score means pupils made less progress, on average, in KS4 compared to other pupils across England who got similar results at the end of KS2. A positive score means pupils made more progress, on average, in KS4 compared to other pupils across England who got similar results at the end of KS2.</p>
+	
 	</div>
 

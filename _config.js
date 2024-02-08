@@ -22,7 +22,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import { selectorProcessor } from "./src/_lib/ui/selector.ts";
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.10/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.15/mod.ts";
 
 import * as yff from './yff-config.ts';
 
@@ -68,7 +68,8 @@ site.use(
     colour: {
       scales: {
         "YFF": '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%',
-        "YFF-orange": yff.namedColours['Orange-3']+' 0%, '+yff.namedColours['Orange-2']+' 33%'+yff.namedColours['Orange-1']+' 67%'+yff.namedColours['Orange']+' 100%'
+        "YFF-orange": yff.namedColours['Orange-3']+' 0%, '+yff.namedColours['Orange-2']+' 33%, '+yff.namedColours['Orange-1']+' 67%, '+yff.namedColours['Orange']+' 100%',
+		"YFF-diverging": '#005776 0%, #69C2C9 30%, #FFFFFF 50%, #F7AB3D 68%, #E55912 84%, #874245 100%'
       },
       names: yff.namedColours,
       series: ['#E55912', '#005776', '#F7AB3D', '#4A783C'],
