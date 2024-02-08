@@ -10,13 +10,17 @@ ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA)
 
 fields = ['new_la_code', 'time_period', 'version', 'gender', 'variable', 'value']
 
-DATA_DIR = os.path.join('src', 'maps', 'education', '_data', 'view')
-os.makedirs(DATA_DIR, exist_ok=True)
+ATT8_DIR = os.path.join('src', 'maps', 'education', '_data', 'view', 'ks4_outcomes', 'avg_att8')
+os.makedirs(ATT8_DIR, exist_ok=True)
+
+P8_DIR = os.path.join('src', 'maps', 'education', '_data', 'view', 'ks4_outcomes', 'avg_p8')
+os.makedirs(P8_DIR, exist_ok=True)
+
 
 def filter_data(data, variable, fields, filter_field):
     return data.loc[data[filter_field] == variable, fields]
 
-def save_to_file(data, filename):
+def save_to_file(data, filename, DATA_DIR):
     full_filename = os.path.join(DATA_DIR, filename)
     data.to_csv(full_filename, index=False)
     return data
@@ -31,34 +35,34 @@ if __name__ == '__main__':
         filter_data, 'avg_att8', fields=fields, filter_field='variable').pipe(
             filter_data, 'Revised', fields=fields, filter_field='version').pipe(
                 filter_data, 202223, fields=fields, filter_field='time_period').pipe(
-                    clean_nulls).pipe(save_to_file, 'avg_att8_total.csv')    
+                    clean_nulls).pipe(save_to_file, 'avg_att8_total.csv', ATT8_DIR)    
 
     avg_att8_girls = filter_data(ks4_outcomes_data, 'Girls', fields=fields, filter_field='gender').pipe(
         filter_data, 'avg_att8', fields=fields, filter_field='variable').pipe(
             filter_data, 'Revised', fields=fields, filter_field='version').pipe(
                 filter_data, 202223, fields=fields, filter_field='time_period').pipe(
-                    save_to_file, 'avg_att8_girls.csv')
+                    save_to_file, 'avg_att8_girls.csv', ATT8_DIR)
     
     avg_att8_boys = filter_data(ks4_outcomes_data, 'Boys', fields=fields, filter_field='gender').pipe(
         filter_data, 'avg_att8', fields=fields, filter_field='variable').pipe(
             filter_data, 'Revised', fields=fields, filter_field='version').pipe(
                 filter_data, 202223, fields=fields, filter_field='time_period').pipe(
-                    save_to_file, 'avg_att8_boys.csv') 
+                    save_to_file, 'avg_att8_boys.csv', ATT8_DIR) 
     
     avg_p8score_total = filter_data(ks4_outcomes_data, 'Total', fields=fields, filter_field='gender').pipe(
         filter_data, 'avg_p8score', fields=fields, filter_field='variable').pipe(
             filter_data, 'Revised', fields=fields, filter_field='version').pipe(
                 filter_data, 202223, fields=fields, filter_field='time_period').pipe(
-                    save_to_file, 'avg_p8score_total.csv') 
+                    save_to_file, 'avg_p8score_total.csv', P8_DIR) 
     
     avg_p8score_girls = filter_data(ks4_outcomes_data, 'Girls', fields=fields, filter_field='gender').pipe(
         filter_data, 'avg_p8score', fields=fields, filter_field='variable').pipe(
             filter_data, 'Revised', fields=fields, filter_field='version').pipe(
                 filter_data, 202223, fields=fields, filter_field='time_period').pipe(
-                    save_to_file, 'avg_p8score_girls.csv') 
+                    save_to_file, 'avg_p8score_girls.csv', P8_DIR) 
 
     avg_p8score_boys = filter_data(ks4_outcomes_data, 'Boys', fields=fields, filter_field='gender').pipe(
         filter_data, 'avg_p8score', fields=fields, filter_field='variable').pipe(
             filter_data, 'Revised', fields=fields, filter_field='version').pipe(
                 filter_data, 202223, fields=fields, filter_field='time_period').pipe(
-                    save_to_file, 'avg_p8score_boys.csv') 
+                    save_to_file, 'avg_p8score_boys.csv', P8_DIR) 
