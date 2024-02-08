@@ -1,0 +1,13 @@
+---
+title: Constituency search page
+---
+
+{# Search box here #}
+
+<ul>
+  {% for area in search.pages('area constituency') | data %}
+    <li>
+      <a href="{{ area.url }}">{{ area.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
