@@ -1,5 +1,6 @@
 import lume from 'lume/mod.ts';
 
+import { load } from "https://deno.land/std@0.214.0/dotenv/mod.ts";
 import jsonLoader from 'lume/core/loaders/json.ts';
 import basePath from 'lume/plugins/base_path.ts';
 import esbuild from 'lume/plugins/esbuild.ts';
@@ -46,11 +47,16 @@ site.use(inline());
 // Also process .html files
 site.loadPages(['.html']);
 
-// Setup admin
-site.use(netlifyCMS({
-  previewStyle: '/assets/style/yff.css',
-  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
-}));
+// Get environment variables from a .env file
+const env = await load();
+
+if(!("OI_LOCAL" in env)){
+	// Setup admin
+	site.use(netlifyCMS({
+	  previewStyle: '/assets/style/yff.css',
+	  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
+	}));
+}
 
 site.use(
   oiLumeViz({
