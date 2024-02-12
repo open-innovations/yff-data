@@ -1,10 +1,10 @@
-md5: e1229138159ac89b8365710d86d01666
+md5: 1ea3dd75807c7b112a64c6311c5775db
 frozen: true
 deps:
 - path: data/metadata/codes/unem-codes.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 04277887c2292d8028eae493efa997bebb969b73
+    rev_lock: d082b8eae7d1d095ad1a3236241d912a48bfc1ed
 outs:
 - md5: 8402c8bcc56364c6ba69ef9ecbfafb93
   size: 35744
