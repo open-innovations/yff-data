@@ -45,17 +45,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.employment_rate_total_15_over.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Employment rate→Total→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(2) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Employment rate→Total→15 years or over→2022 | toFixed(2) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -120,17 +125,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.employment_rate_female_15_over.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Employment rate→Female→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Employment rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -194,17 +204,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.employment_rate_male_15_over.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Employment rate→Male→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Employment rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -268,17 +283,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.unemployment_rate_total_15_over.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Unemployment rate→Total→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Unemployment rate→Total→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -342,17 +362,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.unemployment_rate_female_15_over.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Unemployment rate→Female→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Unemployment rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -416,17 +441,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.unemployment_rate_male_15_over.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Unemployment rate→Male→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Unemployment rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -490,17 +520,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.economic_inactivity_rate_total.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Inactivity rate→Total→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Inactivity rate→Total→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -564,17 +599,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.economic_inactivity_rate_female.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Inactivity rate→Female→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Inactivity rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -638,17 +678,22 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.economic_inactivity_rate_male.rows,
+				data: view.oecd_lfs_grouped.rows,
 				key:'country_code',
-				value: 'value',
+				value: 'Inactivity rate→Male→15 years or over→2022',
 				min: 0,
 				width: 600,
 				height:500,
 				scale: 'YFF_r',
 				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Inactivity rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
