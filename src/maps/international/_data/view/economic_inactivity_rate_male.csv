@@ -2,7 +2,7 @@ country_code,country,measure,sex,age,frequency,time_period,value,units
 PRT,Portugal,Inactivity rate,Male,15 years or over,Annual,2022,37.0,Units
 CHL,Chile,Inactivity rate,Male,15 years or over,Annual,2022,29.8,Units
 LVA,Latvia,Inactivity rate,Male,15 years or over,Annual,2022,32.1,Units
-OECD,OECD,Inactivity rate,Male,15 years or over,Annual,2022,31.3,Units
+OECD,OECD,Inactivity rate,Male,15 years or over,Annual,2022,31.4,Units
 IRL,Ireland,Inactivity rate,Male,15 years or over,Annual,2022,29.5,Units
 EU27_2020,European Union (27 countries from 01/02/2020),Inactivity rate,Male,15 years or over,Annual,2022,36.3,Units
 BEL,Belgium,Inactivity rate,Male,15 years or over,Annual,2022,40.4,Units
@@ -11,7 +11,7 @@ JPN,Japan,Inactivity rate,Male,15 years or over,Annual,2022,28.5,Units
 NZL,New Zealand,Inactivity rate,Male,15 years or over,Annual,2022,24.1,Units
 USA,United States,Inactivity rate,Male,15 years or over,Annual,2022,32.0,Units
 SVN,Slovenia,Inactivity rate,Male,15 years or over,Annual,2022,36.4,Units
-GBR,United Kingdom,Inactivity rate,Male,15 years or over,Annual,2022,32.6,Units
+GBR,United Kingdom,Inactivity rate,Male,15 years or over,Annual,2022,32.8,Units
 CAN,Canada,Inactivity rate,Male,15 years or over,Annual,2022,30.5,Units
 KOR,Korea,Inactivity rate,Male,15 years or over,Annual,2022,26.5,Units
 NLD,Netherlands,Inactivity rate,Male,15 years or over,Annual,2022,27.6,Units
