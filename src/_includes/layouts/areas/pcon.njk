@@ -1,23 +1,41 @@
 ---
 layout: layouts/simple.njk
+css: |
+  .row { display: flex; grid-gap: 1rem; }
+  .oi-zoomable-map .leaflet { min-height: 400px!important; width: 400px!important; }
+  .oi-zoomable-map .oi-attribution { display: none; }
 ---
 
 {# OBVIOUSLY, OVERRIDE ALL THIS... #}
 
+<div class="row">
 <p>
 This is the page for {{ title }} ({{ area.code }}),
 which is a Westminster Parliamentary Constituency ({{ area.type }}).
 </p>
 
-{{ comp.oi.map.svg({
-  config: {
-    geojson: {
-      key: 'PCON22CD',
-      data: areas.data[area.code].map
-    }
-  }
+{{ comp.oi.map.zoomable({
+	config: {
+		debug: true,
+		padding: 100,
+		width: 300,
+		bounds: areas.data[area.code].map,
+		layers: [{
+			"type": "tile",
+			"props": "CartoDB.Positron"
+		},{
+			"type": "background",
+			"geojson": areas.data[area.code].map,
+			"colour": "#e25b27",
+			"options": {
+				"fillOpacity": 0.5,
+				"weight": 2
+			}
+		}],
+		attribution: "ONS (OGLv3) Contains OS data © Crown copyright and database right 2022"
+	}
 }) | safe}}
-
+</div>
 <code>
 Edit this in `src/_includes/layouts/areas/pcon.njk`
 </code>
