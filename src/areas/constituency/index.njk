@@ -1,13 +1,64 @@
 ---
-title: Constituency search page
+title: Constituency index page
+css: |
+  #filter { position: relative; }
+  #filter label { position: absolute; line-height:0; left: 1.5em; top: 50%; transform: translate3d(0,-50%,0); }
+  #filter input[type=text] { padding-left: 1.75em; width: 100%; }
 ---
 
-{# Search box here #}
+<div id="filter"><noscript>Please choose from a constituency below...</noscript></div>
 
-<ul>
+
+<ul id="constituencies">
   {% for area in search.pages('area constituency') | data %}
     <li>
       <a href="{{ area.url }}">{{ area.title }}</a>
     </li>
   {% endfor %}
 </ul>
+
+
+<script>
+// Make the filter box
+function filterList(el,ul){
+
+	var filter,label,li,list,i,a,val;
+
+	el.classList.add('turquoise-bg','padded');
+
+	// Create a label for the input
+	label = document.createElement('label');
+	label.setAttribute('for','filter-input');
+	label.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16" aria-title="Filter constituencies by name"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/></svg>';
+	el.appendChild(label);
+
+	// Create the input
+	filter = document.createElement('input');
+	filter.setAttribute('type','text');
+	filter.id = 'filter-input';
+	el.appendChild(filter);
+
+	// Get the list items
+	li = ul.querySelectorAll("li");
+	list = new Array(li.length);
+	for(i = 0; i < li.length; i++){
+		a = li[i].querySelector('a');
+		list[i] = {'el':li[i],'name':a.innerHTML.toLowerCase(),'link':a.getAttribute('href')};
+	}
+
+	// Listen for keypresses and then update what is visible in the list
+	filter.addEventListener('keyup',function(e){
+		var val,i,ok;
+		val = filter.value.toLowerCase();
+		for(i = 0; i < list.length; i++){
+			ok = (list[i].name.match(val) || list[i].link.match(val)) ? true : false;
+			list[i].el.style.display = (ok) ? "" : "none";
+		}
+	});
+
+	return this;
+}
+
+filterList(document.getElementById('filter'),document.getElementById('constituencies'));
+
+</script>
