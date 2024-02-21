@@ -3,6 +3,8 @@ import re
 import pandas as pd
 
 WORKING_DIR = os.path.join('working', 'upstream')
+CURRENTYEAR = 202223
+VERSIONS = [{'time_period':202223,'version':'Revised'},{'time_period':202122,'version':'Final'},{'time_period':202021,'version':'Revised'},{'time_period':202021,'version':'Revised'}]
 
 KS4_OUTCOMES_DATA = os.path.join(
     WORKING_DIR, 'ks4_outcomes.csv')
@@ -10,7 +12,7 @@ KS4_OUTCOMES_DATA = os.path.join(
 ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA)
 
 fields = ['new_la_code', 'time_period', 'version', 'gender', 'variable', 'value']
-groupby = ['variable','gender']
+groupby = ['variable','gender','time_period']
 
 DATA_DIR = os.path.join('src', 'maps', 'education', '_data', 'view');
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -31,14 +33,35 @@ def save_tidy_csv(file,df):
     text_file.write(csv)
     text_file.close()
 
+# Let's be extra safe about extracting the years in case 
+# there are multiple versions for a year in the file
+def latestVersion(df):
+    q = ''
+    i = 0;
+    # Get the unique years
+    years = df.time_period.unique()
+    for y in years:
+        # Get the unique versions for this year
+        vs = df.loc[(df.time_period==y)].version.unique();
+        # Separate queries with a pipe
+        if i > 0:
+            q += ' | '
+        q += '(time_period == ' + str(y) + ' & version=="'
+        if "Final" in vs:
+            q += 'Final'
+        else:
+            q += 'Revised'
+        q += '")'
+        i += 1;
+    return df.query(q);
 
 if __name__ == '__main__':
 
     # Filter to the allowed fields
     filtered = ks4_outcomes_data[fields].dropna()
 
-    # Limit to rows that match 202223 and Revised
-    limited = filtered.loc[(filtered['time_period']==202223) & (filtered['version']=='Revised')]
+    # Limit to the latest versions of each year
+    limited = latestVersion(filtered);
 
     # Pivot the table so that we have columns for variable+gender
     pivotted = limited.pivot_table(index='new_la_code', columns=groupby, values='value');

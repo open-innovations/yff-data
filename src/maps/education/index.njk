@@ -49,239 +49,197 @@ featured: "#attainment-score-total"
 
 {%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
 
+{% set p8scale = [{
+		value: 1,
+		label: ">1.0"
+	},{
+		value: 0.66,
+		label: ""
+	},{
+		value: 0.33,
+		label: ""
+	},{
+		value: 0,
+		label: "0"
+	},{
+		value: -0.33,
+		label: ""
+	},{
+		value: -0.66,
+		label: ""
+	},{
+		value: -1,
+		label: "<-1.0"
+	}] %}
+
 <p>This page presents data on education and skills for young people in the UK.</p>
 
 {% comp 'flex' %}
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
 
-    <div class='selector'
-    data-dependencies='/assets/js/selector.js'
-    data-label='Choose the visualisation layer'
-    data-selector-position='top'
-    data-heading-level='h2'
-    data-id='map-selector'>
+	<div class='selector'
+	data-dependencies='/assets/js/selector.js'
+	data-label='Choose the visualisation layer'
+	data-selector-position='top'
+	data-heading-level='h2'
+	data-id='map-selector'>
 
-    <article id='attainment-score-total' class='selector-block' data-selector-group="Education Attainment">
-    <h2>Attainment 8 Scores - Total</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.ks4_outcomes.rows,
-          matchKey: 'LADCD',
-          value: 'avg_att8→Total',
-          scale: 'YFF_r',
-		  min: 30,
-		  max: 60,
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nTotal: <strong>{{ avg_att8→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>',
-		  tools:{
-			filter: {
-				label: 'n'
-			}
-		  }
-        }  | autoLegend({ steps: 4, position: "top left", formatter: percentFormatter })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='attainment-score-total' class='selector-block' data-selector-group="Education Attainment">
+		<h2>Attainment 8 Scores - Total</h2>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2021,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_att8→Total→202223',
+			  scale: 'YFF_r',
+			  min: 30,
+			  max: 60,
+			  tooltip: '<strong>{{ n }}</strong>\nAttainment 8 Total: <strong>{{ avg_att8→Total→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			}  | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
 
-
-
-    <article id='attainment-score-girls' class='selector-block' data-selector-group="Education Attainment">
-    <h2>Attainment 8 Scores - Girls</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.ks4_outcomes.rows,
-          matchKey: 'LADCD',
-          value: 'avg_att8→Girls',
-          scale: 'YFF_r',
-		  min: 30,
-		  max: 60,
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nGirls: <strong>{{ avg_att8→Girls | toFixed(1) }}</strong>',
-		  tools:{
-			filter: {
-				label: 'n'
-			}
-		  }
-        } | autoLegend({ steps: 4, position: "top left", formatter: percentFormatter })
-      }) | safe }}
-    {% endcomp %}
-    </article>
-
-    <article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
-    <h2>Attainment 8 Scores - Boys</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.ks4_outcomes.rows,
-          matchKey: 'LADCD',
-          value: 'avg_att8→Boys',
-          scale: 'YFF_r',
-		  min: 30,
-		  max: 60,
-          tooltip: '<strong>{{ n }}</strong>\nAttainment 8\nBoys: <strong>{{ avg_att8→Boys | toFixed(1) }}</strong>',
-		  tools:{
-			filter: {
-				label: 'n'
-			}
-		  }
-        } | autoLegend({ steps: 4, position: "top left", formatter: percentFormatter })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	</article>
 
 
-    <article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
-    <h2>Progress 8 Scores - Total</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.ks4_outcomes.rows,
-          matchKey: 'LADCD',
-          value: 'avg_p8score→Total',
-          scale: 'YFF-diverging_r',
-		  min: -1,
-		  max: 1,
-		  legend: {
-			position: 'top left',
-			show: true,
-			items:[{
-				value: 1,
-				label: ">1.0"
-			},{
-				value: 0.66,
-				label: ""
-			},{
-				value: 0.33,
-				label: ""
-			},{
-				value: 0,
-				label: "0"
-			},{
-				value: -0.33,
-				label: ""
-			},{
-				value: -0.66,
-				label: ""
-			},{
-				value: -1,
-				label: "<-1.0"
-			}]
-		  },
-          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nTotal: <strong>{{ avg_p8score→Total | toFixed(1) }}</strong>\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>',
-		  tools:{
-			filter: {
-				label: 'n'
-			}
-		  }
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
+
+	<article id='attainment-score-girls' class='selector-block' data-selector-group="Education Attainment">
+		<h2>Attainment 8 Scores - Girls</h2>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2021,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_att8→Girls→202223',
+			  scale: 'YFF_r',
+			  min: 30,
+			  max: 60,
+			  tooltip: '<strong>{{ n }}</strong>\nAttainment 8 Girls: <strong>{{ avg_att8→Girls→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+
+	<article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
+		<h2>Attainment 8 Scores - Boys</h2>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2021,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_att8→Boys→202223',
+			  scale: 'YFF_r',
+			  min: 30,
+			  max: 60,
+			  tooltip: '<strong>{{ n }}</strong>\nAttainment 8 Boys: <strong>{{ avg_att8→Boys→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
+	</article>
 
 
-    <article id='progress-score-girls' class='selector-block' data-selector-group="Progress8 scores">
-    <h2>Progress 8 Score - Girls</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.ks4_outcomes.rows,
-          matchKey: 'LADCD',
-          value: 'avg_p8score→Girls',
-          scale: 'YFF-diverging_r',
-		  min: -1,
-		  max: 1,
-		  legend: {
-			position: 'top left',
-			show: true,
-			items:[{
-				value: 1,
-				label: ">1.0"
-			},{
-				value: 0.66,
-				label: ""
-			},{
-				value: 0.33,
-				label: ""
-			},{
-				value: 0,
-				label: "0"
-			},{
-				value: -0.33,
-				label: ""
-			},{
-				value: -0.66,
-				label: ""
-			},{
-				value: -1,
-				label: "<-1.0"
-			}]
-		  },
-          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nGirls: <strong>{{ avg_p8score→Girls | toFixed(1) }}</strong>',
-		  tools:{
-			filter: {
-				label: 'n'
-			}
-		  }
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
+		<h2>Progress 8 Scores - Total</h2>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2021,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_p8score→Total→202223',
+			  scale: 'YFF-diverging_r',
+			  min: -1,
+			  max: 1,
+			  legend: {
+				position: 'top left',
+				show: true,
+				items: p8scale
+			  },
+			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Total: <strong>{{ avg_p8score→Total→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} 
+		  }) | safe }}
+		{% endcomp %}
+	</article>
 
 
-    <article id='progress-score-boys' class='selector-block' data-selector-group="Progress8 scores">
-    <h2>Progress 8 Score - Boys</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.ks4_outcomes.rows,
-          matchKey: 'LADCD',
-          value: 'avg_p8score→Boys',
-          scale: 'YFF-diverging_r',
-		  min: -1,
-		  max: 1,
-		  legend: {
-			position: 'top left',
-			show: true,
-			items:[{
-				value: 1,
-				label: ">1.0"
-			},{
-				value: 0.66,
-				label: ""
-			},{
-				value: 0.33,
-				label: ""
-			},{
-				value: 0,
-				label: "0"
-			},{
-				value: -0.33,
-				label: ""
-			},{
-				value: -0.66,
-				label: ""
-			},{
-				value: -1,
-				label: "<-1.0"
-			}]
-		  },
-          tooltip: '<strong>{{ n }}</strong>\nProgress 8\nBoys: <strong>{{ avg_p8score→Boys | toFixed(1) }}</strong>',
-		  tools:{
-			filter: {
-				label: 'n'
-			}
-		  }
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>  
+	<article id='progress-score-girls' class='selector-block' data-selector-group="Progress8 scores">
+		<h2>Progress 8 Score - Girls</h2>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2021,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_p8score→Girls→202223',
+			  scale: 'YFF-diverging_r',
+			  min: -1,
+			  max: 1,
+			  legend: p8scale
+			  },
+			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Girls: <strong>{{ avg_p8score→Girls→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} 
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+
+
+	<article id='progress-score-boys' class='selector-block' data-selector-group="Progress8 scores">
+		<h2>Progress 8 Score - Boys</h2>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2021,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_p8score→Boys→202223',
+			  scale: 'YFF-diverging_r',
+			  min: -1,
+			  max: 1,
+			  legend: {
+				position: 'top left',
+				show: true,
+				items: p8scale
+			  },
+			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Boys: <strong>{{ avg_p8score→Boys→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} 
+		  }) | safe }}
+		{% endcomp %}
+	</article>  
 
 	<h2>Notes</h2>
 	<p><a href="https://www.gov.uk/government/publications/progress-8-school-performance-measure">Attainment 8 and Progress 8 are based on a calculation</a> of pupils’ performance across 8 qualifications. These qualifications are:</p>
@@ -292,7 +250,7 @@ featured: "#attainment-score-total"
 		<li>a bucket which can include the three highest point scores from any of the EBacc qualifications in science subjects, computer science, history, geography, and languages. For more information see the list of qualifications that count in the EBacc. The qualifications can count in any combination and there is no requirement to take qualifications in each of the ‘pillars’ of the EBacc.</li>
 		<li>the open bucket contains the three highest point scores in any three other subjects, including English language or literature (if not counted in the English slot), further GCSE qualifications (including EBacc subjects) or any other technical awards from the DfE approved list: Performance measures: technical and vocational qualifications. For more information, see the list of qualifications included in the KS4 performance measures: Key Stage 4 qualifications discount codes and point-scores.</p>
 		</ol>
-    </blockquote>
+	</blockquote>
 	<p>The greater the Progress 8 score, the greater the progress made by the pupil compared to the average for pupils with similar prior attainment. A score of zero means pupils did as well at KS4 as other pupils across England who got similar results at the end of KS2. A negative score means pupils made less progress, on average, in KS4 compared to other pupils across England who got similar results at the end of KS2. A positive score means pupils made more progress, on average, in KS4 compared to other pupils across England who got similar results at the end of KS2.</p>
 	
 	</div>
@@ -304,150 +262,150 @@ featured: "#attainment-score-total"
 		The visualisations below present data from the UK Census 2021.
 	</p>
 
-    <div class='selector'
-    data-dependencies='/assets/js/selector.js'
-    data-label='Choose the visualisation layer'
-    data-selector-position='top'
-    data-heading-level='h2'
-    data-id='map-selector'>
+	<div class='selector'
+	data-dependencies='/assets/js/selector.js'
+	data-label='Choose the visualisation layer'
+	data-selector-position='top'
+	data-heading-level='h2'
+	data-id='map-selector'>
 
 
 
 	<article id='census-apprenticeships' class='selector-block' data-selector-group="Census data">
-    <h2>Apprenticeships</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_apprenticeship.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<h2>Apprenticeships</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_apprenticeship.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
 
 
-    <article id='census-five-or-more-gcses' class='selector-block' data-selector-group="Census data">
-    <h2>5 or more GCSEs</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_five_or_more_gcses.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.2 })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='census-five-or-more-gcses' class='selector-block' data-selector-group="Census data">
+	<h2>5 or more GCSEs</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_five_or_more_gcses.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.2 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
 
 
-    <article id='census-higher-education-qualifications' class='selector-block' data-selector-group="Census data">
-    <h2>Higher Education Qualifications</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_higher_education_qualifications.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='census-higher-education-qualifications' class='selector-block' data-selector-group="Census data">
+	<h2>Higher Education Qualifications</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_higher_education_qualifications.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
 
 
-    <article id='census-no-qualifications' class='selector-block' data-selector-group="Census data">
-    <h2>No Qualifications</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_no_qualifications.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='census-no-qualifications' class='selector-block' data-selector-group="Census data">
+	<h2>No Qualifications</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_no_qualifications.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
 
-    <article id='census-one-to-four-gcses' class='selector-block' data-selector-group="Census data">
-    <h2>1 - 4 GCSEs</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_one_to_four_gcses.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.2 })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='census-one-to-four-gcses' class='selector-block' data-selector-group="Census data">
+	<h2>1 - 4 GCSEs</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_one_to_four_gcses.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.2 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
 
-    <article id='other-qualifications' class='selector-block' data-selector-group="Census data">
-    <h2>Other Qualifications</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_other_qualifications.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.05 })
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='other-qualifications' class='selector-block' data-selector-group="Census data">
+	<h2>Other Qualifications</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_other_qualifications.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.05 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
 
-    <article id='census-two-or-more-a-levels' class='selector-block' data-selector-group="Census data">
-    <h2>Two or more A Levels</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: constituencies,
-          data: view.census_two_or_more_a_levels.rows,
-          matchKey: 'constituency_code',
-          value: 'percent',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
-      }) | safe }}
-    {% endcomp %}
-    </article> 
+	<article id='census-two-or-more-a-levels' class='selector-block' data-selector-group="Census data">
+	<h2>Two or more A Levels</h2>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: constituencies,
+		  data: view.census_two_or_more_a_levels.rows,
+		  matchKey: 'constituency_code',
+		  value: 'percent',
+		  scale: 'YFF_r',
+		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.4 })
+	  }) | safe }}
+	{% endcomp %}
+	</article> 
 
 	</div>
 
