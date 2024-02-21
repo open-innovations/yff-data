@@ -17,7 +17,7 @@ export default function*({ search }) {
       } = section;
 
       if (read_more === undefined || read_more !== false) yield {
-        url: `${url}${title}/`,
+        url: `${url}${title.toLowerCase()}/`,
         reporttitle: `${reportTitle}`,
         report: url,
         ...section,

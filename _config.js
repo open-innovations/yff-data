@@ -237,7 +237,9 @@ site.filter('autoTicks', generateTickArray)
 // processors to be re-written
 site.use(basePath());
 site.use(resolveUrls());
-site.use(slugifyUrls());
+site.use(slugifyUrls({
+  lowercase: false,
+}));
 
 // Define remote access to the font files
 [
