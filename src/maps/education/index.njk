@@ -199,7 +199,10 @@ featured: "#attainment-score-total"
 			  scale: 'YFF-diverging_r',
 			  min: -1,
 			  max: 1,
-			  legend: p8scale
+			  legend: {
+				position: 'top left',
+				show: true,
+				items: p8scale
 			  },
 			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Girls: <strong>{{ avg_p8score→Girls→202223 | toFixed(1) }}</strong>',
 			  tools:{
