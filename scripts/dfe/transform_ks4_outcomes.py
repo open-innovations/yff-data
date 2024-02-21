@@ -3,11 +3,8 @@ import re
 import pandas as pd
 
 WORKING_DIR = os.path.join('working', 'upstream')
-CURRENTYEAR = 202223
-VERSIONS = [{'time_period':202223,'version':'Revised'},{'time_period':202122,'version':'Final'},{'time_period':202021,'version':'Revised'},{'time_period':202021,'version':'Revised'}]
 
-KS4_OUTCOMES_DATA = os.path.join(
-    WORKING_DIR, 'ks4_outcomes.csv')
+KS4_OUTCOMES_DATA = os.path.join(WORKING_DIR, 'ks4_outcomes.csv')
 
 ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA)
 

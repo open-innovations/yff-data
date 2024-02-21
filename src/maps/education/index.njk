@@ -11,7 +11,7 @@ topics:
   - Education
 
 css: |
-  .pane .oi-viz.oi-chart, .pane .oi-map-hex .oi-map-holder {
+  .pane .oi-map-hex .oi-map-holder {
     max-width:30em;
     margin-right:auto;
     margin-left:auto;
@@ -41,6 +41,10 @@ css: |
   article .pane {
     margin-top: 1.5em;
   }
+  .selector article {
+    margin-top: 2rem;
+  }
+  .selector article * + h3 { margin-top: 2em; }
 
 
 featured: "#attainment-score-total"
@@ -104,6 +108,45 @@ featured: "#attainment-score-total"
 				}
 			  }
 			}  | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Worst-performing</h3>
+		<p>The 10 worst-performing local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADCD',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_att8→Total→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_att8→Total→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_att8→Total→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_att8→Total→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_att8→Total→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_att8→Total→202223 }}',
+					fillna: "unknown"
+				}]
+			}
 		  }) | safe }}
 		{% endcomp %}
 
