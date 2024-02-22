@@ -56,5 +56,5 @@ if __name__ == '__main__':
     pivotted.insert(1,'LADNM',pivotted.LADCD.map(lad.set_index('LADCD')['LADNM'].to_dict()),True)
 
     # Need to add a separator row
-    save_tidy_csv(pivotted, os.path.join(DATA_DIR), 'ks4_outcomes.csv')
+    pivotted.pipe(save_tidy_csv, os.path.join(DATA_DIR), 'ks4_outcomes.csv')
     
