@@ -1,0 +1,16 @@
+{
+	"name": "Fake news",
+	"code": "E14000530",
+	"description": "This constituency is great!",
+	"headlines": [{"value":1,"name":"People"},{"value":1,"name":"People"},{"value":1,"name":"People"},{"value":1,"name":"People"}],
+	"similar": { "People": 4 },
+	"leastsimilar": { "People": 1000 },
+	"neet": {
+		"something": [34,56,24,19,25],
+		"another": {}
+	},
+	"employment": {
+		
+	}
+
+}

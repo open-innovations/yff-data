@@ -8,34 +8,42 @@ css: |
 ---
 
 {# OBVIOUSLY, OVERRIDE ALL THIS... #}
+{# Look up another page's content
+{{ search.page("area.code=E14000530").data.summary.name }}
+#}
+
 
 <div class="row">
-<p>
-This is the page for {{ title }} ({{ area.code }}),
-which is a Westminster Parliamentary Constituency ({{ area.type }}).
-</p>
+	<div>
+		<p>
+		This is the page for {{ title }} ({{ area.code }}),
+		which is a Westminster Parliamentary Constituency ({{ area.type }}).
+		</p>
+		<p>{{ area.summary.description }}</p>
+	</div>
 
-{{ comp.oi.map.zoomable({
-	config: {
-		debug: true,
-		padding: 100,
-		width: 300,
-		bounds: areas.data[area.code].map,
-		layers: [{
-			"type": "tile",
-			"props": "CartoDB.Positron"
-		},{
-			"type": "background",
-			"geojson": areas.data[area.code].map,
-			"colour": "#e25b27",
-			"options": {
-				"fillOpacity": 0.25,
-				"weight": 2
-			}
-		}],
-		mapAttribution: "Outline: &copy; ONS/OS"
-	}
-}) | safe}}
+
+	{{ comp.oi.map.zoomable({
+		config: {
+			debug: true,
+			padding: 100,
+			width: 300,
+			bounds: area.map,
+			layers: [{
+				"type": "tile",
+				"props": "CartoDB.Positron"
+			},{
+				"type": "background",
+				"geojson": area.map,
+				"colour": "#e25b27",
+				"options": {
+					"fillOpacity": 0.25,
+					"weight": 2
+				}
+			}],
+			mapAttribution: "Outline: &copy; ONS/OS"
+		}
+	}) | safe}}
 </div>
 <code>
 Edit this in `src/_includes/layouts/areas/pcon.njk`
