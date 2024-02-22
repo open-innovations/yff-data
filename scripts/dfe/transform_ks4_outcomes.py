@@ -1,6 +1,7 @@
 import os
 import re
 import pandas as pd
+from util import save_tidy_csv
 
 WORKING_DIR = os.path.join('working', 'upstream')
 
@@ -13,22 +14,6 @@ groupby = ['variable','gender','time_period']
 
 DATA_DIR = os.path.join('src', 'maps', 'education', '_data', 'view');
 os.makedirs(DATA_DIR, exist_ok=True)
-
-def save_tidy_csv(file,df):
-    # First add the header
-    ncol = len(df.columns)
-    new_record = pd.DataFrame([[*['---'] * ncol]],columns=df.columns)
-    final = pd.concat([new_record, df], ignore_index=True)
-
-    # Get the output as CSV
-    csv = final.to_csv(index=True)
-
-    # Because we added an index column we will now tidy 
-    csv = re.sub(r'\n0,---,---', '\n---,---,---', csv)
-
-    text_file = open(os.path.join(DATA_DIR, 'ks4_outcomes.csv'), "w")
-    text_file.write(csv)
-    text_file.close()
 
 # Let's be extra safe about extracting the years in case 
 # there are multiple versions for a year in the file
@@ -58,10 +43,10 @@ if __name__ == '__main__':
     filtered = ks4_outcomes_data[fields].dropna()
 
     # Limit to the latest versions of each year
-    limited = latestVersion(filtered);
+    limited = latestVersion(filtered)
 
     # Pivot the table so that we have columns for variable+gender
-    pivotted = limited.pivot_table(index='new_la_code', columns=groupby, values='value');
+    pivotted = limited.pivot_table(index='new_la_code', columns=groupby, values='value')
 
     # Add a column at the start which is a duplicate of the index (so we can not print the index column)
     pivotted.insert(0,'LADCD',pivotted.index)
@@ -71,5 +56,5 @@ if __name__ == '__main__':
     pivotted.insert(1,'LADNM',pivotted.LADCD.map(lad.set_index('LADCD')['LADNM'].to_dict()),True)
 
     # Need to add a separator row
-    save_tidy_csv(os.path.join(DATA_DIR, 'ks4_outcomes.csv'),pivotted)
+    save_tidy_csv(pivotted, os.path.join(DATA_DIR), 'ks4_outcomes.csv')
     

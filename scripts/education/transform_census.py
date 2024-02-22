@@ -1,6 +1,8 @@
 import os 
 import pandas as pd 
 import numpy as np
+import re
+from util import save_tidy_csv
 
 from transform import WORKING_DIR, DATA_DIR, filter_data, limit_to_england, clean_nulls
 
@@ -31,34 +33,26 @@ if __name__ == '__main__':
 
     # Local authority data
 
-    
-    # census_ethnic_group.columns = census_ethnic_group.columns.str.lower()
+    la_qual_data = la_qual_data.reset_index().set_index(['local_authority_code', 'local_authority_name'])
 
     la_qual_data = la_qual_data.iloc[2:]
 
-    la_qual_data = la_qual_data.rename_axis('local_authority', axis=0)
-
-
     data = pd.MultiIndex.from_product([['total','asian', 'black_british', 'mixed_multiple', 'white', 'other'],
-                                        ['total','no_qualification','level_1', 'level_2', 'apprenticeship','level_3', 'level_4', 'other']],
-                                        names=['ethnic_group','qualification'])
+                                        ['total','no_qualification','level_1', 'level_2', 'apprenticeship','level_3', 'level_4', 'other']])
 
     la_qual_data.columns = data
-    # la_qual_data.to_csv('../../data/processed/census/qualifications_local_authority.csv', index=True)
 
-    # print(la_qual_data)
-
-    total = calculate_rates(la_qual_data, 'total').to_csv(os.path.join(DATA_DIR, 'census_la_total.csv'), index=True)
+    total = calculate_rates(la_qual_data, 'total').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_total.csv')
     
-    asian = calculate_rates(la_qual_data, 'asian').to_csv(os.path.join(DATA_DIR, 'census_la_asian.csv'), index=True)
+    asian = calculate_rates(la_qual_data, 'asian').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_asian.csv')
     
-    black_british = calculate_rates(la_qual_data, 'black_british').to_csv(os.path.join(DATA_DIR, 'census_la_black_british.csv'), index=True)
+    black_british = calculate_rates(la_qual_data, 'black_british').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_black_british.csv')
     
-    mixed_multiple = calculate_rates(la_qual_data, 'mixed_multiple').to_csv(os.path.join(DATA_DIR, 'census_la_mixed_multiple.csv'), index=True)
+    mixed_multiple = calculate_rates(la_qual_data, 'mixed_multiple').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_mixed_multiple.csv')
     
-    white = calculate_rates(la_qual_data, 'white').to_csv(os.path.join(DATA_DIR, 'census_la_white.csv'), index=True)
+    white = calculate_rates(la_qual_data, 'white').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_white.csv')
     
-    other = calculate_rates(la_qual_data, 'other').to_csv(os.path.join(DATA_DIR, 'census_la_other.csv'), index=True)
+    other = calculate_rates(la_qual_data, 'other').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_other.csv')
     
 
 
