@@ -1,10 +1,10 @@
-md5: fdc513691be1ad83861aa0f023505245
+md5: 85bf8297329ccf802c4a2df437fc16ca
 frozen: true
 deps:
 - path: data/processed/unem.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 7ae20916bd474bce96675557eda878d274b7f9ab
+    rev_lock: 8484055d0ef4fe378e3448cfa545c16ab398e646
 outs:
 - md5: 8783ecc4789c7e416a748149317c0e91
   size: 3676651
