@@ -46,7 +46,7 @@ css: |
     padding-top:3rem;
   }
 
-featured: "#attainment-score-total"
+featured: "#attainment-score-total figure"
 
 ---
 
@@ -110,8 +110,10 @@ featured: "#attainment-score-total"
 			}  | autoLegend({ steps: 4, position: "top left" })
 		  }) | safe }}
 		{% endcomp %}
+    
 
-		<h3>Lowest Scoring</h3>
+		<section>
+    <h3>Lowest Scoring</h3>
 		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
@@ -150,7 +152,8 @@ featured: "#attainment-score-total"
 		  }) | safe }}
 		{% endcomp %}
 
-	</article>
+	</section>
+  </article>
 
 
 
@@ -178,7 +181,8 @@ featured: "#attainment-score-total"
 		{% endcomp %}
 
 
-		<h3>Lowest Scoring</h3>
+		<section>
+    <h3>Lowest Scoring</h3>
 		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
@@ -217,7 +221,8 @@ featured: "#attainment-score-total"
 		  }) | safe }}
 		{% endcomp %}
 
-	</article>
+	</section>
+  </article>
 
 	<article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Boys</h2>
@@ -243,7 +248,8 @@ featured: "#attainment-score-total"
 		{% endcomp %}
 
 
-		<h3>Lowest Scoring</h3>
+		<section>
+    <h3>Lowest Scoring</h3>
 		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
@@ -282,7 +288,8 @@ featured: "#attainment-score-total"
 		  }) | safe }}
 		{% endcomp %}
 
-	</article>
+	</section>
+  </article>
 
 
 	<article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
@@ -314,7 +321,8 @@ featured: "#attainment-score-total"
 		{% endcomp %}
 
 
-		<h3>Lowest Scoring</h3>
+		<section>
+    <h3>Lowest Scoring</h3>
 		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
@@ -353,7 +361,8 @@ featured: "#attainment-score-total"
 		  }) | safe }}
 		{% endcomp %}
 
-	</article>
+	</section>
+  </article>
 
 
 	<article id='progress-score-girls' class='selector-block' data-selector-group="Progress8 scores">
@@ -385,7 +394,8 @@ featured: "#attainment-score-total"
 		{% endcomp %}
 
 
-		<h3>Lowest Scoring</h3>
+		<section>
+    <h3>Lowest Scoring</h3>
 		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
@@ -423,7 +433,8 @@ featured: "#attainment-score-total"
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>
+	</section>
+  </article>
 
 
 	<article id='progress-score-boys' class='selector-block' data-selector-group="Progress8 scores">
@@ -456,7 +467,8 @@ featured: "#attainment-score-total"
 
 
 
-		<h3>Lowest Scoring</h3>
+		<section>
+    <h3>Lowest Scoring</h3>
 		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
@@ -494,7 +506,8 @@ featured: "#attainment-score-total"
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>  
+	</section>
+  </article>  
 
 	<h3>Notes</h3>
 	<p><a href="https://www.gov.uk/government/publications/progress-8-school-performance-measure">Attainment 8 and Progress 8 are based on a calculation</a> of pupils’ performance across 8 qualifications. These qualifications are:</p>
