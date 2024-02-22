@@ -2,7 +2,7 @@ export const layout = 'layouts/areas/pcon.njk';
 
 export const tags = ['constituency'];
 
-export default function*({ areas, page }) {
+export default function*({ areas, summary, page }) {
   // Iterate over all the areas
   for (const area of areas.reference.pcon) {
     // Read the keys out of the area and map to more friendly names
@@ -15,7 +15,7 @@ export default function*({ areas, page }) {
       area: {
         code: code,
         type: 'PCON22',
-		summary: page.data[code].summary||{},
+		summary: summary[code]||{},
 		map: page.data[code].map||{}
       }
     }
