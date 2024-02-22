@@ -42,6 +42,10 @@ css: |
   .selector article * + h3 { margin-top: 2em; }
   .oi-divider { stroke: #565655; stroke-width: 1; }
 
+  h3 {
+    padding-top:3rem;
+  }
+
 featured: "#attainment-score-total"
 
 ---
@@ -86,6 +90,7 @@ featured: "#attainment-score-total"
 
 	<article id='attainment-score-total' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Total</h2>
+    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -151,6 +156,7 @@ featured: "#attainment-score-total"
 
 	<article id='attainment-score-girls' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Girls</h2>
+    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -215,6 +221,7 @@ featured: "#attainment-score-total"
 
 	<article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Boys</h2>
+    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -280,6 +287,7 @@ featured: "#attainment-score-total"
 
 	<article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
 		<h2>Progress 8 Scores - Total</h2>
+    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -350,6 +358,7 @@ featured: "#attainment-score-total"
 
 	<article id='progress-score-girls' class='selector-block' data-selector-group="Progress8 scores">
 		<h2>Progress 8 Score - Girls</h2>
+    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -419,6 +428,7 @@ featured: "#attainment-score-total"
 
 	<article id='progress-score-boys' class='selector-block' data-selector-group="Progress8 scores">
 		<h2>Progress 8 Score - Boys</h2>
+    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -486,7 +496,7 @@ featured: "#attainment-score-total"
 		{% endcomp %}
 	</article>  
 
-	<h2>Notes</h2>
+	<h3>Notes</h3>
 	<p><a href="https://www.gov.uk/government/publications/progress-8-school-performance-measure">Attainment 8 and Progress 8 are based on a calculation</a> of pupils’ performance across 8 qualifications. These qualifications are:</p>
 	<blockquote>
 		<ol>
@@ -501,7 +511,7 @@ featured: "#attainment-score-total"
 	</div>
 
 
-	<h2>Census Data</h2>
+	<h3>Census Data</h3>
 
 	<p>
 		The visualisations below present data from the UK Census 2021.
@@ -516,8 +526,10 @@ featured: "#attainment-score-total"
 
 
 
-	<article id='census-apprenticeships' class='selector-block' data-selector-group="Census data">
-	<h2>Apprenticeships</h2>
+	<article id='census-apprenticeships-total' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Total</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+
 	{% comp 'display.figure' %}
 	  {{ comp.oi.map.hex_cartogram({
 		config: {
@@ -525,8 +537,8 @@ featured: "#attainment-score-total"
 		  data: view.census_la_total.rows,
 		  matchKey: 'local_authority_code',
 		  value: 'apprenticeship',
-		  scale: 'YFF_r',
-		  tooltip: '{{ n }}: <strong>{{ percent | toFixed(2) }}</strong>',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
 		  legend: {
 			position: 'top left'
 		  }
@@ -534,6 +546,110 @@ featured: "#attainment-score-total"
 	  }) | safe }}
 	{% endcomp %}
 	</article>
+
+
+	<article id='census-apprenticeships-asian' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Asian, Asian British or Asian Welsh</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_asian.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+  <article id='census-apprenticeships-black' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Black, Black British, Black Welsh, Caribbean or African</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_black_british.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+  <article id='census-apprenticeships-mixed' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Mixed or Multiple ethnic groups</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_mixed_multiple.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+  <article id='census-apprenticeships-white' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - White</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_white.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+
+  <article id='census-apprenticeships-other' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Other ethnic groups</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_other.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+
 
 	</div>
 
