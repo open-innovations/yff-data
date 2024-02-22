@@ -66,6 +66,10 @@ if __name__ == '__main__':
     # Add a column at the start which is a duplicate of the index (so we can not print the index column)
     pivotted.insert(0,'LADCD',pivotted.index)
 
+    # Get CSV with names and add them
+    lad = pd.read_csv(os.path.join('src', 'maps', '_data', 'uk_local_authority_districts.csv'))
+    pivotted.insert(1,'LADNM',pivotted.LADCD.map(lad.set_index('LADCD')['LADNM'].to_dict()),True)
+
     # Need to add a separator row
     save_tidy_csv(os.path.join(DATA_DIR, 'ks4_outcomes.csv'),pivotted)
     

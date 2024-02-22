@@ -94,7 +94,7 @@ featured: "#attainment-score-total"
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
-			  hexjson: uk_local_authority_districts_2021,
+			  hexjson: uk_local_authority_districts_2023,
 			  data: view.ks4_outcomes.rows,
 			  matchKey: 'LADCD',
 			  value: 'avg_att8→Total→202223',
@@ -117,7 +117,7 @@ featured: "#attainment-score-total"
 		{{ comp.oi.chart.ranking({ 
 			config: {
 				data: view.ks4_outcomes.rows,
-				key:'LADCD',
+				key:'LADNM',
 				circles: 0.9,
 				top: 10,
 				height: 500,
@@ -159,7 +159,7 @@ featured: "#attainment-score-total"
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
-			  hexjson: uk_local_authority_districts_2021,
+			  hexjson: uk_local_authority_districts_2023,
 			  data: view.ks4_outcomes.rows,
 			  matchKey: 'LADCD',
 			  value: 'avg_att8→Girls→202223',
@@ -182,7 +182,7 @@ featured: "#attainment-score-total"
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
-			  hexjson: uk_local_authority_districts_2021,
+			  hexjson: uk_local_authority_districts_2023,
 			  data: view.ks4_outcomes.rows,
 			  matchKey: 'LADCD',
 			  value: 'avg_att8→Boys→202223',
@@ -206,7 +206,7 @@ featured: "#attainment-score-total"
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
-			  hexjson: uk_local_authority_districts_2021,
+			  hexjson: uk_local_authority_districts_2023,
 			  data: view.ks4_outcomes.rows,
 			  matchKey: 'LADCD',
 			  value: 'avg_p8score→Total→202223',
@@ -235,7 +235,7 @@ featured: "#attainment-score-total"
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
-			  hexjson: uk_local_authority_districts_2021,
+			  hexjson: uk_local_authority_districts_2023,
 			  data: view.ks4_outcomes.rows,
 			  matchKey: 'LADCD',
 			  value: 'avg_p8score→Girls→202223',
@@ -264,7 +264,7 @@ featured: "#attainment-score-total"
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
-			  hexjson: uk_local_authority_districts_2021,
+			  hexjson: uk_local_authority_districts_2023,
 			  data: view.ks4_outcomes.rows,
 			  matchKey: 'LADCD',
 			  value: 'avg_p8score→Boys→202223',
