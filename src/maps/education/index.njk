@@ -16,25 +16,20 @@ css: |
     margin-right:auto;
     margin-left:auto;
   }
-
   .pane .oi-chart-bar svg {
     width: auto;
   }
-
   .pane .oi-chart-bar {
     text-align: center;
   }
-
   .pane .oi-table {
     max-width: 60rem;
     text-align: center;
     margin: auto;
   }
-
   .selector-block { 
     padding-top: 1.5rem;
   }
-
   ul.spaced {
     margin-left: 3em;
   }
@@ -45,7 +40,7 @@ css: |
     margin-top: 2rem;
   }
   .selector article * + h3 { margin-top: 2em; }
-
+  .oi-divider { stroke: #565655; stroke-width: 1; }
 
 featured: "#attainment-score-total"
 
@@ -112,7 +107,7 @@ featured: "#attainment-score-total"
 		{% endcomp %}
 
 		<h3>Worst-performing</h3>
-		<p>The 10 worst-performing local authorities over time.</p>
+		<p>The ranks of the 10 worst-performing local authorities over time.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.ranking({ 
 			config: {
@@ -175,6 +170,47 @@ featured: "#attainment-score-total"
 			} | autoLegend({ steps: 4, position: "top left" })
 		  }) | safe }}
 		{% endcomp %}
+
+
+		<h3>Worst-performing</h3>
+		<p>The ranks of the 10 worst-performing local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_att8→Girls→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_att8→Girls→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_att8→Girls→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_att8→Girls→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_att8→Girls→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_att8→Girls→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+
 	</article>
 
 	<article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
@@ -198,6 +234,47 @@ featured: "#attainment-score-total"
 			} | autoLegend({ steps: 4, position: "top left" })
 		  }) | safe }}
 		{% endcomp %}
+
+
+		<h3>Worst-performing</h3>
+		<p>The ranks of the 10 worst-performing local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_att8→Boys→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_att8→Boys→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_att8→Boys→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_att8→Boys→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_att8→Boys→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_att8→Boys→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+
 	</article>
 
 
@@ -227,6 +304,47 @@ featured: "#attainment-score-total"
 			} 
 		  }) | safe }}
 		{% endcomp %}
+
+
+		<h3>Worst-performing</h3>
+		<p>The ranks of the 10 worst-performing local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_p8score→Total→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_p8score→Total→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_p8score→Total→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_p8score→Total→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_p8score→Total→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_p8score→Total→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+
 	</article>
 
 
@@ -256,6 +374,46 @@ featured: "#attainment-score-total"
 			} 
 		  }) | safe }}
 		{% endcomp %}
+
+
+		<h3>Worst-performing</h3>
+		<p>The ranks of the 10 worst-performing local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_p8score→Girls→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_p8score→Girls→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_p8score→Girls→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_p8score→Girls→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_p8score→Girls→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_p8score→Girls→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
 	</article>
 
 
@@ -283,6 +441,47 @@ featured: "#attainment-score-total"
 				}
 			  }
 			} 
+		  }) | safe }}
+		{% endcomp %}
+
+
+
+		<h3>Worst-performing</h3>
+		<p>The ranks of the 10 worst-performing local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_p8score→Boys→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_p8score→Boys→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_p8score→Boys→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_p8score→Boys→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_p8score→Boys→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_p8score→Boys→202223 }}',
+					fillna: "unknown"
+				}]
+			}
 		  }) | safe }}
 		{% endcomp %}
 	</article>  
