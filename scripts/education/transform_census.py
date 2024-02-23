@@ -1,8 +1,7 @@
 import os 
 import pandas as pd 
 import numpy as np
-import re
-from util import save_tidy_csv
+from scripts.util.file import save_tidy_csv
 
 from transform import WORKING_DIR, DATA_DIR, filter_data, limit_to_england, clean_nulls
 
@@ -42,17 +41,41 @@ if __name__ == '__main__':
 
     la_qual_data.columns = data
 
-    total = calculate_rates(la_qual_data, 'total').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_total.csv')
+    total = calculate_rates(
+        la_qual_data, 'total'
+      ).reset_index().pipe(
+        save_tidy_csv, os.path.join(DATA_DIR), 'census_la_total.csv'
+      )
     
-    asian = calculate_rates(la_qual_data, 'asian').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_asian.csv')
+    asian = calculate_rates(
+        la_qual_data, 'asian'
+      ).reset_index().pipe(
+        save_tidy_csv, os.path.join(DATA_DIR), 'census_la_asian.csv'
+      )
     
-    black_british = calculate_rates(la_qual_data, 'black_british').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_black_british.csv')
+    black_british = calculate_rates(
+        la_qual_data, 'black_british'
+      ).reset_index().pipe(
+        save_tidy_csv, os.path.join(DATA_DIR), 'census_la_black_british.csv'
+      )
     
-    mixed_multiple = calculate_rates(la_qual_data, 'mixed_multiple').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_mixed_multiple.csv')
+    mixed_multiple = calculate_rates(
+        la_qual_data, 'mixed_multiple'
+      ).reset_index().pipe(
+        save_tidy_csv, os.path.join(DATA_DIR), 'census_la_mixed_multiple.csv'
+      )
     
-    white = calculate_rates(la_qual_data, 'white').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_white.csv')
+    white = calculate_rates(
+        la_qual_data, 'white'
+      ).reset_index().pipe(
+        save_tidy_csv, os.path.join(DATA_DIR), 'census_la_white.csv'
+      )
     
-    other = calculate_rates(la_qual_data, 'other').reset_index().pipe(save_tidy_csv, os.path.join(DATA_DIR), 'census_la_other.csv')
+    other = calculate_rates(
+        la_qual_data, 'other'
+      ).reset_index().pipe(
+        save_tidy_csv, os.path.join(DATA_DIR), 'census_la_other.csv'
+      )
     
 
 

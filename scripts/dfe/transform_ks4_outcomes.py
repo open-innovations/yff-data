@@ -1,7 +1,8 @@
 import os
 import re
 import pandas as pd
-from util import save_tidy_csv
+from scripts.util.file import save_tidy_csv
+
 
 WORKING_DIR = os.path.join('working', 'upstream')
 

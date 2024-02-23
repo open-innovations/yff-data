@@ -53,24 +53,21 @@ stages:
       - scripts/education/transform_census.py
       - working/upstream/census_qualifications.csv
     outs:
-      - ${target}/census_no_qualifications.csv:
+      - ${target}/census_la_total.csv:
           cache: false
           persist: false
-      - ${target}/census_one_to_four_gcses.csv:
+      - ${target}/census_la_asian.csv:
           cache: false
           persist: false
-      - ${target}/census_five_or_more_gcses.csv:
+      - ${target}/census_la_black_british.csv:
           cache: false
           persist: false
-      - ${target}/census_apprenticeship.csv:
+      - ${target}/census_la_mixed_multiple.csv:
           cache: false
           persist: false
-      - ${target}/census_two_or_more_a_levels.csv:
+      - ${target}/census_la_white.csv:
           cache: false
           persist: false
-      - ${target}/census_higher_education_qualifications.csv:
-          cache: false
-          persist: false
-      - ${target}/census_other_qualifications.csv:
+      - ${target}/census_la_other.csv:
           cache: false
           persist: false
