@@ -19,7 +19,7 @@ census_url: https://github.com/open-innovations/yff-data-pipelines/blob/main/dat
 process_census_url: https://github.com/open-innovations/yff-data-pipelines/blob/main/pipelines/census/process-census.ipynb
 
 css: |
-  .pane .oi-viz {
+  .pane .oi-viz.oi-chart, .pane .oi-map-hex .oi-map-holder {
     max-width:30em;
     margin-right:auto;
     margin-left:auto;
@@ -59,7 +59,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
           value: 'value',
           scale: 'YFF',
           tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-        } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+        } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
       }) | safe }}
     {% endcomp %}
   </article>
@@ -77,7 +77,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -95,7 +95,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -113,7 +113,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'value',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ value }}%</strong> ({{ date_name }})'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -131,7 +131,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -149,7 +149,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'Claimants percentage',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ Claimants percentage | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -167,7 +167,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -185,7 +185,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>
@@ -203,7 +203,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
       value: 'rate',
       scale: 'YFF',
       tooltip: '{{ n }}: <strong>{{ rate | toFixed(1) }}%</strong>'
-    } | autoLegend({ formatter: percentFormatter, roundTo: 3 })
+    } | autoLegend({ position: "top left", formatter: percentFormatter, roundTo: 3 })
   }) | safe }}
     {% endcomp %}
   </article>

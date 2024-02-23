@@ -11,6 +11,7 @@ css: |
   .selector article {
     margin-top: 2rem;
   }
+  .selector article * + h3 { margin-top: 2em; }
   
 ---
 {#- Formatter for autoLegend -#}
@@ -32,309 +33,832 @@ css: |
     data-id='map-selector'>
 
     <article id='employment-rate-total-15-over' class='selector-block' data-selector-group="Employment">
-    <h2>Employment rate for all people, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of employed people aged 15 and over.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.employment_rate_total_15_over.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(2) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
-{# 
-    <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Countries</h3>
-    {% comp 'display.figure'%}
-      {{ comp.oi.table({
-        config: {
-          columns: [
-            {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(1) }}', 'align': 'center',
-              min: view.unemployment_all_15_24.range.value.min, max: view.unemployment_all_15_24.range.value.max
-            }
-          ],
-          data: view.unemployment_all_15_24_table.rows 
-        } }
-      ) | safe }}
-    {% endcomp %}
-    </section> #}
+		<h2>Employment rate for all people, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of employed people aged 15 and over.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Employment rate→Total→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Employment rate→Total→15 years or over→2022 | toFixed(2) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
 
-    </article>
-    <article id='employment-rate-female-15-over' class='selector-block' data-selector-group="Employment">
-    <h2>Employment rate for women, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are in employment.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.employment_rate_female_15_over.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Employment rate→Total→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Employment rate→Total→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Employment rate→Total→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Employment rate→Total→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Employment rate→Total→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Employment rate→Total→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Employment rate→Total→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
+
     <article id='employment-rate-female-15-over' class='selector-block' data-selector-group="Employment">
-    <h2>Employment rate for women, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are in employment.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.employment_rate_female_15_over.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Employment rate for women, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of women aged 15 and over who are in employment.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Employment rate→Female→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Employment rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Employment rate→Female→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Employment rate→Female→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Employment rate→Female→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Employment rate→Female→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Employment rate→Female→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Employment rate→Female→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Employment rate→Female→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+    </article>
+
+    <article id='employment-rate-male-15-over' class='selector-block' data-selector-group="Employment">
+		<h2>Employment rate for men, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of men aged 15 and over who are in employment.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Employment rate→Male→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Employment rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Employment rate→Male→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Employment rate→Male→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Employment rate→Male→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Employment rate→Male→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Employment rate→Male→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Employment rate→Male→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Employment rate→Male→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
     <article id='unemployment-rate-total-15-over' class='selector-block' data-selector-group="Unemployment">
-    <h2>Unemployment rate for all people, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of people aged 15 and over who are unemployed.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.unemployment_rate_total_15_over.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Unemployment rate for all people, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of people aged 15 and over who are unemployed.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Unemployment rate→Total→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Unemployment rate→Total→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Unemployment rate→Total→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Unemployment rate→Total→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Unemployment rate→Total→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Unemployment rate→Total→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Unemployment rate→Total→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Unemployment rate→Total→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Unemployment rate→Total→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
     <article id='unemployment-rate-female-15-over' class='selector-block' data-selector-group="Unemployment">
-    <h2>Unemployment rate for women, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are unemployed.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.unemployment_rate_female_15_over.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Unemployment rate for women, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of women aged 15 and over who are unemployed.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Unemployment rate→Female→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Unemployment rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Unemployment rate→Female→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Unemployment rate→Female→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Unemployment rate→Female→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Unemployment rate→Female→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Unemployment rate→Female→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Unemployment rate→Female→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Unemployment rate→Female→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
     <article id='unemployment-rate-male-15-over' class='selector-block' data-selector-group="Unemployment">
-    <h2>Unemployment rate for men, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of men aged 15 and over who are unemployed.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.unemployment_rate_male_15_over.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Unemployment rate for men, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of men aged 15 and over who are unemployed.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Unemployment rate→Male→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Unemployment rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Unemployment rate→Male→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Unemployment rate→Male→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Unemployment rate→Male→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Unemployment rate→Male→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Unemployment rate→Male→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Unemployment rate→Male→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Unemployment rate→Male→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
     <article id='inactivity-rate-total-15-over' class='selector-block' data-selector-group="Economic Inactivity">
-    <h2>Economic inactivity rate for all people, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of all people aged 15 and over who are economically inactive.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.economic_inactivity_rate_total.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Economic inactivity rate for all people, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of all people aged 15 and over who are economically inactive.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Inactivity rate→Total→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Inactivity rate→Total→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Inactivity rate→Total→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Inactivity rate→Total→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Inactivity rate→Total→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Inactivity rate→Total→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Inactivity rate→Total→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Inactivity rate→Total→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Inactivity rate→Total→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
     <article id='inactivity-rate-female-15-over' class='selector-block' data-selector-group="Economic Inactivity">
-    <h2>Economic inactivity rate for women, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of women aged 15 and over who are economically inactive.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.economic_inactivity_rate_female.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Economic inactivity rate for women, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of women aged 15 and over who are economically inactive.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Inactivity rate→Female→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Inactivity rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %} 
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Inactivity rate→Female→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Inactivity rate→Female→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Inactivity rate→Female→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Inactivity rate→Female→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Inactivity rate→Female→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Inactivity rate→Female→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Inactivity rate→Female→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
     <article id='inactivity-rate-male-15-over' class='selector-block' data-selector-group="Economic Inactivity">
-    <h2>Economic inactivity rate for men, aged 15 and over</h2>
-    <p>The visualisation below presents OECD data on the number of men aged 15 and over who are economically inactive.</p>
-    {% comp 'display.figure' %}
-    {{ comp.oi.map.svg({ 
-        config: {
-            geojson: {
-                data: sources.maps.world,
-                key: 'ADM0_A3'
-            }, 
-            projection: {
-                name: 'equirectangular'
-            },
-            data: view.economic_inactivity_rate_male.rows,
-            key:'country_code',
-            value: 'value',
-            min: 0,
-            width: 600,
-            height:500,
-            scale: 'YFF_r',
-            tooltip: 'tooltip',
-            columns: [{
-                name: 'tooltip',
-                template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
-            }]          
-        }
-      }) | safe }}
-    {% endcomp %} 
+		<h2>Economic inactivity rate for men, aged 15 and over</h2>
+		<p>The visualisation below presents OECD data on the number of men aged 15 and over who are economically inactive.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.oecd_lfs_grouped.rows,
+				key:'country_code',
+				value: 'Inactivity rate→Male→15 years or over→2022',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ Inactivity rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2016',
+					template: '{{ Inactivity rate→Male→15 years or over→2016 }}',
+					fillna: 0
+				},{
+					name: '2017',
+					template: '{{ Inactivity rate→Male→15 years or over→2017 }}',
+					fillna: 0
+				},{
+					name: '2018',
+					template: '{{ Inactivity rate→Male→15 years or over→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ Inactivity rate→Male→15 years or over→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ Inactivity rate→Male→15 years or over→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Inactivity rate→Male→15 years or over→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Inactivity rate→Male→15 years or over→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
     </article>
 
 
-{#
+	<article id='neet-15-29-all' class='selector-block' data-selector-group="NEET">
+		<h2>Youth not in employment, education or training (NEET) - all people</h2>
+		<p>
+			The visualisation below presents OECD data on the percentage of presents the 
+			share of young people who are not in employment, education or training (NEET), as a percentage 
+			of the total number of young people in the corresponding age group, by gender.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.neet_15_29_all.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>
 
-    <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Countries</h3>
-    <p>The table below shows the countries with the highest levels of employment. Higher values indicate regions where young people have a higher chance of being unemployed.</p>
-    {% comp 'display.figure'%}
-      {{ comp.oi.table({
-        config: {
-          columns: [
-            {'name':'Country'},
-            {'name':'Number of people (thousands)', 'scale': 'YFF_r', 'template': '{{ Number of people (thousands) | toFixed(2) }}', 'align': 'center',
-              min: view.employment_men_15_24.range.value.min, max: view.employment_men_15_24.range.value.max
-            }
-          ],
-          data: view.employment_men_15_24_table.rows 
-        } }
-      ) | safe }}
-    {% endcomp %}
-    </section> #}
+
+	<article id='neet-15-29-women' class='selector-block' data-selector-group="NEET">
+		<h2>Youth not in employment, education or training (NEET) - Women</h2>
+		<p>
+			The visualisation below presents OECD data on the percentage of presents the 
+			share of young people who are not in employment, education or training (NEET), as a percentage 
+			of the total number of young people in the corresponding age group, by gender.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.neet_15_29_women.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+
+	<article id='neet-15-29-men' class='selector-block' data-selector-group="NEET">
+		<h2>Youth not in employment, education or training (NEET) - Men</h2>
+		<p>
+			The visualisation below presents OECD data on the percentage of presents the 
+			share of young people who are not in employment, education or training (NEET), as a percentage 
+			of the total number of young people in the corresponding age group, by gender.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.neet_15_29_men.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>

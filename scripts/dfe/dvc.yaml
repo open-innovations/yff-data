@@ -1,28 +1,23 @@
 vars:
   - target: src/maps/education/_data/view
 stages:
-  transform:
-    cmd: PYTHONPATH=. python scripts/dfe/transform.py
+  transform_ks4_outcomes:
+    cmd: PYTHONPATH=. python scripts/dfe/transform_ks4_outcomes.py
     wdir: ../..
     deps:
-      - scripts/dfe/transform.py
+      - scripts/dfe/transform_ks4_outcomes.py
       - working/upstream/ks4_outcomes.csv
     outs:
-      - ${target}/avg_att8_total.csv:
+      - ${target}/ks4_outcomes.csv:
           cache: false
           persist: false
-      - ${target}/avg_att8_girls.csv:
+  transform_char_outcomes:
+    cmd: PYTHONPATH=. python scripts/dfe/transform_char_outcomes.py
+    wdir: ../..
+    deps:
+      - scripts/dfe/transform_char_outcomes.py
+      - working/upstream/ks4_char_outcomes.csv
+    outs:
+      - ${target}/ks4_char_outcomes.csv:
           cache: false
-          persist: false
-      - ${target}/avg_att8_boys.csv:
-          cache: false
-          persist: false
-      - ${target}/avg_p8score_total.csv:
-          cache: false
-          persist: false
-      - ${target}/avg_p8score_girls.csv:
-          cache: false
-          persist: false
-      - ${target}/avg_p8score_boys.csv:
-          cache: false
-          persist: false
+          persist: false      

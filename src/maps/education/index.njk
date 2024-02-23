@@ -1,7 +1,7 @@
 ---
-title: Education by UK Constituency
+title: Education by English local authority
 summary: |
-    Data on Education and skills for young people by parliamentary constituency.
+    Data on Education and skills for young people by local authority.
 layout: layouts/simple.njk
 tags:
   - maps
@@ -11,40 +11,69 @@ topics:
   - Education
 
 css: |
-  .pane .oi-map-hex {
+  .pane .oi-map-hex .oi-map-holder {
     max-width:30em;
     margin-right:auto;
     margin-left:auto;
   }
-
   .pane .oi-chart-bar svg {
     width: auto;
   }
-
   .pane .oi-chart-bar {
     text-align: center;
   }
-
   .pane .oi-table {
     max-width: 60rem;
     text-align: center;
     margin: auto;
   }
-
   .selector-block { 
     padding-top: 1.5rem;
   }
-
   ul.spaced {
     margin-left: 3em;
   }
   article .pane {
     margin-top: 1.5em;
   }
+  .selector article {
+    margin-top: 2rem;
+  }
+  .selector article * + h3 { margin-top: 2em; }
+  .oi-divider { stroke: #565655; stroke-width: 1; }
+
+  h3 {
+    padding-top:3rem;
+  }
+
+featured: "#attainment-score-total figure"
 
 ---
 
 {%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
+
+{% set p8scale = [{
+		value: 1,
+		label: ">1.0"
+	},{
+		value: 0.66,
+		label: ""
+	},{
+		value: 0.33,
+		label: ""
+	},{
+		value: 0,
+		label: "0"
+	},{
+		value: -0.33,
+		label: ""
+	},{
+		value: -0.66,
+		label: ""
+	},{
+		value: -1,
+		label: "<-1.0"
+	}] %}
 
 <p>This page presents data on education and skills for young people in the UK.</p>
 
@@ -52,113 +81,588 @@ css: |
 {% include "partials/page/topic-cloud.njk" %}
 {% endcomp %}
 
-    <div class='selector'
-    data-dependencies='/assets/js/selector.js'
-    data-label='Choose the visualisation layer'
-    data-selector-position='top'
-    data-heading-level='h2'
-    data-id='map-selector'>
+	<div class='selector'
+	data-dependencies='/assets/js/selector.js'
+	data-label='Choose the visualisation layer'
+	data-selector-position='top'
+	data-heading-level='h2'
+	data-id='map-selector'>
 
-    <article id='attainment-score-total' class='selector-block' data-selector-group="Education Attainment">
-    <h2>Attainment8 Scores - Total</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.avg_att8_total.rows,
-          matchKey: 'new_la_code',
-          value: 'value',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	<article id='attainment-score-total' class='selector-block' data-selector-group="Education Attainment">
+		<h2>Attainment 8 Scores - Total</h2>
+    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2023,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_att8→Total→202223',
+			  scale: 'YFF_r',
+			  min: 30,
+			  max: 60,
+			  tooltip: '<strong>{{ n }}</strong>\nAttainment 8 Total: <strong>{{ avg_att8→Total→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			}  | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
+    
 
+		<section>
+    <h3>Lowest Scoring</h3>
+		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_att8→Total→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_att8→Total→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_att8→Total→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_att8→Total→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_att8→Total→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_att8→Total→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
 
-
-    <article id='attainment-score-girls' class='selector-block' data-selector-group="Education Attainment">
-    <h2>Attainment8 Scores - Girls</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.avg_att8_girls.rows,
-          matchKey: 'new_la_code',
-          value: 'value',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value }}</strong>'
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
-
-    <article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
-    <h2>Attainment8 Scores - Boys</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.avg_att8_boys.rows,
-          matchKey: 'new_la_code',
-          value: 'value',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
-
-
-    <article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
-    <h2>Progress8 Scores - Total</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.avg_p8score_total.rows,
-          matchKey: 'new_la_code',
-          value: 'value',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
-
-
-    <article id='attainment-score-boys' class='selector-block' data-selector-group="Progress8 scores">
-    <h2>Progress8 Score - Girls</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.avg_p8score_girls.rows,
-          matchKey: 'new_la_code',
-          value: 'value',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>
+	</section>
+  </article>
 
 
-    <article id='attainment-score-boys' class='selector-block' data-selector-group="Progress8 scores">
-    <h2>Progress8 Score - Boys</h2>
-    {% comp 'display.figure' %}
-      {{ comp.oi.map.hex_cartogram({
-        config: {
-          hexjson: uk_local_authority_districts_2021,
-          data: view.avg_p8score_boys.rows,
-          matchKey: 'new_la_code',
-          value: 'value',
-          scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(1) }}</strong>'
-        } 
-      }) | safe }}
-    {% endcomp %}
-    </article>  
 
-    </div>
+	<article id='attainment-score-girls' class='selector-block' data-selector-group="Education Attainment">
+		<h2>Attainment 8 Scores - Girls</h2>
+    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2023,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_att8→Girls→202223',
+			  scale: 'YFF_r',
+			  min: 30,
+			  max: 60,
+			  tooltip: '<strong>{{ n }}</strong>\nAttainment 8 Girls: <strong>{{ avg_att8→Girls→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
+
+
+		<section>
+    <h3>Lowest Scoring</h3>
+		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_att8→Girls→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_att8→Girls→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_att8→Girls→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_att8→Girls→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_att8→Girls→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_att8→Girls→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+	</section>
+  </article>
+
+	<article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
+		<h2>Attainment 8 Scores - Boys</h2>
+    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2023,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_att8→Boys→202223',
+			  scale: 'YFF_r',
+			  min: 30,
+			  max: 60,
+			  tooltip: '<strong>{{ n }}</strong>\nAttainment 8 Boys: <strong>{{ avg_att8→Boys→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} | autoLegend({ steps: 4, position: "top left" })
+		  }) | safe }}
+		{% endcomp %}
+
+
+		<section>
+    <h3>Lowest Scoring</h3>
+		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_att8→Boys→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_att8→Boys→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_att8→Boys→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_att8→Boys→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_att8→Boys→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_att8→Boys→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+	</section>
+  </article>
+
+
+	<article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
+		<h2>Progress 8 Scores - Total</h2>
+    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2023,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_p8score→Total→202223',
+			  scale: 'YFF-diverging_r',
+			  min: -1,
+			  max: 1,
+			  legend: {
+				position: 'top left',
+				show: true,
+				items: p8scale
+			  },
+			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Total: <strong>{{ avg_p8score→Total→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} 
+		  }) | safe }}
+		{% endcomp %}
+
+
+		<section>
+    <h3>Lowest Scoring</h3>
+		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_p8score→Total→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_p8score→Total→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_p8score→Total→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_p8score→Total→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_p8score→Total→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_p8score→Total→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+
+	</section>
+  </article>
+
+
+	<article id='progress-score-girls' class='selector-block' data-selector-group="Progress8 scores">
+		<h2>Progress 8 Score - Girls</h2>
+    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2023,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_p8score→Girls→202223',
+			  scale: 'YFF-diverging_r',
+			  min: -1,
+			  max: 1,
+			  legend: {
+				position: 'top left',
+				show: true,
+				items: p8scale
+			  },
+			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Girls: <strong>{{ avg_p8score→Girls→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} 
+		  }) | safe }}
+		{% endcomp %}
+
+
+		<section>
+    <h3>Lowest Scoring</h3>
+		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_p8score→Girls→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_p8score→Girls→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_p8score→Girls→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_p8score→Girls→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_p8score→Girls→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_p8score→Girls→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</section>
+  </article>
+
+
+	<article id='progress-score-boys' class='selector-block' data-selector-group="Progress8 scores">
+		<h2>Progress 8 Score - Boys</h2>
+    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		{% comp 'display.figure' %}
+		  {{ comp.oi.map.hex_cartogram({
+			config: {
+			  hexjson: uk_local_authority_districts_2023,
+			  data: view.ks4_outcomes.rows,
+			  matchKey: 'LADCD',
+			  value: 'avg_p8score→Boys→202223',
+			  scale: 'YFF-diverging_r',
+			  min: -1,
+			  max: 1,
+			  legend: {
+				position: 'top left',
+				show: true,
+				items: p8scale
+			  },
+			  tooltip: '<strong>{{ n }}</strong>\nProgress 8 Boys: <strong>{{ avg_p8score→Boys→202223 | toFixed(1) }}</strong>',
+			  tools:{
+				filter: {
+					label: 'n'
+				}
+			  }
+			} 
+		  }) | safe }}
+		{% endcomp %}
+
+
+
+		<section>
+    <h3>Lowest Scoring</h3>
+		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.ks4_outcomes.rows,
+				key:'LADNM',
+				circles: 0.9,
+				top: 10,
+				height: 500,
+				scale: 'YFF_r',
+				colour: 'avg_p8score→Boys→202223',
+				min: 30,
+				max: 60,
+				columns: [{
+					name: '2018-19',
+					template: '{{ avg_p8score→Boys→201819 }}',
+					fillna: "unknown"
+				},{
+					name: '2019-20',
+					template: '{{ avg_p8score→Boys→201920 }}',
+					fillna: "unknown"
+				},{
+					name: '2020-21',
+					template: '{{ avg_p8score→Boys→202021 }}',
+					fillna: "unknown"
+				},{
+					name: '2021-22',
+					template: '{{ avg_p8score→Boys→202122 }}',
+					fillna: "unknown"
+				},{
+					name: '2022-23',
+					template: '{{ avg_p8score→Boys→202223 }}',
+					fillna: "unknown"
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</section>
+  </article>  
+
+	<h3>Notes</h3>
+	<p><a href="https://www.gov.uk/government/publications/progress-8-school-performance-measure">Attainment 8 and Progress 8 are based on a calculation</a> of pupils’ performance across 8 qualifications. These qualifications are:</p>
+	<blockquote>
+		<ol>
+		<li>a double weighted maths bucket that will contain the point score of the pupil’s English Baccalaureate (EBacc) maths qualification.</li>
+		<li>an English bucket based on the higher point score of a pupils’ EBacc English language or English literature qualification. This will be double weighted provided a pupil has taken both qualifications.</li>
+		<li>a bucket which can include the three highest point scores from any of the EBacc qualifications in science subjects, computer science, history, geography, and languages. For more information see the list of qualifications that count in the EBacc. The qualifications can count in any combination and there is no requirement to take qualifications in each of the ‘pillars’ of the EBacc.</li>
+		<li>the open bucket contains the three highest point scores in any three other subjects, including English language or literature (if not counted in the English slot), further GCSE qualifications (including EBacc subjects) or any other technical awards from the DfE approved list: Performance measures: technical and vocational qualifications. For more information, see the list of qualifications included in the KS4 performance measures: Key Stage 4 qualifications discount codes and point-scores.</p>
+		</ol>
+	</blockquote>
+	<p>The greater the Progress 8 score, the greater the progress made by the pupil compared to the average for pupils with similar prior attainment. A score of zero means pupils did as well at KS4 as other pupils across England who got similar results at the end of KS2. A negative score means pupils made less progress, on average, in KS4 compared to other pupils across England who got similar results at the end of KS2. A positive score means pupils made more progress, on average, in KS4 compared to other pupils across England who got similar results at the end of KS2.</p>
+	
+	</div>
+
+
+	<h3>Census Data</h3>
+
+	<p>
+		The visualisations below present data from the UK Census 2021.
+	</p>
+
+	<div class='selector'
+	data-dependencies='/assets/js/selector.js'
+	data-label='Choose the visualisation layer'
+	data-selector-position='top'
+	data-heading-level='h2'
+	data-id='map-selector'>
+
+
+
+	<article id='census-apprenticeships-total' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Total</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_total.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+
+	<article id='census-apprenticeships-asian' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Asian, Asian British or Asian Welsh</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_asian.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+  <article id='census-apprenticeships-black' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Black, Black British, Black Welsh, Caribbean or African</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_black_british.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+  <article id='census-apprenticeships-mixed' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Mixed or Multiple ethnic groups</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_mixed_multiple.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+  <article id='census-apprenticeships-white' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - White</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_white.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+
+  <article id='census-apprenticeships-other' class='selector-block' data-selector-group="Apprenticeships">
+	<h2>Apprenticeships - Other ethnic groups</h2>
+  <p>The hexmap below presents the percentage of people in each local authority that are partaking in an apprenticeship, broken down by ethnic group. Lighter colours indicate a higher percentage.</p>
+	{% comp 'display.figure' %}
+	  {{ comp.oi.map.hex_cartogram({
+		config: {
+		  hexjson: uk_local_authority_districts_2021,
+		  data: view.census_la_other.rows,
+		  matchKey: 'local_authority_code',
+		  value: 'apprenticeship',
+		  scale: 'YFF',
+		  tooltip: '{{ n }}: <strong>{{ apprenticeship | toFixed(1) }}%</strong>',
+		  legend: {
+			position: 'top left'
+		  }
+		} | autoLegend({ formatter: percentFormatter, roundTo: 0.12 })
+	  }) | safe }}
+	{% endcomp %}
+	</article>
+
+
+
+	</div>
 

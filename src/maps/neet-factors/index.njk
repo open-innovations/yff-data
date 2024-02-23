@@ -17,7 +17,7 @@ aps_raw_url: https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?geograp
 claimant_url: https://github.com/open-innovations/yff-data-pipelines/blob/main/data/processed/claimants/claimants-per-population-latest.csv
 
 css: |
-  .pane .oi-map-hex {
+  .pane .oi-viz.oi-chart, .pane .oi-map-hex .oi-map-holder {
     max-width:30em;
     margin-right:auto;
     margin-left:auto;
@@ -93,11 +93,8 @@ barchart_description: |
           matchKey: 'local_authority_code',
           value: 'value',
           scale: 'YFF_r',
-          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>',
-          legend: {
-            position: 'top left'
-          }
-        } | autoLegend({ formatter: legendKey })
+          tooltip: '{{ n }}: <strong>{{ value | toFixed(2) }}</strong>'
+        } | autoLegend({ position: 'top left', formatter: legendKey })
       }) | safe }}
     {% endcomp %}
 

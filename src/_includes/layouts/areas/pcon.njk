@@ -1,0 +1,50 @@
+---
+layout: layouts/simple.njk
+css: |
+  .row { display: flex; grid-gap: 1rem; }
+  .oi-zoomable-map .leaflet { min-height: 400px!important; width: 400px!important; }
+  .oi-zoomable-map .oi-attribution { display: none; }
+  .oi-zoomable-map .leaflet-control-attribution { font-size: 0.7rem; }
+---
+
+{# OBVIOUSLY, OVERRIDE ALL THIS... #}
+{# Look up another page's content
+{{ search.page("area.code=E14000530").data.summary.name }}
+#}
+
+
+<div class="row">
+	<div>
+		<p>
+		This is the page for {{ title }} ({{ area.code }}),
+		which is a Westminster Parliamentary Constituency ({{ area.type }}).
+		</p>
+		<p>{{ area.summary.description }}</p>
+	</div>
+
+
+	{{ comp.oi.map.zoomable({
+		config: {
+			debug: true,
+			padding: 100,
+			width: 300,
+			bounds: area.map,
+			layers: [{
+				"type": "tile",
+				"props": "CartoDB.Positron"
+			},{
+				"type": "background",
+				"geojson": area.map,
+				"colour": "#e25b27",
+				"options": {
+					"fillOpacity": 0.25,
+					"weight": 2
+				}
+			}],
+			mapAttribution: "Outline: &copy; ONS/OS"
+		}
+	}) | safe}}
+</div>
+<code>
+Edit this in `src/_includes/layouts/areas/pcon.njk`
+</code>

@@ -1,5 +1,6 @@
 import lume from 'lume/mod.ts';
 
+import { load } from "https://deno.land/std@0.214.0/dotenv/mod.ts";
 import jsonLoader from 'lume/core/loaders/json.ts';
 import basePath from 'lume/plugins/base_path.ts';
 import esbuild from 'lume/plugins/esbuild.ts';
@@ -21,7 +22,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import { selectorProcessor } from "./src/_lib/ui/selector.ts";
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.13.10/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.14.3/mod.ts";
 
 import * as yff from './yff-config.ts';
 
@@ -46,11 +47,16 @@ site.use(inline());
 // Also process .html files
 site.loadPages(['.html']);
 
-// Setup admin
-site.use(netlifyCMS({
-  previewStyle: '/assets/style/yff.css',
-  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
-}));
+// Get environment variables from a .env file
+const env = await load();
+
+if(!("OI_LOCAL" in env)){
+	// Setup admin
+	site.use(netlifyCMS({
+	  previewStyle: '/assets/style/yff.css',
+	  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
+	}));
+}
 
 site.use(
   oiLumeViz({
@@ -62,7 +68,8 @@ site.use(
     colour: {
       scales: {
         "YFF": '#000000 0%, #7D2248 33%, #e55912 62%, #f7ab3d 84%, #fcddb1 100%',
-        "YFF-orange": yff.namedColours['Orange-3']+' 0%, '+yff.namedColours['Orange-2']+' 33%'+yff.namedColours['Orange-1']+' 67%'+yff.namedColours['Orange']+' 100%'
+        "YFF-orange": yff.namedColours['Orange-3']+' 0%, '+yff.namedColours['Orange-2']+' 33%, '+yff.namedColours['Orange-1']+' 67%, '+yff.namedColours['Orange']+' 100%',
+		"YFF-diverging": '#005776 0%, #69C2C9 30%, #FFFFFF 50%, #F7AB3D 68%, #E55912 84%, #874245 100%'
       },
       names: yff.namedColours,
       series: ['#E55912', '#005776', '#F7AB3D', '#4A783C'],
@@ -158,9 +165,11 @@ site.filter('autoLegend', (config, options) => {
   const defaultOptions = {
     formatter: (x) => x,
     roundTo: 1,
+	balanced: false,
+	steps: 5
   };
 
-  const { formatter, roundTo } = {
+  const { formatter, roundTo, balanced, steps } = {
     ...defaultOptions,
     ...options,
   };
@@ -173,15 +182,21 @@ site.filter('autoLegend', (config, options) => {
   const min =
     config.min ||
     Math.min(0, Math.floor(Math.min(...values) / roundTo) * roundTo);
+  // If we have a positive/negative numbers we can make sure the range is equal in both directions
+  if(balanced){
+	  let n = Math.max(Math.abs(min),Math.abs(max));
+	  min = -n;
+	  max = n;
+  }
   const range = max - min;
+  
 
-  const steps = 5;
   const legendValues = Array.from(Array(steps).keys())
     .map((x) => decimalSafeMath(decimalSafeMath(x,'*',range),'/',(steps - 1)) + min)
     .reverse();
 
   const legend = {
-    position: 'top right',
+    position: options.position||'top right',
     items: legendValues.map((x, i) => ({ value: x, label: formatter(x, i) })),
   };
   // Construct config
@@ -222,7 +237,9 @@ site.filter('autoTicks', generateTickArray)
 // processors to be re-written
 site.use(basePath());
 site.use(resolveUrls());
-site.use(slugifyUrls());
+site.use(slugifyUrls({
+  lowercase: false,
+}));
 
 // Define remote access to the font files
 [

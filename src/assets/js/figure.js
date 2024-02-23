@@ -77,8 +77,6 @@
 				"callback": function (e) {
 					// Show hidden items
 					for (i = 0; i < hide.length; i++) hide[i].style.display = "";
-					// Hide credit
-					credit.hidden = true;
 				},
 			});
 			if (root.OI.log) {
@@ -179,12 +177,13 @@
 			el.style.setProperty("width", (opt.width) + "px");
 			el.style.setProperty("height", (opt.height) + "px");
 		}
+		console.log(el);
 		el.classList.add("capture");
 		d = new Date();
 		src = document.createElement("p");
 		src.classList.add("source");
 		// TODO Maybe add OI credit here in some way
-		src.innerHTML = '&copy; Youth Futures Foundation ' + d.getFullYear() + ' / Visualisation by Open Innovations	<svg width="1em" height="1em" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="black"><circle r="32" mask="url(#oi-person)"></circle></g></svg>';
+		src.innerHTML = '&copy; Youth Futures Foundation ' + d.getFullYear() + ' / Visualisation by Open Innovations <svg width="1em" height="1em" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg" style="position:relative;top:0.15em;"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="black"><circle r="32" mask="url(#oi-person)"></circle></g></svg>';
 		el.appendChild(src);
 
 		domtoimage.toPng(el, opt).then(function (dataUrl) {
