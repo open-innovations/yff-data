@@ -743,3 +743,122 @@ css: |
 		  }) | safe }}
 		{% endcomp %}
     </article>
+
+
+	<article id='neet-15-29-all' class='selector-block' data-selector-group="NEET">
+		<h2>Youth not in employment, education or training (NEET) - all people</h2>
+		<p>
+			The visualisation below presents OECD data on the percentage of presents the 
+			share of young people who are not in employment, education or training (NEET), as a percentage 
+			of the total number of young people in the corresponding age group, by gender.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.neet_15_29_all.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+
+
+	<article id='neet-15-29-women' class='selector-block' data-selector-group="NEET">
+		<h2>Youth not in employment, education or training (NEET) - Women</h2>
+		<p>
+			The visualisation below presents OECD data on the percentage of presents the 
+			share of young people who are not in employment, education or training (NEET), as a percentage 
+			of the total number of young people in the corresponding age group, by gender.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.neet_15_29_women.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+
+	<article id='neet-15-29-men' class='selector-block' data-selector-group="NEET">
+		<h2>Youth not in employment, education or training (NEET) - Men</h2>
+		<p>
+			The visualisation below presents OECD data on the percentage of presents the 
+			share of young people who are not in employment, education or training (NEET), as a percentage 
+			of the total number of young people in the corresponding age group, by gender.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.neet_15_29_men.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF_r',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>

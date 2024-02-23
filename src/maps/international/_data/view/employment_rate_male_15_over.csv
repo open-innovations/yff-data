@@ -2,7 +2,7 @@ country_code,country,measure,sex,age,frequency,time_period,value,units
 ITA,Italy,Employment rate,Male,15 years or over,Annual,2022,54.0,Units
 CAN,Canada,Employment rate,Male,15 years or over,Annual,2022,65.7,Units
 GRC,Greece,Employment rate,Male,15 years or over,Annual,2022,54.8,Units
-G7,G7,Employment rate,Male,15 years or over,Annual,2022,64.3,Units
+G7,G7,Employment rate,Male,15 years or over,Annual,2022,64.2,Units
 POL,Poland,Employment rate,Male,15 years or over,Annual,2022,63.6,Units
 KOR,Korea,Employment rate,Male,15 years or over,Annual,2022,71.5,Units
 AUT,Austria,Employment rate,Male,15 years or over,Annual,2022,63.6,Units
@@ -19,7 +19,7 @@ PRT,Portugal,Employment rate,Male,15 years or over,Annual,2022,59.4,Units
 CHE,Switzerland,Employment rate,Male,15 years or over,Annual,2022,69.0,Units
 MEX,Mexico,Employment rate,Male,15 years or over,Annual,2022,73.8,Units
 IRL,Ireland,Employment rate,Male,15 years or over,Annual,2022,67.4,Units
-OECD,OECD,Employment rate,Male,15 years or over,Annual,2022,65.4,Units
+OECD,OECD,Employment rate,Male,15 years or over,Annual,2022,65.3,Units
 COL,Colombia,Employment rate,Male,15 years or over,Annual,2022,69.6,Units
 SWE,Sweden,Employment rate,Male,15 years or over,Annual,2022,65.5,Units
 HUN,Hungary,Employment rate,Male,15 years or over,Annual,2022,65.2,Units
@@ -31,7 +31,7 @@ ISR,Israel,Employment rate,Male,15 years or over,Annual,2022,64.0,Units
 EST,Estonia,Employment rate,Male,15 years or over,Annual,2022,67.0,Units
 CHL,Chile,Employment rate,Male,15 years or over,Annual,2022,65.0,Units
 USA,United States,Employment rate,Male,15 years or over,Annual,2022,65.5,Units
-GBR,United Kingdom,Employment rate,Male,15 years or over,Annual,2022,64.8,Units
+GBR,United Kingdom,Employment rate,Male,15 years or over,Annual,2022,64.6,Units
 SVN,Slovenia,Employment rate,Male,15 years or over,Annual,2022,61.2,Units
 EA20,Euro area (20 countries),Employment rate,Male,15 years or over,Annual,2022,59.1,Units
 TUR,Türkiye,Employment rate,Male,15 years or over,Annual,2022,65.0,Units
