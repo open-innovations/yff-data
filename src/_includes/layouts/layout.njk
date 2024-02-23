@@ -10,7 +10,8 @@
   <title>{{ title | default('PAGE TITLE') }} - {% if build.env == 'dev' %}DEV {% endif %}Youth Futures Foundation</title>
   <link rel="stylesheet" href="/components.css">
   <link rel="stylesheet" href="/assets/style/yff.css">
-  <script src="/components.js" inline></script>
+  <script defer src="/components.js" inline></script>
+  <script defer src="/assets/js/site.js"></script>
   {% if css %}<style>{{ css }}</style>{% endif %}
 </head>
 <body>
@@ -27,6 +28,8 @@
   <div class="feedback">
     {% include 'partials/feedback.njk' %}  </div>
   {% include 'partials/site-footer.njk' %}
+
+  {{ comp.cookiePopup() | safe }}
 
   <script>
   /*
