@@ -10,4 +10,3 @@ outs:
   size: 326832
   hash: md5
   path: oecd-neet.csv
-  isexec: true

@@ -79,45 +79,34 @@ stages:
     deps:
     - path: scripts/education/transform_census.py
       hash: md5
-      md5: c0342a2bc69660d547c649c823dcc860
-      size: 2009
+      md5: 7bede8ff5f2aeded8c198a029276e9fd
+      size: 4011
     - path: working/upstream/census_qualifications.csv
       hash: md5
       md5: 17e750e233f9134fb4ca889ff784dfb6
       size: 361199
     outs:
-    - path: src/maps/education/_data/view/census_apprenticeship.csv
+    - path: src/maps/education/_data/view/census_la_asian.csv
       hash: md5
-      md5: 74b108583c07bc6d72d38cf7298999e2
-      size: 26624
-      isexec: true
-    - path: src/maps/education/_data/view/census_five_or_more_gcses.csv
+      md5: 567379d58d86ae2b9aa8c84c367d2a9f
+      size: 17979
+    - path: src/maps/education/_data/view/census_la_black_british.csv
       hash: md5
-      md5: bd671a4602e733cea82a2ee33d5eed5a
-      size: 26570
-      isexec: true
-    - path: src/maps/education/_data/view/census_higher_education_qualifications.csv
+      md5: 9a9cad8ef0abea2679fa54938181ae9c
+      size: 18032
+    - path: src/maps/education/_data/view/census_la_mixed_multiple.csv
       hash: md5
-      md5: 2f12749beba6e72ee80a0abb130b66aa
-      size: 26620
-      isexec: true
-    - path: src/maps/education/_data/view/census_no_qualifications.csv
+      md5: 9b7b94b12bba2d880298f39006f26c00
+      size: 18177
+    - path: src/maps/education/_data/view/census_la_other.csv
       hash: md5
-      md5: 3629ae64b6e2971d85848a36aa6d1514
-      size: 26586
-      isexec: true
-    - path: src/maps/education/_data/view/census_one_to_four_gcses.csv
+      md5: 8f33c3adf60e0017c0155c35a32bed27
+      size: 17904
+    - path: src/maps/education/_data/view/census_la_total.csv
       hash: md5
-      md5: 721baef811948d51a9a09dd87c2e42db
-      size: 26447
-      isexec: true
-    - path: src/maps/education/_data/view/census_other_qualifications.csv
+      md5: a0607e4bae5d9c7983eaceb05a9598af
+      size: 18342
+    - path: src/maps/education/_data/view/census_la_white.csv
       hash: md5
-      md5: 7018bc58369827dc94b7e9ae276a7ee4
-      size: 26633
-      isexec: true
-    - path: src/maps/education/_data/view/census_two_or_more_a_levels.csv
-      hash: md5
-      md5: 0ac1acc3d43ad1c5de042c74b060e887
-      size: 26603
-      isexec: true
+      md5: 2e9e0e9c2a3a5a6177d74bd42a53fa8b
+      size: 18363

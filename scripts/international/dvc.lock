@@ -5,8 +5,8 @@ stages:
     deps:
     - path: scripts/international/prepare.py
       hash: md5
-      md5: 748112fecc4a2f08f8946f2e8438e519
-      size: 4090
+      md5: 0008df2915a0a287aa668449a29c603a
+      size: 5658
     - path: scripts/labour-market/config.py
       hash: md5
       md5: c9187b99fb9c48a24be707561d15eaa2

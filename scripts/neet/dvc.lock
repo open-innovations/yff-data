@@ -50,8 +50,9 @@ stages:
       md5: 2e7d9d4230f47d81d486885152d79f8c
       size: 1564
     - path: scripts/util/file.py
-      md5: 331fd2a96ccd35c59a6e52a65aa97e6c
-      size: 396
+      hash: md5
+      md5: dfb28f0d0f261d2c3ceb88669883cd2c
+      size: 944
     outs:
     - path: src/_data/sources/neet/headlines.csv
       hash: md5
