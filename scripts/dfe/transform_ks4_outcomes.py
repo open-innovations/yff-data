@@ -2,13 +2,14 @@ import os
 import re
 import pandas as pd
 from scripts.util.file import save_tidy_csv
+from scripts.util.ons_codes import explode_counties
 
 
 WORKING_DIR = os.path.join('working', 'upstream')
 
 KS4_OUTCOMES_DATA = os.path.join(WORKING_DIR, 'ks4_outcomes.csv')
 
-ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA)
+ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA).pipe(explode_counties)
 
 fields = ['new_la_code', 'time_period', 'version', 'gender', 'variable', 'value']
 groupby = ['variable','gender','time_period']
