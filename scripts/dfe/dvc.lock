@@ -47,237 +47,17 @@ stages:
     deps:
     - path: scripts/dfe/transform_char_outcomes.py
       hash: md5
-      md5: b3770817bd4d9ff23e560de864285c5e
-      size: 27253
+      md5: 3df224a2194011bc9849cd226349b5db
+      size: 1705
     - path: working/upstream/ks4_char_outcomes.csv
       hash: md5
       md5: 5246a735aa00bcdc2b01d1a578751522
       size: 23707387
     outs:
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/SEN_state_EHC_char_outcomes.csv
+    - path: src/maps/education/_data/view/ks4_char_outcomes.csv
       hash: md5
-      md5: 4f064c6fc073a316d2ce4af0a2741ecf
-      size: 15336
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/SEN_supp_char_outcomes.csv
-      hash: md5
-      md5: 60d648f3120950950f39376d623671a7
-      size: 14593
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/any_SEN_char_outcomes.csv
-      hash: md5
-      md5: abb869ade0d6cf47eda5c0fb8a386448
-      size: 15201
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/boys_total_char_outcomes.csv
-      hash: md5
-      md5: ab753b6b8ea26896a89b19f9a25cd2c9
-      size: 13225
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/disadvantaged_all_other_char_outcomes.csv
-      hash: md5
-      md5: b381d1f03530b75f04979f8a92820599
-      size: 17177
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/disadvantaged_char_outcomes.csv
-      hash: md5
-      md5: 4700ff7d9ad902512d441e500a87eb78
-      size: 15657
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/ethnicity_asian_ks4_char_outcomes.csv
-      hash: md5
-      md5: 6cce3410c6d16a06fe2eeb1a3ddcdd90
-      size: 14800
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/ethnicity_black_ks4_char_outcomes.csv
-      hash: md5
-      md5: a04a5a70c65f7fb419a4b21eace53001
-      size: 14800
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/ethnicity_mixed_ks4_char_outcomes.csv
-      hash: md5
-      md5: ac3e4986eb4eea59065b3b4b8a1ff37e
-      size: 14800
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/ethnicity_other_ks4_char_outcomes.csv
-      hash: md5
-      md5: 33c8870c75d18ab26a0ac9fcf95ca014
-      size: 14800
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/ethnicity_unclassified_ks4_char_outcomes.csv
-      hash: md5
-      md5: 565feab8c462d1a08c8af4466a057d90
-      size: 15857
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/ethnicity_white_ks4_char_outcomes.csv
-      hash: md5
-      md5: 3f7a155b5a49660788eb50d269be18da
-      size: 14897
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/first_lang_english_char_outcomes.csv
-      hash: md5
-      md5: e887e6239d79a670fbc32e2a25152c7a
-      size: 15049
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/first_lang_not_english_char_outcomes.csv
-      hash: md5
-      md5: 999068565981370f0dbf4b28ae67a335
-      size: 16612
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/fsm_all_other_char_outcomes.csv
-      hash: md5
-      md5: 332e609ac59edde6214e9c5b03927094
-      size: 16417
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_char_outcomes/avg_att8/fsm_char_outcomes.csv
-      hash: md5
-      md5: 5317c0f9d94d683d92cd1f4e171c5af9
-      size: 14897
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/girls_total_char_outcomes.csv
-      hash: md5
-      md5: 8cd9979cfd026f1c620761b3bbc96e6a
-      size: 13377
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/no_SEN_char_outcomes.csv
-      hash: md5
-      md5: ccf9e3642f87c771847a09ddad97dd48
-      size: 14289
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_att8/no_identified_SEN_char_outcomes.csv
-      hash: md5
-      md5: 6c884e4fd6ae5b03eb47eadff744d160
-      size: 16721
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/SEN_state_EHC_char_outcomes.csv
-      hash: md5
-      md5: 1812f8ae0672cc9fb106181d284c8c09
-      size: 15939
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/SEN_supp_char_outcomes.csv
-      hash: md5
-      md5: 1b24c03c1c87c7e2ccd4dfa960c5cf38
-      size: 15176
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_char_outcomes/avg_p8/any_SEN_char_outcomes.csv
-      hash: md5
-      md5: b644d602e538c2f8df97187405e1c16d
-      size: 15795
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/boys_total_char_outcomes.csv
-      hash: md5
-      md5: 11a83bbdcee6f6d331b8b93a460cc8ea
-      size: 13778
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/disadvantaged_all_other_char_outcomes.csv
-      hash: md5
-      md5: 42350e6b51eca70709ebd3892adb927c
-      size: 17646
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/disadvantaged_char_outcomes.csv
-      hash: md5
-      md5: c5924170e2fe295afc98414a0e3ee484
-      size: 16237
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/ethnicity_asian_ks4_char_outcomes.csv
-      hash: md5
-      md5: cfa1e19ff989be2bd016b447f881a6c8
-      size: 15236
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/ethnicity_black_ks4_char_outcomes.csv
-      hash: md5
-      md5: 0ca38fc029b35114eb0799ad053b8c58
-      size: 15255
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/ethnicity_mixed_ks4_char_outcomes.csv
-      hash: md5
-      md5: e38fd7c482a66c859b3d921f5e21bc3c
-      size: 15321
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/ethnicity_other_ks4_char_outcomes.csv
-      hash: md5
-      md5: de10b730b9313f0c2b0095440da1b6e5
-      size: 15250
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/ethnicity_unclassified_ks4_char_outcomes.csv
-      hash: md5
-      md5: 26c1ff480cbdbc05687fe07df903d3f0
-      size: 16390
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/ethnicity_white_ks4_char_outcomes.csv
-      hash: md5
-      md5: 8e1602d802785465b02abb23f576a322
-      size: 15450
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/first_lang_english_char_outcomes.csv
-      hash: md5
-      md5: 8a65ce88d6c7eff538da4e4d64b00fc3
-      size: 15605
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/first_lang_not_english_char_outcomes.csv
-      hash: md5
-      md5: 15ad6d8c7ef68375ac4a9a7a781a924d
-      size: 17048
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/fsm_all_other_char_outcomes.csv
-      hash: md5
-      md5: 6bbcf30af3802918f9d245ded2666328
-      size: 16891
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_char_outcomes/avg_p8/fsm_char_outcomes.csv
-      hash: md5
-      md5: 2847aace9a93a36a8e40a8f7a71b2036
-      size: 15471
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/girls_total_char_outcomes.csv
-      hash: md5
-      md5: 03b230c52f51bccf4ba7b8d5974900d9
-      size: 13862
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_char_outcomes/avg_p8/no_SEN_char_outcomes.csv
-      hash: md5
-      md5: 5bfc69b581ee5c18fb1a7949e4f696e9
-      size: 14778
-      isexec: true
-    - path: 
-        src/maps/education/_data/view/ks4_char_outcomes/avg_p8/no_identified_SEN_char_outcomes.csv
-      hash: md5
-      md5: 4796b8222d9db70928ee6940ce090b6c
-      size: 17210
-      isexec: true
+      md5: ca594b936fa60d156f58e9d74939cade
+      size: 182493
   transform_char_outputs:
     cmd: PYTHONPATH=. python scripts/dfe/transform_ks4_outcomes.py
     deps:
@@ -294,40 +74,14 @@ stages:
     deps:
     - path: scripts/dfe/transform_ks4_outcomes.py
       hash: md5
-      md5: fbe6884dffef7a72dfa3c26415f31e51
-      size: 3533
+      md5: f665fdaa06e3bb3c5e20ed945cb94b91
+      size: 2061
     - path: working/upstream/ks4_outcomes.csv
       hash: md5
       md5: ec15396dd6d9b780f03a0860f96a3137
       size: 473820
     outs:
-    - path: src/maps/education/_data/view/ks4_outcomes/avg_att8/avg_att8_boys.csv
+    - path: src/maps/education/_data/view/ks4_outcomes.csv
       hash: md5
-      md5: 39f7107733d349997f0a8648894cd4fb
-      size: 6742
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_outcomes/avg_att8/avg_att8_girls.csv
-      hash: md5
-      md5: 7294ee5ea0f91825d2a5768358626150
-      size: 6894
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_outcomes/avg_att8/avg_att8_total.csv
-      hash: md5
-      md5: 9dc7a45d3d7d4d0e3ce6e35b8335c8b1
-      size: 6894
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_outcomes/avg_p8/avg_p8score_boys.csv
-      hash: md5
-      md5: 2a85d814c4f577c3ff3f4a51ac5467d4
-      size: 7295
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_outcomes/avg_p8/avg_p8score_girls.csv
-      hash: md5
-      md5: bf9d81c0869e076b42e5b3716a4a5a0f
-      size: 7379
-      isexec: true
-    - path: src/maps/education/_data/view/ks4_outcomes/avg_p8/avg_p8score_total.csv
-      hash: md5
-      md5: 8de872ce1eba5bc7e42f686891460afe
-      size: 7423
-      isexec: true
+      md5: f839753b67a42cdff2d8f04355370dd7
+      size: 48391

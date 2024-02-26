@@ -3,13 +3,14 @@ import re
 import pandas as pd
 
 from scripts.util.file import save_tidy_csv
+from scripts.util.ons_codes import explode_counties
 
 WORKING_DIR = os.path.join('working', 'upstream')
 
 KS4_CHAR_OUTCOMES_DATA = os.path.join(
     WORKING_DIR, 'ks4_char_outcomes.csv')
 
-char_outcomes_data = pd.read_csv(KS4_CHAR_OUTCOMES_DATA)
+char_outcomes_data = pd.read_csv(KS4_CHAR_OUTCOMES_DATA).pipe(explode_counties)
 
 fields = ['new_la_code', 'time_period', 'version', 'gender', 'breakdown', 'ethnicity_major', 
           'free_school_meals', 'sen_status', 'sen_description', 'disadvantage', 'first_language', 'variable', 'value']
