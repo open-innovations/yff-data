@@ -1,10 +1,10 @@
-md5: 6795e3868092d0d3bfd045777ae15cc6
+md5: 684ca22fc58ff4833e91a680300e61d9
 frozen: true
 deps:
 - path: data/processed/yff/neet-factors.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: c4158b5777ce2ee166e3566f072354e6ba1deeb3
+    rev_lock: d7c72910630335a2b47b35bdad55fa311daf6994
 outs:
 - md5: 7335083d5c50b867eb0ff321b0a71459
   size: 555225
