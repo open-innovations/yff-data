@@ -77,4 +77,3 @@ stages:
       hash: md5
       md5: e952a8f3b36185ea9486e3fd5f1b260b
       size: 268584
-      isexec: true
