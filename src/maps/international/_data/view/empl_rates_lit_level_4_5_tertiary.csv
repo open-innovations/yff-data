@@ -1,0 +1,33 @@
+country_code,country,isced,gender,age,piaac_category_code,piaac_category,indicator,measure,year,value
+AUS,Australia,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,89.0
+AUT,Austria,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,91.0
+CAN,Canada,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,91.0
+CZE,Czechia,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,89.0
+DNK,Denmark,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,93.0
+FIN,Finland,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,91.0
+FRA,France,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,88.0
+DEU,Germany,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,93.0
+GRC,Greece,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,81.0
+IRL,Ireland,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,86.0
+ITA,Italy,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,85.0
+JPN,Japan,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,79.0
+KOR,Korea,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,81.0
+NLD,Netherlands,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,92.0
+NZL,New Zealand,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,91.0
+NOR,Norway,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,95.0
+POL,Poland,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,92.0
+SVK,Slovak Republic,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,85.0
+ESP,Spain,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,85.0
+SWE,Sweden,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,95.0
+TUR,Türkiye,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,
+USA,United States,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,88.0
+CHL,Chile,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,88.0
+EST,Estonia,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,94.0
+ISR,Israel,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,90.0
+LTU,Lithuania,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,93.0
+SGP,Singapore,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,87.0
+SVN,Slovenia,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2015,84.0
+BEL-VLG,Flanders,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,94.0
+GBR-ENG,England,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,88.0
+GBR-NIR,Northern Ireland,Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,90.0
+AVG_UNITARY,Unweighted average (Unitary countries),Tertiary education,Total,25-64 years,L4_5,Level (4/5),"Employment rates, by literacy proficiency level ",Value,2012,89.0

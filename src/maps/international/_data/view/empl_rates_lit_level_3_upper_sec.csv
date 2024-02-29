@@ -1,0 +1,33 @@
+country_code,country,isced,gender,age,piaac_category_code,piaac_category,indicator,measure,year,value
+AUS,Australia,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,79.0
+AUT,Austria,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,86.0
+CAN,Canada,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,81.0
+CZE,Czechia,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,78.0
+DNK,Denmark,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,82.0
+FIN,Finland,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,80.0
+FRA,France,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,75.0
+DEU,Germany,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,84.0
+GRC,Greece,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,49.0
+IRL,Ireland,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,70.0
+ITA,Italy,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,75.0
+JPN,Japan,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,76.0
+KOR,Korea,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,76.0
+NLD,Netherlands,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,85.0
+NZL,New Zealand,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,83.0
+NOR,Norway,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,87.0
+POL,Poland,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,67.0
+SVK,Slovak Republic,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,73.0
+ESP,Spain,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,72.0
+SWE,Sweden,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,87.0
+TUR,Türkiye,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,55.0
+USA,United States,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,81.0
+CHL,Chile,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,84.0
+EST,Estonia,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,80.0
+ISR,Israel,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,78.0
+LTU,Lithuania,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,73.0
+SGP,Singapore,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,83.0
+SVN,Slovenia,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2015,71.0
+BEL-VLG,Flanders,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,83.0
+GBR-ENG,England,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,81.0
+GBR-NIR,Northern Ireland,Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,78.0
+AVG_UNITARY,Unweighted average (Unitary countries),Upper secondary education or post-secondary non-tertiary,Total,25-64 years,L3,Level (3),"Employment rates, by literacy proficiency level ",Value,2012,77.0
