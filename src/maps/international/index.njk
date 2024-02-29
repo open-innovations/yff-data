@@ -13,6 +13,10 @@ css: |
     margin-top: 2rem;
   }
   .selector article * + h3 { margin-top: 2em; }
+
+  h3 {
+    padding-top:2em;
+  }
   
 ---
 {#- Formatter for autoLegend -#}
@@ -290,7 +294,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -314,7 +318,7 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF_r",
+				scale: "YFF",
 				colour: "2022",
 				columns: [{
 					name: '2016',
@@ -369,7 +373,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -393,7 +397,7 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF_r",
+				scale: "YFF",
 				colour: "2022",
 				columns: [{
 					name: '2016',
@@ -448,7 +452,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -472,7 +476,7 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF_r",
+				scale: "YFF",
 				colour: "2022",
 				columns: [{
 					name: '2016',
@@ -527,7 +531,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -551,7 +555,7 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF_r",
+				scale: "YFF",
 				colour: "2022",
 				columns: [{
 					name: '2016',
@@ -606,7 +610,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -630,7 +634,7 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF_r",
+				scale: "YFF",
 				colour: "2022",
 				columns: [{
 					name: '2016',
@@ -685,7 +689,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -709,7 +713,7 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF_r",
+				scale: "YFF",
 				colour: "2022",
 				columns: [{
 					name: '2016',
@@ -769,7 +773,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -787,7 +791,7 @@ css: |
 
 
 	<article id='neet-15-29-women' class='selector-block' data-selector-group="NEET">
-		<h2>Youth not in employment, education or training (NEET) - Women, aged 15-29</h2>
+		<h2>Youth not in employment, education or training (NEET) - Women, age 15-29</h2>
 		<p>
 			The visualisation below presents OECD data on the percentage of presents the 
 			share of young people who are not in employment, education or training (NEET), as a percentage 
@@ -809,7 +813,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -848,7 +852,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF_r',
+				scale: 'YFF',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -863,3 +867,618 @@ css: |
 		  }) | safe }}
 		{% endcomp %}
 	</article>
+
+	<article id='wages-low-pay' class='selector-block' data-selector-group="Wages">
+		<h2>Wages - Low Pay</h2>
+		<p>
+			Wage levels are divided by low pay and high pay. The incidence of low pay refers to the percentage of full-time workers earning less than 
+			two-thirds of median earnings. The incidence of high pay refers to the percentage of full-time workers earning more than one-and-a-half time 
+			median earnings. Hover over the countries to see values. Lighter colours refer to a higher percentage.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.wages_lpay.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+
+	<article id='wages-high-pay' class='selector-block' data-selector-group="Wages">
+		<h2>Wages - High Pay</h2>
+		<p>
+			Wage levels are divided by low pay and high pay. The incidence of low pay refers to the percentage of full-time workers earning less than 
+			two-thirds of median earnings. The incidence of high pay refers to the percentage of full-time workers earning more than one-and-a-half time 
+			median earnings. Hover over the countries to see values. Lighter colours refer to a higher percentage.
+		</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.map.svg({ 
+			config: {
+				geojson: {
+					data: sources.maps.world,
+					key: 'ADM0_A3'
+				}, 
+				projection: {
+					name: 'equirectangular'
+				},
+				data: view.wages_lpay.rows,
+				key:'country_code',
+				value: 'value',
+				min: 0,
+				width: 600,
+				height:500,
+				scale: 'YFF',
+				tooltip: 'tooltip',
+				tools: {
+					filter: {
+						label: 'country'
+					}
+				},
+				columns: [{
+					name: 'tooltip',
+					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+				}]          
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</article>
+	</div>
+
+
+	
+	<h3>Employment Outcomes by Education Attainment and Skills</h3>
+
+	{% comp 'tabbed', { tab_count: 4 } %}
+
+		<div class='pane'>
+
+		<div class='selector'
+			data-dependencies='/assets/js/selector.js'
+			data-label='Choose the visualisation layer'
+			data-selector-position='top'
+			data-heading-level='h2'
+			data-id='level-0-1-selector'>
+
+
+	 	<span class="tab-title">Literacy Level 0/1</span>
+
+			<article id='literacy-level-0-1-below-sec' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level 0/1, aged 25-64, Below Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_0_1_below_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+			<article id='literacy-level-0-1-upper-sec' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level 0/1, aged 25-64, Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_0_1_upper_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+		<article id='literacy-level-0-1-tertiary' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level 0/1, aged 25-64, Tertiary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_0_1_tertiary.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+
+
+		</div>
+		</div>
+
+		<div class='pane'>
+
+		<div class='selector'
+			data-dependencies='/assets/js/selector.js'
+			data-label='Choose the visualisation layer'
+			data-selector-position='top'
+			data-heading-level='h2'
+			data-id='level-2-selector'>
+
+	 	<span class="tab-title">Literacy Level 2</span>
+
+			<article id='literacy-level-2-below-sec' class='selector-block' data-selector-group="Education Attainment">
+			<h2>Employment Rates by Literacy Level - 2, aged 25-64, Below Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_2_below_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+		<article id='literacy-level-2-upper-sec' class='selector-block' data-selector-group="Education Attainment">
+			<h2>Employment Rates by Literacy Level - 2, aged 25-64, Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_2_upper_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>	
+
+		<article id='literacy-level-2-tertiary' class='selector-block' data-selector-group="Education Attainment">
+			<h2>Employment Rates by Literacy Level - 2, aged 25-64, Tertiary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_2_tertiary.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+		</article>	
+
+
+
+
+
+		</div>
+		</div>
+
+
+		<div class='pane'>
+	 	<span class="tab-title">Literacy Level 3</span>
+
+		<div class='selector'
+			data-dependencies='/assets/js/selector.js'
+			data-label='Choose the visualisation layer'
+			data-selector-position='top'
+			data-heading-level='h2'
+			data-id='level-3-selector'>
+
+			<article id='literacy-level-3-below-sec' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level - 3, aged 25-64, Below Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_3_below_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+		<article id='literacy-level-3-upper-sec' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level - 3, aged 25-64, Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_3_upper_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+			<article id='literacy-level-3-tertiary' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level - 3, aged 25-64, Tertiary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_3_tertiary.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+
+		</div>
+		</div>
+
+		<div class='pane'>
+	 	<span class="tab-title">Literacy Level 4/5</span>
+
+		<div class='selector'
+			data-dependencies='/assets/js/selector.js'
+			data-label='Choose the visualisation layer'
+			data-selector-position='top'
+			data-heading-level='h2'
+			data-id='level-4-selector'>
+
+			<article id='literacy-level-4-5-below-sec' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level - 4/5, aged 25-64, Below Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_4_5_below_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+			<article id='literacy-level-4-5-upper-sec' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level - 4/5, aged 25-64, Upper Secondary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_4_5_upper_sec.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+			<article id='literacy-level-4-5-tertiary' class='selector-block' data-selector-group="Education Attainment">
+
+			<h2>Employment Rates by Literacy Level - 4/5, aged 25-64, Tertiary Education</h2>
+			<p>
+				The data visualised below presents educational attainment and labour market outcomes by skills, by 
+				looking at employment rates, educational attainment and literacy proficiency level, based on the Survey of Adult Skills (PIAAC).
+			
+				Hover over countries on the map to see the data. Lighter colours indicate a higher employment rate.
+			</p>
+			{{ comp.oi.map.svg({ 
+				config: {
+					geojson: {
+						data: sources.maps.world,
+						key: 'ADM0_A3'
+					}, 
+					projection: {
+						name: 'equirectangular'
+					},
+					data: view.empl_rates_lit_level_4_5_tertiary.rows,
+					key:'country_code',
+					value: 'value',
+					min: 0,
+					width: 600,
+					height:500,
+					scale: 'YFF',
+					tooltip: 'tooltip',
+					tools: {
+						filter: {
+							label: 'country'
+						}
+					},
+					columns: [{
+						name: 'tooltip',
+						template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					}]          
+				}
+			}) | safe }}
+			</article>
+
+		</div>
+		</div>
+
+  	{% endcomp %}	
