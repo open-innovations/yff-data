@@ -6,6 +6,7 @@ css: |
   .oi-zoomable-map .oi-attribution { display: none; }
   .oi-zoomable-map .leaflet-control-attribution { font-size: 0.7rem; }
 ---
+<!-- Edit this in `src/_includes/layouts/areas/pcon.njk` -->
 
 {# OBVIOUSLY, OVERRIDE ALL THIS... #}
 {# Look up another page's content
@@ -16,7 +17,7 @@ css: |
 <div class="row">
 	<div>
 		<p>
-		This is the page for {{ title }} ({{ area.code }}),
+		This is the page for {{ area.name }} ({{ area.code }}),
 		which is a Westminster Parliamentary Constituency ({{ area.type }}).
 		</p>
 		<p>{{ area.summary.description }}</p>
@@ -45,6 +46,3 @@ css: |
 		}
 	}) | safe}}
 </div>
-<code>
-Edit this in `src/_includes/layouts/areas/pcon.njk`
-</code>
