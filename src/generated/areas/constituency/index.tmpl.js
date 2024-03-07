@@ -12,6 +12,7 @@ export default function*({ areas, summary, map }) {
     yield {
       title: `Constituency: ${ name }`,
       url: `/areas/constituency/${ code }/`,
+      topics: ['Constituency'],
       area: {
         name: name,
         code: code,

@@ -8,11 +8,12 @@ css: |
 ---
 <!-- Edit this in `src/_includes/layouts/areas/pcon.njk` -->
 
+{# {% include 'partials/page/topic-cloud.njk' %}	 #}
+
 {# OBVIOUSLY, OVERRIDE ALL THIS... #}
 {# Look up another page's content
 {{ search.page("area.code=E14000530").data.summary.name }}
 #}
-
 
 <div class="row">
 	<div>
@@ -45,4 +46,21 @@ css: |
 			mapAttribution: "Outline: &copy; ONS/OS"
 		}
 	}) | safe}}
+</div>
+
+<div>
+<h2>Headlines dashboard</h2>
+
+{{ comp.oi.dashboard({
+  config: {
+    "data": area.summary.headlines,
+    "title": "h",
+    "value": "v",
+    "panels": [
+      { "name": "Employment rate" },
+      { "name": "Unemployment rate" }
+    ]
+  }
+}) | safe }}
+
 </div>
