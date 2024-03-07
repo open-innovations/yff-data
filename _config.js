@@ -38,7 +38,12 @@ site.data('version', Deno.env.get('VERSION') || 'v2');
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
 
 // Set up search engine
-site.use(pagefind());
+site.use(pagefind({
+  ui: {
+    showSubResults: true,
+    resetStyles: true
+  }
+}));
 
 // Process all css files
 site.use(postcss());
