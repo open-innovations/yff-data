@@ -50,7 +50,7 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Employment rate→Total→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Employment rate→Total→From 15 to 24 years→2022',
 				min: 0,

@@ -236,6 +236,10 @@ site.filter('get_annotations', (object, path) => Object
   .sort((a, b) => new Date(a.start_date) - new Date(b.start_date))
 );
 
+site.filter('remove_rows_with_null_values', (data, propertyName) => data
+  .filter(x => !(Number.isNaN(x[propertyName])))
+);
+
 site.filter('autoTicks', generateTickArray)
 
 // URL re-writing plugins. These have to be last to enable any urls installed by the
