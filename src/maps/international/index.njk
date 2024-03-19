@@ -17,7 +17,9 @@ css: |
   h3 {
     padding-top:2em;
   }
-  
+
+featured: "#featured-viz"
+summary: This page will present international data on employment and education.  
 ---
 {#- Formatter for autoLegend -#}
 {%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
@@ -29,6 +31,36 @@ css: |
 <p>This page will present international data on employment and education.</p>
 
 {# TO DO: Legend and date #}
+
+
+	<div id="featured-viz" hidden>
+		<h3>Employment Rate</h3>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2020',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</div>
 
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
