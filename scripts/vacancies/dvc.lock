@@ -5,7 +5,7 @@ stages:
     deps:
     - path: data/vacancies/vacancies_by_date.csv
       hash: md5
-      md5: 0ce1ffcfcaae682b72ffe6b7a0566df8
+      md5: 072bf45cbff371fd2f9e27a3092dfd78
       size: 9319
     - path: scripts/util/metadata.py
       hash: md5
@@ -17,7 +17,7 @@ stages:
       size: 5836
     - path: working/upstream/metadata.csv
       hash: md5
-      md5: a06a038a1726b783d3353fc92de1b5f8
+      md5: b89c2001eee6a0c6b98bf37a524f8114
       size: 201
     - path: working/upstream/vacancies-growth-by-sector.csv
       hash: md5
@@ -26,8 +26,8 @@ stages:
     outs:
     - path: src/_data/sources/vacancies/
       hash: md5
-      md5: 979def3fbc30de196692ac47219f2795.dir
-      size: 23257
+      md5: 38ba3bd2e6d6fdde61a9c6e4639449fa.dir
+      size: 23259
       nfiles: 7
   extract:
     cmd: PYTHONPATH=. python3 scripts/vacancies/extract.py
@@ -45,11 +45,11 @@ stages:
     deps:
     - path: ../../working/upstream/unem-codes.csv
       hash: md5
-      md5: 646c6b901443876fb1b872940725f1ce
-      size: 34793
+      md5: 39476293cf256c2c32eed70768ab26bb
+      size: 33842
     - path: ../../working/upstream/unem.csv
       hash: md5
-      md5: d8cbeca329d795c60342a55fa1904e8f
+      md5: 8ae59434ee31e5549d299eb17774e2c9
       size: 3681176
     - path: transform.ipynb
       hash: md5
@@ -58,5 +58,5 @@ stages:
     outs:
     - path: ../../data/vacancies/vacancies_by_date.csv
       hash: md5
-      md5: 0ce1ffcfcaae682b72ffe6b7a0566df8
+      md5: 072bf45cbff371fd2f9e27a3092dfd78
       size: 9319
