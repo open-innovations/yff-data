@@ -162,7 +162,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Employment rate→Female→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Employment rate→Female→From 15 to 24 years→2022',
 				min: 0,
@@ -241,7 +241,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Employment rate→Male→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Employment rate→Male→From 15 to 24 years→2022',
 				min: 0,
@@ -320,7 +320,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Unemployment rate→Total→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Unemployment rate→Total→From 15 to 24 years→2022',
 				min: 0,
@@ -399,7 +399,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Unemployment rate→Female→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Unemployment rate→Female→From 15 to 24 years→2022',
 				min: 0,
@@ -478,7 +478,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Unemployment rate→Male→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Unemployment rate→Male→From 15 to 24 years→2022',
 				min: 0,
@@ -557,7 +557,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Inactivity rate→Total→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Inactivity rate→Total→From 15 to 24 years→2022',
 				min: 0,
@@ -636,7 +636,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Inactivity rate→Female→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Inactivity rate→Female→From 15 to 24 years→2022',
 				min: 0,
@@ -715,7 +715,7 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Inactivity rate→Male→From 15 to 24 years→2022'),
 				key:'country_code',
 				value: 'Inactivity rate→Male→From 15 to 24 years→2022',
 				min: 0,
