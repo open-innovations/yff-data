@@ -17,7 +17,9 @@ css: |
   h3 {
     padding-top:2em;
   }
-  
+
+featured: "#featured-viz figure"
+summary: This page will present international data on employment and education.  
 ---
 {#- Formatter for autoLegend -#}
 {%- macro percentFormatter(x) %}{{ x }}%{% endmacro -%}
@@ -30,6 +32,37 @@ css: |
 
 {# TO DO: Legend and date #}
 
+
+	<div id="featured-viz" hidden>
+		<h3>Employment Rate</h3>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.oecd_lfs_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: true,
+				width: 700,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2020',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+	</div>
+
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
     data-label='Choose the visualisation layer'
@@ -37,9 +70,9 @@ css: |
     data-heading-level='h2'
     data-id='map-selector'>
 
-    <article id='employment-rate-total-15-over' class='selector-block' data-selector-group="Employment">
-		<h2>Employment rate for all people, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of employed people aged 15 and over.</p>
+    <article id='employment-rate-total-15-to-24' class='selector-block' data-selector-group="Employment">
+		<h2>Employment rate for all people, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data (<a href="https://stats.oecd.org/Index.aspx?DataSetCode=LFS_D">LFS by sex and age</a>) on the number of employed people aged 15 to 24 years.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -50,9 +83,9 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Employment rate→Total→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Employment rate→Total→15 years or over→2022',
+				value: 'Employment rate→Total→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -65,7 +98,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Employment rate→Total→15 years or over→2022 | toFixed(2) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Employment rate→Total→From 15 to 24 years→2022 | toFixed(2) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -80,35 +113,35 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF",
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Employment rate→Total→15 years or over→2016 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Employment rate→Total→15 years or over→2017 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Employment rate→Total→15 years or over→2018 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Employment rate→Total→15 years or over→2019 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Employment rate→Total→15 years or over→2020 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Employment rate→Total→15 years or over→2021 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Employment rate→Total→15 years or over→2022 }}',
+					template: '{{ Employment rate→Total→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -117,9 +150,9 @@ css: |
     </article>
 
 
-    <article id='employment-rate-female-15-over' class='selector-block' data-selector-group="Employment">
-		<h2>Employment rate for women, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of women aged 15 and over who are in employment.</p>
+    <article id='employment-rate-female-15-to-24' class='selector-block' data-selector-group="Employment">
+		<h2>Employment rate for women, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of women aged 15 to 24 years who are in employment.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -130,9 +163,9 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Employment rate→Female→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Employment rate→Female→15 years or over→2022',
+				value: 'Employment rate→Female→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -145,7 +178,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Employment rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Employment rate→Female→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -160,35 +193,35 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF",
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Employment rate→Female→15 years or over→2016 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Employment rate→Female→15 years or over→2017 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Employment rate→Female→15 years or over→2018 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Employment rate→Female→15 years or over→2019 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Employment rate→Female→15 years or over→2020 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Employment rate→Female→15 years or over→2021 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Employment rate→Female→15 years or over→2022 }}',
+					template: '{{ Employment rate→Female→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -196,9 +229,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='employment-rate-male-15-over' class='selector-block' data-selector-group="Employment">
-		<h2>Employment rate for men, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of men aged 15 and over who are in employment.</p>
+    <article id='employment-rate-male-15-to-24' class='selector-block' data-selector-group="Employment">
+		<h2>Employment rate for men, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of men aged 15 to 24 years who are in employment.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -209,9 +242,9 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Employment rate→Male→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Employment rate→Male→15 years or over→2022',
+				value: 'Employment rate→Male→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -224,7 +257,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Employment rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Employment rate→Male→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -239,35 +272,35 @@ css: |
 				key:'country',
 				circles: 0.9,
 				reverse: true,
-				scale: "YFF",
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Employment rate→Male→15 years or over→2016 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Employment rate→Male→15 years or over→2017 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Employment rate→Male→15 years or over→2018 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Employment rate→Male→15 years or over→2019 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Employment rate→Male→15 years or over→2020 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Employment rate→Male→15 years or over→2021 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Employment rate→Male→15 years or over→2022 }}',
+					template: '{{ Employment rate→Male→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -275,9 +308,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='unemployment-rate-total-15-over' class='selector-block' data-selector-group="Unemployment">
-		<h2>Unemployment rate for all people, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of people aged 15 and over who are unemployed.</p>
+    <article id='unemployment-rate-total-15-to-24' class='selector-block' data-selector-group="Unemployment">
+		<h2>Unemployment rate for all people, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of people aged 15 to 24 years who are unemployed.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -288,13 +321,13 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Unemployment rate→Total→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Unemployment rate→Total→15 years or over→2022',
+				value: 'Unemployment rate→Total→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -303,7 +336,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Unemployment rate→Total→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Unemployment rate→Total→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -317,36 +350,36 @@ css: |
 				data: view.oecd_lfs_grouped.rows,
 				key:'country',
 				circles: 0.9,
-				reverse: true,
-				scale: "YFF",
+				reverse: false,
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Unemployment rate→Total→15 years or over→2016 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Unemployment rate→Total→15 years or over→2017 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Unemployment rate→Total→15 years or over→2018 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Unemployment rate→Total→15 years or over→2019 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Unemployment rate→Total→15 years or over→2020 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Unemployment rate→Total→15 years or over→2021 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Unemployment rate→Total→15 years or over→2022 }}',
+					template: '{{ Unemployment rate→Total→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -354,9 +387,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='unemployment-rate-female-15-over' class='selector-block' data-selector-group="Unemployment">
-		<h2>Unemployment rate for women, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of women aged 15 and over who are unemployed.</p>
+    <article id='unemployment-rate-female-15-to-24' class='selector-block' data-selector-group="Unemployment">
+		<h2>Unemployment rate for women, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of women aged 15 to 24 years who are unemployed.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -367,13 +400,13 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Unemployment rate→Female→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Unemployment rate→Female→15 years or over→2022',
+				value: 'Unemployment rate→Female→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -382,7 +415,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Unemployment rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Unemployment rate→Female→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -396,36 +429,36 @@ css: |
 				data: view.oecd_lfs_grouped.rows,
 				key:'country',
 				circles: 0.9,
-				reverse: true,
-				scale: "YFF",
+				reverse: false,
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Unemployment rate→Female→15 years or over→2016 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Unemployment rate→Female→15 years or over→2017 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Unemployment rate→Female→15 years or over→2018 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Unemployment rate→Female→15 years or over→2019 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Unemployment rate→Female→15 years or over→2020 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Unemployment rate→Female→15 years or over→2021 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Unemployment rate→Female→15 years or over→2022 }}',
+					template: '{{ Unemployment rate→Female→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -433,9 +466,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='unemployment-rate-male-15-over' class='selector-block' data-selector-group="Unemployment">
-		<h2>Unemployment rate for men, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of men aged 15 and over who are unemployed.</p>
+    <article id='unemployment-rate-male-15-to-24' class='selector-block' data-selector-group="Unemployment">
+		<h2>Unemployment rate for men, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of men aged 15 to 24 years who are unemployed.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -446,13 +479,13 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Unemployment rate→Male→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Unemployment rate→Male→15 years or over→2022',
+				value: 'Unemployment rate→Male→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -461,7 +494,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Unemployment rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Unemployment rate→Male→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -475,36 +508,36 @@ css: |
 				data: view.oecd_lfs_grouped.rows,
 				key:'country',
 				circles: 0.9,
-				reverse: true,
-				scale: "YFF",
+				reverse: false,
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Unemployment rate→Male→15 years or over→2016 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Unemployment rate→Male→15 years or over→2017 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Unemployment rate→Male→15 years or over→2018 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Unemployment rate→Male→15 years or over→2019 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Unemployment rate→Male→15 years or over→2020 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Unemployment rate→Male→15 years or over→2021 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Unemployment rate→Male→15 years or over→2022 }}',
+					template: '{{ Unemployment rate→Male→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -512,9 +545,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='inactivity-rate-total-15-over' class='selector-block' data-selector-group="Economic Inactivity">
-		<h2>Economic inactivity rate for all people, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of all people aged 15 and over who are economically inactive.</p>
+    <article id='inactivity-rate-total-15-to-24' class='selector-block' data-selector-group="Economic Inactivity">
+		<h2>Economic inactivity rate for all people, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of all people aged 15 to 24 years who are economically inactive.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -525,13 +558,13 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Inactivity rate→Total→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Inactivity rate→Total→15 years or over→2022',
+				value: 'Inactivity rate→Total→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -540,7 +573,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Inactivity rate→Total→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Inactivity rate→Total→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -554,36 +587,36 @@ css: |
 				data: view.oecd_lfs_grouped.rows,
 				key:'country',
 				circles: 0.9,
-				reverse: true,
-				scale: "YFF",
+				reverse: false,
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Inactivity rate→Total→15 years or over→2016 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Inactivity rate→Total→15 years or over→2017 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Inactivity rate→Total→15 years or over→2018 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Inactivity rate→Total→15 years or over→2019 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Inactivity rate→Total→15 years or over→2020 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Inactivity rate→Total→15 years or over→2021 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Inactivity rate→Total→15 years or over→2022 }}',
+					template: '{{ Inactivity rate→Total→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -591,9 +624,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='inactivity-rate-female-15-over' class='selector-block' data-selector-group="Economic Inactivity">
-		<h2>Economic inactivity rate for women, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of women aged 15 and over who are economically inactive.</p>
+    <article id='inactivity-rate-female-15-to-24' class='selector-block' data-selector-group="Economic Inactivity">
+		<h2>Economic inactivity rate for women, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of women aged 15 to 24 years who are economically inactive.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -604,13 +637,13 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Inactivity rate→Female→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Inactivity rate→Female→15 years or over→2022',
+				value: 'Inactivity rate→Female→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -619,7 +652,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Inactivity rate→Female→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Inactivity rate→Female→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -633,36 +666,36 @@ css: |
 				data: view.oecd_lfs_grouped.rows,
 				key:'country',
 				circles: 0.9,
-				reverse: true,
-				scale: "YFF",
+				reverse: false,
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Inactivity rate→Female→15 years or over→2016 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Inactivity rate→Female→15 years or over→2017 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Inactivity rate→Female→15 years or over→2018 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Inactivity rate→Female→15 years or over→2019 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Inactivity rate→Female→15 years or over→2020 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Inactivity rate→Female→15 years or over→2021 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Inactivity rate→Female→15 years or over→2022 }}',
+					template: '{{ Inactivity rate→Female→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -670,9 +703,9 @@ css: |
 		{% endcomp %}
     </article>
 
-    <article id='inactivity-rate-male-15-over' class='selector-block' data-selector-group="Economic Inactivity">
-		<h2>Economic inactivity rate for men, aged 15 and over</h2>
-		<p>The visualisation below presents OECD data on the number of men aged 15 and over who are economically inactive.</p>
+    <article id='inactivity-rate-male-15-to-24' class='selector-block' data-selector-group="Economic Inactivity">
+		<h2>Economic inactivity rate for men, aged 15 to 24 years</h2>
+		<p>The visualisation below presents OECD data on the number of men aged 15 to 24 years who are economically inactive.</p>
 		{% comp 'display.figure' %}
 		{{ comp.oi.map.svg({ 
 			config: {
@@ -683,13 +716,13 @@ css: |
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.oecd_lfs_grouped.rows,
+				data: view.oecd_lfs_grouped.rows | remove_rows_with_null_values('Inactivity rate→Male→From 15 to 24 years→2022'),
 				key:'country_code',
-				value: 'Inactivity rate→Male→15 years or over→2022',
+				value: 'Inactivity rate→Male→From 15 to 24 years→2022',
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -698,7 +731,7 @@ css: |
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ Inactivity rate→Male→15 years or over→2022 | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ Inactivity rate→Male→From 15 to 24 years→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
@@ -712,36 +745,36 @@ css: |
 				data: view.oecd_lfs_grouped.rows,
 				key:'country',
 				circles: 0.9,
-				reverse: true,
-				scale: "YFF",
+				reverse: false,
+				scale: "YFF_r",
 				colour: "2022",
 				columns: [{
 					name: '2016',
-					template: '{{ Inactivity rate→Male→15 years or over→2016 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2016 }}',
 					fillna: 0
 				},{
 					name: '2017',
-					template: '{{ Inactivity rate→Male→15 years or over→2017 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2017 }}',
 					fillna: 0
 				},{
 					name: '2018',
-					template: '{{ Inactivity rate→Male→15 years or over→2018 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2018 }}',
 					fillna: 0
 				},{
 					name: '2019',
-					template: '{{ Inactivity rate→Male→15 years or over→2019 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2019 }}',
 					fillna: 0
 				},{
 					name: '2020',
-					template: '{{ Inactivity rate→Male→15 years or over→2020 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2020 }}',
 					fillna: 0
 				},{
 					name: '2021',
-					template: '{{ Inactivity rate→Male→15 years or over→2021 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2021 }}',
 					fillna: 0
 				},{
 					name: '2022',
-					template: '{{ Inactivity rate→Male→15 years or over→2022 }}',
+					template: '{{ Inactivity rate→Male→From 15 to 24 years→2022 }}',
 					fillna: 0
 				}]
 			}
@@ -773,7 +806,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -813,7 +846,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -852,7 +885,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {
@@ -891,7 +924,7 @@ css: |
 				min: 0,
 				width: 600,
 				height:500,
-				scale: 'YFF',
+				scale: 'YFF_r',
 				tooltip: 'tooltip',
 				tools: {
 					filter: {

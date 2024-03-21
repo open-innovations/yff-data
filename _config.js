@@ -22,7 +22,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import { selectorProcessor } from "./src/_lib/ui/selector.ts";
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.14.3/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.14.6/mod.ts";
 
 import * as yff from './yff-config.ts';
 
@@ -38,7 +38,12 @@ site.data('version', Deno.env.get('VERSION') || 'v2');
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
 
 // Set up search engine
-site.use(pagefind());
+site.use(pagefind({
+  ui: {
+    showSubResults: true,
+    resetStyles: true
+  }
+}));
 
 // Process all css files
 site.use(postcss());
@@ -229,6 +234,10 @@ site.filter('get_annotations', (object, path) => Object
   .filter(a => a.relates_to === path)
   .filter(a => dateBetween(a.start_date, a.end_date))
   .sort((a, b) => new Date(a.start_date) - new Date(b.start_date))
+);
+
+site.filter('remove_rows_with_null_values', (data, propertyName) => data
+  .filter(x => !(Number.isNaN(x[propertyName])))
 );
 
 site.filter('autoTicks', generateTickArray)

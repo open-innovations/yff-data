@@ -1,2 +1,5 @@
 layout: layouts/simple.njk
 main_class: ''
+
+mergedKeys:
+  topics: array

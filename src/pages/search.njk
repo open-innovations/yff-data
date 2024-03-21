@@ -5,19 +5,19 @@ nav_order:
   v2: 50
 ---
 
-<section class="boxed">
-<p>You can search the site by topic.</p>
-
-{{ comp.filter({ label: 'Type to filter the topic list', selector: 'ul.tag-cloud' }) | safe }}
-
-{{ comp.tagCloud({ tags: search.pages("topic", "title") | data | getAttr('title'), live_links: true }) | safe }}
-</section>
-
 <section>
-<p>Alternatively use the search box below to perform a free-text search</p>
+<p>Search the site for keywords, topics or geographic areas (e.g. constituency):</p>
 {# 
   This uses the pagefind lume plugin https://lume.land/plugins/pagefind/ - loaded and configured in _config.js
   Styling overrides are in src/_includes/css/search.css
 #}
 <div id="search"></div>
+</section>
+
+<section class="boxed">
+<p>Or browse the site topics:</p>
+
+{{ comp.filter({ label: 'Type to filter', selector: 'ul.tag-cloud' }) | safe }}
+
+{{ comp.tagCloud({ tags: search.pages("topic", "title") | data | getAttr('title'), live_links: true }) | safe }}
 </section>

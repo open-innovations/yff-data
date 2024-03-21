@@ -10,9 +10,11 @@ export default function*({ areas, summary, map }) {
 
 	// Yield the data which creates the page
     yield {
-      title: name,
+      title: `Constituency: ${ name }`,
       url: `/areas/constituency/${ code }/`,
+      topics: ['Constituency'],
       area: {
+        name: name,
         code: code,
         type: 'PCON22',
 		summary: summary[code]||{},

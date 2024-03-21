@@ -90,7 +90,7 @@ featured: "#attainment-score-total figure"
 
 	<article id='attainment-score-total' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Total</h2>
-    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		<p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -113,53 +113,53 @@ featured: "#attainment-score-total figure"
     
 
 		<section>
-    <h3>Lowest Scoring</h3>
-		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
-		{% comp 'display.figure' %}
-		{{ comp.oi.chart.ranking({ 
-			config: {
-				data: view.ks4_outcomes.rows,
-				key:'LADNM',
-				circles: 0.9,
-				top: 10,
-				height: 500,
-				scale: 'YFF_r',
-				colour: 'avg_att8→Total→202223',
-				min: 30,
-				max: 60,
-				columns: [{
-					name: '2018-19',
-					template: '{{ avg_att8→Total→201819 }}',
-					fillna: "unknown"
-				},{
-					name: '2019-20',
-					template: '{{ avg_att8→Total→201920 }}',
-					fillna: "unknown"
-				},{
-					name: '2020-21',
-					template: '{{ avg_att8→Total→202021 }}',
-					fillna: "unknown"
-				},{
-					name: '2021-22',
-					template: '{{ avg_att8→Total→202122 }}',
-					fillna: "unknown"
-				},{
-					name: '2022-23',
-					template: '{{ avg_att8→Total→202223 }}',
-					fillna: "unknown"
-				}]
-			}
-		  }) | safe }}
-		{% endcomp %}
+			<h3>Lowest Scoring</h3>
+			<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+			{% comp 'display.figure' %}
+			{{ comp.oi.chart.ranking({ 
+				config: {
+					data: view.ks4_outcomes.rows,
+					key:'LADNM',
+					circles: 0.9,
+					top: 10,
+					height: 500,
+					scale: 'YFF_r',
+					colour: 'avg_att8→Total→202223',
+					min: 30,
+					max: 60,
+					columns: [{
+						name: '2018-19',
+						template: '{{ avg_att8→Total→201819 }}',
+						fillna: "unknown"
+					},{
+						name: '2019-20',
+						template: '{{ avg_att8→Total→201920 }}',
+						fillna: "unknown"
+					},{
+						name: '2020-21',
+						template: '{{ avg_att8→Total→202021 }}',
+						fillna: "unknown"
+					},{
+						name: '2021-22',
+						template: '{{ avg_att8→Total→202122 }}',
+						fillna: "unknown"
+					},{
+						name: '2022-23',
+						template: '{{ avg_att8→Total→202223 }}',
+						fillna: "unknown"
+					}]
+				}
+			  }) | safe }}
+			{% endcomp %}
 
-	</section>
-  </article>
+		</section>
+	</article>
 
 
 
 	<article id='attainment-score-girls' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Girls</h2>
-    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		<p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -182,51 +182,51 @@ featured: "#attainment-score-total figure"
 
 
 		<section>
-    <h3>Lowest Scoring</h3>
-		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
-		{% comp 'display.figure' %}
-		{{ comp.oi.chart.ranking({ 
-			config: {
-				data: view.ks4_outcomes.rows,
-				key:'LADNM',
-				circles: 0.9,
-				top: 10,
-				height: 500,
-				scale: 'YFF_r',
-				colour: 'avg_att8→Girls→202223',
-				min: 30,
-				max: 60,
-				columns: [{
-					name: '2018-19',
-					template: '{{ avg_att8→Girls→201819 }}',
-					fillna: "unknown"
-				},{
-					name: '2019-20',
-					template: '{{ avg_att8→Girls→201920 }}',
-					fillna: "unknown"
-				},{
-					name: '2020-21',
-					template: '{{ avg_att8→Girls→202021 }}',
-					fillna: "unknown"
-				},{
-					name: '2021-22',
-					template: '{{ avg_att8→Girls→202122 }}',
-					fillna: "unknown"
-				},{
-					name: '2022-23',
-					template: '{{ avg_att8→Girls→202223 }}',
-					fillna: "unknown"
-				}]
-			}
-		  }) | safe }}
-		{% endcomp %}
+			<h3>Lowest Scoring</h3>
+			<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+			{% comp 'display.figure' %}
+			{{ comp.oi.chart.ranking({ 
+				config: {
+					data: view.ks4_outcomes.rows,
+					key:'LADNM',
+					circles: 0.9,
+					top: 10,
+					height: 500,
+					scale: 'YFF_r',
+					colour: 'avg_att8→Girls→202223',
+					min: 30,
+					max: 60,
+					columns: [{
+						name: '2018-19',
+						template: '{{ avg_att8→Girls→201819 }}',
+						fillna: "unknown"
+					},{
+						name: '2019-20',
+						template: '{{ avg_att8→Girls→201920 }}',
+						fillna: "unknown"
+					},{
+						name: '2020-21',
+						template: '{{ avg_att8→Girls→202021 }}',
+						fillna: "unknown"
+					},{
+						name: '2021-22',
+						template: '{{ avg_att8→Girls→202122 }}',
+						fillna: "unknown"
+					},{
+						name: '2022-23',
+						template: '{{ avg_att8→Girls→202223 }}',
+						fillna: "unknown"
+					}]
+				}
+			  }) | safe }}
+			{% endcomp %}
 
-	</section>
-  </article>
+		</section>
+	</article>
 
 	<article id='attainment-score-boys' class='selector-block' data-selector-group="Education Attainment">
 		<h2>Attainment 8 Scores - Boys</h2>
-    <p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		<p>The hexmap below shows the Attainment 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -249,52 +249,52 @@ featured: "#attainment-score-total figure"
 
 
 		<section>
-    <h3>Lowest Scoring</h3>
-		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
-		{% comp 'display.figure' %}
-		{{ comp.oi.chart.ranking({ 
-			config: {
-				data: view.ks4_outcomes.rows,
-				key:'LADNM',
-				circles: 0.9,
-				top: 10,
-				height: 500,
-				scale: 'YFF_r',
-				colour: 'avg_att8→Boys→202223',
-				min: 30,
-				max: 60,
-				columns: [{
-					name: '2018-19',
-					template: '{{ avg_att8→Boys→201819 }}',
-					fillna: "unknown"
-				},{
-					name: '2019-20',
-					template: '{{ avg_att8→Boys→201920 }}',
-					fillna: "unknown"
-				},{
-					name: '2020-21',
-					template: '{{ avg_att8→Boys→202021 }}',
-					fillna: "unknown"
-				},{
-					name: '2021-22',
-					template: '{{ avg_att8→Boys→202122 }}',
-					fillna: "unknown"
-				},{
-					name: '2022-23',
-					template: '{{ avg_att8→Boys→202223 }}',
-					fillna: "unknown"
-				}]
-			}
-		  }) | safe }}
-		{% endcomp %}
+			<h3>Lowest Scoring</h3>
+			<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+			{% comp 'display.figure' %}
+			{{ comp.oi.chart.ranking({ 
+				config: {
+					data: view.ks4_outcomes.rows,
+					key:'LADNM',
+					circles: 0.9,
+					top: 10,
+					height: 500,
+					scale: 'YFF_r',
+					colour: 'avg_att8→Boys→202223',
+					min: 30,
+					max: 60,
+					columns: [{
+						name: '2018-19',
+						template: '{{ avg_att8→Boys→201819 }}',
+						fillna: "unknown"
+					},{
+						name: '2019-20',
+						template: '{{ avg_att8→Boys→201920 }}',
+						fillna: "unknown"
+					},{
+						name: '2020-21',
+						template: '{{ avg_att8→Boys→202021 }}',
+						fillna: "unknown"
+					},{
+						name: '2021-22',
+						template: '{{ avg_att8→Boys→202122 }}',
+						fillna: "unknown"
+					},{
+						name: '2022-23',
+						template: '{{ avg_att8→Boys→202223 }}',
+						fillna: "unknown"
+					}]
+				}
+			  }) | safe }}
+			{% endcomp %}
 
-	</section>
-  </article>
+		</section>
+	</article>
 
 
 	<article id='progress-score-total' class='selector-block' data-selector-group="Progress8 scores">
 		<h2>Progress 8 Scores - Total</h2>
-    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		<p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -322,52 +322,53 @@ featured: "#attainment-score-total figure"
 
 
 		<section>
-    <h3>Lowest Scoring</h3>
-		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
-		{% comp 'display.figure' %}
-		{{ comp.oi.chart.ranking({ 
-			config: {
-				data: view.ks4_outcomes.rows,
-				key:'LADNM',
-				circles: 0.9,
-				top: 10,
-				height: 500,
-				scale: 'YFF_r',
-				colour: 'avg_p8score→Total→202223',
-				min: 30,
-				max: 60,
-				columns: [{
-					name: '2018-19',
-					template: '{{ avg_p8score→Total→201819 }}',
-					fillna: "unknown"
-				},{
-					name: '2019-20',
-					template: '{{ avg_p8score→Total→201920 }}',
-					fillna: "unknown"
-				},{
-					name: '2020-21',
-					template: '{{ avg_p8score→Total→202021 }}',
-					fillna: "unknown"
-				},{
-					name: '2021-22',
-					template: '{{ avg_p8score→Total→202122 }}',
-					fillna: "unknown"
-				},{
-					name: '2022-23',
-					template: '{{ avg_p8score→Total→202223 }}',
-					fillna: "unknown"
-				}]
-			}
-		  }) | safe }}
-		{% endcomp %}
+			<h3>Lowest Scoring</h3>
+			<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+			{% comp 'display.figure' %}
+			{{ comp.oi.chart.ranking({ 
+				config: {
+					debug: true,
+					data: view.ks4_outcomes.rows,
+					key:'LADNM',
+					circles: 0.9,
+					top: 10,
+					height: 500,
+					scale: 'YFF-diverging_r',
+					colour: 'avg_p8score→Total→202223',
+					min: -1,
+					max: 1,
+					columns: [{
+						name: '2018-19',
+						template: '{{ avg_p8score→Total→201819 }}',
+						fillna: "unknown"
+					},{
+						name: '2019-20',
+						template: '{{ avg_p8score→Total→201920 }}',
+						fillna: "unknown"
+					},{
+						name: '2020-21',
+						template: '{{ avg_p8score→Total→202021 }}',
+						fillna: "unknown"
+					},{
+						name: '2021-22',
+						template: '{{ avg_p8score→Total→202122 }}',
+						fillna: "unknown"
+					},{
+						name: '2022-23',
+						template: '{{ avg_p8score→Total→202223 }}',
+						fillna: "unknown"
+					}]
+				}
+			  }) | safe }}
+			{% endcomp %}
 
-	</section>
-  </article>
+		</section>
+	</article>
 
 
 	<article id='progress-score-girls' class='selector-block' data-selector-group="Progress8 scores">
 		<h2>Progress 8 Score - Girls</h2>
-    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		<p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -395,51 +396,51 @@ featured: "#attainment-score-total figure"
 
 
 		<section>
-    <h3>Lowest Scoring</h3>
-		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
-		{% comp 'display.figure' %}
-		{{ comp.oi.chart.ranking({ 
-			config: {
-				data: view.ks4_outcomes.rows,
-				key:'LADNM',
-				circles: 0.9,
-				top: 10,
-				height: 500,
-				scale: 'YFF_r',
-				colour: 'avg_p8score→Girls→202223',
-				min: 30,
-				max: 60,
-				columns: [{
-					name: '2018-19',
-					template: '{{ avg_p8score→Girls→201819 }}',
-					fillna: "unknown"
-				},{
-					name: '2019-20',
-					template: '{{ avg_p8score→Girls→201920 }}',
-					fillna: "unknown"
-				},{
-					name: '2020-21',
-					template: '{{ avg_p8score→Girls→202021 }}',
-					fillna: "unknown"
-				},{
-					name: '2021-22',
-					template: '{{ avg_p8score→Girls→202122 }}',
-					fillna: "unknown"
-				},{
-					name: '2022-23',
-					template: '{{ avg_p8score→Girls→202223 }}',
-					fillna: "unknown"
-				}]
-			}
-		  }) | safe }}
-		{% endcomp %}
-	</section>
-  </article>
+			<h3>Lowest Scoring</h3>
+			<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+			{% comp 'display.figure' %}
+			{{ comp.oi.chart.ranking({ 
+				config: {
+					data: view.ks4_outcomes.rows,
+					key:'LADNM',
+					circles: 0.9,
+					top: 10,
+					height: 500,
+					scale: 'YFF-diverging_r',
+					colour: 'avg_p8score→Girls→202223',
+					min: -1,
+					max: 1,
+					columns: [{
+						name: '2018-19',
+						template: '{{ avg_p8score→Girls→201819 }}',
+						fillna: "unknown"
+					},{
+						name: '2019-20',
+						template: '{{ avg_p8score→Total→201920 }}',
+						fillna: "unknown"
+					},{
+						name: '2020-21',
+						template: '{{ avg_p8score→Total→202021 }}',
+						fillna: "unknown"
+					},{
+						name: '2021-22',
+						template: '{{ avg_p8score→Girls→202122 }}',
+						fillna: "unknown"
+					},{
+						name: '2022-23',
+						template: '{{ avg_p8score→Girls→202223 }}',
+						fillna: "unknown"
+					}]
+				}
+			  }) | safe }}
+			{% endcomp %}
+		</section>
+	</article>
 
 
 	<article id='progress-score-boys' class='selector-block' data-selector-group="Progress8 scores">
 		<h2>Progress 8 Score - Boys</h2>
-    <p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
+		<p>The hexmap below shows the Progress 8 scores for each local authority. Darker colours indicate higher scores in that local authority.</p>
 		{% comp 'display.figure' %}
 		  {{ comp.oi.map.hex_cartogram({
 			config: {
@@ -468,46 +469,46 @@ featured: "#attainment-score-total figure"
 
 
 		<section>
-    <h3>Lowest Scoring</h3>
-		<p>The ranks of the 10 lowest scoring local authorities over time.</p>
-		{% comp 'display.figure' %}
-		{{ comp.oi.chart.ranking({ 
-			config: {
-				data: view.ks4_outcomes.rows,
-				key:'LADNM',
-				circles: 0.9,
-				top: 10,
-				height: 500,
-				scale: 'YFF_r',
-				colour: 'avg_p8score→Boys→202223',
-				min: 30,
-				max: 60,
-				columns: [{
-					name: '2018-19',
-					template: '{{ avg_p8score→Boys→201819 }}',
-					fillna: "unknown"
-				},{
-					name: '2019-20',
-					template: '{{ avg_p8score→Boys→201920 }}',
-					fillna: "unknown"
-				},{
-					name: '2020-21',
-					template: '{{ avg_p8score→Boys→202021 }}',
-					fillna: "unknown"
-				},{
-					name: '2021-22',
-					template: '{{ avg_p8score→Boys→202122 }}',
-					fillna: "unknown"
-				},{
-					name: '2022-23',
-					template: '{{ avg_p8score→Boys→202223 }}',
-					fillna: "unknown"
-				}]
-			}
-		  }) | safe }}
-		{% endcomp %}
-	</section>
-  </article>  
+			<h3>Lowest Scoring</h3>
+			<p>The ranks of the 10 lowest scoring local authorities over time.</p>
+			{% comp 'display.figure' %}
+			{{ comp.oi.chart.ranking({ 
+				config: {
+					data: view.ks4_outcomes.rows,
+					key:'LADNM',
+					circles: 0.9,
+					top: 10,
+					height: 500,
+					scale: 'YFF-diverging_r',
+					colour: 'avg_p8score→Boys→202223',
+					min: -1,
+					max: 1,
+					columns: [{
+						name: '2018-19',
+						template: '{{ avg_p8score→Boys→201819 }}',
+						fillna: "unknown"
+					},{
+						name: '2019-20',
+						template: '{{ avg_p8score→Total→201920 }}',
+						fillna: "unknown"
+					},{
+						name: '2020-21',
+						template: '{{ avg_p8score→Total→202021 }}',
+						fillna: "unknown"
+					},{
+						name: '2021-22',
+						template: '{{ avg_p8score→Boys→202122 }}',
+						fillna: "unknown"
+					},{
+						name: '2022-23',
+						template: '{{ avg_p8score→Boys→202223 }}',
+						fillna: "unknown"
+					}]
+				}
+			  }) | safe }}
+			{% endcomp %}
+		</section>
+	</article>  
 
 	<h3>Notes</h3>
 	<p><a href="https://www.gov.uk/government/publications/progress-8-school-performance-measure">Attainment 8 and Progress 8 are based on a calculation</a> of pupils’ performance across 8 qualifications. These qualifications are:</p>

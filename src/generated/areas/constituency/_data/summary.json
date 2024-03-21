@@ -1,18 +1,7464 @@
 {
-	"E14000530":{
-		"name": "Fake news",
-		"code": "E14000530",
-		"description": "This constituency is great!",
-		"headlines": [{"value":1,"name":"People"},{"value":1,"name":"People"},{"value":1,"name":"People"},{"value":1,"name":"People"}],
-		"similar": { "People": 4 },
-		"leastsimilar": { "People": 1000 },
-		"neet": {
-			"something": [34,56,24,19,25],
-			"another": {}
-		},
-		"employment": {
-			
-		}
-	}
-
+  "E14000530": {
+    "name": "Aldershot",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": 10.0
+      },
+      {
+        "h": "Unemployment rate",
+        "v": 30.0
+      }
+    ]
+  },
+  "E14000531": {
+    "name": "Aldridge-Brownhills",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": 11.0
+      },
+      {
+        "h": "Unemployment rate",
+        "v": 31.0
+      }
+    ]
+  },
+  "E14000532": {
+    "name": "Altrincham and Sale West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": 12.0
+      },
+      {
+        "h": "Unemployment rate",
+        "v": 32.0
+      }
+    ]
+  },
+  "E14000533": {
+    "name": "Amber Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": 13.0
+      },
+      {
+        "h": "Unemployment rate",
+        "v": 33.0
+      }
+    ]
+  },
+  "E14000534": {
+    "name": "Arundel and South Downs",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000535": {
+    "name": "Ashfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000536": {
+    "name": "Ashford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000537": {
+    "name": "Ashton-under-Lyne",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000538": {
+    "name": "Aylesbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000539": {
+    "name": "Banbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000540": {
+    "name": "Barking",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000541": {
+    "name": "Barnsley Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000542": {
+    "name": "Barnsley East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000543": {
+    "name": "Barrow and Furness",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000544": {
+    "name": "Basildon and Billericay",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000545": {
+    "name": "Basingstoke",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000546": {
+    "name": "Bassetlaw",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000547": {
+    "name": "Bath",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000548": {
+    "name": "Batley and Spen",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000549": {
+    "name": "Battersea",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000550": {
+    "name": "Beaconsfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000551": {
+    "name": "Beckenham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000552": {
+    "name": "Bedford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000553": {
+    "name": "Bermondsey and Old Southwark",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000554": {
+    "name": "Berwick-upon-Tweed",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000555": {
+    "name": "Bethnal Green and Bow",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000556": {
+    "name": "Beverley and Holderness",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000557": {
+    "name": "Bexhill and Battle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000558": {
+    "name": "Bexleyheath and Crayford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000559": {
+    "name": "Birkenhead",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000560": {
+    "name": "Birmingham, Edgbaston",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000561": {
+    "name": "Birmingham, Erdington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000562": {
+    "name": "Birmingham, Hall Green",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000563": {
+    "name": "Birmingham, Hodge Hill",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000564": {
+    "name": "Birmingham, Ladywood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000565": {
+    "name": "Birmingham, Northfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000566": {
+    "name": "Birmingham, Perry Barr",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000567": {
+    "name": "Birmingham, Selly Oak",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000568": {
+    "name": "Birmingham, Yardley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000569": {
+    "name": "Bishop Auckland",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000570": {
+    "name": "Blackburn",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000571": {
+    "name": "Blackley and Broughton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000572": {
+    "name": "Blackpool North and Cleveleys",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000573": {
+    "name": "Blackpool South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000574": {
+    "name": "Blaydon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000575": {
+    "name": "Blyth Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000576": {
+    "name": "Bognor Regis and Littlehampton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000577": {
+    "name": "Bolsover",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000578": {
+    "name": "Bolton North East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000579": {
+    "name": "Bolton South East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000580": {
+    "name": "Bolton West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000581": {
+    "name": "Bootle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000582": {
+    "name": "Boston and Skegness",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000583": {
+    "name": "Bosworth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000584": {
+    "name": "Bournemouth East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000585": {
+    "name": "Bournemouth West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000586": {
+    "name": "Bracknell",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000587": {
+    "name": "Bradford East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000588": {
+    "name": "Bradford South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000589": {
+    "name": "Bradford West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000590": {
+    "name": "Braintree",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000591": {
+    "name": "Brent Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000592": {
+    "name": "Brent North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000593": {
+    "name": "Brentford and Isleworth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000594": {
+    "name": "Brentwood and Ongar",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000595": {
+    "name": "Bridgwater and West Somerset",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000596": {
+    "name": "Brigg and Goole",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000597": {
+    "name": "Brighton, Kemptown",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000598": {
+    "name": "Brighton, Pavilion",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000599": {
+    "name": "Bristol East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000600": {
+    "name": "Bristol North West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000601": {
+    "name": "Bristol South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000602": {
+    "name": "Bristol West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000603": {
+    "name": "Broadland",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000604": {
+    "name": "Bromley and Chislehurst",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000605": {
+    "name": "Bromsgrove",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000606": {
+    "name": "Broxbourne",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000607": {
+    "name": "Broxtowe",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000608": {
+    "name": "Buckingham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000609": {
+    "name": "Burnley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000610": {
+    "name": "Burton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000611": {
+    "name": "Bury North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000612": {
+    "name": "Bury South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000613": {
+    "name": "Bury St Edmunds",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000614": {
+    "name": "Calder Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000615": {
+    "name": "Camberwell and Peckham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000616": {
+    "name": "Camborne and Redruth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000617": {
+    "name": "Cambridge",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000618": {
+    "name": "Cannock Chase",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000619": {
+    "name": "Canterbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000620": {
+    "name": "Carlisle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000621": {
+    "name": "Carshalton and Wallington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000622": {
+    "name": "Castle Point",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000623": {
+    "name": "Central Devon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000624": {
+    "name": "Central Suffolk and North Ipswich",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000625": {
+    "name": "Charnwood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000626": {
+    "name": "Chatham and Aylesford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000627": {
+    "name": "Cheadle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000628": {
+    "name": "Chelmsford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000629": {
+    "name": "Chelsea and Fulham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000630": {
+    "name": "Cheltenham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000631": {
+    "name": "Chesham and Amersham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000632": {
+    "name": "Chesterfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000633": {
+    "name": "Chichester",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000634": {
+    "name": "Chingford and Woodford Green",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000635": {
+    "name": "Chippenham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000636": {
+    "name": "Chipping Barnet",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000637": {
+    "name": "Chorley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000638": {
+    "name": "Christchurch",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000639": {
+    "name": "Cities of London and Westminster",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000640": {
+    "name": "City of Chester",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000641": {
+    "name": "City of Durham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000642": {
+    "name": "Clacton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000643": {
+    "name": "Cleethorpes",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000644": {
+    "name": "Colchester",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000645": {
+    "name": "Colne Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000646": {
+    "name": "Congleton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000647": {
+    "name": "Copeland",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000648": {
+    "name": "Corby",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000649": {
+    "name": "Coventry North East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000650": {
+    "name": "Coventry North West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000651": {
+    "name": "Coventry South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000652": {
+    "name": "Crawley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000653": {
+    "name": "Crewe and Nantwich",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000654": {
+    "name": "Croydon Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000655": {
+    "name": "Croydon North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000656": {
+    "name": "Croydon South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000657": {
+    "name": "Dagenham and Rainham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000658": {
+    "name": "Darlington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000659": {
+    "name": "Dartford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000660": {
+    "name": "Daventry",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000661": {
+    "name": "Denton and Reddish",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000662": {
+    "name": "Derby North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000663": {
+    "name": "Derby South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000664": {
+    "name": "Derbyshire Dales",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000665": {
+    "name": "Devizes",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000666": {
+    "name": "Dewsbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000667": {
+    "name": "Don Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000668": {
+    "name": "Doncaster Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000669": {
+    "name": "Doncaster North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000670": {
+    "name": "Dover",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000671": {
+    "name": "Dudley North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000672": {
+    "name": "Dudley South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000673": {
+    "name": "Dulwich and West Norwood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000674": {
+    "name": "Ealing Central and Acton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000675": {
+    "name": "Ealing North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000676": {
+    "name": "Ealing, Southall",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000677": {
+    "name": "Easington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000678": {
+    "name": "East Devon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000679": {
+    "name": "East Ham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000680": {
+    "name": "East Hampshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000681": {
+    "name": "East Surrey",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000682": {
+    "name": "East Worthing and Shoreham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000683": {
+    "name": "East Yorkshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000684": {
+    "name": "Eastbourne",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000685": {
+    "name": "Eastleigh",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000686": {
+    "name": "Eddisbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000687": {
+    "name": "Edmonton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000688": {
+    "name": "Ellesmere Port and Neston",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000689": {
+    "name": "Elmet and Rothwell",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000690": {
+    "name": "Eltham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000691": {
+    "name": "Enfield North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000692": {
+    "name": "Enfield, Southgate",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000693": {
+    "name": "Epping Forest",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000694": {
+    "name": "Epsom and Ewell",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000695": {
+    "name": "Erewash",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000696": {
+    "name": "Erith and Thamesmead",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000697": {
+    "name": "Esher and Walton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000698": {
+    "name": "Exeter",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000699": {
+    "name": "Fareham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000700": {
+    "name": "Faversham and Mid Kent",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000701": {
+    "name": "Feltham and Heston",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000702": {
+    "name": "Filton and Bradley Stoke",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000703": {
+    "name": "Finchley and Golders Green",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000704": {
+    "name": "Folkestone and Hythe",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000705": {
+    "name": "Forest of Dean",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000706": {
+    "name": "Fylde",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000707": {
+    "name": "Gainsborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000708": {
+    "name": "Garston and Halewood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000709": {
+    "name": "Gateshead",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000710": {
+    "name": "Gedling",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000711": {
+    "name": "Gillingham and Rainham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000712": {
+    "name": "Gloucester",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000713": {
+    "name": "Gosport",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000714": {
+    "name": "Grantham and Stamford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000715": {
+    "name": "Gravesham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000716": {
+    "name": "Great Grimsby",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000717": {
+    "name": "Great Yarmouth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000718": {
+    "name": "Greenwich and Woolwich",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000719": {
+    "name": "Guildford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000720": {
+    "name": "Hackney North and Stoke Newington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000721": {
+    "name": "Hackney South and Shoreditch",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000722": {
+    "name": "Halesowen and Rowley Regis",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000723": {
+    "name": "Halifax",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000724": {
+    "name": "Haltemprice and Howden",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000725": {
+    "name": "Halton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000726": {
+    "name": "Hammersmith",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000727": {
+    "name": "Hampstead and Kilburn",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000728": {
+    "name": "Harborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000729": {
+    "name": "Harlow",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000730": {
+    "name": "Harrogate and Knaresborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000731": {
+    "name": "Harrow East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000732": {
+    "name": "Harrow West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000733": {
+    "name": "Hartlepool",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000734": {
+    "name": "Harwich and North Essex",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000735": {
+    "name": "Hastings and Rye",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000736": {
+    "name": "Havant",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000737": {
+    "name": "Hayes and Harlington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000738": {
+    "name": "Hazel Grove",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000739": {
+    "name": "Hemel Hempstead",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000740": {
+    "name": "Hemsworth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000741": {
+    "name": "Hendon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000742": {
+    "name": "Henley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000743": {
+    "name": "Hereford and South Herefordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000744": {
+    "name": "Hertford and Stortford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000745": {
+    "name": "Hertsmere",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000746": {
+    "name": "Hexham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000747": {
+    "name": "Heywood and Middleton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000748": {
+    "name": "High Peak",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000749": {
+    "name": "Hitchin and Harpenden",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000750": {
+    "name": "Holborn and St Pancras",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000751": {
+    "name": "Hornchurch and Upminster",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000752": {
+    "name": "Hornsey and Wood Green",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000753": {
+    "name": "Horsham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000754": {
+    "name": "Houghton and Sunderland South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000755": {
+    "name": "Hove",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000756": {
+    "name": "Huddersfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000757": {
+    "name": "Huntingdon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000758": {
+    "name": "Hyndburn",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000759": {
+    "name": "Ilford North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000760": {
+    "name": "Ilford South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000761": {
+    "name": "Ipswich",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000762": {
+    "name": "Isle of Wight",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000763": {
+    "name": "Islington North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000764": {
+    "name": "Islington South and Finsbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000765": {
+    "name": "Jarrow",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000766": {
+    "name": "Keighley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000767": {
+    "name": "Kenilworth and Southam",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000768": {
+    "name": "Kensington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000769": {
+    "name": "Kettering",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000770": {
+    "name": "Kingston and Surbiton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000771": {
+    "name": "Kingston upon Hull East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000772": {
+    "name": "Kingston upon Hull North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000773": {
+    "name": "Kingston upon Hull West and Hessle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000774": {
+    "name": "Kingswood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000775": {
+    "name": "Knowsley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000776": {
+    "name": "Lancaster and Fleetwood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000777": {
+    "name": "Leeds Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000778": {
+    "name": "Leeds East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000779": {
+    "name": "Leeds North East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000780": {
+    "name": "Leeds North West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000781": {
+    "name": "Leeds West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000782": {
+    "name": "Leicester East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000783": {
+    "name": "Leicester South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000784": {
+    "name": "Leicester West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000785": {
+    "name": "Leigh",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000786": {
+    "name": "Lewes",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000787": {
+    "name": "Lewisham East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000788": {
+    "name": "Lewisham West and Penge",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000789": {
+    "name": "Lewisham, Deptford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000790": {
+    "name": "Leyton and Wanstead",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000791": {
+    "name": "Lichfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000792": {
+    "name": "Lincoln",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000793": {
+    "name": "Liverpool, Riverside",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000794": {
+    "name": "Liverpool, Walton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000795": {
+    "name": "Liverpool, Wavertree",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000796": {
+    "name": "Liverpool, West Derby",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000797": {
+    "name": "Loughborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000798": {
+    "name": "Louth and Horncastle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000799": {
+    "name": "Ludlow",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000800": {
+    "name": "Luton North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000801": {
+    "name": "Luton South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000802": {
+    "name": "Macclesfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000803": {
+    "name": "Maidenhead",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000804": {
+    "name": "Maidstone and The Weald",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000805": {
+    "name": "Makerfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000806": {
+    "name": "Maldon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000807": {
+    "name": "Manchester Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000808": {
+    "name": "Manchester, Gorton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000809": {
+    "name": "Manchester, Withington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000810": {
+    "name": "Mansfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000811": {
+    "name": "Meon Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000812": {
+    "name": "Meriden",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000813": {
+    "name": "Mid Bedfordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000814": {
+    "name": "Mid Derbyshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000815": {
+    "name": "Mid Dorset and North Poole",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000816": {
+    "name": "Mid Norfolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000817": {
+    "name": "Mid Sussex",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000818": {
+    "name": "Mid Worcestershire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000819": {
+    "name": "Middlesbrough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000820": {
+    "name": "Middlesbrough South and East Cleveland",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000821": {
+    "name": "Milton Keynes North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000822": {
+    "name": "Milton Keynes South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000823": {
+    "name": "Mitcham and Morden",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000824": {
+    "name": "Mole Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000825": {
+    "name": "Morecambe and Lunesdale",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000826": {
+    "name": "Morley and Outwood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000827": {
+    "name": "New Forest East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000828": {
+    "name": "New Forest West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000829": {
+    "name": "Newark",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000830": {
+    "name": "Newbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000831": {
+    "name": "Newcastle upon Tyne Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000832": {
+    "name": "Newcastle upon Tyne East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000833": {
+    "name": "Newcastle upon Tyne North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000834": {
+    "name": "Newcastle-under-Lyme",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000835": {
+    "name": "Newton Abbot",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000836": {
+    "name": "Normanton, Pontefract and Castleford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000837": {
+    "name": "North Cornwall",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000838": {
+    "name": "North Devon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000839": {
+    "name": "North Dorset",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000840": {
+    "name": "North Durham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000841": {
+    "name": "North East Bedfordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000842": {
+    "name": "North East Cambridgeshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000843": {
+    "name": "North East Derbyshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000844": {
+    "name": "North East Hampshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000845": {
+    "name": "North East Hertfordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000846": {
+    "name": "North East Somerset",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000847": {
+    "name": "North Herefordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000848": {
+    "name": "North Norfolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000849": {
+    "name": "North Shropshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000850": {
+    "name": "North Somerset",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000851": {
+    "name": "North Swindon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000852": {
+    "name": "North Thanet",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000853": {
+    "name": "North Tyneside",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000854": {
+    "name": "North Warwickshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000855": {
+    "name": "North West Cambridgeshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000856": {
+    "name": "North West Durham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000857": {
+    "name": "North West Hampshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000858": {
+    "name": "North West Leicestershire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000859": {
+    "name": "North West Norfolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000860": {
+    "name": "North Wiltshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000861": {
+    "name": "Northampton North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000862": {
+    "name": "Northampton South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000863": {
+    "name": "Norwich North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000864": {
+    "name": "Norwich South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000865": {
+    "name": "Nottingham East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000866": {
+    "name": "Nottingham North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000867": {
+    "name": "Nottingham South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000868": {
+    "name": "Nuneaton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000869": {
+    "name": "Old Bexley and Sidcup",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000870": {
+    "name": "Oldham East and Saddleworth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000871": {
+    "name": "Oldham West and Royton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000872": {
+    "name": "Orpington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000873": {
+    "name": "Oxford East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000874": {
+    "name": "Oxford West and Abingdon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000875": {
+    "name": "Pendle",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000876": {
+    "name": "Penistone and Stocksbridge",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000877": {
+    "name": "Penrith and The Border",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000878": {
+    "name": "Peterborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000879": {
+    "name": "Plymouth, Moor View",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000880": {
+    "name": "Plymouth, Sutton and Devonport",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000881": {
+    "name": "Poole",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000882": {
+    "name": "Poplar and Limehouse",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000883": {
+    "name": "Portsmouth North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000884": {
+    "name": "Portsmouth South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000885": {
+    "name": "Preston",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000886": {
+    "name": "Pudsey",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000887": {
+    "name": "Putney",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000888": {
+    "name": "Rayleigh and Wickford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000889": {
+    "name": "Reading East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000890": {
+    "name": "Reading West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000891": {
+    "name": "Redcar",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000892": {
+    "name": "Redditch",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000893": {
+    "name": "Reigate",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000894": {
+    "name": "Ribble Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000895": {
+    "name": "Richmond (Yorks)",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000896": {
+    "name": "Richmond Park",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000897": {
+    "name": "Rochdale",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000898": {
+    "name": "Rochester and Strood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000899": {
+    "name": "Rochford and Southend East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000900": {
+    "name": "Romford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000901": {
+    "name": "Romsey and Southampton North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000902": {
+    "name": "Rossendale and Darwen",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000903": {
+    "name": "Rother Valley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000904": {
+    "name": "Rotherham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000905": {
+    "name": "Rugby",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000906": {
+    "name": "Ruislip, Northwood and Pinner",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000907": {
+    "name": "Runnymede and Weybridge",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000908": {
+    "name": "Rushcliffe",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000909": {
+    "name": "Rutland and Melton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000910": {
+    "name": "Saffron Walden",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000911": {
+    "name": "Salford and Eccles",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000912": {
+    "name": "Salisbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000913": {
+    "name": "Scarborough and Whitby",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000914": {
+    "name": "Scunthorpe",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000915": {
+    "name": "Sedgefield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000916": {
+    "name": "Sefton Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000917": {
+    "name": "Selby and Ainsty",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000918": {
+    "name": "Sevenoaks",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000919": {
+    "name": "Sheffield Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000920": {
+    "name": "Sheffield South East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000921": {
+    "name": "Sheffield, Brightside and Hillsborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000922": {
+    "name": "Sheffield, Hallam",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000923": {
+    "name": "Sheffield, Heeley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000924": {
+    "name": "Sherwood",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000925": {
+    "name": "Shipley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000926": {
+    "name": "Shrewsbury and Atcham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000927": {
+    "name": "Sittingbourne and Sheppey",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000928": {
+    "name": "Skipton and Ripon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000929": {
+    "name": "Sleaford and North Hykeham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000930": {
+    "name": "Slough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000931": {
+    "name": "Solihull",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000932": {
+    "name": "Somerton and Frome",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000933": {
+    "name": "South Basildon and East Thurrock",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000934": {
+    "name": "South Cambridgeshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000935": {
+    "name": "South Derbyshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000936": {
+    "name": "South Dorset",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000937": {
+    "name": "South East Cambridgeshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000938": {
+    "name": "South East Cornwall",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000939": {
+    "name": "South Holland and The Deepings",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000940": {
+    "name": "South Leicestershire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000941": {
+    "name": "South Norfolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000942": {
+    "name": "South Northamptonshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000943": {
+    "name": "South Ribble",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000944": {
+    "name": "South Shields",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000945": {
+    "name": "South Staffordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000946": {
+    "name": "South Suffolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000947": {
+    "name": "South Swindon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000948": {
+    "name": "South Thanet",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000949": {
+    "name": "South West Bedfordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000950": {
+    "name": "South West Devon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000951": {
+    "name": "South West Hertfordshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000952": {
+    "name": "South West Norfolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000953": {
+    "name": "South West Surrey",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000954": {
+    "name": "South West Wiltshire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000955": {
+    "name": "Southampton, Itchen",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000956": {
+    "name": "Southampton, Test",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000957": {
+    "name": "Southend West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000958": {
+    "name": "Southport",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000959": {
+    "name": "Spelthorne",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000960": {
+    "name": "St Albans",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000961": {
+    "name": "St Austell and Newquay",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000962": {
+    "name": "St Helens North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000963": {
+    "name": "St Helens South and Whiston",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000964": {
+    "name": "St Ives",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000965": {
+    "name": "Stafford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000966": {
+    "name": "Staffordshire Moorlands",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000967": {
+    "name": "Stalybridge and Hyde",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000968": {
+    "name": "Stevenage",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000969": {
+    "name": "Stockport",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000970": {
+    "name": "Stockton North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000971": {
+    "name": "Stockton South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000972": {
+    "name": "Stoke-on-Trent Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000973": {
+    "name": "Stoke-on-Trent North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000974": {
+    "name": "Stoke-on-Trent South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000975": {
+    "name": "Stone",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000976": {
+    "name": "Stourbridge",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000977": {
+    "name": "Stratford-on-Avon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000978": {
+    "name": "Streatham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000979": {
+    "name": "Stretford and Urmston",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000980": {
+    "name": "Stroud",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000981": {
+    "name": "Suffolk Coastal",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000982": {
+    "name": "Sunderland Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000983": {
+    "name": "Surrey Heath",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000984": {
+    "name": "Sutton and Cheam",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000985": {
+    "name": "Sutton Coldfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000986": {
+    "name": "Tamworth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000987": {
+    "name": "Tatton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000988": {
+    "name": "Taunton Deane",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000989": {
+    "name": "Telford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000990": {
+    "name": "Tewkesbury",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000991": {
+    "name": "The Cotswolds",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000992": {
+    "name": "The Wrekin",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000993": {
+    "name": "Thirsk and Malton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000994": {
+    "name": "Thornbury and Yate",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000995": {
+    "name": "Thurrock",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000996": {
+    "name": "Tiverton and Honiton",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000997": {
+    "name": "Tonbridge and Malling",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000998": {
+    "name": "Tooting",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14000999": {
+    "name": "Torbay",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001000": {
+    "name": "Torridge and West Devon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001001": {
+    "name": "Totnes",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001002": {
+    "name": "Tottenham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001003": {
+    "name": "Truro and Falmouth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001004": {
+    "name": "Tunbridge Wells",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001005": {
+    "name": "Twickenham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001006": {
+    "name": "Tynemouth",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001007": {
+    "name": "Uxbridge and South Ruislip",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001008": {
+    "name": "Vauxhall",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001009": {
+    "name": "Wakefield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001010": {
+    "name": "Wallasey",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001011": {
+    "name": "Walsall North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001012": {
+    "name": "Walsall South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001013": {
+    "name": "Walthamstow",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001014": {
+    "name": "Wansbeck",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001015": {
+    "name": "Wantage",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001016": {
+    "name": "Warley",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001017": {
+    "name": "Warrington North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001018": {
+    "name": "Warrington South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001019": {
+    "name": "Warwick and Leamington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001020": {
+    "name": "Washington and Sunderland West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001021": {
+    "name": "Watford",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001022": {
+    "name": "Waveney",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001023": {
+    "name": "Wealden",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001024": {
+    "name": "Weaver Vale",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001025": {
+    "name": "Wellingborough",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001026": {
+    "name": "Wells",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001027": {
+    "name": "Welwyn Hatfield",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001028": {
+    "name": "Wentworth and Dearne",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001029": {
+    "name": "West Bromwich East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001030": {
+    "name": "West Bromwich West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001031": {
+    "name": "West Dorset",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001032": {
+    "name": "West Ham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001033": {
+    "name": "West Lancashire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001034": {
+    "name": "West Suffolk",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001035": {
+    "name": "West Worcestershire",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001036": {
+    "name": "Westminster North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001037": {
+    "name": "Westmorland and Lonsdale",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001038": {
+    "name": "Weston-Super-Mare",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001039": {
+    "name": "Wigan",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001040": {
+    "name": "Wimbledon",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001041": {
+    "name": "Winchester",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001042": {
+    "name": "Windsor",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001043": {
+    "name": "Wirral South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001044": {
+    "name": "Wirral West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001045": {
+    "name": "Witham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001046": {
+    "name": "Witney",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001047": {
+    "name": "Woking",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001048": {
+    "name": "Wokingham",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001049": {
+    "name": "Wolverhampton North East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001050": {
+    "name": "Wolverhampton South East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001051": {
+    "name": "Wolverhampton South West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001052": {
+    "name": "Worcester",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001053": {
+    "name": "Workington",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001054": {
+    "name": "Worsley and Eccles South",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001055": {
+    "name": "Worthing West",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001056": {
+    "name": "Wycombe",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001057": {
+    "name": "Wyre and Preston North",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001058": {
+    "name": "Wyre Forest",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001059": {
+    "name": "Wythenshawe and Sale East",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001060": {
+    "name": "Yeovil",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001061": {
+    "name": "York Central",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  },
+  "E14001062": {
+    "name": "York Outer",
+    "description": "",
+    "headlines": [
+      {
+        "h": "Employment rate",
+        "v": ""
+      },
+      {
+        "h": "Unemployment rate",
+        "v": ""
+      }
+    ]
+  }
 }
