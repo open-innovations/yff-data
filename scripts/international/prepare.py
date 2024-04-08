@@ -66,7 +66,7 @@ if __name__ == '__main__':
     neet_all = pd.merge(neet_all, country_reference, how='left', left_on='country_code', right_index=True).rename(columns={'name': 'country'})
 
     # Pivot the table to arrange in columns with each combo
-    neet_grouped = neet_all.pivot_table(index=['country_code', 'country'], columns=groupby, values='value').reset_index()
+    neet_grouped = neet_all.pivot_table(index=['country_code', 'country'], columns=['age_range', 'time'], values='value').reset_index()
 
     save_tidy_csv(neet_grouped, os.path.join(DATA_DIR), 'neet_grouped.csv', with_index=False)
 
