@@ -1,9 +1,11 @@
 import pandas as pd
 import os
+import re
+
+COUNTRY_LOOKUP = os.path.join('data', 'reference', 'country-lookup.csv')
 
 WORKING_DIR = os.path.join('working', 'upstream')
-OECD_LFS_DATA = os.path.join(
-    WORKING_DIR, 'oecd_lfs_by_sex_and_age.csv')
+
 OECD_NEET_DATA = os.path.join(
     WORKING_DIR, 'oecd-neet.csv'
 )
@@ -18,12 +20,11 @@ OECD_ATTAINMENT_DATA = os.path.join(
 DATA_DIR = os.path.join('src', 'areas', 'maps', 'international', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
-oecd_lfs_data = pd.read_csv(OECD_LFS_DATA).round(1)
 oecd_neet_data = pd.read_csv(OECD_NEET_DATA).round(1)
 oecd_wage_data = pd.read_csv(OECD_WAGE_DATA).round(1)
 oecd_edu_attainment_data = pd.read_csv(OECD_ATTAINMENT_DATA).round(1)
 
-
+country_reference = pd.read_csv(COUNTRY_LOOKUP).set_index('alpha-3')
 
 def filter_data(data, variable, filter_field):
     return data.loc[data[filter_field] == variable]
@@ -38,116 +39,51 @@ def calculate_rates(data):
     data['value'] = (data['value']  * 100).round(1)
     return data
 
+def save_tidy_csv(df, directory, filename, with_index=True):
+    # First add the header
+    ncol = len(df.columns)
+    new_record = pd.DataFrame([[*['---'] * ncol]], columns=df.columns)
+    final = pd.concat([new_record, df], ignore_index=True)
+
+    # Get the output as CSV
+    csv = final.to_csv(index=with_index)
+
+    # Because we added an index column we will now tidy
+    csv = re.sub(r'\n0,---,---', '\n---,---,---', csv)
+
+    text_file = open(os.path.join(directory, filename), "w")
+    text_file.write(csv)
+    text_file.close()
+
 if __name__ == '__main__':
-
-
-    employment_rate_total = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Employment rate', 'measure').pipe(
-            filter_data, 'Total', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'employment_rate_total_15_over.csv') 
-    
-    #     unemployment_all_15_24_table = unemployment_all_15_24.sort_values(by=['value'], ascending=False).head(20).iloc[1:].rename(columns= { 'country': 'Country', 'value':'Number of people (thousands)'}).pipe(
-    #     save_to_file, 'unemployment_all_15_24_table.csv'
-    # )
-    
-    employment_rate_female = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Employment rate', 'measure').pipe(
-            filter_data, 'Female', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'employment_rate_female_15_over.csv') 
-    
-
-    employment_rate_male = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Employment rate', 'measure').pipe(
-            filter_data, 'Male', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'employment_rate_male_15_over.csv') 
-    
-
-
-    # Unemployment
-
-    umemployment_rate_total = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Unemployment rate', 'measure').pipe(
-            filter_data, 'Total', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'unemployment_rate_total_15_over.csv') 
-    
-    unemployment_rate_female = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Unemployment rate', 'measure').pipe(
-            filter_data, 'Female', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'unemployment_rate_female_15_over.csv') 
-    
-
-    unemployment_rate_male = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Unemployment rate', 'measure').pipe(
-            filter_data, 'Male', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'unemployment_rate_male_15_over.csv') 
-    
-
-    
-    # Economic Inactivity rate
-
-    economic_inactivity_rate_total = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Inactivity rate', 'measure').pipe(
-            filter_data, 'Total', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'economic_inactivity_rate_total.csv') 
-    
-    economic_inactivity_rate_female = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Inactivity rate', 'measure').pipe(
-            filter_data, 'Female', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'economic_inactivity_rate_female.csv') 
-    
-
-    economic_inactivity_rate_male = filter_data(oecd_lfs_data, 2022, 'time_period').pipe(
-        filter_data, 'Inactivity rate', 'measure').pipe(
-            filter_data, 'Male', 'sex').pipe(
-                filter_data, '15 years or over', 'age').pipe(
-                    save_to_file, 'economic_inactivity_rate_male.csv') 
 
 # PREPARE NEET DATA
     
+    # Filter to the allowed fields
+    neet_all = oecd_neet_data[['country_code', 'age_range', 'time', 'value']].dropna()
 
-    neet_15_19_all = filter_data(oecd_neet_data, '15_19', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_15_19_all.csv')
+    # Merge in country lookup to add country names
+    neet_all = pd.merge(neet_all, country_reference, how='left', left_on='country_code', right_index=True).rename(columns={'name': 'country'})
 
-    neet_15_19_women = filter_data(oecd_neet_data, '15_19_WOMEN', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_15_19_women.csv')
+    # Pivot the table to arrange in columns with each combo
+    neet_grouped = neet_all.pivot_table(index=['country_code', 'country'], columns=groupby, values='value').reset_index()
 
-    neet_15_19_men = filter_data(oecd_neet_data, '15_19_MEN', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_15_19_men.csv')
+    save_tidy_csv(neet_grouped, os.path.join(DATA_DIR), 'neet_grouped.csv', with_index=False)
 
-    neet_20_24_all = filter_data(oecd_neet_data, '20_24', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_20_24_all.csv')
-    
-    neet_20_24_women = filter_data(oecd_neet_data, '20_24_WOMEN', 'age_range').pipe(
-    filter_data, 2022, 'time').pipe(save_to_file, 'neet_20_24_women.csv')
-
-    neet_20_24_men = filter_data(oecd_neet_data, '20_24_MEN', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_20_24_men.csv')
-    
-    neet_15_29_all = filter_data(oecd_neet_data, '15_29', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_15_29_all.csv')
-    
-    neet_15_29_women = filter_data(oecd_neet_data, '15_29_WOMEN', 'age_range').pipe(
-    filter_data, 2022, 'time').pipe(save_to_file, 'neet_15_29_women.csv')
-
-    neet_15_29_men = filter_data(oecd_neet_data, '15_29_MEN', 'age_range').pipe(
-        filter_data, 2022, 'time').pipe(save_to_file, 'neet_15_29_men.csv')
 
 
 # PREPARE WAGES DATA 
     
-    wages_lpay = filter_data(oecd_wage_data, 2021, 'time').pipe(
-        filter_data, 'LPAY', 'subject').pipe(save_to_file, 'wages_lpay.csv')
+    # Filter to the allowed fields
+    wages_all = oecd_wage_data.drop(columns={'indicator', 'measure','frequency'}).dropna()
 
-    wages_hpay = filter_data(oecd_wage_data, 2021, 'time').pipe(
-        filter_data, 'HPAY', 'subject').pipe(save_to_file, 'wages_hpay.csv')
+    # Merge in country lookup to add country names
+    wages_all = pd.merge(wages_all, country_reference, how='left', left_on='country_code', right_index=True).rename(columns={'name':'country'})
+
+    # Pivot the table to arrange in columns with each combo
+    wages_grouped = wages_all.pivot_table(index=['country_code', 'country'], columns=['subject', 'time'], values='value').reset_index()
+
+    save_tidy_csv(wages_grouped, os.path.join(DATA_DIR), 'wages_grouped.csv', with_index=False)
 
 
 # PREPARE EDUCATION ATTAINMENT
@@ -217,8 +153,6 @@ if __name__ == '__main__':
         filter_data, 'Employment rates, by literacy proficiency level ', 'indicator').pipe(
             filter_data, 'L4_5', 'piaac_category_code').pipe(
                 filter_data, 'Value', 'measure').pipe(save_to_file, 'empl_rates_lit_level_4_5_tertiary.csv')
-
-
 
     
     

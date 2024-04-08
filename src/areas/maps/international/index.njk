@@ -800,9 +800,9 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.neet_15_29_all.rows,
+				data: view.neet_grouped.rows | remove_rows_with_null_values('15_29→2022'),
 				key:'country_code',
-				value: 'value',
+				value: '15_29→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -815,12 +815,48 @@ summary: This page will present international data on employment and education.
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ 15_29→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>
+
+	<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.neet_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: false,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2018',
+					template: '{{ 15_29→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ 15_29→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ 15_29→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ 15_29→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ 15_29→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+    </article>
 
 
 	<article id='neet-15-29-women' class='selector-block' data-selector-group="NEET">
@@ -840,9 +876,9 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.neet_15_29_women.rows,
+				data: view.neet_grouped.rows | remove_rows_with_null_values('15_29_WOMEN→2022'),
 				key:'country_code',
-				value: 'value',
+				value: '15_29_WOMEN→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -855,12 +891,48 @@ summary: This page will present international data on employment and education.
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ 15_29_WOMEN→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.neet_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: false,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2018',
+					template: '{{ 15_29_WOMEN→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ 15_29_WOMEN→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ 15_29_WOMEN→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ 15_29_WOMEN→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ 15_29_WOMEN→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+    </article>
 
 	<article id='neet-15-29-men' class='selector-block' data-selector-group="NEET">
 		<h2>Youth not in employment, education or training (NEET) - Men, aged 15-29</h2>
@@ -879,9 +951,9 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.neet_15_29_men.rows,
+				data: view.neet_grouped.rows | remove_rows_with_null_values('15_29_MEN→2022'),
 				key:'country_code',
-				value: 'value',
+				value: '15_29_MEN→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -894,12 +966,48 @@ summary: This page will present international data on employment and education.
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ 15_29_MEN→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>
+
+		<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.neet_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: false,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2018',
+					template: '{{ 15_29_MEN→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ 15_29_MEN→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ 15_29_MEN→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ 15_29_MEN→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ 15_29_MEN→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+    </article>
 
 	<article id='wages-low-pay' class='selector-block' data-selector-group="Wages">
 		<h2>Wages - Low Pay</h2>
@@ -918,9 +1026,9 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.wages_lpay.rows,
+				data: view.wages_grouped.rows | remove_rows_with_null_values('LPAY→2022'),
 				key:'country_code',
-				value: 'value',
+				value: 'LPAY→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -933,12 +1041,48 @@ summary: This page will present international data on employment and education.
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ LPAY→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>
+
+	<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.wages_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: false,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2018',
+					template: '{{ LPAY→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ LPAY→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ LPAY→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ LPAY→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ LPAY→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+    </article>
 
 	<article id='wages-high-pay' class='selector-block' data-selector-group="Wages">
 		<h2>Wages - High Pay</h2>
@@ -957,9 +1101,9 @@ summary: This page will present international data on employment and education.
 				projection: {
 					name: 'equirectangular'
 				},
-				data: view.wages_lpay.rows,
+				data: view.wages_grouped.rows | remove_rows_with_null_values('HPAY→2022'),
 				key:'country_code',
-				value: 'value',
+				value: 'HPAY→2022',
 				min: 0,
 				width: 600,
 				height:500,
@@ -972,16 +1116,50 @@ summary: This page will present international data on employment and education.
 				},
 				columns: [{
 					name: 'tooltip',
-					template: '{{ country }} \n{{ value | toFixed(0) | toLocaleString() }}%'
+					template: '{{ country }} \n{{ HPAY→2022 | toFixed(0) | toLocaleString() }}%'
 				}]          
 			}
 		  }) | safe }}
 		{% endcomp %}
-	</article>
+
+	<h3>Rankings</h3>
+		<p>Countries ranked within each year. Note that in some years there may be no values reported for a particular country. In those cases, that country will be ranked last (or joint last) in that year. This particularly affected 2020 where figures may not have been collected or reported due to the COVID-19 pandemic.</p>
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.ranking({ 
+			config: {
+				data: view.wages_grouped.rows,
+				key:'country',
+				circles: 0.9,
+				reverse: false,
+				scale: "YFF_r",
+				colour: "2022",
+				columns: [{
+					name: '2018',
+					template: '{{ HPAY→2018 }}',
+					fillna: 0
+				},{
+					name: '2019',
+					template: '{{ HPAY→2019 }}',
+					fillna: 0
+				},{
+					name: '2020',
+					template: '{{ HPAY→2020 }}',
+					fillna: 0
+				},{
+					name: '2021',
+					template: '{{ HPAY→2021 }}',
+					fillna: 0
+				},{
+					name: '2022',
+					template: '{{ HPAY→2022 }}',
+					fillna: 0
+				}]
+			}
+		  }) | safe }}
+		{% endcomp %}
+    </article>
 	</div>
 
-
-	
 	<h3>Employment Outcomes by Education Attainment and Skills</h3>
 
 	{% comp 'tabbed', { tab_count: 4 } %}
