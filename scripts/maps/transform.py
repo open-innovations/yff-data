@@ -11,7 +11,7 @@ CLAIMANT_DATA = os.path.join(
 CENSUS_DATA = os.path.join(
     WORKING_DIR, 'census-employment-status.csv')
 
-DATA_DIR = os.path.join('src', 'maps', 'employment', '_data', 'view')
+DATA_DIR = os.path.join('src', 'areas', 'maps', 'employment', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 combined_data = pd.read_csv(COMBINED_DATA)

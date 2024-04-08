@@ -5,8 +5,8 @@ stages:
     deps:
     - path: scripts/maps/transform.py
       hash: md5
-      md5: 2f0aa2b9c9ea4cd6b1306aca9e40619d
-      size: 3965
+      md5: da2dad780407879fa5c0e77cb8a6b211
+      size: 4092
     - path: working/upstream/census-employment-status.csv
       hash: md5
       md5: aa01ca494c03e7332df9264cbb1a3527
@@ -20,7 +20,7 @@ stages:
       md5: 4e4f433d8371c1c613a9fe2b851c33ba
       size: 1164889
     outs:
-    - path: src/maps/employment/_data/view
+    - path: src/areas/maps/employment/_data/view
       hash: md5
       md5: fe033a9c21648a19a0f19671e8c8b2e1.dir
       size: 184822

@@ -13,62 +13,62 @@ stages:
       md5: 024f9ba2bfd92786a18a6298a8a06d9d
       size: 3294609
     outs:
-    - path: src/maps/education/_data/view/KS2_expected_standard.csv
+    - path: src/areas/maps/education/_data/view/KS2_expected_standard.csv
       hash: md5
       md5: f39362c917b24c8d783ab0375c9969eb
       size: 15486
       isexec: true
-    - path: src/maps/education/_data/view/KS2_higher_standard.csv
+    - path: src/areas/maps/education/_data/view/KS2_higher_standard.csv
       hash: md5
       md5: d6b83827475c3ad41ba7382253b37620
       size: 15066
       isexec: true
-    - path: src/maps/education/_data/view/achievement_A_to_C.csv
+    - path: src/areas/maps/education/_data/view/achievement_A_to_C.csv
       hash: md5
       md5: f6a9e5d055b43d6876466065aa97c5ea
       size: 18841
       isexec: true
-    - path: src/maps/education/_data/view/attainment_8_score.csv
+    - path: src/areas/maps/education/_data/view/attainment_8_score.csv
       hash: md5
       md5: 23caa14d20488c3536b755c9b5307591
       size: 16552
       isexec: true
-    - path: src/maps/education/_data/view/good_primary_school.csv
+    - path: src/areas/maps/education/_data/view/good_primary_school.csv
       hash: md5
       md5: 9056bdf95a26daafce224174a22d41d8
       size: 16553
       isexec: true
-    - path: src/maps/education/_data/view/good_secondary_school.csv
+    - path: src/areas/maps/education/_data/view/good_secondary_school.csv
       hash: md5
       md5: e39e7b11235fc99827254a69b239a4f2
       size: 16597
       isexec: true
-    - path: src/maps/education/_data/view/inadequate_primary_school.csv
+    - path: src/areas/maps/education/_data/view/inadequate_primary_school.csv
       hash: md5
       md5: 8e5cf60b9c43b67a77e8a6b2b0c7cb2c
       size: 16030
       isexec: true
-    - path: src/maps/education/_data/view/inadequate_secondary_school.csv
+    - path: src/areas/maps/education/_data/view/inadequate_secondary_school.csv
       hash: md5
       md5: 7466175f056291c7a05bc290b7eb7ce7
       size: 16149
       isexec: true
-    - path: src/maps/education/_data/view/needs_improvement_primary_school.csv
+    - path: src/areas/maps/education/_data/view/needs_improvement_primary_school.csv
       hash: md5
       md5: ce5ead8ac10bf1ef18956b8f93a4eb08
       size: 16169
       isexec: true
-    - path: src/maps/education/_data/view/needs_improvement_secondary_school.csv
+    - path: src/areas/maps/education/_data/view/needs_improvement_secondary_school.csv
       hash: md5
       md5: 9f188481c78b5178034afed094d6dc3f
       size: 16262
       isexec: true
-    - path: src/maps/education/_data/view/outstanding_primary_school.csv
+    - path: src/areas/maps/education/_data/view/outstanding_primary_school.csv
       hash: md5
       md5: 446ccc6c6dd8ea67d865489edad9b8af
       size: 16386
       isexec: true
-    - path: src/maps/education/_data/view/outstanding_secondary_school.csv
+    - path: src/areas/maps/education/_data/view/outstanding_secondary_school.csv
       hash: md5
       md5: 675f5ccf7e3c478575500fae3a1badd0
       size: 16323
@@ -79,34 +79,40 @@ stages:
     deps:
     - path: scripts/education/transform_census.py
       hash: md5
-      md5: 7bede8ff5f2aeded8c198a029276e9fd
-      size: 4011
+      md5: d3269619e5083c0c140eb83531d5c69f
+      size: 4113
     - path: working/upstream/census_qualifications.csv
       hash: md5
       md5: 17e750e233f9134fb4ca889ff784dfb6
       size: 361199
     outs:
-    - path: src/maps/education/_data/view/census_la_asian.csv
+    - path: src/areas/maps/education/_data/view/census_la_asian.csv
       hash: md5
       md5: 567379d58d86ae2b9aa8c84c367d2a9f
       size: 17979
-    - path: src/maps/education/_data/view/census_la_black_british.csv
+      isexec: true
+    - path: src/areas/maps/education/_data/view/census_la_black_british.csv
       hash: md5
       md5: 9a9cad8ef0abea2679fa54938181ae9c
       size: 18032
-    - path: src/maps/education/_data/view/census_la_mixed_multiple.csv
+      isexec: true
+    - path: src/areas/maps/education/_data/view/census_la_mixed_multiple.csv
       hash: md5
       md5: 9b7b94b12bba2d880298f39006f26c00
       size: 18177
-    - path: src/maps/education/_data/view/census_la_other.csv
+      isexec: true
+    - path: src/areas/maps/education/_data/view/census_la_other.csv
       hash: md5
       md5: 8f33c3adf60e0017c0155c35a32bed27
       size: 17904
-    - path: src/maps/education/_data/view/census_la_total.csv
+      isexec: true
+    - path: src/areas/maps/education/_data/view/census_la_total.csv
       hash: md5
       md5: a0607e4bae5d9c7983eaceb05a9598af
       size: 18342
-    - path: src/maps/education/_data/view/census_la_white.csv
+      isexec: true
+    - path: src/areas/maps/education/_data/view/census_la_white.csv
       hash: md5
       md5: 2e9e0e9c2a3a5a6177d74bd42a53fa8b
       size: 18363
+      isexec: true

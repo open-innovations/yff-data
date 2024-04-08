@@ -5,12 +5,12 @@ stages:
     deps:
     - path: scripts/labour-market/config.py
       hash: md5
-      md5: c9187b99fb9c48a24be707561d15eaa2
-      size: 5131
+      md5: 5cfbfb101cdcd817c3fa488dd72606a2
+      size: 5216
     - path: scripts/labour-market/transform.py
       hash: md5
-      md5: f1bef03011884fcb317729ccc5081d95
-      size: 628
+      md5: c8a459ec60567a3c02041424841213fa
+      size: 648
     - path: working/upstream/lms.csv
       hash: md5
       md5: 084dd26494a0825e8fe6fd66b12272ff
@@ -20,6 +20,7 @@ stages:
       hash: md5
       md5: 6383ec82010f8374766aed7a42a6ef3f
       size: 366177
+      isexec: true
   prepare:
     cmd: papermill prepare.ipynb ../../working/output/labour-market-prepare.ipynb
     deps:
@@ -29,8 +30,8 @@ stages:
       size: 366177
     - path: ../../scripts/util/
       hash: md5
-      md5: 11bcc8647207a0a99fd2664fe46f756a.dir
-      size: 10600
+      md5: 67d183f7048772a434ac8ddf0f560fa1.dir
+      size: 10922
       nfiles: 7
     - path: ../../working/upstream/metadata.csv
       hash: md5
@@ -38,38 +39,44 @@ stages:
       size: 201
     - path: config.py
       hash: md5
-      md5: c9187b99fb9c48a24be707561d15eaa2
-      size: 5131
+      md5: 5cfbfb101cdcd817c3fa488dd72606a2
+      size: 5216
     - path: prepare.ipynb
       hash: md5
-      md5: a169583bbac0a6b21b631a4f25058bf1
-      size: 55309
+      md5: f1ed6d6feb93084a6f5fdb24a0f8b826
+      size: 56543
     - path: prepare.py
       hash: md5
-      md5: 09def7c536dd2fc8644c8100908aaebc
-      size: 6539
+      md5: ae0880bceebc220a61dad15598d03773
+      size: 6686
     outs:
     - path: ../../src/_data/sources/labour-market/headlines.csv
       hash: md5
       md5: 920231f4807a31d308c51c754a579fd1
       size: 1166
+      isexec: true
     - path: ../../src/_data/sources/labour-market/labour_market_status_all_data.csv
       hash: md5
       md5: 1a8eadaa2bacda871d66572499730c69
       size: 34435
+      isexec: true
     - path: ../../src/_data/sources/labour-market/labour_market_status_last_3_years.csv
       hash: md5
       md5: dfdd4e566f1e8661021ba76c30ac3c20
       size: 6473
+      isexec: true
     - path: ../../src/_data/sources/labour-market/long_term_unemployed_all_data.csv
       hash: md5
       md5: 1334b3d0ae6287af2fd144de24acd5b3
       size: 11648
+      isexec: true
     - path: ../../src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv
       hash: md5
       md5: 9370d510fcd797b045ffd070a08d5604
       size: 1934
+      isexec: true
     - path: ../../src/dashboard/labour-market/_data/latest.json
       hash: md5
       md5: b9fee6c59b20a890a5ae5a88f5b1f955
       size: 533
+      isexec: true

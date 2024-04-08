@@ -1,0 +1,43 @@
+country_code,country,measure,sex,age,frequency,time_period,value,units
+AUS,Australia,Unemployment rate,Total,15 years or over,Annual,2022,3.7,Units
+DNK,Denmark,Unemployment rate,Total,15 years or over,Annual,2022,4.4,Units
+FIN,Finland,Unemployment rate,Total,15 years or over,Annual,2022,6.7,Units
+CAN,Canada,Unemployment rate,Total,15 years or over,Annual,2022,5.3,Units
+GRC,Greece,Unemployment rate,Total,15 years or over,Annual,2022,12.4,Units
+ZAF,South Africa,Unemployment rate,Total,15 years or over,Annual,2022,33.5,Units
+SWE,Sweden,Unemployment rate,Total,15 years or over,Annual,2022,7.4,Units
+SVK,Slovak Republic,Unemployment rate,Total,15 years or over,Annual,2022,6.1,Units
+TUR,Türkiye,Unemployment rate,Total,15 years or over,Annual,2022,10.5,Units
+COL,Colombia,Unemployment rate,Total,15 years or over,Annual,2022,11.2,Units
+NLD,Netherlands,Unemployment rate,Total,15 years or over,Annual,2022,3.5,Units
+USA,United States,Unemployment rate,Total,15 years or over,Annual,2022,3.6,Units
+NOR,Norway,Unemployment rate,Total,15 years or over,Annual,2022,3.2,Units
+ESP,Spain,Unemployment rate,Total,15 years or over,Annual,2022,12.9,Units
+LVA,Latvia,Unemployment rate,Total,15 years or over,Annual,2022,6.8,Units
+ISL,Iceland,Unemployment rate,Total,15 years or over,Annual,2022,3.8,Units
+SVN,Slovenia,Unemployment rate,Total,15 years or over,Annual,2022,4.0,Units
+NZL,New Zealand,Unemployment rate,Total,15 years or over,Annual,2022,3.3,Units
+KOR,Korea,Unemployment rate,Total,15 years or over,Annual,2022,2.9,Units
+CHL,Chile,Unemployment rate,Total,15 years or over,Annual,2022,7.9,Units
+MEX,Mexico,Unemployment rate,Total,15 years or over,Annual,2022,3.3,Units
+PRT,Portugal,Unemployment rate,Total,15 years or over,Annual,2022,6.1,Units
+GBR,United Kingdom,Unemployment rate,Total,15 years or over,Annual,2022,3.8,Units
+EST,Estonia,Unemployment rate,Total,15 years or over,Annual,2022,5.6,Units
+BEL,Belgium,Unemployment rate,Total,15 years or over,Annual,2022,5.6,Units
+IRL,Ireland,Unemployment rate,Total,15 years or over,Annual,2022,4.5,Units
+JPN,Japan,Unemployment rate,Total,15 years or over,Annual,2022,2.6,Units
+EU27_2020,European Union (27 countries from 01/02/2020),Unemployment rate,Total,15 years or over,Annual,2022,6.2,Units
+ISR,Israel,Unemployment rate,Total,15 years or over,Annual,2022,3.8,Units
+LTU,Lithuania,Unemployment rate,Total,15 years or over,Annual,2022,6.0,Units
+FRA,France,Unemployment rate,Total,15 years or over,Annual,2022,7.3,Units
+CZE,Czechia,Unemployment rate,Total,15 years or over,Annual,2022,2.3,Units
+CRI,Costa Rica,Unemployment rate,Total,15 years or over,Annual,2022,12.2,Units
+POL,Poland,Unemployment rate,Total,15 years or over,Annual,2022,2.9,Units
+EA20,Euro area (20 countries),Unemployment rate,Total,15 years or over,Annual,2022,6.7,Units
+OECD,OECD,Unemployment rate,Total,15 years or over,Annual,2022,5.0,Units
+HUN,Hungary,Unemployment rate,Total,15 years or over,Annual,2022,3.6,Units
+ITA,Italy,Unemployment rate,Total,15 years or over,Annual,2022,8.1,Units
+CHE,Switzerland,Unemployment rate,Total,15 years or over,Annual,2022,4.3,Units
+AUT,Austria,Unemployment rate,Total,15 years or over,Annual,2022,4.7,Units
+LUX,Luxembourg,Unemployment rate,Total,15 years or over,Annual,2022,4.6,Units
+DEU,Germany,Unemployment rate,Total,15 years or over,Annual,2022,3.1,Units

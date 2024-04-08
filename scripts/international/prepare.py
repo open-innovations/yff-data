@@ -15,7 +15,7 @@ OECD_ATTAINMENT_DATA = os.path.join(
 )
 
 
-DATA_DIR = os.path.join('src', 'maps', 'international', '_data', 'view')
+DATA_DIR = os.path.join('src', 'areas', 'maps', 'international', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 oecd_lfs_data = pd.read_csv(OECD_LFS_DATA).round(1)

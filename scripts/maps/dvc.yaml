@@ -8,6 +8,6 @@ stages:
       - working/upstream/claimants-per-population-latest.csv
       - working/upstream/census-employment-status.csv
     outs:
-      - src/maps/employment/_data/view:
+      - src/areas/maps/employment/_data/view:
           cache: false
           persist: false

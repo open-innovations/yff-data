@@ -2,7 +2,7 @@
 {% set background = "#337991" %}
 
 {% comp 'grid.block', {
-	link: '~/maps/neet-factors/index.njk' | url + '?map-selector=total-score',
+	link: '~/areas/maps/neet-factors/index.njk' | url + '?map-selector=total-score',
   background: background,
   colour: 'white'
 } %}
@@ -16,8 +16,8 @@
   <div class="dashboard-viz">
   {{ comp.oi.map.hex_cartogram({
     config: {
-      hexjson: search.data('/maps').uk_local_authority_districts_2021,
-      data: search.data('/maps/neet-factors').view.total_score.rows,
+      hexjson: search.data('areas/maps').uk_local_authority_districts_2021,
+      data: search.data('areas/maps/neet-factors').view.total_score.rows,
       matchKey: 'local_authority_code',
       value: 'value',
       scale: 'YFF_r',
@@ -28,7 +28,7 @@
 {% endcomp %}
 
 {% comp 'grid.block', {
-	link: '~/maps/employment/index.njk' | url + '?map-selector=census-youth-unemployed-economically-inactive',
+	link: '~/areas/maps/employment/index.njk' | url + '?map-selector=census-youth-unemployed-economically-inactive',
   background: background,
   colour: 'white'
 } %}
@@ -41,8 +41,8 @@
   <div class="dashboard-viz">
   {{ comp.oi.map.hex_cartogram({
     config: {
-      hexjson: search.data('/maps').constituencies,
-      data: search.data('/maps/employment').view.census_unemployed_or_economically_inactive_and_not_in_fte_youth.rows,      
+      hexjson: search.data('areas/maps').constituencies,
+      data: search.data('areas/maps/employment').view.census_unemployed_or_economically_inactive_and_not_in_fte_youth.rows,      
       matchKey: 'geography_code',
       value: 'rate',
       scale: 'YFF',

@@ -1,5 +1,5 @@
 vars:
-  - target: src/maps/education/_data/view
+  - target: src/areas/maps/education/_data/view
 stages:
 #   transform:
 #     cmd:

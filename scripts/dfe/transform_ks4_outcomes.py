@@ -14,7 +14,7 @@ ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA).pipe(explode_counties)
 fields = ['new_la_code', 'time_period', 'version', 'gender', 'variable', 'value']
 groupby = ['variable','gender','time_period']
 
-DATA_DIR = os.path.join('src', 'maps', 'education', '_data', 'view');
+DATA_DIR = os.path.join('src', 'areas', 'maps', 'education', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # Let's be extra safe about extracting the years in case 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     pivotted.insert(0,'LADCD',pivotted.index)
 
     # Get CSV with names and add them
-    lad = pd.read_csv(os.path.join('src', 'maps', '_data', 'uk_local_authority_districts.csv'))
+    lad = pd.read_csv(os.path.join('src', 'areas', 'maps', '_data', 'uk_local_authority_districts.csv'))
     pivotted.insert(1,'LADNM',pivotted.LADCD.map(lad.set_index('LADCD')['LADNM'].to_dict()),True)
 
     # Need to add a separator row

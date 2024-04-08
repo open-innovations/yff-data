@@ -9,7 +9,7 @@ education_data = pd.read_csv(EDUCATION_ATTAINMENT_DATA)
 
 fields = ['constituency_code', 'constituency_name', 'value']
 
-DATA_DIR = os.path.join('src', 'maps', 'education', '_data', 'view')
+DATA_DIR = os.path.join('src', 'areas', 'maps', 'education', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 column_name_mapper = {
