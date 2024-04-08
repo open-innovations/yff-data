@@ -1,6 +1,6 @@
 export const layout = 'layouts/areas/pcon.njk';
 
-export const tags = ['constituency'];
+export const tags = ['area', 'constituency'];
 
 export default function*({ areas, summary, map }) {
   // Iterate over all the areas
