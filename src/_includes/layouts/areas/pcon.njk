@@ -16,6 +16,8 @@ css: |
   .row .pane { background: #fceee7!important; }
   .row h3 { padding: 16px; text-align: center; color: black;}
 
+  .education .pane { background: #b33b73!important; }
+
 ---
 <!-- Edit this in `src/_includes/layouts/areas/pcon.njk` -->
 
@@ -64,7 +66,7 @@ css: |
 
 {{ comp.oi.dashboard({
   config: {
-    "data": area.summary.headlines,
+    "data": area.summary.employment_headlines,
     "title": "h",
     "value": "v",
 	"width": "20%",
@@ -143,7 +145,7 @@ css: |
 {% endcomp %}
 </div>
 
-{# {% comp 'tabbed', { tab_count: 2 } %}
+{% comp 'tabbed', { tab_count: 2 } %}
 
 
 <div class="row">
@@ -209,7 +211,7 @@ css: |
 {% endcomp %}
 </div>
 
-<div class="row">
+{# <div class="row">
 {% comp 'display.figure' %}
 	 <span class="tab-title">Aged 20-24</span>
 
@@ -271,11 +273,41 @@ css: |
 		<p> No data available </p>
 	{% endif %}
 {% endcomp %}
-</div>
+</div> #}
 
-{% endcomp %} #}
+{% endcomp %}
 
 <h2>Education</h2>
 
+<div class='education'>
+{{ comp.oi.dashboard({
+  config: {
+    "data": area.summary.education_headlines,
+    "title": "h",
+    "value": "v",
+	"width": "40%",
+    "panels": [
+      { "name": "Average Attainment 8 Score"},
+      { "name": "Average Progress 8 Score"}
+    ]
+  }
+}) | safe }}
+</div>
 
-
+<div class='education'>
+{{ comp.oi.dashboard({
+  config: {
+    "data": area.summary.education_headlines,
+    "title": "h",
+    "value": "v",
+	"width": "40%",
+	"units": {
+		"postfix": "suffix"
+	},
+    "panels": [
+      { "name": "Percentage Achieving Grade 4 English & Maths" },
+      { "name": "Percentage Achieving Grade 5 English & Maths"}
+    ]
+  }
+}) | safe }}
+</div> 
