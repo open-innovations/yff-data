@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
     econ_active_20_24_last_3_years = (
         labour_market_last_3_years_pcon
-        .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 16-19']
+        .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 20-24']
         .fillna(0)
     )
 
