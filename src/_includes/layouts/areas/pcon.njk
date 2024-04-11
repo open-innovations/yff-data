@@ -9,8 +9,8 @@ css: |
   .oi-dashboard .panel { background: #fceee7!important; box-shadow: 1px 1px #db936f4a;}
   .oi-dashboard h3 { text-align: center;}
 
-  .oi-chart-line { background: #fceee7!important; box-shadow: 1px 1px #db936f4a; padding: 8px;}
-  .oi-chart svg { padding-top:24px; } 
+  .oi-chart-line { background: #fceee7!important; padding: 8px;}
+  .oi-chart svg { padding-top:24px; padding-right: 24px;} 
 
   .row .oi-chart text { font-size: 14px; font-weight: normal; }
   .row .pane { background: #fceee7!important; }
@@ -96,27 +96,27 @@ css: |
 					"title": "Economic Inactivity Rate (%) - Aged 16-24",
 					legend: { "show": false, "position": "top" },
 					"axis": {
-						"x": {
-							"grid": {
-								"show": true,
-								"stroke-dasharray": "6 2",
-								"stroke-width": "1"
-							},
-							"tick": {
-								"label": "year",
-								"align": "end"
-							},
-							"title": {
-								"label": "Rolling 3-year period",
-								"options": {"font-size":8}
-							}
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"labels": "year",
+							"grid": true,
+							"options": {"font-size":12, "rotate": 90}
+						},
+						"title": {
+							"label": "Rolling 3-year period"
+						}
 						},
 						"y": {
 							"grid": {
 								"show": true
 							},
 							"min": 0,
-							"max": 80,
+							"max": 100,
 							"title": {
 								"label": "Rate (%)",
 								"options": {"font-size":8}
@@ -138,13 +138,13 @@ css: |
 						}
 					]
 				}
-			}) | simpleviz | safe }}
+			}) | safe }}
 	{% else %}
 		<p> No data available </p>
 	{% endif %}
 {% endcomp %}
 </div>
-
+{
 {% comp 'tabbed', { tab_count: 2 } %}
 
 
@@ -169,8 +169,9 @@ css: |
 								"stroke-width": "1"
 							},
 							"tick": {
-								"label": "year",
-								"align": "end"
+								"labels": "year",
+								"grid": true,
+								"options": {"font-size":12}
 							},
 							"title": {
 								"label": "Rolling 3-year period",
@@ -182,7 +183,7 @@ css: |
 								"show": true
 							},
 							"min": 0,
-							"max": 80,
+							"max": 100,
 							"title": {
 								"label": "Rate (%)",
 								"options": {"font-size":8}
@@ -233,8 +234,9 @@ css: |
 								"stroke-width": "1"
 							},
 							"tick": {
-								"label": "year",
-								"align": "end"
+								"labels": "year",
+								"grid":true,
+								"options": {"font-size":12}
 							},
 							"title": {
 								"label": "Rolling 3-year period",
@@ -246,7 +248,7 @@ css: |
 								"show": true
 							},
 							"min": 0,
-							"max": 80,
+							"max": 100,
 							"title": {
 								"label": "Rate (%)",
 								"options": {"font-size":8}

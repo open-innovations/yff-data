@@ -1,5 +1,6 @@
 import pandas as pd 
-import os 
+import os
+import numpy as np 
 
 WORKING_DIR = os.path.join('working', 'upstream')
 
@@ -36,7 +37,7 @@ if __name__ == '__main__':
 
     latest_youth_unem = (
         labour_market_latest_pcon
-        .drop(columns=['date', 'date_name', 'variable_code', 'notes'])
+        .drop(columns=['date', 'variable_code', 'notes'])
     )
 
     latest_youth_unem = (
@@ -52,6 +53,8 @@ if __name__ == '__main__':
     latest_youth_unem.to_csv(os.path.join(OUT_DIR, 'headlines.csv'), index=True)
 
 # Unemployment rate - last 3 years   
+  
+    # labour_market_last_3_years_pcon['date_name'] = labour_market_last_3_years_pcon['date_name'].str.replace('-', '-\n')
     
     youth_unem_last_3_years = (
         labour_market_last_3_years_pcon
@@ -59,8 +62,9 @@ if __name__ == '__main__':
         .fillna(0)
     )
 
+
     youth_unem_last_3_years = (
-        pd.pivot_table(youth_unem_last_3_years, values='value', index=['geography_code'], columns=['date'])
+        pd.pivot_table(youth_unem_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
         .fillna(0)
@@ -80,7 +84,7 @@ if __name__ == '__main__':
     )
 
     econ_inactive_last_3_years = (
-        pd.pivot_table(econ_inactive_last_3_years, values='value', index=['geography_code'], columns=['date'])
+        pd.pivot_table(econ_inactive_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
         .fillna(0)
@@ -97,7 +101,7 @@ if __name__ == '__main__':
     )
 
     econ_active_last_3_years = (
-        pd.pivot_table(econ_active_last_3_years, values='value', index=['geography_code'], columns=['date'])
+        pd.pivot_table(econ_active_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
         .fillna(0)
@@ -112,9 +116,8 @@ if __name__ == '__main__':
         .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 20-24']
         .fillna(0)
     )
-
     econ_active_20_24_last_3_years = (
-        pd.pivot_table(econ_active_20_24_last_3_years, values='value', index=['geography_code'], columns=['date'])
+        pd.pivot_table(econ_active_20_24_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
         .fillna(0)
