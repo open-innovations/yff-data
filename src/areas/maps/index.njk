@@ -1,9 +1,27 @@
 ---
 title: Maps
-url: /maps/
-nav_order:
-  v2: 40   
+summary: Explore geographical comparisons of data relating to education, employment and international comparisons of OECD countries. 
+
+featured: "#featured-viz figure"
+
+
 ---
+
+<div id="featured-viz" hidden>
+    {{ chart_description | md | safe }}
+    {% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+          hexjson: search.data('areas/maps').uk_local_authority_districts_2021,
+          data: search.data('areas/maps/neet-factors').view.total_score.rows,
+          matchKey: 'local_authority_code',
+          value: 'value',
+          scale: 'YFF_r'
+        }
+      }) | safe }}
+    {% endcomp %}
+</div>
+
 
 {% comp 'grid.auto', { min_width: '30rem' } %}
 {% for page in search.pages("maps", "priority=desc title=asc") | data %}
@@ -28,4 +46,3 @@ nav_order:
 {% endfor %}
 
 {% endcomp %}
-

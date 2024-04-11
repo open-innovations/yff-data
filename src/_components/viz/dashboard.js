@@ -11,7 +11,7 @@ export const css = `
 	grid-gap: 1em;
 }
 .dashboard .panel h3 { color: inherit!important; font-weight: normal; font-size: 1em; }
-.panel { background: #efefef; padding: 1em; }
+.panel { background: #fceee7; padding: 1em; }
 .dashboard .bignum { font-size: 4em; line-height: 1.25em; font-weight: bold; text-align: center; display: block; margin-top: 0; }
 .dashboard .footnote { font-size: 0.8em; text-align: center; display: block; }
 `;

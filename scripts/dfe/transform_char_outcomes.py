@@ -16,7 +16,7 @@ fields = ['new_la_code', 'time_period', 'version', 'gender', 'breakdown', 'ethni
           'free_school_meals', 'sen_status', 'sen_description', 'disadvantage', 'first_language', 'variable', 'value']
 groupby = ['variable','breakdown','gender','ethnicity_major','free_school_meals','sen_status','sen_description','disadvantage','first_language']
 
-DATA_DIR = os.path.join('src', 'maps', 'education', '_data', 'view');
+DATA_DIR = os.path.join('src', 'areas', 'maps', 'education', '_data', 'view');
 os.makedirs(DATA_DIR, exist_ok=True)
 
 

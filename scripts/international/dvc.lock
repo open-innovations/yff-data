@@ -5,8 +5,8 @@ stages:
     deps:
     - path: scripts/international/prepare.py
       hash: md5
-      md5: b75560eb94cbe26b6158dd3d533bc5c7
-      size: 11101
+      md5: 01f94dc2fb99d13a5944dc3c4ef680d4
+      size: 11338
     - path: scripts/labour-market/config.py
       hash: md5
       md5: c9187b99fb9c48a24be707561d15eaa2
@@ -16,39 +16,47 @@ stages:
       md5: c02d8a2e8ad4baa1cf4053a602315b34
       size: 3445810
     outs:
-    - path: src/maps/international/_data/view/economic_inactivity_rate_female.csv
+    - path: src/areas/maps/international/_data/view/economic_inactivity_rate_female.csv
       hash: md5
       md5: 7b6d6421c29b9f8e866e751cca03ff2c
       size: 3234
-    - path: src/maps/international/_data/view/economic_inactivity_rate_male.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/economic_inactivity_rate_male.csv
       hash: md5
       md5: 4213f8e0d7a802de27eb3b90700d6b0b
       size: 3152
-    - path: src/maps/international/_data/view/economic_inactivity_rate_total.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/economic_inactivity_rate_total.csv
       hash: md5
       md5: 919484d95883d87782e838e4ef2730af
       size: 3193
-    - path: src/maps/international/_data/view/employment_rate_female_15_over.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/employment_rate_female_15_over.csv
       hash: md5
       md5: 9faed8afd180dd2ab31886b56c2578e9
       size: 3303
-    - path: src/maps/international/_data/view/employment_rate_male_15_over.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/employment_rate_male_15_over.csv
       hash: md5
       md5: 4fe906ea018345dbdb0b5862df5aee76
       size: 3219
-    - path: src/maps/international/_data/view/employment_rate_total_15_over.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/employment_rate_total_15_over.csv
       hash: md5
       md5: 11466be01237a29b0f46be5805371a4a
       size: 3184
-    - path: src/maps/international/_data/view/unemployment_rate_female_15_over.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/unemployment_rate_female_15_over.csv
       hash: md5
       md5: c7c25e349e34eab3ab7f02abdfa52243
       size: 3362
-    - path: src/maps/international/_data/view/unemployment_rate_male_15_over.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/unemployment_rate_male_15_over.csv
       hash: md5
       md5: 3aabea7a1230826833dba9bd7c27aa52
       size: 3274
-    - path: src/maps/international/_data/view/unemployment_rate_total_15_over.csv
+      isexec: true
+    - path: src/areas/maps/international/_data/view/unemployment_rate_total_15_over.csv
       hash: md5
       md5: e0b1b669d8e50afea24efd65494738ef
       size: 3320
@@ -57,14 +65,15 @@ stages:
     deps:
     - path: scripts/international/transform.pl
       hash: md5
-      md5: 5f6ad1d011ea340bb9dcec6a7a5e79e9
-      size: 6988
+      md5: 532a3bbf155af0ef628c338b91dd278f
+      size: 7303
     - path: working/upstream/oecd_lfs_by_sex_and_age.csv
       hash: md5
       md5: c02d8a2e8ad4baa1cf4053a602315b34
       size: 3445810
     outs:
-    - path: src/maps/international/_data/view/oecd_lfs_grouped.csv
+    - path: src/areas/maps/international/_data/view/oecd_lfs_grouped.csv
       hash: md5
-      md5: 0e94465a3e6cc275f6d96032e526fc4d
-      size: 278165
+      md5: e952a8f3b36185ea9486e3fd5f1b260b
+      size: 268584
+      isexec: true

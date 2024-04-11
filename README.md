@@ -68,6 +68,14 @@ The `nav` component interprets this and selects the pages to include based on th
 
 Similarly, the homepage versions (`/home/v1.njk`, `/home/v2.njk`) are set to be the site homepage by comparison between their slug (`v1`, `v2`) and the global data version. If the slug matches the version, the url for the page is set to `/`, otherwise it defaults to `/home/v<x>/`. This is done in the `/home/_data.ts` file.
 
+## Troubleshooting
+
+If the site fails to build based on memory errors, you can try adding the following to the invocation of `deno` in the `deno.json` file.
+
+```
+deno run --v8-flags=--max-old-space-size=2048...
+```
+
 ## License
 
 The code to build this portal is [licensed under the terms of an MIT License](./LICENSE) by [Open Innovations](https://open-innovations.org).

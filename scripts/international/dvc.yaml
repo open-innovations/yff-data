@@ -9,23 +9,23 @@ stages:
       - scripts/labour-market/config.py
       - working/upstream/oecd_lfs_by_sex_and_age.csv
     outs:
-      - src/maps/international/_data/view/economic_inactivity_rate_female.csv:
+      - src/areas/maps/international/_data/view/economic_inactivity_rate_female.csv:
           cache: false
-      - src/maps/international/_data/view/economic_inactivity_rate_male.csv:
+      - src/areas/maps/international/_data/view/economic_inactivity_rate_male.csv:
           cache: false
-      - src/maps/international/_data/view/economic_inactivity_rate_total.csv:
+      - src/areas/maps/international/_data/view/economic_inactivity_rate_total.csv:
           cache: false
-      - src/maps/international/_data/view/employment_rate_female_15_over.csv:
+      - src/areas/maps/international/_data/view/employment_rate_female_15_over.csv:
           cache: false
-      - src/maps/international/_data/view/employment_rate_male_15_over.csv:
+      - src/areas/maps/international/_data/view/employment_rate_male_15_over.csv:
           cache: false
-      - src/maps/international/_data/view/employment_rate_total_15_over.csv:
+      - src/areas/maps/international/_data/view/employment_rate_total_15_over.csv:
           cache: false
-      - src/maps/international/_data/view/unemployment_rate_female_15_over.csv:
+      - src/areas/maps/international/_data/view/unemployment_rate_female_15_over.csv:
           cache: false
-      - src/maps/international/_data/view/unemployment_rate_male_15_over.csv:
+      - src/areas/maps/international/_data/view/unemployment_rate_male_15_over.csv:
           cache: false
-      - src/maps/international/_data/view/unemployment_rate_total_15_over.csv:
+      - src/areas/maps/international/_data/view/unemployment_rate_total_15_over.csv:
           cache: false
   transform:
     cmd: perl scripts/international/transform.pl
@@ -34,5 +34,5 @@ stages:
       - scripts/international/transform.pl
       - working/upstream/oecd_lfs_by_sex_and_age.csv
     outs:
-      - src/maps/international/_data/view/oecd_lfs_grouped.csv:
+      - src/areas/maps/international/_data/view/oecd_lfs_grouped.csv:
           cache: false

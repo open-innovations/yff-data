@@ -21,7 +21,7 @@ my %colours = (
 
 # Run the grouping 
 # buildCSV(inputfile,outputfile,configuration)
-buildCSV("working/upstream/oecd_lfs_by_sex_and_age.csv","src/maps/international/_data/view/oecd_lfs_grouped.csv",{
+buildCSV("working/upstream/oecd_lfs_by_sex_and_age.csv","src/areas/maps/international/_data/view/oecd_lfs_grouped.csv",{
 	'groupby'=>[
 		{'value'=>'measure'},
 		{'value'=>'sex'},

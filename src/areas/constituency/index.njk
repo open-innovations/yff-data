@@ -1,10 +1,33 @@
 ---
-title: Constituency index page
+title: Constituencies
+summary: Explore data for parliamentary constituencies, covering topics such as employment, education and economic indicators.
+
 css: |
   #filter { position: relative; }
   #filter label { position: absolute; line-height:0; left: 1.5em; top: 50%; transform: translate3d(0,-50%,0); }
   #filter input[type=text] { padding-left: 1.75em; width: 100%; }
+
+featured: "#featured-viz figure"
+
 ---
+
+<div id="featured-viz" hidden>
+	{% comp 'display.figure' %}
+      {{ comp.oi.map.hex_cartogram({
+        config: {
+            hexjson: search.data('areas/maps').constituencies,
+            data: search.data('areas/maps/employment').view.census_unemployed_or_economically_inactive_and_not_in_fte_youth.rows,
+            matchKey: 'geography_code',
+            value: 'rate',
+            scale: 'YFF'
+        } 
+        }) | safe }}
+    {% endcomp %}
+</div>
+
+
+<p>This section brings together statistics for each UK parliamentary constituency, covering employment, education and key economic indicators. To view data for a constituency, use the search box or choose a constituency from the list below.</p>
+
 
 <div id="filter"><noscript>Please choose from a constituency below...</noscript></div>
 

@@ -1,10 +1,23 @@
 ---
-layout: layouts/simple.njk
+layout: layouts/dashboard.njk
 css: |
   .row { display: flex; grid-gap: 1rem; }
   .oi-zoomable-map .leaflet { min-height: 400px!important; width: 400px!important; }
   .oi-zoomable-map .oi-attribution { display: none; }
   .oi-zoomable-map .leaflet-control-attribution { font-size: 0.7rem; }
+
+  .oi-dashboard .panel { background: #fceee7!important; box-shadow: 1px 1px #db936f4a;}
+  .oi-dashboard h3 { text-align: center;}
+
+  .oi-chart-line { background: #fceee7!important; padding: 8px;}
+  .oi-chart svg { padding-top:24px; padding-right: 24px;} 
+
+  .row .oi-chart text { font-size: 14px; font-weight: normal; }
+  .row .pane { background: #fceee7!important; }
+  .row h3 { padding: 16px; text-align: center; color: black;}
+
+  .education .pane { background: #b33b73!important; }
+
 ---
 <!-- Edit this in `src/_includes/layouts/areas/pcon.njk` -->
 
@@ -16,12 +29,12 @@ css: |
 #}
 
 <div class="row">
-	<div>
+	<div style="padding: 2em 0;">
 		<p>
 		This is the page for {{ area.name }} ({{ area.code }}),
 		which is a Westminster Parliamentary Constituency ({{ area.type }}).
 		</p>
-		<p>{{ area.summary.description }}</p>
+		<p>{{ summary[area.code].description }}</p>
 	</div>
 
 
@@ -30,13 +43,13 @@ css: |
 			debug: true,
 			padding: 100,
 			width: 300,
-			bounds: area.map,
+			bounds: map[area.code],
 			layers: [{
 				"type": "tile",
 				"props": "CartoDB.Positron"
 			},{
 				"type": "background",
-				"geojson": area.map,
+				"geojson": map[area.code],
 				"colour": "#e25b27",
 				"options": {
 					"fillOpacity": 0.25,
@@ -49,18 +62,253 @@ css: |
 </div>
 
 <div>
-<h2>Headlines dashboard</h2>
+<h2>Employment</h2>
 
 {{ comp.oi.dashboard({
   config: {
-    "data": area.summary.headlines,
+    "data": summary[area.code].employment_headlines,
     "title": "h",
     "value": "v",
+	"width": "20%",
+	"units": {
+		"postfix": "suffix"
+	},
     "panels": [
-      { "name": "Employment rate" },
-      { "name": "Unemployment rate" }
+      { "name": "Economically Inactive - Aged 16-24" },
+      { "name": "Economic Activity Rate - Aged 20-24" },
+      { "name": "Economic Activity Rate - Aged 16-19" },
+      { "name": "Unemployment Rate - Aged 16-64" }
     ]
   }
 }) | safe }}
+</div>
 
+<div class = "row">	
+{% comp 'display.figure' %}
+	<h3>Economic Inactivity Rate (%) - Aged 16-24</h3>
+
+	{% if summary[area.code].economic_inactivity %}
+		{{ comp.oi.chart.line({
+				"config": {
+					"width": "800",
+					"height": 300,
+					"data": summary[area.code].economic_inactivity,
+					"title": "Economic Inactivity Rate (%) - Aged 16-24",
+					legend: { "show": false, "position": "top" },
+					"axis": {
+					"x": {
+						"grid": {
+							"show": true,
+							"stroke-dasharray": "6 2",
+							"stroke-width": "1"
+						},
+						"tick": {
+							"labels": "year",
+							"grid": true,
+							"options": {"font-size":12, "rotate": 90}
+						},
+						"title": {
+							"label": "Rolling 3-year period"
+						}
+						},
+						"y": {
+							"grid": {
+								"show": true
+							},
+							"min": 0,
+							"max": 100,
+							"title": {
+								"label": "Rate (%)",
+								"options": {"font-size":8}
+							}
+						}
+					},
+					"columns": [
+						{
+							"name": "tooltip",
+							"template": "{{year}}\n Economic Inactivity rate: {{value | toFixed(1) }}%"
+						}
+					],
+					"series": [
+						{
+							"title": "Economic Inactivity (%)",
+							"x": "year",
+							"y": "value",
+							"tooltip": "tooltip"
+						}
+					]
+				}
+			}) | safe }}
+	{% else %}
+		<p> No data available </p>
+	{% endif %}
+{% endcomp %}
+</div>
+
+{% comp 'tabbed', { tab_count: 2 } %}
+
+
+<div class="row">
+{% comp 'display.figure' %}
+	 <span class="tab-title">Aged 16-19</span>
+
+	<h3>Economic Activity Rate (%)</h3>
+
+	{% if summary[area.code].economic_activity_16_19 %}
+		{{ comp.oi.chart.line({
+				"config": {
+					"width": "800",
+					"height": 300,
+					"data": summary[area.code].economic_activity_16_19,
+					legend: { "show": false, "position": "top" },
+					"axis": {
+						"x": {
+							"grid": {
+								"show": true,
+								"stroke-dasharray": "6 2",
+								"stroke-width": "1"
+							},
+							"tick": {
+								"labels": "year",
+								"grid": true,
+								"options": {"font-size":12}
+							},
+							"title": {
+								"label": "Rolling 3-year period",
+								"options": {"font-size":8}
+							}
+						},
+						"y": {
+							"grid": {
+								"show": true
+							},
+							"min": 0,
+							"max": 100,
+							"title": {
+								"label": "Rate (%)",
+								"options": {"font-size":8}
+							}
+						}
+					},
+					"columns": [
+						{
+							"name": "tooltip",
+							"template": "{{year}}\n Economic Activity rate: {{value | toFixed(1) }}%"
+						}
+					],
+					"series": [
+						{
+							"title": "Economic Activity (%)",
+							"x": "year",
+							"y": "value",
+							"tooltip": "tooltip"
+						}
+					]
+				}
+			}) | simpleviz | safe }}
+	{% else %}
+		<p> No data available </p>
+	{% endif %}
+{% endcomp %}
+</div>
+
+<div class="row">
+{% comp 'display.figure' %}
+	 <span class="tab-title">Aged 20-24</span>
+
+	<h3>Economic Activity Rate (%)</h3>
+
+	{% if summary[area.code].economic_activity_20_24 %}
+		{{ comp.oi.chart.line({
+				"config": {
+					"width": "800",
+					"height": 300,
+					"data": summary[area.code].economic_activity_20_24,
+					"title": "Economic Inactivity Rate (%) - Aged 16-24",
+					legend: { "show": false, "position": "top" },
+					"axis": {
+						"x": {
+							"grid": {
+								"show": true,
+								"stroke-dasharray": "6 2",
+								"stroke-width": "1"
+							},
+							"tick": {
+								"labels": "year",
+								"grid":true,
+								"options": {"font-size":12}
+							},
+							"title": {
+								"label": "Rolling 3-year period",
+								"options": {"font-size":8}
+							}
+						},
+						"y": {
+							"grid": {
+								"show": true
+							},
+							"min": 0,
+							"max": 100,
+							"title": {
+								"label": "Rate (%)",
+								"options": {"font-size":8}
+							}
+						}
+					},
+					"columns": [
+						{
+							"name": "tooltip",
+							"template": "{{year}}\n Economic Inactivity rate: {{value | toFixed(1) }}%"
+						}
+					],
+					"series": [
+						{
+							"title": "Economic Inactivity (%)",
+							"x": "year",
+							"y": "value",
+							"tooltip": "tooltip"
+						}
+					]
+				}
+			}) | simpleviz | safe }}
+	{% else %}
+		<p> No data available </p>
+	{% endif %}
+{% endcomp %}
+</div>
+{% endcomp %}
+
+<h2>Education</h2>
+
+<div class='education'>
+{{ comp.oi.dashboard({
+  config: {
+    "data": summary[area.code].education_headlines,
+    "title": "h",
+    "value": "v",
+	"width": "40%",
+    "panels": [
+      { "name": "Average Attainment 8 Score"},
+      { "name": "Average Progress 8 Score"}
+    ]
+  }
+}) | safe }}
+</div>
+
+<div class='education'>
+{{ comp.oi.dashboard({
+  config: {
+    "data": summary[area.code].education_headlines,
+    "title": "h",
+    "value": "v",
+	"width": "40%",
+	"units": {
+		"postfix": "suffix"
+	},
+    "panels": [
+      { "name": "Percentage Achieving Grade 4 English & Maths" },
+      { "name": "Percentage Achieving Grade 5 English & Maths"}
+    ]
+  }
+}) | safe }}
 </div>

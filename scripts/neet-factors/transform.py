@@ -9,7 +9,7 @@ factors_data = pd.read_csv(NEET_FACTORS_DATA)
 
 fields = ['local_authority_code', 'local_authority_name', 'value']
 
-DATA_DIR = os.path.join('src', 'maps', 'neet-factors', '_data', 'view')
+DATA_DIR = os.path.join('src', 'areas', 'maps', 'neet-factors', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 column_name_mapper = {
