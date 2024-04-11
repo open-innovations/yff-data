@@ -34,7 +34,7 @@ css: |
 		This is the page for {{ area.name }} ({{ area.code }}),
 		which is a Westminster Parliamentary Constituency ({{ area.type }}).
 		</p>
-		<p>{{ area.summary.description }}</p>
+		<p>{{ summary[area.code].description }}</p>
 	</div>
 
 
@@ -43,13 +43,13 @@ css: |
 			debug: true,
 			padding: 100,
 			width: 300,
-			bounds: area.map,
+			bounds: map[area.code],
 			layers: [{
 				"type": "tile",
 				"props": "CartoDB.Positron"
 			},{
 				"type": "background",
-				"geojson": area.map,
+				"geojson": map[area.code],
 				"colour": "#e25b27",
 				"options": {
 					"fillOpacity": 0.25,
@@ -66,7 +66,7 @@ css: |
 
 {{ comp.oi.dashboard({
   config: {
-    "data": area.summary.employment_headlines,
+    "data": summary[area.code].employment_headlines,
     "title": "h",
     "value": "v",
 	"width": "20%",
@@ -87,12 +87,12 @@ css: |
 {% comp 'display.figure' %}
 	<h3>Economic Inactivity Rate (%) - Aged 16-24</h3>
 
-	{% if area.summary.economic_inactivity %}
+	{% if summary[area.code].economic_inactivity %}
 		{{ comp.oi.chart.line({
 				"config": {
 					"width": "800",
 					"height": 300,
-					"data": area.summary.economic_inactivity,
+					"data": summary[area.code].economic_inactivity,
 					"title": "Economic Inactivity Rate (%) - Aged 16-24",
 					legend: { "show": false, "position": "top" },
 					"axis": {
@@ -154,12 +154,12 @@ css: |
 
 	<h3>Economic Activity Rate (%)</h3>
 
-	{% if area.summary.economic_activity_16_19 %}
+	{% if summary[area.code].economic_activity_16_19 %}
 		{{ comp.oi.chart.line({
 				"config": {
 					"width": "800",
 					"height": 300,
-					"data": area.summary.economic_activity_16_19,
+					"data": summary[area.code].economic_activity_16_19,
 					legend: { "show": false, "position": "top" },
 					"axis": {
 						"x": {
@@ -217,12 +217,12 @@ css: |
 
 	<h3>Economic Activity Rate (%)</h3>
 
-	{% if area.summary.economic_activity_20_24 %}
+	{% if summary[area.code].economic_activity_20_24 %}
 		{{ comp.oi.chart.line({
 				"config": {
 					"width": "800",
 					"height": 300,
-					"data": area.summary.economic_activity_20_24,
+					"data": summary[area.code].economic_activity_20_24,
 					"title": "Economic Inactivity Rate (%) - Aged 16-24",
 					legend: { "show": false, "position": "top" },
 					"axis": {
@@ -281,7 +281,7 @@ css: |
 <div class='education'>
 {{ comp.oi.dashboard({
   config: {
-    "data": area.summary.education_headlines,
+    "data": summary[area.code].education_headlines,
     "title": "h",
     "value": "v",
 	"width": "40%",
@@ -296,7 +296,7 @@ css: |
 <div class='education'>
 {{ comp.oi.dashboard({
   config: {
-    "data": area.summary.education_headlines,
+    "data": summary[area.code].education_headlines,
     "title": "h",
     "value": "v",
 	"width": "40%",

@@ -17,8 +17,9 @@ export default function*({ areas, summary, map }) {
         name: name,
         code: code,
         type: 'PCON22',
-		summary: summary[code]||{},
-		map: map[code] || {}
+        // Removing to save memory in build
+        // summary: summary[code]||{},
+        // map: map[code] || {}
       }
     }
   }
