@@ -3,10 +3,14 @@ title: Areas
 url: /areas/
 nav_order:
   v2: 40   
+css: |
+  .oi-viz svg {
+    height: 20rem;
+  }
 ---
 
 {% comp 'grid.auto', { min_width: '30em' } %}
   {% for page in search.pages('areas', 'publication_date=desc') | data %}
-    {{ comp.superLink({ page: page }) | safe }}
+    {{ comp.superLink({ page: page, summary_first: true }) | safe }}
   {% endfor %}
 {% endcomp %}

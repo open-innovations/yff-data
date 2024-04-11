@@ -1,9 +1,22 @@
+{% macro display_summary() %}
+  {% if page.summary | isArray %}
+    {% set summary = page.summary | first %}
+  {% else %}
+    {% set summary = page.summary %}
+  {% endif %}
+  <div class="summary embolden-first">
+    {{ summary | md | striplinks | safe }}
+  </div>
+{% endmacro %}
+
 {% comp 'grid.pane', { link: page.url, extra_classes: extra_classes or 'turquoise-bg' } %}
 <h2>{{ page.title }}</h2>
 
 {% if page.publication_date %}
   <div class="post-date">{{ project.publication_date | date('YFF') }}</div>
 {% endif %}
+
+{% if page.summary and summary_first %}{{ display_summary() }}{% endif %}
 
 {% if show_viz | default(true) %}
   {% if page.featured %}
@@ -25,16 +38,7 @@
 
 {% endif %}
 
-{% if page.summary %}
-  {% if page.summary | isArray %}
-    {% set summary = page.summary | first %}
-  {% else %}
-    {% set summary = page.summary %}
-  {% endif %}
-  <div class="summary embolden-first">
-    {{ summary | md | striplinks | safe }}
-  </div>
-{% endif %}
+{% if page.summary and not summary_first %}{{ display_summary() }}{% endif %}
 
 {% if page.topics %}
   <div>
