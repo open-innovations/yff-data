@@ -2,37 +2,18 @@ vars:
   - top: ../..
 stages:
   prepare:
-    cmd: PYTHONPATH=. python3 scripts/international/prepare.py
+    cmd:
+      # Running multiple commands in a stage is perfectly fine.
+      # Combined as they both use the same files and write to the same directory.
+      - PYTHONPATH=. python3 scripts/international/prepare.py
+      - perl scripts/international/transform.pl
     wdir: ${top}
     deps:
       - scripts/international/prepare.py
       - scripts/labour-market/config.py
-      - working/upstream/oecd_lfs_by_sex_and_age.csv
-    outs:
-      - src/areas/maps/international/_data/view/economic_inactivity_rate_female.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/economic_inactivity_rate_male.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/economic_inactivity_rate_total.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/employment_rate_female_15_over.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/employment_rate_male_15_over.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/employment_rate_total_15_over.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/unemployment_rate_female_15_over.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/unemployment_rate_male_15_over.csv:
-          cache: false
-      - src/areas/maps/international/_data/view/unemployment_rate_total_15_over.csv:
-          cache: false
-  transform:
-    cmd: perl scripts/international/transform.pl
-    wdir: ${top}
-    deps:
       - scripts/international/transform.pl
       - working/upstream/oecd_lfs_by_sex_and_age.csv
     outs:
-      - src/areas/maps/international/_data/view/oecd_lfs_grouped.csv:
+      # This will clear and track all the files in the output directory if the stage runs
+      - src/areas/maps/international/_data/view/:
           cache: false
