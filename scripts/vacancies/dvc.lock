@@ -9,12 +9,12 @@ stages:
       size: 9319
     - path: scripts/util/metadata.py
       hash: md5
-      md5: c9de84c2b18f0d01aaa92d6fa7718078
-      size: 716
+      md5: cfc702d76a3920af615dbbf1a9408cfd
+      size: 697
     - path: scripts/vacancies/prepare.py
       hash: md5
-      md5: 9b08dd7dbd131a380352fac07cd02a92
-      size: 5986
+      md5: 30321cc17cc6416dad43924392b54f00
+      size: 5836
     - path: working/upstream/metadata.csv
       hash: md5
       md5: b89c2001eee6a0c6b98bf37a524f8114
@@ -53,11 +53,10 @@ stages:
       size: 3681176
     - path: transform.ipynb
       hash: md5
-      md5: 5bcaf95165aa6cdb8df30b711a954b2a
-      size: 2300
+      md5: 9ad3d7e68c06102c0196aa068faabfc2
+      size: 2209
     outs:
     - path: ../../data/vacancies/vacancies_by_date.csv
       hash: md5
-      md5: a94c2ff0f71decdeab3486d6e68d6e4c
-      size: 9295
-      isexec: true
+      md5: 072bf45cbff371fd2f9e27a3092dfd78
+      size: 9319

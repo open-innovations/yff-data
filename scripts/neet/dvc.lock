@@ -24,19 +24,17 @@ stages:
       size: 363397
     - path: transform.ipynb
       hash: md5
-      md5: 6caacf7174e19570547c5d14992f6414
-      size: 6040
+      md5: ce905af2b8ca8a4f5db6b9c54878006b
+      size: 5828
     outs:
     - path: ../../data/neet/metadata.json
       hash: md5
       md5: a8abd0a71011fea6cbb3953c5356f972
       size: 75
-      isexec: true
     - path: ../../data/neet/neet.csv
       hash: md5
       md5: 50945dc303f4966136a92751d5ef5cb7
       size: 23190
-      isexec: true
   prepare:
     cmd: PYTHONPATH=. python scripts/neet/prepare.py
     deps:
@@ -46,33 +44,29 @@ stages:
       size: 23190
     - path: scripts/neet/prepare.py
       hash: md5
-      md5: 53b9b3164c976e8d8b98daa787f7d59b
-      size: 2831
+      md5: 8ffcfc4c6f9f5ad209859c3dd7897d14
+      size: 2750
     - path: scripts/util/date.py
       md5: 2e7d9d4230f47d81d486885152d79f8c
-      size: 1620
+      size: 1564
     - path: scripts/util/file.py
       hash: md5
-      md5: 20fd6bf3d48ae6ad3b8a20582708bd2c
-      size: 978
+      md5: dfb28f0d0f261d2c3ceb88669883cd2c
+      size: 944
     outs:
     - path: src/_data/sources/neet/headlines.csv
       hash: md5
       md5: 3ac4d4cf56f83a52334d3fe164602aa1
       size: 382
-      isexec: true
     - path: src/_data/sources/neet/neet_all_data.csv
       hash: md5
       md5: 9920818c1c828cd03fb5f55ba3bd2139
       size: 25868
-      isexec: true
     - path: src/_data/sources/neet/neet_last_3_years.csv
       hash: md5
       md5: 8e4f8e62d6d49d213b0bd777e21297c3
       size: 4255
-      isexec: true
     - path: src/dashboard/neet/_data/latest.json
       hash: md5
       md5: 1a0fec96f06a10761c77ce486e2f6f34
       size: 161
-      isexec: true

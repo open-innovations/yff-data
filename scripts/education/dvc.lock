@@ -79,8 +79,8 @@ stages:
     deps:
     - path: scripts/education/transform_census.py
       hash: md5
-      md5: d3269619e5083c0c140eb83531d5c69f
-      size: 4113
+      md5: 7bede8ff5f2aeded8c198a029276e9fd
+      size: 4011
     - path: working/upstream/census_qualifications.csv
       hash: md5
       md5: 17e750e233f9134fb4ca889ff784dfb6
@@ -90,29 +90,23 @@ stages:
       hash: md5
       md5: 567379d58d86ae2b9aa8c84c367d2a9f
       size: 17979
-      isexec: true
     - path: src/areas/maps/education/_data/view/census_la_black_british.csv
       hash: md5
       md5: 9a9cad8ef0abea2679fa54938181ae9c
       size: 18032
-      isexec: true
     - path: src/areas/maps/education/_data/view/census_la_mixed_multiple.csv
       hash: md5
       md5: 9b7b94b12bba2d880298f39006f26c00
       size: 18177
-      isexec: true
     - path: src/areas/maps/education/_data/view/census_la_other.csv
       hash: md5
       md5: 8f33c3adf60e0017c0155c35a32bed27
       size: 17904
-      isexec: true
     - path: src/areas/maps/education/_data/view/census_la_total.csv
       hash: md5
       md5: a0607e4bae5d9c7983eaceb05a9598af
       size: 18342
-      isexec: true
     - path: src/areas/maps/education/_data/view/census_la_white.csv
       hash: md5
       md5: 2e9e0e9c2a3a5a6177d74bd42a53fa8b
       size: 18363
-      isexec: true
