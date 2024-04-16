@@ -1,8 +1,9 @@
 name: Merge Check
 
 "on":
-  workflow_dispatch:
-
+  pull_request:
+    branches:
+      - "main"
 
 # Cancel any in-flight jobs
 concurrency:
@@ -19,7 +20,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
           cache: pipenv
 
       - name: Install Python dependencies
@@ -42,4 +43,3 @@ jobs:
       - name: Build site
         shell: bash
         run: deno task build
-
