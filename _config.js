@@ -111,7 +111,7 @@ site.use(date({
 }));
 
 // Add csv loader
-site.loadData(['.csv'], csvLoader);
+site.loadData(['.csv'], csvLoader());
 site.loadData(['.geojson', '.hexjson'], jsonLoader);
 site.loadData(['.md']);
 

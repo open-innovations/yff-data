@@ -4,7 +4,8 @@
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --v8-flags=--max-old-space-size=2048 --unstable -A -",
     "build": "deno task lume",
     "serve": "deno task lume -s",
-    "validate": "deno run --allow-env --allow-read=src/_data/reports --allow-write=lib lib/validate.ts"
+    "validate": "deno run --allow-env --allow-read=src/_data/reports --allow-write=lib lib/validate.ts",
+    "lume_debug": "echo \"import 'lume/cli.ts'\" | deno run --inspect-wait --v8-flags=--max-old-space-size=2048 --allow-all -"
   },
   "lock": false,
   "compilerOptions": {
