@@ -1,0 +1,45 @@
+name: Merge Check
+
+"on":
+  workflow_dispatch:
+
+
+# Cancel any in-flight jobs
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: pipenv
+
+      - name: Install Python dependencies
+        run: |
+          pip install pipenv
+          # pipenv install
+          pipenv sync
+
+      - name: Run DVC pipelines
+        run: |
+          pipenv run dvc --version
+          pipenv run dvc update -R working
+          pipenv run dvc repro -R scripts
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Build site
+        shell: bash
+        run: deno task build
+
