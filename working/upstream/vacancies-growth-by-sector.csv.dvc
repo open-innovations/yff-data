@@ -1,10 +1,10 @@
-md5: 7e3c806707847702fa7f44d3e0f55391
+md5: dbe132040d891acaf9a7d9c5bbed9cfc
 frozen: true
 deps:
 - path: data/processed/vacancies/vacancies-growth-by-sector.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 8336267adee2d4d8c5e0823c4ad6ba7e2db65587
+    rev_lock: 951525b3a8be7608a8d158005c7722417c62b6f3
 outs:
 - md5: 45424a0fc66c2bd4907a534fb377346b
   size: 1853
