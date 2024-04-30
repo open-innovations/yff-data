@@ -2,9 +2,16 @@ export const layout = 'layouts/areas/pcon.njk';
 
 export const tags = ['area', 'constituency'];
 
-export default function*({ areas, summary, map }) {
+export default function*({ areas, build }) {
+
+  let areasToBuild = areas.reference.pcon;
+
+  if (build.small_site) {
+    areasToBuild = areas.reference.pcon.slice(0, 10);
+  }
+
   // Iterate over all the areas
-  for (const area of areas.reference.pcon) {
+  for (const area of areasToBuild) {
     // Read the keys out of the area and map to more friendly names
     const { PCON22NM: name, PCON22CD: code } = area;
 

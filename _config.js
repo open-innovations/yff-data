@@ -277,4 +277,8 @@ site.copy('.nojekyll');
 // Add CNAME file
 site.copy('CNAME');
 
+site.data('build', {
+  small_site: Deno.env.has('SMALL_SITE'),
+});
+
 export default site;
