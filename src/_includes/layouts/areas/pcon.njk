@@ -83,6 +83,7 @@ css: |
 }) | safe }}
 </div>
 
+<div class = "panes">	
 <div class = "row">	
 {% comp 'display.figure' %}
 	<h3>{{ area.name }}: Economic Inactivity Rate (%) - Aged 16-24</h3>
@@ -144,10 +145,12 @@ css: |
 	{% endif %}
 {% endcomp %}
 </div>
+</div>
 
 {% comp 'tabbed', { tab_count: 2 } %}
 
 
+<div class="panes">
 <div class="row">
 {% comp 'display.figure' %}
 	 <span class="tab-title">Aged 16-19</span>
@@ -275,6 +278,7 @@ css: |
 		<p> No data available </p>
 	{% endif %}
 {% endcomp %}
+</div>
 </div>
 {% endcomp %}
 
