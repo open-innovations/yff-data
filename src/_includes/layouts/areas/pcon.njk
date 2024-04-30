@@ -85,7 +85,7 @@ css: |
 
 <div class = "row">	
 {% comp 'display.figure' %}
-	<h3>Economic Inactivity Rate (%) - Aged 16-24</h3>
+	<h3>{{ area.name }}: Economic Inactivity Rate (%) - Aged 16-24</h3>
 
 	{% if summary[area.code].economic_inactivity %}
 		{{ comp.oi.chart.line({
@@ -152,7 +152,7 @@ css: |
 {% comp 'display.figure' %}
 	 <span class="tab-title">Aged 16-19</span>
 
-	<h3>Economic Activity Rate (%)</h3>
+	<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
 
 	{% if summary[area.code].economic_activity_16_19 %}
 		{{ comp.oi.chart.line({
@@ -216,7 +216,7 @@ css: |
 {% comp 'display.figure' %}
 	 <span class="tab-title">Aged 20-24</span>
 
-	<h3>Economic Activity Rate (%)</h3>
+	<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
 
 	{% if summary[area.code].economic_activity_20_24 %}
 		{{ comp.oi.chart.line({
