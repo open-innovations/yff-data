@@ -28,7 +28,7 @@ jobs:
           deno-version: v1.x
       - name: Deploy the site
         shell: bash
-        run: deno task deploy
+        run: deno task deploy:dev
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PATH: ${{ secrets.SSH_PATH }}
