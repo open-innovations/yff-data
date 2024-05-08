@@ -7,17 +7,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-  <title>{{ title | default('PAGE TITLE') }} - Youth Futures Foundation</title>
+  <title>{{ title | default('PAGE TITLE') }} - {% if build.env == 'dev' %}DEV {% endif %}Youth Futures Foundation</title>
   <link rel="stylesheet" href="/components.css">
   <link rel="stylesheet" href="/assets/style/yff.css">
   <script src="/components.js" inline></script>
   {% if css %}<style>{{ css }}</style>{% endif %}
 </head>
 <body>
+  {% if build.env == 'dev' %}{{ comp.dev_banner() | safe }}{% endif %}
   <div class="message container" data-pagefind-ignore="all">
     {% include 'partials/feedback.njk' %}
   </div>
-  {% if build.env == 'dev' %}{{ comp.dev_banner() | safe }}{% endif %}
   {% include 'partials/site-header.njk' %}
   <main id="main" role="main" class="container {{ main_class or '' }}">
     {% block main %}
