@@ -28,7 +28,7 @@ import * as yff from './yff-config.ts';
 
 const site = lume({
   src: './src',
-  location: new URL('https://yff-wireframe.open-innovations.org/'),
+  location: new URL('https://data.youthfuturesfoundation.org/'),
 });
 
 // Change this to update the version of the site that is built. This mainly affects navigation.
@@ -279,6 +279,8 @@ site.copy('CNAME');
 
 site.data('build', {
   small_site: Deno.env.has('SMALL_SITE'),
+  env: Deno.env.get('DENO_ENV'),
+  date: new Date(),
 });
 
 export default site;
