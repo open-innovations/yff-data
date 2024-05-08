@@ -7,7 +7,7 @@
     "validate": "deno run --allow-env --allow-read=src/_data/reports --allow-write=lib lib/validate.ts",
     "lume_debug": "echo \"import 'lume/cli.ts'\" | deno run --inspect-wait --v8-flags=--max-old-space-size=2048 --allow-all -",
     "build:dev": "deno task build --location https://dev.open-innovations.org/yff/",
-    "sync:dev": "rsync --info=PROGRESS2,STATS2 --recursive --delete --rsh=\"sshpass -e ssh -o StrictHostKeyChecking=no -l $SSH_USER\" --rsync-path \"sudo -u www-data rsync\" _site/ $SSH_HOST:$SSH_PATH",
+    "sync:dev": "rsync --info=STATS2 --recursive --delete --rsh=\"sshpass -e ssh -o StrictHostKeyChecking=no -l $SSH_USER\" --rsync-path \"sudo -u www-data rsync\" _site/ $SSH_HOST:$SSH_PATH",
     "deploy:dev": "deno task build:dev && deno task sync:dev"
   },
   "lock": false,
