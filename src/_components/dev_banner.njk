@@ -1,0 +1,21 @@
+---
+  css: |
+    .dev.banner {
+      color: yellow;
+      background: black;
+      padding: 0.5rem;
+      margin: 0;
+      text-align: center;
+      position: sticky;
+      top: -1px;
+      z-index: 1003;
+      & a {
+        color: #dff3f4;
+        text-decoration: underline;
+      }
+    }
+---
+<aside class="banner dev" data-pagefind-ignore="all">
+  This is a development version of the site and may contain work-in-progress or incorrect data.
+  Please visit the live site at <a href="https://data.youthfuturesfoundation.org/">data.youthfuturesfoundation.org</a>.
+</aside>
