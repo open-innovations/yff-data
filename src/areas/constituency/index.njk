@@ -33,7 +33,7 @@ featured: "#featured-viz figure"
 
 
 <ul id="constituencies">
-  {% for area in search.pages('area constituency') | data %}
+  {% for area in search.pages('area constituency')  %}
     <li>
       <a href="{{ area.url }}">{{ area.title }}</a>
     </li>

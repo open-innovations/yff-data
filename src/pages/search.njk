@@ -19,5 +19,5 @@ nav_order:
 
 {{ comp.filter({ label: 'Type to filter', selector: 'ul.tag-cloud' }) | safe }}
 
-{{ comp.tagCloud({ tags: search.pages("topic", "title") | data | getAttr('title'), live_links: true }) | safe }}
+{{ comp.tagCloud({ tags: search.pages("topic", "title")  | getAttr('title'), live_links: true }) | safe }}
 </section>

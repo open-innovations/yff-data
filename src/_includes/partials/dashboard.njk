@@ -4,7 +4,7 @@
 </p>
 
 <ul class="tag-cloud">
-  {% for dashboard in search.pages('dashboard', 'priority=desc title=asc') | data %}
+  {% for dashboard in search.pages('dashboard', 'priority=desc title=asc')  %}
     <li style="--tag-colour: #E55912;">
       <a href="{{ dashboard.url }}">{{ dashboard.title }}</a>
     </li>

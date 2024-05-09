@@ -5,10 +5,11 @@ import jsonLoader from 'lume/core/loaders/json.ts';
 import basePath from 'lume/plugins/base_path.ts';
 import esbuild from 'lume/plugins/esbuild.ts';
 import inline from "lume/plugins/inline.ts";
-import netlifyCMS from 'lume/plugins/netlify_cms.ts';
+import decapCMS from 'lume/plugins/decap_cms.ts';
 import postcss from "lume/plugins/postcss.ts";
 import date from "lume/plugins/date.ts"; // To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
-import enGB from "npm:date-fns/locale/en-GB/index.js";
+import { enGB } from "npm:date-fns/locale/en-GB";
+import nunjucks from "lume/plugins/nunjucks.ts";
 import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
@@ -30,6 +31,9 @@ const site = lume({
   src: './src',
   location: new URL('https://data.youthfuturesfoundation.org/'),
 });
+
+// Import Nunjucks plugin
+site.use(nunjucks());
 
 // Change this to update the version of the site that is built. This mainly affects navigation.
 site.data('version', Deno.env.get('VERSION') || 'v2');
@@ -57,7 +61,7 @@ const env = await load();
 
 if(!("OI_LOCAL" in env)){
 	// Setup admin
-	site.use(netlifyCMS({
+	site.use(decapCMS({
 	  previewStyle: '/assets/style/yff.css',
 	  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
 	}));
@@ -143,16 +147,16 @@ remoteTree('data', dataPath + '/raw');
 // Copy /data to live site
 site.copy(dataPath);
 
-site.preprocess([".html"], (page) => {
+site.preprocess([".html"], pages => pages.forEach((page) => {
   page.data.srcPath = 'src' + page.src.path + page.src.ext;
-});
+}));
 
 // Processor to add selector content - hidden pre-hydration
-site.process(['.html'], selectorProcessor);
+site.process(['.html'], (pages) => pages.forEach(selectorProcessor));
 // Processor to extract content from a page and insert it into the body of another page
-site.process(['.html'], injector);
+site.process(['.html'], (pages) => pages.forEach(injector));
 // Processor which adds dependencies into the page head
-site.process(['.html'], autoDependency);
+site.process(['.html'], (pages) => pages.forEach(autoDependency));
 
 // Add filters
 site.filter('yaml', (value, options = {}) => yamlStringify(value, options));
@@ -248,6 +252,7 @@ site.use(basePath());
 site.use(resolveUrls());
 site.use(slugifyUrls({
   lowercase: false,
+  extensions: [".html"], // To slugify only HTML pages
 }));
 
 // Define remote access to the font files

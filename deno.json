@@ -12,6 +12,9 @@
   },
   "lock": false,
   "compilerOptions": {
+    "types": [
+      "lume/types.ts"
+    ],
     "lib": [
       "deno.ns",
       "dom"

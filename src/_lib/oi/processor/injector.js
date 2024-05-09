@@ -13,7 +13,7 @@ export default function injector(page) {
 
     // Get the first instance of the seletor from that page.
     // Clone that so we can operate on it with no fear of breaking the original.
-    const featuredContent = targetPage.document.querySelector(sourceSelector).cloneNode(true);
+    const featuredContent = targetPage.page.document.querySelector(sourceSelector).cloneNode(true);
     if (!featuredContent) return;
 
     // Remove any links

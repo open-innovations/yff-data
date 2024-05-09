@@ -21,7 +21,7 @@ css: |
 #}
 <ul class="tag-cloud">
   {% for tag in tags %}
-    {% set link_page = search.page('topic title="'+tag+'"').data %}
+    {% set link_page = search.page('topic title="'+tag+'"') %}
     <li>
     {%- if live_links -%}
       <a href="{{ link_page.url }}">{{ tag }}</a>

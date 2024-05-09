@@ -9,7 +9,7 @@ layout: layouts/simple.njk
 {{ topic_text[id] | md | safe }}
 
 {% comp 'grid.auto', {min_width: '30em'} %}
-{% for page in search.pages("topics*=\"" + title + "\"") | data %}
+{% for page in search.pages("topics*=\"" + title + "\"")  %}
   {{ comp.superlink({ page: page }) | safe }}
 {% endfor %}
 {% endcomp %}
