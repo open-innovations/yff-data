@@ -41,14 +41,6 @@ site.data('version', Deno.env.get('VERSION') || 'v2');
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
 
-// Set up search engine
-site.use(pagefind({
-  ui: {
-    showSubResults: true,
-    resetStyles: true
-  }
-}));
-
 // Process all css files
 site.use(postcss());
 site.use(inline());
@@ -105,7 +97,15 @@ site.use(
     },
   })
 );
-  
+
+// Set up search engine
+site.use(pagefind({
+  ui: {
+    showSubResults: true,
+    resetStyles: true
+  }
+}));
+
 // Format dates
 site.use(date({
   locales: { enGB },
