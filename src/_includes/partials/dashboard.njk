@@ -12,13 +12,13 @@
 </ul>
 
 {% comp 'grid.masonry', { block_width: '20rem' } %}
-{% include './dashboard/maps.njk' %}
+{{ comp.dashboard.maps() | safe }}
 {% endcomp %}
 
 {% comp 'grid.masonry', { block_width: '20rem' } %}
-{% include './dashboard/headlines.njk' %}
+{{ comp.dashboard.headlines() | safe }}
 {% endcomp %}
 
 {% comp 'grid.masonry', { block_width: '30rem' } %}
-{% include './dashboard/graphs.njk' %}
+{{ comp.dashboard.graphs() | safe }}
 {% endcomp %}
