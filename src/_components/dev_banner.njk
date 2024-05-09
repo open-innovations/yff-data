@@ -3,12 +3,15 @@
     .dev.banner {
       color: yellow;
       background: black;
-      padding: 0.5rem;
+      padding: 0.2rem;
       margin: 0;
       text-align: center;
       position: sticky;
-      top: -1px;
+      top: -5px;
       z-index: 1003;
+      border-top: solid 5px;
+      border-bottom: solid 5px;
+      border-image: repeating-linear-gradient( -75deg, yellow, yellow 10px, black 10px, black 20px) 20;
       & a {
         color: #dff3f4;
         text-decoration: underline;
@@ -16,6 +19,6 @@
     }
 ---
 <aside class="banner dev" data-pagefind-ignore="all">
-  This is a development version of the site and may contain work-in-progress or incorrect data.
+  This is a development version of the site and may contain invalid data.
   Please visit the live site at <a href="https://data.youthfuturesfoundation.org/">data.youthfuturesfoundation.org</a>.
 </aside>
