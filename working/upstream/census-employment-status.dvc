@@ -1,10 +1,10 @@
-md5: 5436efd3ae48eb82e7c6b59c67d04313
+md5: 02a211601a781947ddda00c1f487b235
 frozen: true
 deps:
 - path: data/processed/census/employment-status.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 0f1c9d888db4f54893cc91352fdc77a7271692db
+    rev_lock: 7def3a17f79e0f9b98667a154fd4ad80191a021d
 outs:
 - md5: aa01ca494c03e7332df9264cbb1a3527
   size: 2565260
