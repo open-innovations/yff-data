@@ -10,6 +10,7 @@ design/data/
 __pycache__
 /MM23_variable_lookup.csv
 .env
+.env.ps1
 
 # Debugging files
 *.cpuprofile
