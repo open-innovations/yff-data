@@ -47,8 +47,8 @@ stages:
     deps:
     - path: scripts/dfe/transform_char_outcomes.py
       hash: md5
-      md5: 0b5efb41933858032405740e634ae92b
-      size: 1757
+      md5: 4ee350c0b6d44f41285ed330a6a9a0d5
+      size: 1714
     - path: working/upstream/ks4_char_outcomes.csv
       hash: md5
       md5: 5246a735aa00bcdc2b01d1a578751522
@@ -58,7 +58,6 @@ stages:
       hash: md5
       md5: ca594b936fa60d156f58e9d74939cade
       size: 182493
-      isexec: true
   transform_char_outputs:
     cmd: PYTHONPATH=. python scripts/dfe/transform_ks4_outcomes.py
     deps:
@@ -75,8 +74,8 @@ stages:
     deps:
     - path: scripts/dfe/transform_ks4_outcomes.py
       hash: md5
-      md5: b56824565f641dd62f3b2f197b2501f3
-      size: 2139
+      md5: 1835f045feb949b92208c033a978afc6
+      size: 2078
     - path: working/upstream/ks4_outcomes.csv
       hash: md5
       md5: ec15396dd6d9b780f03a0860f96a3137
@@ -86,4 +85,3 @@ stages:
       hash: md5
       md5: f839753b67a42cdff2d8f04355370dd7
       size: 48391
-      isexec: true
