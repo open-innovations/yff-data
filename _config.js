@@ -14,7 +14,7 @@ import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
 import { walkSync } from 'std/fs/mod.ts';
-import csvLoader from 'oi-lume-utils/loaders/csv-loader.ts';
+import csvLoaderFactory from 'oi-lume-utils/loaders/csv-loader.ts';
 import autoDependency from 'oi-lume-utils/processors/auto-dependency.ts';
 import { applyReplacementFilters, decimalSafeMath } from '/src/_lib/oi/util.js';
 import injector from '/src/_lib/oi/processor/injector.js';
@@ -115,7 +115,21 @@ site.use(date({
 }));
 
 // Add csv loader
-site.loadData(['.csv'], csvLoader());
+const csvLoader = csvLoaderFactory();
+site.loadData([".csv"], async (filePath) => {
+  // Wrapped in some error handling, to deal with empty files
+  try {
+    const data = await csvLoader(filePath)
+    return data;
+  } catch(e) {
+    if (e.message.match(/^File has no data/)) {
+      console.error(e.message);
+      return undefined;
+    }
+    throw e;
+  }
+});
+
 site.loadData(['.geojson', '.hexjson'], jsonLoader);
 site.loadData(['.md']);
 
