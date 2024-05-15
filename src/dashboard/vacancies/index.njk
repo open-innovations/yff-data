@@ -283,9 +283,11 @@ topics:
 			}) | safe }}
 		{% endcomp %}
 
+
 		{% comp 'display.figure', { id: '', source_file: '/data/vacancies/growth_wanted_youth_sectors.csv' } %}
 			<span class="tab-title">Sectors targeted by young people</span>
 			<h3>Quarterly growth in vacancies in the most desirable sectors for young people</h3>
+      {% if sources.vacancies.growth_wanted_youth_sectors | length %}
 			{{ comp.oi.chart.bar({
 				"config": {
 				"axis": {
@@ -366,7 +368,12 @@ topics:
 				"width": 1120
 			}
 			}) | safe }}
+      {% else %}
+      <p>Data not available</p>
+      {% endif %}
 		{% endcomp %}
-
 {% endcomp %} {# tabbed #}
 
+<pre>
+{{ sources.vacancies.growth_key_youth_sectors | length }}
+</pre>
