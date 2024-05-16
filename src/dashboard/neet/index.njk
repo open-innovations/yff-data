@@ -16,7 +16,74 @@ raw_data:
   - /data/raw/neet/neet.csv
 ---
 
-<h2>About the data on this page</h2>
+<h2>Ethnicity Analysis</h2>
+
+<p>The visualisation below presents analysis of data on young people not in education, employment or training (NEET) from the Annual Population Survey, broken down by ethnic group.</p>
+
+		{% comp 'display.figure' %}
+		{{ comp.oi.chart.bar({ config: {
+			data: manual.ethnicity.rows,
+			category: 'Ethnicity',
+			width: 1000,
+			height: 400,
+			series: [
+				{ title: 'NEET Rate (%)', value: 'NEET Rate (%)', tooltip: '{{ Ethnicity }} \n{{ NEET Rate (%) | toFixed(0) | toLocaleString() }}%' }
+			],
+			legend: {
+				show: false,
+				position: "top"
+			},
+			axis: {
+				x: { 
+					tick: { 
+						spacing: 10 
+					}, 
+					grid: false,
+					max: 42
+					}
+			}
+			} }) | safe }}
+		{% endcomp %}
+
+<h2>Regional Differences</h2>
+
+<p>The map below presents analysis of the Annual Population Survey, showing the percentage of young people NEET across UK regions.</p>
+
+  {% comp 'display.figure' %}
+    {{ comp.oi.map.svg({ 
+      config: {
+        geojson: {
+          data: sources.maps.test,
+          key: 'ITL121CD'
+        },
+        bounds: {
+          lat: {
+            min: 49,
+            max: 57
+          },
+          lon: {
+            min: -8.4,
+            max: 2.5
+          }
+        },
+        data: manual.regions.rows,
+        key: 'ITL121CD',
+        value: 'NEET Rate (%)',
+        min: 0,
+        width: 1000,
+        height: 400,
+        scale: 'YFF',
+        tooltip: 'tooltip',
+        columns: [{
+          name: 'tooltip',
+          template: '{{ Region }} \nNEET Rate: {{ NEET Rate (%) | toLocaleString() }}%'
+        }]          
+      }
+    }) | safe }}
+  {% endcomp %}
+
+
+<h2>About the data below</h2>
 <p>
 These visualisations are driven by data on young people not in education, employment or training (NEET) from the 
 Office for National Statistics <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/youngpeoplenotineducationemploymentortrainingneettable1"> available here.</a>
