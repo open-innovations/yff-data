@@ -1,18 +1,11 @@
 ---
 css: |
   aside.cookie-overlay {
-    background: #fad5d7;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 0;
-    padding: 20px;
-    box-shadow: 0 0 15px;
     z-index: 90000;
-    & > * + * {
-      margin-top: 1em;
-    }
   }
 js: |
   function registerCookieOverlay() {
@@ -49,20 +42,19 @@ js: |
   addEventListener('DOMContentLoaded', registerCookieOverlay);
 ---
 <aside class="cookie-overlay" hidden>
-  <h2>Cookie consent</h2>
-  <h3>Analytics cookies</h3>
+  <h2>Tracking how you use this website</h2>
   <p>
     We'd like to collect information using Google Analytics to help us improve this website.
-    We collect this data by running code provided by Google on your device, which collects
-    data about how you have interacted with our site.
-    By clicking the <em>Consent</em> button below, you agree to this use of data.
+    We gather this data by running code provided by Google on your device which tracks how
+    you have interacted with our site.
+    By clicking the <strong>I consent</strong> button below, you agree to this use of data.
   </p>
   </p>
     For more information, please see our
-    <a href="{{ cookie_policy }}" target="blank">cookie policy</a>.
+    <a href="//youthfuturesfoundation.org/cookie-policy/" target="blank">cookie policy</a>.
   </p>
-  <div>
-    <button class="accept">Consent</button>
-    <button class="reject">Do not consent</button>
-  </div>
+  <form>
+    <button class="accept">I consent</button>
+    <button class="reject">I do not consent</button>
+  </form>
 </aside>

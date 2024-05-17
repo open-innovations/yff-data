@@ -22,23 +22,5 @@ label + select {
 button {
   font: inherit;
   border: initial;
-
-  .cookie-overlay & {
-    color: black;
-    background: #f7ab3d;
-    padding-inline: 20px;
-    padding-block: 6px 2px;
-    border-radius: 20px;
-    &:hover {
-      color: #f7ab3d;
-      background: black;
-    }
-    &:active {
-      background-color: #e55912;
-    }
-    &:focus {
-      border-radius: 20px;
-    }
-  }
 }
 
