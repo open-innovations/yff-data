@@ -26,6 +26,7 @@ import { generateTickArray } from './src/_lib/chart-filters.ts';
 import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.15.2/mod.ts";
 
 import * as yff from './yff-config.ts';
+import { getNamedColourStyles } from "./lib/generate-styles.ts";
 
 const site = lume({
   src: './src',
@@ -40,6 +41,8 @@ site.data('version', Deno.env.get('VERSION') || 'v2');
 
 // To set the DEBUG global data, start the process with DEBUG=true in the environment
 if (Deno.env.get('DEBUG') !== undefined) site.data('DEBUG', true);
+
+site.data("colour_styles", getNamedColourStyles());
 
 // Process all css files
 site.use(postcss());
