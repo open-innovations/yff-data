@@ -25,6 +25,7 @@ import { generateTickArray } from './src/_lib/chart-filters.ts';
 import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.14.10/mod.ts";
 
 import * as yff from './yff-config.ts';
+import { getNamedColourStyles } from "./lib/generate-styles.ts";
 
 const site = lume({
   src: './src',
@@ -44,6 +45,8 @@ site.use(pagefind({
     resetStyles: true
   }
 }));
+
+site.data("colour_styles", getNamedColourStyles());
 
 // Process all css files
 site.use(postcss());
