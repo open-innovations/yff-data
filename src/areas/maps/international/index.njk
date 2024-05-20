@@ -110,6 +110,8 @@ summary: This page will present international data on employment and education.
 
     <h3>NEET Rate Aged 15-29, all people</h3>
 
+	<p>Rates of young people, aged 15-29, who are not in education, employment or training (NEET), from latest available OECD data, 2022.</p>
+
     {% comp 'display.figure' %}
       {{ comp.oi.chart.bar({ config: {
           data: view.neet_grouped.rows | remove_rows_with_null_values('15_29→2022'),
@@ -212,6 +214,9 @@ summary: This page will present international data on employment and education.
 
 		<h3>NEET Rate Aged 15-29, Women</h3>
 
+		<p>Rates of young people, aged 15-29, who are not in education, employment or training (NEET), from latest available OECD data, 2022.</p>
+
+
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.bar({ config: {
 			data: view.neet_grouped.rows | remove_rows_with_null_values('15_29_WOMEN→2022'),
@@ -312,7 +317,7 @@ summary: This page will present international data on employment and education.
 		{% endcomp %}
 
 		<h3>NEET Rate Aged 15-29, Men</h3>
-
+		<p>Rates of young people, aged 15-29, who are not in education, employment or training (NEET), from latest available OECD data, 2022.</p>
 
 		{% comp 'display.figure' %}
 		{{ comp.oi.chart.bar({ config: {
@@ -1504,13 +1509,8 @@ summary: This page will present international data on employment and education.
 			}) | safe }}
 		</article>	
 
-
-
-
-
 		</div>
 		</div>
-
 
 		<div class='pane'>
 	 	<span class="tab-title">Literacy Level 3</span>
