@@ -40,7 +40,6 @@ css: |
 
 	{{ comp.oi.map.zoomable({
 		config: {
-			debug: true,
 			padding: 100,
 			width: 300,
 			bounds: map[area.code],
@@ -83,88 +82,21 @@ css: |
 }) | safe }}
 </div>
 
-<div class = "panes">	
-<div class = "row">	
-{% comp 'display.figure' %}
-	<h3>{{ area.name }}: Economic Inactivity Rate (%) - Aged 16-24</h3>
 
-	{% if summary[area.code].economic_inactivity %}
-		{{ comp.oi.chart.line({
-				"config": {
-					"width": "800",
-					"height": 300,
-					"data": summary[area.code].economic_inactivity,
-					"title": "Economic Inactivity Rate (%) - Aged 16-24",
-					legend: { "show": false, "position": "top" },
-					"axis": {
-					"x": {
-						"grid": {
-							"show": true,
-							"stroke-dasharray": "6 2",
-							"stroke-width": "1"
-						},
-						"tick": {
-							"labels": "year",
-							"grid": true,
-							"options": {"font-size":12, "rotate": 90}
-						},
-						"title": {
-							"label": "Rolling 3-year period"
-						}
-						},
-						"y": {
-							"grid": {
-								"show": true
-							},
-							"min": 0,
-							"max": 100,
-							"title": {
-								"label": "Rate (%)",
-								"options": {"font-size":8}
-							}
-						}
-					},
-					"columns": [
-						{
-							"name": "tooltip",
-							"template": "{{year}}\n Economic Inactivity rate: {{value | toFixed(1) }}%"
-						}
-					],
-					"series": [
-						{
-							"title": "Economic Inactivity (%)",
-							"x": "year",
-							"y": "value",
-							"tooltip": "tooltip"
-						}
-					]
-				}
-			}) | safe }}
-	{% else %}
-		<p> No data available </p>
-	{% endif %}
-{% endcomp %}
-</div>
-</div>
+<div class="panes">	
+	<div class="row">	
+	{% comp 'display.figure' %}
+		<h3>{{ area.name }}: Economic Inactivity Rate (%) - Aged 16-24</h3>
 
-{% comp 'tabbed', { tab_count: 2 } %}
-
-
-<div class="panes">
-<div class="row">
-{% comp 'display.figure' %}
-	 <span class="tab-title">Aged 16-19</span>
-
-	<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
-
-	{% if summary[area.code].economic_activity_16_19 %}
-		{{ comp.oi.chart.line({
-				"config": {
-					"width": "800",
-					"height": 300,
-					"data": summary[area.code].economic_activity_16_19,
-					legend: { "show": false, "position": "top" },
-					"axis": {
+		{% if summary[area.code].economic_inactivity %}
+			{{ comp.oi.chart.line({
+					"config": {
+						"width": "800",
+						"height": 300,
+						"data": summary[area.code].economic_inactivity,
+						"title": "Economic Inactivity Rate (%) - Aged 16-24",
+						legend: { "show": false, "position": "top" },
+						"axis": {
 						"x": {
 							"grid": {
 								"show": true,
@@ -174,113 +106,180 @@ css: |
 							"tick": {
 								"labels": "year",
 								"grid": true,
-								"options": {"font-size":12}
+								"options": {"font-size":12, "rotate": 90}
 							},
 							"title": {
-								"label": "Rolling 3-year period",
-								"options": {"font-size":8}
+								"label": "Rolling 3-year period"
+							}
+							},
+							"y": {
+								"grid": {
+									"show": true
+								},
+								"min": 0,
+								"max": 100,
+								"title": {
+									"label": "Rate (%)",
+									"options": {"font-size":8}
+								}
 							}
 						},
-						"y": {
-							"grid": {
-								"show": true
-							},
-							"min": 0,
-							"max": 100,
-							"title": {
-								"label": "Rate (%)",
-								"options": {"font-size":8}
+						"columns": [
+							{
+								"name": "tooltip",
+								"template": "{{year}}\n Economic Inactivity rate: {{ value | toFixed(1) }}%"
 							}
-						}
-					},
-					"columns": [
-						{
-							"name": "tooltip",
-							"template": "{{year}}\n Economic Activity rate: {{value | toFixed(1) }}%"
-						}
-					],
-					"series": [
-						{
-							"title": "Economic Activity (%)",
-							"x": "year",
-							"y": "value",
-							"tooltip": "tooltip"
-						}
-					]
-				}
-			}) | simpleviz | safe }}
-	{% else %}
-		<p> No data available </p>
-	{% endif %}
-{% endcomp %}
+						],
+						"series": [
+							{
+								"title": "Economic Inactivity (%)",
+								"x": "year",
+								"y": "value",
+								"tooltip": "tooltip"
+							}
+						]
+					}
+				}) | safe }}
+		{% else %}
+			<p> No data available </p>
+		{% endif %}
+	{% endcomp %}
+	</div>
 </div>
 
-<div class="row">
-{% comp 'display.figure' %}
-	 <span class="tab-title">Aged 20-24</span>
+{% comp 'tabbed', { tab_count: 2 } %}
+<div class="panes">
+	<div class="row">
+	{% comp 'display.figure' %}
+		<span class="tab-title">Aged 16-19</span>
 
-	<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
+		<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
 
-	{% if summary[area.code].economic_activity_20_24 %}
-		{{ comp.oi.chart.line({
-				"config": {
-					"width": "800",
-					"height": 300,
-					"data": summary[area.code].economic_activity_20_24,
-					"title": "Economic Inactivity Rate (%) - Aged 16-24",
-					legend: { "show": false, "position": "top" },
-					"axis": {
-						"x": {
-							"grid": {
-								"show": true,
-								"stroke-dasharray": "6 2",
-								"stroke-width": "1"
+		{% if summary[area.code].economic_activity_16_19 %}
+			{{ comp.oi.chart.line({
+					"config": {
+						"width": "800",
+						"height": 300,
+						"data": summary[area.code].economic_activity_16_19,
+						legend: { "show": false, "position": "top" },
+						"axis": {
+							"x": {
+								"grid": {
+									"show": true,
+									"stroke-dasharray": "6 2",
+									"stroke-width": "1"
+								},
+								"tick": {
+									"labels": "year",
+									"grid": true,
+									"options": {"font-size":12}
+								},
+								"title": {
+									"label": "Rolling 3-year period",
+									"options": {"font-size":8}
+								}
 							},
-							"tick": {
-								"labels": "year",
-								"grid":true,
-								"options": {"font-size":12}
-							},
-							"title": {
-								"label": "Rolling 3-year period",
-								"options": {"font-size":8}
+							"y": {
+								"grid": {
+									"show": true
+								},
+								"min": 0,
+								"max": 100,
+								"title": {
+									"label": "Rate (%)",
+									"options": {"font-size":8}
+								}
 							}
 						},
-						"y": {
-							"grid": {
-								"show": true
-							},
-							"min": 0,
-							"max": 100,
-							"title": {
-								"label": "Rate (%)",
-								"options": {"font-size":8}
+						"columns": [
+							{
+								"name": "tooltip",
+								"template": "{{year}}\n Economic Activity rate: {{ value | toFixed(1) }}%"
 							}
-						}
-					},
-					"columns": [
-						{
-							"name": "tooltip",
-							"template": "{{year}}\n Economic Inactivity rate: {{value | toFixed(1) }}%"
-						}
-					],
-					"series": [
-						{
-							"title": "Economic Inactivity (%)",
-							"x": "year",
-							"y": "value",
-							"tooltip": "tooltip"
-						}
-					]
-				}
-			}) | simpleviz | safe }}
-	{% else %}
-		<p> No data available </p>
-	{% endif %}
-{% endcomp %}
+						],
+						"series": [
+							{
+								"title": "Economic Activity (%)",
+								"x": "year",
+								"y": "value",
+								"tooltip": "tooltip"
+							}
+						]
+					}
+				}) | simpleviz | safe }}
+		{% else %}
+			<p> No data available </p>
+		{% endif %}
+	{% endcomp %}
+	</div>
+
+	<div class="row">
+	{% comp 'display.figure' %}
+		 <span class="tab-title">Aged 20-24</span>
+
+		<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
+
+		{% if summary[area.code].economic_activity_20_24 %}
+			{{ comp.oi.chart.line({
+					"config": {
+						"width": "800",
+						"height": 300,
+						"data": summary[area.code].economic_activity_20_24,
+						"title": "Economic Inactivity Rate (%) - Aged 16-24",
+						legend: { "show": false, "position": "top" },
+						"axis": {
+							"x": {
+								"grid": {
+									"show": true,
+									"stroke-dasharray": "6 2",
+									"stroke-width": "1"
+								},
+								"tick": {
+									"labels": "year",
+									"grid":true,
+									"options": {"font-size":12}
+								},
+								"title": {
+									"label": "Rolling 3-year period",
+									"options": {"font-size":8}
+								}
+							},
+							"y": {
+								"grid": {
+									"show": true
+								},
+								"min": 0,
+								"max": 100,
+								"title": {
+									"label": "Rate (%)",
+									"options": {"font-size":8}
+								}
+							}
+						},
+						"columns": [
+							{
+								"name": "tooltip",
+								"template": "{{year}}\n Economic Inactivity rate: {{ value | toFixed(1) }}%"
+							}
+						],
+						"series": [
+							{
+								"title": "Economic Inactivity (%)",
+								"x": "year",
+								"y": "value",
+								"tooltip": "tooltip"
+							}
+						]
+					}
+				}) | simpleviz | safe }}
+		{% else %}
+			<p> No data available </p>
+		{% endif %}
+	{% endcomp %}
+	</div>
 </div>
-</div>
 {% endcomp %}
+
 
 <h2>Education</h2>
 
