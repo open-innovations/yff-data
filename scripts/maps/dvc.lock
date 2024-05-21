@@ -17,8 +17,8 @@ stages:
       size: 93660
     - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
       hash: md5
-      md5: dc6e2dd38628e32fcaa4c70ba8e28403
-      size: 1173952
+      md5: ace5443bd5f61e3eac957fd4e95707c1
+      size: 1174171
     outs:
     - path: src/areas/maps/employment/_data/view
       hash: md5
