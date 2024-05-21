@@ -2,4 +2,4 @@
 
 import { initAnalytics } from '../../_lib/tracking/analytics.ts';
 
-initAnalytics("G-GPHY1P13QD");
+initAnalytics("G-5L0BD3B28H");
