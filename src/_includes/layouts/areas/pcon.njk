@@ -104,7 +104,7 @@ css: |
 								"stroke-width": "1"
 							},
 							"tick": {
-								"labels": "year",
+								"spacing": 1,
 								"grid": true,
 								"options": {"font-size":12, "rotate": 90}
 							},
@@ -127,14 +127,14 @@ css: |
 						"columns": [
 							{
 								"name": "tooltip",
-								"template": "{{year}}\n Economic Inactivity rate: {{ value | toFixed(1) }}%"
+								"template": "{{dates}}\n Economic Inactivity rate: {{ v | toFixed(1) }}%"
 							}
 						],
 						"series": [
 							{
 								"title": "Economic Inactivity (%)",
-								"x": "year",
-								"y": "value",
+								"x": "x",
+								"y": "v",
 								"tooltip": "tooltip",
 								"points": {
 									"marker": "circle",
@@ -174,7 +174,7 @@ css: |
 									"stroke-width": "1"
 								},
 								"tick": {
-									"labels": "year",
+									"spacing": 1,
 									"grid": true,
 									"options": {"font-size":12}
 								},
@@ -198,14 +198,14 @@ css: |
 						"columns": [
 							{
 								"name": "tooltip",
-								"template": "{{year}}\n Economic Activity rate: {{ value | toFixed(1) }}%"
+								"template": "{{dates}}\n Economic Activity rate: {{ v | toFixed(1) }}%"
 							}
 						],
 						"series": [
 							{
 								"title": "Economic Activity (%)",
-								"x": "year",
-								"y": "value",
+								"x": "x",
+								"y": "v",
 								"tooltip": "tooltip",
 								"points": {
 									"marker": "circle",
@@ -243,7 +243,7 @@ css: |
 									"stroke-width": "1"
 								},
 								"tick": {
-									"labels": "year",
+									"spacing": 1,
 									"grid":true,
 									"options": {"font-size":12}
 								},
@@ -267,14 +267,14 @@ css: |
 						"columns": [
 							{
 								"name": "tooltip",
-								"template": "{{year}}\n Economic Inactivity rate: {{ value | toFixed(1) }}%"
+								"template": "{{dates}}\n Economic Inactivity rate: {{ v | toFixed(1) }}%"
 							}
 						],
 						"series": [
 							{
 								"title": "Economic Inactivity (%)",
-								"x": "year",
-								"y": "value",
+								"x": "x",
+								"y": "v",
 								"tooltip": "tooltip",
 								"points": {
 									"marker": "circle",
