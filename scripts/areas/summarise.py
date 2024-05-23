@@ -76,27 +76,36 @@ for s in summary:
 
     # Build the summary for economic in activity
     summary[s]['economic_inactivity'] = []
-    # Get the values that match this constituency code, s
-    vals = econ_inactive.loc[s, :]
-    # Loop over the rows
-    for index, row in vals.iterrows():
-        summary[s]['economic_inactivity'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
+    try:
+        # Get the values that match this constituency code, s
+        vals = econ_inactive.loc[s, :]
+        # Loop over the rows
+        for index, row in vals.iterrows():
+            summary[s]['economic_inactivity'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
+    except KeyError as e:
+        pass
 
     # Build the summary for 16-19 year olds
     summary[s]['economic_activity_16_19'] = []
-    # Get the values that match this constituency code, s
-    vals = economically_active_16_19.loc[s, :]
-    # Loop over the rows
-    for index, row in vals.iterrows():
-        summary[s]['economic_activity_16_19'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
+    try:
+        # Get the values that match this constituency code, s
+        vals = economically_active_16_19.loc[s, :]
+        # Loop over the rows
+        for index, row in vals.iterrows():
+            summary[s]['economic_activity_16_19'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
+    except KeyError as e:
+        pass
 
     # Build the summary for 20-24 year olds
     summary[s]['economic_activity_20_24'] = []
-    # Get the values that match this constituency code, s
-    vals = economically_active_20_24.loc[s, :]
-    # Loop over the rows
-    for index, row in vals.iterrows():
-        summary[s]['economic_activity_20_24'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
+    try:
+        # Get the values that match this constituency code, s
+        vals = economically_active_20_24.loc[s, :]
+        # Loop over the rows
+        for index, row in vals.iterrows():
+            summary[s]['economic_activity_20_24'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
+    except KeyError as e:
+        pass
 
 
 

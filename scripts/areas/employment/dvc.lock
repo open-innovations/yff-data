@@ -1,0 +1,17 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: python scripts/areas/employment/transform-labour-market.py
+    deps:
+    - path: scripts/areas/employment/transform-labour-market.py
+      hash: md5
+      md5: 7b4cce5fa4174570bea8060b744f0f48
+      size: 5196
+    - path: working/upstream/labour-market_last_3_years_by_pcon_2010.csv
+      hash: md5
+      md5: 075509e09b9c108ec184bad5510de797
+      size: 11551228
+    - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
+      hash: md5
+      md5: 4e4f433d8371c1c613a9fe2b851c33ba
+      size: 1164889
