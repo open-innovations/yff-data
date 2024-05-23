@@ -1,10 +1,10 @@
 ---
 layout: layouts/dashboard.njk
 css: |
-  .row { --graph-size: 400px; padding: 2em 0; display: flex; grid-gap: 1rem; flex-wrap: wrap; }
-  .row > * { flex-grow: 0; flex-shrink: 1; flex-basis: var(--graph-size); }
-  .row > *:first-child { flex-grow: 2; }
-  .row > .oi-zoomable-map { margin-inline: auto; }
+  .area-summary { --graph-size: 400px; padding: 2em 0; display: flex; grid-gap: 1rem; flex-wrap: wrap; }
+  .area-summary > * { flex-grow: 0; flex-shrink: 1; flex-basis: var(--graph-size); }
+  .area-summary > *:first-child { flex-grow: 2; }
+  .area-summary > .oi-zoomable-map { margin-inline: auto; }
   .oi-zoomable-map .leaflet { width: 100%; aspect-ratio: 1/1; }
   .oi-zoomable-map .oi-attribution { display: none; }
   .oi-zoomable-map .leaflet-control-attribution { font-size: 0.7rem; }
@@ -31,7 +31,7 @@ css: |
 {{ search.page("area.code=E14000530").summary.name }}
 #}
 
-<div class="row">
+<div class="row area-summary">
 	<div>
 		<p>
 		This is the page for {{ area.name }} ({{ area.code }}),
