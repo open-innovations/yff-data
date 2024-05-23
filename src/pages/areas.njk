@@ -10,7 +10,7 @@ css: |
 ---
 
 {% comp 'grid.auto', { min_width: '30em' } %}
-  {% for page in search.pages('areas', 'publication_date=desc') | data %}
+  {% for page in search.pages('areas', 'publication_date=desc')  %}
     {{ comp.superLink({ page: page, summary_first: true }) | safe }}
   {% endfor %}
 {% endcomp %}

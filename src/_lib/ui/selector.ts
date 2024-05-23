@@ -1,5 +1,3 @@
-import { Page } from "lume/core.ts";
-
 export function createSelectorElements(page: Document) {
   page.querySelectorAll<HTMLElement>(".selector").forEach((container) => {
     // Create the selector

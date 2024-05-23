@@ -60,7 +60,7 @@ js: |
   <div>
     <ul>
       {% for link in search.pages( version_key + '!=undefined', version_key ) -%}
-        <li><a href="{{ link.data.url }}">{{ link.data.title }}</a></li>
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
       {% endfor -%}
 	    <li class="social-icon first-social"><a target="_blank" rel="noopener" href="https://www.linkedin.com/company/youthfuturesfoundation/"><img src="/assets/images/social-linkedin.svg" inline></a></li>
 		<li class="social-icon"><a target="_blank" rel="noopener" href="http://twitter.com/YF_Foundation"><img src="/assets/images/social-twitter.svg" inline></a></li>

@@ -3,7 +3,7 @@
     "/": "./",
     "./": "./",
     "../": "../",
-    "lume/": "https://deno.land/x/lume@v1.17.3/",
+    "lume/": "https://deno.land/x/lume@v2.1.4/",
     "local/": "./local-lib/",
     "std/": "https://deno.land/std@0.82.0/",
     "oi-lume-utils/": "https://deno.land/x/oi_lume_utils@v0.4.0/"

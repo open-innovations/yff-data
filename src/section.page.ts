@@ -7,7 +7,7 @@ export default function*({ search }) {
       title: reportTitle,
       url,
       sections = [],
-    } = report.data;
+    } = report;
 
     // Iterate through the sections
     for (const section of sections) {

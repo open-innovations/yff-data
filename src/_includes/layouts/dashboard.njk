@@ -32,7 +32,7 @@ layout: layouts/simple.njk
 </div>
 {% endfor %}
 
-{% set pipe_doc = search.page("url='" + url + "pipeline/'").data %}
+{% set pipe_doc = search.page("url='" + url + "pipeline/'") %}
 {% if pipe_doc %}
 <aside>
   <p>Read the <a href="{{ pipe_doc.url }}">pipeline documentation</a> to find out how this data has been processed.</p>

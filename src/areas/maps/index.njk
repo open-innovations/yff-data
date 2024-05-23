@@ -24,7 +24,7 @@ featured: "#featured-viz figure"
 
 
 {% comp 'grid.auto', { min_width: '30rem' } %}
-{% for page in search.pages("maps", "priority=desc title=asc") | data %}
+{% for page in search.pages("maps", "priority=desc title=asc")  %}
     {% comp 'grid.pane', { link: page.url + (page.link_query or ''), extra_classes: extra_classes or 'turquoise-bg' } %}
       <h2>{{ page.title }}</h2>
 

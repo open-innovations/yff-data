@@ -44,7 +44,7 @@ if __name__ == '__main__':
         pd.pivot_table(latest_youth_unem, values='value', index=['geography_code'], columns=['variable_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
-        .fillna(0)
+        # .fillna(0)
     )
     latest_youth_unem = limit_to_england(latest_youth_unem).set_index('PCON22CD')
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     youth_unem_last_3_years = (
         labour_market_last_3_years_pcon
         .loc[labour_market_last_3_years_pcon['variable_name'] == 'Unemployment rate - aged 16-24']
-        .fillna(0)
+        # .fillna(0)
     )
 
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
         pd.pivot_table(youth_unem_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
-        .fillna(0)
+        # .fillna(0)
     )
     youth_unem_last_3_years = limit_to_england(youth_unem_last_3_years).set_index('PCON22CD')
 
@@ -80,14 +80,14 @@ if __name__ == '__main__':
     econ_inactive_last_3_years = (
         labour_market_last_3_years_pcon
         .loc[labour_market_last_3_years_pcon['variable_name'] == '% who are economically inactive - aged 16-24']
-        .fillna(0)
+        # .fillna(0)
     )
 
     econ_inactive_last_3_years = (
         pd.pivot_table(econ_inactive_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
-        .fillna(0)
+        # .fillna(0)
     )
     econ_inactive_last_3_years = limit_to_england(econ_inactive_last_3_years).set_index('PCON22CD')
     econ_inactive_last_3_years.to_csv(os.path.join(OUT_DIR, 'econ_inactive_16-24_last_3_years.csv'), index=True)
@@ -97,14 +97,14 @@ if __name__ == '__main__':
     econ_active_last_3_years = (
         labour_market_last_3_years_pcon
         .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 16-19']
-        .fillna(0)
+        # .fillna(0)
     )
 
     econ_active_last_3_years = (
         pd.pivot_table(econ_active_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
-        .fillna(0)
+        # .fillna(0)
     )
     econ_active_last_3_years = limit_to_england(econ_active_last_3_years).set_index('PCON22CD')
     econ_active_last_3_years.to_csv(os.path.join(OUT_DIR, 'econ_active_16-19_last_3_years.csv'), index=True)
@@ -114,13 +114,13 @@ if __name__ == '__main__':
     econ_active_20_24_last_3_years = (
         labour_market_last_3_years_pcon
         .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 20-24']
-        .fillna(0)
+        # .fillna(0)
     )
     econ_active_20_24_last_3_years = (
         pd.pivot_table(econ_active_20_24_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
         .reset_index()
         .rename(columns=COLUMN_MAPPER)
-        .fillna(0)
+        # .fillna(0)
     )
     econ_active_20_24_last_3_years = limit_to_england(econ_active_20_24_last_3_years).set_index('PCON22CD')
     econ_active_20_24_last_3_years.to_csv(os.path.join(OUT_DIR, 'econ_active_20-24_last_3_years.csv'), index=True)
