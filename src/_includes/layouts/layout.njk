@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="/assets/style/yff.css">
   <script defer src="/components.js" inline></script>
   <script defer src="/assets/js/site.js"></script>
-  {% if css %}<style>{{ css }}</style>{% endif %}
 </head>
 <body>
+  {% if css %}<style>{{ css | safe }}</style>{% endif %}
   {% if build.env == 'dev' %}{{ comp.dev_banner() | safe }}{% endif %}
   <div class="message container" data-pagefind-ignore="all">
     {% include 'partials/feedback.njk' %}
