@@ -1,10 +1,11 @@
 date,Sector,key_youth_sectors,wanted_youth_sectors,Growth since pre-coronavirus January to March 2020 (%),Growth since previous quarter (%)
-2024-02-01,Accommodation & food service,True,False,-21.1,-0.3
-2024-02-01,Administrative & support,False,False,-11.8,-1.7
-2024-02-01,Construction,False,False,-12.4,2.0
-2024-02-01,Health & social work,True,False,-16.8,-3.1
-2024-02-01,Information & communication,False,False,-25.2,-14.0
-2024-02-01,Manufacturing,False,False,-18.2,-10.0
-2024-02-01,Real estate activities,False,False,29.8,18.0
-2024-02-01,Transport & storage,False,False,-19.3,7.5
-2024-02-01,Water supply sewerage waste & remediation activities,False,False,-15.2,-16.4
+2024-03-01,,False,False,,
+2024-03-01,Arts entertainment & recreation,False,True,-23.7,21.8
+2024-03-01,Education,False,False,-11.9,-2.2
+2024-03-01,"Electricity, gas & air conditioning",False,False,-27.4,-11.8
+2024-03-01,Health & social work,True,False,-14.7,1.3
+2024-03-01,Information & communication,False,False,-18.3,-3.7
+2024-03-01,Manufacturing,False,False,-14.8,-6.4
+2024-03-01,Professional & technical,False,True,-10.2,2.4
+2024-03-01,Transport & storage,False,False,-12.2,10.2
+2024-03-01,Wholesale & retail; motor vehicles,False,False,-21.7,-8.7

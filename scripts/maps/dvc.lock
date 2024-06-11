@@ -13,8 +13,8 @@ stages:
       size: 2565260
     - path: working/upstream/claimants-per-population-latest.csv
       hash: md5
-      md5: 0c4a836857c90276e993ab7d281e0375
-      size: 93660
+      md5: 02d6a227dc3dc66a28838f06fbd60fdd
+      size: 93676
     - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
       hash: md5
       md5: ace5443bd5f61e3eac957fd4e95707c1
@@ -22,6 +22,6 @@ stages:
     outs:
     - path: src/areas/maps/employment/_data/view
       hash: md5
-      md5: 2039d9a00e29bfd9b4747f02fb8858ee.dir
-      size: 182589
+      md5: b8542cf0e61dfd955c49f732896ec05f.dir
+      size: 182633
       nfiles: 10
