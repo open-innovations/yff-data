@@ -75,6 +75,9 @@ barchart_description: |
 </p>
 
 
+
+
+
 <div class='selector'
     data-dependencies='/assets/js/selector.js'
     data-label='Choose the visualisation layer'
@@ -105,7 +108,7 @@ barchart_description: |
       {{ comp.oi.chart.bar({ config: {
           data: view.total_score_barchart.rows,
           category: 'local_authority_name',
-          width: 800,
+          width: 400,
           series: [
             { title: 'Total score', value: 'value', tooltip: '{{ local_authority_name }}<br/>Total score {{ value | toFixed(1) }}' }
           ],
@@ -119,7 +122,24 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
-    </article>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.total_score_combined.range.value.min, max: view.total_score_combined.range.value.max
+            }
+          ],
+          data: view.total_score_combined.rows 
+        } }
+      ) | safe }}
+  </section>
+  </article>
 
     <article id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Weighted Scores (double)</h2>
@@ -159,7 +179,24 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
-    </article>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.weighted_scores_double_combined.range.value.min, max: view.weighted_scores_double_combined.range.value.max
+            }
+          ],
+          data: view.weighted_scores_double_combined.rows 
+        } }
+      ) | safe }}
+  </section>
+  </article>
 
     <article id='children-in-poverty' class='selector-block' data-selector-group="Standardised layers">
     <h2>Children in Poverty</h2>
@@ -200,6 +237,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.children_in_poverty_combined.range.value.min, max: view.children_in_poverty_combined.range.value.max
+            }
+          ],
+          data: view.children_in_poverty_combined.rows 
+        } }
+      ) | safe }}
+  </section>
     </article>
 
     <article id='children-looked-after' class='selector-block' data-selector-group="Standardised layers (incomplete)">
@@ -241,6 +295,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.children_looked_after_combined.range.value.min, max: view.children_looked_after_combined.range.value.max
+            }
+          ],
+          data: view.children_looked_after_combined.rows 
+        } }
+      ) | safe }}
+  </section>
     </article>    
 
 
@@ -283,7 +354,24 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
-    </article>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.disability_all_combined.range.value.min, max: view.disability_all_combined.range.value.max
+            }
+          ],
+          data: view.disability_all_combined.rows 
+        } }
+      ) | safe }}
+  </section>
+  </article>
 
     <article id='disability-under-25' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (under 25)</h2>
@@ -323,6 +411,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.disability_under_25_combined.range.value.min, max: view.disability_under_25_combined.range.value.max
+            }
+          ],
+          data: view.disability_under_25_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
 
@@ -364,6 +469,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.economic_inactivity_neet_combined.range.value.min, max: view.economic_inactivity_neet_combined.range.value.max
+            }
+          ],
+          data: view.economic_inactivity_neet_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
 
@@ -407,6 +529,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.fertility_rates_20_to_24_combined.range.value.min, max: view.fertility_rates_20_to_24_combined.range.value.max
+            }
+          ],
+          data: view.fertility_rates_20_to_24_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
 
     <article id='fertility-rates-under-20' class='selector-block' data-selector-group="Standardised layers">
@@ -446,6 +585,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.fertility_rates_under_20_combined.range.value.min, max: view.fertility_rates_under_20_combined.range.value.max
+            }
+          ],
+          data: view.fertility_rates_under_20_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
 
@@ -488,6 +644,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.imd_crime_combined.range.value.min, max: view.imd_crime_combined.range.value.max
+            }
+          ],
+          data: view.imd_crime_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
 
     <article id='imd-health' class='selector-block' data-selector-group="Standardised layers">
@@ -528,6 +701,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.imd_health_combined.range.value.min, max: view.imd_health_combined.range.value.max
+            }
+          ],
+          data: view.imd_health_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
 
@@ -570,6 +760,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.lone_parent_households_combined.range.value.min, max: view.lone_parent_households_combined.range.value.max
+            }
+          ],
+          data: view.lone_parent_households_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
 
     <article id='pupils-with-sen-support' class='selector-block' data-selector-group="Standardised layers (incomplete)">
@@ -610,6 +817,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.pupils_with_sen_support_combined.range.value.min, max: view.pupils_with_sen_support_combined.range.value.max
+            }
+          ],
+          data: view.pupils_with_sen_support_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
     
@@ -652,6 +876,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.qualification_below_level_2_aged_16_24_combined.range.value.min, max: view.qualification_below_level_2_aged_16_24_combined.range.value.max
+            }
+          ],
+          data: view.qualification_below_level_2_aged_16_24_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
 
     <article id='qualification-below-level-2-all' class='selector-block' data-selector-group="Standardised layers">
@@ -692,6 +933,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.qualification_below_level_2_all_combined.range.value.min, max: view.qualification_below_level_2_all_combined.range.value.max
+            }
+          ],
+          data: view.qualification_below_level_2_all_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
 
@@ -734,6 +992,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.school_absences_combined.range.value.min, max: view.school_absences_combined.range.value.max
+            }
+          ],
+          data: view.school_absences_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
 
     <article id='school-exclusions' class='selector-block' data-selector-group="Standardised layers">
@@ -774,6 +1049,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.school_exclusions_combined.range.value.min, max: view.school_exclusions_combined.range.value.max
+            }
+          ],
+          data: view.school_exclusions_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
     
@@ -816,6 +1108,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+      <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.school_suspensions_combined.range.value.min, max: view.school_suspensions_combined.range.value.max
+            }
+          ],
+          data: view.school_suspensions_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
 
     <article id='socially-renting-households' class='selector-block' data-selector-group="Standardised layers">
@@ -857,6 +1166,23 @@ barchart_description: |
         } }) | safe }}
     {% endcomp %}
     </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.socially_renting_households_combined.range.value.min, max: view.socially_renting_households_combined.range.value.max
+            }
+          ],
+          data: view.socially_renting_households_combined.rows 
+        } }
+      ) | safe }}
+    </section>
     </article>
         
     <article id='unpaid-carer-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
@@ -897,6 +1223,23 @@ barchart_description: |
           }
         } }) | safe }}
     {% endcomp %}
+    </section>
+
+    <section style = "padding-top:5rem;">
+    <h3>Combined Authorities</h3>
+    <p>Combined authority information for this dataset.</p>
+      {{ comp.oi.table({
+        config: {
+          columns: [
+            {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
+            {'name':'Local Authority Name', 'align': 'center'},
+            {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
+              min: view.unpaid_carer_aged_16_24_combined.range.value.min, max: view.unpaid_carer_aged_16_24_combined.range.value.max
+            }
+          ],
+          data: view.unpaid_carer_aged_16_24_combined.rows 
+        } }
+      ) | safe }}
     </section>
     </article>
 
