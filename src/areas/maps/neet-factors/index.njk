@@ -44,7 +44,7 @@ css: |
   ul.spaced {
     margin-left: 3em;
   }
-  article .pane {
+  section .pane {
     margin-top: 1.5em;
   }
 
@@ -85,7 +85,7 @@ barchart_description: |
     data-heading-level='h2'
     data-id='map-selector'>
 
-    <article id='total-score' class='selector-block' data-selector-group="Aggregate scores">
+    <section id='total-score' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Total Score</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -132,16 +132,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.total_score_combined.range.value.min, max: view.total_score_combined.range.value.max
+              min: view.total_score.range.value.min, max: view.total_score.range.value.max
             }
           ],
           data: view.total_score_combined.rows 
         } }
       ) | safe }}
   </section>
-  </article>
+  </section>
 
-    <article id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
+    <section id='weighted-scores-double' class='selector-block' data-selector-group="Aggregate scores">
     <h2>Weighted Scores (double)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -189,16 +189,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.weighted_scores_double_combined.range.value.min, max: view.weighted_scores_double_combined.range.value.max
+              min: view.weighted_scores_double.range.value.min, max: view.weighted_scores_double.range.value.max
             }
           ],
           data: view.weighted_scores_double_combined.rows 
         } }
       ) | safe }}
   </section>
-  </article>
+  </section>
 
-    <article id='children-in-poverty' class='selector-block' data-selector-group="Standardised layers">
+    <section id='children-in-poverty' class='selector-block' data-selector-group="Standardised layers">
     <h2>Children in Poverty</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -247,16 +247,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.children_in_poverty_combined.range.value.min, max: view.children_in_poverty_combined.range.value.max
+              min: view.children_in_poverty.range.value.min, max: view.children_in_poverty.range.value.max
             }
           ],
           data: view.children_in_poverty_combined.rows 
         } }
       ) | safe }}
   </section>
-    </article>
+    </section>
 
-    <article id='children-looked-after' class='selector-block' data-selector-group="Standardised layers (incomplete)">
+    <section id='children-looked-after' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>Children Looked After</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -305,17 +305,17 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.children_looked_after_combined.range.value.min, max: view.children_looked_after_combined.range.value.max
+              min: view.children_looked_after.range.value.min, max: view.children_looked_after.range.value.max
             }
           ],
           data: view.children_looked_after_combined.rows 
         } }
       ) | safe }}
   </section>
-    </article>    
+    </section>    
 
 
-    <article id='disability-all' class='selector-block' data-selector-group="Standardised layers">
+    <section id='disability-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (all ages)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -364,16 +364,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.disability_all_combined.range.value.min, max: view.disability_all_combined.range.value.max
+              min: view.disability_all.range.value.min, max: view.disability_all.range.value.max
             }
           ],
           data: view.disability_all_combined.rows 
         } }
       ) | safe }}
   </section>
-  </article>
+  </section>
 
-    <article id='disability-under-25' class='selector-block' data-selector-group="Standardised layers">
+    <section id='disability-under-25' class='selector-block' data-selector-group="Standardised layers">
     <h2>Disability (under 25)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -422,16 +422,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.disability_under_25_combined.range.value.min, max: view.disability_under_25_combined.range.value.max
+              min: view.disability_under_25.range.value.min, max: view.disability_under_25.range.value.max
             }
           ],
           data: view.disability_under_25_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='economic-inactivity-neet' class='selector-block' data-selector-group="Standardised layers">
+    <section id='economic-inactivity-neet' class='selector-block' data-selector-group="Standardised layers">
     <h2>Economic Inactivity (NEET)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -480,16 +480,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.economic_inactivity_neet_combined.range.value.min, max: view.economic_inactivity_neet_combined.range.value.max
+              min: view.economic_inactivity_neet.range.value.min, max: view.economic_inactivity_neet.range.value.max
             }
           ],
           data: view.economic_inactivity_neet_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='fertility-rates-20-24' class='selector-block' data-selector-group="Standardised layers">
+    <section id='fertility-rates-20-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Fertility Rates (aged 20-24)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -539,16 +539,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.fertility_rates_20_to_24_combined.range.value.min, max: view.fertility_rates_20_to_24_combined.range.value.max
+              min: view.fertility_rates_20_to_24.range.value.min, max: view.fertility_rates_20_to_24.range.value.max
             }
           ],
           data: view.fertility_rates_20_to_24_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='fertility-rates-under-20' class='selector-block' data-selector-group="Standardised layers">
+    <section id='fertility-rates-under-20' class='selector-block' data-selector-group="Standardised layers">
     <h2>Fertility Rates (under 20)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -596,16 +596,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.fertility_rates_under_20_combined.range.value.min, max: view.fertility_rates_under_20_combined.range.value.max
+              min: view.fertility_rates_under_20.range.value.min, max: view.fertility_rates_under_20.range.value.max
             }
           ],
           data: view.fertility_rates_under_20_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='imd-crime' class='selector-block' data-selector-group="Standardised layers">
+    <section id='imd-crime' class='selector-block' data-selector-group="Standardised layers">
     <h2>IMD Crime</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -654,16 +654,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.imd_crime_combined.range.value.min, max: view.imd_crime_combined.range.value.max
+              min: view.imd_crime.range.value.min, max: view.imd_crime.range.value.max
             }
           ],
           data: view.imd_crime_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='imd-health' class='selector-block' data-selector-group="Standardised layers">
+    <section id='imd-health' class='selector-block' data-selector-group="Standardised layers">
     <h2>IMD Health</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -712,17 +712,19 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.imd_health_combined.range.value.min, max: view.imd_health_combined.range.value.max
+              min: view.imd_health.range.value.min, max: view.imd_health.range.value.max
             }
           ],
           data: view.imd_health_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='lone-parent-households' class='selector-block' data-selector-group="Standardised layers">
+    <section id='lone-parent-households' class='selector-block' data-selector-group="Standardised layers">
     <h2>Lone Parent Households</h2>
+
+
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
       {{ comp.oi.map.hex_cartogram({
@@ -770,16 +772,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.lone_parent_households_combined.range.value.min, max: view.lone_parent_households_combined.range.value.max
+              min: view.lone_parent_households.range.value.min, max: view.lone_parent_households.range.value.max
             }
           ],
           data: view.lone_parent_households_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='pupils-with-sen-support' class='selector-block' data-selector-group="Standardised layers (incomplete)">
+    <section id='pupils-with-sen-support' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>Pupils with SEN Support</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -828,16 +830,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.pupils_with_sen_support_combined.range.value.min, max: view.pupils_with_sen_support_combined.range.value.max
+              min: view.pupils_with_sen_support.range.value.min, max: view.pupils_with_sen_support.range.value.max
             }
           ],
           data: view.pupils_with_sen_support_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
     
-    <article id='qualification-below-level-2-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
+    <section id='qualification-below-level-2-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (aged 16-24)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -886,16 +888,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.qualification_below_level_2_aged_16_24_combined.range.value.min, max: view.qualification_below_level_2_aged_16_24_combined.range.value.max
+              min: view.qualification_below_level_2_aged_16_24.range.value.min, max: view.qualification_below_level_2_aged_16_24.range.value.max
             }
           ],
           data: view.qualification_below_level_2_aged_16_24_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='qualification-below-level-2-all' class='selector-block' data-selector-group="Standardised layers">
+    <section id='qualification-below-level-2-all' class='selector-block' data-selector-group="Standardised layers">
     <h2>Qualification Below Level 2 (all)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -944,16 +946,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.qualification_below_level_2_all_combined.range.value.min, max: view.qualification_below_level_2_all_combined.range.value.max
+              min: view.qualification_below_level_2_all.range.value.min, max: view.qualification_below_level_2_all.range.value.max
             }
           ],
           data: view.qualification_below_level_2_all_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='school-absences' class='selector-block' data-selector-group="Standardised layers (incomplete)">
+    <section id='school-absences' class='selector-block' data-selector-group="Standardised layers (incomplete)">
     <h2>School Absences</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -1002,16 +1004,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.school_absences_combined.range.value.min, max: view.school_absences_combined.range.value.max
+              min: view.school_absences.range.value.min, max: view.school_absences.range.value.max
             }
           ],
           data: view.school_absences_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='school-exclusions' class='selector-block' data-selector-group="Standardised layers">
+    <section id='school-exclusions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Exclusions</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -1060,16 +1062,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.school_exclusions_combined.range.value.min, max: view.school_exclusions_combined.range.value.max
+              min: view.school_exclusions.range.value.min, max: view.school_exclusions.range.value.max
             }
           ],
           data: view.school_exclusions_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
     
-    <article id='school-suspensions' class='selector-block' data-selector-group="Standardised layers">
+    <section id='school-suspensions' class='selector-block' data-selector-group="Standardised layers">
     <h2>School Suspensions</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -1118,16 +1120,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.school_suspensions_combined.range.value.min, max: view.school_suspensions_combined.range.value.max
+              min: view.school_suspensions.range.value.min, max: view.school_suspensions.range.value.max
             }
           ],
           data: view.school_suspensions_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
 
-    <article id='socially-renting-households' class='selector-block' data-selector-group="Standardised layers">
+    <section id='socially-renting-households' class='selector-block' data-selector-group="Standardised layers">
     <h2>Socially Renting Households</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -1176,16 +1178,16 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.socially_renting_households_combined.range.value.min, max: view.socially_renting_households_combined.range.value.max
+              min: view.socially_renting_households.range.value.min, max: view.socially_renting_households.range.value.max
             }
           ],
           data: view.socially_renting_households_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
+    </section>
         
-    <article id='unpaid-carer-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
+    <section id='unpaid-carer-aged-16-24' class='selector-block' data-selector-group="Standardised layers">
     <h2>Unpaid Carer (aged 16-24)</h2>
     {{ chart_description | md | safe }}
     {% comp 'display.figure' %}
@@ -1234,19 +1236,18 @@ barchart_description: |
             {'name':'Combined Authority', 'align': 'center', 'mergerows': 'true'},
             {'name':'Local Authority Name', 'align': 'center'},
             {'name':'Value', 'scale': 'YFF_r', 'template': '{{ Value | toFixed(2) }}', 'align': 'center',
-              min: view.unpaid_carer_aged_16_24_combined.range.value.min, max: view.unpaid_carer_aged_16_24_combined.range.value.max
+              min: view.unpaid_carer_aged_16_24.range.value.min, max: view.unpaid_carer_aged_16_24.range.value.max
             }
           ],
           data: view.unpaid_carer_aged_16_24_combined.rows 
         } }
       ) | safe }}
     </section>
-    </article>
-
-
+    </section>
   </div>
+
   <section style = "padding-top:5rem;">
-    <h3>Highest Scoring Local Authorities</h3>
+    <h2>Highest Scoring Local Authorities</h2>
     <p>The table below shows the local authorities that scored the highest weighted average of NEET factors. Higher values indicate regions where young people have a higher likelihood of being NEET.</p>
     {% comp 'display.figure'%}
       {{ comp.oi.table({
