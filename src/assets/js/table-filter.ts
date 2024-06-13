@@ -1,3 +1,6 @@
+import search from "lume/plugins/search.ts";
+import filter from "./src/_components/filter.js";
+
 function inflateTable(table: HTMLTableElement) {
   const rows = table.querySelectorAll('tr')
   const tableData = Array.from(rows).map(row => {
@@ -42,22 +45,32 @@ function initialise() {
       });
     }
 
+    const filterGroup = filterRoot.dataset.filterGroup;
+
     // Create picker
     const targets = Array.from(table.querySelectorAll<HTMLTableRowElement>('tr[data-filter-value]'));
     const values = targets.map(row => row.dataset.filterValue).filter(uniqueValues);
     const container = document.createElement('form')
     const picker = document.createElement('select');
-    picker.id = `filter-picker-${filterIndex}`;
     addOption(picker, "", filterRoot.dataset.filterDefault || "- select a value -");
+    values.forEach(v => addOption(picker, v!));
+    if (filterGroup) {
+      const currentValue = new URLSearchParams(location.search).get(filterGroup) || "";
+      picker.value = currentValue;
+    }
+    picker.id = `filter-picker-${filterIndex}`;
     const label = document.createElement('label');
     label.setAttribute('for', picker.id);
     label.innerText = filterRoot.dataset.filterLabel || 'Filter table';
     container.append(label);
     container.append(picker);
-    values.forEach(v => addOption(picker, v!));
     table.parentNode!.insertBefore(container, table);
 
-    const filterGroup = filterRoot.dataset.filterGroup;
+    function updateState() {
+      const url = new URL(location.toString());
+      url.searchParams.set(filterGroup!, picker.value);
+      history.pushState("", "", url.pathname + url.search);
+    }      
 
     function setTargets() {
       const value = picker.value;
@@ -68,6 +81,7 @@ function initialise() {
       }
       if (filterGroup) {
         globalThis.dispatchEvent(new CustomEvent(EVENT_FILTER_CHANGE, { detail: { value, group: filterGroup } }))
+        updateState();
       }
     }
 
@@ -85,8 +99,8 @@ function initialise() {
         });
       })
     }
-    picker.addEventListener('change', setTargets);
     setTargets();
+    picker.addEventListener('change', setTargets);
   });
 
 }
