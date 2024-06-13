@@ -1,10 +1,10 @@
-md5: eb6b8e24bde2bc83e7eb34377d0ca35d
+md5: 057b1a0f90a03a1ddf485f2f9dbc6935
 frozen: true
 deps:
 - path: data/processed/dfe/ks4_outcomes.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 7e4fbf55a974b08452b5f47b65bea7d998a64818
+    rev_lock: e1dd8eb33400f2a8888b077038498fb4effb285e
 outs:
 - md5: ec15396dd6d9b780f03a0860f96a3137
   size: 473820
