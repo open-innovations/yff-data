@@ -1,6 +1,3 @@
-import search from "lume/plugins/search.ts";
-import filter from "./src/_components/filter.js";
-
 function inflateTable(table: HTMLTableElement) {
   const rows = table.querySelectorAll('tr')
   const tableData = Array.from(rows).map(row => {
@@ -91,12 +88,6 @@ function initialise() {
         if (group !== filterGroup ) return;
         if (value === picker.value ) return;
         picker.value = value;
-        console.log({
-          group,
-          value,
-          filterGroup,
-          currentValue: picker.value,
-        });
       })
     }
     setTargets();
