@@ -1,6 +1,3 @@
-import { parseLabelledStatement } from "npm:meriyah@4.4.0";
-import { options } from "./_site/pagefind/pagefind.js";
-
 function inflateTable(table: HTMLTableElement) {
   const rows = table.querySelectorAll('tr')
   const tableData = Array.from(rows).map(row => {
@@ -27,6 +24,8 @@ const addOption = (select: HTMLSelectElement, value: string, text?: string) => {
   opt.innerText = text || value;
   select.append(opt);
 }
+
+const EVENT_FILTER_CHANGE = 'filter-change';
 
 function initialise() {
   const filters = document.querySelectorAll<HTMLTableElement>('[data-filter-col]');
@@ -58,6 +57,8 @@ function initialise() {
     values.forEach(v => addOption(picker, v!));
     table.parentNode!.insertBefore(container, table);
 
+    const filterGroup = filterRoot.dataset.filterGroup;
+
     function setTargets() {
       const value = picker.value;
       if (value == '') {
@@ -65,8 +66,25 @@ function initialise() {
       } else {
         targets.forEach(t => t.hidden = t.dataset.filterValue != value);
       }
+      if (filterGroup) {
+        globalThis.dispatchEvent(new CustomEvent(EVENT_FILTER_CHANGE, { detail: { value, group: filterGroup } }))
+      }
     }
 
+    if (filterGroup) {
+      globalThis.addEventListener(EVENT_FILTER_CHANGE, (event) => {
+        const { group, value } = (<CustomEvent>event).detail!;
+        if (group !== filterGroup ) return;
+        if (value === picker.value ) return;
+        picker.value = value;
+        console.log({
+          group,
+          value,
+          filterGroup,
+          currentValue: picker.value,
+        });
+      })
+    }
     picker.addEventListener('change', setTargets);
     setTargets();
   });
