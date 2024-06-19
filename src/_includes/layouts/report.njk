@@ -47,7 +47,7 @@ layout: layouts/layout.njk
 		  {{ section.summary | md | safe }}
 
       {% if section.read_more | default(true) %}
-		    <a href="{{ (url + section.title + '/') | slugify }}" aria-label="Read more in {{ section.title | safe }}">READ MORE</a>
+		    <a href="{{ (url + section.title + '/') | slugify | lower }}" aria-label="Read more in {{ section.title | safe }}">READ MORE</a>
       {% endif %}
 		</section>
 	  {% endfor %}
