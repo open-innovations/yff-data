@@ -1,10 +1,10 @@
-md5: b27d4f24ae3852702bada84b1edd4df5
+md5: c946ac900c654dec96b905c607c6c3cc
 frozen: true
 deps:
 - path: data/metadata/codes/neet-codes.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 36f0400a9dd614ee29fb2f495a10b3be3735d460
+    rev_lock: f6f3bab1676068a29b4b71fbbf545f0d3cfc3821
 outs:
 - md5: 91baf64bcca9650be3c6438eb79678d4
   size: 4266
