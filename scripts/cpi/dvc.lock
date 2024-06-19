@@ -32,31 +32,31 @@ stages:
       size: 1564
     - path: working/upstream/mm23.csv
       hash: md5
-      md5: 9ddbc6f56c485e0eccac1f83c8af2f21
-      size: 25560959
+      md5: b31490d153593777cef0a5e7369e7e9b
+      size: 25625019
     outs:
     - path: data/cpi/transformed_cpi.csv
       hash: md5
-      md5: 02acca237117f01ad866324e3f132dec
-      size: 132225
+      md5: eb0e9f45d04094d23269a616f010ea9a
+      size: 132537
   prepare:
     cmd: PYTHONPATH=. python3 scripts/cpi/prepare.py
     deps:
     - path: data/cpi/transformed_cpi.csv
       hash: md5
-      md5: 02acca237117f01ad866324e3f132dec
-      size: 132225
+      md5: eb0e9f45d04094d23269a616f010ea9a
+      size: 132537
     - path: scripts/cpi/prepare.py
       hash: md5
       md5: baa430f643d94e5596d409b15e943900
       size: 8605
     - path: working/upstream/metadata.csv
       hash: md5
-      md5: 59246a901be65142d50d4cf58ca87db8
+      md5: 558ef43f741357eddbef3be406eb9618
       size: 201
     - path: working/upstream/mm23-codes.csv
       hash: md5
-      md5: 9a72ed884b04e16175b3cecb750d0b25
+      md5: ebcaf0be935ec075aab0e5ab48a6f998
       size: 377768
     outs:
     - path: data/cpi/indicator.csv
@@ -65,28 +65,28 @@ stages:
       size: 120
     - path: src/_data/sources/cpi/cpi_all_category_bar_chart.csv
       hash: md5
-      md5: e9fcc7b084bdef7a1dcf615e91fce6a0
-      size: 570
+      md5: d4a8f7ca65b4a36c2ecdca23f4019e4f
+      size: 568
     - path: src/_data/sources/cpi/cpi_barchart.csv
       hash: md5
-      md5: 45b8003157ecd5a035ef6f3dedfe41e9
+      md5: 3510a6b6f212425608ca95600026d7b1
       size: 239
     - path: src/_data/sources/cpi/cpi_linechart.csv
       hash: md5
-      md5: 16d6b657e8ac39669246f195c3bb28b9
-      size: 15170
+      md5: 03bd488e05e553175117d4733ea60d14
+      size: 15177
     - path: src/_data/sources/cpi/cpi_summary_barchart.csv
       hash: md5
-      md5: 774e7114b9a1ee2a446a849231157160
-      size: 180
+      md5: de3132bbbb10ab6a11d001c0a4a2ae1e
+      size: 140
     - path: src/_data/sources/cpi/headlines.csv
       hash: md5
-      md5: 918ff771d861b0f93d1f2de06c14c036
-      size: 307
+      md5: 5b0227f7457ca9be9b5fc83516a4d57d
+      size: 310
     - path: src/_data/sources/cpi/metadata.json
       hash: md5
-      md5: a4d12c8625e52e82e17fa0ec48338cf5
-      size: 56
+      md5: 0b1acbcba65e6589d08f0f9bc67ecd79
+      size: 57
   extract:
     cmd: PYTHONPATH=. python3 scripts/cpi/extract.py
     deps:

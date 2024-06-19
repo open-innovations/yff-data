@@ -1,14 +1,14 @@
 sector,monthly_pct_change,quarterly_pct_change,yearly_pct_change
-All CPI Categories,0.38,1.52,2.38
-Food & non-alcoholic beverages,0.37,0.74,2.96
-Alcoholic beverages & tobacco,0.07,1.1,8.08
-Clothing & footwear,0.42,3.11,3.73
-"Housing, water, electricity, gas & other fuels",-2.49,-1.86,-4.93
-"Furniture, household equipment & maintenance",-0.79,0.89,-0.95
-Health,0.91,1.6,6.65
-Transport,1.66,3.13,0.07
-Communication,4.5,5.15,4.01
-Recreation & culture,0.54,1.97,4.44
+All CPI Categories,0.3,1.21,1.98
+Food & non-alcoholic beverages,-0.29,0.22,1.73
+Alcoholic beverages & tobacco,0.34,1.23,7.82
+Clothing & footwear,0.59,1.61,3.0
+"Housing, water, electricity, gas & other fuels",0.22,-2.07,-4.85
+"Furniture, household equipment & maintenance",0.24,-0.24,-1.8
+Health,0.23,1.6,6.29
+Transport,0.74,3.11,0.44
+Communication,1.04,7.41,4.13
+Recreation & culture,0.23,1.73,4.01
 Education,0.0,0.0,4.48
-Restaurants & hotels,0.84,2.93,6.03
-Miscellaneous goods & services,0.76,1.01,3.55
+Restaurants & hotels,0.76,2.69,5.75
+Miscellaneous goods & services,0.17,1.18,3.1
