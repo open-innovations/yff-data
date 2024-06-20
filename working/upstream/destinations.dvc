@@ -1,10 +1,10 @@
-md5: c0eed674c7781115cbc883b0bc8010c7
+md5: e12397281152016d1542fdfbf7500693
 frozen: true
 deps:
 - path: data/processed/dfe/destinations.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 8676e49b0ee2b80f20c36f7a093e89048ebdbba1
+    rev_lock: baf3f4cacf051aad6658e6f9796a55cf377c1c1b
 outs:
 - md5: 530ef65fe5a3bc16bd76cf1edf047083
   size: 5340181
