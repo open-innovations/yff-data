@@ -1,10 +1,10 @@
-md5: 021c250b67456ccab338f9422b527aef
+md5: 7603cff7367a920d72bead4d2589aeb1
 frozen: true
 deps:
 - path: data/processed/oecd/education_attainment.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 58d7c17f6c6e5f3803efb78532d8cf13931f9994
+    rev_lock: 4f93ad75f3c600d27712496e417b0852e12b4a69
 outs:
 - md5: cc875bfec0ef8754f3002cd0a1b244e4
   size: 885358
