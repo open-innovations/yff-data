@@ -1,10 +1,10 @@
-md5: bfced15c622ac7f3a05e26e10e41b2ba
+md5: 176607b27cc54b774b3bcf5a53e9e75f
 frozen: true
 deps:
 - path: data/processed/claimants/claimants-per-population-latest.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 6015b52c4ecab4c04f3a646176ed5612a40a0707
+    rev_lock: b96b7400f8bfd15c5905170a802aef7cfc52b88d
 outs:
 - md5: 02d6a227dc3dc66a28838f06fbd60fdd
   size: 93676
