@@ -1,10 +1,10 @@
-md5: c97bde1413a44db41e8261651bd0273a
+md5: 75c1b7a3ccc61a81d56e641d048f7d1d
 frozen: true
 deps:
 - path: data/processed/oecd/neet.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: c8d4d9ea54667e625abc67aa70f4a819b9de419a
+    rev_lock: 525e7bd5b3270ea0759d933b357ae255e5fc7760
 outs:
 - md5: 53e0e9633fa63ce5a87d229e96edfe56
   size: 326832
