@@ -17,7 +17,7 @@ stages:
       size: 5836
     - path: working/upstream/metadata.csv
       hash: md5
-      md5: 558ef43f741357eddbef3be406eb9618
+      md5: 48c6f3bfd7470ccd0e6100de75de266b
       size: 201
     - path: working/upstream/vacancies-growth-by-sector.csv
       hash: md5
