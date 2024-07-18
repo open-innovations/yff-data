@@ -19,8 +19,8 @@ stages:
       size: 11551228
     - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
       hash: md5
-      md5: ace5443bd5f61e3eac957fd4e95707c1
-      size: 1174171
+      md5: 0b507ad441f9c7f5fdfd26c0f3010d1b
+      size: 1182616
     outs:
     - path: data/area/pcon/econ_active_16-19_last_3_years.csv
       hash: md5
@@ -40,8 +40,8 @@ stages:
       size: 17431
     - path: data/area/pcon/headlines.csv
       hash: md5
-      md5: c2030287ad9b1f61a80599c0bca8e670
-      size: 36870
+      md5: 0483f8eb971a839fff217778b377b2d6
+      size: 36554
     - path: data/area/pcon/youth_unem_16-24_last_3_years.csv
       hash: md5
       md5: 2783a507d245ef5e4d2d213e6a567259
@@ -67,8 +67,8 @@ stages:
       size: 17431
     - path: ../../data/area/pcon/headlines.csv
       hash: md5
-      md5: c2030287ad9b1f61a80599c0bca8e670
-      size: 36870
+      md5: 0483f8eb971a839fff217778b377b2d6
+      size: 36554
     - path: ../../data/area/pcon/youth_unem_16-24_last_3_years.csv
       hash: md5
       md5: 2783a507d245ef5e4d2d213e6a567259
@@ -84,5 +84,5 @@ stages:
     outs:
     - path: ../../src/generated/areas/constituency/_data/summary.json
       hash: md5
-      md5: f50d36ae12cb6a98ef441cec7280e7ba
-      size: 1615028
+      md5: 85272b41de32cdbcbdb259b99ed85fc5
+      size: 1615040
