@@ -60,13 +60,13 @@ if __name__ == '__main__':
 # PREPARE NEET DATA
     
     # Filter to the allowed fields
-    neet_all = oecd_neet_data[['country_code', 'age_range', 'time', 'value']].dropna()
+    neet_all = oecd_neet_data[['REF_AREA', 'POP_GROUP', 'TIME_PERIOD', 'OBS_VALUE']].dropna()
 
     # Merge in country lookup to add country names
-    neet_all = pd.merge(neet_all, country_reference, how='left', left_on='country_code', right_index=True).rename(columns={'name': 'country'})
+    neet_all = pd.merge(neet_all, country_reference, how='left', left_on='REF_AREA', right_index=True).rename(columns={'name': 'country'})
 
     # Pivot the table to arrange in columns with each combo
-    neet_grouped = neet_all.pivot_table(index=['country_code', 'country'], columns=['age_range', 'time'], values='value').reset_index()
+    neet_grouped = neet_all.pivot_table(index=['REF_AREA', 'country'], columns=['POP_GROUP', 'TIME_PERIOD'], values='OBS_VALUE').reset_index()
 
     save_tidy_csv(neet_grouped, os.path.join(DATA_DIR), 'neet_grouped.csv', with_index=False)
 
@@ -75,13 +75,13 @@ if __name__ == '__main__':
 # PREPARE WAGES DATA 
     
     # Filter to the allowed fields
-    wages_all = oecd_wage_data.drop(columns={'indicator', 'measure','frequency'}).dropna()
+    wages_all = oecd_wage_data.drop(columns={'STRUCTURE_NAME', 'UNIT_MEASURE','FREQUENCY'}).dropna()
 
     # Merge in country lookup to add country names
-    wages_all = pd.merge(wages_all, country_reference, how='left', left_on='country_code', right_index=True).rename(columns={'name':'country'})
+    wages_all = pd.merge(wages_all, country_reference, how='left', left_on='REF_AREA', right_index=True).rename(columns={'name':'country'})
 
     # Pivot the table to arrange in columns with each combo
-    wages_grouped = wages_all.pivot_table(index=['country_code', 'country'], columns=['subject', 'time'], values='value').reset_index()
+    wages_grouped = wages_all.pivot_table(index=['REF_AREA', 'country'], columns=['MEASURE', 'TIME_PERIOD'], values='OBS_VALUE').reset_index()
 
     save_tidy_csv(wages_grouped, os.path.join(DATA_DIR), 'wages_grouped.csv', with_index=False)
 
