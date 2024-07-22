@@ -1,8 +1,8 @@
-export const layout = 'layouts/areas/pcon.njk';
+export const layout = 'layouts/areas/pcon.vto';
 
 export const tags = ['area', 'constituency'];
 
-export default function*({ areas, build }) {
+export default function*({ areas, build, map, summary: allSummary }) {
 
   let areasToBuild = areas.reference.pcon;
 
@@ -13,9 +13,22 @@ export default function*({ areas, build }) {
   // Iterate over all the areas
   for (const area of areasToBuild) {
     // Read the keys out of the area and map to more friendly names
-    const { PCON22NM: name, PCON22CD: code } = area;
+    const {
+      PCON24NM: name,
+      PCON24CD: code,
+      PCON21CD: old_code,
+    } = area;
 
-	// Yield the data which creates the page
+    let summary = allSummary[code];
+    if (!summary && old_code) {
+      console.warn(`Falling back to ${old_code} for ${name} (${code})...`);
+      summary = allSummary[old_code];
+    }
+    if (!summary) {
+      console.error(`No summary data for ${name} (${code})...`);
+    }
+
+  	// Yield the data which creates the page
     yield {
       title: `Constituency: ${ name }`,
       url: `/areas/constituency/${ code }/`,
@@ -23,11 +36,17 @@ export default function*({ areas, build }) {
       area: {
         name: name,
         code: code,
-        type: 'PCON22',
-        // Removing to save memory in build
-        // summary: summary[code]||{},
-        // map: map[code] || {}
-      }
+        type: 'PCON24',
+        pcon22cd: old_code,
+      },
+
+      // Overriding map and summary
+      map: map[code],
+      summary: summary,
+
+      // masking large datasets at top-level
+      areas: 'MASKED AT THIS LEVEL',
+      sources: 'MASKED AT THIS LEVEL',
     }
   }
 

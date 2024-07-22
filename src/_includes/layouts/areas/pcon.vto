@@ -24,12 +24,12 @@ css: |
 ---
 <!-- Edit this in `src/_includes/layouts/areas/pcon.njk` -->
 
-{# {% include 'partials/page/topic-cloud.njk' %}	 #}
+{{# {% include 'partials/page/topic-cloud.njk' %}	 #}}
 
-{# OBVIOUSLY, OVERRIDE ALL THIS... #}
-{# Look up another page's content
+{{# OBVIOUSLY, OVERRIDE ALL THIS... #}}
+{{# Look up another page's content
 {{ search.page("area.code=E14000530").summary.name }}
-#}
+#}}
 
 <div class="row area-summary">
 	<div>
@@ -37,9 +37,9 @@ css: |
 		This is the page for {{ area.name }} ({{ area.code }}),
 		which is a Westminster Parliamentary Constituency ({{ area.type }}).
 		</p>
-    {% if summary[area.code].description %}
-		<p>{{ summary[area.code].description }}</p>
-    {% endif %}
+    {{ if summary?.description }}
+		<p>{{ summary.description }}</p>
+    {{ /if }}
 	</div>
 
 
@@ -47,13 +47,13 @@ css: |
 		config: {
 			padding: 100,
 			width: 300,
-			bounds: map[area.code],
+			bounds: map,
 			layers: [{
 				"type": "tile",
 				"props": "CartoDB.Positron"
 			},{
 				"type": "background",
-				"geojson": map[area.code],
+				"geojson": map,
 				"colour": "#e25b27",
 				"options": {
 					"fillOpacity": 0.25,
@@ -62,15 +62,16 @@ css: |
 			}],
 			mapAttribution: "Outline: &copy; ONS/OS"
 		}
-	}) | safe}}
+	}) }}
 </div>
 
 <div>
 <h2>Employment</h2>
 
+{{ if summary }}
 {{ comp.oi.dashboard({
   config: {
-    "data": summary[area.code].employment_headlines,
+    "data": summary.employment_headlines,
     "title": "h",
     "value": "v",
 	"width": "20%",
@@ -84,21 +85,22 @@ css: |
       { "name": "Unemployment Rate - Aged 16-64" }
     ]
   }
-}) | safe }}
+}) }}
+{{ /if }}
 </div>
 
 
 <div class="panes">	
 	<div class="row">	
-	{% comp 'display.figure' %}
+	{{ comp display.figure }}
 		<h3>{{ area.name }}: Economic Inactivity Rate (%) - Aged 16-24</h3>
 
-		{% if summary[area.code].economic_inactivity and summary[area.code].economic_inactivity | length > 0 %}
+		{{ if summary?.economic_inactivity && summary.economic_inactivity.length > 0 }}
 			{{ comp.oi.chart.line({
 					"config": {
 						"width": "800",
 						"height": 300,
-						"data": summary[area.code].economic_inactivity,
+						"data": summary.economic_inactivity,
 						"title": "Economic Inactivity Rate (%) - Aged 16-24",
 						legend: { "show": false, "position": "top" },
 						"axis": {
@@ -148,28 +150,28 @@ css: |
 							}
 						]
 					}
-				}) | safe }}
-		{% else %}
+				})  }}
+		{{ else }}
 			<p> No data available </p>
-		{% endif %}
-	{% endcomp %}
+		{{ /if }}
+	{{ /comp }}
 	</div>
 </div>
 
-{% comp 'tabbed', { tab_count: 2 } %}
+{{ comp tabbed { tab_count: 2 } }}
 <div class="panes">
 	<div class="row">
-	{% comp 'display.figure' %}
+	{{ comp display.figure }}
 		<span class="tab-title">Aged 16-19</span>
 
 		<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
 
-		{% if summary[area.code].economic_activity_16_19 and summary[area.code].economic_activity_16_19 | length > 0 %}
+		{{ if summary?.economic_activity_16_19 && summary.economic_activity_16_19.length > 0 }}
 			{{ comp.oi.chart.line({
 					"config": {
 						"width": "800",
 						"height": 300,
-						"data": summary[area.code].economic_activity_16_19,
+						"data": summary.economic_activity_16_19,
 						legend: { "show": false, "position": "top" },
 						"axis": {
 							"x": {
@@ -219,25 +221,25 @@ css: |
 							}
 						]
 					}
-				}) | simpleviz | safe }}
-		{% else %}
+				}) |> simpleviz }}
+		{{ else }}
 			<p> No data available </p>
-		{% endif %}
-	{% endcomp %}
+		{{ /if }}
+	{{ /comp }}
 	</div>
 
 	<div class="row">
-	{% comp 'display.figure' %}
+	{{ comp display.figure }}
 		 <span class="tab-title">Aged 20-24</span>
 
 		<h3>{{ area.name }}: Economic Activity Rate (%)</h3>
 
-		{% if summary[area.code].economic_activity_20_24 and summary[area.code].economic_activity_20_24 | length > 0 %}
+		{{ if summary?.economic_activity_20_24 && summary.economic_activity_20_24.length > 0 }}
 			{{ comp.oi.chart.line({
 					"config": {
 						"width": "800",
 						"height": 300,
-						"data": summary[area.code].economic_activity_20_24,
+						"data": summary.economic_activity_20_24,
 						"title": "Economic Inactivity Rate (%) - Aged 16-24",
 						legend: { "show": false, "position": "top" },
 						"axis": {
@@ -288,22 +290,22 @@ css: |
 							}
 						]
 					}
-				}) | simpleviz | safe }}
-		{% else %}
+				}) |> simpleviz }}
+		{{ else }}
 			<p> No data available </p>
-		{% endif %}
-	{% endcomp %}
+		{{ /if }}
+	{{ /comp }}
 	</div>
 </div>
-{% endcomp %}
+{{ /comp }}
 
 
 <h2>Education</h2>
-
+{{ if summary?.education_headlines }}
 <div class='education'>
 {{ comp.oi.dashboard({
   config: {
-    "data": summary[area.code].education_headlines,
+    "data": summary.education_headlines,
     "title": "h",
     "value": "v",
 	"width": "40%",
@@ -312,13 +314,13 @@ css: |
       { "name": "Average Progress 8 Score"}
     ]
   }
-}) | safe }}
+}) }}
 </div>
 
 <div class='education'>
 {{ comp.oi.dashboard({
   config: {
-    "data": summary[area.code].education_headlines,
+    "data": summary.education_headlines,
     "title": "h",
     "value": "v",
 	"width": "40%",
@@ -330,5 +332,8 @@ css: |
       { "name": "Percentage Achieving Grade 5 English & Maths"}
     ]
   }
-}) | safe }}
+}) }}
 </div>
+{{ else }}
+  <p>No data available.</p>
+{{ /if }}
