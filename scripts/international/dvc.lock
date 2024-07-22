@@ -7,8 +7,8 @@ stages:
     deps:
     - path: scripts/international/prepare.py
       hash: md5
-      md5: e3c89f02be286427a66682e26d7aa9da
-      size: 7860
+      md5: 49f68d54b56cfad744c5648950b8ad7d
+      size: 7883
     - path: scripts/international/transform.pl
       hash: md5
       md5: 9d2bf0dd046a34f673e46c09e20c5e84
@@ -24,6 +24,6 @@ stages:
     outs:
     - path: src/areas/maps/international/_data/view/
       hash: md5
-      md5: 8f04c264f35315c64f11454cab66ee19.dir
-      size: 395581
+      md5: fef615901ae5d9f6f1c099ae374bbea6.dir
+      size: 373260
       nfiles: 15
