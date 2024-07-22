@@ -2,6 +2,8 @@ export const layout = 'layouts/areas/pcon.vto';
 
 export const tags = ['area', 'constituency'];
 
+const makeUrl = (key) => `/areas/constituency/${key}/`;
+
 export default function*({ areas, build, map, summary: allSummary }) {
 
   let areasToBuild = areas.reference.pcon;
@@ -20,24 +22,31 @@ export default function*({ areas, build, map, summary: allSummary }) {
     } = area;
 
     let summary = allSummary[code];
+    let dataSource = code;
     if (!summary && old_code) {
       console.warn(`Falling back to ${old_code} for ${name} (${code})...`);
       summary = allSummary[old_code];
+      dataSource = old_code;
     }
     if (!summary) {
       console.error(`No summary data for ${name} (${code})...`);
+      dataSource=undefined;
     }
 
   	// Yield the data which creates the page
     yield {
       title: `Constituency: ${ name }`,
-      url: `/areas/constituency/${ code }/`,
+      url: makeUrl(code),
+      oldUrl: [
+        old_code
+      ].filter(x => x).map(makeUrl),
       topics: ['Constituency'],
       area: {
         name: name,
         code: code,
         type: 'PCON24',
-        pcon22cd: old_code,
+        pcon21cd: old_code,
+        dataSource,
       },
 
       // Overriding map and summary

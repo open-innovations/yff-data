@@ -10,6 +10,7 @@ import postcss from "lume/plugins/postcss.ts";
 import date from "lume/plugins/date.ts"; // To format dates see: https://lume.land/plugins/date/ and https://date-fns.org/v2.22.0/docs/format
 import { enGB } from "npm:date-fns/locale/en-GB";
 import nunjucks from "lume/plugins/nunjucks.ts";
+import redirects from "lume/plugins/redirects.ts";
 import resolveUrls from 'lume/plugins/resolve_urls.ts';
 import slugifyUrls from 'lume/plugins/slugify_urls.ts';
 import { stringify as yamlStringify } from 'std/encoding/yaml.ts';
@@ -63,6 +64,8 @@ if(!("OI_LOCAL" in env)){
 	  extraHTML: `<script src='/admin/netlify-extras.js'></script>`,
 	}));
 }
+
+site.use(redirects());
 
 site.use(
   oiLumeViz({
