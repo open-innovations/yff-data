@@ -58,15 +58,15 @@ def save_tidy_csv(df, directory, filename, with_index=True):
 if __name__ == '__main__':
 
 # PREPARE NEET DATA
-    
+
     # Filter to the allowed fields
-    neet_all = oecd_neet_data[['REF_AREA', 'POP_GROUP', 'TIME_PERIOD', 'OBS_VALUE']].dropna()
+    neet_all = oecd_neet_data[['LOCATION', 'Subject', 'TIME_PERIOD', 'OBS_VALUE']].dropna()
 
     # Merge in country lookup to add country names
-    neet_all = pd.merge(neet_all, country_reference, how='left', left_on='REF_AREA', right_index=True).rename(columns={'name': 'country'})
+    neet_all = pd.merge(neet_all, country_reference, how='left', left_on='LOCATION', right_index=True).rename(columns={'name': 'country'})
 
     # Pivot the table to arrange in columns with each combo
-    neet_grouped = neet_all.pivot_table(index=['REF_AREA', 'country'], columns=['POP_GROUP', 'TIME_PERIOD'], values='OBS_VALUE').reset_index()
+    neet_grouped = neet_all.pivot_table(index=['LOCATION', 'country'], columns=['Subject', 'TIME_PERIOD'], values='OBS_VALUE').reset_index()
 
     save_tidy_csv(neet_grouped, os.path.join(DATA_DIR), 'neet_grouped.csv', with_index=False)
 
