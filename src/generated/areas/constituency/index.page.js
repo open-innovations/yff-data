@@ -21,13 +21,7 @@ export default function*({ areas, build, map, summary: allSummary }) {
       PCON21CD: old_code,
     } = area;
 
-    let summary = allSummary[code];
-    let dataSource = code;
-    if (!summary && old_code) {
-      console.warn(`Falling back to ${old_code} for ${name} (${code})...`);
-      summary = allSummary[old_code];
-      dataSource = old_code;
-    }
+    const summary = allSummary[code];
     if (!summary) {
       console.error(`No summary data for ${name} (${code})...`);
       dataSource=undefined;
@@ -46,7 +40,6 @@ export default function*({ areas, build, map, summary: allSummary }) {
         code: code,
         type: 'PCON24',
         pcon21cd: old_code,
-        dataSource,
       },
 
       // Overriding map and summary

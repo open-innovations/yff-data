@@ -9,7 +9,7 @@ stages:
     deps:
       - scripts/areas/employment/transform-labour-market.py
       - scripts/areas/education/neet.py
-      - working/upstream/labour-market_most_recent_by_pcon_2010.csv
+      - working/upstream/labour-market_most_recent_by_pcon.csv
       - working/upstream/labour-market_last_3_years_by_pcon_2010.csv
     outs:
       - data/area/pcon/headlines.csv:
@@ -37,6 +37,7 @@ stages:
   summarise:
     cmd: python summarise.py
     deps:
+      - summarise.py
       - ${TOP}/data/reference/constituency-descriptions.csv
       - ${TOP}/src/_data/areas/reference/pcon.json
       - ${TOP}/data/area/pcon/headlines.csv

@@ -1,16 +1,43 @@
 import json
-import math
+import logging
 import datetime
+from pathlib import Path
+
 import pandas as pd
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__file__)
+
+
+# Set root directory
+ROOT = Path('../..')
+
 
 def year_fraction(date):
     start = datetime.date(date.year, 1, 1).toordinal()
     year_length = datetime.date(date.year+1, 1, 1).toordinal() - start
-    return round(date.year + float(date.toordinal() - start) / year_length,3)
+    return round(date.year + float(date.toordinal() - start) / year_length, 3)
 
 # A function that takes a date range column of the form "Apr 2020-Mar 2021",
 # creates a new column that is a datetime object based on the first part of the date ("Apr 2020"),
 # then sorts by the new column
+
+
+def get_values(data: pd.DataFrame, code: str, fallback: str = None) -> pd.DataFrame:
+    '''Extract data from a dataframe for a code, with an optional fallback'''
+    logger.debug('Extracting for %s, with fallback %s', code, fallback)
+
+    # Return the values that match this constituency code
+    if code in data.index:
+        return data.loc[code, :]
+
+    # If that code fails, try the fallback if it exists
+    if fallback and fallback in data.index:
+        logger.warning("Falling back to %s for %s", fallback, code)
+        return data.loc[fallback, :]
+    return pd.DataFrame([])
+
+
 def sortByDateRangeColumn(df, opts={}):
 
     if not 'rangecolumn' in opts:
@@ -19,7 +46,8 @@ def sortByDateRangeColumn(df, opts={}):
         opts['newcolumn'] = 'parsed_date'
 
     # Extract the first part of a date range ("Apr 2020-Mar 2021") and convert that ("Apr 2020") into a python datetime object
-    df[opts['newcolumn']] = pd.to_datetime(df[opts['rangecolumn']].str.replace(r"\-.*",'',regex=True), format='%b %Y')
+    df[opts['newcolumn']] = pd.to_datetime(
+        df[opts['rangecolumn']].str.replace(r"\-.*", '', regex=True), format='%b %Y')
 
     # Sort by the parsed dates
     df = df.sort_values(by=[opts['newcolumn']], ascending=True)
@@ -27,96 +55,119 @@ def sortByDateRangeColumn(df, opts={}):
     return df
 
 
-descriptions=pd.read_csv('../../data/reference/constituency-descriptions.csv', index_col='PCON22CD').fillna('')
+descriptions = pd.read_csv(
+    '../../data/reference/constituency-descriptions.csv', index_col='PCON22CD').fillna('')
 
-pcons=pd.read_json('../../src/_data/areas/reference/pcon.json')
+PCON_CODE = 'PCON24CD'
+PCON_NAME = 'PCON24NM'
 
-summary=pd.merge(pcons, descriptions, how='left', left_on='PCON22CD', right_index=True).set_index('PCON22CD')
-summary.rename(columns={ 'PCON22NM': 'name'}, inplace=True)
+pcons = pd.read_json(
+    '../../src/_data/areas/reference/pcon.json').set_index(PCON_CODE)
+
+summary = pd.merge(pcons, descriptions, how='left',
+                   left_index=True, right_index=True)
+summary.rename(columns={'PCON24NM': 'name'}, inplace=True)
 summary.rename(columns=lambda x: x.lower(), inplace=True)
 
 summary = summary.to_dict(orient='index')
 
-employment_headlines = pd.read_csv('../../data/area/pcon/headlines.csv', index_col='PCON22CD')
-education_headlines = pd.read_csv('../../data/area/pcon/education_attainment_pcon_2010.csv', index_col='PCON22CD')
-econ_inactive = pd.read_csv('../../data/area/pcon/econ_inactive_16-24_last_3_years.csv', index_col='PCON22CD')
-unemployment = pd.read_csv('../../data/area/pcon/youth_unem_16-24_last_3_years.csv', index_col='PCON22CD')
-economic_activity_16_19 = pd.read_csv('../../data/area/pcon/econ_active_16-19_last_3_years.csv', index_col='PCON22CD')
-economic_activity_20_24 = pd.read_csv('../../data/area/pcon/econ_active_20-24_last_3_years.csv', index_col='PCON22CD')
+PCON_DATA = ROOT / 'data/area/pcon'
+
+employment_headlines = pd.read_csv(
+    PCON_DATA / 'headlines.csv', index_col='ONS_CODE')
+education_headlines = pd.read_csv(
+    PCON_DATA / 'education_attainment_pcon_2010.csv', index_col='PCON22CD')
+econ_inactive = pd.read_csv(
+    PCON_DATA / 'econ_inactive_16-24_last_3_years.csv', index_col='ONS_CODE')
+unemployment = pd.read_csv(
+    PCON_DATA / 'youth_unem_16-24_last_3_years.csv', index_col='ONS_CODE')
+economic_activity_16_19 = pd.read_csv(
+    PCON_DATA / 'econ_active_16-19_last_3_years.csv', index_col='ONS_CODE')
+economic_activity_20_24 = pd.read_csv(
+    PCON_DATA / 'econ_active_20-24_last_3_years.csv', index_col='ONS_CODE')
 
 
 # Make lots of extra rows from the columns
 econ_inactive = econ_inactive.melt(ignore_index=False)
 # Parse the date range column and sort by the parsed date
-econ_inactive = sortByDateRangeColumn(econ_inactive,{'rangecolumn':'variable','newcolumn':'parsed_date'});
+econ_inactive = sortByDateRangeColumn(
+    econ_inactive, {'rangecolumn': 'variable', 'newcolumn': 'parsed_date'})
 
 # Make lots of extra rows from the columns
 economically_active_16_19 = economic_activity_16_19.melt(ignore_index=False)
 # Parse the date range column and sort by the parsed date
-economically_active_16_19 = sortByDateRangeColumn(economically_active_16_19,{'rangecolumn':'variable','newcolumn':'parsed_date'});
+economically_active_16_19 = sortByDateRangeColumn(economically_active_16_19, {
+                                                  'rangecolumn': 'variable', 'newcolumn': 'parsed_date'})
 
 # Make lots of extra rows from the columns
 economically_active_20_24 = economic_activity_20_24.melt(ignore_index=False)
 # Parse the date range column and sort by the parsed date
-economically_active_20_24 = sortByDateRangeColumn(economically_active_20_24,{'rangecolumn':'variable','newcolumn':'parsed_date'});
+economically_active_20_24 = sortByDateRangeColumn(economically_active_20_24, {
+                                                  'rangecolumn': 'variable', 'newcolumn': 'parsed_date'})
 
 
 # Loop over each constituency in the summary
 for s in summary:
+    old_code = pcons.loc[s, 'PCON21CD']
 
-    suffix = employment_headlines.loc[s, :].Suffix
+    logger.info('Preparing employment headlines for %s', s)
+    headlines = employment_headlines.pipe(get_values, s, old_code)
+
     summary[s]['employment_headlines'] = [
-        { 'h': headline_name, 'v': headline_value, 'suffix': suffix }
-        for headline_name, headline_value in employment_headlines.loc[s, :].drop(labels="Suffix").items()
-        ]
+        {'h': headline_name, 'v': headline_value, 'suffix': headlines.Suffix}
+        for headline_name, headline_value
+        in headlines.items()
+        if headline_name not in ['Suffix']
+    ]
+
+    logger.info('Preparing education headlines for %s', s)
+    education = education_headlines.pipe(get_values, s, old_code)
+    if len(education.index) == 0:
+        logger.warning('No education data available for %s', s)
+
     summary[s]['education_headlines'] = [
-        { 'h': name, 'v': value, 'suffix': suffix}
-        for name, value in education_headlines.loc[s, :].drop(labels="suffix").items()
-        ]
+        {'h': name, 'v': value, 'suffix': education.suffix}
+        for name, value
+        in education.items()
+        if name not in ['suffix']
+    ]
 
     # Build the summary for economic in activity
-    summary[s]['economic_inactivity'] = []
-    try:
-        # Get the values that match this constituency code, s
-        vals = econ_inactive.loc[s, :]
-        # Loop over the rows
-        for index, row in vals.iterrows():
-            summary[s]['economic_inactivity'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
-    except KeyError as e:
-        pass
+    logger.info('Preparing economic_inactivity for %s', s)
+    summary[s]['economic_inactivity'] = [
+        {'dates': row.variable, 'x': year_fraction(
+            row.parsed_date), 'v': row.value}
+        for row
+        in econ_inactive.pipe(get_values, s, old_code).itertuples()
+    ]
 
     # Build the summary for 16-19 year olds
-    summary[s]['economic_activity_16_19'] = []
-    try:
-        # Get the values that match this constituency code, s
-        vals = economically_active_16_19.loc[s, :]
-        # Loop over the rows
-        for index, row in vals.iterrows():
-            summary[s]['economic_activity_16_19'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
-    except KeyError as e:
-        pass
+    logger.info('Preparing economic_activity_16_19 for %s', s)
+    summary[s]['economic_activity_16_19'] = [
+        {'dates': row.variable, 'x': year_fraction(
+            row.parsed_date), 'v': row.value}
+        for row
+        in economically_active_16_19.pipe(get_values, s, old_code).itertuples()
+    ]
 
     # Build the summary for 20-24 year olds
-    summary[s]['economic_activity_20_24'] = []
-    try:
-        # Get the values that match this constituency code, s
-        vals = economically_active_20_24.loc[s, :]
-        # Loop over the rows
-        for index, row in vals.iterrows():
-            summary[s]['economic_activity_20_24'].append({'dates':row.variable,'x':year_fraction(row.parsed_date),'v':row.value})
-    except KeyError as e:
-        pass
-
+    logger.info('Preparing economic_activity_20_24 for %s', s)
+    summary[s]['economic_activity_20_24'] = [
+        {'dates': row.variable, 'x': year_fraction(
+            row.parsed_date), 'v': row.value}
+        for row
+        in economically_active_20_24.pipe(get_values, s, old_code).itertuples()
+    ]
 
 
 # Create the JSON string
-summaryjson = json.dumps(summary, indent = 1)
+summaryjson = json.dumps(summary, indent=1)
 # Fix NaN values
-summaryjson = summaryjson.replace(r"NaN","null")
+summaryjson = summaryjson.replace(r"NaN", "null")
 # Compress data structures 4 spaces deep
 summaryjson = summaryjson.replace("\n    ", "").replace("\n   }", "}")
 
 # Save the output
 fp = open('../../src/generated/areas/constituency/_data/summary.json', 'w')
-fp.write(summaryjson);
+fp.write(summaryjson)
 fp.close()
