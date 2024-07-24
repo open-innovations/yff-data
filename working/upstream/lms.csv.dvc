@@ -1,10 +1,10 @@
-md5: c2f90b3d0136e9a753defecab8ac5c9e
+md5: 357a302a4b8e85f84317b1aa836c9a58
 frozen: true
 deps:
 - path: data/processed/lms.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 38c1267ca27da157ea18094ef420a035b6b1977d
+    rev_lock: 5d33769ff386232d43ad349446a0e5e6cc840bfe
 outs:
 - md5: 1726648d4891a3884c4bf090eec32d06
   size: 18705177
