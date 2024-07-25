@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__file__)
 
 
@@ -16,7 +16,7 @@ ROOT = Path('../..')
 def year_fraction(date):
     start = datetime.date(date.year, 1, 1).toordinal()
     year_length = datetime.date(date.year+1, 1, 1).toordinal() - start
-    return round(date.year + float(date.toordinal() - start) / year_length, 3)
+    return round(date.year + float(date.toordinal() - start) / year_length, 5)
 
 # A function that takes a date range column of the form "Apr 2020-Mar 2021",
 # creates a new column that is a datetime object based on the first part of the date ("Apr 2020"),
@@ -38,19 +38,12 @@ def get_values(data: pd.DataFrame, code: str, fallback: str = None) -> pd.DataFr
     return pd.DataFrame([])
 
 
-def sortByDateRangeColumn(df, opts={}):
-
-    if not 'rangecolumn' in opts:
-        opts['rangecolumn'] = 'variable'
-    if not 'newcolumn' in opts:
-        opts['newcolumn'] = 'parsed_date'
-
-    # Extract the first part of a date range ("Apr 2020-Mar 2021") and convert that ("Apr 2020") into a python datetime object
-    df[opts['newcolumn']] = pd.to_datetime(
-        df[opts['rangecolumn']].str.replace(r"\-.*", '', regex=True), format='%b %Y')
+def sortByDateRangeColumn(df, rangecolumn='variable', newcolumn='parsed_date'):
+    # Extract the second part of a date range ("Apr 2020-Mar 2021") and convert that ("Apr 2020") into a python datetime object
+    df[newcolumn] = df[rangecolumn].str.replace(r".*?-", "", regex=True).pipe(pd.to_datetime, format="%b %Y") + pd.DateOffset(months=1, days=-1)
 
     # Sort by the parsed dates
-    df = df.sort_values(by=[opts['newcolumn']], ascending=True)
+    df = df.sort_values(by=[newcolumn], ascending=True)
 
     return df
 
@@ -90,20 +83,17 @@ economic_activity_20_24 = pd.read_csv(
 # Make lots of extra rows from the columns
 econ_inactive = econ_inactive.melt(ignore_index=False)
 # Parse the date range column and sort by the parsed date
-econ_inactive = sortByDateRangeColumn(
-    econ_inactive, {'rangecolumn': 'variable', 'newcolumn': 'parsed_date'})
+econ_inactive = sortByDateRangeColumn(econ_inactive, rangecolumn='variable', newcolumn='parsed_date')
 
 # Make lots of extra rows from the columns
 economically_active_16_19 = economic_activity_16_19.melt(ignore_index=False)
 # Parse the date range column and sort by the parsed date
-economically_active_16_19 = sortByDateRangeColumn(economically_active_16_19, {
-                                                  'rangecolumn': 'variable', 'newcolumn': 'parsed_date'})
+economically_active_16_19 = sortByDateRangeColumn(economically_active_16_19, rangecolumn='variable', newcolumn='parsed_date')
 
 # Make lots of extra rows from the columns
 economically_active_20_24 = economic_activity_20_24.melt(ignore_index=False)
 # Parse the date range column and sort by the parsed date
-economically_active_20_24 = sortByDateRangeColumn(economically_active_20_24, {
-                                                  'rangecolumn': 'variable', 'newcolumn': 'parsed_date'})
+economically_active_20_24 = sortByDateRangeColumn(economically_active_20_24, rangecolumn='variable', newcolumn='parsed_date')
 
 
 # Loop over each constituency in the summary
