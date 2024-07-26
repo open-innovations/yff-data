@@ -1,17 +1,16 @@
-import pandas as pd 
-import os
-import numpy as np 
+from pathlib import Path
 
-WORKING_DIR = os.path.join('working', 'upstream')
+import pandas as pd
 
-OUT_DIR = os.path.join('data', 'area', 'pcon')
-os.makedirs(OUT_DIR, exist_ok=True)
+WORKING_DIR = Path('working/upstream')
 
-labour_market_latest_pcon = pd.read_csv(os.path.join(WORKING_DIR, 'labour-market_most_recent_by_pcon_2010.csv'))
-labour_market_last_3_years_pcon = pd.read_csv(os.path.join(WORKING_DIR, 'labour-market_last_3_years_by_pcon_2010.csv'))
+OUT_DIR = Path('data/area/pcon')
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+ONS_CODE = 'ONS_CODE'
 
 COLUMN_MAPPER = {
-    'geography_code': 'PCON22CD',
+    'geography_code': ONS_CODE,
     '% of economically inactive student': 'Economically Inactive - Student',
     '% who are economically inactive - aged 16+': 'Economically Inactive - Aged 16+',
     '% who are economically inactive - aged 16-19': 'Economically Inactive - Aged 16-19',
@@ -28,101 +27,102 @@ COLUMN_MAPPER = {
     'Unemployment rate - aged 20-24': 'Unemployment Rate - Aged 20-24'
 }
 
-def limit_to_england(data):
-    return data.loc[data.PCON22CD.str.startswith('E')]
+
+def get_latest_available(data):
+    # Calculate dates
+    failsafe_date = data.date.min() - pd.Timedelta("1 days")
+    latest_date = data.date.max()
+
+    # Subset the input data
+    test_data = data.loc[:, ['geography_code',
+                             'date', 'variable_name', 'value']]
+
+    # Construct a failsafe (to be used in the event that there is no data available)
+    # This will have the same index as the most recent values, which we use below...
+    failsafe_data = test_data.loc[test_data.date == latest_date]
+    failsafe_data.loc[:, ['date', 'value']] = (failsafe_date, -1)
+
+    # Concatenate the test and failsafe_data
+    test_data = pd.concat([test_data, failsafe_data]
+                          ).sort_values('date', ascending=True)
+
+    # Get the indexes for the non-zero values
+    indexes = test_data.dropna(subset='value').groupby(
+        ['geography_code', 'variable_name'])['date'].idxmax()
+
+    return data.loc[indexes]
+
+
+def get_timeline(data: pd.DataFrame, variable: str) -> pd.DataFrame:
+    return (
+        data
+          .loc[ data.variable_name == variable ]
+          .pivot(
+              index=['geography_code'],
+              columns=['date', 'date_name'],
+              values=['value'],
+          )
+          .rename_axis(axis=0, mapper=ONS_CODE)
+          .droplevel(axis=1, level=[0,1])
+    )
+
 
 if __name__ == '__main__':
 
-# Latest figures
+    # Latest figures
+    labour_market = pd.read_parquet(
+        WORKING_DIR / 'labour_market_by_pcon.parquet').query('geography_code.str.startswith("E")')
 
-    latest_youth_unem = (
-        labour_market_latest_pcon
-        .drop(columns=['date', 'variable_code', 'notes'])
-    )
-
-    latest_youth_unem = (
-        pd.pivot_table(latest_youth_unem, values='value', index=['geography_code'], columns=['variable_name'])
-        .reset_index()
+    most_recent_values = (
+        labour_market
+        .pipe(get_latest_available)
+        .pivot(
+            index=['geography_code'],
+            columns=['variable_name'],
+            values=['value']
+        )
+        # Drop the first level of the columns axis
+        .droplevel(axis=1, level=0)
+        # Rename the index
+        .rename_axis(axis=0, mapper=ONS_CODE)
         .rename(columns=COLUMN_MAPPER)
-        # .fillna(0)
-    )
-    latest_youth_unem = limit_to_england(latest_youth_unem).set_index('PCON22CD')
-
-    latest_youth_unem['Suffix'] = '%'
-
-    latest_youth_unem.to_csv(os.path.join(OUT_DIR, 'headlines.csv'), index=True)
-
-# Unemployment rate - last 3 years   
-  
-    # labour_market_last_3_years_pcon['date_name'] = labour_market_last_3_years_pcon['date_name'].str.replace('-', '-\n')
-    
-    youth_unem_last_3_years = (
-        labour_market_last_3_years_pcon
-        .loc[labour_market_last_3_years_pcon['variable_name'] == 'Unemployment rate - aged 16-24']
-        # .fillna(0)
+        .sort_index(axis=1)
     )
 
+    most_recent_values['Suffix'] = '%'
 
-    youth_unem_last_3_years = (
-        pd.pivot_table(youth_unem_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
-        .reset_index()
-        .rename(columns=COLUMN_MAPPER)
-        # .fillna(0)
+    most_recent_values.loc[
+        :,
+        [
+            "Economically Inactive - Student", "Economically Inactive - Aged 16+", "Economically Inactive - Aged 16-19", "Economically Inactive - Aged 16-24", "Economically Inactive - Aged 16-64", "Economically Inactive - Aged 20-24", "Economic Activity Rate - Aged 16-19", "Economic Activity Rate - Aged 16-64", "Economic Activity Rate - Aged 20-24", "Unemployment Rate - Aged 16+", "Unemployment Rate - Aged 16-19", "Unemployment Rate - Aged 16-24", "Unemployment Rate - Aged 16-64", "Unemployment Rate - Aged 20-24", "Suffix"
+        ]
+    ].to_csv(OUT_DIR / 'headlines.csv', index=True)
+
+
+    # Unemployment rate - last 3 years
+    labour_market.pipe(
+        get_timeline, 'Unemployment rate - aged 16-24'
+    ).to_csv(
+        OUT_DIR / 'youth_unem_16-24_last_3_years.csv', index=True
     )
-    youth_unem_last_3_years = limit_to_england(youth_unem_last_3_years).set_index('PCON22CD')
-
-
-    youth_unem_last_3_years.to_csv(os.path.join(OUT_DIR, 'youth_unem_16-24_last_3_years.csv'), index=True)
-
 
     # Economic inactivity rate
-
-    econ_inactive_last_3_years = (
-        labour_market_last_3_years_pcon
-        .loc[labour_market_last_3_years_pcon['variable_name'] == '% who are economically inactive - aged 16-24']
-        # .fillna(0)
+    labour_market.pipe(
+        get_timeline, '% who are economically inactive - aged 16-24'
+    ).to_csv(
+        OUT_DIR / 'econ_inactive_16-24_last_3_years.csv', index=True
     )
-
-    econ_inactive_last_3_years = (
-        pd.pivot_table(econ_inactive_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
-        .reset_index()
-        .rename(columns=COLUMN_MAPPER)
-        # .fillna(0)
-    )
-    econ_inactive_last_3_years = limit_to_england(econ_inactive_last_3_years).set_index('PCON22CD')
-    econ_inactive_last_3_years.to_csv(os.path.join(OUT_DIR, 'econ_inactive_16-24_last_3_years.csv'), index=True)
 
     # Economic activity rate 16-19
-
-    econ_active_last_3_years = (
-        labour_market_last_3_years_pcon
-        .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 16-19']
-        # .fillna(0)
+    labour_market.pipe(
+        get_timeline, 'Economic activity rate - aged 16-19'
+    ).to_csv(
+        OUT_DIR / 'econ_active_16-19_last_3_years.csv', index=True
     )
-
-    econ_active_last_3_years = (
-        pd.pivot_table(econ_active_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
-        .reset_index()
-        .rename(columns=COLUMN_MAPPER)
-        # .fillna(0)
-    )
-    econ_active_last_3_years = limit_to_england(econ_active_last_3_years).set_index('PCON22CD')
-    econ_active_last_3_years.to_csv(os.path.join(OUT_DIR, 'econ_active_16-19_last_3_years.csv'), index=True)
 
     # Economic activity rate 20-24
-
-    econ_active_20_24_last_3_years = (
-        labour_market_last_3_years_pcon
-        .loc[labour_market_last_3_years_pcon['variable_name'] == 'Economic activity rate - aged 20-24']
-        # .fillna(0)
+    labour_market.pipe(
+        get_timeline, 'Economic activity rate - aged 20-24'
+    ).to_csv(
+        OUT_DIR / 'econ_active_20-24_last_3_years.csv', index=True
     )
-    econ_active_20_24_last_3_years = (
-        pd.pivot_table(econ_active_20_24_last_3_years, values='value', index=['geography_code'], columns=['date_name'])
-        .reset_index()
-        .rename(columns=COLUMN_MAPPER)
-        # .fillna(0)
-    )
-    econ_active_20_24_last_3_years = limit_to_england(econ_active_20_24_last_3_years).set_index('PCON22CD')
-    econ_active_20_24_last_3_years.to_csv(os.path.join(OUT_DIR, 'econ_active_20-24_last_3_years.csv'), index=True)
-
-

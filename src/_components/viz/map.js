@@ -27,6 +27,8 @@ export const css = `
 function clone(a){ return JSON.parse(JSON.stringify(a)); }
 
 export default function (context) {
+  console.error('Loading deprecated map component');
+  Deno.exit(1);
   const { config, sources } = context;
 
 	// Load the data from the sources

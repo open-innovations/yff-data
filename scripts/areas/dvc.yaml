@@ -1,21 +1,24 @@
 vars:
   - TOP: ../..
 stages:
-  transform:
-    cmd:
-      - python scripts/areas/employment/transform-labour-market.py
-      - python scripts/areas/education/neet.py
+  transform-education:
+    cmd: python scripts/areas/education/neet.py
+    wdir: ${TOP}
+    deps:
+      - scripts/areas/education/neet.py
+      - working/upstream/education_attainment_pcon_2010.csv
+    outs:
+      - data/area/pcon/education_attainment_pcon_2010.csv:
+          cache: false
+          persist: false
+  transform-labour-market:
+    cmd: python scripts/areas/employment/transform-labour-market.py
     wdir: ${TOP}
     deps:
       - scripts/areas/employment/transform-labour-market.py
-      - scripts/areas/education/neet.py
-      - working/upstream/labour-market_most_recent_by_pcon_2010.csv
-      - working/upstream/labour-market_last_3_years_by_pcon_2010.csv
+      - working/upstream/labour_market_by_pcon.parquet
     outs:
       - data/area/pcon/headlines.csv:
-          cache: false
-          persist: false
-      - data/area/pcon/education_attainment_pcon_2010.csv:
           cache: false
           persist: false
       - data/area/pcon/econ_inactive_16-24_last_3_years.csv:
@@ -30,13 +33,11 @@ stages:
       - data/area/pcon/econ_active_20-24_last_3_years.csv:
           cache: false
           persist: false
-      - data/area/pcon/education_attainment_pcon_2010.csv:
-          cache: false
-          persist: true
 
   summarise:
     cmd: python summarise.py
     deps:
+      - summarise.py
       - ${TOP}/data/reference/constituency-descriptions.csv
       - ${TOP}/src/_data/areas/reference/pcon.json
       - ${TOP}/data/area/pcon/headlines.csv
