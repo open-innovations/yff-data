@@ -301,7 +301,7 @@ css: |
 
 
 <h2>Education</h2>
-{{ if summary?.education_headlines }}
+{{ if summary?.education_headlines && summary.education_headlines.length > 0 }}
 <div class='education'>
 {{ comp.oi.dashboard({
   config: {
