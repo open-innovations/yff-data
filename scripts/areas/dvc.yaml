@@ -1,6 +1,21 @@
 vars:
   - TOP: ../..
 stages:
+  prepare:
+    cmd: papermill prepare.ipynb -
+    deps:
+      - ${TOP}/working/upstream/uk-constituencies-2024.geojson
+      - ${TOP}/working/upstream/uk-constituencies-2024-changes.json
+    outs:
+      - ${TOP}/src/_data/areas/maps/pcon.geojson:
+          cache: false
+          persist: false
+      - ${TOP}/src/_data/areas/reference/pcon.json:
+          cache: false
+          persist: false
+      - ${TOP}/src/generated/areas/constituency/_data/map.json:
+          cache: false
+          persist: false
   transform-education:
     cmd: python scripts/areas/education/neet.py
     wdir: ${TOP}

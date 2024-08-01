@@ -138,3 +138,27 @@ stages:
       hash: md5
       md5: 3d0f49f496e5b1b4ccb59ffb9daa1528
       size: 17431
+  prepare:
+    cmd: papermill prepare.ipynb -
+    deps:
+    - path: ../../working/upstream/uk-constituencies-2024-changes.json
+      hash: md5
+      md5: 89e608e93a2b86310bc9cf35b3f3e150
+      size: 103106
+    - path: ../../working/upstream/uk-constituencies-2024.geojson
+      hash: md5
+      md5: f359cca6e3fb2ea1f58b62af9d2a2f76
+      size: 2143297
+    outs:
+    - path: ../../src/_data/areas/maps/pcon.geojson
+      hash: md5
+      md5: fdcdfd50ab6c15179e9a8985bf0dab5d
+      size: 1233682
+    - path: ../../src/_data/areas/reference/pcon.json
+      hash: md5
+      md5: 4cd0c6849d470106df45687b40b38767
+      size: 68655
+    - path: ../../src/generated/areas/constituency/_data/map.json
+      hash: md5
+      md5: 3998d5c4094263372872717091f72dc2
+      size: 1162930
