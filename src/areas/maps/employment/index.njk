@@ -53,7 +53,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
     {% comp 'display.figure', { source_file: aps_url } %}
       {{ comp.oi.map.hex_cartogram({
         config: {
-          hexjson: constituencies,
+          hexjson: uk_constituencies_2023,
           data: view.unemployment_rate_youth.rows,
           matchKey: 'geography_code',
           value: 'value',
@@ -71,7 +71,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
     {% comp 'display.figure', { source_file: aps_url } %}
       {{ comp.oi.map.hex_cartogram({
     config: {
-      hexjson: constituencies,
+      hexjson: uk_constituencies_2023,
       data: view.unemployment_rate_all_working_age.rows,
       matchKey: 'geography_code',
       value: 'value',
@@ -89,7 +89,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
     {% comp 'display.figure', { source_file: aps_url } %}
       {{ comp.oi.map.hex_cartogram({
     config: {
-      hexjson: constituencies,
+      hexjson: uk_constituencies_2023,
       data: view.economic_inactivity_rate_youth.rows,
       matchKey: 'geography_code',
       value: 'value',
@@ -107,7 +107,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
     {% comp 'display.figure', { source_file: aps_url } %}
       {{ comp.oi.map.hex_cartogram({
     config: {
-      hexjson: constituencies,
+      hexjson: uk_constituencies_2023,
       data: view.economic_inactivity_rate_all_working_age.rows,
       matchKey: 'geography_code',
       value: 'value',
@@ -121,6 +121,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
   <article id='youth-claimants' class='selector-block' data-selector-group="Claimants">
     <h2>Rate of Universal Credit claimants aged 16-24</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    <p>This is based on pre-2024 constituency boundaries</p>
 
     {% comp 'display.figure', { source_file: claimant_url } %}
       {{ comp.oi.map.hex_cartogram({
@@ -139,6 +140,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
   <article id='all-claimants' class='selector-block' data-selector-group="Claimants">
     <h2>Rate of Universal Credit claimants aged 16+</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    <p>This is based on pre-2024 constituency boundaries</p>
 
     {% comp 'display.figure', { source_file: claimant_url } %}
       {{ comp.oi.map.hex_cartogram({
@@ -157,6 +159,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
   <article id='census-youth-unemployed-economically-inactive' class='selector-block' data-selector-group="Census 2021">
     <h2>Census 2021: Unemployed or economically inactive (excluding students) (age 16-24)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    <p>This is based on pre-2024 constituency boundaries</p>
 
     {% comp 'display.figure', { source_file: census_url } %}
       {{ comp.oi.map.hex_cartogram({
@@ -175,6 +178,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
   <article id='census-youth-unemployed' class='selector-block' data-selector-group="Census 2021">
     <h2>Census 2021: Unemployed (excluding students) (age 16-24)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    <p>This is based on pre-2024 constituency boundaries</p>
 
     {% comp 'display.figure', { source_file: census_url } %}
       {{ comp.oi.map.hex_cartogram({
@@ -193,6 +197,7 @@ link_query: "?map-selector=census-youth-unemployed-economically-inactive"
   <article id='census-youth-economically-inactive' class='selector-block' data-selector-group="Census 2021">
     <h2>Census 2021: Economically inactive (excluding students) (age 16-24)</h2>
     <p>Lighter colours indicate a higher value. Hover over the hexes to see exact figures.</p>
+    <p>This is based on pre-2024 constituency boundaries</p>
 
     {% comp 'display.figure', { source_file: census_url } %}
       {{ comp.oi.map.hex_cartogram({

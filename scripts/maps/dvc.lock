@@ -5,8 +5,8 @@ stages:
     deps:
     - path: scripts/maps/transform.py
       hash: md5
-      md5: 2d444b1e9080e24630caaa84cf9dabd2
-      size: 3974
+      md5: 65533cd0f68ce898add2745c708fd0de
+      size: 3969
     - path: working/upstream/census-employment-status.csv
       hash: md5
       md5: aa01ca494c03e7332df9264cbb1a3527
@@ -15,13 +15,13 @@ stages:
       hash: md5
       md5: b757b8bf6aff6e9912592358f78f5e6e
       size: 93681
-    - path: working/upstream/labour-market_most_recent_by_pcon_2010.csv
+    - path: working/upstream/labour-market_most_recent_by_pcon.csv
       hash: md5
-      md5: 0b507ad441f9c7f5fdfd26c0f3010d1b
-      size: 1182616
+      md5: 42ea7318183f0935651ace48b24932a4
+      size: 2400222
     outs:
     - path: src/areas/maps/employment/_data/view
       hash: md5
-      md5: 95b3de37c911ecb302cf37e3f67efaca.dir
-      size: 181071
+      md5: f78c30cacf7c50485247bb739b863caf.dir
+      size: 310758
       nfiles: 10

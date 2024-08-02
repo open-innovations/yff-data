@@ -3,7 +3,7 @@ import pandas as pd
 
 WORKING_DIR = os.path.join('working', 'upstream')
 COMBINED_DATA = os.path.join(
-    WORKING_DIR, 'labour-market_most_recent_by_pcon_2010.csv')
+    WORKING_DIR, 'labour-market_most_recent_by_pcon.csv')
 
 CLAIMANT_DATA = os.path.join(
     WORKING_DIR, 'claimants-per-population-latest.csv')
