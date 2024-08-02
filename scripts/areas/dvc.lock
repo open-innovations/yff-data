@@ -83,8 +83,8 @@ stages:
       size: 68655
     - path: summarise.py
       hash: md5
-      md5: 144ba8e4fc06a9041dad203218781846
-      size: 8117
+      md5: 2fc46c7b4df3edc44d1fefd9cef93d49
+      size: 8198
     outs:
     - path: ../../src/generated/areas/constituency/_data/summary.json
       hash: md5
@@ -127,8 +127,8 @@ stages:
     deps:
     - path: scripts/areas/education/neet.py
       hash: md5
-      md5: 13183cdf13429a97f926aa9024ade366
-      size: 699
+      md5: 4b90e101a7b25375e448c443eb18bcd3
+      size: 776
     - path: working/upstream/education_attainment_pcon_2010.csv
       hash: md5
       md5: fc1d03b76bc383b33625760c75badd50
