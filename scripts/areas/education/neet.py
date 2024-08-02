@@ -18,4 +18,6 @@ data = data.rename(columns={
     'pt_l2basics_95': 'Percentage Achieving Grade 5 English & Maths',
 })
 
+# TODO Calculate projected versions for each 2024 constituency, if possible
+
 data.to_csv(os.path.join(OUT_DIR, 'education_attainment_pcon_2010.csv'), index=False)

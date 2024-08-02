@@ -55,6 +55,7 @@ def get_values(data: pd.DataFrame, code: str, weightings: pd.Series = None) -> p
         new_index = pd.Series(code, index=old_codes,
                               name='ONS_CODE').to_frame()
         # Get the numeric columns - these will be scaled by the weight
+        # TODO consider if there is a way to deal with rates / percentage values
         numeric = model.select_dtypes(include=['number']).mul(
             weights.loc[old_codes], axis=0)
         # Get the non-numeric columns - these will not be scaled by the weight
