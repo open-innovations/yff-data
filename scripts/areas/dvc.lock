@@ -51,28 +51,28 @@ stages:
     deps:
     - path: ../../data/area/pcon/econ_active_16-19_last_3_years.csv
       hash: md5
-      md5: 768c594b79ba7dc5fa5c865ee929b473
-      size: 56862
+      md5: 30385be9c241cdb066f2cc40b376d786
+      size: 56937
     - path: ../../data/area/pcon/econ_active_20-24_last_3_years.csv
       hash: md5
-      md5: 0b5776ff247327a5292d541410afcb6b
-      size: 73942
+      md5: cf2a319084d4d8bb21d9282c45bc85d7
+      size: 74017
     - path: ../../data/area/pcon/econ_inactive_16-24_last_3_years.csv
       hash: md5
-      md5: 14a583ad739c44cbb0caf12adec9732d
-      size: 74429
+      md5: e88e721f000da61b6da3c5b902cba117
+      size: 74500
     - path: ../../data/area/pcon/education_attainment_pcon_2010.csv
       hash: md5
       md5: 487a9ff6a6f0cbf6be3ddb1e0e5fdf5f
       size: 17433
     - path: ../../data/area/pcon/headlines.csv
       hash: md5
-      md5: ef05314ddb75942ae7da8482008c9f34
-      size: 75884
+      md5: 3fd47b2714f8e09619e7bca04c8cece4
+      size: 75964
     - path: ../../data/area/pcon/youth_unem_16-24_last_3_years.csv
       hash: md5
-      md5: 78e98b21c22be58c29b494847d04c9e2
-      size: 32804
+      md5: c339824fdfa504e5c2de8b6bab117f33
+      size: 32859
     - path: ../../data/reference/constituency-descriptions.csv
       hash: md5
       md5: 8a9a902eff647f6ddd02fa35c809b323
@@ -88,8 +88,8 @@ stages:
     outs:
     - path: ../../src/generated/areas/constituency/_data/summary.json
       hash: md5
-      md5: f35122955cf8bbd9da04f2df4a876915
-      size: 2075346
+      md5: b59185ede2cbffbf332119040ab06b90
+      size: 2075343
   transform-labour-market:
     cmd: python scripts/areas/employment/transform-labour-market.py
     deps:
@@ -99,29 +99,29 @@ stages:
       size: 4856
     - path: working/upstream/labour_market_by_pcon.parquet
       hash: md5
-      md5: 354355f20eb85d1150104a8aab6c9b7d
-      size: 324837
+      md5: bd7fcc519d9b262689f9e21912118e7c
+      size: 345097
     outs:
     - path: data/area/pcon/econ_active_16-19_last_3_years.csv
       hash: md5
-      md5: 768c594b79ba7dc5fa5c865ee929b473
-      size: 56862
+      md5: 30385be9c241cdb066f2cc40b376d786
+      size: 56937
     - path: data/area/pcon/econ_active_20-24_last_3_years.csv
       hash: md5
-      md5: 0b5776ff247327a5292d541410afcb6b
-      size: 73942
+      md5: cf2a319084d4d8bb21d9282c45bc85d7
+      size: 74017
     - path: data/area/pcon/econ_inactive_16-24_last_3_years.csv
       hash: md5
-      md5: 14a583ad739c44cbb0caf12adec9732d
-      size: 74429
+      md5: e88e721f000da61b6da3c5b902cba117
+      size: 74500
     - path: data/area/pcon/headlines.csv
       hash: md5
-      md5: ef05314ddb75942ae7da8482008c9f34
-      size: 75884
+      md5: 3fd47b2714f8e09619e7bca04c8cece4
+      size: 75964
     - path: data/area/pcon/youth_unem_16-24_last_3_years.csv
       hash: md5
-      md5: 78e98b21c22be58c29b494847d04c9e2
-      size: 32804
+      md5: c339824fdfa504e5c2de8b6bab117f33
+      size: 32859
   transform-education:
     cmd: python scripts/areas/education/neet.py
     deps:
