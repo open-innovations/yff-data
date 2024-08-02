@@ -20,7 +20,7 @@ css: |
   .row h3 { padding: 16px; text-align: center; color: black;}
 
   .education .pane { background: #b33b73!important; }
-
+  [data-modelled=false] { display: none; }
 ---
 <!-- Edit this in `src/_includes/layouts/areas/pcon.njk` -->
 
@@ -83,7 +83,11 @@ css: |
       { "name": "Economic Activity Rate - Aged 20-24" },
       { "name": "Economic Activity Rate - Aged 16-19" },
       { "name": "Unemployment Rate - Aged 16-64" }
-    ]
+    ],
+	columns: [
+		{ name: "strapline", template: "<span data-modelled={{ modelled }}>Extrapolated from 2010 constituency data</span>" },
+	],
+	note: "strapline",
   }
 }) }}
 {{ /if }}
@@ -312,7 +316,11 @@ css: |
     "panels": [
       { "name": "Average Attainment 8 Score"},
       { "name": "Average Progress 8 Score"}
-    ]
+    ],
+	columns: [
+		{ name: "strapline", template: "<span data-modelled={{ modelled }}>Extrapolated from 2010 constituency data</span>" },
+	],
+	note: "strapline",
   }
 }) }}
 </div>
@@ -330,7 +338,11 @@ css: |
     "panels": [
       { "name": "Percentage Achieving Grade 4 English & Maths" },
       { "name": "Percentage Achieving Grade 5 English & Maths"}
-    ]
+    ],
+	columns: [
+		{ name: "strapline", template: "<span data-modelled={{ modelled }}>Extrapolated from 2010 constituency data</span>" },
+	],
+	note: "strapline",
   }
 }) }}
 </div>
