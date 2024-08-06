@@ -1,10 +1,10 @@
-md5: 7ee1cb52931428c7cf5aa51dcff08ecf
+md5: 283a23266b6143b855906433760cb342
 frozen: true
 deps:
 - path: data/processed/oecd/lfs_by_sex_and_age.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 7fe5043dee29153a6c6d5d0e761d8975c40a39ea
+    rev_lock: 8db7e0c874ac73869dc0e139cc76fc7975d2b19d
 outs:
 - md5: 6769e410f27bee1647573c4eaa8bf178
   size: 3542395
