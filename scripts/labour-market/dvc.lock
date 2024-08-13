@@ -13,20 +13,20 @@ stages:
       size: 628
     - path: working/upstream/lms.csv
       hash: md5
-      md5: 1726648d4891a3884c4bf090eec32d06
-      size: 18705177
+      md5: 2e44ea778966f5a6c12e79749e876228
+      size: 18771940
     outs:
     - path: data/labour-market/monthly-rolling.csv
       hash: md5
-      md5: 4d7f8a9bc0473be80d493fb67d77c3eb
-      size: 372561
+      md5: e312d189d9ab604671a040d24d16d590
+      size: 373839
   prepare:
     cmd: papermill prepare.ipynb ../../working/output/labour-market-prepare.ipynb
     deps:
     - path: ../../data/labour-market/monthly-rolling.csv
       hash: md5
-      md5: 4d7f8a9bc0473be80d493fb67d77c3eb
-      size: 372561
+      md5: e312d189d9ab604671a040d24d16d590
+      size: 373839
     - path: ../../scripts/util/
       hash: md5
       md5: 11bcc8647207a0a99fd2664fe46f756a.dir
@@ -34,7 +34,7 @@ stages:
       nfiles: 7
     - path: ../../working/upstream/metadata.csv
       hash: md5
-      md5: bf90d3ddac898423636f0bc40c4ae8e8
+      md5: 56711e11fadeea2e603533edb7145c0f
       size: 201
     - path: config.py
       hash: md5
@@ -51,25 +51,25 @@ stages:
     outs:
     - path: ../../src/_data/sources/labour-market/headlines.csv
       hash: md5
-      md5: 8c18f269b6afdefcc5ce9defe5bad4d3
+      md5: adefabe733b3a05c4dc73c57851375e1
       size: 1166
     - path: ../../src/_data/sources/labour-market/labour_market_status_all_data.csv
       hash: md5
-      md5: d6d32c7216d0754436e2103950a246b4
-      size: 35093
+      md5: 7af3710e0ae8f37190d593243ab952a8
+      size: 35101
     - path: ../../src/_data/sources/labour-market/labour_market_status_last_3_years.csv
       hash: md5
-      md5: dde9eab66f4b0a76d06295ee481695fe
-      size: 6470
+      md5: 1a289e7a674d0fb783b031ffcec93ddc
+      size: 6474
     - path: ../../src/_data/sources/labour-market/long_term_unemployed_all_data.csv
       hash: md5
-      md5: 6b89c0e7c7f40ef3999a648c303647a3
-      size: 11851
+      md5: 28c32aeaad227e9c448c588abe28e554
+      size: 11877
     - path: ../../src/_data/sources/labour-market/long_term_unemployed_last_3_years.csv
       hash: md5
-      md5: 3e0c7cfdc70053e549b6c8802b06e65b
-      size: 1908
+      md5: 3445319c7df79f2e0a21a60d657781cd
+      size: 1931
     - path: ../../src/dashboard/labour-market/_data/latest.json
       hash: md5
-      md5: fdf98557c6a05abad6b488b1dd78a59a
+      md5: e54b45d52e64b46dce46ba106ad755e2
       size: 533
