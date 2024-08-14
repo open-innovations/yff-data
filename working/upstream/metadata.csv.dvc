@@ -1,12 +1,12 @@
-md5: add8705cf505ce80b645e9e0cbffa339
+md5: dc1845d9cf3d431e58dcff681875a4b2
 frozen: true
 deps:
 - path: data/metadata/metadata.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 4c13e230315bde60bb2d0c48830514fdb216ce0f
+    rev_lock: ed45c127e913edc2a616fcc485dc49e9d54d45a6
 outs:
-- md5: 56711e11fadeea2e603533edb7145c0f
+- md5: c23ed116c150000b4d9a22b2ff42e920
   size: 201
   hash: md5
   path: metadata.csv
