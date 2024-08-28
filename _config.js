@@ -24,7 +24,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import { selectorProcessor } from "./src/_lib/ui/selector.ts";
 import { generateTickArray } from './src/_lib/chart-filters.ts';
 
-import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.15.3/mod.ts";
+import oiLumeViz from "https://deno.land/x/oi_lume_viz@v0.15.13/mod.ts";
 
 import * as yff from './yff-config.ts';
 import { getNamedColourStyles } from "./lib/generate-styles.ts";
