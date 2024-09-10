@@ -18,7 +18,7 @@
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
   {% if build.env == 'dev' %}{{ comp.dev_banner() | safe }}{% endif %}
   <div class="message container" data-pagefind-ignore="all">
-    {% include 'partials/feedback.njk' %}
+    {% include 'partials/survey-banner.njk' %}
   </div>
   {% include 'partials/site-header.njk' %}
   <main id="main" role="main" class="container {{ main_class or '' }}">
