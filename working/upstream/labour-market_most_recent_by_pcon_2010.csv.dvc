@@ -1,10 +1,10 @@
-md5: c01747367e2d89ad0ff73d51815cf9c3
+md5: 53c5fa5580f6d8596b8debce9f22f6d4
 frozen: true
 deps:
 - path: data/processed/labour-market/most_recent_by_pcon_2010.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: f0aae6423f5414491694237394cd7e2ea69cd5ae
+    rev_lock: 99ef28018584c65b812a9a8a8c0f7c9ec4ed8304
 outs:
 - md5: 0b507ad441f9c7f5fdfd26c0f3010d1b
   size: 1182616
