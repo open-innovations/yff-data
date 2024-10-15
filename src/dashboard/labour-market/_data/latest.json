@@ -1,13 +1,13 @@
 {
-  "unemployment_rate_all_working_age":4.2,
-  "economic_inactivity_rate_all_working_age":21.9,
-  "unemployment_rate_young_people":14.2,
+  "unemployment_rate_all_working_age":4.1,
+  "economic_inactivity_rate_all_working_age":21.8,
+  "unemployment_rate_young_people":13.6,
   "economic_inactivity_rate_young_people":41.2,
-  "unemployment_rate_not_in_full_time_education":12.9,
-  "economic_inactivity_rate_not_in_full_time_education":20.2,
-  "long_term_unemployment_rate_6_to_12_months":11.7,
-  "long_term_unemployment_rate_over_12_months":101.0,
-  "most_recent_lms_period":"May-Jul 2024",
-  "last_update":"2024-10-09T00:00:00.000",
-  "next_update":"2024-10-15 00:00:00"
+  "unemployment_rate_not_in_full_time_education":12.6,
+  "economic_inactivity_rate_not_in_full_time_education":19.8,
+  "long_term_unemployment_rate_6_to_12_months":13.5,
+  "long_term_unemployment_rate_over_12_months":95.0,
+  "most_recent_lms_period":"Jun-Aug 2024",
+  "last_update":"2024-10-15T00:00:00.000",
+  "next_update":"2024-12-11 00:00:00"
 }
