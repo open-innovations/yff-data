@@ -1,10 +1,10 @@
-md5: 5b588b2a0a2bc2d27a5f2a0babb98fb3
+md5: e587838e9f2c017f4db7829c4dfb97df
 frozen: true
 deps:
 - path: data/reference/uk-constituencies-2024-changes.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 320ea6836aa674de15e7d95ac6a7c96e52997f36
+    rev_lock: 4b309be07ae56e98373846721cf02b8200aa7c17
 outs:
 - md5: 3511219d07ec1c8da70e4428a32e97c9
   size: 28702
