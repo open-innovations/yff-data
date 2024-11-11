@@ -1,10 +1,10 @@
-md5: 8495e58f57f81540e5ed0d33e68be852
+md5: f93bb9ced3b4082c15fab1d884e68331
 frozen: true
 deps:
 - path: data/processed/oecd/wage_levels.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 6b1a2eb0e4fa98c4410f670b65a3557fc3a5d9ed
+    rev_lock: 3890a049e2b0bbf9d16838138a110b519fcd4345
 outs:
 - md5: 96c2f9ab4f68c3d7b8a9564b5e69dee3
   size: 292799

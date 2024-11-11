@@ -1,10 +1,10 @@
-md5: ea32a0eadb6d6be2d2b819225cfc1f84
+md5: 018c9037eb535b76697d0d2420d4fc44
 frozen: true
 deps:
 - path: data/processed/labour-market/labour_market_by_pcon.parquet
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 6b1a2eb0e4fa98c4410f670b65a3557fc3a5d9ed
+    rev_lock: 3890a049e2b0bbf9d16838138a110b519fcd4345
 outs:
 - md5: f30250d3a059d0327748e4b4f9b8bff7
   size: 350690
