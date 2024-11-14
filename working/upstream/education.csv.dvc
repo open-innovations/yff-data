@@ -1,10 +1,10 @@
-md5: b1103b06b289fec0513574a5357f2348
+md5: 97a23ae7eea8709817807e97c68966ce
 frozen: true
 deps:
 - path: data/processed/yff/education.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: 02ec0b23370b261f004835a7d39d26556b4f547c
+    rev_lock: 38fccb9394bdf44f0c42538bc66e56bcfc94bda0
 outs:
 - md5: 024f9ba2bfd92786a18a6298a8a06d9d
   size: 3294609
