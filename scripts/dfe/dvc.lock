@@ -47,17 +47,17 @@ stages:
     deps:
     - path: scripts/dfe/transform_char_outcomes.py
       hash: md5
-      md5: 4ee350c0b6d44f41285ed330a6a9a0d5
-      size: 1714
+      md5: cbc1dcbb150701d1274e1c801146add4
+      size: 1704
     - path: working/upstream/ks4_char_outcomes.csv
       hash: md5
-      md5: 5246a735aa00bcdc2b01d1a578751522
-      size: 23707387
+      md5: 7fb7256657e46d74ab21e5f2bfe0e4b6
+      size: 31625564
     outs:
     - path: src/areas/maps/education/_data/view/ks4_char_outcomes.csv
       hash: md5
-      md5: ca594b936fa60d156f58e9d74939cade
-      size: 182493
+      md5: 60117c159d96aee85a44bb2f6348c014
+      size: 130
   transform_char_outputs:
     cmd: PYTHONPATH=. python scripts/dfe/transform_ks4_outcomes.py
     deps:
@@ -74,14 +74,14 @@ stages:
     deps:
     - path: scripts/dfe/transform_ks4_outcomes.py
       hash: md5
-      md5: 1835f045feb949b92208c033a978afc6
-      size: 2078
+      md5: 57e613dbf160b8ca5e7e59aa6e6f405a
+      size: 2072
     - path: working/upstream/ks4_outcomes.csv
       hash: md5
-      md5: ec15396dd6d9b780f03a0860f96a3137
-      size: 473820
+      md5: 5095efde3b7a82e159ac6fb831417c16
+      size: 572672
     outs:
     - path: src/areas/maps/education/_data/view/ks4_outcomes.csv
       hash: md5
-      md5: f839753b67a42cdff2d8f04355370dd7
-      size: 48391
+      md5: 412db2dbd18a332fdd6d21c142cc8c57
+      size: 48388

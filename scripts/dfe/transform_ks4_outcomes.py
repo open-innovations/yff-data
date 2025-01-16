@@ -11,8 +11,8 @@ KS4_OUTCOMES_DATA = os.path.join(WORKING_DIR, 'ks4_outcomes.csv')
 
 ks4_outcomes_data = pd.read_csv(KS4_OUTCOMES_DATA).pipe(explode_counties)
 
-fields = ['new_la_code', 'time_period', 'version', 'gender', 'variable', 'value']
-groupby = ['variable','gender','time_period']
+fields = ['new_la_code', 'time_period', 'version', 'sex', 'variable', 'value']
+groupby = ['variable','sex','time_period']
 
 DATA_DIR = os.path.join('src', 'areas', 'maps', 'education', '_data', 'view')
 os.makedirs(DATA_DIR, exist_ok=True)

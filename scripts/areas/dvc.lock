@@ -63,8 +63,8 @@ stages:
       size: 73925
     - path: ../../data/area/pcon/education_attainment_pcon_2010.csv
       hash: md5
-      md5: 487a9ff6a6f0cbf6be3ddb1e0e5fdf5f
-      size: 17433
+      md5: bbfdea8e2b72cf7ecf1ea4d5dd1fdd07
+      size: 158
     - path: ../../data/area/pcon/headlines.csv
       hash: md5
       md5: 7eb7e1d0c3d5de210c38ce85382923af
@@ -88,8 +88,8 @@ stages:
     outs:
     - path: ../../src/generated/areas/constituency/_data/summary.json
       hash: md5
-      md5: 7dee4f3e795913354f8e843fea6c1693
-      size: 2075387
+      md5: 14a283a9981e03267a7fa61a0fbf1a82
+      size: 1966031
   transform-labour-market:
     cmd: python scripts/areas/employment/transform-labour-market.py
     deps:
@@ -131,10 +131,10 @@ stages:
       size: 699
     - path: working/upstream/education_attainment_pcon_2010.csv
       hash: md5
-      md5: 1ef58b359286f2b8a928bd15c9504aaa
-      size: 24983
+      md5: 1fc3c8fc4da05377b0c9bab48d75389a
+      size: 72
     outs:
     - path: data/area/pcon/education_attainment_pcon_2010.csv
       hash: md5
-      md5: 487a9ff6a6f0cbf6be3ddb1e0e5fdf5f
-      size: 17433
+      md5: bbfdea8e2b72cf7ecf1ea4d5dd1fdd07
+      size: 158

@@ -12,9 +12,9 @@ KS4_CHAR_OUTCOMES_DATA = os.path.join(
 
 char_outcomes_data = pd.read_csv(KS4_CHAR_OUTCOMES_DATA).pipe(explode_counties)
 
-fields = ['new_la_code', 'time_period', 'version', 'gender', 'breakdown', 'ethnicity_major', 
-          'free_school_meals', 'sen_status', 'sen_description', 'disadvantage', 'first_language', 'variable', 'value']
-groupby = ['variable','breakdown','gender','ethnicity_major','free_school_meals','sen_status','sen_description','disadvantage','first_language']
+fields = ['new_la_code', 'time_period', 'version', 'sex', 'breakdown', 'ethnicity_major', 
+          'free_school_meals', 'sen_status', 'sen_provision', 'disadvantage', 'first_language', 'variable', 'value']
+groupby = ['variable','breakdown','sex','ethnicity_major','free_school_meals','sen_status','sen_provision','disadvantage','first_language']
 
 DATA_DIR = os.path.join('src', 'areas', 'maps', 'education', '_data', 'view');
 os.makedirs(DATA_DIR, exist_ok=True)
