@@ -60,7 +60,7 @@ The data is structured in ways appropriate to drive site generation.
 
 ### Scheduling
 
-Data pipelines run Monday to Friday every half-hour from 6:15 AM to 8:45 AM in the
+Data pipelines run Monday to Friday at 7:50 AM (UTC)in the
 `yff-data-pipelines` repository.
 This means that whenever new data is published, it will be downloaded and transformed by
 the pipeline processes.
@@ -68,7 +68,10 @@ Any change in the repository as a result of the pipeline processing will trigger
 pipeline run in the `yff-data` (main site) repo, which will in turn prepare the data and
 rebuild the site.
 In that way, the site will be updated within a short period of an open data source being
-published. Assuming data is live at 7 AM, it _should_ be on the site by 7:30.
+published. Assuming data is live by 7:50, it _should_ be on the site by around 8:00 (9:00 during BST).
+
+NB all times are expressed in UTC.
+This will be the same as GMT, but jobs will run at 8:35 local time.
 
 ## Site build
 
