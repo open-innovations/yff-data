@@ -1,10 +1,10 @@
-md5: 579433ffbe0c73a4789c1427909507af
+md5: 96b63e760b779210017e84469a5fe46c
 frozen: true
 deps:
 - path: data/processed/areas/attainment_scores_pcon_2010.csv
   repo:
     url: https://github.com/open-innovations/yff-data-pipelines
-    rev_lock: ea134bf68195f72ab774a27c7ac8350fb76b910d
+    rev_lock: 5803c81d1741e65195a8b7312155a7fff5bea9c9
 outs:
 - md5: 1fc3c8fc4da05377b0c9bab48d75389a
   size: 72
