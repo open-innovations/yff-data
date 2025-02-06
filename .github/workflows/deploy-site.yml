@@ -2,18 +2,18 @@ name: Publish on GitHub Pages
 
 "on":
   workflow_dispatch: {}
-  workflow_run:
-    workflows: ["Update data"]
-    types:
-      - completed
-  push:
-    branches: [ main ]
-    paths:
-      - 'src/**'
-      - '_config.js'
-      - 'deno.json'
-      - 'import_map.json'
-      - '.github/workflows/deploy-site.yml'
+  # workflow_run:
+  #   workflows: ["Update data"]
+  #   types:
+  #     - completed
+  # push:
+  #   branches: [ main ]
+  #   paths:
+  #     - 'src/**'
+  #     - '_config.js'
+  #     - 'deno.json'
+  #     - 'import_map.json'
+  #     - '.github/workflows/deploy-site.yml'
 
 jobs:
   # Build job

@@ -2,12 +2,12 @@ name: Update data
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types:
-      - update_data
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron: '15 8 * * 1-5'
+  # repository_dispatch:
+  #   types:
+  #     - update_data
+  # schedule:
+  #   # * is a special character in YAML so you have to quote this string
+  #   - cron: '15 8 * * 1-5'
 
 # Cancel any in-flight jobs
 concurrency:

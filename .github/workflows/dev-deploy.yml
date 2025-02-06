@@ -2,14 +2,14 @@ name: Publish dev version
 
 "on":
   workflow_dispatch: {}
-  push:
-    branches: [ dev ]
-    paths:
-      - 'src/**'
-      - '_config.js'
-      - 'deno.json'
-      - 'import_map.json'
-      - '.github/workflows/dev-deploy.yml'
+  # push:
+  #   branches: [ dev ]
+  #   paths:
+  #     - 'src/**'
+  #     - '_config.js'
+  #     - 'deno.json'
+  #     - 'import_map.json'
+  #     - '.github/workflows/dev-deploy.yml'
 
 jobs:
   # Build job
